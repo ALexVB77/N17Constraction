@@ -128,6 +128,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field Uom(Base) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4115020388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Scanning List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Scanning List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4115020388 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the No. field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Scanning List - Control No. - Property ToolTip</note>
+        </trans-unit>
       </group>
     </body>
   </file>

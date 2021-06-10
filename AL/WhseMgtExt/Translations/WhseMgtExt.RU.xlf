@@ -7,176 +7,165 @@
           <source>Item Scanning Entry</source>
           <target></target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 1090351696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Active</source>
           <target>Активно</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Active - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 1650050144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Barcode</source>
           <target>Штрихкод</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Barcode - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 2480638018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Line No.</source>
           <target>Номер строки документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Document Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
           <target>Номер документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Document No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
           <target>Операция номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Entry No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 149522872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry Type</source>
           <target>Тип операции</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Entry Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 149522872 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>,Posting,WriteOff,Inventory</source>
           <target>,Приемка,Списание,Инвентаризация</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Entry Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No.</source>
           <target>Товар Номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Item No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 2185241126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ManualInsQty</source>
           <target>Ручной ввод</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field ManualInsQty - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
           <target>Количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Quantity - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 4190597329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity(Base)</source>
           <target>Количество(Баз)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Quantity(Base) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 413337055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>RealScan</source>
           <target>Реальное сканирование</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field RealScan - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 3880153472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SplitWithEntry</source>
           <target>Связать с операцией</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field SplitWithEntry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 1920046521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit of Measure</source>
           <target>Ед. Изм.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Unit of Measure - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 2138558048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>UserID</source>
           <target>Пользователь</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field UserID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Scanning Buffer</source>
           <target>Буффер сканирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 130280937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DocumentFilter</source>
           <target>Фильтр</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field DocumentFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 4066289460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DocumentLineNo</source>
           <target>Номер строки документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field DocumentLineNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 3117834186 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DocumentNo</source>
           <target>Номер документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field DocumentNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No.</source>
           <target>Товар номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field Item No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 1795468512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Qty</source>
           <target>Количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field Qty - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 3551352324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Qty(Base)</source>
           <target>Количество(Баз)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field Qty(Base) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 936370185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Uom</source>
           <target>Ед. Изм.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field Uom - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 2271895853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Uom(Base)</source>
           <target>Ед. Изм(Баз)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field Uom(Base) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4115020388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Scanning List</source>
+          <target>Список заказов покупки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Scanning List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4115020388 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the No. field</source>
+          <target>Выберите значение в поле номер</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Scanning List - Control No. - Property ToolTip</note>
         </trans-unit>
       </group>
     </body>
