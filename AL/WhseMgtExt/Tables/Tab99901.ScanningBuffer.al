@@ -2,7 +2,7 @@ table 99901 "Scanning Buffer"
 {
     Caption = 'Scanning Buffer';
     DataClassification = ToBeClassified;
-    
+
     fields
     {
         field(1; DocumentNo; Code[20])
@@ -45,6 +45,12 @@ table 99901 "Scanning Buffer"
             Caption = 'DocumentFilter';
             DataClassification = ToBeClassified;
         }
+        field(9; DocumentType; Option)
+        {
+            Caption = 'DocumentFilter';
+            DataClassification = ToBeClassified;
+            OptionMembers = ,Posting,TransOrder,MatOrder,"Write-off",TransOrderNew,MatOrderNew,WrOffNew,Inventory;
+        }
     }
     keys
     {
@@ -53,5 +59,5 @@ table 99901 "Scanning Buffer"
             Clustered = true;
         }
     }
-    
+
 }

@@ -125,14 +125,14 @@
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 4237283545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DocumentFilter</source>
-          <target>[NAB: SUGGESTION]Фильтр</target>
+          <target>Фильтр</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field DocumentType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3665716675 - Field 4237283545 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>,Posting,TransOrder,MatOrder,Write-off,TransOrderNew,MatOrderNew,WrOffNew,Inventory</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>,Покупка,Заказ на перемещение, ПЕремещение материалов, Акт списания, Заказ новый, Перемещение материалов Новый, Акт списания новый, Инвентаризация</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Scanning Buffer - Field DocumentType - Property OptionCaption</note>
@@ -169,297 +169,297 @@
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 3661322528" size-unit="char" translate="yes" xml:space="preserve">
           <source>SetParam</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>ПЕредать настройку</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method SetParam</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 2330961455" size-unit="char" translate="yes" xml:space="preserve">
           <source>CreateBarcode</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target></target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method CreateBarcode</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 1448794255" size-unit="char" translate="yes" xml:space="preserve">
           <source>SearchBarcode</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Искать штрихкод/target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method SearchBarcode</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 3084249930" size-unit="char" translate="yes" xml:space="preserve">
           <source>CreateScanningEntry</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Создать операцию сканирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method CreateScanningEntry</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 2994031215" size-unit="char" translate="yes" xml:space="preserve">
           <source>SelectItem</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Выбрать товар</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method SelectItem</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 2627759726" size-unit="char" translate="yes" xml:space="preserve">
           <source>SetItemNo</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Передать товар номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method SetItemNo</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 3946816388" size-unit="char" translate="yes" xml:space="preserve">
           <source>InsertQuantity</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Ввести количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method InsertQuantity</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 22381460" size-unit="char" translate="yes" xml:space="preserve">
           <source>SelectUOM</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Выбрать ед. изм.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method SelectUOM</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 3251065369" size-unit="char" translate="yes" xml:space="preserve">
           <source>PrepareScanningBuffer</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Заполнить буффер</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method PrepareScanningBuffer</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 1058338693" size-unit="char" translate="yes" xml:space="preserve">
           <source>DistributionByDocs</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Распределение по строкам</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method DistributionByDocs</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 3483154226" size-unit="char" translate="yes" xml:space="preserve">
           <source>EDitQuantityManualy</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Редактировать количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method EDitQuantityManualy</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 3056639188" size-unit="char" translate="yes" xml:space="preserve">
           <source>FindSplited</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Найти связанные строки</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method FindSplited</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 1642358876" size-unit="char" translate="yes" xml:space="preserve">
           <source>DeletePrevOps</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Удалить предыдущие</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method DeletePrevOps</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 3535982709" size-unit="char" translate="yes" xml:space="preserve">
           <source>InitEntry</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Создать операцию</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method InitEntry</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 2368623556" size-unit="char" translate="yes" xml:space="preserve">
           <source>SetWorkEntryParam</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Параметры рабочей строки</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method SetWorkEntryParam</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 173158575" size-unit="char" translate="yes" xml:space="preserve">
           <source>SetManualyParam</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Передать ручные данные</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method SetManualyParam</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - NamedType 1630457811" size-unit="char" translate="yes" xml:space="preserve">
           <source>For edit quantity please scan item or insert operation without scanning</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Для редактирования количества, пожалуйста, отсканируйте товар или введите операцию без сканирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - NamedType FirstScanEntry</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - NamedType 1030888008" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Not Choosen</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Товар не выбран</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - NamedType NoneChItem</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 1268913252 - NamedType 1268913252" size-unit="char" translate="yes" xml:space="preserve">
           <source>Barcode not registered. Create barcode</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Штрихкод  не найден. Создать штрихкод для товара?</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method CreateBarcode - NamedType CreateBarcode</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 1660934630 - NamedType 2734600238" size-unit="char" translate="yes" xml:space="preserve">
           <source>The scanned number outweighs the number in the document lines.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Отсканированный товар отсутствует в строках документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method DistributionByDocs - NamedType ExcAmount</note>
         </trans-unit>
         <trans-unit id="Codeunit 640291617 - Method 1660934630 - NamedType 1137609947" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item is not finding in document lines</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Товар не найден в строках документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Scanning Helper - Method DistributionByDocs - NamedType NoFindItem</note>
         </trans-unit>
         <trans-unit id="Page 878389784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>EnterQty</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Введите количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EnterQty - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 878389784 - Method 4128543304 - NamedType 1422430302" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enter not null quantity</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Введите количество отличное от нуля</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EnterQty - Method OnClosePage - NamedType NoNulltxt</note>
         </trans-unit>
         <trans-unit id="Page 878389784 - Control 878389784 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enter Quantity</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Введите количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EnterQty - Control EnterQty - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3747003482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ItemList1</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Список товаров в документе</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList1 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3747003482 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Описание</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList1 - Control Description - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3747003482 - Control 486908828 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
-          <target>[NAB: SUGGESTION]Номер документа</target>
+          <target>Номер документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList1 - Control Document No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3747003482 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No.</source>
-          <target>[NAB: SUGGESTION]Товар Номер</target>
-          <target>[NAB: SUGGESTION]Товар номер</target>
+          <target>Товар Номер</target>
+          <target>Товар номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList1 - Control No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3747003482 - Control 2704404533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
-          <target>[NAB: SUGGESTION]Количество</target>
+          <target>Количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList1 - Control Quantity - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3747003482 - Control 1920046521 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit of Measure</source>
-          <target>[NAB: SUGGESTION]Ед. Изм.</target>
+          <target>Ед. Изм.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList1 - Control Unit of Measure - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1833913631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ItemList2</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Список товаров</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1833913631 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Описание</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList2 - Control Description - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1833913631 - Control 486908828 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
-          <target>[NAB: SUGGESTION]Номер документа</target>
+          <target>Номер документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList2 - Control Document No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1833913631 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No.</source>
-          <target>[NAB: SUGGESTION]Товар Номер</target>
-          <target>[NAB: SUGGESTION]Товар номер</target>
+          <target>Товар Номер</target>
+          <target>Товар номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList2 - Control Item No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1833913631 - Control 2704404533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
-          <target>[NAB: SUGGESTION]Количество</target>
+          <target>Количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList2 - Control Quantity - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1833913631 - Control 2385270358 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit of Measure</source>
-          <target>[NAB: SUGGESTION]Ед. Изм.</target>
+          <target>Ед. Изм.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList2 - Control Unit of Measure Code - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2471610248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ItemList3</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Список товаров</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList3 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2471610248 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Описание</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList3 - Control Description - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2471610248 - Control 486908828 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
-          <target>[NAB: SUGGESTION]Номер документа</target>
+          <target>Номер документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList3 - Control Document No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2471610248 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No.</source>
-          <target>[NAB: SUGGESTION]Товар Номер</target>
-          <target>[NAB: SUGGESTION]Товар номер</target>
+          <target>[Товар Номер</target>
+          <target>Товар номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList3 - Control Item No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2471610248 - Control 2704404533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
-          <target>[NAB: SUGGESTION]Количество</target>
+          <target>Количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList3 - Control Quantity - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2471610248 - Control 2385270358 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit of Measure</source>
-          <target>[NAB: SUGGESTION]Ед. Изм.</target>
+          <target>Ед. Изм.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ItemList3 - Control Unit of Measure Code - Property ToolTip</note>
@@ -478,268 +478,268 @@
         </trans-unit>
         <trans-unit id="Page 4035910493 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ScanEnterQty</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Отсканированное количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanEnterQty - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4035910493 - Method 3839134711 - NamedType 71502304" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please Scanning Item</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Отсканируйте товар</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanEnterQty - Method SetParam - NamedType IdentLine</note>
         </trans-unit>
         <trans-unit id="Page 4035910493 - Control 2192354867 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
-          <target>[NAB: SUGGESTION]Номер документа</target>
+          <target>Номер документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanEnterQty - Control g_DocNo - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 4035910493 - Control 1207432752 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Description</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Описание товара</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanEnterQty - Control g_ItemNo - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 4035910493 - Control 2257665785 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enter Quantity</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Введите количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanEnterQty - Control g_NewQuantity - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 4035910493 - Control 712196861 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Earlier Scanned Quantity</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Ранее отсканированное количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanEnterQty - Control g_ScanQty - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 4035910493 - Control 3720352364 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unscanned Quantity (Remain)</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Непринятое количество(остаток)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanEnterQty - Control g_UnscanQty - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 4035910493 - Control 1648369113 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enter Quantity</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Введите количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanEnterQty - Control g_UOM - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3051801611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Scanning</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Сканирование товаров</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Scanning - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3051801611 - Control 3117834186 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Number</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Номер обрабатываемого документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Scanning - Control DocumentNo - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3051801611 - Control 332802016 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proceed Item No.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Отсканирован товар</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Scanning - Control ItemNo - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3051801611 - Control 2704404533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
-          <target>[NAB: SUGGESTION]Количество</target>
+          <target>Количество в документе</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Scanning - Control Quantity - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3051801611 - Control 2011385997 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Scanned Quantity</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Отсканированное количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Scanning - Control ScannedQuantity - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3051801611 - Control 2713412609 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unscanned Quantity</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Непринятое количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Scanning - Control UnscannedQty - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ScanningHistory</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>История операций сканирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 1090351696 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Active</source>
-          <target>[NAB: SUGGESTION]Активно</target>
+          <target>Активно</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Active - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 1650050144 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Barcode</source>
-          <target>[NAB: SUGGESTION]Штрихкод</target>
+          <target>Штрихкод</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Barcode - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 2480638018 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Line No.</source>
-          <target>[NAB: SUGGESTION]Номер строки документа</target>
+          <target>Номер строки документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Document Line No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 486908828 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
-          <target>[NAB: SUGGESTION]Номер документа</target>
+          <target>Номер документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Document No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
-          <target>[NAB: SUGGESTION]Операция номер</target>
+          <target>Операция номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Entry No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 149522872 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry Type</source>
-          <target>[NAB: SUGGESTION]Тип операции</target>
+          <target>Тип операции</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Entry Type - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No.</source>
-          <target>[NAB: SUGGESTION]Товар Номер</target>
-          <target>[NAB: SUGGESTION]Товар номер</target>
+          <target>Товар Номер</target>
+          <target>Товар номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Item No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 2185241126 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manual Insert</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Ручной ввод</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control ManualInsQty - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 2704404533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
-          <target>[NAB: SUGGESTION]Количество</target>
+          <target>Количество</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Quantity - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 4190597329 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>quantity(Base)</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Количество(Баз.)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Quantity(Base) - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 413337055 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Real Scanning</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Реальное сканирование</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control RealScan - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 3880153472 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Split With Entry</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Связь с операцией</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control SplitWithEntry - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 1920046521 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit of Measure</source>
-          <target>[NAB: SUGGESTION]Ед. Изм.</target>
+          <target>Ед. Изм.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control Unit of Measure - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Control 2138558048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>User ID</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Код пользователя</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ScanningHistory - Control UserID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 531561103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>UOMList</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Выберите ед. измерения</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page UOMList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 531561103 - Control 3004954119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Код</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page UOMList - Control Code - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 531561103 - Control 3309616201 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cubage</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Объем</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page UOMList - Control Cubage - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 531561103 - Control 3581037481 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Height</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Высота</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page UOMList - Control Height - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 531561103 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No.</source>
-          <target>[NAB: SUGGESTION]Товар Номер</target>
-          <target>[NAB: SUGGESTION]Товар номер</target>
+          <target>Товар Номер</target>
+          <target>Товар номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page UOMList - Control Item No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 531561103 - Control 1881551368 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Length</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Длина</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page UOMList - Control Length - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 531561103 - Control 806193894 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Qty. of Base Unit of Measure</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Количество в базовых единицах</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page UOMList - Control Qty. per Unit of Measure - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 531561103 - Control 2854289444 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Weight</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Вес</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page UOMList - Control Weight - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 531561103 - Control 613790498 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Width</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Ширина</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page UOMList - Control Width - Property ToolTip</note>

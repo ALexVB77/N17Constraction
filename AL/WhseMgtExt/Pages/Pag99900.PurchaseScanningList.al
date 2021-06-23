@@ -30,15 +30,16 @@ page 99900 "Purchase Scanning List"
         until next = 0;
         Len := StrLen(DocFilter);
         DocFilter := CopyStr(DocFilter, 1, Len - 1);
-        //ScanHelper.PrepareScanningBuffer(DocFilter);
-        //ScanningPage.SetParam(DocFilter);
-        //ScanningPage.RUN;
+        ScanHelper.PrepareScanningBuffer(DocFilter, 1);
+        ScanningPage.SetParam(DocFilter, 1);
+        ScanningPage.RUN;
     end;
 
     var
-        ScanningPage: Page "Sales Order";
+        ScanningPage: Page Scanning;
         Len: integer;
-        ScanHelper: decimal;
+        ScanHelper: Codeunit "Scanning Helper";
         DocFilter: Text;
+
 
 }
