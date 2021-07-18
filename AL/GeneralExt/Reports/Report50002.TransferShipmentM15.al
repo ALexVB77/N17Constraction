@@ -2,7 +2,7 @@ report 50002 "Transfer Shipment M-15"
 {
     UsageCategory = Administration;
     ApplicationArea = All;
-
+    ProcessingOnly = true;
     dataset
     {
         dataitem(TransferHeader; "Transfer Shipment Header")
