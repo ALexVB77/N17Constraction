@@ -9343,6 +9343,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType FullFulfillmentTitle</note>
         </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 238633327" size-unit="char" translate="yes" xml:space="preserve">
+          <source>January,February,March,April,May,June,July,August,September,October,November,December</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType MONTHTEXT</note>
+        </trans-unit>
         <trans-unit id="Report 1503765490 - NamedType 3638192683" size-unit="char" translate="yes" xml:space="preserve">
           <source>Certificate of partial fulfillment of financial obligations</source>
           <note from="Developer" annotates="general" priority="2"></note>
