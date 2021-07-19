@@ -608,6 +608,7 @@ codeunit 99932 "CRM Worker"
         if (C = 1) and (AgrTemp."Agreement Type" <> AgrTemp."Agreement Type"::"Reserving Agreement") then begin
             LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr);
             exit;
+
         end;
 
         for I := 2 to C do begin
@@ -789,6 +790,7 @@ codeunit 99932 "CRM Worker"
         for I := 2 to C do begin
             ObjDataElement := ObjectData.Get(I);
 
+            ObjDataElement.Get(UnitBuyerX, Value);
             Evaluate(CRMBuyer."Buyer Guid", Value);
             if ObjDataElement.Get(UnitBuyerContactX, Value) then
                 Evaluate(CRMBuyer."Contact Guid", Value);
