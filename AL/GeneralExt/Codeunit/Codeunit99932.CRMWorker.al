@@ -77,6 +77,7 @@ codeunit 99932 "CRM Worker"
         ContractUnitNotFoundErr: Label 'Unit %1 of Contract is not found';
         ContractNotRegisteredErr: Label 'Contract is not registered, Type %1, Status %2';
         ContractNotSignedErr: Label 'Contract is not signed, Type %1, Status %2';
+        ContractBuyersNotFoundErr: Label 'Buyers are not found';
         BadSoapEnvFormatErr: Label 'Bad soap envelope format';
         KeyErr: Label 'No field key is specified!';
         NoObjectIdErr: Label 'No ObjectID in XML Document';
@@ -481,9 +482,122 @@ codeunit 99932 "CRM Worker"
         Commit();
     end;
 
-    [TryFunction]
-    local procedure ImportContract(var FetchedObject: Record "CRM Prefetched Object"; ParsingResult: Dictionary of [Text, Text])
+    local procedure GetAgrType(CrmAgrType: text[250]) Result: Integer;
+    var
+        CustAgr: record "Customer Agreement";
     begin
+        Result := 0;
+        if CrmAgrType = '' then
+            exit;
+        CrmAgrType := CrmAgrType.ToUpper();
+        case true of
+            CrmAgrType.Contains('INVESTMENTCONTRACT'):
+                result := CustAgr."Agreement Type"::"Investment Agreement";
+            CrmAgrType.Contains('PRELIMINARYSALESCONTRACT'):
+                result := CustAgr."Agreement Type"::"Prev Inv. Sales Agreement";
+            CrmAgrType.Contains('SALESCONTRACT'):
+                result := CustAgr."Agreement Type"::"Inv. Sales Agreement";
+            CrmAgrType.Contains('SIGNEDRESERVATION'):
+                result := CustAgr."Agreement Type"::"Reserving Agreement";
+            CrmAgrType.Contains('TRANSFEROFRIGHTS'):
+                result := CustAgr."Agreement Type"::"Transfer of rights";
+        end;
+    end;
+
+    local procedure GetAgrStatus(CrmAgrStatus: Text[100]; CrmAgrCancelStatus: Text[100]) Result: Integer
+    var
+        CustAgr: record "Customer Agreement" temporary;
+    begin
+        Result := 0;
+        if CrmAgrStatus = '' then
+            exit;
+        CrmAgrStatus := CrmAgrStatus.ToUpper();
+        CrmAgrCancelStatus := CrmAgrCancelStatus.ToUpper();
+        case true of
+            CrmAgrStatus.Contains('DRAFT'):
+                Result := CustAgr.Status::Procesed;
+            CrmAgrStatus.Contains('REGISTERED_RU'):
+                Result := CustAgr.Status::"FRS registered";
+            CrmAgrStatus.Contains('SIGNED'):
+                Result := CustAgr.Status::Signed;
+            CrmAgrStatus.Contains('SUBMITTED'):
+                Result := CustAgr.Status::"FRS registration";
+            CrmAgrStatus.Contains('REGISTRED'):
+                Result := CustAgr.Status::"FRS registered";
+            CrmAgrStatus.Contains('CANCELED'):
+                begin
+                    case true of
+                        CrmAgrCancelStatus.Contains('CANCELED'):
+                            Result := CustAgr.Status::Annulled;
+                        CrmAgrCancelStatus.Contains('SUBMITTED'):
+                            Result := CustAgr.Status::"Registration of annulled";
+                        CrmAgrCancelStatus.Contains('REGISTRED'):
+                            Result := CustAgr.Status::"Annulled registered";
+                        else
+                            Result := CustAgr.Status::Annulled;
+                    end;
+                end;
+            CrmAgrStatus.Contains('CONVERTED_RU'):
+                Result := CustAgr.Status::Cancelled;
+            CrmAgrStatus.Contains('CONVERTED'):
+                Result := CustAgr.Status::Annulled;
+        end;
+    end;
+
+    local procedure ImportContract(var FetchedObject: Record "CRM Prefetched Object";
+        AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]]
+    )
+    var
+        AgrTemp: Record "Customer Agreement";
+        LogStatusEnum: Enum "CRM Log Status";
+        ObjectData: List of [Dictionary of [Text, Text]];
+        ObjDataElement: Dictionary of [Text, Text];
+        I, C : Integer;
+        TempValue, TempValue2 : Text;
+        OK: Boolean;
+        UnitId, BuyerId : Guid;
+    begin
+        if AllObjectData.Count = 0 then
+            exit;
+
+        if not AllObjectData.Get(FetchedObject.Id, ObjectData) then begin
+            LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(NoParsedDataOnImportErr, FetchedObject.Id));
+            exit;
+        end;
+
+        ObjDataElement := ObjectData.Get(1);
+        AgrTemp.Init;
+        ObjDataElement.Get(ContractIdX, TempValue);
+        Evaluate(AgrTemp."CRM GUID", TempValue);
+        ObjDataElement.Get(ContractNoX, TempValue);
+        //AgrTemp."External Agreement No." := CopyStr(TempValue, 1, MaxStrLen(AgrTemp."External Agreement No."));
+        AgrTemp.Description := CopyStr(TempValue, 1, MaxStrLen(AgrTemp.Description));
+        ObjDataElement.Get(ContractTypeX, TempValue);
+        AgrTemp."Agreement Type" := GetAgrType(TempValue);
+        ObjDataElement.Get(ContractStatusX, TempValue);
+        ObjDataElement.Get(ContractCancelStatusX, TempValue2);
+        AgrTemp.Status := GetAgrStatus(TempValue, TempValue2);
+        ObjDataElement.Get(ContractIsActiveX, TempValue);
+        if (TempValue = 'false') or (AgrTemp.Status = AgrTemp.Status::Cancelled) then
+            AgrTemp.Active := false
+        else
+            AgrTemp.Active := true;
+
+        ObjDataElement.Get(ExtAgreementNoX, TempValue);
+        AgrTemp."External Agreement No." := CopyStr(TempValue, 1, MaxStrLen(AgrTemp."External Agreement No."));
+        //FullAgreementNo to-do
+        ObjDataElement.Get(ApartmentAmountX, TempValue);
+        OK := Evaluate(AgrTemp."Agreement Amount", TempValue, 9);
+        if ObjDataElement.Get(FinishingInclX, TempValue) then begin
+            Ok := Evaluate(AgrTemp."Including Finishing Price", TempValue, 9);
+        end;
+
+        ObjDataElement.Get(ContractUnitIdX, TempValue);
+        Evaluate(UnitId, TempValue);
+
+        C := ObjectData.Count;
+        if (C = 1) and (AgrTemp."Agreement Type" <> AgrTemp."Agreement Type"::"Reserving Agreement") then
+            LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr);
 
     end;
 
@@ -940,7 +1054,6 @@ codeunit 99932 "CRM Worker"
         ObjDataElement: Dictionary of [Text, Text];
         RetObjectData: List of [Dictionary of [Text, Text]];
         AgrType, AgrStatus : Text;
-        LogStatus: Enum "CRM Log Status";
     begin
         ObjectData := RetObjectData;
         CreateObjDataElement(ObjectData, ObjDataElement);
@@ -953,20 +1066,15 @@ codeunit 99932 "CRM Worker"
         if ObjDataElement.Get(ContractTypeX, AgrType) and ObjDataElement.Get(ContractStatusX, AgrType) then begin
             AgrType := AgrType.ToUpper();
             AgrStatus := AgrStatus.ToUpper();
-            if not (
-                    (AgrType in ['SALESCONTRACT', 'PRELIMINARYSALESCONTRACT'])
-                    and (AgrStatus.StartsWith('SIGNED') or AgrStatus.StartsWith('REGISTERED'))
-                )
+            if (AgrType in ['SALESCONTRACT', 'PRELIMINARYSALESCONTRACT'])
+                and (not (AgrStatus.StartsWith('SIGNED') or AgrStatus.StartsWith('REGISTERED')))
             then
                 Error(ContractNotSignedErr, AgrType, AgrStatus);
-            if not (
-                    (AgrType in ['TRANSFEROFRIGHTS', 'TRANSFEROFRIGHTSINTERNALLY', 'INVESTMENTCONTRACT'])
-                    and AgrStatus.StartsWith('REGISTERED')
-                )
+            if (AgrType in ['TRANSFEROFRIGHTS', 'TRANSFEROFRIGHTSINTERNALLY', 'INVESTMENTCONTRACT'])
+                    and (not AgrStatus.StartsWith('REGISTERED'))
             then
                 Error(ContractNotRegisteredErr, AgrType, AgrStatus);
         end;
-
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractCancelStatusX), ObjDataElement, ContractCancelStatusX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractIsActiveX), ObjDataElement, ContractIsActiveX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ExtAgreementNoX), ObjDataElement, ExtAgreementNoX);
