@@ -1547,9 +1547,8 @@
         </trans-unit>
         <trans-unit id="Table 3279116693 - Method 2187740748 - NamedType 1951744629" size-unit="char" translate="yes" xml:space="preserve">
           <source>Xml file is not attached</source>
-          <target>XML файл не прикреплен</target>
+          <target>Отсутствует XML файл объекта</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Prefetched Object - Method ExportObjectXml - NamedType NotAttachedXmlErr</note>
         </trans-unit>
         <trans-unit id="Table 3279116693 - Field 999613564 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -4653,6 +4652,13 @@
           <target>Не найден ParenObjectID в Xml объекта</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType NoParentObjectIdErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 1648349699" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import of object %1 interrupted. No parsed data</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType NoParsedDataOnImportErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1376688189" size-unit="char" translate="yes" xml:space="preserve">
           <source>ProjectId %1 is not found in %2</source>
@@ -14013,6 +14019,13 @@
           <target>Создать</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum CRM Import Action - EnumValue Create - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1593761241 - EnumValue 324797745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Action</source>
+          <target>[NAB: SUGGESTION]Нет действия</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum CRM Import Action - EnumValue NoAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1593761241 - EnumValue 3238504282 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Remove</source>

@@ -6,4 +6,6 @@ enum 99932 "CRM Import Action"
     value(1; Create) { Caption = 'Create'; }
     value(2; Update) { Caption = 'Update'; }
     value(3; Remove) { Caption = 'Remove'; }
+    value(4; NoAction) { Caption = 'No Action'; }
+
 }
