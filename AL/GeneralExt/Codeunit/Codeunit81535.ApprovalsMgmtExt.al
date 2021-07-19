@@ -51,7 +51,14 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
            (ApprovalEntry."Approver ID" = UserId) and ApprovalEntryArgument.Reject
         then
             ApprovalEntry.Status := ApprovalEntry.Status::Created;
+        if (ApprovalEntry."IW Documents") and
+           (ApprovalEntry."Status App".AsInteger() > ApprovalEntry."Status App"::Reception.AsInteger()) and
+           (ApprovalEntry."Approver ID" = UserId) and ApprovalEntryArgument.Reject
+        then
+            ApprovalEntry.Status := ApprovalEntry.Status::Created;
         ApprovalEntry."Preliminary Approval" := ApprovalEntryArgument."Preliminary Approval";
+        if (ApprovalEntry."Act Type" <> ApprovalEntry."Act Type"::" ") or ApprovalEntry."IW Documents" then
+            ApprovalEntry."Sender ID" := ApprovalEntryArgument."Sender ID";
     end;
 
     procedure CreateApprovalRequestsPurchActAndPayInv(RecRef: RecordRef; WorkflowStepInstance: Record "Workflow Step Instance")
@@ -132,9 +139,11 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
             if not PurchHeader."IW Documents" then begin
                 ApprovalEntryArgument."Act Type" := PurchHeader."Act Type";
                 ApprovalEntryArgument."Status App Act" := PurchHeader."Status App Act";
+                ApprovalEntryArgument."Sender ID" := PurchHeader.Controller;
             end else begin
                 ApprovalEntryArgument."IW Documents" := PurchHeader."IW Documents";
                 ApprovalEntryArgument."Status App" := Enum::"Purchase Approval Status".FromInteger(PurchHeader."Status App");
+                ApprovalEntryArgument."Sender ID" := PurchHeader.Receptionist;
             end;
             ApprovalEntryArgument.Reject := Reject;
             ApprovalEntryArgument."Preliminary Approval" := PurchHeader."Sent to pre. Approval";

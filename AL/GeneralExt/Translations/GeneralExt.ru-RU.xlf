@@ -4609,14 +4609,12 @@
           <source>Contract is not registered, Type %1, Status %2</source>
           <target>Договр не зарегистрирован, Тип %1, Статус %2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotRegisteredErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 4269605980" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract is not signed, Type %1, Status %2</source>
           <target>Договор не подписан, Тип %1, Статус %2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotSignedErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3024906446" size-unit="char" translate="yes" xml:space="preserve">
@@ -11075,6 +11073,13 @@
           <target>Отчет составлен</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-19 - Control ReportDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1147607634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notification Email Act. Inv.</source>
+          <target>Email уведомление акта и счета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Notification Email Act. Inv. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2923491568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment report</source>

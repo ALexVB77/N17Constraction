@@ -9228,6 +9228,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-19 - Control ReportDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1147607634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notification Email Act. Inv.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Notification Email Act. Inv. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2923491568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment report</source>
           <note from="Developer" annotates="general" priority="2"></note>

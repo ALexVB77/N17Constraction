@@ -788,4 +788,40 @@ codeunit 50006 "Base App. Subscribers Mgt."
                 Error(LocText001, Rec.FieldCaption(Substitute), SubstituteUserId);
         end;
     end;
+
+    // codeunit 1510 "Notification Management"
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Notification Management", 'OnBeforeGetActionTextFor', '', false, false)]
+    local procedure OnBeforeGetActionTextFor(var NotificationEntry: Record "Notification Entry"; var CustomText: Text; var IsHandled: Boolean)
+    var
+        ApprovalEntry: Record "Approval Entry";
+        DataTypeManagement: Codeunit "Data Type Management";
+        RecRef: RecordRef;
+    begin
+        if NotificationEntry.Type = NotificationEntry.Type::Approval then begin
+            DataTypeManagement.GetRecordRef(NotificationEntry."Triggered By Record", RecRef);
+            RecRef.SetTable(ApprovalEntry);
+            if (ApprovalEntry."Act Type" <> ApprovalEntry."Act Type"::" ") or ApprovalEntry."IW Documents" then begin
+                IsHandled := true;
+
+                Error('%1 %2 %3', ApprovalEntry."Sender ID", ApprovalEntry."Approver ID", ApprovalEntry.Status);
+
+                /*
+                case ApprovalEntry.Status of
+                    ApprovalEntry.Status::Open:
+                        exit(ActionApproveTxt);
+                    ApprovalEntry.Status::Canceled:
+                        exit(ActionApprovalCanceledTxt);
+                    ApprovalEntry.Status::Rejected:
+                        exit(ActionApprovalRejectedTxt);
+                    ApprovalEntry.Status::Created:
+                        exit(ActionApprovalCreatedTxt);
+                    ApprovalEntry.Status::Approved:
+                        exit(ActionApprovedTxt);
+                end;
+                */
+            end;
+        end;
+    end;
+
 }
