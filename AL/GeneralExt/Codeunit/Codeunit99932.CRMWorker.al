@@ -75,8 +75,8 @@ codeunit 99932 "CRM Worker"
         //Errors
         ContactUnitNotFoundErr: Label 'Unit of Contact or Reserving Contact is not found';
         ContractUnitNotFoundErr: Label 'Unit %1 of Contract is not found';
-        ContractNotRegistered: Label 'Contract is not registered, Type %1, Status %2';
-        ContractNotSigned: Label 'Contract is not signed, Type %1, Status %2';
+        ContractNotRegisteredErr: Label 'Contract is not registered, Type %1, Status %2';
+        ContractNotSignedErr: Label 'Contract is not signed, Type %1, Status %2';
         BadSoapEnvFormatErr: Label 'Bad soap envelope format';
         KeyErr: Label 'No field key is specified!';
         NoObjectIdErr: Label 'No ObjectID in XML Document';
@@ -958,13 +958,13 @@ codeunit 99932 "CRM Worker"
                     and (AgrStatus.StartsWith('SIGNED') or AgrStatus.StartsWith('REGISTERED'))
                 )
             then
-                Error(ContractNotSigned, AgrType, AgrStatus);
+                Error(ContractNotSignedErr, AgrType, AgrStatus);
             if not (
                     (AgrType in ['TRANSFEROFRIGHTS', 'TRANSFEROFRIGHTSINTERNALLY', 'INVESTMENTCONTRACT'])
                     and AgrStatus.StartsWith('REGISTERED')
                 )
             then
-                Error(ContractNotRegistered, AgrType, AgrStatus);
+                Error(ContractNotRegisteredErr, AgrType, AgrStatus);
         end;
 
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractCancelStatusX), ObjDataElement, ContractCancelStatusX);

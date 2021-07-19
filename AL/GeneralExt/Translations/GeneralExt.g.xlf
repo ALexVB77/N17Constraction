@@ -3838,15 +3838,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContactUpToDateMsg</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2463777246 - NamedType 1408376929" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 2463777246 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract is not registered, Type %1, Status %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotRegistered</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotRegisteredErr</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2463777246 - NamedType 1029216815" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 2463777246 - NamedType 4269605980" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract is not signed, Type %1, Status %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotSigned</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotSignedErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3024906446" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit %1 of Contract is not found</source>

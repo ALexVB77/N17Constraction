@@ -4605,17 +4605,19 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContactUpToDateMsg</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2463777246 - NamedType 1408376929" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 2463777246 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract is not registered, Type %1, Status %2</source>
           <target>Договр не зарегистрирован, Тип %1, Статус %2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotRegistered</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotRegisteredErr</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2463777246 - NamedType 1029216815" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 2463777246 - NamedType 4269605980" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract is not signed, Type %1, Status %2</source>
           <target>Договор не подписан, Тип %1, Статус %2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotSigned</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotSignedErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3024906446" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit %1 of Contract is not found</source>
@@ -4667,9 +4669,9 @@
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1648349699" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import of object %1 interrupted. No parsed data</source>
-          <target>Ошибка парсинга XML объекта</target>
+          <target>[NAB: REVIEW]Ошибка парсинга XML объекта %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%1" was found in source, but not in target.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType NoParsedDataOnImportErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1376688189" size-unit="char" translate="yes" xml:space="preserve">
@@ -5762,7 +5764,6 @@
           <source>Run Import</source>
           <target>Импортировать объекты</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Prefetched Objects - Action RunImport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 954180772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
