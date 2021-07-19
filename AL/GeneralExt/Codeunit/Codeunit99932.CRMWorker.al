@@ -369,7 +369,7 @@ codeunit 99932 "CRM Worker"
     local procedure ImportContact(var FetchedObject: Record "CRM Prefetched Object";
         AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
         TargetCompanyName: Text[60];
-        RequiredImportAction: Enum "CRM Import Action")
+        RequiredImportAction: Enum "CRM Import Action") Result: Code[20]
     var
         Customer: Record Customer;
         CustTemp: Record Customer temporary;
@@ -449,6 +449,7 @@ codeunit 99932 "CRM Worker"
             else
                 exit;
         end;
+        Result := Customer."No.";
 
         Customer.Validate(Name, CustTemp.Name);
         Customer.Validate("Name 2", CustTemp."Name 2");
@@ -548,14 +549,22 @@ codeunit 99932 "CRM Worker"
         AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]]
     )
     var
-        AgrTemp: Record "Customer Agreement";
+        AgrTemp: Record "Customer Agreement" temporary;
+        Agr: Record "Customer Agreement";
         LogStatusEnum: Enum "CRM Log Status";
-        ObjectData: List of [Dictionary of [Text, Text]];
+        ImportActionEnum: Enum "CRM Import Action";
+        ObjectData, ContactData : List of [Dictionary of [Text, Text]];
         ObjDataElement: Dictionary of [Text, Text];
-        I, C : Integer;
+        I, C, ShareHoldersCount : Integer;
         TempValue, TempValue2 : Text;
         OK: Boolean;
-        UnitId, BuyerId : Guid;
+        UnitId, BuyerId, ContactId : Guid;
+        CrmB: Record "CRM Buyers";
+        Cust: Record Customer;
+        NewCustomerNo: Code[20];
+        FObj: Record "CRM Prefetched Object";
+
+
     begin
         if AllObjectData.Count = 0 then
             exit;
@@ -596,8 +605,59 @@ codeunit 99932 "CRM Worker"
         Evaluate(UnitId, TempValue);
 
         C := ObjectData.Count;
-        if (C = 1) and (AgrTemp."Agreement Type" <> AgrTemp."Agreement Type"::"Reserving Agreement") then
+        if (C = 1) and (AgrTemp."Agreement Type" <> AgrTemp."Agreement Type"::"Reserving Agreement") then begin
             LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr);
+            exit;
+        end;
+
+        for I := 2 to C do begin
+            ObjDataElement := ObjectData.Get(I);
+            ObjDataElement.Get(ContractBuyerX, TempValue);
+            Evaluate(BuyerId, TempValue);
+            CrmB.Get(UnitId, BuyerId);
+            if CrmB."Buyer Is Active" then begin
+                ShareHoldersCount += 1;
+                ContactId := CrmB."Contact Guid";
+                if not AllObjectData.Get(ContactId, ContactData) then begin
+                    LogEvent(FetchedObject, LogStatusEnum::Error,
+                        StrSubstNo('Contact %1 is not found, Unit %2, Buyer %3', ContactId, UNitId, BuyerId));
+                    exit;
+                end;
+                FObj.Get(ContactId);
+                NewCustomerNo := ImportContact(FObj, AllObjectData, CompanyName(), ImportActionEnum);
+                Cust.Get(NewCustomerNo);
+                case ShareHoldersCount of
+                    1:
+                        begin
+                            AgrTemp."Customer No." := Cust."No.";
+                        end;
+                    2:
+                        begin
+                            AgrTemp."Customer 2 No." := Cust."No.";
+                        end;
+                    3:
+                        begin
+                            AgrTemp."Customer 3 No." := Cust."No.";
+                        end;
+                    4:
+                        begin
+                            AgrTemp."Customer 4 No." := Cust."No.";
+                        end;
+                    5:
+                        begin
+                            AgrTemp."Customer 5 No." := Cust."No.";
+                        end;
+
+                end;
+
+            end;
+            if ShareHoldersCount = 5 then
+                break;
+        end;
+
+        Agr := AgrTemp;
+        if not Agr.Insert(true) then
+            Agr.Modify(true);
 
     end;
 
