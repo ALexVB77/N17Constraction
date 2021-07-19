@@ -211,6 +211,7 @@ page 12457 "Posted Item Receipt"
                     ItemRcptHeader: Record "Item Receipt Header";
                 begin
                     CurrPage.SetSelectionFilter(ItemRcptHeader);
+                    ItemRcptHeader := Rec; //NC 51417 PA
                     ItemRcptHeader.PrintRecords(true);
                 end;
             }
