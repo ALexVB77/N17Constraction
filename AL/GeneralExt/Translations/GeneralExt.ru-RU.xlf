@@ -1547,11 +1547,7 @@
         </trans-unit>
         <trans-unit id="Table 3279116693 - Method 2187740748 - NamedType 1951744629" size-unit="char" translate="yes" xml:space="preserve">
           <source>Xml file is not attached</source>
-<<<<<<< HEAD
           <target>Отсутствует XML файл объекта</target>
-=======
-          <target>[NAB: NOT TRANSLATED]</target>
->>>>>>> parent of d98b6f6 (NC 51417 PA)
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Prefetched Object - Method ExportObjectXml - NamedType NotAttachedXmlErr</note>
         </trans-unit>
@@ -4673,7 +4669,7 @@
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1648349699" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import of object %1 interrupted. No parsed data</source>
-          <target>[NAB: REVIEW]Ошибка парсинга XML объекта %1</target>
+          <target>Ошибка парсинга XML объекта %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%1" was found in source, but not in target.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType NoParsedDataOnImportErr</note>
@@ -11188,7 +11184,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Select Latest Version - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
         <trans-unit id="Report 1503765490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Share Participant Act 2</source>
           <target>Акт вып. фин. обяз. дольщиком 2</target>
@@ -11213,8 +11208,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control ActDate - Property Caption</note>
         </trans-unit>
-=======
->>>>>>> parent of d98b6f6 (NC 51417 PA)
         <trans-unit id="Report 1809404285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>TempStarter</source>
           <target>TempStarter</target>
@@ -12259,7 +12252,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Document Attachment (Ext) - Field PK Key 2 - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
         <trans-unit id="TableExtension 89331598 - Field 2685121577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Full Name Genitive</source>
           <target>ФИО в род. падeже</target>
@@ -12272,8 +12264,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee (Ext) - Field Job Title Genitive - Property Caption</note>
         </trans-unit>
-=======
->>>>>>> parent of d98b6f6 (NC 51417 PA)
         <trans-unit id="TableExtension 2071349393 - Field 745542804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 351637841">
           <source>Sheet Name</source>
           <target>Имя листа</target>

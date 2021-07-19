@@ -9318,6 +9318,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Select Latest Version - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1503765490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Share Participant Act 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 3305210147" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certificate of fulfillment of financial obligations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType FullFulfillmentTitle</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 3638192683" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certificate of partial fulfillment of financial obligations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType PartialFulfillmentTitle</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - Control 793815494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control ActDate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1809404285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>TempStarter</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10187,6 +10207,16 @@
           <source>Primary Key 2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Document Attachment (Ext) - Field PK Key 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 89331598 - Field 2685121577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Full Name Genitive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee (Ext) - Field Full Name Genitive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 89331598 - Field 3366850424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Job Title Genitive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee (Ext) - Field Job Title Genitive - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2071349393 - Field 745542804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 351637841">
           <source>Sheet Name</source>
