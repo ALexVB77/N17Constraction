@@ -19,6 +19,8 @@ pageextension 80480 "Edit Dimension Set Entries Ext" extends "Edit Dimension Set
                         Page.RunModal(Page::"Dimension Values", DimValue)
                     else
                         Page.RunModal(Page::"Dimension Value List", DimValue)
+                else
+                    Page.RunModal(Page::"Dimension Value List", DimValue);
             end;
         }
     }
