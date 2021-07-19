@@ -221,10 +221,13 @@ codeunit 99932 "CRM Worker"
     local procedure GetObjectField(XmlElem: XmlElement; Xpath: Text; var ObjDataContainer: Dictionary of [Text, Text]; FieldKey: Text)
     var
         TempXmlElemValue: Text;
+        TempValue: Text;
     begin
         GetValue(XmlElem, xpath, TempXmlElemValue);
         if FieldKey = '' then
             Error(KeyErr);
+        if ObjDataContainer.Get(FieldKey, TempValue) then
+            Error('KeyError %1 already exists', FieldKey);
         ObjDataContainer.Add(FieldKey, TempXmlElemValue);
     end;
 
@@ -1055,7 +1058,7 @@ codeunit 99932 "CRM Worker"
         XmlNodeList: XmlNodeList;
         OK: Boolean;
         BaseXPath: Text;
-        ElemText, ElemText2 : Text;
+        ElemText, ElemText2, TempValue : Text;
         ObjDataElement: Dictionary of [Text, Text];
         RetObjectData: List of [Dictionary of [Text, Text]];
     begin
@@ -1092,6 +1095,7 @@ codeunit 99932 "CRM Worker"
         BaseXPath := JoinX(ContactX, ElectronicAddressesX);
         if not XmlElem.SelectNodes(JoinX(BaseXPath, ElectronicAddressX), XmlNodeList) then
             exit;
+
         foreach XmlNode in XmlNodeList do begin
             XmlElem := XmlNode.AsXmlElement();
             if GetValue(XmlElem, ProtocolX, ElemText) and (ElemText <> '') then begin
@@ -1099,13 +1103,21 @@ codeunit 99932 "CRM Worker"
                     Case ElemText of
                         ContactPhoneX:
                             begin
-                                if ElemText2 <> '' then
-                                    ObjDataElement.Add(ContactPhoneX, ElemText2);
+                                if ElemText2 <> '' then begin
+                                    if not ObjDataElement.Get(ContactPhoneX, TempValue) then
+                                        ObjDataElement.Add(ContactPhoneX, ElemText2)
+                                    else
+                                        ObjDataElement.Set(ContactPhoneX, ElemText2);
+                                end;
                             end;
                         ContactEmailX:
                             begin
-                                if ElemText2 <> '' then
-                                    ObjDataElement.Add(ContactEmailX, ElemText2);
+                                if ElemText2 <> '' then begin
+                                    if not ObjDataElement.Get(ContactEmailX, TempValue) then
+                                        ObjDataElement.Add(ContactEmailX, ElemText2)
+                                    else
+                                        ObjDataElement.Set(ContactEmailX, ElemText2);
+                                end;
                             end;
                     End
                 end;
