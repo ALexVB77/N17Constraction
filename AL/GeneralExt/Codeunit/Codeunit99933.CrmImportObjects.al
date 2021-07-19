@@ -12,7 +12,8 @@ codeunit 99933 "CRM Import Objects"
     var
         FetchedObject: Record "CRM Prefetched Object";
     begin
-        FetchedObject.Setrange("Company name");
-
+        FetchedObject.Reset();
+        FetchedObject.Setrange("Company name", CompanyName());
+        CrmWorker.ImportObjects(FetchedObject);
     end;
 }

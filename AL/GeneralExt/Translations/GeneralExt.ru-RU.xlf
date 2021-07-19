@@ -1547,9 +1547,8 @@
         </trans-unit>
         <trans-unit id="Table 3279116693 - Method 2187740748 - NamedType 1951744629" size-unit="char" translate="yes" xml:space="preserve">
           <source>Xml file is not attached</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Отсутствует XML файл объекта</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Prefetched Object - Method ExportObjectXml - NamedType NotAttachedXmlErr</note>
         </trans-unit>
         <trans-unit id="Table 3279116693 - Field 999613564 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -4606,6 +4605,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContactUpToDateMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not registered, Type %1, Status %2</source>
+          <target>Договр не зарегистрирован, Тип %1, Статус %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotRegisteredErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 4269605980" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not signed, Type %1, Status %2</source>
+          <target>Договор не подписан, Тип %1, Статус %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotSignedErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3024906446" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit %1 of Contract is not found</source>
           <target>Не найден Unit %1 (ParentObnjectID)</target>
@@ -4653,6 +4664,13 @@
           <target>Не найден ParenObjectID в Xml объекта</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType NoParentObjectIdErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 1648349699" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import of object %1 interrupted. No parsed data</source>
+          <target>Ошибка парсинга XML объекта %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%1" was found in source, but not in target.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType NoParsedDataOnImportErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1376688189" size-unit="char" translate="yes" xml:space="preserve">
           <source>ProjectId %1 is not found in %2</source>
@@ -5739,6 +5757,12 @@
           <target>Выгрузить Xml</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Prefetched Objects - Action DownloadObjectXml - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3572564204 - Action 956930792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Run Import</source>
+          <target>Импортировать объекты</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Prefetched Objects - Action RunImport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 954180772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Units and Buyers</source>
@@ -11050,6 +11074,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-19 - Control ReportDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1147607634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notification Email Act. Inv.</source>
+          <target>Email уведомление акта и счета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Notification Email Act. Inv. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2923491568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment report</source>
           <target>Отчет по оплатам</target>
@@ -11157,6 +11188,30 @@
           <target>Взбодрить кеш сервера</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Select Latest Version - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Share Participant Act 2</source>
+          <target>Акт вып. фин. обяз. дольщиком 2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 3305210147" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certificate of fulfillment of financial obligations</source>
+          <target>Справка о выполнении финансовых обязательств</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType FullFulfillmentTitle</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 3638192683" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certificate of partial fulfillment of financial obligations</source>
+          <target>Справка о частичном выполнении финансовых обязательств</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType PartialFulfillmentTitle</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - Control 793815494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act Date</source>
+          <target>Дата справки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control ActDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1809404285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>TempStarter</source>
@@ -12201,6 +12256,18 @@
           <target>Первичный ключ 2</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Document Attachment (Ext) - Field PK Key 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 89331598 - Field 2685121577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Full Name Genitive</source>
+          <target>ФИО в род. падeже</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee (Ext) - Field Full Name Genitive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 89331598 - Field 3366850424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Job Title Genitive</source>
+          <target>Должность в род. падеже</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee (Ext) - Field Job Title Genitive - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2071349393 - Field 745542804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 351637841">
           <source>Sheet Name</source>
@@ -13971,6 +14038,12 @@
           <target>Создать</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum CRM Import Action - EnumValue Create - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1593761241 - EnumValue 324797745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Action</source>
+          <target>Нет действия</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum CRM Import Action - EnumValue NoAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1593761241 - EnumValue 3238504282 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Remove</source>
