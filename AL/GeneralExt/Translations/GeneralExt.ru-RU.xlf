@@ -4667,7 +4667,7 @@
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1648349699" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import of object %1 interrupted. No parsed data</source>
-          <target>[NAB: REVIEW]Ошибка парсинга XML объекта %1</target>
+          <target>Ошибка парсинга XML объекта %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%1" was found in source, but not in target.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType NoParsedDataOnImportErr</note>
