@@ -703,7 +703,13 @@ codeunit 99932 "CRM Worker"
             until FetchedObject.Next() = 0;
         end;
 
-        //
+        FetchedObject.SetRange(Type, FetchedObject.Type::Contract);
+        if FetchedObject.FindSet() then begin
+            repeat
+                ImportContract(FetchedObject, AllObjectData);
+            until FetchedObject.Next() = 0;
+        end;
+        FetchedObject.DeleteAll(true)
 
     end;
 
