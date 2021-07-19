@@ -3838,6 +3838,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContactUpToDateMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 1408376929" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not registered, Type %1, Status %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotRegistered</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 1029216815" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not signed, Type %1, Status %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotSigned</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3024906446" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit %1 of Contract is not found</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4787,6 +4797,11 @@
           <source>Download Object Xml</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Prefetched Objects - Action DownloadObjectXml - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3572564204 - Action 956930792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Run Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CRM Prefetched Objects - Action RunImport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 954180772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Units and Buyers</source>

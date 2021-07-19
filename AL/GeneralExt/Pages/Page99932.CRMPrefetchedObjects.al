@@ -71,6 +71,24 @@ page 99932 "CRM Prefetched Objects"
                     Rec.ExportObjectXml(true);
                 end;
             }
+            action(RunImport)
+            {
+                ApplicationArea = All;
+                Caption = 'Run Import';
+                Image = Export;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Scope = Repeater;
+
+                trigger OnAction()
+                var
+                    cuImportObj: Codeunit "CRM Import Objects";
+                begin
+                    cuImportObj.Run();
+                end;
+            }
+
         }
     }
 

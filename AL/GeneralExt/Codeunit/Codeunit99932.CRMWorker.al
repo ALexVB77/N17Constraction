@@ -75,6 +75,8 @@ codeunit 99932 "CRM Worker"
         //Errors
         ContactUnitNotFoundErr: Label 'Unit of Contact or Reserving Contact is not found';
         ContractUnitNotFoundErr: Label 'Unit %1 of Contract is not found';
+        ContractNotRegistered: Label 'Contract is not registered, Type %1, Status %2';
+        ContractNotSigned: Label 'Contract is not signed, Type %1, Status %2';
         BadSoapEnvFormatErr: Label 'Bad soap envelope format';
         KeyErr: Label 'No field key is specified!';
         NoObjectIdErr: Label 'No ObjectID in XML Document';
@@ -489,10 +491,18 @@ codeunit 99932 "CRM Worker"
     var
         AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
         CrmInteractCompanies: List of [Text];
+        TargetCompany: Text[60];
+        ImportAction: Enum "CRM Import Action";
+        Updated: Boolean;
     begin
+
         ParseObjects(FetchedObject, AllObjectData);
+
+
         if AllObjectData.Count() = 0 then
             exit;
+
+        //create/update units
         FetchedObject.SetRange(Type, FetchedObject.Type::Unit);
         if FetchedObject.FindSet() then begin
             repeat
@@ -501,15 +511,25 @@ codeunit 99932 "CRM Worker"
             FetchedObject.DeleteAll(true);
         end;
 
-        // contact
+        // update contacts
         GetCrmInteractCompanyList(CrmInteractCompanies);
         FetchedObject.SetRange(Type, FetchedObject.Type::Contact);
         if FetchedObject.FindSet() then begin
             repeat
-                ImportUnit(FetchedObject, AllObjectData);
+                Updated := false;
+                foreach TargetCompany in CrmInteractCompanies do begin
+                    ImportAction := GetObjectImportAction(FetchedObject, TargetCompany);
+                    if ImportAction = ImportAction::Update then begin
+                        Updated := true;
+                        ImportContact(FetchedObject, AllObjectData, TargetCompany, ImportAction);
+                    end;
+                end;
+                if Updated then
+                    FetchedObject.Delete();
             until FetchedObject.Next() = 0;
-            FetchedObject.DeleteAll(true);
         end;
+
+        //
 
     end;
 
@@ -919,6 +939,8 @@ codeunit 99932 "CRM Worker"
         OK: Boolean;
         ObjDataElement: Dictionary of [Text, Text];
         RetObjectData: List of [Dictionary of [Text, Text]];
+        AgrType, AgrStatus : Text;
+        LogStatus: Enum "CRM Log Status";
     begin
         ObjectData := RetObjectData;
         CreateObjDataElement(ObjectData, ObjDataElement);
@@ -928,6 +950,23 @@ codeunit 99932 "CRM Worker"
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractNoX), ObjDataElement, ContractNoX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractTypeX), ObjDataElement, ContractTypeX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractStatusX), ObjDataElement, ContractStatusX);
+        if ObjDataElement.Get(ContractTypeX, AgrType) and ObjDataElement.Get(ContractStatusX, AgrType) then begin
+            AgrType := AgrType.ToUpper();
+            AgrStatus := AgrStatus.ToUpper();
+            if not (
+                    (AgrType in ['SALESCONTRACT', 'PRELIMINARYSALESCONTRACT'])
+                    and (AgrStatus.StartsWith('SIGNED') or AgrStatus.StartsWith('REGISTERED'))
+                )
+            then
+                Error(ContractNotSigned, AgrType, AgrStatus);
+            if not (
+                    (AgrType in ['TRANSFEROFRIGHTS', 'TRANSFEROFRIGHTSINTERNALLY', 'INVESTMENTCONTRACT'])
+                    and AgrStatus.StartsWith('REGISTERED')
+                )
+            then
+                Error(ContractNotRegistered, AgrType, AgrStatus);
+        end;
+
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractCancelStatusX), ObjDataElement, ContractCancelStatusX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractIsActiveX), ObjDataElement, ContractIsActiveX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ExtAgreementNoX), ObjDataElement, ExtAgreementNoX);
