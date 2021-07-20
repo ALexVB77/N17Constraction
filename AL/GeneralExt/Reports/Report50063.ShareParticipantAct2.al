@@ -18,6 +18,10 @@ report 50063 "Share Participant Act 2"
             {
 
             }
+            column(JobTitle; "Job Title")
+            {
+
+            }
             column(FullNameGenitive; "Full Name Genitive")
             {
 
