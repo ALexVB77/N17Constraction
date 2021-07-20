@@ -790,34 +790,49 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
 
     // codeunit 1509 "Notification Entry Dispatcher"
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Notification Entry Dispatcher", 'OnBeforeGetHTMLBodyText', '', false, false)]
     local procedure OnBeforeGetHTMLBodyText(
-        var NotificationEntry: Record "Notification Entry"; var BodyTextOut: Text; var IsHandled: Boolean; var BodyTextExist: Boolean; var Sender: Codeunit "Notification Entry Dispatcher");
+        var NotificationEntry: Record "Notification Entry"; var BodyTextOut: Text; var IsHandled: Boolean; var BodyTextExist: Boolean;
+        var Sender: Codeunit "Notification Entry Dispatcher"; var HtmlBodyFilePath: Text);
     var
         ReportLayoutSelection: Record "Report Layout Selection";
         FileManagement: Codeunit "File Management";
         ErrorMessageMgt: Codeunit "Error Message Management";
+        TempBlob: Codeunit "Temp Blob";
+        BlobInStream: InStream;
+        DataTypeManagement: Codeunit "Data Type Management";
+        SourceRecRef: RecordRef;
+        ApprovalEntry: Record "Approval Entry";
+        ReportID: Integer;
     begin
-
-
-        /*
-        if NotificationEntry."EMail Template Report ID" = 0 then
+        if (NotificationEntry.Type <> NotificationEntry.Type::Approval) or (NotificationEntry."Triggered By Record".TableNo <> DATABASE::"Approval Entry") then
             exit;
+        DataTypeManagement.GetRecordRef(NotificationEntry."Triggered By Record", SourceRecRef);
+        SourceRecRef.SetTable(ApprovalEntry);
+        if (ApprovalEntry."Act Type" = ApprovalEntry."Act Type"::" ") and (not ApprovalEntry."IW Documents") then
+            exit;
+
         IsHandled := true;
+        ReportID := Report::"Notification Email Act. Inv.";
 
         HtmlBodyFilePath := FileManagement.ServerTempFileName('html');
         ReportLayoutSelection.SetTempLayoutSelected('');
-        if not REPORT.SaveAsHtml(REPORT::"Notification Email", HtmlBodyFilePath, NotificationEntry) then begin
+        if not REPORT.SaveAsHtml(ReportID, HtmlBodyFilePath, NotificationEntry) then begin
             NotificationEntry."Error Message" := GetLastErrorText;
             NotificationEntry.Modify(true);
             ErrorMessageMgt.LogError(NotificationEntry, GetLastErrorText(), '');
             ClearLastError;
-            exit(false);
+            BodyTextExist := false;
+            exit;
         end;
 
-        ConvertHtmlFileToText(HtmlBodyFilePath, BodyTextOut);
-        exit(true);
-        */
+        //ConvertHtmlFileToText(HtmlBodyFilePath, BodyTextOut);
+        FileManagement.BLOBImportFromServerFile(TempBlob, HtmlBodyFilePath);
+        TempBlob.CreateInStream(BlobInStream);
+        BlobInStream.ReadText(BodyTextOut);
+
+        BodyTextExist := true;
     end;
 
     // codeunit 1510 "Notification Management"
@@ -827,32 +842,34 @@ codeunit 50006 "Base App. Subscribers Mgt."
     var
         ApprovalEntry: Record "Approval Entry";
         DataTypeManagement: Codeunit "Data Type Management";
+        PaymentOrderMgt: Codeunit "Payment Order Management";
         RecRef: RecordRef;
+        ApproverType: Text;
+        GenAppStatus: Integer;
+        ActionApprovedTxt: Label 'has been approved by %1.';
+        ActionApprovalRejectedTxt: Label 'approval has been rejected by %1.';
+        ResponsText: label 'Reception,Controller,Estimator,Checker,Pre. Approver,Approver';
     begin
         if NotificationEntry.Type = NotificationEntry.Type::Approval then begin
             DataTypeManagement.GetRecordRef(NotificationEntry."Triggered By Record", RecRef);
             RecRef.SetTable(ApprovalEntry);
             if (ApprovalEntry."Act Type" <> ApprovalEntry."Act Type"::" ") or ApprovalEntry."IW Documents" then begin
                 IsHandled := true;
-
-                Error('%1 %2 %3', ApprovalEntry."Sender ID", ApprovalEntry."Approver ID", ApprovalEntry.Status);
-
-                /*
+                if ApprovalEntry."IW Documents" then
+                    GenAppStatus := ApprovalEntry."Status App".AsInteger()
+                else
+                    GenAppStatus := ApprovalEntry."Status App Act".AsInteger();
+                ApproverType := StrSubstNo(ResponsText,
+                    SelectStr(PaymentOrderMgt.GetMessageResponsNo(ApprovalEntry."IW Documents", GenAppStatus, ApprovalEntry."Preliminary Approval"), ResponsText));
                 case ApprovalEntry.Status of
-                    ApprovalEntry.Status::Open:
-                        exit(ActionApproveTxt);
-                    ApprovalEntry.Status::Canceled:
-                        exit(ActionApprovalCanceledTxt);
                     ApprovalEntry.Status::Rejected:
-                        exit(ActionApprovalRejectedTxt);
-                    ApprovalEntry.Status::Created:
-                        exit(ActionApprovalCreatedTxt);
+                        CustomText := StrSubstNo(ActionApprovalRejectedTxt, ApproverType);
                     ApprovalEntry.Status::Approved:
-                        exit(ActionApprovedTxt);
+                        CustomText := StrSubstNo(ActionApprovedTxt, ApproverType);
+                    else
+                        IsHandled := false;
                 end;
-                */
             end;
         end;
     end;
-
 }
