@@ -61,6 +61,41 @@ report 50063 "Share Participant Act 2"
             {
 
             }
+            column(TotalPaymentAmount; TotalPaymentAmount)
+            {
+
+            }
+            dataitem(Line; Integer)
+            {
+                column(FAPostingDate; FAPostingDate)
+                {
+
+                }
+                column(InsuranceNo; InsuranceNo)
+                {
+
+                }
+                column(Amount; Amount)
+                {
+
+                }
+
+                trigger OnAfterGetRecord()
+                begin
+                    Buff.Reset();
+                    if Number = 1 then
+                        Buff.FindFirst()
+                    else
+                        Buff.Next();
+
+                    FAPostingDate := Format(Buff."FA Posting Date");
+                    if not Buff."Use Duplication List" then
+                        InsuranceNo := Format(Buff."Insurance No.")
+                    else
+                        InsuranceNo := Format(Buff."Insurance No.") + ' (возм.)';
+                    Amount := Format(Buff.Amount);
+                end;
+            }
         }
 
     }
@@ -78,6 +113,77 @@ report 50063 "Share Participant Act 2"
                     {
                         ApplicationArea = All;
                         Caption = 'Act Date';
+                    }
+                    field(CustomerNo; CustomerNo)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Customer No.';
+                        TableRelation = Customer."No.";
+
+                        trigger OnValidate()
+                        begin
+                            if CustomerNo = '' then begin
+                                EmplName[2] := '';
+                                EmplName[3] := '';
+                            end else begin
+                                Customer.Get(CustomerNo);
+                                EmplName[2] := Customer.Name;
+                                EmplName[3] := EmplName[2];
+                            end;
+                        end;
+                    }
+                    group(Employee)
+                    {
+                        ShowCaption = false;
+                        field(EmployeeName1; EmplName[2])
+                        {
+                            ApplicationArea = All;
+                            Caption = 'By whom (fulfillment of obligations ..)?';
+                        }
+                        field(EmployeeName2; EmplName[3])
+                        {
+                            ApplicationArea = All;
+                            Caption = 'Who (debt ..)?';
+                        }
+                    }
+                    field(AgreementNo; AgreementNo)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Agreement No.';
+
+                        trigger OnLookup(var Text: Text): Boolean
+                        begin
+                            Agreement.Reset();
+                            Agreement.SetRange("Customer No.", CustomerNo);
+                            if Page.RunModal(0, Agreement) = Action::LookupOK then
+                                AgreementNo := Agreement."No.";
+                        end;
+                    }
+                    field(SubstAccountantNo; SubstAccountantNo)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Ch. accountant / deputy';
+
+                        trigger OnValidate()
+                        begin
+                            if SubstAccountantNo = '' then begin
+                                EmplName[1] := '';
+                            end else begin
+                                Employee.Get(SubstAccountantNo);
+                                EmplName[1] := StrSubstNo('%1 %2 %3', Employee."Last Name", Employee."First Name", Employee."Middle Name");
+                            end;
+                        end;
+
+                        trigger OnLookup(var Text: Text): Boolean
+                        begin
+                            if SubstAccountantNo <> '' then begin
+                                Employee.Get(SubstAccountantNo);
+                            end;
+                            if Page.RunModal(0, Employee) = Action::LookupOK then begin
+                                SubstAccountantNo := Employee."No.";
+                                EmplName[1] := StrSubstNo('%1 %2 %3', Employee."Last Name", Employee."First Name", Employee."Middle Name");
+                            end;
+                        end;
                     }
                 }
             }
@@ -104,7 +210,9 @@ report 50063 "Share Participant Act 2"
         AmountOwed: Text;
         ActDate3: Text;
         MONTHTEXT: Label 'January,February,March,April,May,June,July,August,September,October,November,December';
-        Table1: Text;
+        FAPostingDate: Text;
+        InsuranceNo: Text;
+        Amount: Text;
 
     trigger OnPreReport()
     begin
@@ -112,7 +220,6 @@ report 50063 "Share Participant Act 2"
         SourceCodeSetup.Get;
 
         CustLedgEntry.Reset();
-        ;
         CustLedgEntry.SetCurrentKey("Customer No.", "Posting Date");
         CustLedgEntry.SetRange("Customer No.", CustomerNo);
         CustLedgEntry.SetRange("Agreement No.", AgreementNo);
@@ -155,14 +262,6 @@ report 50063 "Share Participant Act 2"
             AmountOwed := Format(Agreement."Agreement Amount" - TotalPaymentAmount);
 
         ActDate3 := LowerCase(StrSubstNo(Format(ActDate, 0, '"<Day,2>" %1 <Year4> года'), SelectStr(Date2DMY(ActDate, 2), MONTHTEXT)));
-
-        Buff.Reset();
-        if not Buff.FindSet() then
-            Table1 := ''
-        else begin
-            Table1 := Format(Buff.Count - 1);
-
-        end;
     end;
 
     local procedure GetShortName(EmplCode: Code[20]) Result: Text

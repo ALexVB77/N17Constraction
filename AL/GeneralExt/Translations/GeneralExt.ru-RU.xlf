@@ -11217,7 +11217,6 @@
           <source>January,February,March,April,May,June,July,August,September,October,November,December</source>
           <target>Января,Февраля,Марта,Апреля,Мая,Июня,Июля,Августа,Сентября,Октября,Ноября,Декабря</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType MONTHTEXT</note>
         </trans-unit>
         <trans-unit id="Report 1503765490 - NamedType 3638192683" size-unit="char" translate="yes" xml:space="preserve">
@@ -11231,6 +11230,41 @@
           <target>Дата справки</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control ActDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - Control 1477357849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement No.</source>
+          <target>Договор</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control AgreementNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - Control 3689535207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <target>Дольщик Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control CustomerNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - Control 3872663296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>By whom (fulfillment of obligations ..)?</source>
+          <target>Кем (выполнение обязательств..)?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control EmployeeName1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - Control 215392617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Who (debt ..)?</source>
+          <target>Кого (задолженность..)?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control EmployeeName2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - Control 2748696188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ch. accountant / deputy</source>
+          <target>Гл. бухгалтер/заместитель</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control SubstAccountantNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1809404285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>TempStarter</source>
@@ -11315,6 +11349,13 @@
           <target>Отпустил</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Transfer Shipment M-15 - Control ReleasedEmployee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1659759250 - Control 490139807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 156420897">
+          <source>Agreements</source>
+          <target>Договоры</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Advance Statement Ext - Control Agreements - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3049249875 - Action 2257859320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4261702675">
           <source>Register Absence</source>
