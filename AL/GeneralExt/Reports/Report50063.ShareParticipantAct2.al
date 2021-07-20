@@ -5,7 +5,6 @@ report 50063 "Share Participant Act 2"
     Caption = 'Share Participant Act 2';
     ProcessingOnly = true;
     WordLayout = './Reports/Layouts/FinancialObligationsCertificateTemplate.docx';
-
     dataset
     {
         dataitem(Employee; Employee)
@@ -22,7 +21,48 @@ report 50063 "Share Participant Act 2"
             {
 
             }
+            column(ShortName; GetShortName(SubstAccountantNo))
+            {
+
+            }
+            column(ActDate; Format(ActDate))
+            {
+
+            }
+            column(EmplName2; EmplName[2])
+            {
+
+            }
+            column(EmplName3; EmplName[3])
+            {
+
+            }
+            column(ExternalAgreementNo; Agreement."External Agreement No.")
+            {
+
+            }
+            column(AgreementDate; Format(Agreement."Agreement Date"))
+            {
+
+            }
+            column(AgreementAmount; Format(Agreement."Agreement Amount"))
+            {
+
+            }
+            column(ActDate2; Format(ActDate))
+            {
+
+            }
+            column(AmountOwed; AmountOwed)
+            {
+
+            }
+            column(ActDate3; ActDate3)
+            {
+
+            }
         }
+
     }
 
     requestpage
@@ -60,6 +100,11 @@ report 50063 "Share Participant Act 2"
         ReportTitle: Text;
         SubstAccountantNo: Code[20];
         ActDate: Date;
+        EmplName: array[5] of Text;
+        AmountOwed: Text;
+        ActDate3: Text;
+        MONTHTEXT: Label 'January,February,March,April,May,June,July,August,September,October,November,December';
+        Table1: Text;
 
     trigger OnPreReport()
     begin
@@ -105,7 +150,24 @@ report 50063 "Share Participant Act 2"
         Employee.TestField("Full Name Genitive");
         Employee.TestField("Job Title");
         Employee.TestField("Job Title Genitive");
+
+        if not CompleteAgr then
+            AmountOwed := Format(Agreement."Agreement Amount" - TotalPaymentAmount);
+
+        ActDate3 := LowerCase(StrSubstNo(Format(ActDate, 0, '"<Day,2>" %1 <Year4> года'), SelectStr(Date2DMY(ActDate, 2), MONTHTEXT)));
+
+        Buff.Reset();
+        if not Buff.FindSet() then
+            Table1 := ''
+        else begin
+            Table1 := Format(Buff.Count - 1);
+
+        end;
     end;
 
-
+    local procedure GetShortName(EmplCode: Code[20]) Result: Text
+    begin
+        Employee.Get(SubstAccountantNo);
+        Result := Employee."Last Name" + ' ' + Employee.Initials;
+    end;
 }

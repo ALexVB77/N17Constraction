@@ -3843,6 +3843,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractBuyersNotFoundErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 976920571" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractContactNotFound</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract is not registered, Type %1, Status %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9337,6 +9342,11 @@
           <source>Certificate of fulfillment of financial obligations</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType FullFulfillmentTitle</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 238633327" size-unit="char" translate="yes" xml:space="preserve">
+          <source>January,February,March,April,May,June,July,August,September,October,November,December</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType MONTHTEXT</note>
         </trans-unit>
         <trans-unit id="Report 1503765490 - NamedType 3638192683" size-unit="char" translate="yes" xml:space="preserve">
           <source>Certificate of partial fulfillment of financial obligations</source>

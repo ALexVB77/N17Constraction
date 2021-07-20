@@ -78,6 +78,7 @@ codeunit 99932 "CRM Worker"
         ContractNotRegisteredErr: Label 'Contract is not registered, Type %1, Status %2';
         ContractNotSignedErr: Label 'Contract is not signed, Type %1, Status %2';
         ContractBuyersNotFoundErr: Label 'Buyers are not found';
+        ContractContactNotFound: Label 'Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3';
         BadSoapEnvFormatErr: Label 'Bad soap envelope format';
         KeyErr: Label 'No field key is specified!';
         NoObjectIdErr: Label 'No ObjectID in XML Document';
@@ -220,10 +221,13 @@ codeunit 99932 "CRM Worker"
     local procedure GetObjectField(XmlElem: XmlElement; Xpath: Text; var ObjDataContainer: Dictionary of [Text, Text]; FieldKey: Text)
     var
         TempXmlElemValue: Text;
+        TempValue: Text;
     begin
         GetValue(XmlElem, xpath, TempXmlElemValue);
         if FieldKey = '' then
             Error(KeyErr);
+        if ObjDataContainer.Get(FieldKey, TempValue) then
+            Error('KeyError %1 already exists', FieldKey);
         ObjDataContainer.Add(FieldKey, TempXmlElemValue);
     end;
 
@@ -394,7 +398,7 @@ codeunit 99932 "CRM Worker"
 
         ObjDataElement := ObjectData.Get(1);
 
-        if (RequiredImportAction = RequiredImportAction::Create) and (TargetCompanyName <> '') then
+        if (RequiredImportAction = RequiredImportAction::Create) and (TargetCompanyName <> '') and (TargetCompanyName <> CompanyName()) then
             Error('Contact creating error!');
 
         if (TargetCompanyName <> CompanyName()) and (TargetCompanyName <> '') then begin
@@ -463,6 +467,7 @@ codeunit 99932 "CRM Worker"
         Customer."Version Id" := FetchedObject."Version Id";
         if RequiredImportAction = RequiredImportAction::Create then begin
             Customer."CRM GUID" := FetchedObject.Id;
+            Customer.Validate("Agreement Posting", Customer."Agreement Posting"::Mandatory);
             CrmSetup.Get;
             if Customer."Customer Posting Group" = '' then
                 Customer.Validate("Customer Posting Group", CrmSetup."Customer Posting Group");
@@ -621,11 +626,12 @@ codeunit 99932 "CRM Worker"
                 ContactId := CrmB."Contact Guid";
                 if not AllObjectData.Get(ContactId, ContactData) then begin
                     LogEvent(FetchedObject, LogStatusEnum::Error,
-                        StrSubstNo('Contact %1 is not found, Unit %2, Buyer %3', ContactId, UNitId, BuyerId));
+                        StrSubstNo(ContractContactNotFound, ContactId, UNitId, BuyerId));
                     exit;
                 end;
                 FObj.Get(ContactId);
-                NewCustomerNo := ImportContact(FObj, AllObjectData, CompanyName(), ImportActionEnum);
+                NewCustomerNo := ImportContact(FObj, AllObjectData, CompanyName(), ImportActionEnum::Create);
+                Fobj.Delete(true);
                 Cust.Get(NewCustomerNo);
                 case ShareHoldersCount of
                     1:
@@ -1052,7 +1058,7 @@ codeunit 99932 "CRM Worker"
         XmlNodeList: XmlNodeList;
         OK: Boolean;
         BaseXPath: Text;
-        ElemText, ElemText2 : Text;
+        ElemText, ElemText2, TempValue : Text;
         ObjDataElement: Dictionary of [Text, Text];
         RetObjectData: List of [Dictionary of [Text, Text]];
     begin
@@ -1089,6 +1095,7 @@ codeunit 99932 "CRM Worker"
         BaseXPath := JoinX(ContactX, ElectronicAddressesX);
         if not XmlElem.SelectNodes(JoinX(BaseXPath, ElectronicAddressX), XmlNodeList) then
             exit;
+
         foreach XmlNode in XmlNodeList do begin
             XmlElem := XmlNode.AsXmlElement();
             if GetValue(XmlElem, ProtocolX, ElemText) and (ElemText <> '') then begin
@@ -1096,13 +1103,21 @@ codeunit 99932 "CRM Worker"
                     Case ElemText of
                         ContactPhoneX:
                             begin
-                                if ElemText2 <> '' then
-                                    ObjDataElement.Add(ContactPhoneX, ElemText2);
+                                if ElemText2 <> '' then begin
+                                    if not ObjDataElement.Get(ContactPhoneX, TempValue) then
+                                        ObjDataElement.Add(ContactPhoneX, ElemText2)
+                                    else
+                                        ObjDataElement.Set(ContactPhoneX, ElemText2);
+                                end;
                             end;
                         ContactEmailX:
                             begin
-                                if ElemText2 <> '' then
-                                    ObjDataElement.Add(ContactEmailX, ElemText2);
+                                if ElemText2 <> '' then begin
+                                    if not ObjDataElement.Get(ContactEmailX, TempValue) then
+                                        ObjDataElement.Add(ContactEmailX, ElemText2)
+                                    else
+                                        ObjDataElement.Set(ContactEmailX, ElemText2);
+                                end;
                             end;
                     End
                 end;
@@ -1128,6 +1143,7 @@ codeunit 99932 "CRM Worker"
         FetchedObject.CalcFields(Xml);
         GetRootXmlElement(FetchedObject, XmlElem);
         GetObjectField(XmlElem, ContractIdX, ObjDataElement, ContractIdX);
+        GetObjectField(XmlElem, ContractUnitIdX, ObjDataElement, ContractUnitIdX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractNoX), ObjDataElement, ContractNoX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractTypeX), ObjDataElement, ContractTypeX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractStatusX), ObjDataElement, ContractStatusX);
