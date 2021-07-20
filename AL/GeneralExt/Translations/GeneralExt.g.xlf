@@ -9378,6 +9378,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control EmployeeName2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1503765490 - Control 853089234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ch. accountant / deputy full name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control EmployeeName3 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1503765490 - Control 2748696188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ch. accountant / deputy</source>
           <note from="Developer" annotates="general" priority="2"></note>

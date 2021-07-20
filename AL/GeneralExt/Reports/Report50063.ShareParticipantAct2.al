@@ -185,9 +185,32 @@ report 50063 "Share Participant Act 2"
                             end;
                         end;
                     }
+                    group(Employee2)
+                    {
+                        ShowCaption = false;
+                        field(EmployeeName3; EmplName[1])
+                        {
+                            ApplicationArea = All;
+                            Caption = 'Ch. accountant / deputy full name';
+                            Editable = false;
+                        }
+                    }
                 }
             }
         }
+
+        trigger OnOpenPage()
+        begin
+            ActDate := WorkDate();
+            if SubstAccountantNo = '' then begin
+                CompInf.Get();
+                CompInf.TestField("Accountant No.");
+                AccountantNo := CompInf."Accountant No.";
+                SubstAccountantNo := AccountantNo;
+                Employee.Get(SubstAccountantNo);
+                EmplName[1] := StrSubstNo('%1 %2 %3', Employee."Last Name", Employee."First Name", Employee."Middle Name");
+            end;
+        end;
     }
 
     var
@@ -213,6 +236,7 @@ report 50063 "Share Participant Act 2"
         FAPostingDate: Text;
         InsuranceNo: Text;
         Amount: Text;
+        AccountantNo: Code[20];
 
     trigger OnPreReport()
     begin
