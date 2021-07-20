@@ -7,6 +7,16 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             Description = 'NC 51378 AB';
             Caption = 'Payment Assignment';
         }
+        field(50002; "Inv.-Fact. is Received"; Boolean)
+        {
+            Caption = 'Inv.-Fact. is Received';
+            Description = 'NC 50280 OA';
+        }
+        field(50003; "Act is Received"; Boolean)
+        {
+            Caption = 'Act is Received';
+            Description = 'NC 50280 OA';
+        }
         field(50010; "Linked Purchase Order Act No."; Code[20])
         {
             Description = 'NC 51378 AB';

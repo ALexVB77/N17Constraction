@@ -10473,6 +10473,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location (Ext) - Field Def. Gen. Bus. Posting Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2734860803 - Field 2790079521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2193680195">
+          <source>EMail Template Report ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Notification Entry (Ext) - Field EMail Template Report ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2734860803 - Field 1179048807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2193680195">
+          <source>EMail Template Report Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Notification Entry (Ext) - Field EMail Template Report Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3235211674 - Field 516867376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1311705274">
           <source>New FA Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10553,6 +10563,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Method SetApprovalCommentText - NamedType NoReqToApproveErr</note>
         </trans-unit>
+        <trans-unit id="TableExtension 279653624 - Field 3075689437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Act is Received</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Act is Received - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 279653624 - Field 445905442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Act Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10597,6 +10612,11 @@
           <source>External Agreement No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field External Agreement No. (Calc) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 279653624 - Field 4066496539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Inv.-Fact. is Received</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Inv.-Fact. is Received - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 279653624 - Field 678730876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Invoice Amount Incl. VAT</source>
