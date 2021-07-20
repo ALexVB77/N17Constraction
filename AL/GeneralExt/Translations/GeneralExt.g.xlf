@@ -7998,6 +7998,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - NamedType Text002</note>
         </trans-unit>
+        <trans-unit id="Report 4024062002 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>More than</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - NamedType Text003</note>
+        </trans-unit>
         <trans-unit id="Report 4024062002 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged by %1</source>
           <note from="Developer" annotates="general" priority="2"></note>

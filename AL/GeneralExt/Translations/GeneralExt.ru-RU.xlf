@@ -4609,14 +4609,12 @@
           <source>Buyers are not found</source>
           <target>Покупатели не найдены</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractBuyersNotFoundErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 976920571" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3</source>
           <target>Контакт %1 не найден, идентификатор родительского объекта (блок) %2, покупатель %3</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractContactNotFound</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
@@ -9599,6 +9597,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - NamedType Text002</note>
         </trans-unit>
+        <trans-unit id="Report 4024062002 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>More than</source>
+          <target>Более чем</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - NamedType Text003</note>
+        </trans-unit>
         <trans-unit id="Report 4024062002 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged by %1</source>
           <target>Историч. данные на %1</target>
@@ -11259,7 +11264,6 @@
           <source>Ch. accountant / deputy full name</source>
           <target>Гл. бухгалтер/заместитель ФИО</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Control EmployeeName3 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1503765490 - Control 2748696188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
