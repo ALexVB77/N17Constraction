@@ -536,11 +536,11 @@ report 80322 "Aged Accounts Payable Ext"
                     AddCell(1, 4, FORMAT(EndingDate, 0, 4), false, xl."Cell Type"::Date, false);
                     AddCell(2, 2, VendorFilter, false, xl."Cell Type"::Text, false);
                     AddCell(4, 12, STRSUBSTNO(Text007, SELECTSTR(AgingBy + 1, Text009)), false, xl."Cell Type"::Text, false);
-                    AddCell(RowNoBegin, 11, HeaderTextExcel[1], false, xl."Cell Type"::Number, false);
-                    AddCell(RowNoBegin, 12, HeaderTextExcel[2], false, xl."Cell Type"::Number, false);
-                    AddCell(RowNoBegin, 13, HeaderTextExcel[3], false, xl."Cell Type"::Number, false);
-                    AddCell(RowNoBegin, 14, HeaderTextExcel[4], false, xl."Cell Type"::Number, false);
-                    AddCell(RowNoBegin, 15, HeaderTextExcel[5], false, xl."Cell Type"::Number, false);
+                    AddCell(RowNoBegin, 11, HeaderTextExcel[1], false, xl."Cell Type"::Text, false);
+                    AddCell(RowNoBegin, 12, HeaderTextExcel[2], false, xl."Cell Type"::Text, false);
+                    AddCell(RowNoBegin, 13, HeaderTextExcel[3], false, xl."Cell Type"::Text, false);
+                    AddCell(RowNoBegin, 14, HeaderTextExcel[4], false, xl."Cell Type"::Text, false);
+                    AddCell(RowNoBegin, 15, HeaderTextExcel[5], false, xl."Cell Type"::Text, false);
 
                 END;
                 //NC 50517 <<
@@ -754,7 +754,7 @@ report 80322 "Aged Accounts Payable Ext"
         //NC 50517 >>
         if ExportExcel then begin
             xl.UpdateBook(Filename, 'Sheet1');
-            xl.WriteSheet('', CompanyName, UserId);
+            xl.WriteSheet('Кредиторская задолж-сть по срокам давности', CompanyName, UserId);
             xl.CloseBook();
             xl.OpenExcel();
         end;
@@ -831,13 +831,13 @@ report 80322 "Aged Accounts Payable Ext"
         RowNo: Integer;
         GlobalDimension1Filter: Text[250];
         EnterTxt: Text[2];
-        HeaderTextExcel: Text[30];
+        HeaderTextExcel: Array[5] of Text[30];
         UseComma: Boolean;
         PurchAndPyableSetup: Record "Purchases & Payables Setup";
         FileManagement: Codeunit "File Management";
         Text0002: Label '.xlsx';
         Text0001: Label 'Total (LCY)';
-
+        Text003: Label 'More than';
         ServerFileName: Text;
     //NC 50517 <<
 
@@ -881,17 +881,28 @@ report 80322 "Aged Accounts Payable Ext"
         end else
             i := 1;
         while i < ArrayLen(PeriodEndDate) do begin
-            if HeadingType = HeadingType::"Date Interval" then
-                HeaderText[i] := StrSubstNo('%1\..%2', PeriodStartDate[i], PeriodEndDate[i])
-            else
+            if HeadingType = HeadingType::"Date Interval" then begin
+                HeaderText[i] := StrSubstNo('%1\..%2', PeriodStartDate[i], PeriodEndDate[i]);
+
+                HeaderTextExcel[i] := STRSUBSTNO('%1 %3 ..%2', PeriodStartDate[i], PeriodEndDate[i], EnterTxt);//NC 50335 DP
+            end
+            else begin
                 HeaderText[i] :=
                   StrSubstNo('%1 - %2 %3', EndingDate - PeriodEndDate[i] + 1, EndingDate - PeriodStartDate[i] + 1, Text002);
+                HeaderTextExcel[i] := HeaderText[i];//NC 50335 DP
+            end;
             i := i + 1;
         end;
-        if HeadingType = HeadingType::"Date Interval" then
-            HeaderText[i] := StrSubstNo('%1\%2', BeforeTok, PeriodStartDate[i - 1])
-        else
+        if HeadingType = HeadingType::"Date Interval" then begin
+            HeaderText[i] := StrSubstNo('%1\%2', BeforeTok, PeriodStartDate[i - 1]);
+
+            HeaderTextExcel[i] := STRSUBSTNO('%1 %3 %2', BeforeTok, PeriodStartDate[i - 1], EnterTxt)//NC 50335 DP
+        end
+        else begin
             HeaderText[i] := StrSubstNo('%1 %2 %3', BeforeTok, EndingDate - PeriodStartDate[i - 1] + 1, Text002);
+
+            HeaderTextExcel[i] := STRSUBSTNO('%1 %4 %2 %3', Text003, EndingDate - PeriodStartDate[i - 1] + 1, Text002, EnterTxt);//NC 50335 DP
+        end;
     end;
 
     local procedure InsertTemp(var VendorLedgEntry: Record "Vendor Ledger Entry")
