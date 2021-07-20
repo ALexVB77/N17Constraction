@@ -445,8 +445,13 @@ report 80322 "Aged Accounts Payable Ext"
 
                     trigger OnPreDataItem()
                     begin
+
                         if not PrintAmountInLCY then
                             TempVendorLedgEntry.SetRange("Currency Code", TempCurrency.Code);
+                        if GlobalDimension1Filter <> '' then
+                            TempVendorLedgEntry.SetFilter("Global Dimension 1 Code", GlobalDimension1Filter);
+                        if AgreementFilter <> '' then
+                            TempVendorLedgEntry.SetFilter("Agreement No.", AgreementFilter);
                     end;
                 }
 
@@ -533,7 +538,7 @@ report 80322 "Aged Accounts Payable Ext"
                 EnterTxt[1] := 13;
                 EnterTxt[2] := 10;
                 IF ExportExcel THEN BEGIN
-                    AddCell(1, 4, FORMAT(EndingDate, 0, 4), false, xl."Cell Type"::Date, false);
+                    AddCell(1, 4, FORMAT(EndingDate), false, xl."Cell Type"::Text, false);
                     AddCell(2, 2, VendorFilter, false, xl."Cell Type"::Text, false);
                     AddCell(4, 12, STRSUBSTNO(Text007, SELECTSTR(AgingBy + 1, Text009)), false, xl."Cell Type"::Text, false);
                     AddCell(RowNoBegin, 11, HeaderTextExcel[1], false, xl."Cell Type"::Text, false);
@@ -692,6 +697,32 @@ report 80322 "Aged Accounts Payable Ext"
                         Caption = 'Export Excel';
 
                     }
+                    field(GlobalDimension1Filter; GlobalDimension1Filter)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Cost Place Filter';
+                        trigger OnLookup(var Text: Text): Boolean
+                        var
+                            GLSetup: Record "General Ledger Setup";
+                            DimValue: Record "Dimension Value";
+                            DimValueList: Page "Dimension Value List";
+                        begin
+                            GLSetup.Get();
+                            DimValue.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
+                            DimValueList.SetTableView(DimValue);
+                            DimValueList.LookupMode := true;
+                            if DimValueList.RunModal() = Action::LookupOK then begin
+                                GlobalDimension1Filter := DimValueList.GetSelectionFilter();
+                            end;
+
+                        end;
+                    }
+                    field(AgreementFilter; AgreementFilter)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Agreement Filter';
+                        TableRelation = "Vendor Agreement"."No.";
+                    }
                 }
             }
         }
@@ -839,6 +870,7 @@ report 80322 "Aged Accounts Payable Ext"
         Text0001: Label 'Total (LCY)';
         Text003: Label 'More than';
         ServerFileName: Text;
+        AgreementFilter: Text[250];
     //NC 50517 <<
 
 
