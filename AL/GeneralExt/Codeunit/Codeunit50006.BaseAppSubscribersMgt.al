@@ -789,6 +789,36 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
+    // codeunit 1509 "Notification Entry Dispatcher"
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Notification Entry Dispatcher", 'OnBeforeGetHTMLBodyText', '', false, false)]
+    local procedure OnBeforeGetHTMLBodyText(var NotificationEntry: Record "Notification Entry"; var BodyTextOut: Text; var IsHandled: Boolean; var BodyTextExist: Boolean);
+    var
+        ReportLayoutSelection: Record "Report Layout Selection";
+        FileManagement: Codeunit "File Management";
+        ErrorMessageMgt: Codeunit "Error Message Management";
+    begin
+        /*
+        if NotificationEntry."EMail Template Report ID" = 0 then
+            exit;
+        IsHandled := true;
+
+        HtmlBodyFilePath := FileManagement.ServerTempFileName('html');
+        ReportLayoutSelection.SetTempLayoutSelected('');
+        if not REPORT.SaveAsHtml(REPORT::"Notification Email", HtmlBodyFilePath, NotificationEntry) then begin
+            NotificationEntry."Error Message" := GetLastErrorText;
+            NotificationEntry.Modify(true);
+            ErrorMessageMgt.LogError(NotificationEntry, GetLastErrorText(), '');
+            ClearLastError;
+            exit(false);
+        end;
+
+
+
+        ConvertHtmlFileToText(HtmlBodyFilePath, BodyTextOut);
+        exit(true);
+        */
+    end;
+
     // codeunit 1510 "Notification Management"
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Notification Management", 'OnBeforeGetActionTextFor', '', false, false)]
