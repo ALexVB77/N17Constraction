@@ -2,14 +2,14 @@ pageextension 92431 "Advance Statement Ext" extends "Advance Statement"
 {
     layout
     {
-        addlast(content)
+        addafter("Foreign Trade")
         {
             group(Agreements)
             {
                 Caption = 'Agreements';
                 field("Agreement No."; "Agreement No.")
                 {
-
+                    ApplicationArea = Basic, Suite;
                 }
             }
         }
