@@ -4,6 +4,7 @@ report 50063 "Share Participant Act 2"
     ApplicationArea = All;
     Caption = 'Share Participant Act 2';
     ProcessingOnly = true;
+    DefaultLayout = Word;
     WordLayout = './Reports/Layouts/FinancialObligationsCertificateTemplate.docx';
     dataset
     {
