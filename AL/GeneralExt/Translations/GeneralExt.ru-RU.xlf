@@ -4605,6 +4605,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContactUpToDateMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 1118960650" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buyers are not found</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractBuyersNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 976920571" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractContactNotFound</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract is not registered, Type %1, Status %2</source>
           <target>Договр не зарегистрирован, Тип %1, Статус %2</target>
@@ -4669,7 +4683,6 @@
           <source>Import of object %1 interrupted. No parsed data</source>
           <target>Ошибка парсинга XML объекта %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%1" was found in source, but not in target.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType NoParsedDataOnImportErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1376688189" size-unit="char" translate="yes" xml:space="preserve">
@@ -11078,7 +11091,6 @@
           <source>Notification Email Act. Inv.</source>
           <target>Email уведомление акта и счета</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Notification Email Act. Inv. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2923491568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -11201,6 +11213,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType FullFulfillmentTitle</note>
         </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 238633327" size-unit="char" translate="yes" xml:space="preserve">
+          <source>January,February,March,April,May,June,July,August,September,October,November,December</source>
+          <target>Января,Февраля,Марта,Апреля,Мая,Июня,Июля,Августа,Сентября,Октября,Ноября,Декабря</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType MONTHTEXT</note>
+        </trans-unit>
         <trans-unit id="Report 1503765490 - NamedType 3638192683" size-unit="char" translate="yes" xml:space="preserve">
           <source>Certificate of partial fulfillment of financial obligations</source>
           <target>Справка о частичном выполнении финансовых обязательств</target>
@@ -11296,6 +11314,13 @@
           <target>Отпустил</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Transfer Shipment M-15 - Control ReleasedEmployee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1659759250 - Control 490139807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 156420897">
+          <source>Agreements</source>
+          <target>Договоры</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Advance Statement Ext - Control Agreements - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3049249875 - Action 2257859320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4261702675">
           <source>Register Absence</source>

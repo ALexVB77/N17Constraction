@@ -79,5 +79,5 @@ pageextension 80539 "MyDim Value Comb Ext" extends "MyDim Value Combinations"
         Row: Code[20];
         Col: Code[20];
         ShowNames: Boolean;
-        ColFilter: Code[20];
+        ColFilter: Code[100];
 }
