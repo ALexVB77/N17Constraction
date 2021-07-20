@@ -18,6 +18,10 @@ report 50063 "Share Participant Act 2"
             {
 
             }
+            column(JobTitle; "Job Title")
+            {
+
+            }
             column(FullNameGenitive; "Full Name Genitive")
             {
 
@@ -59,6 +63,14 @@ report 50063 "Share Participant Act 2"
 
             }
             column(ActDate3; ActDate3)
+            {
+
+            }
+            column(Status; Status)
+            {
+
+            }
+            column(DebtStatus; DebtStatus)
             {
 
             }
@@ -237,7 +249,13 @@ report 50063 "Share Participant Act 2"
         FAPostingDate: Text;
         InsuranceNo: Text;
         Amount: Text;
+        Status: Text;
+        DebtStatus: Text;
         AccountantNo: Code[20];
+        FullStatus: Label 'full';
+        PartialStatus: Label 'partial';
+        DebtStatus1: Label 'is absent';
+        DebtStatus2: Label 'is %1 RUB';
 
     trigger OnPreReport()
     begin
@@ -257,7 +275,6 @@ report 50063 "Share Participant Act 2"
                 CustLedgEntry.CalcFields("Amount (LCY)");
                 Buff.Init();
                 Buff."G/L Account" := Format(CustLedgEntry."Posting Date", 0, '<Year><Month,2><Day,2>');
-                //Buff."Dimension Entry No." := CustLedgEntry."Entry No.";
 
                 if CustLedgEntry."Document Type" = CustLedgEntry."Document Type"::Refund then
                     Buff."Use Duplication List" := true;
@@ -272,19 +289,24 @@ report 50063 "Share Participant Act 2"
         Customer.Get(CustomerNo);
         Agreement.Get(CustomerNo, AgreementNo);
         CompleteAgr := Agreement."Agreement Amount" = TotalPaymentAmount;
+
+        if not CompleteAgr then
+            AmountOwed := Format(Agreement."Agreement Amount" - TotalPaymentAmount);
+
         if CompleteAgr then begin
-            ReportTitle := FullFulfillmentTitle
+            ReportTitle := FullFulfillmentTitle;
+            Status := FullStatus;
+            DebtStatus := DebtStatus1;
         end else begin
             ReportTitle := PartialFulfillmentTitle;
+            Status := PartialStatus;
+            DebtStatus := StrSubstNo(DebtStatus2, AmountOwed);
         end;
 
         Employee.Get(SubstAccountantNo);
         Employee.TestField("Full Name Genitive");
         Employee.TestField("Job Title");
         Employee.TestField("Job Title Genitive");
-
-        if not CompleteAgr then
-            AmountOwed := Format(Agreement."Agreement Amount" - TotalPaymentAmount);
 
         ActDate3 := LowerCase(StrSubstNo(Format(ActDate, 0, '"<Day,2>" %1 <Year4> года'), SelectStr(Date2DMY(ActDate, 2), MONTHTEXT)));
     end;

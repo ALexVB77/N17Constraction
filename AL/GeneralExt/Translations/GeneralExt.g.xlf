@@ -7998,6 +7998,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - NamedType Text002</note>
         </trans-unit>
+        <trans-unit id="Report 4024062002 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>More than</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - NamedType Text003</note>
+        </trans-unit>
         <trans-unit id="Report 4024062002 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged by %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9338,10 +9343,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 3417035070" size-unit="char" translate="yes" xml:space="preserve">
+          <source>is absent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType DebtStatus1</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 1503945219" size-unit="char" translate="yes" xml:space="preserve">
+          <source>is %1 RUB</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType DebtStatus2</note>
+        </trans-unit>
         <trans-unit id="Report 1503765490 - NamedType 3305210147" size-unit="char" translate="yes" xml:space="preserve">
           <source>Certificate of fulfillment of financial obligations</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType FullFulfillmentTitle</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 391278577" size-unit="char" translate="yes" xml:space="preserve">
+          <source>full</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType FullStatus</note>
         </trans-unit>
         <trans-unit id="Report 1503765490 - NamedType 238633327" size-unit="char" translate="yes" xml:space="preserve">
           <source>January,February,March,April,May,June,July,August,September,October,November,December</source>
@@ -9352,6 +9372,11 @@
           <source>Certificate of partial fulfillment of financial obligations</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType PartialFulfillmentTitle</note>
+        </trans-unit>
+        <trans-unit id="Report 1503765490 - NamedType 2850946201" size-unit="char" translate="yes" xml:space="preserve">
+          <source>partial</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - NamedType PartialStatus</note>
         </trans-unit>
         <trans-unit id="Report 1503765490 - Control 793815494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Act Date</source>
