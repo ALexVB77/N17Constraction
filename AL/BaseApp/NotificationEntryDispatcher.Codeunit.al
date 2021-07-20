@@ -342,7 +342,7 @@
     end;
 
     // NC 51374 AB >>
-    [IntegrationEvent(true, false)]
+    [IntegrationEvent(true, true)]
     local procedure OnBeforeGetHTMLBodyText(var NotificationEntry: Record "Notification Entry"; var BodyTextOut: Text; var IsHandled: Boolean; var BodyTextExist: Boolean);
     begin
     end;

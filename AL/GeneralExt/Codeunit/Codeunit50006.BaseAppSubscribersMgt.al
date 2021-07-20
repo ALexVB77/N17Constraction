@@ -791,12 +791,15 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
     // codeunit 1509 "Notification Entry Dispatcher"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Notification Entry Dispatcher", 'OnBeforeGetHTMLBodyText', '', false, false)]
-    local procedure OnBeforeGetHTMLBodyText(var NotificationEntry: Record "Notification Entry"; var BodyTextOut: Text; var IsHandled: Boolean; var BodyTextExist: Boolean);
+    local procedure OnBeforeGetHTMLBodyText(
+        var NotificationEntry: Record "Notification Entry"; var BodyTextOut: Text; var IsHandled: Boolean; var BodyTextExist: Boolean; var Sender: Codeunit "Notification Entry Dispatcher");
     var
         ReportLayoutSelection: Record "Report Layout Selection";
         FileManagement: Codeunit "File Management";
         ErrorMessageMgt: Codeunit "Error Message Management";
     begin
+
+
         /*
         if NotificationEntry."EMail Template Report ID" = 0 then
             exit;
@@ -811,8 +814,6 @@ codeunit 50006 "Base App. Subscribers Mgt."
             ClearLastError;
             exit(false);
         end;
-
-
 
         ConvertHtmlFileToText(HtmlBodyFilePath, BodyTextOut);
         exit(true);
