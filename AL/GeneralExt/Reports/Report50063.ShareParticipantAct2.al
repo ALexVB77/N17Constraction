@@ -275,7 +275,6 @@ report 50063 "Share Participant Act 2"
                 CustLedgEntry.CalcFields("Amount (LCY)");
                 Buff.Init();
                 Buff."G/L Account" := Format(CustLedgEntry."Posting Date", 0, '<Year><Month,2><Day,2>');
-                //Buff."Dimension Entry No." := CustLedgEntry."Entry No.";
 
                 if CustLedgEntry."Document Type" = CustLedgEntry."Document Type"::Refund then
                     Buff."Use Duplication List" := true;
