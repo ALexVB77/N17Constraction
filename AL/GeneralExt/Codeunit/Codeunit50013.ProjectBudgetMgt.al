@@ -78,6 +78,12 @@ codeunit 50013 "Project Budget Management"
         lPBE.Init();
         lPBE.Date := lPHead."Posting Date";
         lPBE."Project Code" := lDimVal."Project Code";
+        lPBE."Analysis Type" := pPBE."Analysis Type";
+        lPBE."Version Code" := pPBE."Version Code";
+        lPBE."Line No." := pPBE."Line No.";
+        lPBE."Project Turn Code" := pPBE."Project Turn Code";
+        lPBE."Temp Line No." := pPBE."Temp Line No.";
+
         lPBE."Shortcut Dimension 1 Code" := pPLine."Shortcut Dimension 1 Code";
         lPBE."Shortcut Dimension 2 Code" := pPLine."Shortcut Dimension 2 Code";
         lPBE."Payment Description" := pPLine.Description;
@@ -89,7 +95,7 @@ codeunit 50013 "Project Budget Management"
         lPBE."External Agreement No." := lPHead."External Agreement No. (Calc)";
         lPBE."Parent Entry" := pPBE."Parent Entry";
         lPBE.Insert(true);
-        lParentPBE.Get(pPBE."Entry No.");
+        lParentPBE.Get(lPBE."Project Code", lPBE."Analysis Type", lPBE."Version Code", lPBE."Line No.", pPBE."Entry No.", lPBE."Project Turn Code", lPBE."Temp Line No.");
         lParentPBE."Without VAT (LCY)" := lParentPBE."Without VAT (LCY)" - lPBE."Without VAT (LCY)";
         lParentPBE.Modify(false);
         exit(lPBE."Entry No.");
@@ -102,7 +108,7 @@ codeunit 50013 "Project Budget Management"
         lPLine: Record "Purchase Line";
         lLineAmt: Decimal;
     begin
-        lPBE.Get(pPBE."Entry No.");
+        lPBE.Get(pPBE."Project Code", pPBE."Analysis Type", pPBE."Version Code", pPBE."Line No.", pPBE."Entry No.", pPBE."Project Turn Code", pPBE."Temp Line No.");
         if lPBE."Without VAT (LCY)" = 0 then
             exit;
         lLineAmt := lPBE."Without VAT (LCY)";
@@ -119,7 +125,7 @@ codeunit 50013 "Project Budget Management"
                         lPLine."Forecast Entry" := lPBE."Entry No."
                     else begin
                         lPLine."Forecast Entry" := CreatePrjBudEntry(lPLine, lPBE);
-                        lPBE.Get(lPBE."Entry No.");
+                        lPBE.Get(lPBE."Project Code", lPBE."Analysis Type", lPBE."Version Code", lPBE."Line No.", lPBE."Entry No.", lPBE."Project Turn Code", lPBE."Temp Line No.");
                     end;
                 end;
                 lLineAmt := lLineAmt - lPLine."Outstanding Amount (LCY)";
