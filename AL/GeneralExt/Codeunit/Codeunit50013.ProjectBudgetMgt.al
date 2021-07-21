@@ -122,10 +122,13 @@ codeunit 50013 "Project Budget Management"
         if lPLine.FindSet() then
             repeat
                 if lPLine."Outstanding Amount (LCY)" <= lLineAmt then begin
-                    if (lPBE."Without VAT (LCY)" = lPLine."Outstanding Amount (LCY)") and (lPBE."Entry No." <> lPBE."Parent Entry") then
-                        lPLine."Forecast Entry" := lPBE."Entry No."
+                    if (lPBE."Without VAT (LCY)" = lPLine."Outstanding Amount (LCY)") and (lPBE."Entry No." <> lPBE."Parent Entry") then begin
+                        lPLine."Forecast Entry" := lPBE."Entry No.";
+                        lPLine.Modify(false);
+                    end
                     else begin
                         lPLine."Forecast Entry" := CreatePrjBudEntry(lPLine, lPBE);
+                        lPLine.Modify(false);
                         lPBE.Get(lPBE."Project Code", lPBE."Analysis Type", lPBE."Version Code", lPBE."Line No.", lPBE."Entry No.", lPBE."Project Turn Code", lPBE."Temp Line No.");
                     end;
                 end;
