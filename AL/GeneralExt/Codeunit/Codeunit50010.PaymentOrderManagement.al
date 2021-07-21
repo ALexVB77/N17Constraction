@@ -1028,6 +1028,9 @@ codeunit 50010 "Payment Order Management"
             if GenAppStatus = AppStatus::Payment.AsInteger() then
                 MessageResponsNo := 9;
         end;
+
+        error('MessageResponsNo = %1', MessageResponsNo);
+
     end;
 
     local procedure FillPurchActStatus(
