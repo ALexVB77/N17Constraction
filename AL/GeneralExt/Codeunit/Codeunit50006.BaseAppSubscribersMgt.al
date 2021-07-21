@@ -859,8 +859,8 @@ codeunit 50006 "Base App. Subscribers Mgt."
                     GenAppStatus := ApprovalEntry."Status App".AsInteger()
                 else
                     GenAppStatus := ApprovalEntry."Status App Act".AsInteger();
-                ApproverType := StrSubstNo(ResponsText,
-                    SelectStr(PaymentOrderMgt.GetMessageResponsNo(ApprovalEntry."IW Documents", GenAppStatus, ApprovalEntry."Preliminary Approval"), ResponsText));
+                ApproverType :=
+                    SelectStr(PaymentOrderMgt.GetMessageResponsNo(ApprovalEntry."IW Documents", GenAppStatus, ApprovalEntry."Preliminary Approval"), ResponsText);
                 case ApprovalEntry.Status of
                     ApprovalEntry.Status::Rejected:
                         CustomText := StrSubstNo(ActionApprovalRejectedTxt, ApproverType);
