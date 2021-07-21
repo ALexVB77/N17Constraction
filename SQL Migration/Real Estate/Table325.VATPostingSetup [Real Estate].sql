@@ -24,7 +24,9 @@ INSERT INTO [Bonava-Test].[dbo].[Real Estate$VAT Posting Setup$437dbf0e-84ff-417
 	[VAT Exempt],
 	[Manual VAT Settlement],
 	[Write-Off VAT Account],
-	[VAT Charge No_]
+	[VAT Charge No_],
+	[VAT Reinstatement Template],
+	[VAT Reinstatement Batch]
 )
 SELECT
 	[VAT Bus_ Posting Group],
@@ -42,12 +44,14 @@ SELECT
 	[Not Include into VAT Ledger],
     [Trans_ VAT Type],
 	ISNULL(GLAccMapping5.[New No_], '') AS [Trans_ VAT Account],
-	CASE WHEN [Manual VAT Settlement] = '1' THEN 'ВОССТАНОВЛ' ELSE [VAT Settlement Template] END AS [VAT Settlement Template],
-    CASE WHEN [Manual VAT Settlement] = '1' THEN 'ЗАЧЕТНДС' ELSE [VAT Settlement Batch] END AS [VAT Settlement Batch],
+	[VAT Settlement Template],
+    [VAT Settlement Batch],
 	[VAT Exempt],
 	[Manual VAT Settlement],
 	ISNULL(GLAccMapping6.[New No_], '') AS [Write-Off VAT Account],
-	ISNULL(GLAccMapping7.[New No_], '') AS [VAT Charge No_]
+	ISNULL(GLAccMapping7.[New No_], '') AS [VAT Charge No_],
+	CASE WHEN [Manual VAT Settlement] = '1' THEN 'ВОССТАНОВЛ' ELSE [VAT Reinstatement Template] END AS [VAT Reinstatement Template],
+    CASE WHEN [Manual VAT Settlement] = '1' THEN 'ЗАЧЕТНДС' ELSE [VAT Reinstatement Batch] END AS [VAT Reinstatement Batch]
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[NCC Real Estate$VAT Posting Setup]
 LEFT JOIN [Bonava-Test].[dbo].[Real Estate$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping
 ON GLAccMapping.[Old No_] = [Sales VAT Account] collate Cyrillic_General_100_CI_AS
