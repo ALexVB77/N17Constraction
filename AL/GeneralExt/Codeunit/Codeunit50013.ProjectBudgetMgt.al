@@ -73,11 +73,11 @@ codeunit 50013 "Project Budget Management"
         lPHead.Get(pPLine."Document Type", pPLine."Document No.");
         lPHead.CalcFields("External Agreement No. (Calc)");
         GLSetup.Get;
-        lDimVal.Get(GLSetup."Global Dimension 1 Code", pPLine."Shortcut Dimension 1 Code");
+        // lDimVal.Get(GLSetup."Global Dimension 1 Code", pPLine."Shortcut Dimension 1 Code");
         lLineAmt := pPLine.Amount / lExchRate.ExchangeRate(WorkDate(), pPLine."Currency Code");
         lPBE.Init();
         lPBE.Date := lPHead."Posting Date";
-        lPBE."Project Code" := lDimVal."Project Code";
+        lPBE."Project Code" := pPBE."Project Code"; //lDimVal."Project Code";
         lPBE."Analysis Type" := pPBE."Analysis Type";
         lPBE."Version Code" := pPBE."Version Code";
         lPBE."Line No." := pPBE."Line No.";
@@ -115,16 +115,20 @@ codeunit 50013 "Project Budget Management"
         lPLine.Reset();
         lPLine.SetRange("Document Type", pPLine."Document Type");
         lPLine.SetRange("Document No.", pPLine."Document No.");
+        lPLine.SetFilter("Line No.", '<>%1', pPLine."Line No.");
         lPLine.SetRange("Shortcut Dimension 1 Code", pPLine."Shortcut Dimension 1 Code");
         lPLine.SetRange("Shortcut Dimension 2 Code", pPLine."Shortcut Dimension 2 Code");
         lPLine.SetRange("Outstanding Amount (LCY)", 0, lPBE."Without VAT (LCY)");
         if lPLine.FindSet() then
             repeat
                 if lPLine."Outstanding Amount (LCY)" <= lLineAmt then begin
-                    if (lPBE."Without VAT (LCY)" = lPLine."Outstanding Amount (LCY)") and (lPBE."Entry No." <> lPBE."Parent Entry") then
-                        lPLine."Forecast Entry" := lPBE."Entry No."
+                    if (lPBE."Without VAT (LCY)" = lPLine."Outstanding Amount (LCY)") and (lPBE."Entry No." <> lPBE."Parent Entry") then begin
+                        lPLine."Forecast Entry" := lPBE."Entry No.";
+                        lPLine.Modify(false);
+                    end
                     else begin
                         lPLine."Forecast Entry" := CreatePrjBudEntry(lPLine, lPBE);
+                        lPLine.Modify(false);
                         lPBE.Get(lPBE."Project Code", lPBE."Analysis Type", lPBE."Version Code", lPBE."Line No.", lPBE."Entry No.", lPBE."Project Turn Code", lPBE."Temp Line No.");
                     end;
                 end;
