@@ -8,6 +8,11 @@ codeunit 81521 "Workflow Response Handling Ext"
     begin
     end;
 
+    // [EventSubscriber(ObjectType::Table, 1523, 'OnAfterInsertEvent', '', false, false)]
+    // local procedure OnWorkflowStepAfterInsert(Rec: Record "Workflow Step Argument"; RunTrigger: boolean)
+    // begin
+    // end;
+
     [EventSubscriber(ObjectType::Codeunit, 1521, 'OnExecuteWorkflowResponse', '', false, false)]
     local procedure OnExecuteWorkflowResponse(var ResponseExecuted: Boolean; var Variant: Variant; xVariant: Variant; ResponseWorkflowStepInstance: Record "Workflow Step Instance")
     var

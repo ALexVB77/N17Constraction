@@ -5,6 +5,26 @@ report 50999 "TempStarter"
     Caption = 'TempStarter';
     ProcessingOnly = true;
 
+    requestpage
+    {
+        layout
+        {
+            area(Content)
+            {
+                group(General)
+                {
+                    Caption = 'General';
+
+                    field("Run Notification Entry Dispatcher"; RunNotificationDispatcher)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Run Notification Entry Dispatcher';
+                    }
+                }
+            }
+        }
+    }
+
     trigger OnPreReport()
     var
         WEH: Codeunit "Workflow Event Handling";
@@ -14,7 +34,6 @@ report 50999 "TempStarter"
         WRHExt: Codeunit "Workflow Response Handling Ext";
 
         WSA: Record "Workflow Step Argument";
-        WR: Record "Workflow Response";
     begin
 
         SelectLatestVersion();
@@ -48,6 +67,17 @@ report 50999 "TempStarter"
             0,
             'Делегировать Акт, КС-2 и Заявку на оплату новому утверждающему', 'GROUP 10');
         WRH.AddResponsePredecessor(WRHExt.DelegateApprovalRequestsActCode(), WEH.RunWorkflowOnDelegateApprovalRequestCode());
+
+        // WSA.SetFilter("Response Function Name", '%1|%2|%3|%4',
+        //     WRHExt.CreateApprovalRequestsActCode(), WRHExt.MoveToNextActStatusCode(),  WRHExt.MoveToPrevActStatusCode(),     
+
+        if RunNotificationDispatcher then
+            Codeunit.Run(CODEUNIT::"Notification Entry Dispatcher");
+
     end;
+
+    var
+        RunNotificationDispatcher: Boolean;
+
 }
 
