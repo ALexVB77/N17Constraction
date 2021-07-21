@@ -93,6 +93,11 @@ report 50063 "Share Participant Act 2"
 
                 }
 
+                trigger OnPreDataItem()
+                begin
+                    SetRange(Number, 1, Buff.Count);
+                end;
+
                 trigger OnAfterGetRecord()
                 begin
                     Buff.Reset();
