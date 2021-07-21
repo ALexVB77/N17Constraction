@@ -159,7 +159,7 @@ select
       ,[Base Unit of Measure]
       ,[Price Unit Conversion]
       ,0 --[Type]
-      ,[Inventory Posting Group]
+      ,ISNULL(GLAccMapping.[New No_], '') AS [Inventory Posting Group]
       ,[Shelf No_]
       ,[Item Disc_ Group]
       ,[Allow Invoice Disc_]
@@ -293,6 +293,8 @@ select
 
 
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Item]
+LEFT JOIN [Bonava-Test].[dbo].[Bonava$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping
+ON GLAccMapping.[Old No_] = [Inventory Posting Group] collate Cyrillic_General_100_CI_AS
 
 delete from [dbo].[Bonava$Item$c526b3e9-b8ca-4683-81ba-fcd5f6b1472a]
 

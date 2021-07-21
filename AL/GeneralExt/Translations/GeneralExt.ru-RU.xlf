@@ -4541,23 +4541,20 @@
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 3948713639" size-unit="char" translate="yes" xml:space="preserve">
           <source>has been approved by %1.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>утвержден %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ActionApprovedTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 3129897065" size-unit="char" translate="yes" xml:space="preserve">
           <source>approval has been rejected by %1.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>отклонен %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ActionApprovalRejectedTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver</source>
-          <target>[NAB: SUGGESTION]Reception,Контроллеру,Сметчику,Проверяющему,Предв. Утверждающему,Утверждающему</target>
+          <target>Reception,Контроллером,Сметчиком,Проверяющим,Предв. Утверждающим,Утверждающим</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ResponsText</note>
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 3995936086 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
@@ -9714,17 +9711,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control AgreementFilter - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 4024062002 - Control 1678117997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place Filter</source>
+          <target>Фильтр по Cost Place</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control CPFilter - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4024062002 - Control 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export Excel</source>
           <target>Выгрузить в  Excel</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control ExportExcel - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 4024062002 - Control 1630212574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cost Place Filter</source>
-          <target>Фильтр по Cost Place</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control GlobalDimension1Filter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4024062002 - Control 336339332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if the column heading for the three periods will indicate a date interval or the number of days overdue.</source>
@@ -11333,6 +11331,18 @@
           <target>TempStarter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1809404285 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target>Общее</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1809404285 - Control 3501730449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Run Notification Entry Dispatcher</source>
+          <target>Run Notification Entry Dispatcher</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control Run Notification Entry Dispatcher - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Shipment M-15</source>

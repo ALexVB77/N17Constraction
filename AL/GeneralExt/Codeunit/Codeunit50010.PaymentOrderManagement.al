@@ -1012,9 +1012,8 @@ codeunit 50010 "Payment Order Management"
                 exit(GetPurchActApproverFromDim(PurchHeader."Dimension Set ID"));
     end;
 
-    procedure GetMessageResponsNo(IWDocument: Boolean; GenAppStatus: Integer; SentToPreApproval: Boolean): Integer
+    procedure GetMessageResponsNo(IWDocument: Boolean; GenAppStatus: Integer; SentToPreApproval: Boolean) MessageResponsNo: Integer
     var
-        MessageResponsNo: Integer;
         ActAppStatus: Enum "Purchase Act Approval Status";
         AppStatus: enum "Purchase Approval Status";
     begin

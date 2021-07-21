@@ -448,8 +448,8 @@ report 80322 "Aged Accounts Payable Ext"
 
                         if not PrintAmountInLCY then
                             TempVendorLedgEntry.SetRange("Currency Code", TempCurrency.Code);
-                        if GlobalDimension1Filter <> '' then
-                            TempVendorLedgEntry.SetFilter("Global Dimension 1 Code", GlobalDimension1Filter);
+                        if CPFilter <> '' then
+                            TempVendorLedgEntry.SetFilter("Global Dimension 1 Code", CPFilter);
                         if AgreementFilter <> '' then
                             TempVendorLedgEntry.SetFilter("Agreement No.", AgreementFilter);
                     end;
@@ -485,9 +485,9 @@ report 80322 "Aged Accounts Payable Ext"
             begin
 
                 if ExportExcel then begin
-                    ;
+
                     RowNo += 1;
-                    AddCell(RowNo, 1, Text0001, false, xl."Cell Type"::Number, false);
+                    AddCell(RowNo, 1, Text0001, false, xl."Cell Type"::Text, false);
                     AddCell(RowNo, 10, ReportFormat(GrandTotalVLEAmtLCY), false, xl."Cell Type"::Number, false);
                     AddCell(RowNo, 11, ReportFormat(GrandTotalVLERemaingAmtLCY[1]), false, xl."Cell Type"::Number, false);
                     AddCell(RowNo, 12, ReportFormat(GrandTotalVLERemaingAmtLCY[2]), false, xl."Cell Type"::Number, false);
@@ -525,8 +525,8 @@ report 80322 "Aged Accounts Payable Ext"
                 TempCurrency.DeleteAll();
                 TempVendorLedgEntry.Reset();
                 TempVendorLedgEntry.DeleteAll();
-                Clear(GrandTotalVLERemaingAmtLCY);
-                GrandTotalVLEAmtLCY := 0;
+                //Clear(GrandTotalVLERemaingAmtLCY);
+                //GrandTotalVLEAmtLCY := 0;
             end;
 
             trigger OnPreDataItem()
@@ -697,7 +697,7 @@ report 80322 "Aged Accounts Payable Ext"
                         Caption = 'Export Excel';
 
                     }
-                    field(GlobalDimension1Filter; GlobalDimension1Filter)
+                    field(CPFilter; CPFilter)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Cost Place Filter';
@@ -712,7 +712,7 @@ report 80322 "Aged Accounts Payable Ext"
                             DimValueList.SetTableView(DimValue);
                             DimValueList.LookupMode := true;
                             if DimValueList.RunModal() = Action::LookupOK then begin
-                                GlobalDimension1Filter := DimValueList.GetSelectionFilter();
+                                CPFilter := DimValueList.GetSelectionFilter();
                             end;
 
                         end;
@@ -871,6 +871,7 @@ report 80322 "Aged Accounts Payable Ext"
         Text003: Label 'More than';
         ServerFileName: Text;
         AgreementFilter: Text[250];
+        CPFilter: Text[250];
     //NC 50517 <<
 
 
