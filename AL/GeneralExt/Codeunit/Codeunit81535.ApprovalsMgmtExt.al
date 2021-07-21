@@ -102,10 +102,12 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
         ApprovalEntryArgument: Record "Approval Entry";
         ApprovalEntry: Record "Approval Entry";
         PurchHeader: Record "Purchase Header";
+        NotificationEntry: Record "Notification Entry";
         PayOrderMgt: Codeunit "Payment Order Management";
         RecRef2: RecordRef;
         RejectEntryNo: Integer;
         EndOfWorkflow: Boolean;
+        SkipSenderNotification: Boolean;
     begin
         if RecRef.Number = DATABASE::"Approval Entry" then begin
             RecRef.SetTable(ApprovalEntry);
@@ -115,17 +117,24 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
         end else begin
             RecRef.SetTable(PurchHeader);
             PurchHeader.Get(PurchHeader."Document Type", PurchHeader."No.");
+            SkipSenderNotification := true;
         end;
 
         PurchHeader.TestField("Process User", USERID);
         RecRef2.GetTable(PurchHeader);
 
         if not PurchHeader."IW Documents" then begin
+            if not SkipSenderNotification then
+                NotificationEntry.CreateNotificationEntry(
+                    NotificationEntry.Type::Approval, PurchHeader.Controller, ApprovalEntry, Page::"Purchase Order Act", '', UserID);
             PayOrderMgt.ChangePurchaseOrderActStatus(PurchHeader, Reject, RejectEntryNo);
             EndOfWorkflow :=
                 ((not Reject) and (PurchHeader."Status App Act" = PurchHeader."Status App Act"::Accountant)) or
                 (Reject and (PurchHeader."Status App Act" = PurchHeader."Status App Act"::Controller));
         end else begin
+            if not SkipSenderNotification then
+                NotificationEntry.CreateNotificationEntry(
+                    NotificationEntry.Type::Approval, PurchHeader.Receptionist, ApprovalEntry, Page::"Purchase Order App", '', UserID);
             PayOrderMgt.ChangePurchasePaymentInvoiceStatus(PurchHeader, Reject, RejectEntryNo);
             EndOfWorkflow :=
                 ((not Reject) and (PurchHeader."Status App" = PurchHeader."Status App"::Payment)) or

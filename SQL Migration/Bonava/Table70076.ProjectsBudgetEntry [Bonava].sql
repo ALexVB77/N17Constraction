@@ -103,7 +103,7 @@ SELECT
 	ProjectsBudgetEntry.[Without VAT (LCY)],
 	ProjectsBudgetEntry.[Problem Pmt_ Document],
 	ProjectsBudgetEntry.[Currency Rate],
-	'' AS [Close Date],
+	'17530101' AS [Close Date],
 	'' AS [Payment Description]
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Projects Budget Entry] AS ProjectsBudgetEntry
 LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] DimensionMapping
