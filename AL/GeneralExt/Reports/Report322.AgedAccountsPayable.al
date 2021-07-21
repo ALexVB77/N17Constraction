@@ -485,9 +485,9 @@ report 80322 "Aged Accounts Payable Ext"
             begin
 
                 if ExportExcel then begin
-                    ;
+
                     RowNo += 1;
-                    AddCell(RowNo, 1, Text0001, false, xl."Cell Type"::Number, false);
+                    AddCell(RowNo, 1, Text0001, false, xl."Cell Type"::Text, false);
                     AddCell(RowNo, 10, ReportFormat(GrandTotalVLEAmtLCY), false, xl."Cell Type"::Number, false);
                     AddCell(RowNo, 11, ReportFormat(GrandTotalVLERemaingAmtLCY[1]), false, xl."Cell Type"::Number, false);
                     AddCell(RowNo, 12, ReportFormat(GrandTotalVLERemaingAmtLCY[2]), false, xl."Cell Type"::Number, false);
@@ -525,8 +525,8 @@ report 80322 "Aged Accounts Payable Ext"
                 TempCurrency.DeleteAll();
                 TempVendorLedgEntry.Reset();
                 TempVendorLedgEntry.DeleteAll();
-                Clear(GrandTotalVLERemaingAmtLCY);
-                GrandTotalVLEAmtLCY := 0;
+                //Clear(GrandTotalVLERemaingAmtLCY);
+                //GrandTotalVLEAmtLCY := 0;
             end;
 
             trigger OnPreDataItem()
