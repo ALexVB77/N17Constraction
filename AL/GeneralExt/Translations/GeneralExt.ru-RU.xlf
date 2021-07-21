@@ -9711,17 +9711,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control AgreementFilter - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 4024062002 - Control 1678117997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place Filter</source>
+          <target>Фильтр по Cost Place</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control CPFilter - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4024062002 - Control 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export Excel</source>
           <target>Выгрузить в  Excel</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control ExportExcel - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 4024062002 - Control 1630212574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cost Place Filter</source>
-          <target>Фильтр по Cost Place</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control GlobalDimension1Filter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4024062002 - Control 336339332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if the column heading for the three periods will indicate a date interval or the number of days overdue.</source>
@@ -11335,14 +11336,12 @@
           <source>General</source>
           <target>Общее</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1809404285 - Control 3501730449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Run Notification Entry Dispatcher</source>
           <target>Run Notification Entry Dispatcher</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control Run Notification Entry Dispatcher - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
