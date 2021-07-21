@@ -489,7 +489,8 @@ table 70076 "Projects Budget Entry"
         "Create Date" := Today;
         "Create Time" := Time;
         "Create User" := UserId;
-        "Entry No." := GetNextEntryNo();
+        if "Entry No." = 0 then
+            "Entry No." := GetNextEntryNo();
         if "Parent Entry" = 0 then
             "Parent Entry" := "Entry No.";
     end;

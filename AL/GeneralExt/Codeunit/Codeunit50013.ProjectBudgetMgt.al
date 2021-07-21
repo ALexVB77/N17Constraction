@@ -143,7 +143,7 @@ codeunit 50013 "Project Budget Management"
             until (lPLine.Next() = 0) or (lLineAmt <= 0);
     end;
 
-    procedure DeleteSTLine(pPrBudEntry: Record "Projects Budget Entry")
+    procedure DeleteSTLine(var pPrBudEntry: Record "Projects Budget Entry")
     var
         lUS: Record "User Setup";
         lPrBudEntry: Record "Projects Budget Entry";

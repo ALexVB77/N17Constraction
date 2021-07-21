@@ -494,7 +494,7 @@ page 70143 "Forecast List Analisys"
                         Error(TEXT0015);
                     Clear(CreateSTPrBEntPage);
                     CreateSTPrBEntPage.SetProjBudEntry(Rec);
-                    CreateSTPrBEntPage.RunModal();
+                    if CreateSTPrBEntPage.RunModal() = action::LookupOK then;
                     CurrPage.update(false);
                 end;
             }
