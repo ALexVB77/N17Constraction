@@ -4539,6 +4539,27 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method CheckFADocNo - NamedType ErrText001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 3948713639" size-unit="char" translate="yes" xml:space="preserve">
+          <source>has been approved by %1.</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ActionApprovedTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 3129897065" size-unit="char" translate="yes" xml:space="preserve">
+          <source>approval has been rejected by %1.</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ActionApprovalRejectedTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver</source>
+          <target>[NAB: SUGGESTION]Reception,Контроллеру,Сметчику,Проверяющему,Предв. Утверждающему,Утверждающему</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ResponsText</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 3995936086 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
           <source>Нельзя сторнировать, так как есть НДС операции с типом распределения НДС Расходы</source>
           <target>Нельзя сторнировать, так как есть НДС операции с типом распределения НДС Расходы</target>
@@ -9691,7 +9712,6 @@
           <source>Agreement Filter</source>
           <target>Фильтр по договорам</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control AgreementFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4024062002 - Control 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9704,7 +9724,6 @@
           <source>Cost Place Filter</source>
           <target>Фильтр по Cost Place</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control GlobalDimension1Filter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4024062002 - Control 336339332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -12616,18 +12635,6 @@
           <target>Общая бизнес-группа по умолчанию</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location (Ext) - Field Def. Gen. Bus. Posting Group - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2734860803 - Field 2790079521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2193680195">
-          <source>EMail Template Report ID</source>
-          <target>EMail шаблон отчета ID</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Notification Entry (Ext) - Field EMail Template Report ID - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2734860803 - Field 1179048807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2193680195">
-          <source>EMail Template Report Name</source>
-          <target>EMail шаблон отчета название</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Notification Entry (Ext) - Field EMail Template Report Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3235211674 - Field 516867376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1311705274">
           <source>New FA Posting Group</source>
