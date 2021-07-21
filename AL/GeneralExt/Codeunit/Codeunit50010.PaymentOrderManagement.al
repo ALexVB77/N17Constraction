@@ -1012,11 +1012,30 @@ codeunit 50010 "Payment Order Management"
                 exit(GetPurchActApproverFromDim(PurchHeader."Dimension Set ID"));
     end;
 
+    procedure GetMessageResponsNo(IWDocument: Boolean; GenAppStatus: Integer; SentToPreApproval: Boolean): Integer
+    var
+        MessageResponsNo: Integer;
+        ActAppStatus: Enum "Purchase Act Approval Status";
+        AppStatus: enum "Purchase Approval Status";
+    begin
+        if not IWDocument then begin
+            MessageResponsNo := GenAppStatus + 1;
+            if ((GenAppStatus = ActAppStatus::Approve.AsInteger()) and (not SentToPreApproval)) or (GenAppStatus >= ActAppStatus::Signing.AsInteger()) then
+                MessageResponsNo := ActAppStatus.AsInteger + 2;
+        end else begin
+            MessageResponsNo := GenAppStatus;
+            if (GenAppStatus = AppStatus::Approve.AsInteger()) and (not SentToPreApproval) then
+                MessageResponsNo := AppStatus.AsInteger + 1;
+            if GenAppStatus = AppStatus::Payment.AsInteger() then
+                MessageResponsNo := 9;
+        end;
+    end;
+
     local procedure FillPurchActStatus(
         var PurchHeader: Record "Purchase Header"; ActAppStatus: Enum "Purchase Act Approval Status"; ProcessUser: code[50]; ProblemType: enum "Purchase Problem Type"; Reject: Boolean)
     var
         UserSetup: Record "User Setup";
-        MessageResponsNo: Integer;
+
         LocText001: Label 'Failed to define user for process %1!';
     begin
         if ProcessUser = '' then
@@ -1030,20 +1049,13 @@ codeunit 50010 "Payment Order Management"
         PurchHeader."Problem Document" := ProblemType <> ProblemType::" ";
         PurchHeader.Modify;
 
-        MessageResponsNo := ActAppStatus.AsInteger + 1;
-        if ((ActAppStatus = ActAppStatus::Approve) and (not PurchHeader."Sent to pre. Approval")) or
-            (ActAppStatus.AsInteger() >= ActAppStatus::Signing.AsInteger())
-        then
-            MessageResponsNo := ActAppStatus.AsInteger + 2;
-
-        SetChangeStatusMessage(PurchHeader, MessageResponsNo, Reject);
+        SetChangeStatusMessage(PurchHeader, GetMessageResponsNo(false, ActAppStatus.AsInteger(), PurchHeader."Sent to pre. Approval"), Reject);
     end;
 
     local procedure FillPayInvStatus(
         var PurchHeader: Record "Purchase Header"; AppStatus: Enum "Purchase Approval Status"; ProcessUser: code[50]; ProblemType: enum "Purchase Problem Type"; Reject: Boolean)
     var
         UserSetup: Record "User Setup";
-        MessageResponsNo: Integer;
         LocText001: Label 'Failed to define user for process %1!';
     begin
         if ProcessUser = '' then
@@ -1057,13 +1069,7 @@ codeunit 50010 "Payment Order Management"
         PurchHeader."Problem Document" := ProblemType <> ProblemType::" ";
         PurchHeader.Modify;
 
-        MessageResponsNo := AppStatus.AsInteger;
-        if (AppStatus = AppStatus::Approve) and (not PurchHeader."Sent to pre. Approval") then
-            MessageResponsNo := AppStatus.AsInteger + 1;
-        if AppStatus = AppStatus::Payment then
-            MessageResponsNo := 9;
-
-        SetChangeStatusMessage(PurchHeader, MessageResponsNo, Reject);
+        SetChangeStatusMessage(PurchHeader, GetMessageResponsNo(false, AppStatus.AsInteger(), PurchHeader."Sent to pre. Approval"), Reject);
     end;
 
     procedure ChangePayInvStatusWhenDelegate(var PurchHeader: Record "Purchase Header"; ProcessUser: code[50])
@@ -1083,7 +1089,6 @@ codeunit 50010 "Payment Order Management"
 
         ChangeStatusMessage := StrSubstNo(DelegateText, PurchHeader."No.", PurchHeader."Status App", ProcessUser);
     end;
-
 
     local procedure SetChangeStatusMessage(var PurchHeader: Record "Purchase Header"; ResponsNo: integer; Reject: Boolean)
     var
