@@ -4543,21 +4543,18 @@
           <source>has been approved by %1.</source>
           <target>утвержден %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ActionApprovedTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 3129897065" size-unit="char" translate="yes" xml:space="preserve">
           <source>approval has been rejected by %1.</source>
           <target>отклонен %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ActionApprovalRejectedTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver</source>
           <target>Reception,Контроллером,Сметчиком,Проверяющим,Предв. Утверждающим,Утверждающим</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ResponsText</note>
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 3995936086 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
@@ -11333,6 +11330,20 @@
           <target>TempStarter</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1809404285 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target>Общее</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1809404285 - Control 3501730449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Run Notification Entry Dispatcher</source>
+          <target>Run Notification Entry Dispatcher</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control Run Notification Entry Dispatcher - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Shipment M-15</source>

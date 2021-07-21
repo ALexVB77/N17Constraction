@@ -9443,6 +9443,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1809404285 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1809404285 - Control 3501730449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Run Notification Entry Dispatcher</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control Run Notification Entry Dispatcher - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Shipment M-15</source>
           <note from="Developer" annotates="general" priority="2"></note>
