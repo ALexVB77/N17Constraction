@@ -3783,6 +3783,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method CheckFADocNo - NamedType ErrText001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 3948713639" size-unit="char" translate="yes" xml:space="preserve">
+          <source>has been approved by %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ActionApprovedTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 3129897065" size-unit="char" translate="yes" xml:space="preserve">
+          <source>approval has been rejected by %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ActionApprovalRejectedTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ResponsText</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 3995936086 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
           <source>Нельзя сторнировать, так как есть НДС операции с типом распределения НДС Расходы</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10512,16 +10527,6 @@
           <source>Def. Gen. Bus. Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Location (Ext) - Field Def. Gen. Bus. Posting Group - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2734860803 - Field 2790079521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2193680195">
-          <source>EMail Template Report ID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Notification Entry (Ext) - Field EMail Template Report ID - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2734860803 - Field 1179048807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2193680195">
-          <source>EMail Template Report Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Notification Entry (Ext) - Field EMail Template Report Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3235211674 - Field 516867376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1311705274">
           <source>New FA Posting Group</source>
