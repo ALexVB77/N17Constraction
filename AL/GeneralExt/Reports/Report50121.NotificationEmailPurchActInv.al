@@ -109,7 +109,7 @@ report 50121 "Notification Email Act. Inv."
                     // FindReceipientUser();
                     // CreateSettingsLink();
                     DataTypeManagement.GetRecordRef("Triggered By Record", RecRef);
-                    // SetDocumentTypeAndNumber(RecRef);
+                    SetDocumentTypeAndNumber(RecRef);
                     SetActionText();
                     SetReportFieldPlaceholders(RecRef);
                     //SetReportLinePlaceholders();
@@ -147,9 +147,9 @@ report 50121 "Notification Email Act. Inv."
         NotificationManagement: Codeunit "Notification Management";
         //SettingsURL: Text;
         //SettingsWinURL: Text;
-        //DocumentType: Text;
+        DocumentType: Text;
         DocumentNo: Text;
-        //DocumentName: Text;
+        DocumentName: Text;
         DocumentURL: Text;
         // ActionText: Text;
         ActionTextRUS: Text;
@@ -188,19 +188,15 @@ report 50121 "Notification Email Act. Inv."
         SettingsURL := GetUrl(CLIENTTYPE::Web, CompanyName, OBJECTTYPE::Page, Page::"Notification Setup");
     end;
 
+    */
     local procedure SetDocumentTypeAndNumber(SourceRecRef: RecordRef)
     var
         RecRef: RecordRef;
-        IsHandled: Boolean;
     begin
         GetTargetRecRef(SourceRecRef, RecRef);
-        IsHandled := false;
-        OnBeforeGetDocumentTypeAndNumber("Notification Entry", RecRef, DocumentType, DocumentNo, IsHandled);
-        if not IsHandled then
-            NotificationManagement.GetDocumentTypeAndNumber(RecRef, DocumentType, DocumentNo);
+        NotificationManagement.GetDocumentTypeAndNumber(RecRef, DocumentType, DocumentNo);
         DocumentName := DocumentType + ' ' + DocumentNo;
     end;
-    */
 
     local procedure SetActionText()
     var
