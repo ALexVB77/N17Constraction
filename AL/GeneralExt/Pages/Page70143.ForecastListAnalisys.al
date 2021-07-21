@@ -709,9 +709,9 @@ page 70143 "Forecast List Analisys"
     local procedure BuildView();
     begin
         if HideZeroAmountLine then
-            Rec.SetFilter(Amount, '<>0')
+            Rec.SetFilter("Without VAT (LCY)", '<>0')
         else
-            Rec.SetRange(Amount);
+            Rec.SetRange("Without VAT (LCY)");
     end;
 
     local procedure TemplateCodeOnAfterValidate()
