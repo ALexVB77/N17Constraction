@@ -8,21 +8,22 @@ report 50063 "Share Participant Act 2"
     WordLayout = './Reports/Layouts/FinancialObligationsCertificateTemplate.docx';
     dataset
     {
-        dataitem(Employee; Employee)
+        dataitem(Header; Integer)
         {
+            MaxIteration = 1;
             column(ReportTitle; ReportTitle)
             {
 
             }
-            column(JobTitleGenitive; "Job Title Genitive")
+            column(JobTitleGenitive; Employee."Job Title Genitive")
             {
 
             }
-            column(JobTitle; "Job Title")
+            column(JobTitle; Employee."Job Title")
             {
 
             }
-            column(FullNameGenitive; "Full Name Genitive")
+            column(FullNameGenitive; Employee."Full Name Genitive")
             {
 
             }
@@ -261,6 +262,7 @@ report 50063 "Share Participant Act 2"
         PartialStatus: Label 'partial';
         DebtStatus1: Label 'is absent';
         DebtStatus2: Label 'is %1 RUB';
+        Employee: Record Employee;
 
     trigger OnPreReport()
     begin
