@@ -1091,20 +1091,17 @@ codeunit 50010 "Payment Order Management"
     local procedure SetChangeStatusMessage(var PurchHeader: Record "Purchase Header"; ResponsNo: integer; Reject: Boolean)
     var
         ApproveText: Label 'Document %1 has been sent to the %2 for approval.';
-        SigningText: Label 'Document %1 has been sent for signature.';
         RejectText: Label 'Document %1 has been returned to the %2 for revision.';
         FinalText1: Label 'The document passed all approvals and a Purchase Invoice for Accounting was created!';
         FinalText2: Label 'The document passed all approvals!';
-        ResponsText: label 'Reception,Controller,Estimator,Checker,Pre. Approver,Approver';
+        ResponsText: label 'Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer';
     begin
         case ResponsNo of
-            1, 2, 3, 4, 5, 6:
+            1, 2, 3, 4, 5, 6, 7:
                 if not Reject then
                     ChangeStatusMessage := StrSubstNo(ApproveText, PurchHeader."No.", SelectStr(ResponsNo, ResponsText))
                 else
                     ChangeStatusMessage := StrSubstNo(RejectText, PurchHeader."No.", SelectStr(ResponsNo, ResponsText));
-            7:
-                ChangeStatusMessage := StrSubstNo(SigningText, PurchHeader."No.");
             8:
                 ChangeStatusMessage := FinalText1;
             9:

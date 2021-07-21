@@ -4552,10 +4552,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ActionApprovalRejectedTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver</source>
-          <target>Reception,Контроллером,Сметчиком,Проверяющим,Предв. Утверждающим,Утверждающим</target>
+          <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer</source>
+          <target>Reception,Контроллером,Сметчиком,Проверяющим,Предв. Утверждающим,Утверждающим,Подписывающим</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType ResponsText</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3249848645 - Method 2224964482 - NamedType 2426382451" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The document passed all approvals!</source>
+          <target>Документ прошел все утверждения!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base App. Subscribers Mgt. - Method OnBeforeGetActionTextFor - NamedType FinalText</note>
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 3995936086 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
           <source>Нельзя сторнировать, так как есть НДС операции с типом распределения НДС Расходы</source>
@@ -5241,12 +5249,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method SetChangeStatusMessage - NamedType ApproveText</note>
         </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 2812542981 - NamedType 1075279242" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document %1 has been sent for signature.</source>
-          <target>Документ %1 отправлен на подпись.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method SetChangeStatusMessage - NamedType SigningText</note>
-        </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 2812542981 - NamedType 1399778526" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document %1 has been returned to the %2 for revision.</source>
           <target>Документ %1 возвращен на доработку %2.</target>
@@ -5266,9 +5268,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method SetChangeStatusMessage - NamedType FinalText2</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 2812542981 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver</source>
-          <target>Reception,Контроллеру,Сметчику,Проверяющему,Предв. Утверждающему,Утверждающему</target>
+          <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer</source>
+          <target>Reception,Контроллеру,Сметчику,Проверяющему,Предв. Утверждающему,Утверждающему,Подписывающему</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method SetChangeStatusMessage - NamedType ResponsText</note>
         </trans-unit>
         <trans-unit id="Codeunit 2488893537 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
@@ -9715,7 +9718,6 @@
           <source>Cost Place Filter</source>
           <target>Фильтр по Cost Place</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control CPFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4024062002 - Control 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

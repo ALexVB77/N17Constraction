@@ -846,9 +846,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
         RecRef: RecordRef;
         ApproverType: Text;
         GenAppStatus: Integer;
+        MessageResponsNo: Integer;
         ActionApprovedTxt: Label 'has been approved by %1.';
         ActionApprovalRejectedTxt: Label 'approval has been rejected by %1.';
-        ResponsText: label 'Reception,Controller,Estimator,Checker,Pre. Approver,Approver';
+        ResponsText: label 'Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer';
+        FinalText: Label 'The document passed all approvals!';
     begin
         if NotificationEntry.Type = NotificationEntry.Type::Approval then begin
             DataTypeManagement.GetRecordRef(NotificationEntry."Triggered By Record", RecRef);
@@ -859,13 +861,17 @@ codeunit 50006 "Base App. Subscribers Mgt."
                     GenAppStatus := ApprovalEntry."Status App".AsInteger()
                 else
                     GenAppStatus := ApprovalEntry."Status App Act".AsInteger();
-                ApproverType :=
-                    SelectStr(PaymentOrderMgt.GetMessageResponsNo(ApprovalEntry."IW Documents", GenAppStatus, ApprovalEntry."Preliminary Approval"), ResponsText);
+                MessageResponsNo := PaymentOrderMgt.GetMessageResponsNo(ApprovalEntry."IW Documents", GenAppStatus, ApprovalEntry."Preliminary Approval");
+                if not (MessageResponsNo in [8, 9]) then
+                    ApproverType := SelectStr(MessageResponsNo, ResponsText);
                 case ApprovalEntry.Status of
                     ApprovalEntry.Status::Rejected:
                         CustomText := StrSubstNo(ActionApprovalRejectedTxt, ApproverType);
                     ApprovalEntry.Status::Approved:
-                        CustomText := StrSubstNo(ActionApprovedTxt, ApproverType);
+                        if MessageResponsNo in [8, 9] then
+                            CustomText := FinalText
+                        else
+                            CustomText := StrSubstNo(ActionApprovedTxt, ApproverType);
                     else
                         IsHandled := false;
                 end;
