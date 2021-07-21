@@ -117,6 +117,8 @@ codeunit 50010 "Payment Order Management"
             if "Act Type" = "Act Type"::"KC-2" then
                 if PurchSetup."Default Estimator" <> '' then
                     Estimator := PurchSetup."Default Estimator";
+            if PurchSetup."Prices Incl. VAT in Req. Doc." then
+                Validate("Prices Including VAT", true);
             MODIFY(TRUE);
 
             PurchLine.Init;
@@ -165,6 +167,8 @@ codeunit 50010 "Payment Order Management"
         grPurchHeader."Date Status App" := TODAY;
 
         grPurchHeader.Receptionist := UserId;
+        if PurchSetup."Prices Incl. VAT in Req. Doc." then
+            grPurchHeader.Validate("Prices Including VAT", true);
         grPurchHeader.MODIFY(TRUE);
 
         PurchLine.Init;

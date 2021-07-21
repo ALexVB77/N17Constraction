@@ -89,6 +89,10 @@ pageextension 80460 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payabl
                 {
                     ApplicationArea = Basic, Suite;
                 }
+                field("Prices Incl. VAT in Req. Doc."; "Prices Incl. VAT in Req. Doc.")
+                {
+                    ApplicationArea = Basic, Suite;
+                }
             }
         }
     }

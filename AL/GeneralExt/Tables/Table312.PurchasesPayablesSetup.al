@@ -49,6 +49,11 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
                 CheckCostDimension();
             end;
         }
+        field(50008; "Prices Incl. VAT in Req. Doc."; Boolean)
+        {
+            Description = 'NC 51374 AB';
+            Caption = 'Prices Including VAT in Request Docs.';
+        }
         field(50010; "Master Approver (Development)"; code[50])
         {
             Description = 'NC 51374 AB';
