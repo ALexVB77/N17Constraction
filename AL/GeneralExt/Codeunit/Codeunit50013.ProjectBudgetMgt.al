@@ -122,6 +122,7 @@ codeunit 50013 "Project Budget Management"
         lPLine.SetRange("Document Type", pPLine."Document Type");
         lPLine.SetRange("Document No.", pPLine."Document No.");
         lPLine.SetFilter("Line No.", '<>%1', pPLine."Line No.");
+        lPLine.SetRange("Forecast Entry", 0);
         lPLine.SetRange("Shortcut Dimension 1 Code", pPLine."Shortcut Dimension 1 Code");
         lPLine.SetRange("Shortcut Dimension 2 Code", pPLine."Shortcut Dimension 2 Code");
         lPLine.SetRange("Outstanding Amount (LCY)", 0, lPBE."Without VAT (LCY)");
