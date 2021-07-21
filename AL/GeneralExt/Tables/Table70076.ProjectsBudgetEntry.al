@@ -463,14 +463,18 @@ table 70076 "Projects Budget Entry"
 
     keys
     {
-        key(PK; "Project Code", "Analysis Type", "Version Code", "Line No.", "Entry No.", "Project Turn Code", "Temp Line No.")
+        // key(PK; "Project Code", "Analysis Type", "Version Code", "Line No.", "Entry No.", "Project Turn Code", "Temp Line No.")
+        // {
+        //     Clustered = true;
+        // }
+        key(PK; "Entry No.")
         {
             Clustered = true;
         }
-        key(Key1; "Entry No.")
-        {
+        // key(Key1; "Entry No.")
+        // {
 
-        }
+        // }
         key(Key2; "Project Code", "Analysis Type", "Version Code", "Line No.", Date)
         {
 

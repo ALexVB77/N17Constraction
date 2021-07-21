@@ -95,7 +95,7 @@ codeunit 50013 "Project Budget Management"
         lPBE."External Agreement No." := lPHead."External Agreement No. (Calc)";
         lPBE."Parent Entry" := pPBE."Parent Entry";
         lPBE.Insert(true);
-        lParentPBE.Get(lPBE."Project Code", lPBE."Analysis Type", lPBE."Version Code", lPBE."Line No.", pPBE."Entry No.", lPBE."Project Turn Code", lPBE."Temp Line No.");
+        lParentPBE.Get(pPBE."Entry No.");
         lParentPBE."Without VAT (LCY)" := lParentPBE."Without VAT (LCY)" - lPBE."Without VAT (LCY)";
         lParentPBE.Modify(false);
         exit(lPBE."Entry No.");
@@ -108,7 +108,7 @@ codeunit 50013 "Project Budget Management"
         lPLine: Record "Purchase Line";
         lLineAmt: Decimal;
     begin
-        lPBE.Get(pPBE."Project Code", pPBE."Analysis Type", pPBE."Version Code", pPBE."Line No.", pPBE."Entry No.", pPBE."Project Turn Code", pPBE."Temp Line No.");
+        lPBE.Get(pPBE."Entry No.");
         if lPBE."Without VAT (LCY)" = 0 then
             exit;
         lLineAmt := lPBE."Without VAT (LCY)";
@@ -129,7 +129,7 @@ codeunit 50013 "Project Budget Management"
                     else begin
                         lPLine."Forecast Entry" := CreatePrjBudEntry(lPLine, lPBE);
                         lPLine.Modify(false);
-                        lPBE.Get(lPBE."Project Code", lPBE."Analysis Type", lPBE."Version Code", lPBE."Line No.", lPBE."Entry No.", lPBE."Project Turn Code", lPBE."Temp Line No.");
+                        lPBE.Get(lPBE."Entry No.");
                     end;
                 end;
                 lLineAmt := lLineAmt - lPLine."Outstanding Amount (LCY)";
