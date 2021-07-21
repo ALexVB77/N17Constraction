@@ -8,7 +8,8 @@ codeunit 50013 "Project Budget Management"
     var
         GLSetup: Record "General Ledger Setup";
         US: Record "User Setup";
-        Text001: Label 'Line is already linked with CF entry';
+        Text001: Label 'Line is already linked with CF entry. ';
+        Text002: Label 'Delete CF Entry?';
 
     procedure ApplyPrjBudEntrytoPurchLine(var vPLine: Record "Purchase Line")
     var
@@ -19,8 +20,13 @@ codeunit 50013 "Project Budget Management"
         lLineAmt: Decimal;
     begin
         if vPLine."Forecast Entry" <> 0 then begin
-            Message(Text001);
-            exit;
+            if Confirm(Text001 + Text002, false) then begin
+                lPBE.Reset();
+                lPBE.SetRange("Entry No.", vPLine."Forecast Entry");
+                DeleteSTLine(lPBE);
+                vPLine."Forecast Entry" := 0;
+            end else
+                exit;
         end;
         vPLine.TestField("Shortcut Dimension 1 Code");
         vPLine.TestField("Shortcut Dimension 2 Code");
