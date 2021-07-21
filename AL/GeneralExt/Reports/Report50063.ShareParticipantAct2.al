@@ -10,6 +10,7 @@ report 50063 "Share Participant Act 2"
     {
         dataitem(Header; Integer)
         {
+            DataItemTableView = sorting(Number);
             MaxIteration = 1;
             column(ReportTitle; ReportTitle)
             {
@@ -81,6 +82,7 @@ report 50063 "Share Participant Act 2"
             }
             dataitem(Line; Integer)
             {
+                DataItemTableView = sorting(Number);
                 column(FAPostingDate; FAPostingDate)
                 {
 
