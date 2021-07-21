@@ -1020,24 +1020,20 @@ codeunit 50010 "Payment Order Management"
         if not IWDocument then begin
             MessageResponsNo := GenAppStatus + 1;
             if ((GenAppStatus = ActAppStatus::Approve.AsInteger()) and (not SentToPreApproval)) or (GenAppStatus >= ActAppStatus::Signing.AsInteger()) then
-                MessageResponsNo := ActAppStatus.AsInteger + 2;
+                MessageResponsNo := GenAppStatus + 2;
         end else begin
             MessageResponsNo := GenAppStatus;
             if (GenAppStatus = AppStatus::Approve.AsInteger()) and (not SentToPreApproval) then
-                MessageResponsNo := AppStatus.AsInteger + 1;
+                MessageResponsNo := GenAppStatus + 1;
             if GenAppStatus = AppStatus::Payment.AsInteger() then
                 MessageResponsNo := 9;
         end;
-
-        error('MessageResponsNo = %1', MessageResponsNo);
-
     end;
 
     local procedure FillPurchActStatus(
         var PurchHeader: Record "Purchase Header"; ActAppStatus: Enum "Purchase Act Approval Status"; ProcessUser: code[50]; ProblemType: enum "Purchase Problem Type"; Reject: Boolean)
     var
         UserSetup: Record "User Setup";
-
         LocText001: Label 'Failed to define user for process %1!';
     begin
         if ProcessUser = '' then
@@ -1050,6 +1046,8 @@ codeunit 50010 "Payment Order Management"
         PurchHeader."Problem Type" := ProblemType;
         PurchHeader."Problem Document" := ProblemType <> ProblemType::" ";
         PurchHeader.Modify;
+
+        error('MessageResponsNo = %1 (%2)', ActAppStatus.AsInteger(), ActAppStatus);
 
         SetChangeStatusMessage(PurchHeader, GetMessageResponsNo(false, ActAppStatus.AsInteger(), PurchHeader."Sent to pre. Approval"), Reject);
     end;
