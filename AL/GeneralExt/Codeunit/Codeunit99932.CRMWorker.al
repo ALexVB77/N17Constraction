@@ -560,7 +560,7 @@ codeunit 99932 "CRM Worker"
         ImportActionEnum: Enum "CRM Import Action";
         ObjectData, ContactData : List of [Dictionary of [Text, Text]];
         ObjDataElement: Dictionary of [Text, Text];
-        I, C, ShareHoldersCount : Integer;
+        I, C, ShareHolderNo : Integer;
         TempValue, TempValue2 : Text;
         OK: Boolean;
         UnitId, BuyerId, ContactId : Guid;
@@ -568,7 +568,6 @@ codeunit 99932 "CRM Worker"
         Cust: Record Customer;
         NewCustomerNo: Code[20];
         FObj: Record "CRM Prefetched Object";
-
 
     begin
         if AllObjectData.Count = 0 then
@@ -606,6 +605,8 @@ codeunit 99932 "CRM Worker"
             Ok := Evaluate(AgrTemp."Including Finishing Price", TempValue, 9);
         end;
 
+
+
         ObjDataElement.Get(ContractUnitIdX, TempValue);
         Evaluate(UnitId, TempValue);
 
@@ -613,16 +614,51 @@ codeunit 99932 "CRM Worker"
         if (C = 1) and (AgrTemp."Agreement Type" <> AgrTemp."Agreement Type"::"Reserving Agreement") then begin
             LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr);
             exit;
-
+        end;
+        if (C = 1) or (AgrTemp."Agreement Type" = AgrTemp."Agreement Type"::"Reserving Agreement") then begin
+            CrmB.SetRange("Unit Guid", UnitId);
+            if not CrmB.FindFirst() then begin
+                LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr);
+            end else begin
+                CrmB."Reserving Contract Guid" := AgrTemp."CRM GUID";
+                CrmB.Modify();
+                AgrTemp."Object of Investing" := CrmB."Object of Investing";
+                Cust.Reset();
+                Cust.SetRange("CRM GUID", CrmB."Reserving Contact Guid");
+                if not Cust.FindFirst() then
+                    LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr)
+                else begin
+                    SetShareholderAttributes(AgrTemp, Cust."No.", 0, CrmB."Ownership Percentage");
+                    if CrmB."Agreement Start" <> 0D then begin
+                        AgrTemp."Agreement Date" := CrmB."Agreement Start";
+                        AgrTemp."Starting Date" := CrmB."Agreement Start";
+                        AgrTemp."Expire Date" := CrmB."Agreement End";
+                    end;
+                end;
+            end;
+            exit;
         end;
 
+        ShareHolderNo := 0;
         for I := 2 to C do begin
             ObjDataElement := ObjectData.Get(I);
             ObjDataElement.Get(ContractBuyerX, TempValue);
             Evaluate(BuyerId, TempValue);
             CrmB.Get(UnitId, BuyerId);
             if CrmB."Buyer Is Active" then begin
-                ShareHoldersCount += 1;
+                ShareHolderNo += 1;
+                if CrmB."Contract Guid" <> FetchedObject.id then begin
+                    CrmB."Contract Guid" := FetchedObject.id;
+                    CrmB.Modify();
+                end;
+                AgrTemp."Object of Investing" := CrmB."Object of Investing";
+                if CrmB."Agreement Start" <> 0D then begin
+                    AgrTemp."Agreement Date" := CrmB."Agreement Start";
+                    AgrTemp."Starting Date" := CrmB."Agreement Start";
+                    AgrTemp."Expire Date" := CrmB."Agreement End";
+                end;
+
+
                 ContactId := CrmB."Contact Guid";
                 if not AllObjectData.Get(ContactId, ContactData) then begin
                     LogEvent(FetchedObject, LogStatusEnum::Error,
@@ -633,32 +669,9 @@ codeunit 99932 "CRM Worker"
                 NewCustomerNo := ImportContact(FObj, AllObjectData, CompanyName(), ImportActionEnum::Create);
                 Fobj.Delete(true);
                 Cust.Get(NewCustomerNo);
-                case ShareHoldersCount of
-                    1:
-                        begin
-                            AgrTemp."Customer No." := Cust."No.";
-                        end;
-                    2:
-                        begin
-                            AgrTemp."Customer 2 No." := Cust."No.";
-                        end;
-                    3:
-                        begin
-                            AgrTemp."Customer 3 No." := Cust."No.";
-                        end;
-                    4:
-                        begin
-                            AgrTemp."Customer 4 No." := Cust."No.";
-                        end;
-                    5:
-                        begin
-                            AgrTemp."Customer 5 No." := Cust."No.";
-                        end;
-
-                end;
-
+                SetShareholderAttributes(AgrTemp, Cust."No.", ShareHolderNo - 1, CrmB."Ownership Percentage");
             end;
-            if ShareHoldersCount = 5 then
+            if ShareHolderNo = 5 then
                 break;
         end;
 
@@ -666,6 +679,60 @@ codeunit 99932 "CRM Worker"
         if not Agr.Insert(true) then
             Agr.Modify(true);
 
+    end;
+
+    local procedure SetShareholderAttributes(var CustAgreement: Record "Customer Agreement"; CustomerNo: Code[20]; ShareholderNo: Integer; OwnershipPrc: Decimal)
+    begin
+        case ShareholderNo of
+            CustAgreement."Share in property 3"::pNo:
+                begin
+                    CustAgreement."Customer No." := CustomerNo;
+                    CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::pNo;
+                    CustAgreement."Amount part 1" := OwnershipPrc;
+                    CustAgreement.Contact := GetContactFromCustomer(CustomerNo);
+                    CustAgreement."Contact 1" := CustAgreement.Contact;
+                end;
+            CustAgreement."Share in property 3"::Owner2:
+                begin
+                    CustAgreement."Customer 2 No." := CustomerNo;
+                    CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::Owner2;
+                    CustAgreement."Amount part 2" := OwnershipPrc;
+                    CustAgreement."Contact 2" := GetContactFromCustomer(CustomerNo);
+                end;
+            CustAgreement."Share in property 3"::Owner3:
+                begin
+                    CustAgreement."Customer 3 No." := CustomerNo;
+                    CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::Owner3;
+                    CustAgreement."Amount part 3" := OwnershipPrc;
+                    CustAgreement."Contact 3" := GetContactFromCustomer(CustomerNo);
+                end;
+            CustAgreement."Share in property 3"::Owner4:
+                begin
+                    CustAgreement."Customer 4 No." := CustomerNo;
+                    CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::Owner4;
+                    CustAgreement."Amount part 4" := OwnershipPrc;
+                    CustAgreement."Contact 4" := GetContactFromCustomer(CustomerNo);
+                end;
+            CustAgreement."Share in property 3"::Owner5:
+                begin
+                    CustAgreement."Customer 5 No." := CustomerNo;
+                    CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::Owner5;
+                    CustAgreement."Amount part 5" := OwnershipPrc;
+                    CustAgreement."Contact 5" := GetContactFromCustomer(CustomerNo);
+                end;
+        end
+    end;
+
+    local procedure GetContactFromCustomer(CustomerNo: Code[20]) Result: Code[20]
+    var
+        ContBusRel: Record "Contact Business Relation";
+        Cont: Record Contact;
+    begin
+        Result := '';
+        ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Customer);
+        ContBusRel.SetRange("No.", CustomerNo);
+        if ContBusRel.FindFirst() then
+            Result := ContBusRel."Contact No.";
     end;
 
     procedure ImportObjects(var FetchedObject: Record "CRM Prefetched Object")
@@ -855,9 +922,9 @@ codeunit 99932 "CRM Worker"
     local procedure LogEvent(var FetchedObject: Record "CRM Prefetched Object";
         LogToCompany: Text[60];
         LogStatusEnum: Enum "CRM Log Status";
-        LogImportActionEnum: Enum "CRM Import Action";
-        MsgText1: Text;
-        MsgText2: Text)
+                           LogImportActionEnum: Enum "CRM Import Action";
+                           MsgText1: Text;
+                           MsgText2: Text)
     var
         Log: Record "CRM Log";
     begin
