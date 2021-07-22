@@ -152,8 +152,10 @@ page 70002 "Purchase List App"
                 Image = NewDocument;
 
                 trigger OnAction()
+                var
+                    NewPurchHeader: Record "Purchase Header";
                 begin
-                    PaymentOrderMgt.NewOrderApp(Rec);
+                    PaymentOrderMgt.NewOrderApp(true, true, NewPurchHeader);
                     CurrPage.Update(false);
                 end;
             }
