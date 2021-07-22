@@ -1,6 +1,6 @@
 report 50040 "Cover Sheet"
 {
-    WordLayout = './Report/Layouts/CoverSheet.docx';
+    WordLayout = './Reports/Layouts/CoverSheet.docx';
     Caption = 'Cover Sheet';
     DefaultLayout = Word;
     EnableHyperlinks = true;
