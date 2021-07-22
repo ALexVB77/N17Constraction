@@ -701,9 +701,16 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnValidatePurchaseHeaderPayToVendorNo', '', false, false)]
     procedure OnValidatePurchaseHeaderPayToVendorNo(Vendor: Record Vendor; var PurchaseHeader: Record "Purchase Header")
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
     begin
         if PurchaseHeader."Document Type" <> PurchaseHeader."Document Type"::"Credit Memo" then
             PurchaseHeader."Payment Details" := Vendor.Name;
+        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
+            PurchSetup.Get();
+            if PurchSetup."Prices Incl. VAT in Req. Doc." then
+                PurchaseHeader.Validate("Prices Including VAT", true);
+        end;
     end;
 
     // Table 39 Purchase Line

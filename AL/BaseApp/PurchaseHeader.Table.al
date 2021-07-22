@@ -2609,6 +2609,10 @@
                                 Validate("Prices Including VAT", VendAgr."Prices Including VAT");
                             Validate("External Agreement No.", VendAgr."External Agreement No.");
 
+                            // NC 51373 AB >>
+                            OnValidatePurchaseHeaderAgreementNo(VendAgr, Rec);
+                            // NC 51373 AB <<
+
                             if (xRec."Currency Code" <> "Currency Code") or
                                (xRec."Gen. Bus. Posting Group" <> "Gen. Bus. Posting Group") or
                                (xRec."VAT Bus. Posting Group" <> "VAT Bus. Posting Group")
@@ -6639,5 +6643,12 @@
     local procedure OnRecreatePurchLinesOnBeforeTransferSavedFields(var Rec: Record "Purchase Header"; var TempPurchLine: Record "Purchase Line" temporary; var IsHandled: Boolean)
     begin
     end;
+
+    // NC 51373 AB >>
+    [IntegrationEvent(false, false)]
+    local procedure OnValidatePurchaseHeaderAgreementNo(VendAgr: Record "Vendor Agreement"; var PurchaseHeader: Record "Purchase Header")
+    begin
+    end;
+    // NC 51373 AB <<
 }
 
