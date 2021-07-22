@@ -212,7 +212,7 @@ page 70262 "Purchase List Act"
                     Enabled = NewActEnabled;
                     trigger OnAction()
                     begin
-                        PaymentOrderMgt.FuncNewRec(Rec, NewActTypeOption::Act);
+                        PaymentOrderMgt.FuncNewRec(NewActTypeOption::Act);
                     end;
                 }
                 action(NewKC2)
@@ -222,7 +222,7 @@ page 70262 "Purchase List Act"
                     Enabled = NewKC2Enabled;
                     trigger OnAction()
                     begin
-                        PaymentOrderMgt.FuncNewRec(Rec, NewActTypeOption::"KC-2");
+                        PaymentOrderMgt.FuncNewRec(NewActTypeOption::"KC-2");
                     end;
                 }
                 action(NewAdvance)
@@ -232,7 +232,7 @@ page 70262 "Purchase List Act"
                     Enabled = NewAdvanceEnabled;
                     trigger OnAction()
                     begin
-                        PaymentOrderMgt.FuncNewRec(Rec, NewActTypeOption::Advance);
+                        PaymentOrderMgt.FuncNewRec(NewActTypeOption::Advance);
                     end;
                 }
             }

@@ -1,9 +1,8 @@
 table 70053 "Apartments"
 {
-    Caption = 'Apartments';
+    Caption = 'Investment object';
     LookupPageID = Apartments;
     DrillDownPageID = Apartments;
-
     fields
     {
         field(1; "Object No."; Code[20])

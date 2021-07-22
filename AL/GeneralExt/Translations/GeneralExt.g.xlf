@@ -99,7 +99,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Act Stage - Field Stage Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 938572801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apartments</source>
+          <source>Investment object</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Property Caption</note>
         </trans-unit>
@@ -4438,8 +4438,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 265825876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apartment Card - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 938572801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apartments</source>
+          <source>Investment objects</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apartments - Property Caption</note>
         </trans-unit>
@@ -10813,6 +10818,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Payments Amount - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 279653624 - Field 3183912585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Pre-Approver</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Pre-Approver - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 279653624 - Field 2028092477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Pre-booking Accept</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11172,6 +11182,11 @@
           <source>Aged Accounts Payable Template</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Field Aged Acc. Payable Tmplt Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2307367824 - Field 585850838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Base Resp. Employee No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Field Base Resp. Employee No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Field 1911997122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Base Vendor No.</source>

@@ -37,6 +37,11 @@ pageextension 80460 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payabl
                 {
                     ApplicationArea = Basic, Suite;
                 }
+                field("Base Resp. Employee No."; "Base Resp. Employee No.")
+                {
+                    ApplicationArea = Basic, Suite;
+                    LookupPageID = "Responsible Employees";
+                }
                 field("Default Estimator"; Rec."Default Estimator")
                 {
                     ApplicationArea = Basic, Suite;

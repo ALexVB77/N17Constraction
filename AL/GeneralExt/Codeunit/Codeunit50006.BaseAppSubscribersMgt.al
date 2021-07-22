@@ -713,6 +713,24 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnValidatePurchaseHeaderAgreementNo', '', false, false)]
+    local procedure OnValidatePurchaseHeaderAgreementNo(VendAgr: Record "Vendor Agreement"; var PurchaseHeader: Record "Purchase Header")
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
+    begin
+        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
+            PurchSetup.Get();
+            if PurchSetup."Prices Incl. VAT in Req. Doc." then
+                PurchaseHeader.Validate("Prices Including VAT", true);
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', false, false)]
+    local procedure OnPurchaseHeaderAfterDelete(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
+    begin
+
+    end;
+
     // Table 39 Purchase Line
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterAssignItemValues', '', false, false)]
@@ -885,4 +903,24 @@ codeunit 50006 "Base App. Subscribers Mgt."
             end;
         end;
     end;
+
+    // codeunit 6620 "Copy Document Mgt."
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchaseHeader', '', false, false)]
+    local procedure OnAfterCopyPurchaseHeader(var ToPurchaseHeader: Record "Purchase Header"; OldPurchaseHeader: Record "Purchase Header"; FromPurchHeader: Record "Purchase Header")
+    begin
+        ToPurchaseHeader."Act Type" := OldPurchaseHeader."Act Type";
+        ToPurchaseHeader."IW Documents" := OldPurchaseHeader."IW Documents";
+        ToPurchaseHeader."Pre-booking Document" := OldPurchaseHeader."Pre-booking Document";
+        ToPurchaseHeader."Empl. Purchase" := OldPurchaseHeader."Empl. Purchase";
+        ToPurchaseHeader."Status App Act" := OldPurchaseHeader."Status App Act";
+        ToPurchaseHeader."Status App" := OldPurchaseHeader."Status App";
+        ToPurchaseHeader."Process User" := OldPurchaseHeader."Process User";
+        ToPurchaseHeader."Payment Doc Type" := OldPurchaseHeader."Payment Doc Type";
+        ToPurchaseHeader."Date Status App" := OldPurchaseHeader."Date Status App";
+        ToPurchaseHeader.Controller := OldPurchaseHeader.Controller;
+        ToPurchaseHeader.Receptionist := OldPurchaseHeader.Receptionist;
+        ToPurchaseHeader."Linked Purchase Order Act No." := '';
+    end;
+
 }

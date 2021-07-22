@@ -205,6 +205,7 @@ codeunit 70000 "ERPC Funtions"
     begin
         // NC AB:
         // функция подвешена не к кнопке, на на триггер OnDelete, поэтому саму запись prInvoice не удаляем
+        // само удаление надо повесть на триггер OnDelete таблицы 38
 
         //NC 44343 > KGT
         IF prInvoice."Status App" = prInvoice."Status App"::Payment THEN
