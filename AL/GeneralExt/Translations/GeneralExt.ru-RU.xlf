@@ -118,9 +118,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Act Stage - Field Stage Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 938572801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apartments</source>
-          <target>Объекты</target>
+          <source>Investment object</source>
+          <target>Объект инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 938572801 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -5325,10 +5326,17 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 938572801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apartments</source>
-          <target>Объекты</target>
+        <trans-unit id="Page 265825876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object card</source>
+          <target>Карточка объекта инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apartment Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 938572801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment objects</source>
+          <target>Объекты инвестирования</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apartments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2964659661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

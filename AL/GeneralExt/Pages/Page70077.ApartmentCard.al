@@ -1,47 +1,44 @@
-page 70076 Apartments
+page 70077 "Apartment Card"
 {
-    PageType = List;
+    PageType = Card;
     ApplicationArea = All;
-    UsageCategory = Lists;
+    UsageCategory = Administration;
     SourceTable = Apartments;
-    Caption = 'Investment objects';
-    CardPageId = "Apartment Card";
+    Caption = 'Investment object card';
 
     layout
     {
         area(Content)
         {
-            repeater(GroupName)
+            group(GroupName)
             {
                 field("Object No."; Rec."Object No.")
                 {
                     ApplicationArea = All;
 
                 }
+
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
 
                 }
-                field(Type; Rec.Type)
+
+                field("Type"; Rec.Type)
                 {
                     ApplicationArea = All;
 
                 }
+
                 field("Total Area (Project)"; Rec."Total Area (Project)")
                 {
                     ApplicationArea = All;
 
                 }
+
             }
         }
-        area(Factboxes)
-        {
-
-        }
     }
 
-    actions
-    {
-    }
+
 }
