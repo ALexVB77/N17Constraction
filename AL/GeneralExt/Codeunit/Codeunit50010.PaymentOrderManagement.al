@@ -38,7 +38,7 @@ codeunit 50010 "Payment Order Management"
         end;
     end;
 
-    procedure FuncNewRec(PurchHeader: Record "Purchase Header"; ActTypeOption: enum "Purchase Act Type")
+    procedure FuncNewRec(ActTypeOption: enum "Purchase Act Type")
     var
         grUS: record "User Setup";
         WhseEmployee: record "Warehouse Employee";
@@ -149,9 +149,8 @@ codeunit 50010 "Payment Order Management"
         end;
     end;
 
-    procedure NewOrderApp(PurchHeader: Record "Purchase Header")
+    procedure NewOrderApp(CreateLine: Boolean; OpenDocument: Boolean; var grPurchHeader: Record "Purchase Header")
     var
-        grPurchHeader: Record "Purchase Header";
         PurchLine: Record "Purchase Line";
         grUS: Record "User Setup";
     begin
@@ -183,16 +182,20 @@ codeunit 50010 "Payment Order Management"
             grPurchHeader.Validate("Prices Including VAT", true);
         grPurchHeader.MODIFY(TRUE);
 
-        PurchLine.Init;
-        PurchLine."Document Type" := grPurchHeader."Document Type";
-        PurchLine."Document No." := grPurchHeader."No.";
-        PurchLine."Line No." := 10000;
-        PurchLine.Validate(Type, PurchLine.Type::Item);
-        PurchLine.Validate("No.", InvtSetup."Temp Item Code");
-        PurchLine.Insert(true);
+        if CreateLine then begin
+            PurchLine.Init;
+            PurchLine."Document Type" := grPurchHeader."Document Type";
+            PurchLine."Document No." := grPurchHeader."No.";
+            PurchLine."Line No." := 10000;
+            PurchLine.Validate(Type, PurchLine.Type::Item);
+            PurchLine.Validate("No.", InvtSetup."Temp Item Code");
+            PurchLine.Insert(true);
+        end;
 
-        COMMIT;
-        Page.RUNMODAL(Page::"Purchase Order App", grPurchHeader);
+        if OpenDocument then begin
+            COMMIT;
+            Page.RUNMODAL(Page::"Purchase Order App", grPurchHeader);
+        end;
     end;
 
     procedure CreatePurchaseOrderAppFromAct(PurchaseHeader: Record "Purchase Header")
@@ -210,15 +213,10 @@ codeunit 50010 "Payment Order Management"
     begin
         CalcActRemaingAmount(PurchaseHeader, PaymentInvoice, LinkedActExists, RemAmount);
 
-        PaymentInvoice.RESET;
-        PaymentInvoice.INIT;
-        PaymentInvoice."No." := '';
-        PaymentInvoice."Document Type" := PaymentInvoice."Document Type"::Order;
-        PaymentInvoice."IW Documents" := TRUE;
-        PaymentInvoice.INSERT(TRUE);
+        NewOrderApp(false, false, PaymentInvoice);
 
         GetPurchSetupWithTestDim;
-        CopyDocMgt.SetProperties(true, true, false, false, false, PurchSetup."Exact Cost Reversing Mandatory", false);
+        CopyDocMgt.SetProperties(true, false, false, false, false, PurchSetup."Exact Cost Reversing Mandatory", false);
         CopyDocMgt.CopyPurchDoc(FromDocType::Order, PurchaseHeader."No.", PaymentInvoice);
 
         if LinkedActExists then begin
