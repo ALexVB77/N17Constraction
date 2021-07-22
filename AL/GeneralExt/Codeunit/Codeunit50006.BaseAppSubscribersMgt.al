@@ -897,4 +897,24 @@ codeunit 50006 "Base App. Subscribers Mgt."
             end;
         end;
     end;
+
+    // codeunit 6620 "Copy Document Mgt."
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchaseHeader', '', false, false)]
+    local procedure OnAfterCopyPurchaseHeader(var ToPurchaseHeader: Record "Purchase Header"; OldPurchaseHeader: Record "Purchase Header"; FromPurchHeader: Record "Purchase Header")
+    begin
+        ToPurchaseHeader."Act Type" := OldPurchaseHeader."Act Type";
+        ToPurchaseHeader."IW Documents" := OldPurchaseHeader."IW Documents";
+        ToPurchaseHeader."Pre-booking Document" := OldPurchaseHeader."Pre-booking Document";
+        ToPurchaseHeader."Empl. Purchase" := OldPurchaseHeader."Empl. Purchase";
+        ToPurchaseHeader."Status App Act" := OldPurchaseHeader."Status App Act";
+        ToPurchaseHeader."Status App" := OldPurchaseHeader."Status App";
+        ToPurchaseHeader."Process User" := OldPurchaseHeader."Process User";
+        ToPurchaseHeader."Payment Doc Type" := OldPurchaseHeader."Payment Doc Type";
+        ToPurchaseHeader."Date Status App" := OldPurchaseHeader."Date Status App";
+        ToPurchaseHeader.Controller := OldPurchaseHeader.Controller;
+        ToPurchaseHeader.Receptionist := OldPurchaseHeader.Receptionist;
+        ToPurchaseHeader."Linked Purchase Order Act No." := '';
+    end;
+
 }
