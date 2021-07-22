@@ -221,8 +221,6 @@ codeunit 50010 "Payment Order Management"
         CopyDocMgt.SetProperties(true, true, false, false, false, PurchSetup."Exact Cost Reversing Mandatory", false);
         CopyDocMgt.CopyPurchDoc(FromDocType::Order, PurchaseHeader."No.", PaymentInvoice);
 
-        PaymentInvoice."IW Documents" := TRUE;
-        PaymentInvoice."Act Type" := PaymentInvoice."Act Type"::" ";
         if LinkedActExists then begin
             InvtSetup.Get();
             InvtSetup.TestField("Temp Item Code");

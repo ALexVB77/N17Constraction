@@ -587,7 +587,7 @@ page 70260 "Purchase Order Act"
                     ApplicationArea = Suite;
                     Caption = 'Copy Document';
                     Ellipsis = true;
-                    Enabled = "No." <> '';
+                    Enabled = CopyDocumentEnabled;
                     Image = CopyDocument;
                     Promoted = true;
                     PromotedCategory = Category5;
@@ -768,6 +768,7 @@ page 70260 "Purchase Order Act"
 
         ApproveButtonEnabled := FALSE;
         RejectButtonEnabled := FALSE;
+        CopyDocumentEnabled := ("No." <> '') and ("Status App Act" = "Status App Act"::Controller);
 
         if "Act Type" = "Act Type"::Advance then
             PreApproverNo := Rec."Pre-Approver"
@@ -839,18 +840,12 @@ page 70260 "Purchase Order Act"
         PurchCalcDiscByType: Codeunit "Purch - Calc Disc. By Type";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ActTypeEditable: Boolean;
-        EstimatorEnable: Boolean;
-        AppButtonEnabled: Boolean;
-        AllApproverEditable: Boolean;
-        ReceiveAccountEditable: Boolean;
-        ShowDocEnabled: Boolean;
+        ActTypeEditable, EstimatorEnable, AppButtonEnabled, AllApproverEditable, ReceiveAccountEditable, ShowDocEnabled, PreApproverEditable, CopyDocumentEnabled : Boolean;
         LocationCodeShowMandatory: Boolean;
         ApproveButtonEnabled, RejectButtonEnabled : boolean;
         StatusStyleTxt: Text;
         ProblemDescription: text;
         PreApproverNo: Code[50];
-        PreApproverEditable: Boolean;
         CreateAppConfText: Label 'Do you want to create a payment invoice from Act %1?';
 
     local procedure SaveInvoiceDiscountAmount()

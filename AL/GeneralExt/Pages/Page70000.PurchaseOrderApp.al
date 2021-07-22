@@ -440,7 +440,7 @@ page 70000 "Purchase Order App"
                     ApplicationArea = Suite;
                     Caption = 'Copy Document';
                     Ellipsis = true;
-                    Enabled = "No." <> '';
+                    Enabled = CopyDocumentEnabled;
                     Image = CopyDocument;
                     Promoted = true;
                     PromotedCategory = Category5;
@@ -590,6 +590,7 @@ page 70000 "Purchase Order App"
             ProblemDescription := Rec.GetApprovalCommentText();
 
         PaymentAssignmentEnabled := "Payment to Person";
+        CopyDocumentEnabled := ("No." <> '') and ("Status App" = "Status App"::Reception);
 
         ApproveButtonEnabled := FALSE;
         RejectButtonEnabled := FALSE;
@@ -650,14 +651,10 @@ page 70000 "Purchase Order App"
         PaymentOrderMgt: Codeunit "Payment Order Management";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        PaymentTypeEditable: Boolean;
-        AppButtonEnabled: Boolean;
+        PaymentTypeEditable, AppButtonEnabled, ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled : Boolean;
         IWPlanRepayDateMandatory: Boolean;
-        ApproveButtonEnabled: Boolean;
-        RejectButtonEnabled: Boolean;
         ProblemDescription: text[80];
         AddCommentType: enum "Purchase Comment Add. Type";
-        PaymentAssignmentEnabled: Boolean;
         TextDelError: Label 'You cannot delete Purchase Order Act %1';
 
     local procedure SaveInvoiceDiscountAmount()
