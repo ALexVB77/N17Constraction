@@ -725,6 +725,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', false, false)]
+    local procedure OnPurchaseHeaderAfterDelete(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
+    begin
+
+    end;
+
     // Table 39 Purchase Line
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterAssignItemValues', '', false, false)]
