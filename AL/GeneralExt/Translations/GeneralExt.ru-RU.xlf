@@ -121,7 +121,6 @@
           <source>Investment object</source>
           <target>Объект инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 938572801 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -5336,7 +5335,6 @@
           <source>Investment objects</source>
           <target>Объекты инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apartments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2964659661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9917,6 +9915,27 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document GE - Control RecalculateLines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cover Sheet</source>
+          <target>Сопроводительный лист</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3584557798 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order Act</source>
+          <target>Документы Акт и КС-2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Header - Property RequestFilterHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3584557798 - ReportDataItem 227370865 - Method 3245603402 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer,Accountant</source>
+          <target>Reception,Контроллер,Сметчик,Проверяющий,Предв. Утверждающий,Утверждающий,Подписывающий,Бухгалтерия</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Approval - Method OnAfterGetRecord - NamedType ResponsText</note>
+        </trans-unit>
         <trans-unit id="Report 2596185427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create Guarantee Deduction</source>
           <target>Создать гарантийное удержание</target>
@@ -12969,7 +12988,6 @@
           <source>Pre-Approver</source>
           <target>Предв. Утверждающий</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Pre-Approver - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 279653624 - Field 2028092477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
@@ -13408,7 +13426,6 @@
           <source>Base Resp. Employee No.</source>
           <target>Номер базового подотчетника</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Field Base Resp. Employee No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Field 1911997122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">

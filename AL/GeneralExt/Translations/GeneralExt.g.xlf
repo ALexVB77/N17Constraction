@@ -8263,6 +8263,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document GE - Control RecalculateLines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cover Sheet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3584557798 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order Act</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Header - Property RequestFilterHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3584557798 - ReportDataItem 227370865 - Method 3245603402 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer,Accountant</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Approval - Method OnAfterGetRecord - NamedType ResponsText</note>
+        </trans-unit>
         <trans-unit id="Report 2596185427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create Guarantee Deduction</source>
           <note from="Developer" annotates="general" priority="2"></note>
