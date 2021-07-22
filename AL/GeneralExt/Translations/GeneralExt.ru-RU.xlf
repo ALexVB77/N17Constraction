@@ -5290,10 +5290,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Period Management Ext - NamedType Text003</note>
         </trans-unit>
         <trans-unit id="Codeunit 439680645 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Line is already linked with CF entry</source>
-          <target>Строка уже привяза к операции реестра Cash Flow</target>
+          <source>Line is already linked with CF entry. </source>
+          <target>Строка уже привяза к операции реестра Cash Flow. </target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439680645 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete CF Entry?</source>
+          <target>Удалить операцию?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Codeunit 439680645 - Method 877441836 - NamedType 2264140679" size-unit="char" translate="yes" xml:space="preserve">
           <source>Deleting long-term entries denied!</source>
@@ -13453,7 +13461,6 @@
           <source>Prices Including VAT in Request Docs.</source>
           <target>Цены с учетом НДС в заявочных док-тах</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Field Prices Incl. VAT in Req. Doc. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Field 1601877650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">

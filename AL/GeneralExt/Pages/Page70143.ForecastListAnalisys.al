@@ -494,7 +494,7 @@ page 70143 "Forecast List Analisys"
                         Error(TEXT0015);
                     Clear(CreateSTPrBEntPage);
                     CreateSTPrBEntPage.SetProjBudEntry(Rec);
-                    CreateSTPrBEntPage.RunModal();
+                    if CreateSTPrBEntPage.RunModal() = action::LookupOK then;
                     CurrPage.update(false);
                 end;
             }
@@ -526,7 +526,7 @@ page 70143 "Forecast List Analisys"
     }
     trigger OnOpenPage()
     begin
-        HideZeroAmountLine := true;
+        //HideZeroAmountLine := true;
         BuildView();
         if gDate = 0D then
             gDate := Today;
@@ -712,6 +712,7 @@ page 70143 "Forecast List Analisys"
             Rec.SetFilter("Without VAT (LCY)", '<>0')
         else
             Rec.SetRange("Without VAT (LCY)");
+        CurrPage.UPDATE(FALSE);
     end;
 
     local procedure TemplateCodeOnAfterValidate()

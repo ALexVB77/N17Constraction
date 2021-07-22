@@ -4409,9 +4409,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Period Management Ext - NamedType Text003</note>
         </trans-unit>
         <trans-unit id="Codeunit 439680645 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Line is already linked with CF entry</source>
+          <source>Line is already linked with CF entry. </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 439680645 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete CF Entry?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Codeunit 439680645 - Method 877441836 - NamedType 2264140679" size-unit="char" translate="yes" xml:space="preserve">
           <source>Deleting long-term entries denied!</source>

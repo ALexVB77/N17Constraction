@@ -8,7 +8,8 @@ codeunit 50013 "Project Budget Management"
     var
         GLSetup: Record "General Ledger Setup";
         US: Record "User Setup";
-        Text001: Label 'Line is already linked with CF entry';
+        Text001: Label 'Line is already linked with CF entry. ';
+        Text002: Label 'Delete CF Entry?';
 
     procedure ApplyPrjBudEntrytoPurchLine(var vPLine: Record "Purchase Line")
     var
@@ -19,8 +20,13 @@ codeunit 50013 "Project Budget Management"
         lLineAmt: Decimal;
     begin
         if vPLine."Forecast Entry" <> 0 then begin
-            Message(Text001);
-            exit;
+            if Confirm(Text001 + Text002, false) then begin
+                lPBE.Reset();
+                lPBE.SetRange("Entry No.", vPLine."Forecast Entry");
+                DeleteSTLine(lPBE);
+                vPLine."Forecast Entry" := 0;
+            end else
+                exit;
         end;
         vPLine.TestField("Shortcut Dimension 1 Code");
         vPLine.TestField("Shortcut Dimension 2 Code");
@@ -95,7 +101,7 @@ codeunit 50013 "Project Budget Management"
         lPBE."External Agreement No." := lPHead."External Agreement No. (Calc)";
         lPBE."Parent Entry" := pPBE."Parent Entry";
         lPBE.Insert(true);
-        lParentPBE.Get(lPBE."Project Code", lPBE."Analysis Type", lPBE."Version Code", lPBE."Line No.", pPBE."Entry No.", lPBE."Project Turn Code", lPBE."Temp Line No.");
+        lParentPBE.Get(pPBE."Entry No.");
         lParentPBE."Without VAT (LCY)" := lParentPBE."Without VAT (LCY)" - lPBE."Without VAT (LCY)";
         lParentPBE.Modify(false);
         exit(lPBE."Entry No.");
@@ -108,7 +114,7 @@ codeunit 50013 "Project Budget Management"
         lPLine: Record "Purchase Line";
         lLineAmt: Decimal;
     begin
-        lPBE.Get(pPBE."Project Code", pPBE."Analysis Type", pPBE."Version Code", pPBE."Line No.", pPBE."Entry No.", pPBE."Project Turn Code", pPBE."Temp Line No.");
+        lPBE.Get(pPBE."Entry No.");
         if lPBE."Without VAT (LCY)" = 0 then
             exit;
         lLineAmt := lPBE."Without VAT (LCY)";
@@ -116,6 +122,7 @@ codeunit 50013 "Project Budget Management"
         lPLine.SetRange("Document Type", pPLine."Document Type");
         lPLine.SetRange("Document No.", pPLine."Document No.");
         lPLine.SetFilter("Line No.", '<>%1', pPLine."Line No.");
+        lPLine.SetRange("Forecast Entry", 0);
         lPLine.SetRange("Shortcut Dimension 1 Code", pPLine."Shortcut Dimension 1 Code");
         lPLine.SetRange("Shortcut Dimension 2 Code", pPLine."Shortcut Dimension 2 Code");
         lPLine.SetRange("Outstanding Amount (LCY)", 0, lPBE."Without VAT (LCY)");
@@ -129,14 +136,14 @@ codeunit 50013 "Project Budget Management"
                     else begin
                         lPLine."Forecast Entry" := CreatePrjBudEntry(lPLine, lPBE);
                         lPLine.Modify(false);
-                        lPBE.Get(lPBE."Project Code", lPBE."Analysis Type", lPBE."Version Code", lPBE."Line No.", lPBE."Entry No.", lPBE."Project Turn Code", lPBE."Temp Line No.");
+                        lPBE.Get(lPBE."Entry No.");
                     end;
                 end;
                 lLineAmt := lLineAmt - lPLine."Outstanding Amount (LCY)";
             until (lPLine.Next() = 0) or (lLineAmt <= 0);
     end;
 
-    procedure DeleteSTLine(pPrBudEntry: Record "Projects Budget Entry")
+    procedure DeleteSTLine(var pPrBudEntry: Record "Projects Budget Entry")
     var
         lUS: Record "User Setup";
         lPrBudEntry: Record "Projects Budget Entry";

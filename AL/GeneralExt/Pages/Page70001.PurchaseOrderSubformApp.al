@@ -170,6 +170,14 @@ page 70001 "Purchase Order Subform App"
                     ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
                     Editable = false;
                     ToolTip = 'Use action "Link to Cash Flow Entry"';
+                    trigger OnAssistEdit()
+                    var
+                        PrjBudMgt: Codeunit "Project Budget Management";
+                    begin
+                        Clear(PrjBudMgt);
+                        PrjBudMgt.ApplyPrjBudEntrytoPurchLine(Rec);
+                        CurrPage.Update(false);
+                    end;
                 }
                 field("Utilities Dim. Value Code"; UtilitiesDimValueCode)
                 {

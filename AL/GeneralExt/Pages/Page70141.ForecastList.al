@@ -56,11 +56,14 @@ page 70141 "Forecast List"
                     ApplicationArea = All;
 
                 }
-
+                field("Without VAT (LCY)"; Rec."Without VAT (LCY)")
+                {
+                    ApplicationArea = All;
+                }
                 field("Date Plan"; Rec."Date Plan")
                 {
                     ApplicationArea = All;
-
+                    Visible = false;
                 }
 
                 field(Description; Rec.Description)
@@ -154,15 +157,12 @@ page 70141 "Forecast List"
 
                 // }   
 
-                field("Without VAT (LCY)"; "Without VAT (LCY)")
-                {
-                    ApplicationArea = All;
-                }
+
                 field("Transaction Type"; Rec."Transaction Type")
                 {
                     Editable = false;
                     ApplicationArea = All;
-
+                    Visible = false;
                 }
 
                 field("Contragent No."; Rec."Contragent No.")
