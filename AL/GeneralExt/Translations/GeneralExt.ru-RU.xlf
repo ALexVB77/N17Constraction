@@ -5293,14 +5293,12 @@
           <source>Line is already linked with CF entry. </source>
           <target>Строка уже привяза к операции реестра Cash Flow. </target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Codeunit 439680645 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delete CF Entry?</source>
           <target>Удалить операцию?</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Codeunit 439680645 - Method 877441836 - NamedType 2264140679" size-unit="char" translate="yes" xml:space="preserve">
@@ -11548,6 +11546,27 @@
           <target>Определяет учетную группу РСБУ для ОС</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Fixed Asset List (Ext) - Control RAS Posting Group - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 512924377 - NamedType 2336285773" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 512924377">
+          <source>*.xlsx</source>
+          <target>*.xlsx</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - NamedType ExcelExtText</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 512924377 - NamedType 3858933744" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 512924377">
+          <source>Import General Journal Line</source>
+          <target>Импорт строк фин. журнала</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - NamedType FileNameText</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 512924377 - Action 3209057264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Import from Excel</source>
+          <target>Импорт из Excel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Import from Excel - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 250922747 - Control 1231965224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>DenDoc Dim Value</source>
