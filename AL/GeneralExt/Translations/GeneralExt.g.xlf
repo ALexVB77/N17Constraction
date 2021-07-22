@@ -1338,6 +1338,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Prefetched Object - Field Xml - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3377841323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cust. E-Mail Notify Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 4256180955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Agreement No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 633175764 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Body</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Body - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 1016837963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date and Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Date Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 1541011875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field E-Mail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Entry No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3861211528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Development Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4842,6 +4877,11 @@
           <source>CRM Units and Buyers</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Units and Buyers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3377841323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cust. E-Mail Notify Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861211528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Development Settings</source>
@@ -9068,6 +9108,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Budget CC - Control ToItemBudgetName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3724185993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import General Journal Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import General Journal Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3724185993 - Method 1544076788 - NamedType 3858933744" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import General Journal Line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import General Journal Lines - Method OnPreReport - NamedType FileNameText</note>
+        </trans-unit>
+        <trans-unit id="Report 3724185993 - Method 1544076788 - NamedType 2336285773" size-unit="char" translate="yes" xml:space="preserve">
+          <source>*.xlsx</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import General Journal Lines - Method OnPreReport - NamedType ExcelExtText</note>
+        </trans-unit>
+        <trans-unit id="Report 3724185993 - Control 1070872126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import General Journal Lines - Control JournalBatchName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3724185993 - Control 1744706346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Template Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import General Journal Lines - Control JournalTemplateName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2097918721 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import Item Remains</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9642,16 +9707,6 @@
           <source>Specifies a RAS posting group of the fixed asset.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Fixed Asset List (Ext) - Control RAS Posting Group - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 512924377 - NamedType 2336285773" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 512924377">
-          <source>*.xlsx</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - NamedType ExcelExtText</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 512924377 - NamedType 3858933744" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 512924377">
-          <source>Import General Journal Line</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - NamedType FileNameText</note>
         </trans-unit>
         <trans-unit id="PageExtension 512924377 - Action 3209057264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Import from Excel</source>
