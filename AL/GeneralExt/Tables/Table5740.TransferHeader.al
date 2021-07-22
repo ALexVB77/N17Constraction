@@ -232,7 +232,7 @@ tableextension 85740 "Transfer Header (Ext)" extends "Transfer Header"
                             trackingSpecification.InitTrackingSpecification(32, 0, '', '', 0, ItemLedgEntry."Entry No.", ItemLedgEntry."Variant Code", ItemLedgEntry."Location Code", ItemLedgEntry."Qty. per Unit of Measure");
                             TransferLineReserve.CreateReservationSetFrom(trackingSpecification);
                             TransferLineReserve.CreateReservation(NewTransLine, NewTransLine.Description, NewTransLine."Shipment Date",
-                                                                  NewTransLine.Quantity, NewTransLine."Quantity (Base)", resEntry, transDir::Inbound);
+                                                                  NewTransLine.Quantity, NewTransLine."Quantity (Base)", resEntry, transDir::Outbound);
                             //NC 41281 < DP
                         END ELSE
                             NewTransLine.DELETE(TRUE);
