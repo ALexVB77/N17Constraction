@@ -1338,6 +1338,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Prefetched Object - Field Xml - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3377841323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cust. E-Mail Notify Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 4256180955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Agreement No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 633175764 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Body</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Body - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 1016837963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date and Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Date Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 1541011875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field E-Mail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3377841323 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Field Entry No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3861211528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Development Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4843,6 +4878,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Units and Buyers - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3377841323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cust. E-Mail Notify Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3861211528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Development Settings</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8262,6 +8302,21 @@
           <source>Recalculate Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document GE - Control RecalculateLines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cover Sheet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3584557798 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order Act</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Header - Property RequestFilterHeading</note>
+        </trans-unit>
+        <trans-unit id="Report 3584557798 - ReportDataItem 227370865 - Method 3245603402 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer,Accountant</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Approval - Method OnAfterGetRecord - NamedType ResponsText</note>
         </trans-unit>
         <trans-unit id="Report 2596185427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create Guarantee Deduction</source>
