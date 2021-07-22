@@ -287,6 +287,18 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             Description = 'NC 51373 AB';
             Caption = 'KBK Code';
         }
+        field(70024; "Pre-Approver"; Code[50])
+        {
+            Description = 'NC 51373 AB';
+            Caption = 'Pre-Approver';
+            TableRelation = "User Setup";
+
+            trigger OnValidate()
+            begin
+                if "Pre-Approver" <> '' then
+                    TestField("Act Type", "Act Type"::Advance);
+            end;
+        }
 
         // NC AB:
         // поля Approver и Pre-Approver реализуем через функции
@@ -296,12 +308,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         //     Caption = 'Approver';
         //     TableRelation = "User Setup";
         //     Editable = false;
-        // }
-        // field(70024; "Pre-Approver"; Code[50])
-        // {
-        //     Description = 'NC 51373 AB';
-        //     Caption = 'Pre-Approver';
-        //     TableRelation = "User Setup";
         // }
         // Next Approver - не нужен
         // field(70025; "Next Approver"; Code[50])

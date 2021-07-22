@@ -68,25 +68,30 @@ codeunit 50010 "Payment Order Management"
             ERROR(LocErrorText1);
 
         GetPurchSetupWithTestDim;
-        PurchSetup.TestField("Base Vendor No.");
+        if not (ActTypeOption = ActTypeOption::Advance) then
+            PurchSetup.TestField("Base Vendor No.")
+        else
+            PurchSetup.TestField("Base Resp. Employee No.");
 
-        WhseEmployee.SetRange("User ID", UserId);
-        IF WhseEmployee.FindFirst() THEN BEGIN
-            Selected := DIALOG.STRMENU(Text50003, 1, Text50004);
-            CASE Selected OF
-                1:
-                    BEGIN
-                        IsLocationDocument := TRUE;
-                        Location.GET(WhseEmployee.GetDefaultLocation('', TRUE));
-                        Location.TESTFIELD("Bin Mandatory", FALSE);
-                        LocationCode := Location.Code;
-                    END;
-                2:
-                    ;
-                ELSE
-                    ERROR(Text50005);
+        if ActTypeOption <> ActTypeOption::Advance then begin
+            WhseEmployee.SetRange("User ID", UserId);
+            IF WhseEmployee.FindFirst() THEN BEGIN
+                Selected := DIALOG.STRMENU(Text50003, 1, Text50004);
+                CASE Selected OF
+                    1:
+                        BEGIN
+                            IsLocationDocument := TRUE;
+                            Location.GET(WhseEmployee.GetDefaultLocation('', TRUE));
+                            Location.TESTFIELD("Bin Mandatory", FALSE);
+                            LocationCode := Location.Code;
+                        END;
+                    2:
+                        ;
+                    ELSE
+                        ERROR(Text50005);
+                END;
             END;
-        END;
+        end;
 
         GetInventorySetup();
         if not IsLocationDocument then
@@ -99,8 +104,13 @@ codeunit 50010 "Payment Order Management"
             "Document Type" := "Document Type"::Order;
             "Pre-booking Document" := TRUE;
             "Act Type" := ActTypeOption;
+            "Empl. Purchase" := ActTypeOption = ActTypeOption::Advance;
+
             INSERT(TRUE);
-            VALIDATE("Buy-from Vendor No.", PurchSetup."Base Vendor No.");
+            if "Act Type" <> "Act Type"::Advance then
+                VALIDATE("Buy-from Vendor No.", PurchSetup."Base Vendor No.")
+            else
+                Validate("Buy-from Vendor No.", PurchSetup."Base Resp. Employee No.");
 
             if IsLocationDocument then begin
                 "Location Document" := TRUE;
@@ -119,6 +129,8 @@ codeunit 50010 "Payment Order Management"
                     Estimator := PurchSetup."Default Estimator";
             if PurchSetup."Prices Incl. VAT in Req. Doc." then
                 Validate("Prices Including VAT", true);
+            if "Act Type" = "Act Type"::Advance then
+                "Vendor Invoice No." := "No.";
             MODIFY(TRUE);
 
             PurchLine.Init;
@@ -712,7 +724,7 @@ codeunit 50010 "Payment Order Management"
                     FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Controller, PurchHeader.Controller, ProblemType::REstimator, Reject);
             PurchHeader."Status App Act"::Checker:
                 if not Reject then begin
-                    PreAppover := GetPurchActPreApproverFromDim(PurchHeader."Dimension Set ID");
+                    PreAppover := GetPurchActPreApprover(PurchHeader);
                     if PreAppover <> '' then begin
                         PurchHeader."Sent to pre. Approval" := true;
                         FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Approve, PreAppover, ProblemType::" ", Reject);
@@ -738,7 +750,7 @@ codeunit 50010 "Payment Order Management"
                     if not Reject then
                         FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Signing, GetPurchActChecker(PurchHeader), ProblemType::" ", Reject)
                     else begin
-                        PreAppover := GetPurchActPreApproverFromDim(PurchHeader."Dimension Set ID");
+                        PreAppover := GetPurchActPreApprover(PurchHeader);
                         if PreAppover <> '' then begin
                             PurchHeader."Sent to pre. Approval" := true;
                             FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Approve, PreAppover, ProblemType::RApprover, Reject);
@@ -837,7 +849,7 @@ codeunit 50010 "Payment Order Management"
                     FillPayInvStatus(PurchHeader, AppStatus::Reception, PurchHeader.Receptionist, ProblemType::RController, Reject);
             PurchHeader."Status App"::Checker:
                 if not Reject then begin
-                    PreAppover := GetPurchActPreApproverFromDim(PurchHeader."Dimension Set ID");
+                    PreAppover := GetPurchActPreApprover(PurchHeader);
                     if PreAppover <> '' then begin
                         PurchHeader."Sent to pre. Approval" := true;
                         FillPayInvStatus(PurchHeader, AppStatus::Approve, PreAppover, ProblemType::" ", Reject);
@@ -858,7 +870,7 @@ codeunit 50010 "Payment Order Management"
                     if not Reject then
                         FillPayInvStatus(PurchHeader, AppStatus::Payment, PurchHeader.Receptionist, ProblemType::" ", Reject)
                     else begin
-                        PreAppover := GetPurchActPreApproverFromDim(PurchHeader."Dimension Set ID");
+                        PreAppover := GetPurchActPreApprover(PurchHeader);
                         if PreAppover <> '' then begin
                             PurchHeader."Sent to pre. Approval" := true;
                             FillPayInvStatus(PurchHeader, AppStatus::Approve, PreAppover, ProblemType::RApprover, Reject);
@@ -955,6 +967,14 @@ codeunit 50010 "Payment Order Management"
         end;
     end;
 
+    local procedure GetPurchActPreApprover(var PurchHeader: Record "Purchase Header"): Code[50]
+    begin
+        if PurchHeader."Act Type" = PurchHeader."Act Type"::Advance then
+            exit(PurchHeader."Pre-Approver")
+        else
+            exit(GetPurchActPreApproverFromDim(PurchHeader."Dimension Set ID"));
+    end;
+
     procedure GetPurchActPreApproverFromDim(DimSetID: Integer): Code[50]
     var
         DimSetEntry: Record "Dimension Set Entry";
@@ -971,7 +991,7 @@ codeunit 50010 "Payment Order Management"
         exit(UserSetup.GetUserSubstitute(DimValueCC."Cost Holder", 0));
     end;
 
-    procedure GetApproverFromActLines(PurchHeader: Record "Purchase Header"): Code[50]
+    procedure GetApproverFromActLines(var PurchHeader: Record "Purchase Header"): Code[50]
     var
         PurchLine: Record "Purchase Line";
         UserSetup: Record "User Setup";

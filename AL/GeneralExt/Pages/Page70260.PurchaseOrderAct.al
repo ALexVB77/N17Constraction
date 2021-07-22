@@ -25,6 +25,34 @@ page 70260 "Purchase Order Act"
                     ApplicationArea = All;
                     Importance = Promoted;
                     ShowMandatory = true;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        Vendor: Record Vendor;
+                    begin
+                        if "Act Type" = "Act Type"::Advance then begin
+                            Vendor.SetRange(Blocked, Vendor.Blocked::" ");
+                            if Page.RunModal(Page::"Responsible Employees", Vendor) = Action::LookupOK then
+                                Validate("Buy-from Vendor No.", Vendor."No.");
+                        end else begin
+                            if Page.RunModal(0, Vendor) = Action::LookupOK then
+                                Validate("Buy-from Vendor No.", Vendor."No.");
+                        end;
+                        CurrPage.Update;
+                    end;
+
+                    trigger OnValidate()
+                    var
+                        Vendor: Record Vendor;
+                    begin
+                        if "Buy-from Vendor No." <> '' then begin
+                            Vendor.Get("Buy-from Vendor No.");
+                            if "Act Type" = "Act Type"::Advance then
+                                Vendor.TestField("Vendor Type", Vendor."Vendor Type"::"Resp. Employee")
+                            else
+                                Vendor.TestField("Vendor Type", Vendor."Vendor Type"::Vendor);
+                        end;
+                    end;
                 }
                 field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
@@ -207,11 +235,18 @@ page 70260 "Purchase Order Act"
                         CurrPage.PurchaseOrderActLines.PAGE.UpdateForm(true);
                     end;
                 }
-                field("Pre-Approver"; PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID"))
+                field("Pre-Approver"; PreApproverNo)
                 {
                     ApplicationArea = All;
                     Caption = 'Pre-Approver';
-                    Editable = false;
+                    Editable = PreApproverEditable;
+
+                    trigger OnValidate()
+                    begin
+                        if PreApproverNo <> '' then
+                            TestField("Act Type", "Act Type"::Advance);
+                        "Pre-Approver" := PreApproverNo;
+                    end;
                 }
                 field("Approver"; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
                 {
@@ -734,6 +769,11 @@ page 70260 "Purchase Order Act"
         ApproveButtonEnabled := FALSE;
         RejectButtonEnabled := FALSE;
 
+        if "Act Type" = "Act Type"::Advance then
+            PreApproverNo := Rec."Pre-Approver"
+        else
+            PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
+        PreApproverEditable := "Act Type" = "Act Type"::Advance;
         ProblemDescription := Rec.GetApprovalCommentText();
 
         WhseEmployee.SetRange("User ID", UserId);
@@ -809,6 +849,8 @@ page 70260 "Purchase Order Act"
         ApproveButtonEnabled, RejectButtonEnabled : boolean;
         StatusStyleTxt: Text;
         ProblemDescription: text;
+        PreApproverNo: Code[50];
+        PreApproverEditable: Boolean;
         CreateAppConfText: Label 'Do you want to create a payment invoice from Act %1?';
 
     local procedure SaveInvoiceDiscountAmount()

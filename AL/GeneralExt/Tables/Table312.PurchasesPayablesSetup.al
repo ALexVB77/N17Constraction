@@ -26,6 +26,12 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
                 CheckCostDimension();
             end;
         }
+        field(50004; "Base Resp. Employee No."; code[20])
+        {
+            Caption = 'Base Resp. Employee No.';
+            Description = 'NC 51373 AB';
+            TableRelation = Vendor."No." where("Vendor Type" = CONST("Resp. Employee"));
+        }
         field(50005; "Zero VAT Prod. Posting Group"; code[20])
         {
             Caption = 'Zero VAT Prod. Posting Group';
