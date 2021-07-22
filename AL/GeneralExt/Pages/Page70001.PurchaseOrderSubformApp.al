@@ -170,7 +170,7 @@ page 70001 "Purchase Order Subform App"
                     ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
                     Editable = false;
                     ToolTip = 'Use action "Link to Cash Flow Entry"';
-                    trigger OnDrillDown()
+                    trigger OnAssistEdit()
                     var
                         PrjBudMgt: Codeunit "Project Budget Management";
                     begin
