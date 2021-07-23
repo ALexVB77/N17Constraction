@@ -5857,7 +5857,6 @@
           <source>Cust. E-Mail Notify Log</source>
           <target>Журнал учета отправки сообщений</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861211528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -8543,9 +8542,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewProblemDoc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New,Process,Report,Act,Function,Request Approval,Approve,Release,Navigate</source>
-          <target>Новый,Процесс,Отчет,Акт,Функции,Запросить утверждение,Утвердить,Выпустить,Навигатор</target>
+          <source>New,Process,Report,Act,Function,Request Approval,Approve,Release,Navigate,Print</source>
+          <target>Новый,Процесс,Отчет,Акт,Функции,Запросить утверждение,Утвердить,Выпустить,Навигатор,Печатать</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Property PromotedActionCategories</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -8769,6 +8769,20 @@
           <target>Ввести на основании</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action EnterBasedOn - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3437592965 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <target>Печать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3437592965 - Action 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cover Sheet</source>
+          <target>Сопроводительный лист</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Cover Sheet - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Action 1332593150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Release</source>
@@ -9968,21 +9982,18 @@
           <source>Cover Sheet</source>
           <target>Сопроводительный лист</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3584557798 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Order Act</source>
           <target>Документы Акт и КС-2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Header - Property RequestFilterHeading</note>
         </trans-unit>
         <trans-unit id="Report 3584557798 - ReportDataItem 227370865 - Method 3245603402 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer,Accountant</source>
           <target>Reception,Контроллер,Сметчик,Проверяющий,Предв. Утверждающий,Утверждающий,Подписывающий,Бухгалтерия</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Approval - Method OnAfterGetRecord - NamedType ResponsText</note>
         </trans-unit>
         <trans-unit id="Report 2596185427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

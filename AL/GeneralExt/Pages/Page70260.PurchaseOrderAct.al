@@ -2,7 +2,7 @@ page 70260 "Purchase Order Act"
 {
     Caption = 'Purchase Order Act';
     PageType = Document;
-    PromotedActionCategories = 'New,Process,Report,Act,Function,Request Approval,Approve,Release,Navigate';
+    PromotedActionCategories = 'New,Process,Report,Act,Function,Request Approval,Approve,Release,Navigate,Print';
     RefreshOnActivate = true;
     SourceTable = "Purchase Header";
     SourceTableView = WHERE("Document Type" = FILTER(Order));
@@ -741,6 +741,30 @@ page 70260 "Purchase Order Act"
                         ReleasePurchDoc: Codeunit "Release Purchase Document";
                     begin
                         ReleasePurchDoc.PerformManualReopen(Rec);
+                    end;
+                }
+            }
+            group(Print)
+            {
+                Caption = 'Print';
+                Image = Print;
+                action("Cover Sheet")
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Cover Sheet';
+                    Image = PrintCover;
+                    Promoted = true;
+                    PromotedCategory = Category10;
+
+                    trigger OnAction()
+                    var
+                        PurchaseHeader: Record "Purchase Header";
+                        CoverSheet: report "Cover Sheet";
+                    begin
+                        PurchaseHeader := Rec;
+                        CurrPage.SetSelectionFilter(PurchaseHeader);
+                        CoverSheet.SetTableView(PurchaseHeader);
+                        CoverSheet.Run();
                     end;
                 }
             }
