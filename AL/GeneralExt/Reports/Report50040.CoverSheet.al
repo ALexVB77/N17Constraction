@@ -49,21 +49,21 @@ report 50040 "Cover Sheet"
                 { }
                 column(Quantity; Quantity)
                 { }
-                column(Unit_of_Measure_Code; "Unit of Measure Code")
+                column(UOM_Code; "Unit of Measure Code")
                 { }
-                column(Currency_Code; "Currency Code")
+                column(Curr_Code; "Currency Code")
                 { }
-                column(Direct_Unit_Cost; "Direct Unit Cost")
+                column(Unit_Cost; "Direct Unit Cost")
                 { }
                 column(Line_Amount; "Line Amount")
                 { }
-                column(Amount_Including_VAT; AmountInclVAT)
+                column(Amt_Inc_VAT; AmountInclVAT)
                 { }
-                column(CostPlaceCode; CPDimValueCode)
+                column(CPCode; CPDimValueCode)
                 { }
-                column(CostCodeCode; CCDimValueCode)
+                column(CCCode; CCDimValueCode)
                 { }
-                column(UtilitiesCode; UtilitiesDimValueCode)
+                column(UtilCode; UtilitiesDimValueCode)
                 { }
 
                 trigger OnAfterGetRecord()
