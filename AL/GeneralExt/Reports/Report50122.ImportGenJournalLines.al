@@ -59,7 +59,12 @@ report 50122 "Import General Journal Lines"
         ExcelBuffer.OpenBook(ServerFileName, SheetName);
         ExcelBuffer.ReadSheet();
         GetLastRowAndColumn();
+
         SalesSetup.Get();
+        SalesSetup.TestField("Cost Place Dimension");
+        SalesSetup.TestField("Taxable Period Dimension");
+        SalesSetup.TestField("Tax Acc. View Dimension");
+        SalesSetup.TestField("Tax Acc. Object Dimension");
 
         for RowNo := 3 to TotalRows do begin
             LineNo := (RowNo - 2 + 10000);
@@ -81,7 +86,7 @@ report 50122 "Import General Journal Lines"
                 GenlJournalLine.Validate("Agreement No.", GetValueAtCell(RowNo, 12));
                 GenlJournalLine.Validate("Amount (LCY)", GetValueAtDecimal(RowNo, 13));
                 GenlJournalLine.Validate(Description, GetValueAtCell(RowNo, 14));
-                if SalesSetup."Cost Place Dimension" <> '' then
+                if ((SalesSetup."Cost Place Dimension" <> '') and (GetValueAtCell(RowNo, 15) <> '')) then
                     DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Cost Place Dimension",
                                                           GetValueAtCell(RowNo, 15),
                                                           GenlJournalLine."Dimension Set ID",
@@ -100,19 +105,19 @@ report 50122 "Import General Journal Lines"
                 GenlJournalLine.Validate("Vendor VAT Invoice No.", GetValueAtCell(RowNo, 26));
                 GenlJournalLine.Validate("Bal. VAT Bus. Posting Group", GetValueAtCell(RowNo, 27));
                 GenlJournalLine.Validate("Bal. VAT Prod. Posting Group", GetValueAtCell(RowNo, 28));
-                if SalesSetup."Taxable Period Dimension" <> '' then
+                if ((SalesSetup."Taxable Period Dimension" <> '') and (GetValueAtCell(RowNo, 29) <> '')) then
                     DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Taxable Period Dimension",
                                                           GetValueAtCell(RowNo, 29),
                                                           GenlJournalLine."Dimension Set ID",
                                                           GenlJournalLine."Shortcut Dimension 1 Code",
                                                           GenlJournalLine."Shortcut Dimension 2 Code");
-                if SalesSetup."Tax Acc. View Dimension" <> '' then
+                if ((SalesSetup."Tax Acc. View Dimension" <> '') and (GetValueAtCell(RowNo, 30) <> '')) then
                     DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Tax Acc. View Dimension",
                                                           GetValueAtCell(RowNo, 30),
                                                           GenlJournalLine."Dimension Set ID",
                                                           GenlJournalLine."Shortcut Dimension 1 Code",
                                                           GenlJournalLine."Shortcut Dimension 2 Code");
-                if SalesSetup."Tax Acc. Object Dimension" <> '' then
+                if ((SalesSetup."Tax Acc. Object Dimension" <> '') and (GetValueAtCell(RowNo, 31) <> '')) then
                     DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Tax Acc. Object Dimension",
                                                           GetValueAtCell(RowNo, 31),
                                                           GenlJournalLine."Dimension Set ID",
