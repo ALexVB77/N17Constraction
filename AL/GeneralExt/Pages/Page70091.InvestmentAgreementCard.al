@@ -65,6 +65,21 @@ page 70091 "Investment Agreement Card"
                     ApplicationArea = All;
                 }
 
+                field("Salesperson Code"; Rec."Salesperson Code")
+                {
+                    ApplicationArea = All;
+                }
+
+                field("Share in property 3"; Rec."Share in property 3")
+                {
+                    ApplicationArea = All;
+                }
+
+
+                field(Active; Rec.Active)
+                {
+                    ApplicationArea = All;
+                }
 
                 field("Installment (LCY)"; Rec."Agreement Amount" - Rec."Apartment Amount")
                 {

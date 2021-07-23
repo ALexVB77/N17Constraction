@@ -9985,21 +9985,18 @@
           <source>Этот акт имеет статус проблемный!</source>
           <target>Этот акт имеет статус проблемный!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - NamedType ProblemDocText</note>
         </trans-unit>
         <trans-unit id="Report 3584557798 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Сопроводительный лист к акту.</source>
           <target>Сопроводительный лист к акту.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Report 3584557798 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>Сопроводительный лист к КС-2.</source>
           <target>Сопроводительный лист к КС-2.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Report 3584557798 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
