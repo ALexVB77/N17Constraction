@@ -99,7 +99,7 @@ report 50040 "Cover Sheet"
             {
                 DataItemLink = "Document Type" = field("Document Type"), "Document No." = FIELD("No.");
                 DataItemLinkReference = Header;
-                DataItemTableView = sorting("Table ID", "Document Type", "Document No.", "Sequence No.", "Record ID to Approve")
+                DataItemTableView = sorting("Table ID", "Document Type", "Document No.", "Date-Time Sent for Approval")
                                     where("Table ID" = const(38)/*, Status = const(Approved)*/);
                 column(UserActType; UserActType)
                 { }
@@ -107,9 +107,9 @@ report 50040 "Cover Sheet"
                 { }
                 column(Status; Status)
                 { }
-                column(Date_Time_Sent_for_Approval; "Date-Time Sent for Approval")
+                column(Date_Time_Sent; "Date-Time Sent for Approval")
                 { }
-                column(Last_Date_Time_Modified; "Last Date-Time Modified")
+                column(Date_Time_Appr; "Last Date-Time Modified")
                 { }
 
                 trigger OnAfterGetRecord()
