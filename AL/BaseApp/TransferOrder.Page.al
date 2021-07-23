@@ -46,6 +46,7 @@ page 5740 "Transfer Order"
                     ApplicationArea = Location;
                     Editable = (Status = Status::Open) AND EnableTransferFields;
                     Importance = Promoted;
+                    Visible = false; // NC 51143 PA
                     ToolTip = 'Specifies that the transfer does not use an in-transit location. When you transfer directly, the Qty. to Receive field will be locked with the same value as the quantity to ship.';
 
                     trigger OnValidate()
