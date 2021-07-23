@@ -5857,7 +5857,6 @@
           <source>Cust. E-Mail Notify Log</source>
           <target>Журнал учета отправки сообщений</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861211528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9968,21 +9967,18 @@
           <source>Cover Sheet</source>
           <target>Сопроводительный лист</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3584557798 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Order Act</source>
           <target>Документы Акт и КС-2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Header - Property RequestFilterHeading</note>
         </trans-unit>
         <trans-unit id="Report 3584557798 - ReportDataItem 227370865 - Method 3245603402 - NamedType 536801205" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer,Accountant</source>
           <target>Reception,Контроллер,Сметчик,Проверяющий,Предв. Утверждающий,Утверждающий,Подписывающий,Бухгалтерия</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - ReportDataItem Approval - Method OnAfterGetRecord - NamedType ResponsText</note>
         </trans-unit>
         <trans-unit id="Report 2596185427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -13609,6 +13605,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Building Act Nos. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2733905579 - Field 3552419404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Cost Place Dimension</source>
+          <target>Код измерения COST PLACE</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Cost Place Dimension - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2733905579 - Field 1652488761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>CRM Worker Code</source>
           <target>Код обработчика CRM интеграции</target>
@@ -13620,6 +13623,27 @@
           <target>Номер счета ГК док-та предоплаты (авто)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Prepay. Inv. G/L Acc. No. (ac) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2733905579 - Field 2664662225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Tax Acc. Object Dimension</source>
+          <target>Код измерения НУ-ОБЪЕКТ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Tax Acc. Object Dimension - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2733905579 - Field 3550004593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Tax Acc. View  Dimension</source>
+          <target>Код измерения НУ-ВИД</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Tax Acc. View Dimension - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2733905579 - Field 3486131014 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Taxable Period Dimension</source>
+          <target>Код измерения НП</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Taxable Period Dimension - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2820792494 - Field 2993483370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Credit-Memo Reason</source>
