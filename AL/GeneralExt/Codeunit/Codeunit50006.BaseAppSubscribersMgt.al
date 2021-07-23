@@ -228,6 +228,22 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51410 < EP
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Header", 'OnAfterGetTransferRoute', '', false, false)]
+    local procedure OnAfterGetTransferRouteTransferHeader(var TransferHeader: Record "Transfer Header"; TransferRoute: Record "Transfer Route");
+    var
+        Location: Record Location;
+    begin
+        // NC 51143 > EP
+        // Проставляем в заказ общую бизнес-группу транзитного склада,
+        // когда его код автоматически выставляется из Transfer Route
+        if Location.Get(TransferHeader."In-Transit Code") then
+            TransferHeader.Validate("Gen. Bus. Posting Group", Location."Def. Gen. Bus. Posting Group")
+        else
+            TransferHeader.Validate("Gen. Bus. Posting Group", '');
+        // NC 51143 < EP
+    end;
+
+
     // t 5740 <<
 
     // t 12450 >>
