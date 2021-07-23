@@ -38,6 +38,9 @@ report 50122 "Import General Journal Lines"
         JournalTemplateName: Text;
         JournalBatchName: Text;
         LineNo: Integer;
+        DimMgtExt: Codeunit "Dimension Management (Ext)";
+        SalesSetup: Record "Sales & Receivables Setup";
+        DimSetEntry: Record "Dimension Set Entry";
 
     trigger OnPreReport()
     var
@@ -56,45 +59,66 @@ report 50122 "Import General Journal Lines"
         ExcelBuffer.OpenBook(ServerFileName, SheetName);
         ExcelBuffer.ReadSheet();
         GetLastRowAndColumn();
+        SalesSetup.Get();
 
         for RowNo := 3 to TotalRows do begin
             LineNo := (RowNo - 2 + 10000);
             if not GenlJournalLine.Get(JournalTemplateName, JournalBatchName, LineNo) then begin
                 GenlJournalLine.Init();
-                GenlJournalLine."Journal Template Name" := JournalTemplateName;
-                GenlJournalLine."Journal Batch Name" := JournalBatchName;
-                GenlJournalLine."Line No." := LineNo;
-                GenlJournalLine."Document Type" := Enum::"Gen. Journal Document Type".FromInteger((GetDocTypeAtInteger(RowNo, 2)));
-                GenlJournalLine."Posting Date" := GetValueAtDate(RowNo, 3);
-                GenlJournalLine."Document No." := GetValueAtCell(RowNo, 4);
-                GenlJournalLine."Account Type" := Enum::"Gen. Journal Account Type".FromInteger(GetAccTypeAtInteger(RowNo, 5));
-                GenlJournalLine."Posting Group" := GetValueAtCell(RowNo, 6);
-                GenlJournalLine."Account No." := GetValueAtCell(RowNo, 7);
-                GenlJournalLine."Bal. Account No." := GetValueAtCell(RowNo, 8);
-                GenlJournalLine."Source Type" := Enum::"Gen. Journal Source Type".FromInteger(GetSrcTypeAtInteger(RowNo, 9));
-                GenlJournalLine."Source Code" := GetValueAtCell(RowNo, 10);
-                GenlJournalLine."Depreciation Book Code" := GetValueAtCell(RowNo, 11);
-                GenlJournalLine."Agreement No." := GetValueAtCell(RowNo, 12);
-                GenlJournalLine."Amount (LCY)" := GetValueAtDecimal(RowNo, 13);
-                GenlJournalLine.Description := GetValueAtCell(RowNo, 14);
-                //GenlJournalLine."Shortcut Dimension Code" := GetValueAtCell(RowNo, 15);
-                GenlJournalLine."Vendor VAT Invoice Date" := GetValueAtDate(RowNo, 16);
-                GenlJournalLine.Amount := GetValueAtDecimal(RowNo, 17);
-                GenlJournalLine."Debit Amount" := GetValueAtDecimal(RowNo, 18);
-                GenlJournalLine."Credit Amount" := GetValueAtDecimal(RowNo, 19);
-                GenlJournalLine."Debit Amount (LCY)" := GetValueAtDecimal(RowNo, 20);
-                GenlJournalLine."Credit Amount (LCY)" := GetValueAtDecimal(RowNo, 21);
-                GenlJournalLine."Bal. Account Type" := Enum::"Gen. Journal Account Type".FromInteger(GetBalAccTypeAtInteger(RowNo, 22));
-                GenlJournalLine."Bal. Gen. Posting Type" := Enum::"General Posting Type".FromInteger(GetBalGenPostingTypeAtInteger(RowNo, 23));
-                GenlJournalLine."Bal. Gen. Bus. Posting Group" := GetValueAtCell(RowNo, 24);
-                GenlJournalLine."Bal. Gen. Prod. Posting Group" := GetValueAtCell(RowNo, 25);
-                GenlJournalLine."Vendor VAT Invoice No." := GetValueAtCell(RowNo, 26);
-                GenlJournalLine."Bal. VAT Bus. Posting Group" := GetValueAtCell(RowNo, 27);
-                GenlJournalLine."Bal. VAT Prod. Posting Group" := GetValueAtCell(RowNo, 28);
-                //GenlJournalLine."Shortcut Dimension Code" := GetValueAtCell(RowNo, 29);
-                //GenlJournalLine."Shortcut Dimension Code" := GetValueAtCell(RowNo, 30);
-                //GenlJournalLine."Shortcut Dimension Code" := GetValueAtCell(RowNo, 31);
-                GenlJournalLine.Insert();
+                GenlJournalLine.Validate("Journal Template Name", JournalTemplateName);
+                GenlJournalLine.Validate("Journal Batch Name", JournalBatchName);
+                GenlJournalLine.Validate("Line No.", LineNo);
+                GenlJournalLine.Validate("Document Type", Enum::"Gen. Journal Document Type".FromInteger((GetDocTypeAtInteger(RowNo, 2))));
+                GenlJournalLine.Validate("Posting Date", GetValueAtDate(RowNo, 3));
+                GenlJournalLine.Validate("Document No.", GetValueAtCell(RowNo, 4));
+                GenlJournalLine.Validate("Account Type", Enum::"Gen. Journal Account Type".FromInteger(GetAccTypeAtInteger(RowNo, 5)));
+                GenlJournalLine.Validate("Posting Group", GetValueAtCell(RowNo, 6));
+                GenlJournalLine.Validate("Account No.", GetValueAtCell(RowNo, 7));
+                GenlJournalLine.Validate("Bal. Account No.", GetValueAtCell(RowNo, 8));
+                GenlJournalLine.Validate("Source Type", Enum::"Gen. Journal Source Type".FromInteger(GetSrcTypeAtInteger(RowNo, 9)));
+                GenlJournalLine.Validate("Source Code", GetValueAtCell(RowNo, 10));
+                GenlJournalLine.Validate("Depreciation Book Code", GetValueAtCell(RowNo, 11));
+                GenlJournalLine.Validate("Agreement No.", GetValueAtCell(RowNo, 12));
+                GenlJournalLine.Validate("Amount (LCY)", GetValueAtDecimal(RowNo, 13));
+                GenlJournalLine.Validate(Description, GetValueAtCell(RowNo, 14));
+                if SalesSetup."Cost Place Dimension" <> '' then
+                    DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Cost Place Dimension",
+                                                          GetValueAtCell(RowNo, 15),
+                                                          GenlJournalLine."Dimension Set ID",
+                                                          GenlJournalLine."Shortcut Dimension 1 Code",
+                                                          GenlJournalLine."Shortcut Dimension 2 Code");
+                GenlJournalLine.Validate("Vendor VAT Invoice Date", GetValueAtDate(RowNo, 16));
+                GenlJournalLine.Validate(Amount, GetValueAtDecimal(RowNo, 17));
+                GenlJournalLine.Validate("Debit Amount", GetValueAtDecimal(RowNo, 18));
+                GenlJournalLine.Validate("Credit Amount", GetValueAtDecimal(RowNo, 19));
+                GenlJournalLine.Validate("Debit Amount (LCY)", GetValueAtDecimal(RowNo, 20));
+                GenlJournalLine.Validate("Credit Amount (LCY)", GetValueAtDecimal(RowNo, 21));
+                GenlJournalLine.Validate("Bal. Account Type", Enum::"Gen. Journal Account Type".FromInteger(GetBalAccTypeAtInteger(RowNo, 22)));
+                GenlJournalLine.Validate("Bal. Gen. Posting Type", Enum::"General Posting Type".FromInteger(GetBalGenPostingTypeAtInteger(RowNo, 23)));
+                GenlJournalLine.Validate("Bal. Gen. Bus. Posting Group", GetValueAtCell(RowNo, 24));
+                GenlJournalLine.Validate("Bal. Gen. Prod. Posting Group", GetValueAtCell(RowNo, 25));
+                GenlJournalLine.Validate("Vendor VAT Invoice No.", GetValueAtCell(RowNo, 26));
+                GenlJournalLine.Validate("Bal. VAT Bus. Posting Group", GetValueAtCell(RowNo, 27));
+                GenlJournalLine.Validate("Bal. VAT Prod. Posting Group", GetValueAtCell(RowNo, 28));
+                if SalesSetup."Taxable Period Dimension" <> '' then
+                    DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Taxable Period Dimension",
+                                                          GetValueAtCell(RowNo, 29),
+                                                          GenlJournalLine."Dimension Set ID",
+                                                          GenlJournalLine."Shortcut Dimension 1 Code",
+                                                          GenlJournalLine."Shortcut Dimension 2 Code");
+                if SalesSetup."Tax Acc. View Dimension" <> '' then
+                    DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Tax Acc. View Dimension",
+                                                          GetValueAtCell(RowNo, 30),
+                                                          GenlJournalLine."Dimension Set ID",
+                                                          GenlJournalLine."Shortcut Dimension 1 Code",
+                                                          GenlJournalLine."Shortcut Dimension 2 Code");
+                if SalesSetup."Tax Acc. Object Dimension" <> '' then
+                    DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Tax Acc. Object Dimension",
+                                                          GetValueAtCell(RowNo, 31),
+                                                          GenlJournalLine."Dimension Set ID",
+                                                          GenlJournalLine."Shortcut Dimension 1 Code",
+                                                          GenlJournalLine."Shortcut Dimension 2 Code");
+                GenlJournalLine.Insert(true);
             end;
             ;
         end;
