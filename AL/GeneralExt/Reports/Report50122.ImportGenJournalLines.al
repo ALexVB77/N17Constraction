@@ -2,6 +2,7 @@ report 50122 "Import General Journal Lines"
 {
     UsageCategory = Administration;
     ApplicationArea = All;
+    ProcessingOnly = true;
 
     requestpage
     {
@@ -16,11 +17,13 @@ report 50122 "Import General Journal Lines"
                     {
                         ApplicationArea = All;
                         Caption = 'Journal Template Name';
+                        TableRelation = "Gen. Journal Template".Name;
                     }
                     field(JournalBatchName; JournalBatchName)
                     {
                         ApplicationArea = All;
                         Caption = 'Journal Batch Name';
+                        TableRelation = "Gen. Journal Batch".Name;
                     }
                 }
             }
