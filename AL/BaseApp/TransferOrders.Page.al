@@ -45,6 +45,7 @@ page 5742 "Transfer Orders"
                 field("Direct Transfer"; "Direct Transfer")
                 {
                     ApplicationArea = Location;
+                    Visible = false; // NC 51143 PA
                     ToolTip = 'Specifies that the transfer does not use an in-transit location.';
                 }
                 field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
