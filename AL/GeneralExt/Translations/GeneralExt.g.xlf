@@ -8318,6 +8318,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3584557798 - NamedType 3355776498" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Этот акт имеет статус проблемный!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - NamedType ProblemDocText</note>
+        </trans-unit>
+        <trans-unit id="Report 3584557798 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Сопроводительный лист к акту.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Report 3584557798 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Сопроводительный лист к КС-2.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cover Sheet - NamedType Text002</note>
+        </trans-unit>
         <trans-unit id="Report 3584557798 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Order Act</source>
           <note from="Developer" annotates="general" priority="2"></note>
