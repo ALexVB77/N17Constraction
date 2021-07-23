@@ -107,9 +107,9 @@ report 50040 "Cover Sheet"
                 { }
                 column(Status; Status)
                 { }
-                column(Date_Time_Sent_for_Approval; "Date-Time Sent for Approval")
+                column(Date_Time_Sent; "Date-Time Sent for Approval")
                 { }
-                column(Last_Date_Time_Modified; "Last Date-Time Modified")
+                column(Date_Time_Appr; "Last Date-Time Modified")
                 { }
 
                 trigger OnAfterGetRecord()
