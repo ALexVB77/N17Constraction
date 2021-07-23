@@ -23,7 +23,15 @@ report 50122 "Import General Journal Lines"
                     {
                         ApplicationArea = All;
                         Caption = 'Journal Batch Name';
-                        TableRelation = "Gen. Journal Batch";
+
+                        trigger OnLookup(var Text: Text): Boolean
+                        var
+                            GenJournalBatch: Record "Gen. Journal Batch";
+                        begin
+                            GenJournalBatch.SetRange("Journal Template Name", JournalTemplateName);
+                            if page.RunModal(0, GenJournalBatch) = Action::LookupOK then
+                                JournalBatchName := GenJournalBatch.Name;
+                        end;
                     }
                 }
             }
