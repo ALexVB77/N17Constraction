@@ -276,6 +276,35 @@ codeunit 50006 "Base App. Subscribers Mgt."
         //NC 22512 < DP
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Item Document Header", 'OnBeforeValidateEvent', 'Status', false, false)]
+    local procedure OnBeforeValidateItemDocumentHeaderStatus(var Rec: Record "Item Document Header"; var xRec: Record "Item Document Header"; CurrFieldNo: Integer)
+    var
+        InvtSetup: Record "Inventory Setup";
+    begin
+        // NC 51411 > EP
+        // Перенес таким образом модификацию codeunit "Release Item Document".OnRun(),
+        // поскольку в триггере нет доступных публикаторов
+
+        // Проверяем, что документ выпускают
+        if (xRec.Status = xRec.Status::Open) and
+           (Rec.Status = Rec.Status::Released) then begin
+            // SWC816 AK 200416 >>
+            InvtSetup.Get();
+            if InvtSetup."Use Giv. Production Func." then begin
+                InvtSetup.TestField("Giv. Materials Loc. Code");
+                InvtSetup.TestField("Giv. Production Loc. Code");
+                if (Rec."Location Code" = InvtSetup."Giv. Materials Loc. Code") or
+                   (Rec."Location Code" = InvtSetup."Giv. Production Loc. Code") then begin
+                    Rec.TestField("Vendor No.");
+                    Rec.TestField("Agreement No.");
+                end;
+            end;
+            // SWC816 AK 200416 <<
+        end;
+
+        // NC 51411 < EP
+    end;
+
     // t 12450 <<
     // t 12477 >>
     [EventSubscriber(ObjectType::Table, Database::"FA Document Line", 'OnAfterValidateEvent', 'Posting Date', false, false)]
