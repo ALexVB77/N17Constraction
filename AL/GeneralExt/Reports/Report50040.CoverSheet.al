@@ -21,7 +21,7 @@ report 50040 "Cover Sheet"
             { }
             column(Buy_from_Vendor_No_; "Buy-from Vendor No.")
             { }
-            column(VendorName; Vendor."Full Name")
+            column(VendorName; VendorName)
             { }
             column(Agreement_No_; "Agreement No.")
             { }
@@ -123,6 +123,22 @@ report 50040 "Cover Sheet"
                     UserActType := SelectStr(MessageResponsNo, ResponsText);
                 end;
             }
+
+            trigger OnAfterGetRecord()
+            begin
+                if "Act Type" = "Act Type"::Act THEN
+                    Title := Text001
+                ELSE
+                    Title := Text002;
+                if Vendor.Get("Buy-from Vendor No.") then begin
+                    if Vendor."Full Name" <> '' then
+                        VendorName := Vendor."Full Name"
+                    else
+                        VendorName := Vendor.Name + Vendor."Name 2";
+                end;
+                IF "Problem Type" = "Problem Type"::"Act error" THEN
+                    ErrStatus := ProblemDocText;
+            end;
         }
     }
 
@@ -138,8 +154,11 @@ report 50040 "Cover Sheet"
         DimSetEntry: Record "Dimension Set Entry";
         Vendor: Record Vendor;
         PaymentOrderMgt: Codeunit "Payment Order Management";
-        Title, ErrStatus : text;
+        Title, ErrStatus, VendorName : text;
         AmountInclVAT: Decimal;
         CPDimValueCode, CCDimValueCode, UtilitiesDimValueCode : code[20];
         UserActType: text;
+        Text001: Label 'Сопроводительный лист к акту.';
+        Text002: Label 'Сопроводительный лист к КС-2.';
+        ProblemDocText: Label 'Этот акт имеет статус проблемный!';
 }
