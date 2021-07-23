@@ -39,6 +39,10 @@ report 50040 "Cover Sheet"
             { }
             column(InvoiceAmount; "Invoice Amount Incl. VAT" - "Invoice VAT Amount")
             { }
+            column(BarcodePrint; BarcodePrint)
+            { }
+            column(CompName; CompanyName)
+            { }
 
             dataitem(Line; "Purchase Line")
             {
@@ -125,6 +129,9 @@ report 50040 "Cover Sheet"
             }
 
             trigger OnAfterGetRecord()
+            var
+                Barcode: Codeunit Barcode;
+                BarcodeNumber: Text;
             begin
                 if "Act Type" = "Act Type"::Act THEN
                     Title := Text001
@@ -139,6 +146,9 @@ report 50040 "Cover Sheet"
                 IF "Problem Type" = "Problem Type"::"Act error" THEN
                     ErrStatus := ProblemDocText;
                 DocDateText := Format("Document Date");
+
+                BarcodeNumber := Barcode.CreateBarcode(COPYSTR("No.", 4, 6));
+                BarcodePrint := Barcode.Ean13(BarcodeNumber);
             end;
         }
     }
@@ -158,6 +168,7 @@ report 50040 "Cover Sheet"
         Title, ErrStatus, VendorName : text;
         AmountInclVAT: Decimal;
         CPDimValueCode, CCDimValueCode, UtilitiesDimValueCode : code[20];
+        BarcodePrint, CompName : text;
         UserActType, DocDateText : text;
         Text001: Label 'Сопроводительный лист к акту.';
         Text002: Label 'Сопроводительный лист к КС-2.';

@@ -3813,6 +3813,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Approvals Mgmt. (Ext) - Method RejectSelectedApprovalRequest - NamedType RejectOnlyOpenRequestsErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1650050144 - Method 591259028 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EAN %1 must be 13 characters long.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Barcode - Method Ean13 - NamedType LocText001</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 900939636 - NamedType 3842566867" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1 = %2 already exists for %5 (%3 = %4).</source>
           <note from="Developer" annotates="general" priority="2"></note>
