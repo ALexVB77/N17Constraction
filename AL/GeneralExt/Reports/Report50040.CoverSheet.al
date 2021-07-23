@@ -31,7 +31,7 @@ report 50040 "Cover Sheet"
             { }
             column(Vendor_Invoice_No_; "Vendor Invoice No.")
             { }
-            column(Document_Date; "Document Date")
+            column(Document_Date; DocDateText)
             { }
             column(Invoice_Amount_Incl__VAT; "Invoice Amount Incl. VAT")
             { }
@@ -138,6 +138,7 @@ report 50040 "Cover Sheet"
                 end;
                 IF "Problem Type" = "Problem Type"::"Act error" THEN
                     ErrStatus := ProblemDocText;
+                DocDateText := Format("Document Date");
             end;
         }
     }
@@ -157,7 +158,7 @@ report 50040 "Cover Sheet"
         Title, ErrStatus, VendorName : text;
         AmountInclVAT: Decimal;
         CPDimValueCode, CCDimValueCode, UtilitiesDimValueCode : code[20];
-        UserActType: text;
+        UserActType, DocDateText : text;
         Text001: Label 'Сопроводительный лист к акту.';
         Text002: Label 'Сопроводительный лист к КС-2.';
         ProblemDocText: Label 'Этот акт имеет статус проблемный!';
