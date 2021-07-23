@@ -99,7 +99,7 @@ report 50040 "Cover Sheet"
             {
                 DataItemLink = "Document Type" = field("Document Type"), "Document No." = FIELD("No.");
                 DataItemLinkReference = Header;
-                DataItemTableView = sorting("Table ID", "Document Type", "Document No.", "Sequence No.", "Record ID to Approve")
+                DataItemTableView = sorting("Table ID", "Document Type", "Document No.", "Date-Time Sent for Approval")
                                     where("Table ID" = const(38)/*, Status = const(Approved)*/);
                 column(UserActType; UserActType)
                 { }
