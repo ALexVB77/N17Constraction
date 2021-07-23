@@ -8,6 +8,7 @@ page 5742 "Transfer Orders"
     PromotedActionCategories = 'New,Process,Report,Release,Posting,Order,Documents,Print/Send,Navigate';
     SourceTable = "Transfer Header";
     UsageCategory = Lists;
+    SourceTableView = sorting("No.") where("Direct Transfer" = filter(<> '1')); // NC 51143 PA
 
     layout
     {
