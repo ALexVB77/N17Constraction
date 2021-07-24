@@ -7,6 +7,8 @@ report 50063 "Share Participant Act 2"
     UsageCategory = Administration;
     ApplicationArea = All;
     WordMergeDataItem = Header;
+    ProcessingOnly = true;
+
     dataset
     {
         dataitem(Header; Integer)
