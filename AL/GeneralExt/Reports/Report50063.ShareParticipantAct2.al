@@ -1,11 +1,13 @@
 report 50063 "Share Participant Act 2"
 {
+    WordLayout = './Reports/Layouts/FinancialObligationsCertificateTemplate.docx';
+    Caption = 'Share Participant Act 2';
+    DefaultLayout = Word;
+    PreviewMode = PrintLayout;
     UsageCategory = Administration;
     ApplicationArea = All;
-    Caption = 'Share Participant Act 2';
-    ProcessingOnly = true;
-    DefaultLayout = Word;
-    WordLayout = './Reports/Layouts/FinancialObligationsCertificateTemplate.docx';
+    WordMergeDataItem = Header;
+    //ProcessingOnly = true;
     dataset
     {
         dataitem(Header; Integer)
