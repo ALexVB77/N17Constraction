@@ -72,5 +72,13 @@ pageextension 80461 "Inventory Setup (Ext)" extends "Inventory Setup"
                 Description = 'NC 51410 EP';
             }
         }
+        addlast(Templates)
+        {
+            field("Item Shpt. M-19 Template Code"; Rec."Item Shpt. M-19 Template Code")
+            {
+                ApplicationArea = All;
+                Description = 'NC 52624 EP';
+            }
+        }
     }
 }

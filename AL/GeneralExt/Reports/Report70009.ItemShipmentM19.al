@@ -149,13 +149,16 @@ report 70009 "Item Shipment M-19"
     }
 
     trigger OnPreReport()
+    var
+        InventorySetup: Record "Inventory Setup";
     begin
         // NC 52624 > EP
         // FileName := ExcelTemplate.OpenTemplate(Format(Report::"Item Shipment M-19"));
         // ExcelBuf.OpenBook(FileName, 'Sheet1');
         // RowNo := 24;
-        ExcelTemplate.OpenTemplate(Format(Report::"Item Shipment M-19"));
-        ExcelReportBuilderManager.InitTemplate(ExcelTemplate.Code);
+        InventorySetup.Get();
+        InventorySetup.TestField("Item Shpt. M-19 Template Code");
+        ExcelReportBuilderManager.InitTemplate(InventorySetup."Item Shpt. M-19 Template Code");
         ExcelReportBuilderManager.SetSheet('Sheet1');
         // NC 52624 < EP
 

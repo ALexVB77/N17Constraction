@@ -10523,6 +10523,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Inventory Setup (Ext) - Field Giv. Transfer Order Nos. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3887120495 - Field 3977718963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>Item Shipment M-19 Template Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Inventory Setup (Ext) - Field Item Shpt. M-19 Template Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3887120495 - Field 484993259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>Manuf. Adjmt Source Code</source>
           <note from="Developer" annotates="general" priority="2"></note>

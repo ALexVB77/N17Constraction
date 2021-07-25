@@ -52,6 +52,20 @@ tableextension 80313 "Inventory Setup (Ext)" extends "Inventory Setup"
             Caption = 'Use Giv. Production Func.';
             Description = 'SWC816, NC 51411 EP';
         }
+        field(50020; "Giv. Transfer Order Nos."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Giv. Transfer Order Nos.';
+            TableRelation = "No. Series";
+            Description = 'NC 51410 EP';
+        }
+        field(50030; "Item Shpt. M-19 Template Code"; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Item Shipment M-19 Template Code';
+            TableRelation = "Excel Template";
+            Description = 'NC 52624 EP';
+        }
         field(70002; "Temp Item Code"; Code[20])
         {
             Caption = 'Temp Item Code';
@@ -63,13 +77,6 @@ tableextension 80313 "Inventory Setup (Ext)" extends "Inventory Setup"
             Caption = 'Default Location Code';
             Description = 'NC 51373 AB';
             TableRelation = Location;
-        }
-        field(50020; "Giv. Transfer Order Nos."; Code[20])
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Giv. Transfer Order Nos.';
-            TableRelation = "No. Series";
-            Description = 'NC 51410 EP';
         }
     }
 }
