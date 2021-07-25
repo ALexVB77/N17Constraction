@@ -717,6 +717,153 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Building Turn - Field Turn Dimension Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2305859440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BW Account</source>
+          <target>BW Cчет</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2305859440 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <target>Наименование</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Account - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2305859440 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>BW счет номер</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Account - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1535954807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BW Dimension</source>
+          <target>BW измерение</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Dimension - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1535954807 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source>
+          <target>Заблокирован</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Dimension - Field Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1535954807 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <target>Код</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Dimension - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1535954807 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <target>Наименование</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Dimension - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1535954807 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <target>Тип</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Dimension - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BW Translation Entry</source>
+          <target>BW операции трансляции </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 592951229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount (LCY)</source>
+          <target>Сумма (руб.)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Amount (LCY) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 98203453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BW Account No.</source>
+          <target>BW счет номер</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field BW Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 2443924682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Code</source>
+          <target>Cost Code</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Cost Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 112553004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place</source>
+          <target>Cost Place</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Cost Place - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <target>Код валюты</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Currency Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target>Описание операции</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <target>Дата документа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <target>Операция номер</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account No.</source>
+          <target>Номер счета ГК</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field G/L Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 912261439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period</source>
+          <target>Период</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <target>Дата учета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3047927222 - Field 1882905478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source No.</source>
+          <target>Номер источника</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table BW Translation Entry - Field Source No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1141732079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Calc. Gen Journal Operand</source>
           <target>Операнд строки журнала расчета</target>
@@ -4579,7 +4726,6 @@
           <source>EAN %1 must be 13 characters long.</source>
           <target>EAN %1 должен содержать 13 символов.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Barcode - Method Ean13 - NamedType LocText001</note>
         </trans-unit>
         <trans-unit id="Codeunit 3249848645 - Method 900939636 - NamedType 3842566867" size-unit="char" translate="yes" xml:space="preserve">
@@ -5493,6 +5639,41 @@
           <target>Бюджет корректировки</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Budget Corrections - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2305859440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BW Account</source>
+          <target>BW счет</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page BW Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2305859440 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <target>Наименование</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page BW Account - Control Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2305859440 - Control 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>Номер</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page BW Account - Control No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3884067202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BW Dimesions</source>
+          <target>BW измерение</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page BW Dimensions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3047927222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BW Translation Entry</source>
+          <target>BW операции трансляции</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page BW Translation Entry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2147051387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Calc. Gen. Journal Update</source>
