@@ -8313,10 +8313,60 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details - Action ActionName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3482076077 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Invoice,Function</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Items are created!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>F&amp;unctions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Action F&amp;unctions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Action 3058300703 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Action CreateInvoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Action 41867071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Action CreateItemCard - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2004722243 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Excel List</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1044976259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel Subform - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1044976259 - Action 1402615620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel Subform - Action &amp;Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1044976259 - Action 2173385693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel Subform - Action Dimensions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3928263244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Web Request Queue</source>
@@ -9553,6 +9603,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 929855488" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown client type!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType ClientTypeErr</note>
+        </trans-unit>
         <trans-unit id="Report 3956600988 - NamedType 3794910328" size-unit="char" translate="yes" xml:space="preserve">
           <source>Act %2 has already been created for document %1.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9577,6 +9632,21 @@
           <source>Document %1 for %2 already exists! Recreate?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 510963145" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import from File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Text031</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 989751795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control FileName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1856612108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inventory for Deferrals INV-11</source>

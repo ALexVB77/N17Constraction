@@ -4601,7 +4601,7 @@
         </trans-unit>
         <trans-unit id="Table 1089551496 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Invoice %1 created</source>
-          <target>[NAB: REVIEW]Создан %1 %2</target>
+          <target>Создан %1 %2</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%2" was found in target 1 times, but was not found in source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - NamedType Text001</note>
@@ -9976,12 +9976,81 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details - Action ActionName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3482076077 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Invoice,Function</source>
+          <target>Новый,Процесс,Отчет,Накладная,Функции</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Excel</source>
+          <target>Счет фактура поставщика</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Items are created!</source>
+          <target>Товары созданы!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target>Общее</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>F&amp;unctions</source>
+          <target>Ф&amp;ункции</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Action F&amp;unctions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Action 3058300703 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Invoice</source>
+          <target>Создать счет</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Action CreateInvoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3482076077 - Action 41867071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Items</source>
+          <target>Создать Карточки Товаров</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel - Action CreateItemCard - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2004722243 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Excel List</source>
           <target>Список счет фактур поставщика</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1044976259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <target>Строки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel Subform - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1044976259 - Action 1402615620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Line</source>
+          <target>&amp;Строка</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel Subform - Action &amp;Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1044976259 - Action 2173385693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <target>Измерения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel Subform - Action Dimensions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3928263244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Web Request Queue</source>
@@ -11461,45 +11530,73 @@
         </trans-unit>
         <trans-unit id="Report 3956600988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import Vendor Invoice</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Загрузка Товарной накладной поставщика</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 929855488" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown client type!</source>
+          <target>Неизвестный тип клиента!<target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType ClientTypeErr</note>
+        </trans-unit>
         <trans-unit id="Report 3956600988 - NamedType 3794910328" size-unit="char" translate="yes" xml:space="preserve">
           <source>Act %2 has already been created for document %1.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>По документу %1 уже создан акт %2.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Err_ActCreated</note>
         </trans-unit>
         <trans-unit id="Report 3956600988 - NamedType 2027480941" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please select a file to download!</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Укажите файл для загрузки!</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Err_fname</note>
         </trans-unit>
         <trans-unit id="Report 3956600988 - NamedType 594143757" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cell %1 has no data!</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>В ячейке %1 нет данных!</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Err_noData</note>
         </trans-unit>
         <trans-unit id="Report 3956600988 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Loaded document %1.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Загружен документ %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Report 3956600988 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document %1 for %2 already exists! Recreate?</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Документ %1 для %2 уже существует! Пересоздать?</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 510963145" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import from File</source>
+          <target>Импорт из файла</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Text031</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target>Общее</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 989751795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File Name</source>
+          <target>Имя файла</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control FileName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1856612108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inventory for Deferrals INV-11</source>

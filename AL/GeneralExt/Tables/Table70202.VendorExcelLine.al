@@ -152,14 +152,11 @@ table 70202 "Vendor Excel Line"
     var
         OldDimSetID: Integer;
     begin
-        /*
         OldDimSetID := "Dimension Set ID";
         "Dimension Set ID" :=
-          DimMgt.EditDimensionSet("Dimension Set ID", StrSubstNo('%1 %2 %3', "Document Type", "Document No.", "Line No."));
-        VerifyItemLineDim;
+          DimMgt.EditDimensionSet("Dimension Set ID", StrSubstNo('%1 %2', "Document No.", "Line No."));
         DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
         IsChanged := OldDimSetID <> "Dimension Set ID";
-        */
     end;
 
 }

@@ -5,16 +5,56 @@ report 70200 "Import Vendor Invoice"
     Caption = 'Import Vendor Invoice';
     ProcessingOnly = true;
 
+    requestpage
+    {
+        layout
+        {
+            area(Content)
+            {
+                group(General)
+                {
+                    Caption = 'General';
+                    field(FileName; FileName)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'File Name';
+
+                        trigger OnAssistEdit()
+                        begin
+                            ServerFileName := FileManagement.UploadFile(Text031, FileName);
+                            FileName := FileManagement.GetFileName(ServerFileName);
+                            SheetName := '';
+                        end;
+                    }
+                }
+            }
+        }
+
+        trigger OnQueryClosePage(CloseAction: Action): Boolean
+        begin
+            if CloseAction = ACTION::OK then begin
+                SheetName := ExcelBuf.SelectSheetsName(ServerFileName);
+                if SheetName = '' then
+                    exit(false);
+            end;
+        end;
+
+    }
+
     trigger OnPreReport()
     begin
 
         IF FileName = '' THEN
             ERROR(Err_fname);
+
+        if not (ClientTypeMgt.GetCurrentClientType in [CLIENTTYPE::Web, CLIENTTYPE::Tablet, CLIENTTYPE::Phone, CLIENTTYPE::Desktop]) then
+            error(ClientTypeErr);
+
         SaveParams(GVendNo);
         ExcelBuf.RESET;
         ExcelBuf.DELETEALL;
-        SheetName := ExcelBuf.SelectSheetsName(FileName);
-        ExcelBuf.OpenBook(FileName, SheetName);
+
+        ExcelBuf.OpenBook(ServerFileName, SheetName);
         ExcelBuf.ReadSheet;
 
         VendHead.INIT;
@@ -136,11 +176,14 @@ report 70200 "Import Vendor Invoice"
         Vendor: Record Vendor;
         ExcelBuf: Record "Excel Buffer" temporary;
         LocMgt: Codeunit "Localisation Management";
+        FileManagement: Codeunit "File Management";
+        ClientTypeMgt: Codeunit "Client Type Management";
+
         RowStart: Integer;
         GVendNo: code[20];
         VATRegCell, DocNoCell, DocDateCell : code[20];
         ItemDescCol, ItemQtyCol, ItemUoMCol, VATPerCol, AmountCol, TaxCol, PriceCol, ItemVendNoCol : code[20];
-        FileName, SheetName : text;
+        FileName, SheetName, ServerFileName : text;
         RowNo, MaxRow : integer;
         i: Integer;
         _VendItemNo: text[20];
@@ -153,6 +196,8 @@ report 70200 "Import Vendor Invoice"
         Err_ActCreated: Label 'Act %2 has already been created for document %1.';
         Text001: Label 'Loaded document %1.';
         Text002: Label 'Document %1 for %2 already exists! Recreate?';
+        Text031: Label 'Import from File';
+        ClientTypeErr: Label 'Unknown client type!';
 
     local procedure SaveParams(VendNo: Code[20])
     begin

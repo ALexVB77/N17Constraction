@@ -2,7 +2,7 @@ page 50082 "Vendor Excel List"
 {
     ApplicationArea = Basic, Suite;
     Caption = 'Vendor Excel List';
-    // CardPageID = "Purchase Order";
+    CardPageID = "Vendor Excel";
     DataCaptionFields = "Vendor No.";
     Editable = false;
     PageType = List;
