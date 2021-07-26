@@ -228,6 +228,22 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51410 < EP
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Header", 'OnAfterGetTransferRoute', '', false, false)]
+    local procedure OnAfterGetTransferRouteTransferHeader(var TransferHeader: Record "Transfer Header"; TransferRoute: Record "Transfer Route");
+    var
+        Location: Record Location;
+    begin
+        // NC 51143 > EP
+        // Проставляем в заказ общую бизнес-группу транзитного склада,
+        // когда его код автоматически выставляется из Transfer Route
+        if Location.Get(TransferHeader."In-Transit Code") then
+            TransferHeader.Validate("Gen. Bus. Posting Group", Location."Def. Gen. Bus. Posting Group")
+        else
+            TransferHeader.Validate("Gen. Bus. Posting Group", '');
+        // NC 51143 < EP
+    end;
+
+
     // t 5740 <<
 
     // t 12450 >>
@@ -258,6 +274,35 @@ codeunit 50006 "Base App. Subscribers Mgt."
         //NC 22512 > DP
         IF ERPCFuntions.LookUpLocationCode(ItemDocumentHeader."Location Code") THEN ItemDocumentHeader.VALIDATE("Location Code");
         //NC 22512 < DP
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Item Document Header", 'OnBeforeValidateEvent', 'Status', false, false)]
+    local procedure OnBeforeValidateItemDocumentHeaderStatus(var Rec: Record "Item Document Header"; var xRec: Record "Item Document Header"; CurrFieldNo: Integer)
+    var
+        InvtSetup: Record "Inventory Setup";
+    begin
+        // NC 51411 > EP
+        // Перенес таким образом модификацию codeunit "Release Item Document".OnRun(),
+        // поскольку в триггере нет доступных публикаторов
+
+        // Проверяем, что документ выпускают
+        if (xRec.Status = xRec.Status::Open) and
+           (Rec.Status = Rec.Status::Released) then begin
+            // SWC816 AK 200416 >>
+            InvtSetup.Get();
+            if InvtSetup."Use Giv. Production Func." then begin
+                InvtSetup.TestField("Giv. Materials Loc. Code");
+                InvtSetup.TestField("Giv. Production Loc. Code");
+                if (Rec."Location Code" = InvtSetup."Giv. Materials Loc. Code") or
+                   (Rec."Location Code" = InvtSetup."Giv. Production Loc. Code") then begin
+                    Rec.TestField("Vendor No.");
+                    Rec.TestField("Agreement No.");
+                end;
+            end;
+            // SWC816 AK 200416 <<
+        end;
+
+        // NC 51411 < EP
     end;
 
     // t 12450 <<
