@@ -8313,6 +8313,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details - Action ActionName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2004722243 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Excel List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Excel List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3928263244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Web Request Queue</source>
           <note from="Developer" annotates="general" priority="2"></note>

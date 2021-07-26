@@ -1,8 +1,8 @@
 table 70201 "Vendor Excel Header"
 {
     Caption = 'Vendor Invoice Header';
-    //LookupPageID = Page50082;
-    //DrillDownPageID = Page50082;
+    LookupPageID = "Vendor Excel List";
+    DrillDownPageID = "Vendor Excel List";
 
     fields
     {
