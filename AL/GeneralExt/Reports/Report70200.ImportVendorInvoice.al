@@ -48,11 +48,10 @@ report 70200 "Import Vendor Invoice"
         if SheetName = '' then
             error(Err_sname);
 
-
-        error('OK!');
-
         ExcelBuf.OpenBook(ServerFileName, SheetName);
         ExcelBuf.ReadSheet;
+
+        error('OK!');
 
         VendHead.INIT;
         ExcelBuf.RESET;
