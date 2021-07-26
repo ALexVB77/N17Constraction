@@ -29,16 +29,6 @@ report 70200 "Import Vendor Invoice"
                 }
             }
         }
-
-        trigger OnQueryClosePage(CloseAction: Action): Boolean
-        begin
-            if CloseAction = ACTION::OK then begin
-                SheetName := ExcelBuf.SelectSheetsName(ServerFileName);
-                if SheetName = '' then
-                    exit(false);
-            end;
-        end;
-
     }
 
     trigger OnPreReport()
@@ -53,6 +43,10 @@ report 70200 "Import Vendor Invoice"
         SaveParams(GVendNo);
         ExcelBuf.RESET;
         ExcelBuf.DELETEALL;
+
+        SheetName := ExcelBuf.SelectSheetsName(ServerFileName);
+        if SheetName = '' then
+            error(Err_sname);
 
         ExcelBuf.OpenBook(ServerFileName, SheetName);
         ExcelBuf.ReadSheet;
@@ -192,6 +186,7 @@ report 70200 "Import Vendor Invoice"
         _ItemUoM, _VATPer : text[50];
         _Amount, _Tax, _Price : decimal;
         Err_fname: Label 'Please select a file to download!';
+        Err_sname: label 'The Excel sheet must be specified!';
         Err_noData: Label 'Cell %1 has no data!';
         Err_ActCreated: Label 'Act %2 has already been created for document %1.';
         Text001: Label 'Loaded document %1.';
