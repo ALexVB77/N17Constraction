@@ -26,6 +26,71 @@ report 70200 "Import Vendor Invoice"
                             SheetName := '';
                         end;
                     }
+                    field(GVendNo; GVendNo)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor No.';
+                    }
+                    field(DocNoCell; DocNoCell)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Document No. Cell';
+                    }
+                    field(DocDateCell; DocDateCell)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Document Date Cell';
+                    }
+                    field(VATRegCell; VATRegCell)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'VAT Registration No. Cell';
+                    }
+                    field(RowStart; RowStart)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Table Start Row';
+                    }
+                    field(ItemVendNoCol; ItemVendNoCol)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor Item No Column';
+                    }
+                    field(ItemDescCol; ItemDescCol)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item Description Column';
+                    }
+                    field(ItemQtyCol; ItemQtyCol)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Quantity Column';
+                    }
+                    field(ItemUoMCol; ItemUoMCol)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Unit of Measure Column';
+                    }
+                    field(VATPerCol; VATPerCol)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'VAT Percent Column';
+                    }
+                    field(PriceCol; PriceCol)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Price Column';
+                    }
+                    field(AmountCol; AmountCol)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Amount Column';
+                    }
+                    field(TaxCol; TaxCol)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Tax Amount Column';
+                    }
                 }
             }
         }
@@ -50,8 +115,6 @@ report 70200 "Import Vendor Invoice"
 
         ExcelBuf.OpenBook(ServerFileName, SheetName);
         ExcelBuf.ReadSheet;
-
-        error('OK!');
 
         VendHead.INIT;
         ExcelBuf.RESET;

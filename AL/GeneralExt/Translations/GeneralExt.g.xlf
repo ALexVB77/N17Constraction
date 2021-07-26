@@ -9623,6 +9623,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Err_noData</note>
         </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 1427759826" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The Excel sheet must be specified!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Err_sname</note>
+        </trans-unit>
         <trans-unit id="Report 3956600988 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Loaded document %1.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9643,10 +9648,75 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control General - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 3330599656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount Column</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control AmountCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 973198246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date Cell</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control DocDateCell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 2829423433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No. Cell</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control DocNoCell - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3956600988 - Control 989751795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>File Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control FileName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 1469105529 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control GVendNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 2987937448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Description Column</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control ItemDescCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 2083221819 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity Column</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control ItemQtyCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 254377646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Column</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control ItemUoMCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 816423159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Item No Column</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control ItemVendNoCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 2833026487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Column</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control PriceCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 2336658630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Start Row</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control RowStart - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 869481399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Amount Column</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control TaxCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 3063347544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Percent Column</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control VATPerCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 1154040743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Registration No. Cell</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control VATRegCell - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1856612108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inventory for Deferrals INV-11</source>
