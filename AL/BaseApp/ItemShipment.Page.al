@@ -4,6 +4,7 @@ page 12452 "Item Shipment"
     PageType = Document;
     SourceTable = "Item Document Header";
     SourceTableView = WHERE("Document Type" = CONST(Shipment));
+    RefreshOnActivate = true; // NC 51144 PA
 
     layout
     {
