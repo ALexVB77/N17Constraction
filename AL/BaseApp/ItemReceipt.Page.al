@@ -4,7 +4,7 @@ page 12450 "Item Receipt"
     PageType = Document;
     SourceTable = "Item Document Header";
     SourceTableView = WHERE("Document Type" = CONST(Receipt));
-
+    RefreshOnActivate = true; // NC 51144 PA
     layout
     {
         area(content)
