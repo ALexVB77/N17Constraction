@@ -94,6 +94,16 @@ report 70200 "Import Vendor Invoice"
                 }
             }
         }
+        trigger OnQueryClosePage(CloseAction: Action): Boolean
+        var
+            FileMgt: Codeunit "File Management";
+        begin
+            if CloseAction = ACTION::OK then begin
+                SheetName := ExcelBuf.SelectSheetsName(ServerFileName);
+                if SheetName = '' then
+                    exit(false);
+            end;
+        end;
     }
 
     trigger OnPreReport()
@@ -101,6 +111,8 @@ report 70200 "Import Vendor Invoice"
 
         IF FileName = '' THEN
             ERROR(Err_fname);
+        if SheetName = '' then
+            error(Err_sname);
 
         if not (ClientTypeMgt.GetCurrentClientType in [CLIENTTYPE::Web, CLIENTTYPE::Tablet, CLIENTTYPE::Phone, CLIENTTYPE::Desktop]) then
             error(ClientTypeErr);
@@ -108,10 +120,6 @@ report 70200 "Import Vendor Invoice"
         SaveParams(GVendNo);
         ExcelBuf.RESET;
         ExcelBuf.DELETEALL;
-
-        SheetName := ExcelBuf.SelectSheetsName(ServerFileName);
-        if SheetName = '' then
-            error(Err_sname);
 
         ExcelBuf.OpenBook(ServerFileName, SheetName);
         ExcelBuf.ReadSheet;
