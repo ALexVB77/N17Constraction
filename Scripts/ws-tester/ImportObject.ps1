@@ -36,8 +36,8 @@ if (!$Files){
 
 $SoapEnv = $SoapEnv.Replace("_1_", $XmlAllObjects)
 
-$DebugFile = Join-Path -Path $ScriptFolder -ChildPath "debug_request_body.xml"
-Set-Content -Path $DebugFile  -Value $SoapEnv
+#$DebugFile = Join-Path -Path $ScriptFolder -ChildPath "debug_request_body.xml"
+#Set-Content -Path $DebugFile  -Value $SoapEnv
 
 $ResponseText = $WS.ImportObject($SoapEnv)
 Write-Host $ResponseText
