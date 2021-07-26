@@ -4614,6 +4614,300 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Agreement Details - Field Vendor No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1089551496 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Invoice Header</source>
+          <target>Заголовок счет фактуры поставщика</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Invoice %1 created</source>
+          <target>Создан %1 %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The act has already been created!</source>
+          <target>Акт уже создан!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - Field 2552936043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act No.</source>
+          <target>Акт Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field Act No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - Field 445905442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act Type</source>
+          <target>Акт тип</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field Act Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - Field 4256180955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement No.</source>
+          <target>Договор Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field Agreement No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <target>Дата</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <target>Дата документа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - Field 4014445263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vend VAT Reg No.</source>
+          <target>ИНН загруженный</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field Vend VAT Reg No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1089551496 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <target>Поставщик Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field Vendor No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Excel Line</source>
+          <target>Строки счет фактуры поставщика</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create unit of measure %1 or choose from the list of existing ones!</source>
+          <target>Заведите единицу измерения %1 или выберите из списка существующих!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <target>Сумма</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 1269801383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount inc. VAT</source>
+          <target>Сумма вкл. НДС</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Amount inc. VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target>Описание</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 3322554545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension Set ID</source>
+          <target>Код набора измерений</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Dimension Set ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <target>Документ Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 3474390389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Action</source>
+          <target>Действия с товаром</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Item Action - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 3474390389 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Skip,CreateItem</source>
+          <target>Пропустить,Создать Товар</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Item Action - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <target>Товар Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <target>Строка Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quatity</source>
+          <target>Количество</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 1577567912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shortcut Dimension 1 Code</source>
+          <target>Ярлык Измерение 1 Код</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Shortcut Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 1003760969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shortcut Dimension 2 Code</source>
+          <target>Ярлык Измерение 2 Код</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Shortcut Dimension 2 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 1920046521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure</source>
+          <target>Единица измерения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Unit of Measure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Price</source>
+          <target>Цена единицы</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Unit Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 1246077090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT %</source>
+          <target>НДС (%)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field VAT % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 2903269170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Item No.</source>
+          <target>Код товара поставщика</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Vendor Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <target>Поставщик Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Vendor No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Excel Mapping</source>
+          <target>Поставщик меппинг Excel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 726182350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount Cell</source>
+          <target>Ячейка суммы</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field Amount Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 1234283255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date Cell</source>
+          <target>Ячейка даты документа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field Document Date Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 4277773788 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No Cell</source>
+          <target>Ячейка номер документа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field Document No Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 336883215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ItemDescription Cell</source>
+          <target>Ячейка названия товара</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field ItemDescription Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 3114200588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ItemQuantity Cell</source>
+          <target>Ячейка кол-ва товара</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field ItemQuantity Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 1887853640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ItemUoM Cell</source>
+          <target>Ячейка един. измер. товара</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field ItemUoM Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 362603277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ItemVendNo Cell</source>
+          <target>Ячейка номера товара постав.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field ItemVendNo Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 2567823693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Cell</source>
+          <target>Ячейка цены</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field Price Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 2336658630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>RowStart</source>
+          <target>Начальная строка</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field RowStart - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 1883336525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax Cell</source>
+          <target>Ячейка налога</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field Tax Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 2235948538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Percent Cell</source>
+          <target>Ячейка НДС %</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field VAT Percent Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 623751335 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Reg Cell</source>
+          <target>Ячейка ИНН</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field VAT Reg Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <target>Поставщик Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field Vendor No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3928263244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Web Request Queue</source>
           <target>Очередь веб-запросов</target>
@@ -11212,6 +11506,48 @@
           <target>Дата учета</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Item Remains - Control postDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Vendor Invoice</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 3794910328" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act %2 has already been created for document %1.</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Err_ActCreated</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 2027480941" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please select a file to download!</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Err_fname</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 594143757" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cell %1 has no data!</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Err_noData</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Loaded document %1.</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document %1 for %2 already exists! Recreate?</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Report 1856612108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inventory for Deferrals INV-11</source>
