@@ -5829,7 +5829,6 @@
           <source>Document</source>
           <target>Документ</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Control Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1542626159 - Control 2738103555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -12445,6 +12444,20 @@
           <target>Фильтр по столбцам</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension MyDim Value Comb Ext - Control ColFilter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118084349 - Action 3597331879 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>CustFunctionSep</source>
+          <target>CustFunctionSep</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Action CustFunctionSep - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118084349 - Action 3349762263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Get lines from Payments Reg.</source>
+          <target>Получить строки из реестра платежей</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Action GetLinesFromPayReg - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3985706558 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1734268181">
           <source>Print</source>
