@@ -3664,7 +3664,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Projects Structure Lines - Field Version - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4118035958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test rec</source>
+          <source>Test Rec</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Test rec - Property Caption</note>
         </trans-unit>
