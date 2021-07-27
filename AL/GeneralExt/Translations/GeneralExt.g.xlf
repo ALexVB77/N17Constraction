@@ -12118,15 +12118,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Header (Ext) - Field Agreement No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2405895716 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3550754772">
+          <source>Gen. Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Header (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2405895716 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3550754772">
           <source>Vendor No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Header (Ext) - Field Vendor No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4106429675 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1903112923">
+          <source>Gen. Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Line (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3007227616 - Field 4256180955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1340367376">
           <source>Agreement No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header (Ext) - Field Agreement No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3007227616 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1340367376">
+          <source>Gen. Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3007227616 - Field 1639668988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1340367376">
           <source>New Shortcut Dimension 1 Code</source>
@@ -12137,6 +12152,11 @@
           <source>Vendor</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header (Ext) - Field Vendor No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2134902631 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1496656855">
+          <source>Gen. Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Line (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3550601874 - NamedType 1646004004" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3550601874">
           <source>User %1 has status %2 now. Do you want to change to %3?</source>
