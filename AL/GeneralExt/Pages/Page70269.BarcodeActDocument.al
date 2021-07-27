@@ -2,18 +2,20 @@ page 70269 "Barcode Act Document"
 {
     ApplicationArea = Basic, Suite;
     Caption = 'Barcode Act Document';
-    InsertAllowed = false;
     DeleteAllowed = false;
-    PageType = NavigatePage;
-    RefreshOnActivate = true;
-    UsageCategory = Lists;
+    InsertAllowed = false;
+    //ModifyAllowed = false;
+    PageType = Worksheet;
+    SaveValues = false;
+    UsageCategory = Tasks;
+
     layout
     {
         area(content)
         {
-            group(Genaral)
+            group(Document)
             {
-                Caption = 'General';
+                Caption = 'Document';
                 field(DocNo; DocNo)
                 {
                     ApplicationArea = All;

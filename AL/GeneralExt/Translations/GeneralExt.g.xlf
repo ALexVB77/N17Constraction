@@ -4848,10 +4848,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Method SetReceivedAcc - NamedType Text003</note>
         </trans-unit>
-        <trans-unit id="Page 1542626159 - Control 2356547654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>General</source>
+        <trans-unit id="Page 1542626159 - Control 1167507281 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Control Genaral - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Control Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1542626159 - Control 2738103555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
