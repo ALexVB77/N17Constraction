@@ -4828,6 +4828,46 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apartments - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1542626159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Barcode Act Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1542626159 - Method 4100307561 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document %1 not found!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Method FindPurchAct - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Page 1542626159 - Method 4100307561 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Incorrect Document No.!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Method FindPurchAct - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Page 1542626159 - Method 4079479480 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The document has been transferred to the accounting department.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Method SetReceivedAcc - NamedType Text003</note>
+        </trans-unit>
+        <trans-unit id="Page 1542626159 - Control 1167507281 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Control Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1542626159 - Control 2738103555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Control DocNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1542626159 - Action 4190408202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Received by Accounting</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Action ReceivedAcc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1542626159 - Action 3242708317 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Action ShowDoc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2964659661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Budget Adjustment Journal</source>
           <note from="Developer" annotates="general" priority="2"></note>
