@@ -3663,6 +3663,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Projects Structure Lines - Field Version - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4118035958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test rec</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Test rec - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4118035958 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Test rec - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4118035958 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Test rec - Field Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1535144756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Agreement Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8207,6 +8222,16 @@
           <source>Original Budget</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control OriginalBudget - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4123136790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test Rec</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Test Rec - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4123136790 - Action 2165556953 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TestTryFunc</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Test Rec - Action TestTryFunc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2884131641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast List</source>
