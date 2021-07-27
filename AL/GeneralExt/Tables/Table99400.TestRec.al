@@ -1,17 +1,20 @@
 table 99400 "Test rec"
 {
     DataClassification = ToBeClassified;
+    Caption = 'Test Rec';
 
     fields
     {
         field(1; "Entry No."; Integer)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Entry No.';
 
         }
         field(10; Name; Text[250])
         {
             DataClassification = ToBeClassified;
+            Caption = 'Name';
 
         }
 
