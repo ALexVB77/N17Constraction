@@ -45,6 +45,7 @@ page 50092 "Giv. Transfer Order"
                 {
                     ApplicationArea = All;
                     // Editable = false;
+                    Visible = false;
                     Importance = Promoted;
                 }
                 field("Direct Transfer"; Rec."Direct Transfer")
