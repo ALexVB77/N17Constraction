@@ -5,8 +5,10 @@ page 70269 "Barcode Act Document"
     DeleteAllowed = false;
     InsertAllowed = false;
     //ModifyAllowed = false;
-    PageType = Worksheet;
+    PageType = Document;
     SaveValues = false;
+    SourceTable = Integer;
+    SourceTableView = WHERE(Number = const(1));
     UsageCategory = Tasks;
 
     layout
