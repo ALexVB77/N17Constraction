@@ -540,12 +540,12 @@ report 80322 "Aged Accounts Payable Ext"
                 IF ExportExcel THEN BEGIN
                     AddCell(1, 4, FORMAT(EndingDate), false, xl."Cell Type"::Text, false);
                     AddCell(2, 2, VendorFilter, false, xl."Cell Type"::Text, false);
-                    AddCell(4, 12, STRSUBSTNO(Text007, SELECTSTR(AgingBy + 1, Text009)), false, xl."Cell Type"::Text, false);
-                    AddCell(RowNoBegin, 11, HeaderTextExcel[1], false, xl."Cell Type"::Text, false);
-                    AddCell(RowNoBegin, 12, HeaderTextExcel[2], false, xl."Cell Type"::Text, false);
-                    AddCell(RowNoBegin, 13, HeaderTextExcel[3], false, xl."Cell Type"::Text, false);
-                    AddCell(RowNoBegin, 14, HeaderTextExcel[4], false, xl."Cell Type"::Text, false);
-                    AddCell(RowNoBegin, 15, HeaderTextExcel[5], false, xl."Cell Type"::Text, false);
+                    AddCellWithBorder(4, 12, STRSUBSTNO(Text007, SELECTSTR(AgingBy + 1, Text009)), false, xl."Cell Type"::Text, false, false, true, true);
+                    AddCell(RowNoBegin, 11, HeaderTextExcel[1], false, xl."Cell Type"::Text, true);
+                    AddCell(RowNoBegin, 12, HeaderTextExcel[2], false, xl."Cell Type"::Text, true);
+                    AddCell(RowNoBegin, 13, HeaderTextExcel[3], false, xl."Cell Type"::Text, true);
+                    AddCell(RowNoBegin, 14, HeaderTextExcel[4], false, xl."Cell Type"::Text, true);
+                    AddCell(RowNoBegin, 15, HeaderTextExcel[5], false, xl."Cell Type"::Text, true);
 
                 END;
                 //NC 50517 <<
@@ -766,7 +766,7 @@ report 80322 "Aged Accounts Payable Ext"
         //NC 50517>>
         PurchAndPyableSetup.Get();
         xl.DeleteAll();
-        Clear(XL);
+        //Clear(XL);
         if ExportExcel then begin
             Filename := ExcelTemplate.OpenTemplate((PurchAndPyableSetup."Aged Acc. Payable Tmplt Code"));
             //XL.OpenBook(Filename, 'Sheet1');
@@ -776,6 +776,8 @@ report 80322 "Aged Accounts Payable Ext"
             RowNoBegin := 5;
             RowNo := 5;
         end;
+        CRLF[1] := 13;
+        CRLF[2] := 10;
         //NC 50517<<
     end;
 
@@ -784,8 +786,9 @@ report 80322 "Aged Accounts Payable Ext"
     begin
         //NC 50517 >>
         if ExportExcel then begin
+            xl.SetFriendlyFilename(AgedAcctPayableCaptionLbl);
             xl.UpdateBook(Filename, 'Sheet1');
-            xl.WriteSheet('Кредиторская задолж-сть по срокам давности', CompanyName, UserId);
+            xl.WriteSheet(AgedAcctPayableCaptionLbl, CompanyName, UserId);
             xl.CloseBook();
             xl.OpenExcel();
         end;
@@ -872,6 +875,7 @@ report 80322 "Aged Accounts Payable Ext"
         ServerFileName: Text;
         AgreementFilter: Text[250];
         CPFilter: Text[250];
+        CRLF: Text[2];
     //NC 50517 <<
 
 
@@ -1048,7 +1052,21 @@ report 80322 "Aged Accounts Payable Ext"
         XL.Bold := Bold;
         XL."Cell Type" := CellType;
         if IsBorder then
-            XL.SetBorder(true, true, true, true, false, "Border Style"::Thin);
+            XL.SetBorder(true, true, true, true, false, "Border Style"::Thick);
+        if not xl.Modify() then
+            XL.Insert();
+    end;
+
+    local procedure AddCellWithBorder(RowNo: Integer; ColumnNo: Integer; CellValue: Text; Bold: Boolean; CellType: Integer; border1: Boolean; border2: Boolean; border3: Boolean; border4: Boolean)
+    begin
+        XL.Init();
+        XL.Validate("Row No.", RowNo);
+        XL.Validate("Column No.", ColumnNo);
+        XL."Cell Value as Text" := CellValue;
+        XL.Formula := '';
+        XL.Bold := Bold;
+        XL."Cell Type" := CellType;
+        XL.SetBorder(border1, border2, border3, border4, false, "Border Style"::Medium);
         XL.Insert();
     end;
 
@@ -1060,5 +1078,6 @@ report 80322 "Aged Accounts Payable Ext"
         if b <> 0 then
             exit(Format(Round(100 * a / b, 0.1), 0, '<Sign><Integer><Decimals,2>') + '%');
     end;
+
 
 }
