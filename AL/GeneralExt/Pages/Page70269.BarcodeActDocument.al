@@ -4,7 +4,7 @@ page 70269 "Barcode Act Document"
     Caption = 'Barcode Act Document';
     InsertAllowed = false;
     DeleteAllowed = false;
-    PageType = Worksheet;
+    PageType = NavigatePage;
     RefreshOnActivate = true;
     UsageCategory = Lists;
     layout
@@ -67,8 +67,6 @@ page 70269 "Barcode Act Document"
         NextNo := NoSerMgt.TryGetNextNo(PurchSetup."Act Order Nos.", WorkDate());
         DPartCode := LocMgt.DigitalPartCode(NextNo);
         DocPrefix := CopyStr(NextNo, 1, StrPos(NextNo, DPartCode) - 1);
-
-        Message('%1', DocPrefix);
     end;
 
     var
