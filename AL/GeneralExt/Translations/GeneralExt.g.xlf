@@ -10408,6 +10408,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted FA Writeoff Act Sub Ext - Action FA Posted Writeoff Act FA-4b - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4007767091 - NamedType 2344539320" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4007767091">
+          <source>User %1 do not have permission for manual editing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice Ext - NamedType Text0001</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4007767091 - Action 2577682106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Manual Field Editing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice Ext - Action ManualEditing - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2307367824 - Control 2262780988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3921990236">
           <source>Payment requests</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -12499,6 +12499,19 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted FA Writeoff Act Sub Ext - Action FA Posted Writeoff Act FA-4b - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4007767091 - NamedType 2344539320" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4007767091">
+          <source>User %1 do not have permission for manual editing</source>
+          <target>Пользователь %1 не имеет права на ручное редактирование полей!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice Ext - NamedType Text0001</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4007767091 - Action 2577682106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Manual Field Editing</source>
+          <target>Ручное редактирование полей</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Posted Sales Invoice Ext - Action ManualEditing - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2307367824 - Control 2262780988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3921990236">
           <source>Payment requests</source>
           <target>Заявки на оплату / Акты</target>
@@ -14597,7 +14610,6 @@
           <source>Allow Manual Editing</source>
           <target>Разрешить ручное редактирование полей в Учтенных счетах</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension User Setup (Ext) - Field Allow Manual Editing - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3550601874 - Field 2762481236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
