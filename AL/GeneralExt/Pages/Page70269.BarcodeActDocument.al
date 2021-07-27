@@ -7,8 +7,8 @@ page 70269 "Barcode Act Document"
     //ModifyAllowed = false;
     PageType = Document;
     SaveValues = false;
-    SourceTable = Integer;
-    SourceTableView = WHERE(Number = const(1));
+    //SourceTable = Integer;
+    //SourceTableView = WHERE(Number = const(1));
     UsageCategory = Tasks;
 
     layout
@@ -37,6 +37,9 @@ page 70269 "Barcode Act Document"
                 Caption = 'Show Document';
                 Enabled = DocNo <> '';
                 Image = Document;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
@@ -49,6 +52,9 @@ page 70269 "Barcode Act Document"
                 Caption = 'Received by Accounting';
                 Enabled = DocNo <> '';
                 Image = SendConfirmation;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
