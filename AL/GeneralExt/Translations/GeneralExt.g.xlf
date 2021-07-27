@@ -12153,6 +12153,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension User Setup (Ext) - Field Allow Edit DenDoc Dimension - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3550601874 - Field 288810257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Allow Manual Editing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension User Setup (Ext) - Field Allow Manual Editing - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3550601874 - Field 2762481236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>CF Allow Long Term Entries Edit</source>
           <note from="Developer" annotates="general" priority="2"></note>
