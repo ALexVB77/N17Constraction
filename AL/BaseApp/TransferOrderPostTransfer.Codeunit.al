@@ -25,9 +25,9 @@ codeunit 12469 "TransferOrder-Post Transfer"
         TransHeader := Rec;
         TransHeader.SetHideValidationDialog(HideValidationDialog);
 
-        // NC #TaskCode > EP
+        // NC 51411 > EP
         OnBeforeTransferOrderPostTransfer(TransHeader);
-        // NC #TaskCode < EP
+        // NC 51411 < EP
 
         with TransHeader do begin
             TestField("Transfer-from Code");
@@ -118,9 +118,9 @@ codeunit 12469 "TransferOrder-Post Transfer"
               NoSeriesMgt.GetNextNo(
                 InvtSetup."Posted Direct Transfer Nos.", "Posting Date", true);
 
-            // NC #TaskCode > EP
+            // NC 51411 > EP
             OnBeforeInsertDirectTransHeader(DirectTransHeader, TransHeader);
-            // NC #TaskCode < EP
+            // NC 51411 < EP
 
             DirectTransHeader.Insert();
 
@@ -188,9 +188,9 @@ codeunit 12469 "TransferOrder-Post Transfer"
                             PostWhseJnlLine(ItemJnlLine, OriginalQuantity, OriginalQuantityBase, TempHandlingSpecification, 1);
                     end;
 
-                    // NC #TaskCode > EP
+                    // NC 51411 > EP
                     OnBeforeInsertDirectTransLine(DirectTransLine, TransLine, TransHeader);
-                    // NC #TaskCode < EP
+                    // NC 51411 < EP
 
                     DirectTransLine.Insert();
                 until TransLine.Next = 0;
@@ -443,7 +443,7 @@ codeunit 12469 "TransferOrder-Post Transfer"
         end;
     end;
 
-    // NC #TaskCode > EP
+    // NC 51411 > EP
 
     [IntegrationEvent(false, false)]
     local procedure OnBeforeTransferOrderPostTransfer(var TransHeader: Record "Transfer Header")
@@ -463,6 +463,6 @@ codeunit 12469 "TransferOrder-Post Transfer"
     begin
     end;
 
-    // NC #TaskCode < EP
+    // NC 51411 < EP
 }
 
