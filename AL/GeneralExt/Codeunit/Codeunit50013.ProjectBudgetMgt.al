@@ -44,7 +44,7 @@ codeunit 50013 "Project Budget Management"
         lPBE.SetFilter("Agreement No.", '%1|%2', '', lPHead."Agreement No.");
         //lLineAmt := vPLine.Amount / lExchRate.ExchangeRate(WorkDate(), vPLine."Currency Code");
         lLineAmt := vPLine."Outstanding Amount (LCY)";
-        lPBE.SetFilter("Without VAT", '>=%1', lLineAmt);
+        lPBE.SetFilter("Without VAT (LCY)", '>=%1', lLineAmt);
         if lPBE.FindSet() then
             repeat
                 if lPBE."Entry No." = lPBE."Parent Entry" then begin
