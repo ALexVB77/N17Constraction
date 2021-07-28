@@ -117,6 +117,7 @@ page 50080 "Vendor Excel"
                     trigger OnAction()
                     var
                         VELine: Record "Vendor Excel Line";
+                        PayOrderMgt: Codeunit "Payment Order Management";
                     begin
                         VELine.RESET;
                         VELine.SETRANGE("Document No.", "No.");
@@ -126,7 +127,7 @@ page 50080 "Vendor Excel"
                                 VELine.CheckUoM;
                             UNTIL VELine.NEXT = 0;
 
-                        CreatePurchInvoice();
+                        PayOrderMgt.CreatePurchInvoiceFromVendorExcel(Rec);
                         CurrPage.Update(false);
                     end;
                 }

@@ -89,16 +89,19 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         }
         field(70005; "Exists Attachment"; Boolean)
         {
-            FieldClass = FlowField;
             CalcFormula = Exist("Document Attachment" WHERE("Table ID" = CONST(38), "Document Type" = FIELD("Document Type"), "No." = FIELD("No.")));
-            Description = 'NC 51373 AB';
             Caption = 'Exists Attachment';
+            Description = 'NC 51373 AB';
             Editable = false;
+            FieldClass = FlowField;
         }
         field(70007; "Payments Amount"; Decimal)
         {
-            Description = 'NC 51373 AB';
+
             Caption = 'Payments Amount';
+            Description = 'NC 51373 AB';
+            Editable = false;
+            //FieldClass = FlowField;
         }
         field(70008; "Invoice VAT Amount"; Decimal)
         {

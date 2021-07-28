@@ -3853,11 +3853,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - NamedType Text001</note>
         </trans-unit>
-        <trans-unit id="Table 1089551496 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The act has already been created!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - NamedType Text002</note>
-        </trans-unit>
         <trans-unit id="Table 1089551496 - Field 2552936043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Act No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4597,6 +4592,11 @@
           <source>Unused document type.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckUnusedPurchActType - NamedType Text50100</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 3459981648 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The act has already been created!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CreatePurchInvoiceFromVendorExcel - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 599791846 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>Failed to define user for process %1!</source>
@@ -8877,6 +8877,86 @@
           <source>Template Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Create Guarantee Deduction - Control Template - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Payment Journal</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Method 2393384927 - NamedType 3518910232" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create a payment journal?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Method CreateJournal - NamedType TEXT0001</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Method 2393384927 - NamedType 4156606849" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Added %1 lines.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Method CreateJournal - NamedType TEXT0002</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 2173385693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control Dimensions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 3102350138 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control CostCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 2936815164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control CostPlace - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 1477357849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreements</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control AgreementNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 567887726 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control CurrencyCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 3820200120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control DocDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 2738103555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control DocNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 819533251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control VendorCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 419426744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control Information - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 10644771 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qty. lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control LinesQty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 1368504227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control Journal - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 874212758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control CurrentJnlBatchName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1104067303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Migration From Excel</source>
