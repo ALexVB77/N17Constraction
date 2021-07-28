@@ -9,7 +9,7 @@ codeunit 99400 "Rocket Science"
         myInt: Integer;
 
     [TryFunction]
-    procedure TryToWriteTestRec()
+    procedure InsertTry()
     var
         EntryNo: Integer;
         rr: Record "Test rec";
@@ -23,5 +23,17 @@ codeunit 99400 "Rocket Science"
         rr."Entry No." := EntryNo;
         rr.Name := StrSubstNo('Record %1', EntryNo);
         rr.Insert();
+    end;
+
+    [TryFunction]
+    procedure ModifyTry()
+    var
+        EntryNo: Integer;
+        rr: Record "Test rec";
+    begin
+        if not rr.FindLast() then
+            exit;
+        rr.Name := Format(CurrentDateTime());
+        rr.Modify()
     end;
 }

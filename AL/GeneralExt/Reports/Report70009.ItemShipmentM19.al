@@ -48,8 +48,13 @@ report 70009 "Item Shipment M-19"
                 PurchaserCode := ItemDocHeader."Salesperson/Purchaser Code";
                 FillHeader();
 
-                ILE.SetFilter("Posting Date", '<1%', ItemDocHeader."Posting Date");
-                VE.SetFilter("Posting Date", '<1%', ItemDocHeader."Posting Date");
+                // NC 52624 > EP
+                // ILE.SetFilter("Posting Date", '<1%', ItemDocHeader."Posting Date");
+                ILE.SetRange("Posting Date", 0D, ItemDocHeader."Posting Date");
+                // VE.SetFilter("Posting Date", '<1%', ItemDocHeader."Posting Date");
+                VE.SetRange("Posting Date", 0D, ItemDocHeader."Posting Date");
+                // NC 52624 < EP
+
                 ILE.SetRange("Location Code", ItemDocHeader."Location Code");
                 VE.SetRange("Location Code", ItemDocHeader."Location Code");
                 //NC 22512 < DP
@@ -96,8 +101,13 @@ report 70009 "Item Shipment M-19"
                 PurchaserCode := "Item Shipment Header"."Salesperson Code";
                 FillHeader();
 
-                ILE.SetFilter("Posting Date", '<%1', "Item Shipment Header"."Posting Date");
-                VE.SetFilter("Posting Date", '<%1', "Item Shipment Header"."Posting Date");
+                // NC 52624 > EP
+                // ILE.SetFilter("Posting Date", '<%1', "Item Shipment Header"."Posting Date");
+                ILE.SetRange("Posting Date", 0D, "Item Shipment Header"."Posting Date");
+                // VE.SetFilter("Posting Date", '<%1', "Item Shipment Header"."Posting Date");
+                VE.SetRange("Posting Date", 0D, "Item Shipment Header"."Posting Date");
+                // NC 52624 < EP
+
                 ILE.SetRange("Location Code", "Item Shipment Header"."Location Code");
                 VE.SetRange("Location Code", "Item Shipment Header"."Location Code");
                 //NC 22512 < DP
@@ -184,7 +194,6 @@ report 70009 "Item Shipment M-19"
         Location: Record Location;
         ILE: Record "Item Ledger Entry";
         VE: Record "Value Entry";
-        ExcelTemplate: Record "Excel Template";
         ExcelReportBuilderManager: Codeunit "Excel Report Builder Manager";
         LocRepMgt: Codeunit "Local Report Management";
         LocalManagement: Codeunit "Localisation Management";
