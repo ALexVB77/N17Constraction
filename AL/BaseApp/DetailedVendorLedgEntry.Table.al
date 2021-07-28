@@ -237,6 +237,14 @@ table 380 "Detailed Vendor Ledg. Entry"
         {
             Caption = 'Tax Diff. Transaction No.';
         }
+
+        // NC 50112 AB >>
+        field(50000; "IW Document No."; code[20])
+        {
+            Description = 'NC 50112 AB';
+            Caption = 'IW Document No.';
+        }
+        // NC 50112 AB <<
     }
 
     keys
@@ -282,6 +290,12 @@ table 380 "Detailed Vendor Ledg. Entry"
         {
             SumIndexFields = "Amount (LCY)";
         }
+        // NC 50112 AB >>
+        key(Key50000; "Vendor No.", "Initial Document Type", "IW Document No.", "Entry Type")
+        {
+            SumIndexFields = Amount, "Amount (LCY)";
+        }
+        // NC 50112 AB <<
     }
 
     fieldgroups

@@ -8,6 +8,7 @@ pageextension 85740 "Transfer Order (Ext)" extends "Transfer Order"
             {
                 ApplicationArea = All;
                 // Editable = false;
+                Visible = false;
                 Description = 'NC 51410 EP';
             }
         }
@@ -16,7 +17,7 @@ pageextension 85740 "Transfer Order (Ext)" extends "Transfer Order"
             field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
             {
                 ApplicationArea = All;
-                Editable = false;
+                // Editable = false;
                 Description = 'NC 51143 EP';
             }
         }
