@@ -10048,6 +10048,81 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Notification Email Act. Inv. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3439818535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Factura-Invoice (A)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - NamedType 2118016257" size-unit="char" translate="yes" xml:space="preserve">
+          <source>US Dollar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - NamedType DollarUSATxt</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - NamedType 3804706331" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice %1 from %2 Page %3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - NamedType InvoiceTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - NamedType 117249182" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Same</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - NamedType SameTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - NamedType 4290357990" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 is missing for %2 items %3 in line %4.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - NamedType ValueMissingErr</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 3993493415 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the currency code is shown in the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control AmountInvoiceDone - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 3993493415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control AmountInvoiceDone - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 3993493415 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Currency,LCY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control AmountInvoiceDone - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 648353892 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how many copies of the document to print.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control CopiesNumber - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 648353892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Copies</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control CopiesNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 816368762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that interactions with the related contact are logged.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control LogInteraction - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control LogInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 4266201246 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that the report can be previewed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control Preview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3439818535 - Control 4266201246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Preview</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Order Factura-Invoice (A) Ext - Control Preview - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2923491568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment report</source>
           <note from="Developer" annotates="general" priority="2"></note>
