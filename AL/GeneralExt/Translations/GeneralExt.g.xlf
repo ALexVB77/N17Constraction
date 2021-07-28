@@ -11128,6 +11128,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Dimension Value (Ext) - Field Project Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1352121579 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 868174555">
+          <source>Gen. Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Direct Transfer Header (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2455346980 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 991205588">
+          <source>Gen. Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Direct Transfer Line (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2300516586 - Field 3518332187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 282138634">
           <source>Attachment Link</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11553,11 +11563,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Original Company - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 279653624 - Field 789473408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
-          <source>Paid</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Paid - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 279653624 - Field 4139459292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Paid Date Fact</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11887,11 +11892,6 @@
           <source>Old VAT Prod. Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Old VAT Prod. Posting Group - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 789473408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Paid</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Paid - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 363487199 - Field 4139459292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Paid Date (Fact)</source>
