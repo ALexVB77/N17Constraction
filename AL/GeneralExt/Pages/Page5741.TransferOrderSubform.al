@@ -5,35 +5,35 @@ pageextension 85741 "Transfer Order Subform (Ext)" extends "Transfer Order Subfo
         // NC 51410 > EP
         modify("Shortcut Dimension 1 Code")
         {
-            Visible = true;
+            Visible = DimVisible1;
         }
         modify("Shortcut Dimension 2 Code")
         {
-            Visible = true;
+            Visible = DimVisible2;
         }
         modify("ShortcutDimCode[3]")
         {
-            Visible = true;
+            Visible = DimVisible3;
         }
         modify("ShortcutDimCode[4]")
         {
-            Visible = true;
+            Visible = DimVisible4;
         }
         modify("ShortcutDimCode[5]")
         {
-            Visible = true;
+            Visible = DimVisible5;
         }
         modify("ShortcutDimCode[6]")
         {
-            Visible = true;
+            Visible = DimVisible6;
         }
         modify("ShortcutDimCode[7]")
         {
-            Visible = true;
+            Visible = DimVisible7;
         }
         modify("ShortcutDimCode[8]")
         {
-            Visible = true;
+            Visible = DimVisible8;
         }
         // NC 51410 < EP
     }
