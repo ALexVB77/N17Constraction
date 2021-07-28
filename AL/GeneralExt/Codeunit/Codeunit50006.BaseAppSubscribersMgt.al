@@ -688,6 +688,37 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
     // cu 12411 <<
 
+    // cu 12469 >>
+
+    // NC 51411 > EP
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnBeforeTransferOrderPostTransfer', '', false, false)]
+    local procedure OnBeforeTransferOrderPostTransfer(var TransHeader: Record "Transfer Header");
+    begin
+        TransHeader.TestField("Gen. Bus. Posting Group");
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnBeforeInsertDirectTransHeader', '', false, false)]
+    local procedure OnBeforeInsertDirectTransHeader(var DirectTransHeader: Record "Direct Transfer Header"; TransHeader: Record "Transfer Header");
+    begin
+        DirectTransHeader."Gen. Bus. Posting Group" := TransHeader."Gen. Bus. Posting Group";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnBeforeInsertDirectTransLine', '', false, false)]
+    local procedure OnBeforeInsertDirectTransLine(var DirectTransLine: Record "Direct Transfer Line"; TransLine: Record "Transfer Line";
+                                                  TransHeader: Record "Transfer Header");
+    begin
+        if (TransLine."Gen. Bus. Posting Group" <> '') then
+            DirectTransLine."Gen. Bus. Posting Group" := TransLine."Gen. Bus. Posting Group"
+        else
+            DirectTransLine."Gen. Bus. Posting Group" := TransHeader."Gen. Bus. Posting Group";
+    end;
+
+    // NC 51411 < EP
+
+    // cu 12469 <<
+
+
     [EventSubscriber(ObjectType::Page, Page::"Document Attachment Factbox", 'OnBeforeDrillDown', '', true, true)]
     local procedure OnBeforeDrillDownDocAttFackBox(DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef)
     var
