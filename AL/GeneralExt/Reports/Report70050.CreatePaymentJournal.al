@@ -189,7 +189,6 @@ report 50050 "Create Payment Journal"
     local procedure SetPurchHeaderFilters(var PurchaseHeader: record "Purchase Header");
     begin
         PurchaseHeader.SETRANGE("Document Type", PurchaseHeader."Document Type"::Order);
-        PurchaseHeader.SETRANGE(Paid, FALSE);
         PurchaseHeader.SETRANGE("Status App", PurchaseHeader."Status App"::Payment);
         IF CurrencyCode <> '' THEN
             PurchaseHeader.SETFILTER("Currency Code", CurrencyCode);
@@ -205,6 +204,18 @@ report 50050 "Create Payment Journal"
             PurchaseHeader.SETFILTER("Shortcut Dimension 2 Code", CostCode);
         IF DocDate <> '' THEN
             PurchaseHeader.SETFILTER("Due Date", DocDate);
+
+        // PurchaseHeader.SETRANGE(Paid, FALSE);
+        if not PurchaseHeader.IsEmpty then begin
+            PurchaseHeader.FindSet();
+            repeat
+                PurchaseHeader.CalcFields("Payments Amount");
+                if PurchaseHeader."Payments Amount" < PurchaseHeader."Invoice Amount Incl. VAT" then
+                    PurchaseHeader.Mark(true);
+            until PurchaseHeader.Next() = 0;
+            PurchaseHeader.MarkedOnly(true);
+        end;
+
         // PurchaseHeader.SETRANGE("Line No.", 0);   // WTF ????
     end;
 

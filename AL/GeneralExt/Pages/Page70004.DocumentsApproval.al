@@ -348,7 +348,10 @@ page 70004 "Documents Approval"
     local procedure SetRecFilters()
     var
         PaymentOrderMgt: Codeunit "Payment Order Management";
+        SaveRec: Record "Purchase Header";
     begin
+        SaveRec := Rec;
+
         FILTERGROUP(2);
 
         // NC AB >>
@@ -365,7 +368,7 @@ page 70004 "Documents Approval"
             SetFilter("Status App", '>=%1', "Status App"::Approve);
         // NC AB <<    
         SETRANGE("Problem Document");
-        SETRANGE(Paid);
+        // SETRANGE(Paid);
 
         CASE Filter2 OF
             Filter2::InProc:
@@ -392,10 +395,28 @@ page 70004 "Documents Approval"
             Filter2::Ready:
                 BEGIN
                     SETRANGE("Status App", "Status App"::Payment);
-                    SETRANGE(Paid, FALSE);
+                    // SETRANGE(Paid, FALSE);
+                    if not IsEmpty then begin
+                        FindSet();
+                        repeat
+                            CalcFields("Payments Amount");
+                            if "Payments Amount" < "Invoice Amount Incl. VAT" then
+                                Mark(true);
+                        until Next() = 0;
+                        MarkedOnly(true);
+                    end;
                 END;
             Filter2::Pay:
-                SETRANGE(Paid, TRUE);
+                // SETRANGE(Paid, TRUE);
+                if not IsEmpty then begin
+                    FindSet();
+                    repeat
+                        CalcFields("Payments Amount");
+                        if "Payments Amount" >= "Invoice Amount Incl. VAT" then
+                            Mark(true);
+                    until Next() = 0;
+                    MarkedOnly(true);
+                end;
             Filter2::Problem:
                 SETRANGE("Problem Document", TRUE);
         END;
@@ -416,6 +437,9 @@ page 70004 "Documents Approval"
         END;
 
         FILTERGROUP(0);
+
+        Rec := SaveRec;
+        if find('=<>') then;
     end;
 
     procedure SetSortType()

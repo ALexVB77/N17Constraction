@@ -97,11 +97,16 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         }
         field(70007; "Payments Amount"; Decimal)
         {
-
+            // Переделано из Normal на FlowField
+            CalcFormula = sum("Detailed Vendor Ledg. Entry".Amount
+                            where("Vendor No." = field("Buy-from Vendor No."),
+                                    "Initial Document Type" = const(Payment),
+                                    "IW Document No." = field("No."),
+                                    "Entry Type" = const("Initial Entry")));
             Caption = 'Payments Amount';
             Description = 'NC 51373 AB';
             Editable = false;
-            //FieldClass = FlowField;
+            FieldClass = FlowField;
         }
         field(70008; "Invoice VAT Amount"; Decimal)
         {
@@ -223,22 +228,10 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             if ("IW Documents" = const(false)) "User Setup"."User ID" WHERE("Status App Act" = CONST(1));
             ValidateTableRelation = false;
         }
-        field(70016; Paid; Boolean)
-        {
-            Caption = 'Paid';
-            Description = 'NC 51373 AB';
-            trigger OnValidate()
-            var
-                gvduERPC: codeunit "ERPC Funtions";
-            begin
-                IF Paid THEN BEGIN
-                    TESTFIELD("Paid Date Fact");
-                    gvduERPC.PostForecastEntry(Rec);
-                END ELSE BEGIN
-                    gvduERPC.UnpostForecastEntry(Rec);
-                END;
-            end;
-        }
+
+        // NC AB: 
+        // field(70016; Paid; Boolean) - убрано, вместо него функции SetPaymentInvPaidStatus и GetPaymentInvPaidStatus
+
         field(70017; "External Agreement No. (Calc)"; Text[30])
         {
             CalcFormula = Lookup("Vendor Agreement"."External Agreement No." WHERE("Vendor No." = FIELD("Buy-from Vendor No."), "No." = FIELD("Agreement No.")));
@@ -248,8 +241,16 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         }
         field(70018; "Paid Date Fact"; Date)
         {
+            // Переделано из Normal на FlowField
+            CalcFormula = max("Detailed Vendor Ledg. Entry"."Posting Date"
+                            where("Vendor No." = field("Buy-from Vendor No."),
+                                    "Initial Document Type" = const(Payment),
+                                    "IW Document No." = field("No."),
+                                    "Entry Type" = const("Initial Entry")));
             Caption = 'Paid Date Fact';
-            Description = '50086';
+            Description = 'NC 51373 AB';
+            Editable = false;
+            FieldClass = FlowField;
         }
         field(70019; "Problem Document"; Boolean)
         {
@@ -631,6 +632,25 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         end;
         ApprovalCommentLine.Comment := CopyStr(NewComment, 1, MaxStrLen(ApprovalCommentLine.Comment));
         ApprovalCommentLine.Modify(true);
+    end;
+
+    procedure GetPaymentInvPaidStatus(): Boolean
+    begin
+        CalcFields("Payments Amount");
+        exit("Payments Amount" >= "Invoice Amount Incl. VAT");
+    end;
+
+    procedure SetPaymentInvPaidStatus(NewPaid: Boolean)
+    var
+        gvduERPC: codeunit "ERPC Funtions";
+    begin
+        IF NewPaid THEN BEGIN
+            CalcFields("Paid Date Fact");
+            TESTFIELD("Paid Date Fact");
+            gvduERPC.PostForecastEntry(Rec);
+        END ELSE BEGIN
+            gvduERPC.UnpostForecastEntry(Rec);
+        END;
     end;
 
 }

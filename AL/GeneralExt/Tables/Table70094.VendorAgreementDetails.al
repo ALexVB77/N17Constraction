@@ -439,20 +439,25 @@ table 70094 "Vendor Agreement Details"
         PL.SetRange("Shortcut Dimension 1 Code", "Global Dimension 1 Code");
         PL.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Code");
         PL.SETRANGE("Cost Type", "Cost Type");
-        PL.SETRANGE(Paid, FALSE);
+        // NC AB >>
+        // PL.SETRANGE(Paid, FALSE);
+        // NC AB <<
         PL.SETRANGE(IW, FALSE);
         if PL.FindSet() then
             repeat
                 if PH.GetStatusAppAct(PL."Document Type", PL."Document No.") in [PH."Status App Act"::Checker.AsInteger(),
                                                                                  PH."Status App Act"::Approve.AsInteger(),
                                                                                  PH."Status App Act"::Signing.AsInteger()] then
-                    if PH.Get(PL."Document Type", PL."Document No.") and not PH."Problem Document" then begin
-                        if Lookup then begin
-                            PLt := PL;
-                            PLt.Insert();
-                        end else
-                            Amt += gcduERPC.GetLinesDocumentsAmount(PL);
-                    end;
+                    // NC AB >>
+                    if not PH.GetPaymentInvPaidStatus() then
+                        // NC AB <<
+                        if PH.Get(PL."Document Type", PL."Document No.") and not PH."Problem Document" then begin
+                            if Lookup then begin
+                                PLt := PL;
+                                PLt.Insert();
+                            end else
+                                Amt += gcduERPC.GetLinesDocumentsAmount(PL);
+                        end;
             until PL.Next() = 0;
 
         if Lookup then
