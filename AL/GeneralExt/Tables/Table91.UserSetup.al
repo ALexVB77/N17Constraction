@@ -43,6 +43,11 @@ tableextension 80091 "User Setup (Ext)" extends "User Setup"
             Description = 'NC 51373 AB';
             Caption = 'Act Approval Status';
         }
+        field(70017; "Allow Manual Editing"; Boolean)
+        {
+            Description = 'NC 51228 OA';
+            Caption = 'Allow Manual Editing';
+        }
         field(70023; "Allow Edit DenDoc Dimension"; Boolean)
         {
             Description = 'NC 51676';

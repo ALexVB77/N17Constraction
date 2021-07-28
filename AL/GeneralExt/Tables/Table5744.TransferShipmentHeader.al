@@ -21,5 +21,11 @@ tableextension 85744 "Transfer Shipment Header (Ext)" extends "Transfer Shipment
             Description = 'NC 51417 PA';
             TableRelation = "Vendor Agreement"."No." where("Vendor No." = field("Vendor No."));
         }
+        field(50020; "Gen. Bus. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Bus. Posting Group';
+            Description = 'NC22512 DP';
+            TableRelation = "Gen. Business Posting Group";
+        }
     }
 }

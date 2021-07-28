@@ -243,8 +243,79 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51143 < EP
     end;
 
-
     // t 5740 <<
+
+    // t 5744 >>
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Shipment Header", 'OnAfterCopyFromTransferHeader', '', false, false)]
+    local procedure OnAfterCopyFromTransferHeaderTransferShipmentHeader(var TransferShipmentHeader: Record "Transfer Shipment Header"; TransferHeader: Record "Transfer Header");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Shipment".OnRun()
+
+        // NC 22512 > DP
+        TransferShipmentHeader."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // t 5744 <<
+
+    // t 5745 >>
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Shipment Line", 'OnAfterCopyFromTransferLine', '', false, false)]
+    local procedure OnAfterCopyFromTransferLineTransferShipmentLine(var TransferShipmentLine: Record "Transfer Shipment Line"; TransferLine: Record "Transfer Line");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Shipment".OnRun()
+
+        // NC 22512 > DP
+        TransferShipmentLine."Gen. Bus. Posting Group" := TransferLine."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // t 5745 <<
+
+    // t 5746 >>
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Receipt Header", 'OnAfterCopyFromTransferHeader', '', false, false)]
+    local procedure OnAfterCopyFromTransferHeaderTransferReceiptHeader(var TransferReceiptHeader: Record "Transfer Receipt Header"; TransferHeader: Record "Transfer Header");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Receipt".OnRun()
+
+        // NC 22512 > DP
+        TransferReceiptHeader."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // t 5746 <<
+
+    // t 5747 >>
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Receipt Line", 'OnAfterCopyFromTransferLine', '', false, false)]
+    local procedure OnAfterCopyFromTransferLineTransferReceiptLine(var TransferReceiptLine: Record "Transfer Receipt Line"; TransferLine: Record "Transfer Line");
+    var
+        TransferHeader: Record "Transfer Header";
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Receipt".OnRun()
+
+        if TransferHeader.Get(TransferLine."Document No.") then
+            // SWC1066 DD 27.06.17 >>
+            TransferReceiptLine."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
+        // SWC1066 DD 27.06.17 <<
+
+        // NC 51411 < EP
+    end;
+
+
+    // t 5747 <<
 
     // t 12450 >>
 
@@ -525,6 +596,52 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
 
     // cu 5600 <<
+
+    // cu 5704 >>
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Shipment", 'OnBeforeTransferOrderPostShipment', '', false, false)]
+    local procedure OnBeforeTransferOrderPostShipment(var Sender: Codeunit "TransferOrder-Post Shipment"; var TransferHeader: Record "Transfer Header"; CommitIsSuppressed: Boolean);
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Shipment".OnRun()
+
+        // NC 22512 > DP
+        TransferHeader.TestField("Gen. Bus. Posting Group");
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Shipment", 'OnAfterCreateItemJnlLine', '', false, false)]
+    local procedure OnAfterCreateItemJnlLineShipment(var ItemJournalLine: Record "Item Journal Line"; TransferLine: Record "Transfer Line"; TransferShipmentHeader: Record "Transfer Shipment Header"; TransferShipmentLine: Record "Transfer Shipment Line");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Shipment".PostItemJnlLine()
+
+        // NC 22512 > DP
+        ItemJournalLine."Gen. Bus. Posting Group" := TransferShipmentHeader."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // cu 5704 <<
+
+    // cu 5705 >>
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Receipt", 'OnBeforePostItemJournalLine', '', false, false)]
+    local procedure OnBeforePostItemJournalLineReceipt(var ItemJournalLine: Record "Item Journal Line"; TransferLine: Record "Transfer Line"; TransferReceiptHeader: Record "Transfer Receipt Header"; TransferReceiptLine: Record "Transfer Receipt Line"; CommitIsSuppressed: Boolean; TransLine: Record "Transfer Line");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Receipt".PostItemJnlLine()
+
+        // NC 22512 > DP
+        ItemJournalLine."Gen. Bus. Posting Group" := TransferReceiptHeader."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // cu 5705 <<
 
     // cu 12411 >>
 
