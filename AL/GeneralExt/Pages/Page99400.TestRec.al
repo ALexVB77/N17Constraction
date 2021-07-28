@@ -1,10 +1,10 @@
-page 99400 "Test Rec"
+page 99400 "Klaz Klaz"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Test rec";
-    Caption = 'Test Rec';
+    Caption = 'Klaz Klaz', Locked = true;
 
     layout
     {
@@ -35,12 +35,15 @@ page 99400 "Test Rec"
             action(TestTryFunc)
             {
                 ApplicationArea = All;
+                Caption = 'TestTryFunc', Locked = true;
 
                 trigger OnAction();
                 var
                     cc: codeunit "Rocket Science";
                 begin
-                    cc.TryToWriteTestRec();
+                    //cc.TryToWriteTestRec();
+                    //cc.InsertTry()
+                    cc.ModifyTry();
                     CurrPage.Update();
 
                 end;

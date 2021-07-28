@@ -1,20 +1,21 @@
 table 99400 "Test rec"
 {
     DataClassification = ToBeClassified;
-    Caption = 'Test Rec';
+    Caption = 'Test Rec', Locked = true;
 
     fields
     {
         field(1; "Entry No."; Integer)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Entry No.';
+            Caption = 'Entry No.', Locked = true;
+
 
         }
         field(10; Name; Text[250])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Name';
+            Caption = 'Name', Locked = true;
 
         }
 

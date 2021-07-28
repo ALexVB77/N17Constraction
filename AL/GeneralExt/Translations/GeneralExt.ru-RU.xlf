@@ -4395,31 +4395,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Projects Structure Lines - Field Version - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 4118035958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test rec</source>
-          <target>[NAB: NOT TRANSLATED]</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Test rec - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 4118035958 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Entry No.</source>
-          <target>[NAB: SUGGESTION]Операция Но.</target>
-          <target>[NAB: SUGGESTION]Операция номер</target>
-          <target>[NAB: SUGGESTION]Операция No.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Test rec - Field Entry No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 4118035958 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <target>[NAB: SUGGESTION]Название</target>
-          <target>[NAB: SUGGESTION]Наименование</target>
-          <target>[NAB: SUGGESTION]ФИО</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Test rec - Field Name - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1535144756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Agreement Details</source>
           <target>Детали соглашения с поставщиком</target>
@@ -5069,6 +5044,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Code Monkey Translation - NamedType ErrText001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 3311111878" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Agrement record must be temporary</source>
+          <target>Договор клиента должна быть временной таблицей</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType AgrMustBeTemporaryErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 2221351987" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bad soap envelope format</source>
           <target>Неверный формат SOAP пакета</target>
@@ -5128,6 +5110,13 @@
           <target>Веб-запрос не содержит тела</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType EmptyHttpRequestBody</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 536274629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Object field name %1 does not exist</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType FieldNameDoesNotExistErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 2041483183" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment object %1 was created</source>
@@ -5829,7 +5818,6 @@
           <source>Document</source>
           <target>Документ</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Barcode Act Document - Control Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1542626159 - Control 2738103555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9875,20 +9863,6 @@
           <target>Original Budget</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control OriginalBudget - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4123136790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test Rec</source>
-          <target>[NAB: NOT TRANSLATED]</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Test Rec - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4123136790 - Action 2165556953 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>TestTryFunc</source>
-          <target>[NAB: NOT TRANSLATED]</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Test Rec - Action TestTryFunc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2884131641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast List</source>
