@@ -25,6 +25,10 @@ codeunit 12469 "TransferOrder-Post Transfer"
         TransHeader := Rec;
         TransHeader.SetHideValidationDialog(HideValidationDialog);
 
+        // NC #TaskCode > EP
+        OnBeforeTransferOrderPostTransfer(TransHeader);
+        // NC #TaskCode < EP
+
         with TransHeader do begin
             TestField("Transfer-from Code");
             TestField("Transfer-to Code");
@@ -113,6 +117,11 @@ codeunit 12469 "TransferOrder-Post Transfer"
             DirectTransHeader."No." :=
               NoSeriesMgt.GetNextNo(
                 InvtSetup."Posted Direct Transfer Nos.", "Posting Date", true);
+
+            // NC #TaskCode > EP
+            OnBeforeInsertDirectTransHeader(DirectTransHeader, TransHeader);
+            // NC #TaskCode < EP
+
             DirectTransHeader.Insert();
 
             DocSignMgt.MoveDocSignToPostedDocSign(
@@ -178,6 +187,10 @@ codeunit 12469 "TransferOrder-Post Transfer"
                         if WhseReceive then
                             PostWhseJnlLine(ItemJnlLine, OriginalQuantity, OriginalQuantityBase, TempHandlingSpecification, 1);
                     end;
+
+                    // NC #TaskCode > EP
+                    OnBeforeInsertDirectTransLine(DirectTransLine, TransLine, TransHeader);
+                    // NC #TaskCode < EP
 
                     DirectTransLine.Insert();
                 until TransLine.Next = 0;
@@ -429,5 +442,27 @@ codeunit 12469 "TransferOrder-Post Transfer"
                 end;
         end;
     end;
+
+    // NC #TaskCode > EP
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeTransferOrderPostTransfer(var TransHeader: Record "Transfer Header")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeInsertDirectTransHeader(var DirectTransHeader: Record "Direct Transfer Header";
+                                                    TransHeader: Record "Transfer Header")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeInsertDirectTransLine(var DirectTransLine: Record "Direct Transfer Line";
+                                                  TransLine: Record "Transfer Line";
+                                                  TransHeader: Record "Transfer Header")
+    begin
+    end;
+
+    // NC #TaskCode < EP
 }
 
