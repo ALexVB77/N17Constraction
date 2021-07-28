@@ -21,6 +21,19 @@ pageextension 85740 "Transfer Order (Ext)" extends "Transfer Order"
                 Description = 'NC 51143 EP';
             }
         }
+        addlast(General)
+        {
+            field("New Shortcut Dimension 1 Code"; Rec."New Shortcut Dimension 1 Code")
+            {
+                ApplicationArea = All;
+                Description = 'NCC002 ROMB, NC 51410 EP';
+            }
+            field("New Shortcut Dimension 2 Code"; Rec."New Shortcut Dimension 2 Code")
+            {
+                ApplicationArea = All;
+                Description = 'NCC002 ROMB, NC 51410 EP';
+            }
+        }
     }
 
     actions
