@@ -610,6 +610,7 @@ table 70076 "Projects Budget Entry"
                 PurchaseHeader.SetRange("Document Type", PurchaseLine."Document Type");
                 PurchaseHeader.SetRange("No.", PurchaseLine."Document No.");
                 if PurchaseHeader.FindFirst() then begin
+                    PurchaseHeader.CalcFields("Paid Date Fact");
                     InvoiceDate := PurchaseHeader."Paid Date Fact";
                 end;
             end;

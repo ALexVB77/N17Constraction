@@ -726,7 +726,7 @@ codeunit 99932 "CRM Worker"
         Cust: Record Customer;
         NewCustomerNo: Code[20];
         FObj: Record "CRM Prefetched Object";
-        CustNo: Code[20];
+        CustNo, NavContactNo : Code[20];
 
     begin
         if not AgrTemp.IsTemporary then
@@ -787,7 +787,7 @@ codeunit 99932 "CRM Worker"
                 if CustNo = '' then
                     LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr)
                 else begin
-                    SetShareholderAttributes(AgrTemp, CustNo, GetContactFromCustomer(CustNo), 0, CrmB."Ownership Percentage");
+                    SetShareholderAttributes(AgrTemp, 1, CustNo, GetContactFromCustomer(CustNo), CrmB."Ownership Percentage");
                     if CrmB."Agreement Start" <> 0D then begin
                         AgrTemp."Agreement Date" := CrmB."Agreement Start";
                         AgrTemp."Starting Date" := CrmB."Agreement Start";
@@ -815,13 +815,53 @@ codeunit 99932 "CRM Worker"
                 ContactId := CrmB."Contact Guid";
                 CustNo := FindCustomer(ContactId, ShareHolderNo, AllObjectData, CrmInteractCompanies, Customers);
                 if CustNo <> '' then
-                    SetShareholderAttributes(AgrTemp, CustNo, GetContactFromCustomer(CustNo), ShareHolderNo - 1, CrmB."Ownership Percentage")
-                else
-                    SetShareholderAttributes(AgrTemp, Format(ShareHolderNo), '', ShareHolderNo - 1, CrmB."Ownership Percentage");
+                    NavContactNo := GetContactFromCustomer(CustNo)
+                else begin
+                    CustNo := Format(ShareHolderNo);
+                    NavContactNo := CustNo;
+                end;
+                SetShareholderAttributes(AgrTemp, ShareHolderNo, CustNo, NavContactNo, CrmB."Ownership Percentage")
             end;
             if ShareHolderNo = 5 then
                 break;
         end;
+    end;
+
+    local procedure CreateContractAndLinkedContacts(var FetchedObject: Record "CRM Prefetched Object";
+        var PrefilledAgrTemp: Record "Customer Agreement";
+        var Customers: Dictionary of [Integer, Dictionary of [Text, Text]])
+    var
+        int: Integer;
+        CustomerSearchInfo: Dictionary of [Text, Text];
+        NotFoundShareHolderList: List of [Integer];
+        ShareHolderNo: Integer;
+    begin
+        NotFoundShareHolderList := Customers.Keys();
+        foreach ShareholderNo in NotFoundShareHolderList do begin
+
+
+        end;
+
+    end;
+
+    local procedure CopyCustomer(CrmContactId: Guid; CopyFromCompanyName: Text[60]; CopyFromCustomerNo: Code[20])
+    var
+        Customer: Record Customer;
+    begin
+        if IsNullGuid(CrmContactId) then
+            Error('DBG: CopyCustomer - CrmContactId is null');
+        Customer.Reset();
+        Customer.Setrange("CRM GUID", CrmContactId);
+        if Not Customer.IsEmpty then
+            Error('DBG: CopyCustomer - Customer with id %1 already exists in Company %2', CrmContactId, CompanyName());
+
+        if CopyFromCompanyName = '' then
+            Error('DBG: CopyCustomer - CopyFromCompanyName is empty');
+
+        Customer.ChangeCompany(CopyFromCompanyName);
+        Customer.Get(CopyFromCustomerNo);
+
+
     end;
 
     local procedure FindCustomer(ContactId: Guid;
@@ -1337,9 +1377,9 @@ codeunit 99932 "CRM Worker"
         ObjectDataElementPointer := ObjectDataElements.Get(ElementNo);
     end;
 
-    local procedure SetShareholderAttributes(var CustAgreement: Record "Customer Agreement"; CustomerNo: Code[20]; ContactNo: Code[20]; ShareholderNo: Integer; OwnershipPrc: Decimal)
+    local procedure SetShareholderAttributes(var CustAgreement: Record "Customer Agreement"; ShareholderNo: Integer; CustomerNo: Code[20]; ContactNo: Code[20]; OwnershipPrc: Decimal)
     begin
-        case ShareholderNo of
+        case ShareholderNo - 1 of
             CustAgreement."Share in property 3"::pNo:
                 begin
                     CustAgreement."Customer No." := CustomerNo;

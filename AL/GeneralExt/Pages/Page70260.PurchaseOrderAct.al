@@ -790,6 +790,8 @@ page 70260 "Purchase Order Act"
         WhseEmployee: Record "Warehouse Employee";
     begin
 
+        CalcFields("Payments Amount");
+
         ApproveButtonEnabled := FALSE;
         RejectButtonEnabled := FALSE;
         CopyDocumentEnabled := ("No." <> '') and ("Status App Act" = "Status App Act"::Controller);

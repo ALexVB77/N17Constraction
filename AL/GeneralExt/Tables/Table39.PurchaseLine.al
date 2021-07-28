@@ -106,14 +106,10 @@ tableextension 80039 "Purchase Line (Ext)" extends "Purchase Line"
             OptionMembers = " ",Reception,Сontroller,Checker,Approve,Payment,Request;
             Editable = false;
         }
-        field(70011; Paid; Boolean)
-        {
-            Caption = 'Paid';
-            Description = '50085';
-            FieldClass = FlowField;
-            CalcFormula = lookup("Purchase Header".Paid where("Document Type" = field("Document Type"), "No." = field("Document No.")));
-            Editable = false;
-        }
+
+        // NC AB:
+        // field(70011; Paid; Boolean) - убрано, вместо него функции SetPaymentInvPaidStatus и GetPaymentInvPaidStatus из заголовка
+
         field(70012; "Due Date"; Date)
         {
             CalcFormula = Lookup("Purchase Header"."Due Date" WHERE("Document Type" = FIELD("Document Type"), "No." = FIELD("Document No.")));

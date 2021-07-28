@@ -404,13 +404,19 @@ page 70262 "Purchase List Act"
     end;
 
     local procedure SetRecFilters()
+    var
+        SaveRec: Record "Purchase Header";
     begin
+        SaveRec := Rec;
+
         FILTERGROUP(2);
 
         SETRANGE("Process User");
         SETRANGE("Status App");
         SETRANGE("Problem Document");
-        SETRANGE(Paid);
+        // SETRANGE(Paid);
+        MarkedOnly(false);
+        ClearMarks();
 
         CASE Filter2 OF
             Filter2::InProc:
@@ -418,10 +424,28 @@ page 70262 "Purchase List Act"
             Filter2::Ready:
                 BEGIN
                     SETRANGE("Status App", "Status App"::Payment);
-                    SETRANGE(Paid, FALSE);
+                    // SETRANGE(Paid, FALSE);
+                    if not IsEmpty then begin
+                        FindSet();
+                        repeat
+                            CalcFields("Payments Amount");
+                            if "Payments Amount" < "Invoice Amount Incl. VAT" then
+                                Mark(true);
+                        until Next() = 0;
+                        MarkedOnly(true);
+                    end;
                 END;
             Filter2::Pay:
-                SETRANGE(Paid, TRUE);
+                // SETRANGE(Paid, TRUE);
+                if not IsEmpty then begin
+                    FindSet();
+                    repeat
+                        CalcFields("Payments Amount");
+                        if "Payments Amount" >= "Invoice Amount Incl. VAT" then
+                            Mark(true);
+                    until Next() = 0;
+                    MarkedOnly(true);
+                end;
             Filter2::Problem:
                 SETRANGE("Problem Document", TRUE);
         END;
@@ -452,6 +476,9 @@ page 70262 "Purchase List Act"
         NewActEnabled := FilterActType in [FilterActType::All, FilterActType::act];
         NewKC2Enabled := FilterActType in [FilterActType::All, FilterActType::"kc-2"];
         NewAdvanceEnabled := FilterActType in [FilterActType::All, FilterActType::advance];
+
+        Rec := SaveRec;
+        if find('=<>') then;
     end;
 
 }

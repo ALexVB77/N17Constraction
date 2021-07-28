@@ -584,6 +584,8 @@ page 70000 "Purchase Order App"
     trigger OnAfterGetCurrRecord()
     begin
 
+        CalcFields("Payments Amount");
+
         if "Status App" = "Status App"::Payment then
             ProblemDescription := Rec.GetAddTypeCommentText(AddCommentType::Problem)
         else

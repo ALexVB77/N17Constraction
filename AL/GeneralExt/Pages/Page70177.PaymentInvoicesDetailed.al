@@ -129,7 +129,7 @@ page 70177 "Payment Invoices Detailed"
                     ApplicationArea = All;
                     Caption = 'Contains a attachment';
                 }
-                field(Paid; Paid)
+                field(Paid; PurchHeader.GetPaymentInvPaidStatus())
                 {
                     ApplicationArea = All;
                 }
@@ -167,40 +167,84 @@ page 70177 "Payment Invoices Detailed"
         SetRecFilters;
     end;
 
+    trigger OnAfterGetRecord()
+    begin
+        if Not PurchHeader.Get("Document Type", "Document No.") then
+            PurchHeader.Init();
+    end;
+
     var
         grUserSetup: Record "User Setup";
+        PurchHeader: Record "Purchase Header";
         Filter3: Option Ready,Paid,Payment,Overdue,All;
         Filter4: Option MyDocA,MyDocC,All;
         Comments: Boolean;
         Attachments: Boolean;
 
     local procedure SetRecFilters()
+    var
+        LineHeader: Record "Purchase Header";
+        SaveRec: Record "Purchase Line";
     begin
-        FILTERGROUP(2);
+        SaveRec := Rec;
 
-        SETRANGE("Status App");
-        SETRANGE(Paid);
-        SETRANGE("Due Date");
-        SETRANGE("Process User");
-        SETRANGE("Purchaser Code");
-        CASE Filter3 OF
-            Filter3::Ready:
-                BEGIN
-                    SETRANGE(Paid, FALSE);
+        begin
+            FILTERGROUP(2);
+
+            SETRANGE("Status App");
+            // SETRANGE(Paid);
+            MarkedOnly(false);
+            ClearMarks();
+            SETRANGE("Due Date");
+            SETRANGE("Process User");
+            SETRANGE("Purchaser Code");
+
+            CASE Filter3 OF
+                Filter3::Ready:
+                    BEGIN
+                        SETRANGE("Status App", "Status App"::Payment);
+                        // SETRANGE(Paid, FALSE);
+                        if not IsEmpty then begin
+                            FindSet();
+                            repeat
+                                LineHeader.Get("Document Type", "Document No.");
+                                if not LineHeader.GetPaymentInvPaidStatus() then
+                                    Mark(true);
+                            until Next() = 0;
+                            MarkedOnly(true);
+                        end;
+                    END;
+                Filter3::Paid:
+                    BEGIN
+                        SETRANGE("Status App", "Status App"::Payment);
+                        // SETRANGE(Paid, TRUE);
+                        if not IsEmpty then begin
+                            FindSet();
+                            repeat
+                                LineHeader.Get("Document Type", "Document No.");
+                                if LineHeader.GetPaymentInvPaidStatus() then
+                                    Mark(true);
+                            until Next() = 0;
+                            MarkedOnly(true);
+                        end;
+                    END;
+                Filter3::Payment:
                     SETRANGE("Status App", "Status App"::Payment);
-                END;
-            Filter3::Paid:
-                BEGIN
-                    SETRANGE(Paid, TRUE);
-                    SETRANGE("Status App", "Status App"::Payment);
-                END;
-            Filter3::Payment:
-                SETRANGE("Status App", "Status App"::Payment);
-            Filter3::Overdue:
-                BEGIN
-                    SETRANGE(Paid, FALSE);
-                    SETFILTER("Due Date", '<%1', TODAY);
-                END;
+                Filter3::Overdue:
+                    BEGIN
+                        SETFILTER("Due Date", '<%1', TODAY);
+                        // SETRANGE(Paid, FALSE);
+                        if not IsEmpty then begin
+                            FindSet();
+                            repeat
+                                LineHeader.Get("Document Type", "Document No.");
+                                if not LineHeader.GetPaymentInvPaidStatus() then
+                                    Mark(true);
+                            until Next() = 0;
+                            MarkedOnly(true);
+                        end;
+                    END;
+            END;
         END;
 
         grUserSetup.TESTFIELD("Salespers./Purch. Code");
@@ -212,5 +256,8 @@ page 70177 "Payment Invoices Detailed"
         END;
 
         FILTERGROUP(0);
+
+        Rec := SaveRec;
+        if find('=<>') then;
     end;
 }

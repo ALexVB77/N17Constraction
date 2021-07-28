@@ -47,7 +47,7 @@ page 70130 "Purchase List Controller"
                 {
                     ApplicationArea = All;
                 }
-                field(Paid; Paid)
+                field(Paid; GetPaymentInvPaidStatus())
                 {
                     ApplicationArea = All;
                 }
@@ -292,39 +292,75 @@ page 70130 "Purchase List Controller"
         CommentAddType: Enum "Purchase Comment Add. Type";
 
     local procedure SetRecFilters()
+    var
+        SaveRec: Record "Purchase Header";
     begin
+        SaveRec := Rec;
+
         FILTERGROUP(2);
 
         SETRANGE("Process User");
         SETRANGE("Status App");
         SETRANGE("Problem Document");
-        SETRANGE(Paid);
+        // SETRANGE(Paid);
+        MarkedOnly(false);
+        ClearMarks();
         SETRANGE("Status App");
         SETRANGE("Due Date");
 
         CASE Filter3 OF
             Filter3::Ready:
                 BEGIN
-                    SETRANGE(Paid, FALSE);
                     SETRANGE("Status App", "Status App"::Payment);
+                    // SETRANGE(Paid, FALSE);
+                    if not IsEmpty then begin
+                        FindSet();
+                        repeat
+                            CalcFields("Payments Amount");
+                            if "Payments Amount" < "Invoice Amount Incl. VAT" then
+                                Mark(true);
+                        until Next() = 0;
+                        MarkedOnly(true);
+                    end;
                 END;
             Filter3::Paid:
                 BEGIN
-                    SETRANGE(Paid, TRUE);
                     SETRANGE("Status App", "Status App"::Payment);
+                    // SETRANGE(Paid, TRUE);
+                    if not IsEmpty then begin
+                        FindSet();
+                        repeat
+                            CalcFields("Payments Amount");
+                            if "Payments Amount" >= "Invoice Amount Incl. VAT" then
+                                Mark(true);
+                        until Next() = 0;
+                        MarkedOnly(true);
+                    end;
                 END;
             Filter3::Payment:
                 SETRANGE("Status App", "Status App"::Payment);
             Filter3::Overdue:
                 BEGIN
-                    SETRANGE(Paid, FALSE);
                     SETFILTER("Due Date", '<%1', TODAY);
+                    // SETRANGE(Paid, FALSE);
+                    if not IsEmpty then begin
+                        FindSet();
+                        repeat
+                            CalcFields("Payments Amount");
+                            if "Payments Amount" < "Invoice Amount Incl. VAT" then
+                                Mark(true);
+                        until Next() = 0;
+                        MarkedOnly(true);
+                    end;
                 END;
         END;
 
         // SETRANGE(Archival, FALSE);
 
         FILTERGROUP(0);
+
+        Rec := SaveRec;
+        if find('=<>') then;
     end;
 
     procedure SetSortType()

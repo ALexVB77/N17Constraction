@@ -285,13 +285,19 @@ page 70002 "Purchase List App"
         EditEnabled: Boolean;
 
     local procedure SetRecFilters()
+    var
+        SaveRec: Record "Purchase Header";
     begin
+        SaveRec := Rec;
+
         FILTERGROUP(2);
 
         SETRANGE("Process User");
         SETRANGE("Status App");
         SETRANGE("Problem Document");
-        SETRANGE(Paid);
+        // SETRANGE(Paid);
+        MarkedOnly(false);
+        ClearMarks();
 
         SetRange("My Approved");
         SetRange("Approver ID Filter");
@@ -304,10 +310,28 @@ page 70002 "Purchase List App"
             Filter2::Ready:
                 BEGIN
                     SETRANGE("Status App", "Status App"::Payment);
-                    SETRANGE(Paid, FALSE);
+                    // SETRANGE(Paid, FALSE);
+                    if not IsEmpty then begin
+                        FindSet();
+                        repeat
+                            CalcFields("Payments Amount");
+                            if "Payments Amount" < "Invoice Amount Incl. VAT" then
+                                Mark(true);
+                        until Next() = 0;
+                        MarkedOnly(true);
+                    end;
                 END;
             Filter2::Pay:
-                SETRANGE(Paid, TRUE);
+                // SETRANGE(Paid, TRUE);
+                if not IsEmpty then begin
+                    FindSet();
+                    repeat
+                        CalcFields("Payments Amount");
+                        if "Payments Amount" >= "Invoice Amount Incl. VAT" then
+                            Mark(true);
+                    until Next() = 0;
+                    MarkedOnly(true);
+                end;
             Filter2::Problem:
                 SETRANGE("Problem Document", TRUE);
         END;
@@ -323,6 +347,9 @@ page 70002 "Purchase List App"
         END;
 
         FILTERGROUP(0);
+
+        Rec := SaveRec;
+        if find('=<>') then;
     end;
 
     procedure SetSortType()
