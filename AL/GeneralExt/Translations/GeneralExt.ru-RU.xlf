@@ -13380,6 +13380,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Dimension Value (Ext) - Field Project Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1352121579 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 868174555">
+          <source>Gen. Bus. Posting Group</source>
+          <target>Общая бизнес-группа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Direct Transfer Header (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2455346980 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 991205588">
+          <source>Gen. Bus. Posting Group</source>
+          <target>Общая бизнес-группа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Direct Transfer Line (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2300516586 - Field 3518332187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 282138634">
           <source>Attachment Link</source>
           <target>Вложение Ссылка</target>
