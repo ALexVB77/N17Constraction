@@ -288,6 +288,10 @@ codeunit 12469 "TransferOrder-Post Transfer"
         ItemJnlLine."Country/Region Code" := DirectTransHeader2."Trsf.-from Country/Region Code";
         ItemJnlLine."Item Category Code" := TransLine3."Item Category Code";
 
+        // NC 51411 > EP
+        OnAfterCreateItemJnlLine(ItemJnlLine, TransLine3, DirectTransHeader2, DirectTransLine2);
+        // NC 51411 < EP
+
         ReserveTransLine.TransferTransferToItemJnlLine(TransLine3,
           ItemJnlLine, ItemJnlLine."Quantity (Base)", "Transfer Direction"::Outbound, true);
 
@@ -460,6 +464,14 @@ codeunit 12469 "TransferOrder-Post Transfer"
     local procedure OnBeforeInsertDirectTransLine(var DirectTransLine: Record "Direct Transfer Line";
                                                   TransLine: Record "Transfer Line";
                                                   TransHeader: Record "Transfer Header")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterCreateItemJnlLine(var ItemJnlLine: Record "Item Journal Line";
+                                             TransLine: Record "Transfer Line";
+                                             DirectTransHeader: Record "Direct Transfer Header";
+                                             DirectTransLine: Record "Direct Transfer Line")
     begin
     end;
 
