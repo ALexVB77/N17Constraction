@@ -113,7 +113,7 @@ report 50050 "Create Payment Journal"
                             BankAcc: Record "Bank Account";
                         begin
                             IF Page.RUNMODAL(0, BankAcc) = ACTION::LookupOK THEN
-                                CurrencyCode := Text + BankAcc."No.";
+                                Text := Text + BankAcc."No.";
                         end;
                     }
 
