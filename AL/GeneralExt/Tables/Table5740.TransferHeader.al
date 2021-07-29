@@ -45,7 +45,7 @@ tableextension 85740 "Transfer Header (Ext)" extends "Transfer Header"
             Caption = 'New Shortcut Dimension 1 Code';
             DataClassification = CustomerContent;
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
-            CaptionClass = '1,2,1';
+            CaptionClass = '1,2,1,New ';
             trigger OnValidate()
 
             begin
@@ -59,7 +59,7 @@ tableextension 85740 "Transfer Header (Ext)" extends "Transfer Header"
             Caption = 'New Shortcut Dimension 2 Code';
             DataClassification = CustomerContent;
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
-            CaptionClass = '1,2,2';
+            CaptionClass = '1,2,2,New ';
             trigger OnValidate()
 
             begin
