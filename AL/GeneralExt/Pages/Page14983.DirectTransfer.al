@@ -3,6 +3,15 @@ pageextension 94983 "Direct Transfer (Ext)" extends "Direct Transfer"
     layout
     {
         // NC 51410 > EP
+        addafter(Status)
+        {
+            field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
+            {
+                ApplicationArea = All;
+                // Editable = false;
+                Description = 'NC 51410 EP';
+            }
+        }
         addlast(General)
         {
             field("New Shortcut Dimension 1 Code"; Rec."New Shortcut Dimension 1 Code")
