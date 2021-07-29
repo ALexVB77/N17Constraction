@@ -663,6 +663,14 @@ table 21 "Cust. Ledger Entry"
             Caption = 'Agreement No.';
             TableRelation = "Customer Agreement"."No." WHERE("Customer No." = FIELD("Customer No."));
         }
+        // NC 50112 AB >>
+        field(50000; "IW Document No."; code[20])
+        {
+            Description = 'NC 50112 AB';
+            Caption = 'IW Document No.';
+        }
+        // NC 50112 AB <<
+
     }
 
     keys

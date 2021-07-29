@@ -830,6 +830,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51411 < EP
     end;
 
+
     // Table 38 Purchase Header
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforeTestNoSeries', '', false, false)]
@@ -950,6 +951,27 @@ codeunit 50006 "Base App. Subscribers Mgt."
             PurchLine."Full Description" := Item.Description + ' ' + Item."Description 2"
         else
             PurchLine."Full Description" := Item.Description + Item."Description 2";
+    end;
+
+    // Table 383 Detailed CV Ledg. Entry Buffer
+
+    [EventSubscriber(ObjectType::Table, Database::"Detailed CV Ledg. Entry Buffer", 'OnAfterCopyFromGenJnlLine', '', false, false)]
+    local procedure OnDtldCVLedgEntryBufAfterCopyFromGenJnlLine(var DtldCVLedgEntryBuffer: Record "Detailed CV Ledg. Entry Buffer"; GenJnlLine: Record "Gen. Journal Line")
+    begin
+        DtldCVLedgEntryBuffer."IW Document No." := GenJnlLine."IW Document No.";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Detailed CV Ledg. Entry Buffer", 'OnAfterCopyFromCVLedgEntryBuf', '', false, false)]
+    local procedure OnAfterCopyFromCVLedgEntryBuf(var DetailedCVLedgEntryBuffer: Record "Detailed CV Ledg. Entry Buffer"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
+    begin
+        DetailedCVLedgEntryBuffer."IW Document No." := CVLedgerEntryBuffer."IW Document No.";
+    end;
+
+    // Report 595 Adjust Exchange Rates
+    [EventSubscriber(ObjectType::Report, Report::"Adjust Exchange Rates", 'OnAfterInitDtldCustLedgerEntry', '', false, false)]
+    local procedure OnAfterInitDtldCustLedgerEntry(var DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry")
+    begin
+        //\\
     end;
 
 

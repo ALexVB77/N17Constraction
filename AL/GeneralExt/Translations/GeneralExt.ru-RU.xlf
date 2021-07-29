@@ -1813,7 +1813,6 @@
           <source>Description</source>
           <target>Описание</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Dimension Mapping - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2519642008 - Field 2623957639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -8192,21 +8191,18 @@
           <source>Finalize and prepare to print the document or journal. The values and quantities are posted to the related accounts. A report request window where you can specify what to include on the print-out.</source>
           <target>Завершение подготовки документа или журнала и его подготовка к печати. Значения и количества учитываются на соответствующих счетах. В окне запроса отчета можно указать, какая информация должна выводиться на печать.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action PostAndPrint - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 312954500 - Action 513012614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post and &amp;Print</source>
           <target>Учет и &amp;печать</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action PostAndPrint - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 312954500 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Release</source>
           <target>Выпустить</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action Release - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 312954500 - Action 483158641 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -13783,6 +13779,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Customer Agreement (Ext) - Change Customer Posting Group - Method OnAfterValidate - NamedType LabelPstGrChanging</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3118161191 - Field 1117071458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2007144088">
+          <source>IW Document No.</source>
+          <target>Заявка Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CV Ledger Entry Buffer Ext - Field IW Document No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1546208205 - Field 3565928873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1468132285">
           <source>Admin Cost Place Holder</source>
           <target>Ответств. Admin (Cost Place)</target>
@@ -13854,6 +13857,13 @@
           <target>Первичный ключ 2</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Document Attachment (Ext) - Field PK Key 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 568966895 - Field 1117071458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1013257135">
+          <source>IW Document No.</source>
+          <target>Заявка Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Dtld. CV Ledg. Entry Buf. Ext - Field IW Document No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 89331598 - Field 2685121577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Full Name Genitive</source>

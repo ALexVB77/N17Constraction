@@ -11483,6 +11483,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Customer Agreement (Ext) - Change Customer Posting Group - Method OnAfterValidate - NamedType LabelPstGrChanging</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3118161191 - Field 1117071458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2007144088">
+          <source>IW Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CV Ledger Entry Buffer Ext - Field IW Document No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1546208205 - Field 3565928873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1468132285">
           <source>Admin Cost Place Holder</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11542,6 +11547,11 @@
           <source>Primary Key 2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Document Attachment (Ext) - Field PK Key 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 568966895 - Field 1117071458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1013257135">
+          <source>IW Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Dtld. CV Ledg. Entry Buf. Ext - Field IW Document No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 89331598 - Field 2685121577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Full Name Genitive</source>
