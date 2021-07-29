@@ -7858,6 +7858,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - NamedType CreateAppConfText</note>
         </trans-unit>
+        <trans-unit id="Page 3437592965 - Method 2300047965 - NamedType 3710373016" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Method GetVendorNoCaptionClass - NamedType VentTypeEmpText</note>
+        </trans-unit>
         <trans-unit id="Page 3437592965 - Control 318613646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Details</source>
           <note from="Developer" annotates="general" priority="2"></note>

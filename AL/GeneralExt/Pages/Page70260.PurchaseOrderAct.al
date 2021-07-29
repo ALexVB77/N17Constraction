@@ -23,6 +23,7 @@ page 70260 "Purchase Order Act"
                 field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = All;
+                    CaptionClass = GetVendorNoCaptionClass();
                     Importance = Promoted;
                     ShowMandatory = true;
 
@@ -869,8 +870,7 @@ page 70260 "Purchase Order Act"
         ActTypeEditable, EstimatorEnable, AppButtonEnabled, AllApproverEditable, ReceiveAccountEditable, ShowDocEnabled, PreApproverEditable, CopyDocumentEnabled : Boolean;
         LocationCodeShowMandatory: Boolean;
         ApproveButtonEnabled, RejectButtonEnabled : boolean;
-        StatusStyleTxt: Text;
-        ProblemDescription: text;
+        StatusStyleTxt, ProblemDescription : Text;
         PreApproverNo: Code[50];
         CreateAppConfText: Label 'Do you want to create a payment invoice from Act %1?';
 
@@ -896,6 +896,16 @@ page 70260 "Purchase Order Act"
     begin
         CurrPage.Update;
         CalcFields("Invoice Discount Amount");
+    end;
+
+    local procedure GetVendorNoCaptionClass(): Text
+    var
+        VentTypeEmpText: label 'Employee No.';
+    begin
+        if Rec."Act Type" = "Act Type"::Advance then
+            exit('3,' + VentTypeEmpText)
+        else
+            exit('3,' + FieldCaption("Buy-from Vendor No."));
     end;
 
 }
