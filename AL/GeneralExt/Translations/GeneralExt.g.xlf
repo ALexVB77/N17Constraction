@@ -4438,6 +4438,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method DeleteInvoice - NamedType LocText50021</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1524225914 - Method 1716243370 - NamedType 14768227" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Оплата по </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method GetPaymentDetails - NamedType Text50001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1524225914 - Method 1716243370 - NamedType 1927858078" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Предоплата по </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method GetPaymentDetails - NamedType Text50002</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1524225914 - Method 1716243370 - NamedType 4156606849" size-unit="char" translate="yes" xml:space="preserve">
+          <source>сч %1 от %2 за __________ по дог. %3 от %4 Сумма %5 Без налога (НДС)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method GetPaymentDetails - NamedType TEXT0002</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1524225914 - Method 1716243370 - NamedType 499336170" size-unit="char" translate="yes" xml:space="preserve">
+          <source>сч %1 от %2 за __________ по дог. %3 от %4 Сумма %5 в т.ч. НДС(20%) %6</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method GetPaymentDetails - NamedType TEXT0003</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1524225914 - Method 1810542939 - NamedType 2778598368" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines are not filled.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11243,6 +11263,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen. Journal Line (Ext) - Field Gift - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2325658151 - Field 1117071458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>IW Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen. Journal Line (Ext) - Field IW Document No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2325658151 - Field 3610969433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Notify Customer</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11592,6 +11617,11 @@
           <source>IW Planned Repayment Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field IW Planned Repayment Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 279653624 - Field 1984822256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Journal Payments Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Journal Payments Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 279653624 - Field 3021479305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>KBK Code</source>

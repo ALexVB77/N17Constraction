@@ -1071,4 +1071,42 @@ codeunit 70000 "ERPC Funtions"
         // SWC996 DD 06.02.17 <<
     end;
 
+    procedure GetPaymentDetails(pRequestNo: Code[20]; IncPaymentType: Boolean) Ret: Text
+    var
+        lrPurchaseHeader: Record "Purchase Header";
+        lrVendorAgreements: Record "Vendor Agreement";
+        PrefixText, lvInvoiceNo, lvInvoiceDate, lvAgreementNo, lvAgreementDate, Amt, AmtVAT : Text;
+        Text50001: label 'Оплата по ';
+        Text50002: label 'Предоплата по ';
+        TEXT0002: Label 'сч %1 от %2 за __________ по дог. %3 от %4 Сумма %5 Без налога (НДС)';
+        TEXT0003: Label 'сч %1 от %2 за __________ по дог. %3 от %4 Сумма %5 в т.ч. НДС(20%) %6';
+    begin
+        lrPurchaseHeader.SETRANGE("Document Type", lrPurchaseHeader."Document Type"::Order);
+        lrPurchaseHeader.SETRANGE("No.", pRequestNo);
+        IF lrPurchaseHeader.FINDFIRST THEN BEGIN
+            IF lrPurchaseHeader."Payment Type" = lrPurchaseHeader."Payment Type"::"pre-pay" THEN
+                PrefixText := Text50002
+            ELSE
+                PrefixText := Text50001;
+            // NC AB >>
+            if not IncPaymentType then
+                PrefixText := '';
+            // NC AB <<    
+            lvInvoiceNo := lrPurchaseHeader."Vendor Invoice No.";
+            lvInvoiceDate := FORMAT(lrPurchaseHeader."Document Date");
+            lrVendorAgreements.SETRANGE("Vendor No.", lrPurchaseHeader."Pay-to Vendor No.");
+            lrVendorAgreements.SETRANGE("No.", lrPurchaseHeader."Agreement No.");
+            IF lrVendorAgreements.FINDFIRST THEN BEGIN
+                lvAgreementNo := lrVendorAgreements."External Agreement No.";
+                lvAgreementDate := FORMAT(lrVendorAgreements."Agreement Date");
+            END;
+            Amt := DELCHR(FORMAT(lrPurchaseHeader."Invoice Amount Incl. VAT"), '=', ' ');
+            AmtVAT := DELCHR(FORMAT(lrPurchaseHeader."Invoice VAT Amount"), '=', ' ');
+            IF lrPurchaseHeader."Invoice VAT Amount" <> 0 THEN
+                Ret := STRSUBSTNO(PrefixText + TEXT0003, lvInvoiceNo, lvInvoiceDate, lvAgreementNo, lvAgreementDate, Amt, AmtVAT)
+            ELSE
+                Ret := STRSUBSTNO(PrefixText + TEXT0002, lvInvoiceNo, lvInvoiceDate, lvAgreementNo, lvAgreementDate, Amt);
+        END;
+    end;
+
 }

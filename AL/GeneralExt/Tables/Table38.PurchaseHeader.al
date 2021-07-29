@@ -332,6 +332,22 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             Description = 'NC 51378 AB';
             Caption = 'IW Planned Repayment Date';
         }
+
+        // NC AB: поля 70030 "Journal Template Name", 70031 "Journal Batch Name" и 70032 "Line No." - не использовать!
+        field(70032; "Journal Payments Amount"; Decimal)
+        {
+            // Переделано из Normal на FlowField
+            CalcFormula = sum("Gen. Journal Line".Amount
+                            where("Document Type" = const(Payment),
+                                   "Account Type" = const(Vendor),
+                                    "Account No." = field("Buy-from Vendor No."),
+                                    "IW Document No." = field("No.")));
+            Caption = 'Journal Payments Amount';
+            Description = 'NC 51373 AB';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+
         field(70034; "IW Documents"; Boolean)
         {
             Caption = 'IW Documents';

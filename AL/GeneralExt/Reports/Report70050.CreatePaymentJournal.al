@@ -48,8 +48,7 @@ report 50050 "Create Payment Journal"
                             grPurchaseHeader: Record "Purchase Header";
                             PurchaseListController: Page "Purchase List Controller";
                         begin
-                            // grPurchaseHeader.SETRANGE("Line No.", 0); // WTF ????
-
+                            // grPurchaseHeader.SETRANGE("Line No.", 0); - не используем, т.к. могут быть частично оплаченные, используем проверку по сумме (ниже)
                             CLEAR(PurchaseListController);
                             PurchaseListController.LOOKUPMODE(TRUE);
                             PurchaseListController.SETTABLEVIEW(grPurchaseHeader);
@@ -57,10 +56,13 @@ report 50050 "Create Payment Journal"
                                 PurchaseListController.SetSelectionFilter(grPurchaseHeader);
                                 if grPurchaseHeader.FindSet() then
                                     repeat
-                                        if DocNo = '' then
-                                            DocNo := grPurchaseHeader."No."
-                                        else
-                                            DocNo := StrSubstNo('%1|%2', DocNo, grPurchaseHeader."No.");
+                                        grPurchaseHeader.CalcFields("Payments Amount", "Journal Payments Amount");
+                                        if grPurchaseHeader."Invoice Amount Incl. VAT" - grPurchaseHeader."Payments Amount" - grPurchaseHeader."Journal Payments Amount" > 0 then begin
+                                            if DocNo = '' then
+                                                DocNo := grPurchaseHeader."No."
+                                            else
+                                                DocNo := StrSubstNo('%1|%2', DocNo, grPurchaseHeader."No.");
+                                        end;
                                     until grPurchaseHeader.next = 0;
                             end;
                         end;
@@ -209,14 +211,14 @@ report 50050 "Create Payment Journal"
         if not PurchaseHeader.IsEmpty then begin
             PurchaseHeader.FindSet();
             repeat
-                PurchaseHeader.CalcFields("Payments Amount");
-                if PurchaseHeader."Payments Amount" < PurchaseHeader."Invoice Amount Incl. VAT" then
+                PurchaseHeader.CalcFields("Payments Amount", "Journal Payments Amount");
+                if PurchaseHeader."Invoice Amount Incl. VAT" - PurchaseHeader."Payments Amount" - PurchaseHeader."Journal Payments Amount" > 0 then
                     PurchaseHeader.Mark(true);
             until PurchaseHeader.Next() = 0;
             PurchaseHeader.MarkedOnly(true);
         end;
 
-        // PurchaseHeader.SETRANGE("Line No.", 0);   // WTF ????
+        // PurchaseHeader.SETRANGE("Line No.", 0); - не используем, т.к. могут быть частично оплаченные, используем проверку по сумме
     end;
 
     local procedure GetLinesQty(): Integer

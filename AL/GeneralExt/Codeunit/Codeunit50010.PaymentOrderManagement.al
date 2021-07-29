@@ -1443,11 +1443,20 @@ codeunit 50010 "Payment Order Management"
         PAGE.RUNMODAL(PAGE::"Purchase Order Act", PurchHead);
     end;
 
-
     procedure CreateJournalLineFromPaymentInvoice(JnlTempName: code[20]; JnlBatchName: code[20]; var PurchHeader: Record "Purchase Header") LinesCount: Integer
     var
         GenJournalLine: Record "Gen. Journal Line";
+        GenJournalTempl: Record "Gen. Journal Template";
+        GenJournalBatch: Record "Gen. Journal Batch";
+        PurchSetup: Record "Purchases & Payables Setup";
+        DimSetEntry: Record "Dimension Set Entry";
+        PurchaseLine: Record "Purchase Line";
+        DimMgtExt: Codeunit "Dimension Management (Ext)";
+        gcduERPC: Codeunit "ERPC Funtions";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
         LastLineNo: Integer;
+        CostPlaceDimValue, CostCodeDimValue : Code[20];
+        AddText: text;
     begin
         if PurchHeader.IsEmpty then
             exit(0);
@@ -1459,10 +1468,18 @@ codeunit 50010 "Payment Order Management"
         ELSE
             LastLineNo := 10000;
 
-        /*
+        PurchSetup.Get();
+        PurchSetup.TestField("Cost Place Dimension");
+        PurchSetup.TestField("Cost Code Dimension");
+
         PurchHeader.FindSet();
         REPEAT
-            IF PurchHeader."Payments Amount" <> 0 THEN BEGIN
+            PurchHeader.CalcFields("Payments Amount", "Journal Payments Amount");
+            IF PurchHeader."Amount Including VAT" - PurchHeader."Payments Amount" - PurchHeader."Journal Payments Amount" > 0 THEN BEGIN
+
+                if PurchHeader.Status <> PurchHeader.Status::Released then
+                    Codeunit.Run(Codeunit::"Release Purchase Document", PurchHeader);
+
                 GenJournalLine.INIT;
                 GenJournalLine."Journal Template Name" := JnlTempName;
                 GenJournalLine."Journal Batch Name" := JnlBatchName;
@@ -1475,21 +1492,34 @@ codeunit 50010 "Payment Order Management"
 
                 GenJournalLine.VALIDATE("Currency Code", PurchHeader."Currency Code");
                 GenJournalLine."IW Document No." := PurchHeader."No.";
-                GenJournalLine."IW Planned Repayment Date" := PurchHeader."IW Planned Repayment Date";
 
-                IF PurchHeader."Payment Details" <> '' THEN GenJournalLine.Description := COPYSTR(PurchHeader."Payment Details", 1, 50);
-                grGenJournalBatch.SETRANGE("Journal Template Name", CurrentJnlTmplName);
-                grGenJournalBatch.SETRANGE(Name, CurrentJnlBatchName);
-                IF grGenJournalBatch.FINDFIRST THEN BEGIN
-                    GenJournalLine.VALIDATE("Bal. Account Type", grGenJournalBatch."Bal. Account Type");
-                    GenJournalLine.VALIDATE("Bal. Account No.", grGenJournalBatch."Bal. Account No.");
-                END;
+                // NC AB: пока не понял для чего это поле в операции поставщика 
+                // GenJournalLine."IW Planned Repayment Date" := PurchHeader."IW Planned Repayment Date";
+
+                IF PurchHeader."Payment Details" <> '' THEN
+                    GenJournalLine.Description := COPYSTR(PurchHeader."Payment Details", 1, MaxStrLen(GenJournalLine.Description));
+                if not GenJournalTempl.Get(JnlTempName) then
+                    GenJournalTempl.Init;
+                if GenJournalBatch.Get(JnlTempName, JnlBatchName) then begin
+                    GenJournalLine.VALIDATE("Bal. Account Type", GenJournalBatch."Bal. Account Type");
+                    GenJournalLine.VALIDATE("Bal. Account No.", GenJournalBatch."Bal. Account No.");
+                    // NC AB: и остальное полезное из GenJournalLine.SetUpNewLine >>
+                    if GenJournalBatch."No. Series" <> '' then begin
+                        Clear(NoSeriesMgt);
+                        GenJournalLine."Document No." := NoSeriesMgt.TryGetNextNo(GenJournalBatch."No. Series", GenJournalLine."Posting Date");
+                    end;
+                    GenJournalLine."Source Code" := GenJournalTempl."Source Code";
+                    GenJournalLine."Reason Code" := GenJournalBatch."Reason Code";
+                    GenJournalLine."Posting No. Series" := GenJournalBatch."Posting No. Series";
+                    GenJournalLine.UpdateJournalBatchID();
+                    // NC AB <<
+                end;
                 IF PurchHeader."Payment Type" = PurchHeader."Payment Type"::"pre-pay" THEN BEGIN
                     GenJournalLine.Prepayment := TRUE;
-                    GenJournalLine."Payment Invoice Type" := GenJournalLine."Payment Invoice Type"::"pre-pay";
-                END
-                ELSE BEGIN
-                    GenJournalLine."Payment Invoice Type" := GenJournalLine."Payment Invoice Type"::"post-payment";
+                    // NC AB: пока не понял для чего это поле в операции поставщика 
+                    // GenJournalLine."Payment Invoice Type" := GenJournalLine."Payment Invoice Type"::"pre-pay";
+                END ELSE BEGIN
+                    // GenJournalLine."Payment Invoice Type" := GenJournalLine."Payment Invoice Type"::"post-payment";
                 END;
                 GenJournalLine.VALIDATE(Amount, PurchHeader."Invoice Amount Incl. VAT");
                 GenJournalLine."VAT Amount" := PurchHeader."Invoice VAT Amount";
@@ -1497,74 +1527,72 @@ codeunit 50010 "Payment Order Management"
                 GenJournalLine."Payment Subsequence" := '5';
                 GenJournalLine."Bank Payment Type" := GenJournalLine."Bank Payment Type"::"Computer Check";
                 GenJournalLine."Payment Method" := GenJournalLine."Payment Method"::Electronic;
-                //NC 46171 > KGT
-                GenJournalLine."Payment Assignment" := PurchHeaderAdd.GetPaymentAssignment(PurchHeader."Document Type",
-                                                   PurchHeader."No.");
-                //NC 46171 < KGT 
+                GenJournalLine."Payment Assignment" := PurchHeader."Payment Assignment";
                 GenJournalLine.INSERT(TRUE);
 
-                GenJournalLine.VALIDATE("Shortcut Dimension 1 Code", PurchHeader."Shortcut Dimension 1 Code");
+                if PurchHeader."Dimension Set ID" <> 0 then
+                    if DimSetEntry.Get(PurchHeader."Dimension Set ID", PurchSetup."Cost Place Dimension") then
+                        DimMgtExt.valDimValueWithUpdGlobalDim(
+                            PurchSetup."Cost Place Dimension", DimSetEntry."Dimension Value Code", GenJournalLine."Dimension Set ID",
+                            GenJournalLine."Shortcut Dimension 1 Code", GenJournalLine."Shortcut Dimension 2 Code");
 
-                lrPurchaseLine.RESET;
-                lrPurchaseLine.SETRANGE("Document Type", lrPurchaseLine."Document Type"::Order);
-                lrPurchaseLine.SETRANGE("Document No.", PurchHeader."No.");
-                lrPurchaseLineCount := lrPurchaseLine.COUNT;
-                IF lrPurchaseLineCount = 1 THEN
-                    IF lrPurchaseLine.FINDFIRST THEN
-                        GenJournalLine.VALIDATE("Shortcut Dimension 2 Code", lrPurchaseLine."Shortcut Dimension 2 Code")
-                    ELSE
-                        GenJournalLine.VALIDATE("Shortcut Dimension 2 Code", PurchHeader."Shortcut Dimension 2 Code");
-                GenJournalLine."Payment Purpose" := gcduERPC.GetPaymentDetails(PurchHeader."No.");
-                // MC IK 20121205 >>
-                CASE TRUE OF
-                    STRPOS(GenJournalLine."Payment Purpose", 'Ïðåäîïëàòà ïî ') = 1:
-                        AddText := COPYSTR(GenJournalLine."Payment Purpose", 15);
-                    STRPOS(GenJournalLine."Payment Purpose", 'Îïëàòà ïî ') = 1:
-                        AddText := COPYSTR(GenJournalLine."Payment Purpose", 11);
-                    ELSE
-                        AddText := GenJournalLine."Payment Purpose";
-                END;
-                GenJournalLine.Description :=
-                  COPYSTR(GenJournalLine.Description + '/' + AddText, 1, MAXSTRLEN(GenJournalLine.Description));
-                // MC IK 20121205 <<
-                // SWC2993 DD 15.06.17 >>
+                CostCodeDimValue := '';
+                PurchaseLine.RESET;
+                PurchaseLine.SETRANGE("Document Type", PurchaseLine."Document Type"::Order);
+                PurchaseLine.SETRANGE("Document No.", PurchHeader."No.");
+                IF PurchaseLine.COUNT = 1 THEN begin
+                    PurchaseLine.FINDFIRST;
+                    if PurchaseLine."Dimension Set ID" <> 0 then
+                        if DimSetEntry.Get(PurchaseLine."Dimension Set ID", PurchSetup."Cost Code Dimension") then
+                            CostCodeDimValue := DimSetEntry."Dimension Value Code";
+                end;
+                if CostCodeDimValue = '' then
+                    if PurchHeader."Dimension Set ID" <> 0 then
+                        if DimSetEntry.Get(PurchHeader."Dimension Set ID", PurchSetup."Cost Code Dimension") then
+                            CostCodeDimValue := DimSetEntry."Dimension Value Code";
+                if CostCodeDimValue <> '' then
+                    DimMgtExt.valDimValueWithUpdGlobalDim(
+                        PurchSetup."Cost Code Dimension", CostCodeDimValue, GenJournalLine."Dimension Set ID",
+                        GenJournalLine."Shortcut Dimension 1 Code", GenJournalLine."Shortcut Dimension 2 Code");
+
+                GenJournalLine."Payment Purpose" := gcduERPC.GetPaymentDetails(PurchHeader."No.", true);
+                AddText := gcduERPC.GetPaymentDetails(PurchHeader."No.", false);
+                GenJournalLine.Description := COPYSTR(GenJournalLine.Description + '/' + AddText, 1, MAXSTRLEN(GenJournalLine.Description));
+
                 IF (GenJournalLine."Shortcut Dimension 1 Code" = '') OR (GenJournalLine."Shortcut Dimension 2 Code" = '') THEN BEGIN
-                    CLEAR(MaxPL);
-                    PL.SETRANGE("Document Type", PurchHeader."Document Type");
-                    PL.SETRANGE("Document No.", PurchHeader."No.");
-                    IF PL.FINDSET THEN
-                        REPEAT
-                            IF MaxPL."Line No." = 0 THEN
-                                MaxPL := PL
-                            ELSE
-                                IF PL."Amount Including VAT" > MaxPL."Amount Including VAT" THEN
-                                    MaxPL := PL;
-                        UNTIL PL.NEXT = 0;
-                    IF GenJournalLine."Shortcut Dimension 1 Code" = '' THEN
-                        GenJournalLine.VALIDATE("Shortcut Dimension 1 Code", MaxPL."Shortcut Dimension 1 Code");
-                    IF GenJournalLine."Shortcut Dimension 2 Code" = '' THEN
-                        GenJournalLine.VALIDATE("Shortcut Dimension 2 Code", MaxPL."Shortcut Dimension 2 Code");
+                    PurchaseLine.SetCurrentKey("Amount Including VAT");
+                    PurchaseLine.Ascending(false);
+                    PurchaseLine.FindFirst();
+                    CostPlaceDimValue := '';
+                    CostCodeDimValue := '';
+                    if PurchaseLine."Dimension Set ID" <> 0 then begin
+                        if DimSetEntry.Get(PurchaseLine."Dimension Set ID", PurchSetup."Cost Place Dimension") then
+                            CostPlaceDimValue := DimSetEntry."Dimension Value Code";
+                        if DimSetEntry.Get(PurchaseLine."Dimension Set ID", PurchSetup."Cost Code Dimension") then
+                            CostCodeDimValue := DimSetEntry."Dimension Value Code";
+                    end;
+                    if CostPlaceDimValue <> '' then
+                        DimMgtExt.valDimValueWithUpdGlobalDim(
+                            PurchSetup."Cost Place Dimension", CostPlaceDimValue, GenJournalLine."Dimension Set ID",
+                            GenJournalLine."Shortcut Dimension 1 Code", GenJournalLine."Shortcut Dimension 2 Code");
+                    if CostCodeDimValue <> '' then
+                        DimMgtExt.valDimValueWithUpdGlobalDim(
+                            PurchSetup."Cost Code Dimension", CostCodeDimValue, GenJournalLine."Dimension Set ID",
+                            GenJournalLine."Shortcut Dimension 1 Code", GenJournalLine."Shortcut Dimension 2 Code");
                 END;
-                // SWC2993 DD 15.06.17 <<
 
                 GenJournalLine.MODIFY;
                 LastLineNo := LastLineNo + 10000;
-                PurchHeader."Journal Template Name" := CurrentJnlTmplName;
-                PurchHeader."Journal Batch Name" := CurrentJnlBatchName;
-                PurchHeader."Line No." := GenJournalLine."Line No.";
-                PurchHeader."Payment Doc No." := GenJournalLine."Document No.";
+
+                // NC AB: заполнять в PurchHeader поля "Journal Template Name", "Journal Batch Name" и "Line No." - некорректно
+                // т.к. строк журнала из одного документа может быть несколько
+
+                // где используется это поле - непонятно
+                // PurchHeader."Payment Doc No." := GenJournalLine."Document No.";
 
                 PurchHeader.MODIFY;
-                ii := ii + 1;
-
-                //NC 27251 HR beg
+                LinesCount += 1;
             END;
-        //NC 27251 HR end
         UNTIL PurchHeader.NEXT = 0;
-
-        */
-
-
     end;
-
 }
