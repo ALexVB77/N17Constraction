@@ -10543,6 +10543,81 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Payment Report - Control StartDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 2639967622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Factura-Invoice (A)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - NamedType 2118016257" size-unit="char" translate="yes" xml:space="preserve">
+          <source>US Dollar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - NamedType DollarUSATxt</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - NamedType 3804706331" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice %1 from %2 Page %3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - NamedType InvoiceTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - NamedType 3589302897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 from %2</source>
+          <note from="Developer" annotates="general" priority="2">%1 «Ô %2</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - NamedType PartTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - NamedType 117249182" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Same</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - NamedType SameTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 3993493415 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the currency code is shown in the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control AmountInvoiceDone - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 3993493415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control AmountInvoiceDone - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 3993493415 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Currency,LCY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control AmountInvoiceDone - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 648353892 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how many copies of the document to print.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control CopiesNumber - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 648353892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Copies</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control CopiesNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 816368762 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that interactions with the related contact are logged.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control LogInteraction - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control LogInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 4266201246 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that the report can be previewed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control Preview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 2639967622 - Control 4266201246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Preview</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control Preview - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1742529627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Latest Version</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12518,6 +12593,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales Header (Ext) - Field Government Agreement No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 281671065 - Field 2477801982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Government Agreement No</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales Invoice Header Ext - Field Government Agreement No - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2802827400 - Method 970250691 - NamedType 1559726398" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2802827400">
           <source>For following ILE Remaining Qty is greater than Open Qty =  Remaining Qty - Tracked Qty - Reserved Qty. Only lines with open Quantities are transferred to Order.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12608,6 +12688,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Header (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2405895716 - Field 1639668988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3550754772">
+          <source>New Shortcut Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Header (Ext) - Field New Shortcut Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2405895716 - Field 3443100701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3550754772">
+          <source>New Shortcut Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Header (Ext) - Field New Shortcut Dimension 2 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2405895716 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3550754772">
           <source>Vendor No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12617,6 +12707,16 @@
           <source>Gen. Bus. Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Line (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4106429675 - Field 1639668988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1903112923">
+          <source>New Shortcut Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Line (Ext) - Field New Shortcut Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4106429675 - Field 3443100701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1903112923">
+          <source>New Shortcut Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Line (Ext) - Field New Shortcut Dimension 2 Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3007227616 - Field 4256180955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1340367376">
           <source>Agreement No.</source>
@@ -12633,6 +12733,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header (Ext) - Field New Shortcut Dimension 1 Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3007227616 - Field 3443100701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1340367376">
+          <source>New Shortcut Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header (Ext) - Field New Shortcut Dimension 2 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3007227616 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1340367376">
           <source>Vendor</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12642,6 +12747,16 @@
           <source>Gen. Bus. Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Line (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2134902631 - Field 1639668988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1496656855">
+          <source>New Shortcut Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Line (Ext) - Field New Shortcut Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2134902631 - Field 3443100701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1496656855">
+          <source>New Shortcut Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Line (Ext) - Field New Shortcut Dimension 2 Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3550601874 - NamedType 1646004004" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3550601874">
           <source>User %1 has status %2 now. Do you want to change to %3?</source>

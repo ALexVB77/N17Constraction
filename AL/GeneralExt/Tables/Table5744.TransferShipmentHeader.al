@@ -7,7 +7,14 @@ tableextension 85744 "Transfer Shipment Header (Ext)" extends "Transfer Shipment
             Caption = 'New Shortcut Dimension 1 Code';
             Description = 'NC 51417 PA';
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1));
-            CaptionClass = '1,2,1';
+            CaptionClass = '1,2,1,New ';
+        }
+        field(50003; "New Shortcut Dimension 2 Code"; Code[20])
+        {
+            Caption = 'New Shortcut Dimension 2 Code';
+            Description = 'NC002 ROMB, NC 51410 EP';
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
+            CaptionClass = '1,2,1,New ';
         }
         field(50010; "Vendor No."; Code[20])
         {

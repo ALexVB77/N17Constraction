@@ -253,6 +253,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Shipment".OnRun()
 
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferShipmentHeader."New Shortcut Dimension 1 Code" := TransferHeader."New Shortcut Dimension 1 Code";
+        TransferShipmentHeader."New Shortcut Dimension 2 Code" := TransferHeader."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
         // NC 22512 > DP
         TransferShipmentHeader."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
         // NC 22512 < DP
@@ -270,6 +275,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Shipment".OnRun()
 
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferShipmentLine."New Shortcut Dimension 1 Code" := TransferLine."New Shortcut Dimension 1 Code";
+        TransferShipmentLine."New Shortcut Dimension 2 Code" := TransferLine."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
         // NC 22512 > DP
         TransferShipmentLine."Gen. Bus. Posting Group" := TransferLine."Gen. Bus. Posting Group";
         // NC 22512 < DP
@@ -286,6 +296,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
     begin
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Receipt".OnRun()
+
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferReceiptHeader."New Shortcut Dimension 1 Code" := TransferHeader."New Shortcut Dimension 1 Code";
+        TransferReceiptHeader."New Shortcut Dimension 2 Code" := TransferHeader."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
 
         // NC 22512 > DP
         TransferReceiptHeader."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
@@ -306,7 +321,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Receipt".OnRun()
 
-        if TransferHeader.Get(TransferLine."Document No.") then
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferReceiptLine."New Shortcut Dimension 1 Code" := TransferLine."New Shortcut Dimension 1 Code";
+        TransferReceiptLine."New Shortcut Dimension 2 Code" := TransferLine."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
+        if TransferHeader.Get(TransferLine."Document No.") then                 // NC 51411 EP
             // SWC1066 DD 27.06.17 >>
             TransferReceiptLine."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
         // SWC1066 DD 27.06.17 <<
@@ -634,6 +654,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Receipt".PostItemJnlLine()
 
+        //NC002 CITRU\ROMB 10.01.12 >
+        ItemJournalLine."New Shortcut Dimension 1 Code" := TransferReceiptLine."New Shortcut Dimension 1 Code";
+        ItemJournalLine."New Shortcut Dimension 2 Code" := TransferReceiptLine."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
         // NC 22512 > DP
         ItemJournalLine."Gen. Bus. Posting Group" := TransferReceiptHeader."Gen. Bus. Posting Group";
         // NC 22512 < DP
@@ -922,6 +947,23 @@ codeunit 50006 "Base App. Subscribers Mgt."
     local procedure OnPurchaseHeaderAfterDelete(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
     begin
 
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterCreateDimTableIDs', '', false, false)]
+    local procedure OnAfterCreateDimTableIDs(var PurchaseHeader: Record "Purchase Header"; CallingFieldNo: Integer; var TableID: array[10] of Integer; var No: array[10] of Code[20])
+    var
+        ArrayNo, NewPos : Integer;
+    begin
+        // NC AB: добавляем договор после поставщика
+        for ArrayNo := 1 to ArrayLen(TableID) do
+            if TableID[ArrayNo] = Database::Vendor then
+                NewPos := ArrayNo + 1;
+        for ArrayNo := 9 downto NewPos do begin
+            TableID[ArrayNo + 1] := TableID[ArrayNo];
+            No[ArrayNo + 1] := No[ArrayNo];
+        end;
+        TableID[NewPos] := Database::"Vendor Agreement";
+        No[NewPos] := PurchaseHeader."Agreement No.";
     end;
 
     // Table 39 Purchase Line

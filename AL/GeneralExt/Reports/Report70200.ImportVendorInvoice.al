@@ -1,7 +1,7 @@
 report 70200 "Import Vendor Invoice"
 {
-    UsageCategory = Tasks;
     ApplicationArea = All;
+    UsageCategory = Tasks;
     Caption = 'Import Vendor Invoice';
     ProcessingOnly = true;
 
