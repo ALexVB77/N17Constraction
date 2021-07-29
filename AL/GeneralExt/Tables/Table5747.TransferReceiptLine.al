@@ -8,6 +8,22 @@ tableextension 85747 "Transfer Receipt Line (Ext)" extends "Transfer Receipt Lin
             Description = 'SWC1066 DD 27.06.17';
             TableRelation = "Gen. Business Posting Group";
         }
+        field(50002; "New Shortcut Dimension 1 Code"; Code[20])
+        {
+            Caption = 'New Shortcut Dimension 1 Code';
+            DataClassification = CustomerContent;
+            CaptionClass = '1,2,1,New ';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
+            Description = 'NCC002 ROMB, NC 51410 EP';
+        }
+        field(50003; "New Shortcut Dimension 2 Code"; Code[20])
+        {
+            Caption = 'New Shortcut Dimension 2 Code';
+            DataClassification = CustomerContent;
+            CaptionClass = '1,2,2,New ';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
+            Description = 'NCC002 ROMB, NC 51410 EP';
+        }
     }
 
     // NC 51410 > EP
