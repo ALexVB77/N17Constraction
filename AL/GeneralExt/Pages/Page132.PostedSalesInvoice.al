@@ -2,7 +2,13 @@ pageextension 80132 "Posted Sales Invoice Ext" extends "Posted Sales Invoice"
 {
     layout
     {
-        // Add changes to page layout here
+        addlast(General)
+        {
+            field("Government Agreement No"; Rec."Government Agreement No")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+        }
     }
 
     actions
