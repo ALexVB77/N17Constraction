@@ -1508,6 +1508,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Dimension Mapping - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2519642008 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Dimension Mapping - Field Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2519642008 - Field 2623957639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dimension Code</source>
           <note from="Developer" annotates="general" priority="2"></note>

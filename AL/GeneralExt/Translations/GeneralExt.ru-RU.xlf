@@ -1809,6 +1809,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Dimension Mapping - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2519642008 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target>Описание</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Dimension Mapping - Field Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2519642008 - Field 2623957639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dimension Code</source>
           <target>Код измерения</target>
@@ -8183,21 +8190,21 @@
         </trans-unit>
         <trans-unit id="Page 312954500 - Action 513012614 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Finalize and prepare to print the document or journal. The values and quantities are posted to the related accounts. A report request window where you can specify what to include on the print-out.</source>
-          <target>[NAB: SUGGESTION]Завершение подготовки документа или журнала и его подготовка к печати. Значения и количества учитываются на соответствующих счетах. В окне запроса отчета можно указать, какая информация должна выводиться на печать.</target>
+          <target>Завершение подготовки документа или журнала и его подготовка к печати. Значения и количества учитываются на соответствующих счетах. В окне запроса отчета можно указать, какая информация должна выводиться на печать.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action PostAndPrint - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 312954500 - Action 513012614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post and &amp;Print</source>
-          <target>[NAB: SUGGESTION]Учет и &amp;печать</target>
+          <target>Учет и &amp;печать</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action PostAndPrint - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 312954500 - Action 4032263875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Release</source>
-          <target>[NAB: SUGGESTION]Выпустить</target>
+          <target>Выпустить</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action Release - Property Caption</note>
@@ -9436,7 +9443,6 @@
           <source>Employee No.</source>
           <target>Код сотрудника</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Method GetVendorNoCaptionClass - NamedType VentTypeEmpText</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Control 318613646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
