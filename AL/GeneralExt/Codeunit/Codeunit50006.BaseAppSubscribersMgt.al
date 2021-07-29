@@ -924,6 +924,23 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterCreateDimTableIDs', '', false, false)]
+    local procedure OnAfterCreateDimTableIDs(var PurchaseHeader: Record "Purchase Header"; CallingFieldNo: Integer; var TableID: array[10] of Integer; var No: array[10] of Code[20])
+    var
+        ArrayNo, NewPos : Integer;
+    begin
+        // NC AB: добавляем договор после поставщика
+        for ArrayNo := 1 to ArrayLen(TableID) do
+            if TableID[ArrayNo] = Database::Vendor then
+                NewPos := ArrayNo + 1;
+        for ArrayNo := 9 downto NewPos do begin
+            TableID[ArrayNo + 1] := TableID[ArrayNo];
+            No[ArrayNo + 1] := No[ArrayNo];
+        end;
+        TableID[NewPos] := Database::"Vendor Agreement";
+        No[NewPos] := PurchaseHeader."Agreement No.";
+    end;
+
     // Table 39 Purchase Line
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterAssignItemValues', '', false, false)]
