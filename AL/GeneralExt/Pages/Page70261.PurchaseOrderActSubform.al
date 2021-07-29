@@ -419,12 +419,12 @@ page 70261 "Purchase Order Act Subform"
         ApplicationAreaMgmtFacade: Codeunit "Application Area Mgmt. Facade";
         PaymentOrderMgt: Codeunit "Payment Order Management";
         IsCommentLine, IsBlankNumber : Boolean;
-        UnitofMeasureCodeIsChangeable, CurrPageIsEditable, IsSaaSExcelAddinEnabled, UtilitiesEnabled, : Boolean;
+        UnitofMeasureCodeIsChangeable, CurrPageIsEditable, IsSaaSExcelAddinEnabled, UtilitiesEnabled : Boolean;
         TypeAsText: Text[30];
         SuppressTotals: Boolean;
         ShortcutDimCode: array[8] of Code[20];
         UtilitiesDimValueCode: code[20];
-        VATAmount, InvoiceDiscountAmoun, InvoiceDiscountPct : Decimal;
+        VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct : Decimal;
         LocationCodeMandatory: Boolean;
 
     procedure UpdateForm(SetSaveRecord: Boolean)
