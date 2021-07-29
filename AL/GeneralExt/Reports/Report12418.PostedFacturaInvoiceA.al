@@ -554,7 +554,7 @@ report 92418 "Posted Factura-Invoice (A) ext"
         RevNo: Code[20];
         DocDate: Text;
         RevDate: Text;
-        HeaderValues: array[12] of Text;
+        HeaderValues: array[13] of Text;
     begin
         FillDocHeader(DocNo, DocDate, RevNo, RevDate);
         TransferHeaderValues(HeaderValues);
