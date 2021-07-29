@@ -103,6 +103,20 @@ report 50050 "Create Payment Journal"
                                 CurrencyCode := grCurrency.Code;
                         end;
                     }
+                    field(SpecBankAccoNo; SpecBankAccoNo)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Spec. Bank Account No.';
+
+                        trigger OnLookup(var Text: Text): Boolean
+                        var
+                            BankAcc: Record "Bank Account";
+                        begin
+                            IF Page.RUNMODAL(0, BankAcc) = ACTION::LookupOK THEN
+                                CurrencyCode := Text + BankAcc."No.";
+                        end;
+                    }
+
                 }
                 group(Dimensions)
                 {
@@ -159,9 +173,6 @@ report 50050 "Create Payment Journal"
         trigger OnOpenPage()
         begin
             PurchSetup.Get();
-
-            //\\
-            Message('%1 %2', CurrentJnlTmplName, CurrentJnlBatchName);
         end;
     }
 
@@ -175,7 +186,7 @@ report 50050 "Create Payment Journal"
         grGenJournalLine: Record "Gen. Journal Line";
         GenJnlManagement: Codeunit GenJnlManagement;
         CurrentJnlTmplName, CurrentJnlBatchName, VendorCode : code[20];
-        DocNo, DocDate, AgreementNo, CostCode, CostPlace, CurrencyCode : text;
+        DocNo, DocDate, AgreementNo, CostCode, CostPlace, CurrencyCode, SpecBankAccoNo : text;
 
     local procedure SetPurchHeaderFilters(var PurchaseHeader: record "Purchase Header");
     begin
