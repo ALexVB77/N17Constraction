@@ -8938,6 +8938,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control DocNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1402994593 - Control 3665282280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Spec. Bank Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control SpecBankAccoNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1402994593 - Control 819533251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor</source>
           <note from="Developer" annotates="general" priority="2"></note>
