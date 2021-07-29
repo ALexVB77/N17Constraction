@@ -380,7 +380,7 @@ page 70262 "Purchase List Act"
     begin
         case Rec."Act Type" of
             Rec."Act Type"::Advance:
-                ;
+                page.Run(Page::"Purchase Order Act", Rec)
             else
                 page.Run(Page::"Purchase Order Act", Rec);
         end;
