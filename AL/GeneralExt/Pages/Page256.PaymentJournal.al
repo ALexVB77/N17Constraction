@@ -14,10 +14,11 @@ pageextension 80256 "Payment Journal (Ext)" extends "Payment Journal"
                 Image = ReverseRegister;
 
                 trigger OnAction()
-                //var grCreatePaymentJournal: Report "Create Payment Journal";
+                var
+                    grCreatePaymentJournal: Report "Create Payment Journal";
                 begin
-                    //grCreatePaymentJournal.SetBath(CurrentJnlBatchName);
-                    //grCreatePaymentJournal.RUNMODAL;
+                    grCreatePaymentJournal.SetParam("Journal Template Name", "Journal Batch Name");
+                    grCreatePaymentJournal.RUNMODAL;
                     CurrPage.UPDATE(FALSE);
                 end;
             }

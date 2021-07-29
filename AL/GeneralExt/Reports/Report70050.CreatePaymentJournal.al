@@ -72,11 +72,13 @@ report 50050 "Create Payment Journal"
                         ApplicationArea = All;
                         Caption = 'Vendor';
                         TableRelation = Vendor;
+                        Visible = false;
                     }
                     field(AgreementNo; AgreementNo)
                     {
                         ApplicationArea = All;
                         Caption = 'Agreements';
+                        Visible = false;
 
                         trigger OnLookup(var Text: Text): Boolean
                         var
@@ -91,6 +93,7 @@ report 50050 "Create Payment Journal"
                     {
                         ApplicationArea = All;
                         Caption = 'Currency';
+                        Visible = false;
 
                         trigger OnLookup(var Text: Text): Boolean
                         var
@@ -123,6 +126,7 @@ report 50050 "Create Payment Journal"
                     {
                         ApplicationArea = All;
                         Caption = 'Cost Code';
+                        Visible = false;
 
                         trigger OnLookup(var Text: Text): Boolean
                         var
@@ -154,27 +158,12 @@ report 50050 "Create Payment Journal"
 
         trigger OnOpenPage()
         begin
-            IF gvBath <> '' THEN
-                CurrentJnlBatchName := gvBath;
             PurchSetup.Get();
+
+            //\\
+            Message('%1 %2', CurrentJnlTmplName, CurrentJnlBatchName);
         end;
     }
-
-    trigger OnInitReport()
-    var
-        grGenJournalTemplate: Record "Gen. Journal Template";
-        TemplType: Enum "Gen. Journal Template Type";
-        JnlSelected: Boolean;
-    begin
-        GenJnlManagement.TemplateSelection(Page::"Payment Journal", TemplType::Payments, FALSE, grGenJournalLine, JnlSelected);
-        IF NOT JnlSelected THEN
-            ERROR('');
-        GenJnlManagement.OpenJnl(CurrentJnlBatchName, grGenJournalLine);
-        grGenJournalTemplate.SETRANGE("Page ID", Page::"Payment Journal");
-        grGenJournalTemplate.SETRANGE(Type, grGenJournalTemplate.Type::Payments);
-        IF grGenJournalTemplate.FINDFIRST THEN
-            CurrentJnlTmplName := grGenJournalTemplate.Name;
-    end;
 
     trigger OnPreReport()
     begin
@@ -185,7 +174,7 @@ report 50050 "Create Payment Journal"
         PurchSetup: Record "Purchases & Payables Setup";
         grGenJournalLine: Record "Gen. Journal Line";
         GenJnlManagement: Codeunit GenJnlManagement;
-        CurrentJnlTmplName, CurrentJnlBatchName, VendorCode, gvBath : code[20];
+        CurrentJnlTmplName, CurrentJnlBatchName, VendorCode : code[20];
         DocNo, DocDate, AgreementNo, CostCode, CostPlace, CurrencyCode : text;
 
     local procedure SetPurchHeaderFilters(var PurchaseHeader: record "Purchase Header");
@@ -261,8 +250,9 @@ report 50050 "Create Payment Journal"
             MESSAGE(TEXT0002, NewLinesCount);
     end;
 
-    procedure SetBath(VAR pBath: Code[20])
+    procedure SetParam(JnlTmplName: Code[20]; JnlBatchName: Code[20])
     begin
-        gvBath := pBath;
+        CurrentJnlTmplName := JnlTmplName;
+        CurrentJnlBatchName := JnlBatchName;
     end;
 }
