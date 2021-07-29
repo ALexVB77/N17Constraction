@@ -441,6 +441,7 @@ report 92411 "Order Factura-Invoice (A) Ext"
         HeaderValue[10] := CurrencyDigitalCode;
         HeaderValue[11] := CurrencyDescription;
         HeaderValue[12] := '';
+        HeaderValue[13] := Header."Government Agreement No.";
     end;
 
     [Scope('OnPrem')]
@@ -605,7 +606,7 @@ report 92411 "Order Factura-Invoice (A) Ext"
         RevNo: Code[20];
         DocDate: Text;
         RevDate: Text;
-        HeaderValues: array[12] of Text;
+        HeaderValues: array[13] of Text;
     begin
         if IsProforma then
             FillProformaHeader(DocNo, DocDate, RevNo, RevDate)
@@ -613,7 +614,7 @@ report 92411 "Order Factura-Invoice (A) Ext"
             FillDocHeader(DocNo, DocDate, RevNo, RevDate);
         TransferHeaderValues(HeaderValues);
 
-        FillHeader(DocNo, DocDate, RevNo, RevDate, HeaderValues);
+        FillHeaderHelper(DocNo, DocDate, RevNo, RevDate, HeaderValues);
 
     end;
 
@@ -666,7 +667,7 @@ report 92411 "Order Factura-Invoice (A) Ext"
     end;
 
     [Scope('OnPrem')]
-    procedure FillHeader(DocNo: Code[20]; DocDate: Text; RevNo: Code[20]; RevDate: Text; HeaderDetails: array[12] of Text)
+    procedure FillHeaderHelper(DocNo: Code[20]; DocDate: Text; RevNo: Code[20]; RevDate: Text; HeaderDetails: array[13] of Text)
     begin
         ExcelReportBuilderMgr.AddSection('REPORTHEADER');
 
@@ -687,6 +688,8 @@ report 92411 "Order Factura-Invoice (A) Ext"
         ExcelReportBuilderMgr.AddDataToSection('CurrencyCode', HeaderDetails[10]);
         ExcelReportBuilderMgr.AddDataToSection('CurrencyName', HeaderDetails[11]);
         ExcelReportBuilderMgr.AddDataToSection('VATAgentText', HeaderDetails[12]);
+        ExcelReportBuilderMgr.AddDataToSection('GovernmentAgreement', HeaderDetails[13]);
+
 
         ExcelReportBuilderMgr.AddSection('PAGEHEADER');
 
