@@ -183,13 +183,13 @@ page 50093 "Giv. Transfer Order Subform"
                 {
                     ApplicationArea = Dimensions;
                     ToolTip = 'Specifies the code for Shortcut Dimension 1, which is one of two global dimension codes that you set up in the General Ledger Setup window.';
-                    Visible = false;
+                    Visible = DimVisible1;
                 }
                 field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Dimensions;
                     ToolTip = 'Specifies the code for Shortcut Dimension 2, which is one of two global dimension codes that you set up in the General Ledger Setup window.';
-                    Visible = false;
+                    Visible = DimVisible2;
                 }
                 field("ShortcutDimCode[3]"; ShortcutDimCode[3])
                 {
@@ -198,7 +198,7 @@ page 50093 "Giv. Transfer Order Subform"
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(3),
                                                                   "Dimension Value Type" = CONST(Standard),
                                                                   Blocked = CONST(false));
-                    Visible = false;
+                    Visible = DimVisible3;
 
                     trigger OnValidate()
                     begin
@@ -212,7 +212,7 @@ page 50093 "Giv. Transfer Order Subform"
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(4),
                                                                   "Dimension Value Type" = CONST(Standard),
                                                                   Blocked = CONST(false));
-                    Visible = false;
+                    Visible = DimVisible4;
 
                     trigger OnValidate()
                     begin
@@ -226,7 +226,7 @@ page 50093 "Giv. Transfer Order Subform"
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(5),
                                                                   "Dimension Value Type" = CONST(Standard),
                                                                   Blocked = CONST(false));
-                    Visible = false;
+                    Visible = DimVisible5;
 
                     trigger OnValidate()
                     begin
@@ -240,7 +240,7 @@ page 50093 "Giv. Transfer Order Subform"
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(6),
                                                                   "Dimension Value Type" = CONST(Standard),
                                                                   Blocked = CONST(false));
-                    Visible = false;
+                    Visible = DimVisible6;
 
                     trigger OnValidate()
                     begin
@@ -254,7 +254,7 @@ page 50093 "Giv. Transfer Order Subform"
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(7),
                                                                   "Dimension Value Type" = CONST(Standard),
                                                                   Blocked = CONST(false));
-                    Visible = false;
+                    Visible = DimVisible7;
 
                     trigger OnValidate()
                     begin
@@ -268,7 +268,7 @@ page 50093 "Giv. Transfer Order Subform"
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(8),
                                                                   "Dimension Value Type" = CONST(Standard),
                                                                   Blocked = CONST(false));
-                    Visible = false;
+                    Visible = DimVisible8;
 
                     trigger OnValidate()
                     begin
