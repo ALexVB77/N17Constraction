@@ -210,6 +210,7 @@ report 50120 "Data Migration From Excel"
                             DimensionMapping."Dimension Code" := Text0012;
                             DimensionMapping."Old Dimension Value Code" := GetValueAtCell(RowNo, 1);
                             DimensionMapping."New Dimension Value Code" := GetValueAtCell(RowNo, 2);
+                            DimensionMapping.Description := GetValueAtCell(RowNo, 3);
                             DimensionMapping.Insert(true);
                         end;
                 end;

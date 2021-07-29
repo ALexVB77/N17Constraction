@@ -16,6 +16,10 @@ table 50002 "Dimension Mapping"
         {
             Caption = 'Old Dimension Value Code';
         }
+        field(4; "Description"; Text[250])
+        {
+            Caption = 'Description';
+        }
     }
 
     keys

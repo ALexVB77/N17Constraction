@@ -24,6 +24,10 @@ page 50102 "Dimension Mapping"
                 {
                     ApplicationArea = All;
                 }
+                field(Description; Rec.Description)
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }
