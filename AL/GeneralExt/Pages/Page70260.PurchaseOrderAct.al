@@ -222,7 +222,7 @@ page 70260 "Purchase Order Act"
                 field("Estimator"; Rec."Estimator")
                 {
                     ApplicationArea = All;
-                    ShowMandatory = true;
+                    ShowMandatory = EstimatorMandatory;
                     Enabled = EstimatorEnable;
                 }
                 field("Purchaser Code"; Rec."Purchaser Code")
@@ -797,6 +797,8 @@ page 70260 "Purchase Order Act"
         RejectButtonEnabled := FALSE;
         CopyDocumentEnabled := ("No." <> '') and ("Status App Act" = "Status App Act"::Controller);
 
+        EstimatorMandatory := "Act Type" <> "Act Type"::Advance;
+
         if "Act Type" = "Act Type"::Advance then
             PreApproverNo := Rec."Pre-Approver"
         else
@@ -868,6 +870,7 @@ page 70260 "Purchase Order Act"
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
         ActTypeEditable, EstimatorEnable, AppButtonEnabled, AllApproverEditable, ReceiveAccountEditable, ShowDocEnabled, PreApproverEditable, CopyDocumentEnabled : Boolean;
+        EstimatorMandatory: Boolean;
         LocationCodeShowMandatory: Boolean;
         ApproveButtonEnabled, RejectButtonEnabled : boolean;
         StatusStyleTxt, ProblemDescription : Text;
