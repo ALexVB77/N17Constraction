@@ -86,7 +86,7 @@ report 50050 "Create Payment Journal"
                         begin
                             grVendAgreements.SETFILTER("Vendor No.", VendorCode);
                             IF Page.RUNMODAL(Page::"Vendor Agreements", grVendAgreements) = ACTION::LookupOK THEN
-                                AgreementNo := grVendAgreements."No.";
+                                AgreementNo := Text + grVendAgreements."No.";
                         end;
                     }
                     field(CurrencyCode; CurrencyCode)
@@ -100,7 +100,7 @@ report 50050 "Create Payment Journal"
                             grCurrency: Record Currency;
                         begin
                             IF Page.RUNMODAL(0, grCurrency) = ACTION::LookupOK THEN
-                                CurrencyCode := grCurrency.Code;
+                                CurrencyCode := Text + grCurrency.Code;
                         end;
                     }
                     field(SpecBankAccoNo; SpecBankAccoNo)
@@ -133,7 +133,7 @@ report 50050 "Create Payment Journal"
                             PurchSetup.TestField("Cost Place Dimension");
                             DimValue.SetRange("Dimension Code", PurchSetup."Cost Place Dimension");
                             if Page.RunModal(0, DimValue) = Action::LookupOK then
-                                CostPlace := DimValue.Code;
+                                CostPlace := Text + DimValue.Code;
                         end;
                     }
                     field(CostCode; CostCode)
@@ -149,7 +149,7 @@ report 50050 "Create Payment Journal"
                             PurchSetup.TestField("Cost Code Dimension");
                             DimValue.SetRange("Dimension Code", PurchSetup."Cost Code Dimension");
                             if Page.RunModal(0, DimValue) = Action::LookupOK then
-                                CostCode := DimValue.Code;
+                                CostCode := Text + DimValue.Code;
                         end;
                     }
                 }
@@ -206,6 +206,8 @@ report 50050 "Create Payment Journal"
             PurchaseHeader.SETFILTER("Shortcut Dimension 2 Code", CostCode);
         IF DocDate <> '' THEN
             PurchaseHeader.SETFILTER("Due Date", DocDate);
+        if SpecBankAccoNo <> '' then
+            PurchaseHeader.SetFilter("Spec. Bank Account No.", SpecBankAccoNo);
 
         // PurchaseHeader.SETRANGE(Paid, FALSE);
         if not PurchaseHeader.IsEmpty then begin
