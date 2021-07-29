@@ -85,7 +85,7 @@ page 70261 "Purchase Order Act Subform"
                     ApplicationArea = All;
                     Editable = NOT IsBlankNumber;
                     Enabled = NOT IsBlankNumber;
-                    ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
+                    ShowMandatory = LocationCodeMandatory; //(NOT IsCommentLine) AND ("No." <> '');
 
                     trigger OnValidate()
                     begin
@@ -346,6 +346,7 @@ page 70261 "Purchase Order Act Subform"
         IF (GLSetup."Utilities Dimension Code" <> '') and (Rec."Dimension Set ID" <> 0) then
             IF DimSetEntry.GET(Rec."Dimension Set ID", GLSetup."Utilities Dimension Code") then
                 UtilitiesDimValueCode := DimSetEntry."Dimension Value Code";
+        LocationCodeMandatory := PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::Advance;
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -417,19 +418,14 @@ page 70261 "Purchase Order Act Subform"
         gcERPC: Codeunit "ERPC Funtions";
         ApplicationAreaMgmtFacade: Codeunit "Application Area Mgmt. Facade";
         PaymentOrderMgt: Codeunit "Payment Order Management";
-        IsCommentLine: Boolean;
-        IsBlankNumber: Boolean;
-        UnitofMeasureCodeIsChangeable: Boolean;
+        IsCommentLine, IsBlankNumber : Boolean;
+        UnitofMeasureCodeIsChangeable, CurrPageIsEditable, IsSaaSExcelAddinEnabled, UtilitiesEnabled, : Boolean;
         TypeAsText: Text[30];
-        CurrPageIsEditable: Boolean;
-        IsSaaSExcelAddinEnabled: Boolean;
         SuppressTotals: Boolean;
         ShortcutDimCode: array[8] of Code[20];
         UtilitiesDimValueCode: code[20];
-        VATAmount: Decimal;
-        InvoiceDiscountAmount: Decimal;
-        InvoiceDiscountPct: Decimal;
-        UtilitiesEnabled: Boolean;
+        VATAmount, InvoiceDiscountAmoun, InvoiceDiscountPct : Decimal;
+        LocationCodeMandatory: Boolean;
 
     procedure UpdateForm(SetSaveRecord: Boolean)
     begin
