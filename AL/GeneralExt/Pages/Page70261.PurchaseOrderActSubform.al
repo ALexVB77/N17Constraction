@@ -85,7 +85,7 @@ page 70261 "Purchase Order Act Subform"
                     ApplicationArea = All;
                     Editable = NOT IsBlankNumber;
                     Enabled = NOT IsBlankNumber;
-                    ShowMandatory = LocationCodeMandatory; //(NOT IsCommentLine) AND ("No." <> '');
+                    ShowMandatory = LocationCodeMandatory;
 
                     trigger OnValidate()
                     begin
@@ -346,7 +346,7 @@ page 70261 "Purchase Order Act Subform"
         IF (GLSetup."Utilities Dimension Code" <> '') and (Rec."Dimension Set ID" <> 0) then
             IF DimSetEntry.GET(Rec."Dimension Set ID", GLSetup."Utilities Dimension Code") then
                 UtilitiesDimValueCode := DimSetEntry."Dimension Value Code";
-        LocationCodeMandatory := PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::Advance;
+        LocationCodeMandatory := (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::Advance) and (not IsCommentLine) AND ("No." <> '');
     end;
 
     trigger OnDeleteRecord(): Boolean
