@@ -253,6 +253,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Shipment".OnRun()
 
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferShipmentHeader."New Shortcut Dimension 1 Code" := TransferHeader."New Shortcut Dimension 1 Code";
+        TransferShipmentHeader."New Shortcut Dimension 2 Code" := TransferHeader."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
         // NC 22512 > DP
         TransferShipmentHeader."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
         // NC 22512 < DP
@@ -270,6 +275,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Shipment".OnRun()
 
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferShipmentLine."New Shortcut Dimension 1 Code" := TransferLine."New Shortcut Dimension 1 Code";
+        TransferShipmentLine."New Shortcut Dimension 2 Code" := TransferLine."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
         // NC 22512 > DP
         TransferShipmentLine."Gen. Bus. Posting Group" := TransferLine."Gen. Bus. Posting Group";
         // NC 22512 < DP
@@ -286,6 +296,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
     begin
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Receipt".OnRun()
+
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferReceiptHeader."New Shortcut Dimension 1 Code" := TransferHeader."New Shortcut Dimension 1 Code";
+        TransferReceiptHeader."New Shortcut Dimension 2 Code" := TransferHeader."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
 
         // NC 22512 > DP
         TransferReceiptHeader."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
@@ -306,7 +321,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Receipt".OnRun()
 
-        if TransferHeader.Get(TransferLine."Document No.") then
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferReceiptLine."New Shortcut Dimension 1 Code" := TransferLine."New Shortcut Dimension 1 Code";
+        TransferReceiptLine."New Shortcut Dimension 2 Code" := TransferLine."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
+        if TransferHeader.Get(TransferLine."Document No.") then                 // NC 51411 EP
             // SWC1066 DD 27.06.17 >>
             TransferReceiptLine."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
         // SWC1066 DD 27.06.17 <<
@@ -633,6 +653,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
     begin
         // NC 51411 > EP
         // Из модификации cu "TransferOrder-Post Receipt".PostItemJnlLine()
+
+        //NC002 CITRU\ROMB 10.01.12 >
+        ItemJournalLine."New Shortcut Dimension 1 Code" := TransferReceiptLine."New Shortcut Dimension 1 Code";
+        ItemJournalLine."New Shortcut Dimension 2 Code" := TransferReceiptLine."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
 
         // NC 22512 > DP
         ItemJournalLine."Gen. Bus. Posting Group" := TransferReceiptHeader."Gen. Bus. Posting Group";
