@@ -12,7 +12,7 @@ tableextension 85741 "Transfer Line (Ext)" extends "Transfer Line"
         {
             Caption = 'New Shortcut Dimension 1 Code';
             DataClassification = CustomerContent;
-            CaptionClass = '1,2,1';
+            CaptionClass = '1,2,1,New ';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
             trigger OnValidate()
             begin
@@ -23,7 +23,7 @@ tableextension 85741 "Transfer Line (Ext)" extends "Transfer Line"
         {
             Caption = 'New Shortcut Dimension 2 Code';
             DataClassification = CustomerContent;
-            CaptionClass = '1,2,2';
+            CaptionClass = '1,2,2,New ';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
             trigger OnValidate()
             begin
