@@ -346,6 +346,8 @@ page 70261 "Purchase Order Act Subform"
         IF (GLSetup."Utilities Dimension Code" <> '') and (Rec."Dimension Set ID" <> 0) then
             IF DimSetEntry.GET(Rec."Dimension Set ID", GLSetup."Utilities Dimension Code") then
                 UtilitiesDimValueCode := DimSetEntry."Dimension Value Code";
+        if (PurchaseHeader."Document Type" <> "Document Type") or (PurchaseHeader."No." <> "Document No.") then
+            PurchaseHeader.get("Document Type", "Document No.");
         LocationCodeMandatory := (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::Advance) and (not IsCommentLine) AND ("No." <> '');
     end;
 
