@@ -15133,6 +15133,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Header (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2405895716 - Field 1639668988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3550754772">
+          <source>New Shortcut Dimension 1 Code</source>
+          <target>Новый код ярлыка измерения 1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Header (Ext) - Field New Shortcut Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2405895716 - Field 3443100701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3550754772">
+          <source>New Shortcut Dimension 2 Code</source>
+          <target>Новый код ярлыка измерения 2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Header (Ext) - Field New Shortcut Dimension 2 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2405895716 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3550754772">
           <source>Vendor No.</source>
           <target>Поставщик Но.</target>
@@ -15144,6 +15156,18 @@
           <target>Общая бизнес-группа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Line (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4106429675 - Field 1639668988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1903112923">
+          <source>New Shortcut Dimension 1 Code</source>
+          <target>Новый код ярлыка измерения 1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Line (Ext) - Field New Shortcut Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4106429675 - Field 3443100701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1903112923">
+          <source>New Shortcut Dimension 2 Code</source>
+          <target>Новый код ярлыка измерения 2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Receipt Line (Ext) - Field New Shortcut Dimension 2 Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3007227616 - Field 4256180955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1340367376">
           <source>Agreement No.</source>
@@ -15163,6 +15187,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header (Ext) - Field New Shortcut Dimension 1 Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3007227616 - Field 3443100701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1340367376">
+          <source>New Shortcut Dimension 2 Code</source>
+          <target>Новый код ярлыка измерения 2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Header (Ext) - Field New Shortcut Dimension 2 Code - Property Caption</note>
+        </trans-unit>        
         <trans-unit id="TableExtension 3007227616 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1340367376">
           <source>Vendor</source>
           <target>Поставщик</target>
@@ -15175,6 +15205,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Line (Ext) - Field Gen. Bus. Posting Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2134902631 - Field 1639668988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1496656855">
+          <source>New Shortcut Dimension 1 Code</source>
+          <target>Новый код ярлыка измерения 1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Line (Ext) - Field New Shortcut Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2134902631 - Field 3443100701 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1496656855">
+          <source>New Shortcut Dimension 2 Code</source>
+          <target>Новый код ярлыка измерения 2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Shipment Line (Ext) - Field New Shortcut Dimension 2 Code - Property Caption</note>
+        </trans-unit>        
         <trans-unit id="TableExtension 3550601874 - NamedType 1646004004" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3550601874">
           <source>User %1 has status %2 now. Do you want to change to %3?</source>
           <target>Статус %2 сейчас у пользователя %1. Вы хотите изменить на %3?</target>
