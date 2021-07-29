@@ -12,7 +12,7 @@ page 70300 "Giv. Transfer Orders"
     PromotedActionCategories = 'New,Process,Report,Release,Posting,Order,Documents,Print/Send,Navigate';
     SourceTable = "Transfer Header";
     UsageCategory = Lists;
-    SourceTableView = sorting("No.") where("Giv. Type" = const(1)); // TODO: это ок? @eapomazkov
+    SourceTableView = sorting("No.") where("Giv. Type" = const(1));
 
     layout
     {
@@ -49,7 +49,7 @@ page 70300 "Giv. Transfer Orders"
                 field("Direct Transfer"; "Direct Transfer")
                 {
                     ApplicationArea = Location;
-                    Visible = false;    // TODO: как взаимодействуют Direct Transfer и GivTransOrder? @eapomazkov
+                    Visible = false;
                     ToolTip = 'Specifies that the transfer does not use an in-transit location.';
                 }
                 field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
