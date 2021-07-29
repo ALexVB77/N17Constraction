@@ -143,7 +143,7 @@ page 50092 "Giv. Transfer Order"
                     Description = 'NC22512 DP';
                 }
             }
-            part(TransferLines; "Transfer Order Subform")
+            part(TransferLines; "Giv. Transfer Order Subform")
             {
                 ApplicationArea = Location;
                 SubPageLink = "Document No." = FIELD("No."),
