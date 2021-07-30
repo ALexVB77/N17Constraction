@@ -4,29 +4,27 @@ codeunit 50014 "Gen. Jnl.-Post Batch (Ext)"
     local procedure OnProcessLinesOnAfterPostGenJnlLines(GenJournalLine: Record "Gen. Journal Line"; GLRegister: Record "G/L Register"; var GLRegNo: Integer; PreviewMode: Boolean)
     var
         SalesSetup: Record "Sales & Receivables Setup";
-
+        Cust: Record Customer;
+        CustAgr: Record "Customer Agreement";
+        PrintCustAgr: Report "Print Customer Agreement";
     begin
 
-        // SWC803 DD 05.04.16 >>
-        SalesSetup.GET;
+        /*        SalesSetup.GET;
         if GenJournalLine.FindSet() then
             repeat
-            //if GenJournalLine."Notify Customer" and SalesSetup.inform
+                if GenJournalLine."Notify Customer" and SalesSetup."Inform Cust. Payment" then
+                    if (GenJournalLine."Account Type" = GenJournalLine."Account Type"::Customer) and
+                       (Cust.get(GenJournalLine."Account No.")) and (Cust."E-Mail" <> '') and
+                       (CustAgr.Get(GenJournalLine."Account No.",GenJournalLine."Agreement No.")) then begin
+                           CustAgr.SetRecFilter();
+                           Clear(PrintCustAgr);
+                           PrintCustAgr.UseRequestPage(false);
+                           PrintCustAgr.SetTableView(CustAgr);
+                           PrintCustAgr.SendEMail(Cust."E-Mail", GenJournalLine."Posting Date", -GenJournalLine.Amount, GenJournalLine."Payment Date");
+                           PrintCustAgr.RunModal();
+                       end;
             until GenJournalLine.Next() = 0;
-        /*IF FINDSET THEN
-            REPEAT
-                IF NOT TracertManagement.TracertInUse AND "Notify Customer" AND SalesSetup."Inform Cust. Payment" THEN
-                    IF ("Account Type" = "Account Type"::Customer) AND Cust.GET("Account No.") AND (Cust."E-Mail" <> '')
-                  AND CustAgr.GET("Account No.", "Agreement No.") THEN BEGIN
-                        CustAgr.SETRECFILTER;
-                        CLEAR(PrintCustAgr);
-                        PrintCustAgr.USEREQUESTFORM(FALSE);
-                        PrintCustAgr.SETTABLEVIEW(CustAgr);
-                        PrintCustAgr.SendEMail(Cust."E-Mail", "Posting Date", -Amount, "Payment Date");
-                        PrintCustAgr.RUNMODAL;
-                    END;
-            UNTIL NEXT = 0;
-        // SWC803 DD 05.04.16 <<*/
+            */
     end;
 
 
