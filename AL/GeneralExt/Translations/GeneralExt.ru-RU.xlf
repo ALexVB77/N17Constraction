@@ -12741,6 +12741,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control Preview - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 4253293261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Customer Agreement</source>
+          <target>Print Customer Agreement</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Print Customer Agreement - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1742529627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Latest Version</source>
           <target>Взбодрить кеш сервера</target>
