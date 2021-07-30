@@ -1014,11 +1014,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
     // Report 595 Adjust Exchange Rates
 
-    [EventSubscriber(ObjectType::Report, Report::"Adjust Exchange Rates", 'OnAfterInitDtldCustLedgerEntry', '', false, false)]
-    local procedure OnAfterInitDtldCustLedgerEntry(var DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry")
-    begin
-        //\\
-    end;
+    //\\[EventSubscriber(ObjectType::Report, Report::"Adjust Exchange Rates", 'OnAfterInitDtldCustLedgerEntry2', '', false, false)]
 
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]

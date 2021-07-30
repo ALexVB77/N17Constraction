@@ -2118,9 +2118,6 @@ report 595 "Adjust Exchange Rates"
         end;
 
         OnAfterInitDtldCustLedgerEntry(DtldCustLedgEntry);
-        // NC 50112 AB >>
-        OnAfterInitDtldCustLedgerEntry2(CustLedgEntry, DtldCustLedgEntry);
-        // NC 50112 AB <<
     end;
 
     local procedure InitDtldVendLedgEntry(VendLedgEntry: Record "Vendor Ledger Entry"; var DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
@@ -2147,6 +2144,9 @@ report 595 "Adjust Exchange Rates"
         end;
 
         OnAfterInitDtldVendLedgerEntry(DtldVendLedgEntry);
+        // NC 50112 AB >>
+        OnAfterInitDtldVendLedgerEntry2(VendLedgEntry, DtldVendLedgEntry);
+        // NC 50112 AB <<        
     end;
 
     local procedure SetUnrealizedGainLossFilterCust(var DtldCustLedgEntry: Record "Detailed Cust. Ledg. Entry"; EntryNo: Integer)
@@ -2601,7 +2601,7 @@ report 595 "Adjust Exchange Rates"
 
     // NC 50112 AB >>
     [IntegrationEvent(false, false)]
-    local procedure OnAfterInitDtldCustLedgerEntry2(CustLedgEntry: Record "Cust. Ledger Entry"; var DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry")
+    local procedure OnAfterInitDtldVendLedgerEntry2(VendLedgEntry: Record "Vendor Ledger Entry"; var DetailedVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
     begin
     end;
     // NC 50112 AB <<  
