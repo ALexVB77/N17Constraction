@@ -9391,7 +9391,7 @@
 
     // NC 50112 AB >>
     [IntegrationEvent(false, false)]
-    procedure OnAfterInitVATAgentDtldVendLedgEntry(GenJnlLine: Record "Gen. Journal Line"; var VendLedgEntry: Record "Vendor Ledger Entry"; var DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
+    local procedure OnAfterInitVATAgentDtldVendLedgEntry(GenJnlLine: Record "Gen. Journal Line"; var VendLedgEntry: Record "Vendor Ledger Entry"; var DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
     begin
     end;
     // NC 50112 AB <<

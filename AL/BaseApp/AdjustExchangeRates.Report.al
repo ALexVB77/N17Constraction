@@ -2603,7 +2603,6 @@ report 595 "Adjust Exchange Rates"
     [IntegrationEvent(false, false)]
     local procedure OnAfterInitDtldCustLedgerEntry2(CustLedgEntry: Record "Cust. Ledger Entry"; var DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry")
     begin
-
     end;
     // NC 50112 AB <<  
 }

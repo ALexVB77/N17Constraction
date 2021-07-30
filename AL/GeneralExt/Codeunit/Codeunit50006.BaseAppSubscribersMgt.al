@@ -855,6 +855,19 @@ codeunit 50006 "Base App. Subscribers Mgt."
         // NC 51411 < EP
     end;
 
+    // Table 25 Vendor Ledger Entry
+
+    [EventSubscriber(ObjectType::Table, Database::"Vendor Ledger Entry", 'OnAfterCopyVendLedgerEntryFromGenJnlLine', '', false, false)]
+    local procedure OnAfterCopyVendLedgerEntryFromGenJnlLine(var VendorLedgerEntry: Record "Vendor Ledger Entry"; GenJournalLine: Record "Gen. Journal Line")
+    begin
+        VendorLedgerEntry."IW Document No." := GenJournalLine."IW Document No.";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Vendor Ledger Entry", 'OnAfterCopyVendLedgerEntryFromCVLedgEntryBuffer', '', false, false)]
+    local procedure OnAfterCopyVendLedgerEntryFromCVLedgEntryBuffer(var VendorLedgerEntry: Record "Vendor Ledger Entry"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
+    begin
+        VendorLedgerEntry."IW Document No." := CVLedgerEntryBuffer."IW Document No.";
+    end;
 
     // Table 38 Purchase Header
 
@@ -978,6 +991,13 @@ codeunit 50006 "Base App. Subscribers Mgt."
             PurchLine."Full Description" := Item.Description + Item."Description 2";
     end;
 
+    // Table 382 CV Ledger Entry Buffer
+    [EventSubscriber(ObjectType::Table, Database::"CV Ledger Entry Buffer", 'OnAfterCopyFromVendLedgerEntry', '', false, false)]
+    local procedure OnCVLedgEntryBufAfterCopyFromVendLedgerEntry(var CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer"; VendorLedgerEntry: Record "Vendor Ledger Entry")
+    begin
+        CVLedgerEntryBuffer."IW Document No." := VendorLedgerEntry."IW Document No.";
+    end;
+
     // Table 383 Detailed CV Ledg. Entry Buffer
 
     [EventSubscriber(ObjectType::Table, Database::"Detailed CV Ledg. Entry Buffer", 'OnAfterCopyFromGenJnlLine', '', false, false)]
@@ -987,12 +1007,13 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Detailed CV Ledg. Entry Buffer", 'OnAfterCopyFromCVLedgEntryBuf', '', false, false)]
-    local procedure OnAfterCopyFromCVLedgEntryBuf(var DetailedCVLedgEntryBuffer: Record "Detailed CV Ledg. Entry Buffer"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
+    local procedure OnDtldCVLedgEntryBufAfterCopyFromCVLedgEntryBuf(var DetailedCVLedgEntryBuffer: Record "Detailed CV Ledg. Entry Buffer"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
     begin
         DetailedCVLedgEntryBuffer."IW Document No." := CVLedgerEntryBuffer."IW Document No.";
     end;
 
     // Report 595 Adjust Exchange Rates
+
     [EventSubscriber(ObjectType::Report, Report::"Adjust Exchange Rates", 'OnAfterInitDtldCustLedgerEntry', '', false, false)]
     local procedure OnAfterInitDtldCustLedgerEntry(var DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry")
     begin
