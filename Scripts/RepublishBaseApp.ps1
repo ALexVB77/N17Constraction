@@ -1,5 +1,5 @@
 ﻿$ServerInstance = "BonavaDev"
-$ApplicationPath = "C:\Users\alpopov\AL\N17Construction\AL\BaseApp\Microsoft_Base Application_17.4.21491.21538.app"
+$ApplicationPath = "C:\Users\alpopov\AL\N17Construction\AL\BaseApp\Microsoft_Base Application_17.4.21491.21539.app"
 
 $quietExecution = $null
 
