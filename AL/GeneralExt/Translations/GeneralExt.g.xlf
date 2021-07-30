@@ -12578,6 +12578,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field CRM Worker Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2733905579 - Field 26189664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Inform Cust. Payment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Inform Cust. Payment - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2733905579 - Field 1307183859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Prepay. Inv. G/L Acc. No. (ac)</source>
           <note from="Developer" annotates="general" priority="2"></note>

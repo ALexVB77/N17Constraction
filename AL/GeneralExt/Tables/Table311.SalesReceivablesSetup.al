@@ -2,6 +2,11 @@ tableextension 80311 "Sales & Receiv. Setup (Ext)" extends "Sales & Receivables 
 {
     fields
     {
+        field(50010; "Inform Cust. Payment"; Boolean)
+        {
+            Caption = 'Inform Cust. Payment';
+            Description = 'NC 50804 OA';
+        }
         field(50020; "Prepay. Inv. G/L Acc. No. (ac)"; code[20])
         {
             Caption = 'Prepay. Inv. G/L Acc. No. (ac)';

@@ -2,11 +2,18 @@ codeunit 50014 "Gen. Jnl.-Post Batch (Ext)"
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Batch", 'OnProcessLinesOnAfterPostGenJnlLines', '', false, false)]
     local procedure OnProcessLinesOnAfterPostGenJnlLines(GenJournalLine: Record "Gen. Journal Line"; GLRegister: Record "G/L Register"; var GLRegNo: Integer; PreviewMode: Boolean)
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+
     begin
 
         // SWC803 DD 05.04.16 >>
-        /*SalesSetup.GET;
-        IF FINDSET THEN
+        SalesSetup.GET;
+        if GenJournalLine.FindSet() then
+            repeat
+            //if GenJournalLine."Notify Customer" and SalesSetup.inform
+            until GenJournalLine.Next() = 0;
+        /*IF FINDSET THEN
             REPEAT
                 IF NOT TracertManagement.TracertInUse AND "Notify Customer" AND SalesSetup."Inform Cust. Payment" THEN
                     IF ("Account Type" = "Account Type"::Customer) AND Cust.GET("Account No.") AND (Cust."E-Mail" <> '')
