@@ -2,18 +2,36 @@ pageextension 80132 "Posted Sales Invoice Ext" extends "Posted Sales Invoice"
 {
     layout
     {
+        modify("Sell-to Address")
+        {
+            Editable = ManualEditAllowed;
+        }
+        modify("Sell-to Address 2")
+        {
+            Editable = ManualEditAllowed;
+        }
+        modify("KPP Code")
+        {
+            Editable = ManualEditAllowed;
+        }
+
         addlast(General)
         {
             field("Government Agreement No"; Rec."Government Agreement No")
             {
                 ApplicationArea = Basic, Suite;
             }
+            field("VAT Registration No."; Rec."VAT Registration No.")
+            {
+                ApplicationArea = Basic, Suite;
+                Editable = ManualEditAllowed;
+            }
         }
     }
 
     actions
     {
-        addlast(Invoice)
+        addlast("F&unctions")
         {
             action(ManualEditing)
             {
@@ -29,14 +47,6 @@ pageextension 80132 "Posted Sales Invoice Ext" extends "Posted Sales Invoice"
                         ERROR(Text0001, USERID)
                     ELSE BEGIN
                         ManualEditAllowed := true;
-                        //CurrForm."Sell-to Address".VISIBLE := FALSE;
-                        //CurrForm."Sell-to Address2".VISIBLE := TRUE;
-                        //CurrForm."Sell-to Address 2".VISIBLE := FALSE;
-                        //CurrForm."Sell-to Address 22".VISIBLE := TRUE;
-                        //CurrForm."KPP Code".VISIBLE := FALSE;
-                        //CurrForm."KPP Code2".VISIBLE := TRUE;
-                        //CurrForm."VAT Registration No.".VISIBLE := FALSE;
-                        //CurrForm."VAT Registration No.2".VISIBLE := TRUE;
                     END;
 
                 end;
