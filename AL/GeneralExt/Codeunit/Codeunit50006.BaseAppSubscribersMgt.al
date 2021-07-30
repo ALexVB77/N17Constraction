@@ -739,6 +739,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
             DirectTransLine."Gen. Bus. Posting Group" := TransHeader."Gen. Bus. Posting Group";
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnAfterCreateItemJnlLine', '', false, false)]
+    local procedure OnAfterCreateItemJnlLineDirectTransfer(var ItemJnlLine: Record "Item Journal Line"; TransLine: Record "Transfer Line"; DirectTransHeader: Record "Direct Transfer Header"; DirectTransLine: Record "Direct Transfer Line");
+    begin
+        ItemJnlLine."Gen. Bus. Posting Group" := DirectTransHeader."Gen. Bus. Posting Group";
+    end;
+
     // NC 51411 < EP
 
     // cu 12469 <<
