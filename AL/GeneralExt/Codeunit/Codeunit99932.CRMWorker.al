@@ -103,7 +103,7 @@ codeunit 99932 "CRM Worker"
 
 
         //Messages
-        ContactUpToDateMsg: Label 'Customer No. %1 is up to date';
+        AllUpToDateMsg: Label 'All is up to date';
         ContactProcessedMsg: Label 'Customer No. %1';
         ContractCreatedMsg: Label 'Customer Agreement %1 has been created, %2 = %3, %4 = %5';
         ContractUpdatedMsg: Label 'Customer Agreement %1 has been updated, %2 = %3, %4 = %5';
@@ -113,7 +113,6 @@ codeunit 99932 "CRM Worker"
         InvestmentObjectUpdatedMsg: label 'Investment object %1 was updated';
         UnitCreatedMsg: Label 'Unit and Buyer %1 are created';
         UnitUpdatedMsg: Label 'Unit and Buyer %1 was updated';
-        UnitUpToDateMsg: label 'Unit is up to date';
 
         //==
         ObjectDataElementG: Dictionary of [Text, Text];
@@ -140,7 +139,7 @@ codeunit 99932 "CRM Worker"
             repeat
                 ImportActionEnum := GetObjectImportAction(FetchedObject);
                 If ImportActionEnum = ImportActionEnum::NoAction then
-                    LogEvent(FetchedObject, LogStatusEnum::Done, UnitUpToDateMsg)
+                    LogEvent(FetchedObject, LogStatusEnum::Done, AllUpToDateMsg)
                 else
                     ImportUnit(FetchedObject, ImportActionEnum);
             until FetchedObject.Next() = 0;
@@ -165,7 +164,7 @@ codeunit 99932 "CRM Worker"
                         ImportActionEnum::NoAction:
                             begin
                                 Updated := true;
-                                LogEvent(FetchedObject, LogStatusEnum::Done, ContactUpToDateMsg);
+                                LogEvent(FetchedObject, LogStatusEnum::Done, AllUpToDateMsg);
                             end;
                     end
                 end;
@@ -184,7 +183,7 @@ codeunit 99932 "CRM Worker"
                     ImportActionEnum::NoAction:
                         begin
                             Updated := true;
-                            LogEvent(FetchedObject, LogStatusEnum::Done, ContactUpToDateMsg);
+                            LogEvent(FetchedObject, LogStatusEnum::Done, AllUpToDateMsg);
                         end
                     else begin
                             Updated := true;
