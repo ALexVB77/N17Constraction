@@ -5047,7 +5047,6 @@
           <source>All is up to date</source>
           <target>Действий не требуется. Данные уже находятся в актуальном состоянии.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType AllUpToDateMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 2221351987" size-unit="char" translate="yes" xml:space="preserve">

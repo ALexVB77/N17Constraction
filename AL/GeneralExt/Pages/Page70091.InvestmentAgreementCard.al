@@ -576,7 +576,7 @@ page 70091 "Investment Agreement Card"
                     Caption = 'Attachments';
                     Image = Attach;
                     Promoted = true;
-                    PromotedCategory = Category9;
+                    PromotedCategory = Process;
 
                     trigger OnAction()
                     var

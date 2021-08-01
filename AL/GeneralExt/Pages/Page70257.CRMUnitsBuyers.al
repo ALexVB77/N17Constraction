@@ -45,7 +45,6 @@ page 70257 "CRM Units and Buyers"
 
                 field("Buyer Is Active"; Rec."Buyer Is Active")
                 {
-                    ShowCaption = false;
                     ApplicationArea = All;
 
                 }
