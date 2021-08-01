@@ -41,4 +41,5 @@ $SoapEnv = $SoapEnv.Replace("_1_", $XmlAllObjects)
 
 $ResponseText = $WS.ImportObject($SoapEnv)
 Write-Host $ResponseText
-Read-Host "Press Enter to exit"
+pause
+

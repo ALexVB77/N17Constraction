@@ -15,6 +15,7 @@ codeunit 99932 "CRM Worker"
 
         CustomerSearchInReceivingData: Label '#CustomerSearchInReceivingData#', Locked = true;
         CustomerSearchReserveContact: Label '#ReserveContact#', Locked = true;
+        CustomerSearchCurrentCompany: Label '#CurrentCompany#', Locked = true;
 
 
         //Unit
@@ -141,7 +142,7 @@ codeunit 99932 "CRM Worker"
                 If ImportActionEnum = ImportActionEnum::NoAction then
                     LogEvent(FetchedObject, LogStatusEnum::Done, UnitUpToDateMsg)
                 else
-                    ImportUnit(FetchedObject);
+                    ImportUnit(FetchedObject, ImportActionEnum);
             until FetchedObject.Next() = 0;
             FetchedObject.DeleteAll(true);
             Commit();
@@ -169,7 +170,7 @@ codeunit 99932 "CRM Worker"
                     end
                 end;
                 if Updated then
-                    FetchedObject.Delete();
+                    DeleteObjectFromImport(FetchedObject);
             until FetchedObject.Next() = 0;
             Commit();
         end;
@@ -220,7 +221,7 @@ codeunit 99932 "CRM Worker"
         until FetchedObjectBuff.Next() = 0;
     end;
 
-    local procedure CopyCustomer(CrmContactId: Guid; CopyFromCompanyName: Text[60]) Result: Code[20]
+    local procedure CopyCustomer(CrmContactId: Guid; CopyFromCompanyName: Text[60]; CopyFromCustomerNo: Code[20]) Result: Code[20]
     var
         CopyFromCustomer, Customer : Record Customer;
         CrmSetup: Record "CRM Integration Setup";
@@ -238,8 +239,10 @@ codeunit 99932 "CRM Worker"
             Error('DBG: CopyCustomer - CopyFromCompanyName is empty');
 
         CopyFromCustomer.ChangeCompany(CopyFromCompanyName);
-        CopyFromCustomer.SetRange("CRM GUID", CrmContactId);
-        if not CopyFromCustomer.FindFirst() then
+
+        //CopyFromCustomer.SetRange("CRM GUID", CrmContactId);
+        //if not CopyFromCustomer.FindFirst() then
+        if not CopyFromCustomer.Get(CopyFromCustomerNo) then
             Error('DBG: CopyCustomer - Customer %1 is not found in Company %2', CrmContactId, CompanyName());
 
         CrmSetup.Get;
@@ -385,13 +388,14 @@ codeunit 99932 "CRM Worker"
         ContactId: Guid;
         BuyerId: Guid;
         ReserveContact: Boolean;
-        var CustomerLocations: Dictionary of [Integer /*ShareholderNo*/, List of [Text] /*index 1 - contact guid; 2 - where to search; 3 -Buyer guid; 4 - is reserve contact */]
+        var CustomerLocations: Dictionary of [Integer /*ShareholderNo*/, List of [Text] /*index 1 - contact guid; 2 - where to search; 3 - what customer no found; 4 -Buyer guid; 5 - is reserve contact */]
         ) ActualCustomerNo: Code[20]
     var
         ObjectDataElementList: List of [Dictionary of [Text, Text]];
         Cust: Record Customer;
         SearchInCompanyName: Text;
         WhereToSearch: Text;
+        FoundCustNo: Code[20];
         CustomerFound: Boolean;
     begin
         ActualCustomerNo := '';
@@ -403,9 +407,11 @@ codeunit 99932 "CRM Worker"
         end else begin
             Cust.Reset();
             Cust.SetRange("CRM GUID", ContactId);
-            if Cust.FindFirst() then begin
+            if not Cust.IsEmpty() then begin
+                Cust.FindFirst();
                 ActualCustomerNo := Cust."No.";
-                WhereToSearch := '';
+                WhereToSearch := CustomerSearchCurrentCompany;
+                FoundCustNo := Cust."No.";
                 CustomerFound := true;
             end else begin
                 foreach SearchInCompanyName in CrmInteractCompanyListG do begin
@@ -414,7 +420,9 @@ codeunit 99932 "CRM Worker"
                         Cust.ChangeCompany(SearchInCompanyName);
                         Cust.SetRange("CRM GUID", ContactId);
                         if not Cust.IsEmpty() then begin
+                            Cust.FindFirst();
                             WhereToSearch := SearchInCompanyName;
+                            FoundCustNo := Cust."No.";
                             CustomerFound := true;
                             break;
                         end;
@@ -427,6 +435,7 @@ codeunit 99932 "CRM Worker"
             FindCustomerHelper(ShareHolderNo,
                 ContactId,
                 WhereToSearch,
+                FoundCustNo,
                 BuyerId,
                 ReserveContact,
                 CustomerLocations);
@@ -435,6 +444,7 @@ codeunit 99932 "CRM Worker"
     local procedure FindCustomerHelper(ShareHolderNo: Integer;
         ContactId: Guid;
         WhereToSearch: Text;
+        FoundCustomerNo: Code[20];
         BuyerId: Guid;
         ReserveContact: Boolean;
         var CustomerLocations: Dictionary of [Integer, List of [Text]])
@@ -442,7 +452,8 @@ codeunit 99932 "CRM Worker"
         SearchParamList: List of [Text];
     begin
         SearchParamList.Add(Format(ContactId));
-        SearchParamList.Add(CustomerSearchInReceivingData);
+        SearchParamList.Add(WhereToSearch);
+        SearchParamList.Add(FoundCustomerNo);
         SearchParamList.Add(Format(BuyerId));
         if ReserveContact then
             SearchParamList.Add(CustomerSearchReserveContact)
@@ -776,13 +787,13 @@ codeunit 99932 "CRM Worker"
 
     local procedure ImportContact(var FetchedObject: Record "CRM Prefetched Object";
         TargetCompanyName: Text[60];
-        RequiredWriteMode: Enum "CRM Import Action") Result: Code[20]
+        ImportActionEnum: Enum "CRM Import Action") Result: Code[20]
     var
         CustTemp: Record Customer temporary;
         LogStatusEnum: Enum "CRM Log Status";
     begin
         if ValidateContactData(FetchedObject, CustTemp) then
-            Result := WriteContactToDB(FetchedObject, CustTemp, TargetCompanyName, RequiredWriteMode)
+            Result := WriteContactToDB(FetchedObject, CustTemp, TargetCompanyName, ImportActionEnum)
         else
             LogEvent(FetchedObject, LogStatusEnum::Error, GetLastErrorText())
 
@@ -790,13 +801,12 @@ codeunit 99932 "CRM Worker"
 
     local procedure ImportContract(var FetchedObject: Record "CRM Prefetched Object"; ImportActionEnum: Enum "CRM Import Action") Result: Code[20]
     var
-        AgrTemp: Record "Customer Agreement";
+        AgrTemp: Record "Customer Agreement" temporary;
         ShareHolderNo: Integer;
         CustomerLocations: Dictionary of [Integer /*ShareholderNo*/, List of [Text]];
-        WhereToSearchParamList: List of [Text];
+        SearchParamList: List of [Text];
         CrmContactId: Guid;
         FetchedObject2: Record "CRM Prefetched Object";
-        WriteModeEnum: Enum "CRM Import Action";
         LogStatusEnum: Enum "CRM Log Status";
         HasError: Boolean;
         CustNo, AgrNo : Code[20];
@@ -808,20 +818,21 @@ codeunit 99932 "CRM Worker"
 
         //create linked contacts
         foreach ShareHolderNo in CustomerLocations.Keys() do begin
-            CustomerLocations.Get(ShareHolderNo, WhereToSearchParamList);
-            if (not Evaluate(CrmContactId, WhereToSearchParamList.Get(1))) or IsNullGuid(CrmContactId) then
+            CustomerLocations.Get(ShareHolderNo, SearchParamList);
+            if (not Evaluate(CrmContactId, SearchParamList.Get(1))) or IsNullGuid(CrmContactId) then
                 Error('DBG: ImportContract - Bad Crm Contact guid');
 
-            case WhereToSearchParamList.Get(2) of
+            case SearchParamList.Get(2) of
                 CustomerSearchInReceivingData:
                     begin
                         FetchedObject2.Get(CrmContactId);
-                        CustNo := ImportContact(FetchedObject2, '', WriteModeEnum::Create);
+                        CustNo := ImportContact(FetchedObject2, '', ImportActionEnum::Create);
                         FetchedObject2.Delete(true);
                     end;
-                else begin
-                        CustNo := CopyCustomer(CrmContactId, WhereToSearchParamList.Get(2));
-                    end;
+                CustomerSearchCurrentCompany:
+                    CustNo := SearchParamList.Get(3);
+                else
+                    CustNo := CopyCustomer(CrmContactId, SearchParamList.Get(2), SearchParamList.Get(3));
             end;
             if CustNo = '' then
                 HasError := true
@@ -839,10 +850,10 @@ codeunit 99932 "CRM Worker"
             exit;
         end;
 
-        Result := WriteContractToDb(FetchedObject, AgrTemp, CustomerLocations, WriteModeEnum);
+        Result := WriteContractToDb(FetchedObject, AgrTemp, CustomerLocations, ImportActionEnum);
     end;
 
-    local procedure ImportUnit(var FetchedObject: Record "CRM Prefetched Object") Result: Boolean
+    local procedure ImportUnit(var FetchedObject: Record "CRM Prefetched Object"; ImportActionEnum: Enum "CRM Import Action") Result: Boolean
     var
         CrmBTemp: Record "CRM Buyers" temporary;
         ApartmentTemp: Record Apartments temporary;
@@ -850,7 +861,7 @@ codeunit 99932 "CRM Worker"
     begin
         Result := true;
         if ValidateUnitData(FetchedObject, CrmBTemp, ApartmentTemp) then
-            WriteUnitToDB(FetchedObject, CrmBTemp, ApartmentTemp)
+            WriteUnitToDB(FetchedObject, CrmBTemp, ApartmentTemp, ImportActionEnum)
         else begin
             LogEvent(FetchedObject, LogStatusEnum::Error, GetLastErrorText());
             Result := false
@@ -863,6 +874,14 @@ codeunit 99932 "CRM Worker"
         if not RootXPath.EndsWith('/') then
             RootXPath := RootXPath + '/';
         Result := RootXPath + ChildXPath;
+    end;
+
+    local procedure DeleteObjectFromImport(var FetchedObject: Record "CRM Prefetched Object")
+    var
+        OK: Boolean;
+    begin
+        OK := ParsedObjectsG.Remove(FetchedObject.Id);
+        OK := FetchedObject.Delete();
     end;
 
     local procedure LogEvent(var FetchedObject: Record "CRM Prefetched Object";
@@ -904,7 +923,7 @@ codeunit 99932 "CRM Worker"
 
         if TargetCompanyName = '' then
             TargetCompanyName := CompanyName();
-        if StartSession(SessionId, Codeunit::"Crm Log Management", TargetCompanyName, Log) then
+        if not StartSession(SessionId, Codeunit::"Crm Log Management", TargetCompanyName, Log) then
             Error(StartSessionErr);
     end;
 
@@ -1102,7 +1121,6 @@ codeunit 99932 "CRM Worker"
         LogStatusEnum: Enum "CRM Log Status";
     begin
         Clear(ParsedObjectsG);
-        FetchedObject.Reset();
         FetchedObject.FindSet();
         repeat
             Clear(ParsingResult);
@@ -1735,7 +1753,7 @@ codeunit 99932 "CRM Worker"
     local procedure WriteContactToDB(var FetchedObject: Record "CRM Prefetched Object";
         CustTemp: Record Customer;
         TargetCompanyName: Text[60];
-        WriteModeEnum: Enum "CRM Import Action") Result: Code[20]
+        ImportActionEnum: Enum "CRM Import Action") Result: Code[20]
     var
         Customer: Record Customer;
         CrmSetup: Record "CRM Integration Setup";
@@ -1747,28 +1765,28 @@ codeunit 99932 "CRM Worker"
         if TargetCompanyName = '' then
             TargetCompanyName := CompanyName();
 
-        if (WriteModeEnum = WriteModeEnum::Create) and (TargetCompanyName <> CompanyName()) then
+        if (ImportActionEnum = ImportActionEnum::Create) and (TargetCompanyName <> CompanyName()) then
             Error('DBG: WriteContactToDB - Try to insert Contact into Company outside the current!');
 
         if TargetCompanyName <> CompanyName() then
             Customer.ChangeCompany(TargetCompanyName);
 
         Customer.Reset();
-        case WriteModeEnum of
-            WriteModeEnum::Create:
+        case ImportActionEnum of
+            ImportActionEnum::Create:
                 begin
                     Customer.Init();
                     Customer."No." := '';
                     Customer.Insert(true);
                 end;
-            WriteModeEnum::Update:
+            ImportActionEnum::Update:
                 begin
                     Customer.SetRange("CRM GUID", FetchedObject.id);
                     Customer.SetRange("Version Id");
                     Customer.FindFirst();
                 end;
             else
-                Error('DBG: WriteContactToDB - Writemode %1 is not allowed', WriteModeEnum);
+                Error(ImportActionNotAllowedErr, ImportActionEnum);
         end;
         Result := Customer."No.";
 
@@ -1782,7 +1800,7 @@ codeunit 99932 "CRM Worker"
         Customer.Validate("Phone No.", CustTemp."Phone No.");
         Customer.Validate("E-Mail", CustTemp."E-Mail");
         Customer."Version Id" := FetchedObject."Version Id";
-        if WriteModeEnum = WriteModeEnum::Create then begin
+        if ImportActionEnum = ImportActionEnum::Create then begin
             Customer."CRM GUID" := FetchedObject.Id;
             Customer.Validate("Agreement Posting", Customer."Agreement Posting"::Mandatory);
             CrmSetup.Get;
@@ -1801,14 +1819,14 @@ codeunit 99932 "CRM Worker"
         end;
         Customer.Modify(true);
 
-        LogEvent(FetchedObject, TargetCompanyName, LogStatusEnum::Done, WriteModeEnum, StrSubstNo(ContactProcessedMsg, Customer."No."), '');
+        LogEvent(FetchedObject, TargetCompanyName, LogStatusEnum::Done, ImportActionEnum, StrSubstNo(ContactProcessedMsg, Customer."No."), '');
     end;
 
 
     local procedure WriteContractToDB(var FetchedObject: Record "CRM Prefetched Object";
         var AgrTemp: Record "Customer Agreement";
         CustomerLocations: Dictionary of [Integer /*ShareholderNo*/, List of [Text]];
-        WriteModeEnum: Enum "CRM Import Action") Result: Code[20]
+        ImportActionEnum: Enum "CRM Import Action") Result: Code[20]
     var
         ShareHolderNo: Integer;
         Agr, Agr2 : Record "Customer Agreement";
@@ -1820,8 +1838,8 @@ codeunit 99932 "CRM Worker"
         BuyerId: Guid;
         SearchParamList: List of [Text];
     begin
-        case WriteModeEnum of
-            WriteModeEnum::Create:
+        case ImportActionEnum of
+            ImportActionEnum::Create:
                 begin
                     Agr := AgrTemp;
                     Agr."No." := '';
@@ -1829,7 +1847,7 @@ codeunit 99932 "CRM Worker"
                     UpdateAgreementPostingSettings(Agr);
                     MsgMain := ContractCreatedMsg;
                 end;
-            WriteModeEnum::Update:
+            ImportActionEnum::Update:
                 begin
                     Agr.SetRange("CRM GUID", AgrTemp."CRM GUID");
                     Agr.SetFilter("Agreement Type", '<>%1', Agr."Agreement Type"::Service);
@@ -1898,7 +1916,7 @@ codeunit 99932 "CRM Worker"
                 CrmB."Reserving Contract Guid" := FetchedObject.Id;
                 CrmB.Modify(true);
             end else begin
-                Evaluate(BuyerId, SearchParamList.Get(3));
+                Evaluate(BuyerId, SearchParamList.Get(4));
                 CrmB.Get(FetchedObject.ParentId, BuyerId);
                 if CrmB."Contract Guid" <> FetchedObject.Id then begin
                     CrmB."Contract Guid" := FetchedObject.Id;
@@ -1917,7 +1935,7 @@ codeunit 99932 "CRM Worker"
     end;
 
 
-    local procedure WriteUnitToDB(var FetchedObject: Record "CRM Prefetched Object"; var CrmBTemp: Record "CRM Buyers"; var ApartmentTemp: Record Apartments)
+    local procedure WriteUnitToDB(var FetchedObject: Record "CRM Prefetched Object"; var CrmBTemp: Record "CRM Buyers"; var ApartmentTemp: Record Apartments; ImportActionEnum: Enum "CRM Import Action")
     var
         CrmB: Record "CRM Buyers";
         Apartment: Record Apartments;
@@ -1947,13 +1965,13 @@ codeunit 99932 "CRM Worker"
             repeat
                 CrmB := CrmBTemp;
                 CrmB.Insert(true);
-                case ImportAction of
-                    ImportAction::Create:
+                case ImportActionEnum of
+                    ImportActionEnum::Create:
                         LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(UnitCreatedMsg, CrmB."Unit Guid"));
-                    ImportAction::Update:
+                    ImportActionEnum::Update:
                         LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(UnitUpdatedMsg, CrmB."Unit Guid"));
                     else
-                        LogEvent(FetchedObject, LogStatusEnum::Error, 'Invalid import action');
+                        LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(ImportActionNotAllowedErr, ImportActionEnum));
                 end
 
             until CrmBTemp.Next() = 0;
