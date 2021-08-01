@@ -13,9 +13,8 @@ codeunit 99932 "CRM Worker"
         SoapObjectContainerX: Label '//crm_objects/object', Locked = true;
         TargetCompanyNameX: Label '@Target CRM CompanyName', Locked = true;
 
-        CustomerSearchRequest: Label 'CustomerSearchInRequest', Locked = true;
-        CustomerSearchDB: Label 'CustomerSearchInDB', Locked = true;
-        CustomerSearchFoundNo: Label 'CustomerSearchFoundNo', Locked = true;
+        CustomerSearchInReceivingData: Label '#CustomerSearchInReceivingData#', Locked = true;
+        CustomerSearchReserveContact: Label '#ReserveContact#', Locked = true;
 
 
         //Unit
@@ -72,7 +71,7 @@ codeunit 99932 "CRM Worker"
         ContractCancelStatusX: Label 'CancelStatus/KeyName', Locked = true;
         ContractIsActiveX: Label 'IsActive', Locked = true;
         ExtAgreementNoX: Label 'ObjectNumber', Locked = true;
-        ApartmentAmountX: Label 'FinanceData/ContractPrice', Locked = true;
+        AgreementAmountX: Label 'FinanceData/ContractPrice', Locked = true;
         FinishingInclX: Label 'FinanceData/FullFinishingPrice', Locked = true;
         ContractBuyerNodesX: Label 'Buyers/Buyer', Locked = true;
         ContractBuyerX: Label 'BaseData/ObjectID', Locked = true;
@@ -80,11 +79,16 @@ codeunit 99932 "CRM Worker"
         //Errors
         ContactUnitNotFoundErr: Label 'Unit of Contact or Reserving Contact is not found';
         ContractUnitNotFoundErr: Label 'Unit %1 of Contract is not found';
+
+        ContractAlreadyLinkedErr: Label 'Another Customer already has the same Agreement Crm Guid, Old Customer No.=%1, New Customer No.=%2';
         ContractNotRegisteredErr: Label 'Contract is not registered, Type %1, Status %2';
         ContractNotSignedErr: Label 'Contract is not signed, Type %1, Status %2';
+        ContractNotCreatedErr: Label 'Agreement could not be created. Some of contacts are not found';
+        ContractNotCreated2Err: Label 'Agreement could not be created. Some of contacts are not created';
         ContractBuyersNotFoundErr: Label 'Buyers are not found';
         ContractContactNotFound: Label 'Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3';
         BadSoapEnvFormatErr: Label 'Bad soap envelope format';
+        ImportActionNotAllowedErr: Label 'Import action %1 is not allowed';
         KeyErr: Label 'No field key is specified!';
         NoObjectIdErr: Label 'No ObjectID in XML Document';
         NoParentObjectIdErr: Label 'No ParentObjectID in XML Document';
@@ -92,72 +96,105 @@ codeunit 99932 "CRM Worker"
         UnknownObjectTypeErr: Label 'Unknown type of Object %1';
         NoParsedDataOnImportErr: Label 'Import of object %1 interrupted. No parsed data';
         FieldNameDoesNotExistErr: label 'Object field name %1 does not exist';
-        AgrMustBeTemporaryErr: Label 'Customer Agrement record must be temporary';
+        RecordMustBeTemporaryErr: Label '%1 record must be temporary';
+
+        StartSessionErr: Label 'The session was not started successfully';
 
 
         //Messages
         ContactUpToDateMsg: Label 'Customer No. %1 is up to date';
         ContactProcessedMsg: Label 'Customer No. %1';
+        ContractCreatedMsg: Label 'Customer Agreement %1 has been created, %2 = %3, %4 = %5';
+        ContractUpdatedMsg: Label 'Customer Agreement %1 has been updated, %2 = %3, %4 = %5';
         EmptyHttpRequestBody: Label 'Http request body is empty';
         NoInvestObjectMsg: Label 'Investment object is not specified';
         InvestmentObjectCreatedMsg: label 'Investment object %1 was created';
         InvestmentObjectUpdatedMsg: label 'Investment object %1 was updated';
-        UnitCreatedMsg: Label 'Unit was created';
-        UnitUpdatedMsg: Label 'Unit was updated';
+        UnitCreatedMsg: Label 'Unit and Buyer %1 are created';
+        UnitUpdatedMsg: Label 'Unit and Buyer %1 was updated';
         UnitUpToDateMsg: label 'Unit is up to date';
 
         //==
-        ObjectDataElementPointer: Dictionary of [Text, Text];
+        ObjectDataElementG: Dictionary of [Text, Text];
+        ObjectDataElementListG: List of [Dictionary of [Text, Text]];
+        ParsedObjectsG: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
+        CrmInteractCompanyListG: List of [Text];
 
     procedure ImportObjects(var FetchedObject: Record "CRM Prefetched Object")
     var
-        AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
-        CrmInteractCompanies: List of [Text];
         TargetCompany: Text[60];
-        ImportAction: Enum "CRM Import Action";
+        ImportActionEnum: Enum "CRM Import Action";
+        LogStatusEnum: Enum "CRM Log Status";
         Updated: Boolean;
     begin
 
-        ParseObjects(FetchedObject, AllObjectData);
+        ParseObjects(FetchedObject);
 
-
-        if AllObjectData.Count() = 0 then
-            exit;
+        if ParsedObjectsG.Count() = 0 then
+            Error('DBG: ParsedObjectsG is empty');
 
         //create/update units
         FetchedObject.SetRange(Type, FetchedObject.Type::Unit);
         if FetchedObject.FindSet() then begin
             repeat
-                ImportUnit(FetchedObject, AllObjectData);
+                ImportActionEnum := GetObjectImportAction(FetchedObject);
+                If ImportActionEnum = ImportActionEnum::NoAction then
+                    LogEvent(FetchedObject, LogStatusEnum::Done, UnitUpToDateMsg)
+                else
+                    ImportUnit(FetchedObject);
             until FetchedObject.Next() = 0;
             FetchedObject.DeleteAll(true);
+            Commit();
         end;
 
         // update contacts
-        GetCrmInteractCompanyList(CrmInteractCompanies);
+        GetCrmInteractCompanyList();
         FetchedObject.SetRange(Type, FetchedObject.Type::Contact);
         if FetchedObject.FindSet() then begin
             repeat
                 Updated := false;
-                foreach TargetCompany in CrmInteractCompanies do begin
-                    ImportAction := GetObjectImportAction(FetchedObject, TargetCompany);
-                    if ImportAction = ImportAction::Update then begin
-                        Updated := true;
-                        ImportContact(FetchedObject, AllObjectData, TargetCompany, ImportAction);
-                    end;
+                foreach TargetCompany in CrmInteractCompanyListG do begin
+                    ImportActionEnum := GetObjectImportAction(FetchedObject, TargetCompany);
+                    case ImportActionEnum of
+                        ImportActionEnum::Update:
+                            begin
+                                Updated := true;
+                                ImportContact(FetchedObject, TargetCompany, ImportActionEnum);
+                            end;
+                        ImportActionEnum::NoAction:
+                            begin
+                                Updated := true;
+                                LogEvent(FetchedObject, LogStatusEnum::Done, ContactUpToDateMsg);
+                            end;
+                    end
                 end;
                 if Updated then
                     FetchedObject.Delete();
             until FetchedObject.Next() = 0;
+            Commit();
         end;
 
         FetchedObject.SetRange(Type, FetchedObject.Type::Contract);
         if FetchedObject.FindSet() then begin
             repeat
-            //ImportContract(FetchedObject, AllObjectData);
+                Updated := false;
+                ImportActionEnum := GetObjectImportAction(FetchedObject);
+                case ImportActionEnum of
+                    ImportActionEnum::NoAction:
+                        begin
+                            Updated := true;
+                            LogEvent(FetchedObject, LogStatusEnum::Done, ContactUpToDateMsg);
+                        end
+                    else begin
+                            Updated := true;
+                            ImportContract(FetchedObject, ImportActionEnum);
+                        end;
+                end;
+                if Updated then
+                    FetchedObject.Delete();
             until FetchedObject.Next() = 0;
+            Commit();
         end;
-        FetchedObject.DeleteAll(true)
 
     end;
 
@@ -165,14 +202,13 @@ codeunit 99932 "CRM Worker"
     var
         FetchedObjectBuff: Record "CRM Prefetched Object" temporary;
         FetchedObject: Record "CRM Prefetched Object";
-        AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
     begin
         PickupPrefetchedObjects(FetchedObjectBuff);
         if not FetchObjects(WebRequestQueue, FetchedObjectBuff) then
             exit;
 
-        ParseObjects(FetchedObjectBuff, AllObjectData);
-        SetTargetCompany(FetchedObjectBuff, AllObjectData);
+        ParseObjects(FetchedObjectBuff);
+        SetTargetCompany(FetchedObjectBuff);
         FetchedObjectBuff.Reset();
         if not FetchedObjectBuff.FindSet() then
             exit;
@@ -184,6 +220,47 @@ codeunit 99932 "CRM Worker"
         until FetchedObjectBuff.Next() = 0;
     end;
 
+    local procedure CopyCustomer(CrmContactId: Guid; CopyFromCompanyName: Text[60]) Result: Code[20]
+    var
+        CopyFromCustomer, Customer : Record Customer;
+        CrmSetup: Record "CRM Integration Setup";
+        UpdateContFromCust: Codeunit "CustCont-Update";
+        ContBusRelation: Record "Contact Business Relation";
+    begin
+        if IsNullGuid(CrmContactId) then
+            Error('DBG: CopyCustomer - CrmContactId is null');
+        CopyFromCustomer.Reset();
+        CopyFromCustomer.Setrange("CRM GUID", CrmContactId);
+        if Not CopyFromCustomer.IsEmpty then
+            Error('DBG: CopyCustomer - Customer with id %1 already exists in Company %2', CrmContactId, CompanyName());
+
+        if CopyFromCompanyName = '' then
+            Error('DBG: CopyCustomer - CopyFromCompanyName is empty');
+
+        CopyFromCustomer.ChangeCompany(CopyFromCompanyName);
+        CopyFromCustomer.SetRange("CRM GUID", CrmContactId);
+        if not CopyFromCustomer.FindFirst() then
+            Error('DBG: CopyCustomer - Customer %1 is not found in Company %2', CrmContactId, CompanyName());
+
+        CrmSetup.Get;
+        Customer := CopyFromCustomer;
+        Customer."No." := '';
+        Customer.Validate("Agreement Posting", Customer."Agreement Posting"::Mandatory);
+        if Customer."Customer Posting Group" = '' then
+            Customer.Validate("Customer Posting Group", CrmSetup."Customer Posting Group");
+        if Customer."Gen. Bus. Posting Group" = '' then
+            Customer.Validate("Gen. Bus. Posting Group", CrmSetup."Gen. Bus. Posting Group");
+        if Customer."VAT Bus. Posting Group" = '' then
+            Customer.Validate("VAT Bus. Posting Group", CrmSetup."VAT Bus. Posting Group");
+        ContBusRelation.SETCURRENTKEY("Link to Table", "No.");
+        ContBusRelation.SetRange("Link to Table", ContBusRelation."Link to Table"::Customer);
+        ContBusRelation.SetRange("No.", Customer."No.");
+        if not ContBusRelation.FindFirst() then
+            UpdateContFromCust.InsertNewContact(Customer, FALSE);
+        Customer.Insert(true);
+        Result := Customer."No.";
+    end;
+
     local procedure CreateObjDataElement(var ObjList: List of [Dictionary of [Text, Text]]; var NewElement: Dictionary of [Text, Text])
     var
         SomeDict: Dictionary of [Text, Text];
@@ -192,11 +269,47 @@ codeunit 99932 "CRM Worker"
         ObjList.Add(NewElement);
     end;
 
+    local procedure CreateServiceAgreement(var FetchedObject: Record "CRM Prefetched Object"; var BaseAgr: Record "Customer Agreement"; ShareHolderNo: Integer)
+    var
+        AgrCustomerNo: Code[20];
+        Agr: Record "Customer Agreement";
+        LogStatusEnum: Enum "CRM Log Status";
+    begin
+        case ShareHolderNo of
+            2:
+                AgrCustomerNo := BaseAgr."Customer 2 No.";
+            3:
+                AgrCustomerNo := BaseAgr."Customer 3 No.";
+            4:
+                AgrCustomerNo := BaseAgr."Customer 4 No.";
+            5:
+                AgrCustomerNo := BaseAgr."Customer 5 No.";
+        end;
+        if AgrCustomerNo = '' then
+            exit;
+        if Agr.Get(AgrCustomerNo, BaseAgr."No.") then
+            exit;
+        Agr := BaseAgr;
+        Agr."Customer No." := AgrCustomerNo;
+        Agr."Agreement Type" := Agr."Agreement Type"::Service;
+        Clear(Agr."CRM GUID");
+        Clear(Agr."Version Id");
+        UpdateAgreementPostingSettings(Agr);
+        Agr.Insert(true);
+        LogEvent(FetchedObject, LogStatusEnum::Done,
+            StrSubstNo(ContractCreatedMsg,
+                Agr."No.",
+                Agr.FieldCaption("Agreement Type"),
+                Agr."Agreement Type",
+                Agr.FieldCaption(Status),
+                Agr.Status))
+    end;
+
     [TryFunction]
     local procedure DGet(TKey: Text; var TValue: Text)
     begin
         TValue := '';
-        if not ObjectDataElementPointer.Get(TKey, TValue) then begin
+        if not ObjectDataElementG.Get(TKey, TValue) then begin
             Error(FieldNameDoesNotExistErr, TKey);
         end;
 
@@ -267,9 +380,75 @@ codeunit 99932 "CRM Worker"
         end;
     end;
 
-    local procedure fff(): enum "CRM IMport Action"
-    begin
 
+    local procedure FindCustomer(ShareHolderNo: Integer;
+        ContactId: Guid;
+        BuyerId: Guid;
+        ReserveContact: Boolean;
+        var CustomerLocations: Dictionary of [Integer /*ShareholderNo*/, List of [Text] /*index 1 - contact guid; 2 - where to search; 3 -Buyer guid; 4 - is reserve contact */]
+        ) ActualCustomerNo: Code[20]
+    var
+        ObjectDataElementList: List of [Dictionary of [Text, Text]];
+        Cust: Record Customer;
+        SearchInCompanyName: Text;
+        WhereToSearch: Text;
+        CustomerFound: Boolean;
+    begin
+        ActualCustomerNo := '';
+        CustomerFound := false;
+
+        if ParsedObjectsG.Get(ContactId, ObjectDataElementList) then begin
+            WhereToSearch := CustomerSearchInReceivingData;
+            CustomerFound := true;
+        end else begin
+            Cust.Reset();
+            Cust.SetRange("CRM GUID", ContactId);
+            if Cust.FindFirst() then begin
+                ActualCustomerNo := Cust."No.";
+                WhereToSearch := '';
+                CustomerFound := true;
+            end else begin
+                foreach SearchInCompanyName in CrmInteractCompanyListG do begin
+                    if SearchInCompanyName <> CompanyName() then begin
+                        Cust.Reset();
+                        Cust.ChangeCompany(SearchInCompanyName);
+                        Cust.SetRange("CRM GUID", ContactId);
+                        if not Cust.IsEmpty() then begin
+                            WhereToSearch := SearchInCompanyName;
+                            CustomerFound := true;
+                            break;
+                        end;
+                    end;
+                end;
+            end;
+        end;
+
+        if CustomerFound then
+            FindCustomerHelper(ShareHolderNo,
+                ContactId,
+                WhereToSearch,
+                BuyerId,
+                ReserveContact,
+                CustomerLocations);
+    end;
+
+    local procedure FindCustomerHelper(ShareHolderNo: Integer;
+        ContactId: Guid;
+        WhereToSearch: Text;
+        BuyerId: Guid;
+        ReserveContact: Boolean;
+        var CustomerLocations: Dictionary of [Integer, List of [Text]])
+    var
+        SearchParamList: List of [Text];
+    begin
+        SearchParamList.Add(Format(ContactId));
+        SearchParamList.Add(CustomerSearchInReceivingData);
+        SearchParamList.Add(Format(BuyerId));
+        if ReserveContact then
+            SearchParamList.Add(CustomerSearchReserveContact)
+        else
+            SearchParamList.Add('');
+        CustomerLocations.Add(ShareHolderNo, SearchParamList);
     end;
 
     local procedure GenerateHash(InputText: Text) Hash: Text[40]
@@ -341,6 +520,13 @@ codeunit 99932 "CRM Worker"
         end;
     end;
 
+    local procedure GetBuyerCount() Result: Integer
+    begin
+        Result := ObjectDataElementListG.Count - 1;
+        if Result < 0 then
+            Error('DBG: GetBuyerCount - Count is a negative number');
+    end;
+
     local procedure GetContactFromCustomer(CustomerNo: Code[20]) Result: Code[20]
     var
         ContBusRel: Record "Contact Business Relation";
@@ -353,17 +539,18 @@ codeunit 99932 "CRM Worker"
             Result := ContBusRel."Contact No.";
     end;
 
-    local procedure GetCrmInteractCompanyList(var CrmInteractCompanyList: List of [Text])
+    local procedure GetCrmInteractCompanyList()
     var
         CrmCompany: Record "CRM Company";
     begin
-        Clear(CrmInteractCompanyList);
+        Clear(CrmInteractCompanyListG);
         CrmCompany.Reset();
         CrmCompany.FindSet();
         repeat
+            Clear(CrmInteractCompanyListG);
             if CrmCompany."Company Name" <> '' then begin
-                if not CrmInteractCompanyList.Contains(CrmCompany."Company Name") then
-                    CrmInteractCompanyList.Add(CrmCompany."Company Name");
+                if not CrmInteractCompanyListG.Contains(CrmCompany."Company Name") then
+                    CrmInteractCompanyListG.Add(CrmCompany."Company Name");
             end;
         until CrmCompany.Next() = 0;
     end;
@@ -515,7 +702,7 @@ codeunit 99932 "CRM Worker"
     end;
 
     [TryFunction]
-    local procedure GetTargetCrmCompany(var FetchedObject: Record "CRM Prefetched Object"; SearchInCrmInteractCompanyList: List of [Text]; var TargetCompanyName: Text)
+    local procedure GetTargetCrmCompany(var FetchedObject: Record "CRM Prefetched Object"; var TargetCompanyName: Text)
     var
         CrmCompany: Record "CRM Company";
         CrmB: Record "CRM Buyers";
@@ -535,7 +722,7 @@ codeunit 99932 "CRM Worker"
                 end;
             FetchedObject.Type::Contract:
                 begin
-                    foreach CrmCompanyname in SearchInCrmInteractCompanyList do begin
+                    foreach CrmCompanyname in CrmInteractCompanyListG do begin
                         CrmB.ChangeCompany(CrmCompanyName);
                         CrmB.SetRange("Unit Guid", FetchedObject.ParentId);
                         if CrmB.FindFirst() then begin
@@ -548,7 +735,7 @@ codeunit 99932 "CRM Worker"
                 end;
             FetchedObject.Type::Contact:
                 begin
-                    foreach CrmCompanyname in SearchInCrmInteractCompanyList do begin
+                    foreach CrmCompanyname in CrmInteractCompanyListG do begin
                         CrmB.Reset();
                         CrmB.ChangeCompany(CrmCompanyName);
                         CrmB.SetRange("Contact Guid", FetchedObject.Id);
@@ -588,472 +775,108 @@ codeunit 99932 "CRM Worker"
     end;
 
     local procedure ImportContact(var FetchedObject: Record "CRM Prefetched Object";
-        AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
         TargetCompanyName: Text[60];
-        RequiredImportAction: Enum "CRM Import Action") Result: Code[20]
+        RequiredWriteMode: Enum "CRM Import Action") Result: Code[20]
     var
-        Customer: Record Customer;
         CustTemp: Record Customer temporary;
-        CrmSetup: Record "CRM Integration Setup";
-        UpdateContFromCust: Codeunit "CustCont-Update";
-        ContBusRelation: Record "Contact Business Relation";
-        Value: Text;
-        TempStr: Text;
-        TempDT: DateTime;
         LogStatusEnum: Enum "CRM Log Status";
-        ObjectData: List of [Dictionary of [Text, Text]];
-        ObjDataElement: Dictionary of [Text, Text];
     begin
-
-        if AllObjectData.Count = 0 then
-            exit;
-
-        if not AllObjectData.Get(FetchedObject.Id, ObjectData) then begin
-            LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(NoParsedDataOnImportErr, FetchedObject.Id));
-            exit;
-        end;
-
-        ObjDataElement := ObjectData.Get(1);
-
-        if (RequiredImportAction = RequiredImportAction::Create) and (TargetCompanyName <> '') and (TargetCompanyName <> CompanyName()) then
-            Error('Contact creating error!');
-
-        if (TargetCompanyName <> CompanyName()) and (TargetCompanyName <> '') then begin
-            Customer.ChangeCompany(TargetCompanyName);
-            CrmSetup.ChangeCompany(TargetCompanyName);
-            ContBusRelation.ChangeCompany(TargetCompanyName);
-        end;
-
-        CustTemp.Init();
-        ObjDataElement.Get(LastNameX, Value);
-        TempStr := Value;
-        ObjDataElement.Get(FirstNameX, Value);
-        TempStr += ' ' + Value;
-        ObjDataElement.Get(MiddleNameX, Value);
-        TempStr += ' ' + Value;
-        CustTemp.Name := CopyStr(TempStr, 1, MaxStrLen(CustTemp.Name));
-        if MaxStrLen(CustTemp.Name) < StrLen(TempStr) then
-            CustTemp."Name 2" := CopyStr(TempStr, MaxStrLen(CustTemp.Name) + 1, MaxStrLen(CustTemp."Name 2"));
-        TempStr := '';
-        if ObjDataElement.Get(PostalCityX, Value) then
-            CustTemp.City := CopyStr(Value, 1, MaxStrLen(CustTemp.City));
-        if ObjDataElement.Get(CountryCodeX, Value) then
-            CustTemp."Country/Region Code" := CopyStr(Value, 1, MaxStrLen(CustTemp."Country/Region Code"));
-        if ObjDataElement.Get(PostalCodeX, Value) then
-            CustTemp."Post Code" := CopyStr(Value, 1, MaxStrLen(CustTemp."Post Code"));
-        TempStr := '';
-        if ObjDataElement.Get(AddressLineX, Value) then
-            TempStr := Value;
-        TempStr := TempStr + StrSubstNo(' ,%1, %2', CustTemp.City, CustTemp."Country/Region Code");
-        CustTemp.Address := CopyStr(TempStr, 1, MaxStrLen(CustTemp.Address));
-        If MaxStrLen(CustTemp.Address) < StrLen(TempStr) then
-            CustTemp."Address 2" := CopyStr(TempStr, MaxStrLen(CustTemp.Address) + 1, MaxStrLen(CustTemp."Address 2"));
-        if ObjDataElement.Get(ContactPhoneX, Value) then
-            CustTemp."Phone No." := CopyStr(Value, 1, MaxStrLen(CustTemp."Phone No."));
-        if ObjDataElement.Get(ContactEmailX, Value) then
-            CustTemp."E-Mail" := CopyStr(Value, 1, MaxStrLen(CustTemp."E-Mail"));
-
-        Customer.Reset();
-        case RequiredImportAction of
-            RequiredImportAction::Create:
-                begin
-                    Customer.Init();
-                    Customer."No." := '';
-                    Customer.Insert(true);
-                end;
-            RequiredImportAction::Update:
-                begin
-                    Customer.SetRange("CRM GUID", FetchedObject.id);
-                    Customer.SetRange("Version Id");
-                    Customer.FindFirst();
-                end;
-            else
-                exit;
-        end;
-        Result := Customer."No.";
-
-        Customer.Validate(Name, CustTemp.Name);
-        Customer.Validate("Name 2", CustTemp."Name 2");
-        Customer.Validate(City, CustTemp.City);
-        Customer.Validate("Country/Region Code", CustTemp."Country/Region Code");
-        Customer.Validate("Post Code", CustTemp."Post Code");
-        Customer.Validate(Address, CustTemp.Address);
-        Customer.Validate("Address 2", CustTemp."Address 2");
-        Customer.Validate("Phone No.", CustTemp."Phone No.");
-        Customer.Validate("E-Mail", CustTemp."E-Mail");
-        Customer."Version Id" := FetchedObject."Version Id";
-        if RequiredImportAction = RequiredImportAction::Create then begin
-            Customer."CRM GUID" := FetchedObject.Id;
-            Customer.Validate("Agreement Posting", Customer."Agreement Posting"::Mandatory);
-            CrmSetup.Get;
-            if Customer."Customer Posting Group" = '' then
-                Customer.Validate("Customer Posting Group", CrmSetup."Customer Posting Group");
-            if Customer."Gen. Bus. Posting Group" = '' then
-                Customer.Validate("Gen. Bus. Posting Group", CrmSetup."Gen. Bus. Posting Group");
-            if Customer."VAT Bus. Posting Group" = '' then
-                Customer.Validate("VAT Bus. Posting Group", CrmSetup."VAT Bus. Posting Group");
-            ContBusRelation.SETCURRENTKEY("Link to Table", "No.");
-            ContBusRelation.SetRange("Link to Table", ContBusRelation."Link to Table"::Customer);
-            ContBusRelation.SetRange("No.", Customer."No.");
-            IF NOT ContBusRelation.FindFirst() THEN BEGIN
-                UpdateContFromCust.InsertNewContact(Customer, FALSE);
-            END;
-        end;
-        Customer.Modify(true);
-
-        LogEvent(FetchedObject, TargetCompanyName, LogStatusEnum::Done, RequiredImportAction, StrSubstNo(ContactProcessedMsg, Customer."No."), '');
-        Commit();
-    end;
-
-    [TryFunction]
-    local procedure ImportContract(var FetchedObject: Record "CRM Prefetched Object";
-        AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
-        CrmInteractCompanies: List of [Text];
-        var AgrTemp: Record "Customer Agreement";
-        var Customers: Dictionary of [Integer, Dictionary of [Text, Text]]
-    )
-    var
-        Agr: Record "Customer Agreement";
-        LogStatusEnum: Enum "CRM Log Status";
-        ImportActionEnum: Enum "CRM Import Action";
-        ObjectData, ContactData : List of [Dictionary of [Text, Text]];
-        ObjDataElement: Dictionary of [Text, Text];
-        I, C, ShareHolderNo : Integer;
-        TempValue, TempValue2 : Text;
-        OK: Boolean;
-        UnitId, BuyerId, ContactId : Guid;
-        CrmB: Record "CRM Buyers";
-        Cust: Record Customer;
-        NewCustomerNo: Code[20];
-        FObj: Record "CRM Prefetched Object";
-        CustNo, NavContactNo : Code[20];
-
-    begin
-        if not AgrTemp.IsTemporary then
-            Error(AgrMustBeTemporaryErr);
-
-        if AllObjectData.Count = 0 then
-            Error('DBG: No parsed data');
-
-
-        if not AllObjectData.Get(FetchedObject.Id, ObjectData) then begin
-            LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(NoParsedDataOnImportErr, FetchedObject.Id));
-            exit;
-        end;
-
-        SetObjectDataElementPointer(ObjectData, 1);
-        AgrTemp.Init;
-        DGet(ContractIdX, TempValue);
-        Evaluate(AgrTemp."CRM GUID", TempValue);
-        DGet(ContractNoX, TempValue);
-        AgrTemp.Description := CopyStr(TempValue, 1, MaxStrLen(AgrTemp.Description));
-        DGet(ContractTypeX, TempValue);
-        AgrTemp."Agreement Type" := GetAgrType(TempValue);
-        DGet(ContractStatusX, TempValue);
-        DGet(ContractCancelStatusX, TempValue2);
-        AgrTemp.Status := GetAgrStatus(TempValue, TempValue2);
-        DGet(ContractIsActiveX, TempValue);
-        if (TempValue = 'false') or (AgrTemp.Status = AgrTemp.Status::Cancelled) then
-            AgrTemp.Active := false
+        if ValidateContactData(FetchedObject, CustTemp) then
+            Result := WriteContactToDB(FetchedObject, CustTemp, TargetCompanyName, RequiredWriteMode)
         else
-            AgrTemp.Active := true;
+            LogEvent(FetchedObject, LogStatusEnum::Error, GetLastErrorText())
 
-        DGet(ExtAgreementNoX, TempValue);
-        AgrTemp."External Agreement No." := CopyStr(TempValue, 1, MaxStrLen(AgrTemp."External Agreement No."));
-        //FullAgreementNo to-do
-        DGet(ApartmentAmountX, TempValue);
-        OK := Evaluate(AgrTemp."Agreement Amount", TempValue, 9);
-        if DGet(FinishingInclX, TempValue) then begin
-            Ok := Evaluate(AgrTemp."Including Finishing Price", TempValue, 9);
-        end;
-
-        DGet(ContractUnitIdX, TempValue);
-        Evaluate(UnitId, TempValue);
-
-        C := ObjectData.Count;
-        if (C = 1) and (AgrTemp."Agreement Type" <> AgrTemp."Agreement Type"::"Reserving Agreement") then begin
-            LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr);
-            exit;
-        end;
-        if (C = 1) or (AgrTemp."Agreement Type" = AgrTemp."Agreement Type"::"Reserving Agreement") then begin
-            CrmB.SetRange("Unit Guid", UnitId);
-            if not CrmB.FindFirst() then begin
-                LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr);
-            end else begin
-                CrmB."Reserving Contract Guid" := AgrTemp."CRM GUID";
-                CrmB.Modify();
-                AgrTemp."Object of Investing" := CrmB."Object of Investing";
-                CustNo := FindCustomer(CrmB."Reserving Contact Guid", 0, AllObjectData, CrmInteractCompanies, Customers);
-                if CustNo = '' then
-                    LogEvent(FetchedObject, LogStatusEnum::Error, ContractBuyersNotFoundErr)
-                else begin
-                    SetShareholderAttributes(AgrTemp, 1, CustNo, GetContactFromCustomer(CustNo), CrmB."Ownership Percentage");
-                    if CrmB."Agreement Start" <> 0D then begin
-                        AgrTemp."Agreement Date" := CrmB."Agreement Start";
-                        AgrTemp."Starting Date" := CrmB."Agreement Start";
-                        AgrTemp."Expire Date" := CrmB."Agreement End";
-                    end;
-                end;
-            end;
-            exit;
-        end;
-
-        ShareHolderNo := 0;
-        for I := 2 to C do begin
-            ObjDataElement := ObjectData.Get(I);
-            ObjDataElement.Get(ContractBuyerX, TempValue);
-            Evaluate(BuyerId, TempValue);
-            CrmB.Get(UnitId, BuyerId);
-            if CrmB."Buyer Is Active" then begin
-                ShareHolderNo += 1;
-                AgrTemp."Object of Investing" := CrmB."Object of Investing";
-                if CrmB."Agreement Start" <> 0D then begin
-                    AgrTemp."Agreement Date" := CrmB."Agreement Start";
-                    AgrTemp."Starting Date" := CrmB."Agreement Start";
-                    AgrTemp."Expire Date" := CrmB."Agreement End";
-                end;
-                ContactId := CrmB."Contact Guid";
-                CustNo := FindCustomer(ContactId, ShareHolderNo, AllObjectData, CrmInteractCompanies, Customers);
-                if CustNo <> '' then
-                    NavContactNo := GetContactFromCustomer(CustNo)
-                else begin
-                    CustNo := Format(ShareHolderNo);
-                    NavContactNo := CustNo;
-                end;
-                SetShareholderAttributes(AgrTemp, ShareHolderNo, CustNo, NavContactNo, CrmB."Ownership Percentage")
-            end;
-            if ShareHolderNo = 5 then
-                break;
-        end;
     end;
 
-    local procedure CreateContractAndLinkedContacts(var FetchedObject: Record "CRM Prefetched Object";
-        var PrefilledAgrTemp: Record "Customer Agreement";
-        var Customers: Dictionary of [Integer, Dictionary of [Text, Text]])
+    local procedure ImportContract(var FetchedObject: Record "CRM Prefetched Object"; ImportActionEnum: Enum "CRM Import Action") Result: Code[20]
     var
-        int: Integer;
-        CustomerSearchInfo: Dictionary of [Text, Text];
-        NotFoundShareHolderList: List of [Integer];
+        AgrTemp: Record "Customer Agreement";
         ShareHolderNo: Integer;
-    begin
-        NotFoundShareHolderList := Customers.Keys();
-        foreach ShareholderNo in NotFoundShareHolderList do begin
-
-
-        end;
-
-    end;
-
-    local procedure CopyCustomer(CrmContactId: Guid; CopyFromCompanyName: Text[60]; CopyFromCustomerNo: Code[20])
-    var
-        Customer: Record Customer;
-    begin
-        if IsNullGuid(CrmContactId) then
-            Error('DBG: CopyCustomer - CrmContactId is null');
-        Customer.Reset();
-        Customer.Setrange("CRM GUID", CrmContactId);
-        if Not Customer.IsEmpty then
-            Error('DBG: CopyCustomer - Customer with id %1 already exists in Company %2', CrmContactId, CompanyName());
-
-        if CopyFromCompanyName = '' then
-            Error('DBG: CopyCustomer - CopyFromCompanyName is empty');
-
-        Customer.ChangeCompany(CopyFromCompanyName);
-        Customer.Get(CopyFromCustomerNo);
-
-
-    end;
-
-    local procedure FindCustomer(ContactId: Guid;
-        ShareHolderNo: Integer;
-        AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
-        CrmInteractCompanies: List of [Text];
-        var Customers: Dictionary of [Integer, Dictionary of [Text, Text]]
-        ) ActualCustomerNo: Code[20]
-    var
-        myInt: Integer;
-        ObjectDataElements: List of [Dictionary of [Text, Text]];
-        TempDict: Dictionary of [Text, Text];
-        Cust: Record Customer;
-        SearchInCompanyName: Text;
-    begin
-        ActualCustomerNo := '';
-        if AllObjectData.Get(ContactId, ObjectDataElements) then begin
-            TempDict.Add(CustomerSearchRequest, Format(ContactId));
-            Customers.Add(ShareHolderNo, TempDict);
-            exit;
-        end;
-
-        Cust.Reset();
-        Cust.SetRange("CRM GUID", ContactId);
-        if Cust.FindFirst() then begin
-            ActualCustomerNo := Cust."No.";
-            exit;
-        end;
-
-        foreach SearchInCompanyName in CrmInteractCompanies do begin
-            if SearchInCompanyName <> CompanyName() then begin
-                Cust.Reset();
-                Cust.ChangeCompany(SearchInCompanyName);
-                Cust.SetRange("CRM GUID", ContactId);
-                if Cust.FindFirst() then begin
-                    TempDict.Add(CustomerSearchDB, SearchInCompanyName);
-                    TempDict.Add(CustomerSearchFoundNo, Cust."No.");
-                    Customers.Add(ShareHolderNo, TempDict);
-                    exit;
-                end;
-            end;
-        end;
-
-    end;
-
-    local procedure ImportUnit(var FetchedObject: Record "CRM Prefetched Object"; AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]])
-    var
-        CRMBuyer: Record "CRM Buyers";
-        Apartments: Record Apartments;
-        Value, TargetCompanyName : Text;
-        TempDT: DateTime;
-        No: Text[2];
+        CustomerLocations: Dictionary of [Integer /*ShareholderNo*/, List of [Text]];
+        WhereToSearchParamList: List of [Text];
+        CrmContactId: Guid;
+        FetchedObject2: Record "CRM Prefetched Object";
+        WriteModeEnum: Enum "CRM Import Action";
         LogStatusEnum: Enum "CRM Log Status";
-        ImportAction: Enum "CRM Import Action";
-
-        ObjectData: List of [Dictionary of [Text, Text]];
-        ObjDataElement: Dictionary of [Text, Text];
-        I, C : integer;
-
+        HasError: Boolean;
+        CustNo, AgrNo : Code[20];
     begin
-        if AllObjectData.Count = 0 then
-            exit;
-
-        if not AllObjectData.Get(FetchedObject.Id, ObjectData) then begin
-            LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(NoParsedDataOnImportErr, FetchedObject.Id));
+        if not ValidateContractData(FetchedObject, AgrTemp, CustomerLocations) then begin
+            LogEvent(FetchedObject, LogStatusEnum::Error, GetLastErrorText());
             exit;
         end;
 
-        ImportAction := GetObjectImportAction(FetchedObject);
-        If ImportAction = ImportAction::NoAction then begin
-            LogEvent(FetchedObject, LogStatusEnum::Done, UnitUpToDateMsg);
+        //create linked contacts
+        foreach ShareHolderNo in CustomerLocations.Keys() do begin
+            CustomerLocations.Get(ShareHolderNo, WhereToSearchParamList);
+            if (not Evaluate(CrmContactId, WhereToSearchParamList.Get(1))) or IsNullGuid(CrmContactId) then
+                Error('DBG: ImportContract - Bad Crm Contact guid');
+
+            case WhereToSearchParamList.Get(2) of
+                CustomerSearchInReceivingData:
+                    begin
+                        FetchedObject2.Get(CrmContactId);
+                        CustNo := ImportContact(FetchedObject2, '', WriteModeEnum::Create);
+                        FetchedObject2.Delete(true);
+                    end;
+                else begin
+                        CustNo := CopyCustomer(CrmContactId, WhereToSearchParamList.Get(2));
+                    end;
+            end;
+            if CustNo = '' then
+                HasError := true
+            else begin
+                SetShareholderAttributes(AgrTemp, ShareHolderNo, CustNo, GetContactFromCustomer(CustNo));
+            end;
+        end;
+        if HasError then begin
+            LogEvent(FetchedObject, LogStatusEnum::Error, ContractNotCreated2Err);
             exit;
         end;
 
-        ObjDataElement := ObjectData.Get(1);
+        if not ValidateContractData2(FetchedObject, AgrTemp) then begin
+            LogEvent(FetchedObject, LogStatusEnum::Error, GetLastErrorText());
+            exit;
+        end;
 
-        CRMBuyer.Reset();
-        CRMBuyer.SetRange("Unit Guid", FetchedObject.Id);
-        CRMBuyer.DeleteAll(true);
+        Result := WriteContractToDb(FetchedObject, AgrTemp, CustomerLocations, WriteModeEnum);
+    end;
 
-        CRMBuyer.Init();
-        CRMBuyer."Unit Guid" := FetchedObject.Id;
-        CRMBuyer."Version Id" := FetchedObject."Version Id";
-        CRMBuyer."Project Id" := FetchedObject.ParentId;
-        if ObjDataElement.Get(ReservingContactX, Value) then
-            Evaluate(CRMBuyer."Reserving Contact Guid", Value);
-        if not ObjDataElement.Get(InvestmentObjectX, Value) then
-            LogEvent(FetchedObject, LogStatusEnum::Warning, NoInvestObjectMsg)
+    local procedure ImportUnit(var FetchedObject: Record "CRM Prefetched Object") Result: Boolean
+    var
+        CrmBTemp: Record "CRM Buyers" temporary;
+        ApartmentTemp: Record Apartments temporary;
+        LogStatusEnum: Enum "CRM Log Status";
+    begin
+        Result := true;
+        if ValidateUnitData(FetchedObject, CrmBTemp, ApartmentTemp) then
+            WriteUnitToDB(FetchedObject, CrmBTemp, ApartmentTemp)
         else begin
-            CRMBuyer."Object of Investing" := Value;
-            Apartments."Object No." := CRMBuyer."Object of Investing";
-            if ObjDataElement.Get(BlockNumberX, Value) then
-                Apartments.Description := Value.Trim();
-            if ObjDataElement.Get(ApartmentNumberX, Value) then begin
-                if (Apartments.Description <> '') and (not Apartments.Description.EndsWith(' ')) then
-                    Apartments.Description += ' ';
-                Apartments.Description += Value.Trim();
-            end;
-            if ObjDataElement.Get(ApartmentOriginTypeX, Value) then
-                Apartments."Origin Type" := CopyStr(Format(Value), 1, MaxStrLen(Apartments."Origin Type"));
-            if ObjDataElement.Get(ApartmentUnitAreaM2X, Value) then
-                if Evaluate(Apartments."Total Area (Project)", Value, 9) then;
-            if Apartments.Insert(True) then begin
-                LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(InvestmentObjectCreatedMsg, Apartments."Object No."));
-            end else begin
-                Apartments.Modify(True);
-                LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(InvestmentObjectUpdatedMsg, Apartments."Object No."));
-            end;
+            LogEvent(FetchedObject, LogStatusEnum::Error, GetLastErrorText());
+            Result := false
         end;
 
-        C := ObjectData.Count();
-        if C = 1 then begin
-            CRMBuyer.Insert(true);
-            Commit();
-            LogEvent(FetchedObject, LogStatusEnum::Done, UnitCreatedMsg);
-            exit;
-        end;
-
-        for I := 2 to C do begin
-            ObjDataElement := ObjectData.Get(I);
-
-            ObjDataElement.Get(UnitBuyerX, Value);
-            Evaluate(CRMBuyer."Buyer Guid", Value);
-            if ObjDataElement.Get(UnitBuyerContactX, Value) then
-                Evaluate(CRMBuyer."Contact Guid", Value);
-            if ObjDataElement.Get(UnitBuyerContractX, Value) then
-                Evaluate(CRMBuyer."Contract Guid", Value);
-            if ObjDataElement.Get(UnitBuyerOwnershipPrcX, Value) then
-                Evaluate(CRMBuyer."Ownership Percentage", Value, 9)
-            Else
-                CRMBuyer."Ownership Percentage" := 100;
-            CRMBuyer."Buyer Is Active" := true;
-            if ObjDataElement.Get(UnitBuyerIsActiveX, Value) then begin
-                if Value = 'false' then
-                    CRMBuyer."Buyer Is Active" := false;
-            end;
-            if CRMBuyer."Buyer Is Active" then begin
-                CRMBuyer."Expected Registration Period" := 0;
-                if ObjDataElement.Get(ExpectedRegDateX, Value) then
-                    Evaluate(CRMBuyer."Expected Registration Period", Value, 9);
-                CRMBuyer."Agreement Start" := 0D;
-                if ObjDataElement.Get(ActualDateX, Value) then begin
-                    if Evaluate(TempDT, Value, 9) then
-                        CRMBuyer."Agreement Start" := DT2Date(TempDT) - CRMBuyer."Expected Registration Period";
-                end;
-                CRMBuyer."Agreement End" := 0D;
-                if ObjDataElement.Get(ExpectedDateX, Value) then begin
-                    if Evaluate(TempDT, Value, 9) then
-                        CRMBuyer."Agreement End" := DT2Date(TempDT);
-                end;
-            end;
-            CRMBuyer."Version Id" := FetchedObject."Version Id";
-            CRMBuyer.Insert(true);
-            Commit();
-
-            case ImportAction of
-                ImportAction::Create:
-                    LogEvent(FetchedObject, LogStatusEnum::Done, UnitCreatedMsg);
-                ImportAction::Update:
-                    LogEvent(FetchedObject, LogStatusEnum::Done, UnitUpdatedMsg);
-                else
-                    LogEvent(FetchedObject, LogStatusEnum::Error, 'Invalid import action');
-            end
-        end;
     end;
 
     local procedure JoinX(RootXPath: Text; ChildXPath: Text) Result: Text
     begin
-        // if RootXPath <> '' then begin
-        //     if not RootXPath.EndsWith('/') then
-        //         RootXPath := RootXPath + '/'
-        // end;
         if not RootXPath.EndsWith('/') then
             RootXPath := RootXPath + '/';
         Result := RootXPath + ChildXPath;
     end;
 
     local procedure LogEvent(var FetchedObject: Record "CRM Prefetched Object";
-        LogToCompany: Text[60];
+        TargetCompanyName: Text[60];
         LogStatusEnum: Enum "CRM Log Status";
-                           LogImportActionEnum: Enum "CRM Import Action";
-                           MsgText1: Text;
-                           MsgText2: Text)
+        LogImportActionEnum: Enum "CRM Import Action";
+        MsgText1: Text;
+        MsgText2: Text)
     var
-        Log: Record "CRM Log";
+        Log: Record "CRM Log" temporary;
+        SessionId: Integer;
     begin
-        if (LogToCompany <> '') and (LogToCompany <> CompanyName()) then
-            Log.ChangeCompany(LogToCompany);
-        if not Log.FindLast() then
-            Log."Entry No." := 1L
-        else
-            Log."Entry No." += 1;
+        Log.Init();
+        Log."Entry No." := 0L;
         Log."Object Id" := FetchedObject.Id;
         Log."Object Type" := FetchedObject.Type;
         Log."Object Xml" := FetchedObject.Xml;
@@ -1078,28 +901,24 @@ codeunit 99932 "CRM Worker"
                 Log."Details Text 2" := CopyStr(GetLastErrorCallStack(), 1, MaxStrLen(Log."Details Text 2"));
         end;
         Log.Insert();
-    end;
 
+        if TargetCompanyName = '' then
+            TargetCompanyName := CompanyName();
+        if StartSession(SessionId, Codeunit::"Crm Log Management", TargetCompanyName, Log) then
+            Error(StartSessionErr);
+    end;
 
     local procedure LogEvent(var FetchedObject: Record "CRM Prefetched Object"; LogStatusEnum: Enum "CRM Log Status"; MsgText: Text)
     var
         Log: Record "CRM Log";
+        ImportActionEnum: Enum "CRM Import Action";
     begin
-        if not Log.FindLast() then
-            Log."Entry No." := 1L
-        else
-            Log."Entry No." += 1;
-        Log."Object Id" := FetchedObject.Id;
-        Log."Object Type" := FetchedObject.Type;
-        Log."Object Xml" := FetchedObject.Xml;
-        Log."Object Version Id" := FetchedObject."Version Id";
-        Log."WRQ Id" := FetchedObject."WRQ Id";
-        Log.Datetime := CurrentDateTime;
-        Log.Status := LogStatusEnum;
-        Log."Details Text 1" := CopyStr(MsgText, 1, MaxStrLen(Log."Details Text 1"));
-        Log."Details Text 2" := CopyStr(MsgText, MaxStrLen(Log."Details Text 1") + 1, MaxStrLen(Log."Details Text 2"));
-        Log.Insert();
-        Commit();
+        LogEvent(FetchedObject,
+            CompanyName(),
+            LogStatusEnum,
+            ImportActionEnum::" ",
+            CopyStr(MsgText, 1, MaxStrLen(Log."Details Text 1")),
+            CopyStr(MsgText, MaxStrLen(Log."Details Text 1") + 1, MaxStrLen(Log."Details Text 2")));
     end;
 
     local procedure LogEvent(InputObjectMetadata: Dictionary of [Text, Text]; MsgText: Text)
@@ -1242,7 +1061,6 @@ codeunit 99932 "CRM Worker"
 
     end;
 
-
     [TryFunction]
     local procedure ParseContractXml(var FetchedObject: Record "CRM Prefetched Object"; var ObjectData: List of [Dictionary of [Text, Text]])
     var
@@ -1252,7 +1070,6 @@ codeunit 99932 "CRM Worker"
         OK: Boolean;
         ObjDataElement: Dictionary of [Text, Text];
         RetObjectData: List of [Dictionary of [Text, Text]];
-        AgrType, AgrStatus : Text;
     begin
         ObjectData := RetObjectData;
         CreateObjDataElement(ObjectData, ObjDataElement);
@@ -1263,22 +1080,10 @@ codeunit 99932 "CRM Worker"
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractNoX), ObjDataElement, ContractNoX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractTypeX), ObjDataElement, ContractTypeX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractStatusX), ObjDataElement, ContractStatusX);
-        if ObjDataElement.Get(ContractTypeX, AgrType) and ObjDataElement.Get(ContractStatusX, AgrType) then begin
-            AgrType := AgrType.ToUpper();
-            AgrStatus := AgrStatus.ToUpper();
-            if (AgrType in ['SALESCONTRACT', 'PRELIMINARYSALESCONTRACT'])
-                and (not (AgrStatus.StartsWith('SIGNED') or AgrStatus.StartsWith('REGISTERED')))
-            then
-                Error(ContractNotSignedErr, AgrType, AgrStatus);
-            if (AgrType in ['TRANSFEROFRIGHTS', 'TRANSFEROFRIGHTSINTERNALLY', 'INVESTMENTCONTRACT'])
-                    and (not AgrStatus.StartsWith('REGISTERED'))
-            then
-                Error(ContractNotRegisteredErr, AgrType, AgrStatus);
-        end;
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractCancelStatusX), ObjDataElement, ContractCancelStatusX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ContractIsActiveX), ObjDataElement, ContractIsActiveX);
         GetObjectField(XmlElem, JoinX(ContractBaseDataX, ExtAgreementNoX), ObjDataElement, ExtAgreementNoX);
-        GetObjectField(XmlElem, JoinX(ContractX, ApartmentAmountX), ObjDataElement, ApartmentAmountX);
+        GetObjectField(XmlElem, JoinX(ContractX, AgreementAmountX), ObjDataElement, AgreementAmountX);
         OK := GetObjectField(XmlElem, JoinX(ContractX, FinishingInclX), ObjDataElement, FinishingInclX);
         if XmlElem.SelectNodes(JoinX(ContractX, ContractBuyerNodesX), XmlBuyerList) then begin
             foreach XmlBuyer in XmlBuyerList do begin
@@ -1289,13 +1094,14 @@ codeunit 99932 "CRM Worker"
         end;
     end;
 
-    local procedure ParseObjects(var FetchedObject: Record "CRM Prefetched Object"; var AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]])
+    local procedure ParseObjects(var FetchedObject: Record "CRM Prefetched Object")
     var
         ParsingResult: Dictionary of [Text, Text];
         ObjectData: List of [Dictionary of [Text, Text]];
         HasError: Boolean;
         LogStatusEnum: Enum "CRM Log Status";
     begin
+        Clear(ParsedObjectsG);
         FetchedObject.Reset();
         FetchedObject.FindSet();
         repeat
@@ -1310,7 +1116,7 @@ codeunit 99932 "CRM Worker"
             end;
             if not HasError then begin
                 if ObjectData.Count <> 0 then
-                    AllObjectData.Add(FetchedObject.Id, ObjectData);
+                    ParsedObjectsG.Add(FetchedObject.Id, ObjectData);
             end else begin
                 LogEvent(FetchedObject, LogStatusEnum::Error, GetLastErrorText());
                 FetchedObject.Delete();
@@ -1372,10 +1178,18 @@ codeunit 99932 "CRM Worker"
             until PrefetchedObj.Next() = 0;
     end;
 
-    local procedure SetObjectDataElementPointer(ObjectDataElements: List of [Dictionary of [Text, Text]]; ElementNo: Integer)
+    [TryFunction]
+    local procedure SetObjectDataElementPointer(ElementNo: Integer)
     begin
-        ObjectDataElementPointer := ObjectDataElements.Get(ElementNo);
+        ObjectDataElementG := ObjectDataElementListG.Get(ElementNo);
     end;
+
+    [TryFunction]
+    local procedure SetObjectDataPointer(CrmObjectId: Guid)
+    begin
+        ParsedObjectsG.Get(CrmObjectId, ObjectDataElementListG);
+    end;
+
 
     local procedure SetShareholderAttributes(var CustAgreement: Record "Customer Agreement"; ShareholderNo: Integer; CustomerNo: Code[20]; ContactNo: Code[20]; OwnershipPrc: Decimal)
     begin
@@ -1385,7 +1199,6 @@ codeunit 99932 "CRM Worker"
                     CustAgreement."Customer No." := CustomerNo;
                     CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::pNo;
                     CustAgreement."Amount part 1" := OwnershipPrc;
-                    //CustAgreement.Contact := GetContactFromCustomer(CustomerNo);
                     CustAgreement.Contact := ContactNo;
                     CustAgreement."Contact 1" := CustAgreement.Contact;
                 end;
@@ -1394,7 +1207,6 @@ codeunit 99932 "CRM Worker"
                     CustAgreement."Customer 2 No." := CustomerNo;
                     CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::Owner2;
                     CustAgreement."Amount part 2" := OwnershipPrc;
-                    //CustAgreement."Contact 2" := GetContactFromCustomer(CustomerNo);
                     CustAgreement."Contact 2" := ContactNo;
 
                 end;
@@ -1403,7 +1215,6 @@ codeunit 99932 "CRM Worker"
                     CustAgreement."Customer 3 No." := CustomerNo;
                     CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::Owner3;
                     CustAgreement."Amount part 3" := OwnershipPrc;
-                    //CustAgreement."Contact 3" := GetContactFromCustomer(CustomerNo);
                     CustAgreement."Contact 3" := ContactNo;
                 end;
             CustAgreement."Share in property 3"::Owner4:
@@ -1411,7 +1222,6 @@ codeunit 99932 "CRM Worker"
                     CustAgreement."Customer 4 No." := CustomerNo;
                     CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::Owner4;
                     CustAgreement."Amount part 4" := OwnershipPrc;
-                    //CustAgreement."Contact 4" := GetContactFromCustomer(CustomerNo);
                     CustAgreement."Contact 4" := ContactNo;
                 end;
             CustAgreement."Share in property 3"::Owner5:
@@ -1419,42 +1229,56 @@ codeunit 99932 "CRM Worker"
                     CustAgreement."Customer 5 No." := CustomerNo;
                     CustAgreement."Share in property 3" := CustAgreement."Share in property 3"::Owner5;
                     CustAgreement."Amount part 5" := OwnershipPrc;
-                    //CustAgreement."Contact 5" := GetContactFromCustomer(CustomerNo);
                     CustAgreement."Contact 5" := ContactNo;
                 end;
         end
     end;
 
-    local procedure SetTargetCompany(var FetchedObject: Record "CRM Prefetched Object"; var AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]])
+    local procedure SetShareholderAttributes(var CustAgreement: Record "Customer Agreement"; ShareholderNo: Integer; CustomerNo: Code[20]; ContactNo: Code[20])
     var
-        CrmInteractCompanies: List of [Text];
+        OwnershipPrc: Decimal;
+    begin
+        case ShareholderNo - 1 of
+            CustAgreement."Share in property 3"::pNo:
+                OwnershipPrc := CustAgreement."Amount part 1";
+            CustAgreement."Share in property 3"::Owner2:
+                OwnershipPrc := CustAgreement."Amount part 2";
+            CustAgreement."Share in property 3"::Owner3:
+                OwnershipPrc := CustAgreement."Amount part 3";
+            CustAgreement."Share in property 3"::Owner4:
+                OwnershipPrc := CustAgreement."Amount part 4";
+            CustAgreement."Share in property 3"::Owner5:
+                OwnershipPrc := CustAgreement."Amount part 5";
+        end;
+        SetShareholderAttributes(CustAgreement, ShareholderNo, CustomerNo, ContactNo, OwnershipPrc);
+    end;
+
+    local procedure SetTargetCompany(var FetchedObject: Record "CRM Prefetched Object")
+    var
         BuyerToContractMap, UnitBuyerToContactMap, ObjectDataElement : Dictionary of [Text, Text];
-        ObjectData: List of [Dictionary of [Text, Text]];
         C, I : Integer;
         TextKey, ContactId, BuyerId, ContractId, UnitId : Text;
         DbgList: List of [Text];
         DbgVal, DbgErr : Text;
     begin
-        if AllObjectData.Count() = 0 then
-            exit;
         FetchedObject.Reset();
         FetchedObject.SetFilter(Type, '%1|%2', FetchedObject.Type::Unit, FetchedObject.Type::Contract);
         if FetchedObject.FindSet() then begin
             repeat
-                AllObjectData.Get(FetchedObject.Id, ObjectData);
+                SetObjectDataPointer(FetchedObject.Id);
 
                 //walkthrough of object head(I=1) and buyres (I>1)
-                C := ObjectData.Count;
-                if C > 1 then begin
-                    for I := 1 to C do begin
-                        ObjectDataElement := ObjectData.Get(I);
+                C := GetBuyerCount();
+                if C > 0 then begin
+                    for I := 1 to C + 1 do begin
+                        SetObjectDataElementPointer(I);
                         case FetchedObject.Type of
                             FetchedObject.Type::Unit:
                                 begin
                                     if I = 1 then begin
-                                        ObjectDataElement.Get(UnitIdX, UnitId)
+                                        DGet(UnitIdX, UnitId)
                                     end else begin
-                                        if ObjectDataElement.Get(UnitBuyerX, BuyerId) and ObjectDataElement.Get(UnitBuyerContactX, ContactId) then begin
+                                        if DGet(UnitBuyerX, BuyerId) and DGet(UnitBuyerContactX, ContactId) then begin
                                             TextKey := UnitId + '@' + BuyerId;
                                             UnitBuyerToContactMap.Add(TextKey, ContactId);
                                         end;
@@ -1463,9 +1287,9 @@ codeunit 99932 "CRM Worker"
                             FetchedObject.Type::Contract:
                                 begin
                                     if I = 1 then begin
-                                        ObjectDataElement.Get(ContractIdX, ContractId);
+                                        DGet(ContractIdX, ContractId);
                                     end else begin
-                                        ObjectDataElement.Get(ContractBuyerX, BuyerId);
+                                        DGet(ContractBuyerX, BuyerId);
                                         BuyerToContractMap.Add(BuyerId, ContractId);
                                     end;
                                 end;
@@ -1475,13 +1299,13 @@ codeunit 99932 "CRM Worker"
             until FetchedObject.Next() = 0;
         end;
 
-        GetCrmInteractCompanyList(CrmInteractCompanies);
+        GetCrmInteractCompanyList();
         FetchedObject.Reset();
         FetchedObject.SetFilter("Company name", '%1', '');
         if FetchedObject.FindSet() then begin
             repeat
                 FetchedObject."Company name" :=
-                    SuggestTargetCompany(FetchedObject, AllObjectData, BuyerToContractMap, UnitBuyerToContactMap, CrmInteractCompanies);
+                    SuggestTargetCompany(FetchedObject, BuyerToContractMap, UnitBuyerToContactMap);
                 if FetchedObject."Company name" <> '' then
                     FetchedObject.Modify();
             until FetchedObject.Next() = 0;
@@ -1489,10 +1313,8 @@ codeunit 99932 "CRM Worker"
     end;
 
     local procedure SuggestTargetCompany(var FetchedObject: Record "CRM Prefetched Object";
-        var AllObjectData: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
         BuyerToContractMap: Dictionary of [Text, Text];
-        UnitBuyerToContactMap: Dictionary of [Text, Text];
-        CrmInteractCompanyList: List of [Text]) Result: Text[60]
+        UnitBuyerToContactMap: Dictionary of [Text, Text]) Result: Text[60]
     var
         LogStatusEnum: Enum "CRM Log Status";
         CrmCompany: Record "CRM Company";
@@ -1541,7 +1363,7 @@ codeunit 99932 "CRM Worker"
                         end;
                     end;
                     if Result = '' then begin
-                        foreach NewCompanyName in CrmInteractCompanyList do begin
+                        foreach NewCompanyName in CrmInteractCompanyListG do begin
                             CrmBuyer.Reset();
                             CrmBuyer.ChangeCompany(NewCompanyName);
                             CrmBuyer.SetRange("Contact Guid", TempFetchedObject.id);
@@ -1560,7 +1382,7 @@ codeunit 99932 "CRM Worker"
                 end;
             TempFetchedObject.Type::Contract:
                 begin
-                    if AllObjectData.Get(TempFetchedObject.ParentId, ObjectData) then begin
+                    if ParsedObjectsG.Get(TempFetchedObject.ParentId, ObjectData) then begin
                         FetchedObject.Get(TempFetchedObject.ParentId);
                         if CrmCompany.Get(FetchedObject.ParentId) then
                             Result := CrmCompany."Company Name"
@@ -1568,7 +1390,7 @@ codeunit 99932 "CRM Worker"
                             LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(ProjectNotFoundErr, FetchedObject.ParentId));
                     end;
                     if Result = '' then begin
-                        foreach NewCompanyName in CrmInteractCompanyList do begin
+                        foreach NewCompanyName in CrmInteractCompanyListG do begin
                             CrmBuyer.Reset();
                             CrmBuyer.ChangeCompany(NewCompanyName);
                             CrmBuyer.SetRange("Contract Guid", TempFetchedObject.id);
@@ -1602,6 +1424,542 @@ codeunit 99932 "CRM Worker"
     begin
         XmlDocument.ReadFrom(InStream, XmlDoc);
     end;
+
+    local procedure UpdateAgreementPostingSettings(var Agr: Record "Customer Agreement")
+    var
+        Cust2: Record Customer;
+    begin
+        if Agr."Customer No." = '' then
+            exit;
+        if not Cust2.Get(Agr."Customer No.") then
+            exit;
+        Agr."Customer Posting Group" := Cust2."Customer Posting Group";
+        Agr."Gen. Bus. Posting Group" := Cust2."Gen. Bus. Posting Group";
+        Agr."VAT Bus. Posting Group" := Cust2."VAT Bus. Posting Group";
+    end;
+
+    [TryFunction]
+    local procedure ValidateContactData(var FetchedObject: Record "CRM Prefetched Object"; var CustTemp: Record Customer)
+    var
+        TempValue: Text;
+        TempStr: Text;
+        TempDT: DateTime;
+    begin
+        if not CustTemp.IsTemporary then
+            Error(RecordMustBeTemporaryErr, CustTemp.TableCaption());
+        CustTemp.Reset();
+        CustTemp.DeleteAll();
+
+        SetObjectDataPointer(FetchedObject.Id);
+        SetObjectDataElementPointer(1);
+
+        CustTemp.Init();
+        DGet(LastNameX, TempValue);
+        TempStr := TempValue;
+        DGet(FirstNameX, TempValue);
+        TempStr += ' ' + TempValue;
+        DGet(MiddleNameX, TempValue);
+        TempStr += ' ' + TempValue;
+        CustTemp.Name := CopyStr(TempStr, 1, MaxStrLen(CustTemp.Name));
+        if MaxStrLen(CustTemp.Name) < StrLen(TempStr) then
+            CustTemp."Name 2" := CopyStr(TempStr, MaxStrLen(CustTemp.Name) + 1, MaxStrLen(CustTemp."Name 2"));
+        TempStr := '';
+        if DGet(PostalCityX, TempValue) then
+            CustTemp.City := CopyStr(TempValue, 1, MaxStrLen(CustTemp.City));
+        if DGet(CountryCodeX, TempValue) then
+            CustTemp."Country/Region Code" := CopyStr(TempValue, 1, MaxStrLen(CustTemp."Country/Region Code"));
+        if DGet(PostalCodeX, TempValue) then
+            CustTemp."Post Code" := CopyStr(TempValue, 1, MaxStrLen(CustTemp."Post Code"));
+        TempStr := '';
+        if DGet(AddressLineX, TempValue) then
+            TempStr := TempValue;
+        TempStr := TempStr + StrSubstNo(' ,%1, %2', CustTemp.City, CustTemp."Country/Region Code");
+        CustTemp.Address := CopyStr(TempStr, 1, MaxStrLen(CustTemp.Address));
+        If MaxStrLen(CustTemp.Address) < StrLen(TempStr) then
+            CustTemp."Address 2" := CopyStr(TempStr, MaxStrLen(CustTemp.Address) + 1, MaxStrLen(CustTemp."Address 2"));
+        if DGet(ContactPhoneX, TempValue) then
+            CustTemp."Phone No." := CopyStr(TempValue, 1, MaxStrLen(CustTemp."Phone No."));
+        if DGet(ContactEmailX, TempValue) then
+            CustTemp."E-Mail" := CopyStr(TempValue, 1, MaxStrLen(CustTemp."E-Mail"));
+        CustTemp."CRM GUID" := FetchedObject.Id;
+        CustTemp."Version Id" := FetchedObject."Version Id";
+    end;
+
+    [TryFunction]
+    local procedure ValidateContractData(var FetchedObject: Record "CRM Prefetched Object";
+        var AgrTemp: Record "Customer Agreement";
+        var CustomerLocations: Dictionary of [Integer /*ShareholderNo*/, List of [Text] /*index 1 - Contact Guid; index 2 - where to search*/])
+    var
+        I, C, ShareHolderNo : Integer;
+        TempValue, AgrType, AgrStatus : Text;
+        OK, ContactIsNotFound : Boolean;
+        UnitId, BuyerId, ContactId : Guid;
+        CrmB: Record "CRM Buyers";
+        CustNo, NavContactNo : Code[20];
+        LogStatusEnum: Enum "CRM Log Status";
+
+    begin
+        if not AgrTemp.IsTemporary then
+            Error(RecordMustBeTemporaryErr, AgrTemp.TableCaption());
+        AgrTemp.Reset();
+        AgrTemp.DeleteAll();
+
+        SetObjectDataPointer(FetchedObject.Id);
+        SetObjectDataElementPointer(1);
+
+        AgrTemp.Init;
+        DGet(ContractIdX, TempValue);
+        Evaluate(AgrTemp."CRM GUID", TempValue);
+        DGet(ContractNoX, TempValue);
+        AgrTemp.Description := CopyStr(TempValue, 1, MaxStrLen(AgrTemp.Description));
+        DGet(ContractTypeX, AgrType);
+        DGet(ContractStatusX, AgrStatus);
+        DGet(ContractCancelStatusX, TempValue);
+        AgrType := AgrType.ToUpper();
+        AgrStatus := AgrStatus.ToUpper();
+        if (AgrType in ['SALESCONTRACT', 'PRELIMINARYSALESCONTRACT'])
+            and (not (AgrStatus.StartsWith('SIGNED') or AgrStatus.StartsWith('REGISTERED')))
+        then
+            Error(ContractNotSignedErr, AgrType, AgrStatus);
+        if (AgrType in ['TRANSFEROFRIGHTS', 'TRANSFEROFRIGHTSINTERNALLY', 'INVESTMENTCONTRACT'])
+                and (not AgrStatus.StartsWith('REGISTERED'))
+        then
+            Error(ContractNotRegisteredErr, AgrType, AgrStatus);
+        AgrTemp."Agreement Type" := GetAgrType(AgrType);
+        AgrTemp.Status := GetAgrStatus(AgrStatus, TempValue);
+
+        DGet(ContractIsActiveX, TempValue);
+        if (TempValue.ToUpper() = 'FALSE') or (AgrTemp.Status = AgrTemp.Status::Cancelled) then
+            AgrTemp.Active := false
+        else
+            AgrTemp.Active := true;
+
+        DGet(ExtAgreementNoX, TempValue);
+        AgrTemp."External Agreement No." := CopyStr(TempValue, 1, MaxStrLen(AgrTemp."External Agreement No."));
+        //FullAgreementNo to-do
+        DGet(AgreementAmountX, TempValue);
+        OK := Evaluate(AgrTemp."Agreement Amount", TempValue, 9);
+        AgrTemp."Apartment Amount" := AgrTemp."Agreement Amount";
+        if DGet(FinishingInclX, TempValue) then
+            Ok := Evaluate(AgrTemp."Including Finishing Price", TempValue, 9);
+        DGet(ContractUnitIdX, TempValue);
+        Evaluate(UnitId, TempValue);
+
+        C := GetBuyerCount();
+        if (C = 0) and (AgrTemp."Agreement Type" <> AgrTemp."Agreement Type"::"Reserving Agreement") then
+            Error(ContractBuyersNotFoundErr);
+
+        if (C = 0) or (AgrTemp."Agreement Type" = AgrTemp."Agreement Type"::"Reserving Agreement") then begin
+            CrmB.SetRange("Unit Guid", UnitId);
+            CrmB.FindFirst();
+            AgrTemp."Object of Investing" := CrmB."Object of Investing";
+            if CrmB."Agreement Start" <> 0D then begin
+                AgrTemp."Agreement Date" := CrmB."Agreement Start";
+                AgrTemp."Starting Date" := CrmB."Agreement Start";
+                AgrTemp."Expire Date" := CrmB."Agreement End";
+            end;
+            CustNo := FindCustomer(1, CrmB."Reserving Contact Guid", CrmB."Buyer Guid", true, CustomerLocations);
+            if not CustomerLocations.ContainsKey(1) then
+                Error(ContractContactNotFound,
+                    CrmB."Reserving Contact Guid",
+                    CrmB."Unit Guid",
+                    Crmb."Buyer Guid")
+            else begin
+                if CustNo <> '' then
+                    NavContactNo := GetContactFromCustomer(CustNo)
+                else begin
+                    CustNo := '1';
+                    NavContactNo := CustNo;
+                end;
+                SetShareholderAttributes(AgrTemp, 1, CustNo, NavContactNo, CrmB."Ownership Percentage")
+            end;
+            if CrmB."Agreement Start" <> 0D then begin
+                AgrTemp."Agreement Date" := CrmB."Agreement Start";
+                AgrTemp."Starting Date" := CrmB."Agreement Start";
+                AgrTemp."Expire Date" := CrmB."Agreement End";
+            end;
+            AgrTemp.Insert();
+            exit;
+        end else begin
+            ShareHolderNo := 0;
+            for I := 2 to C + 1 do begin
+                SetObjectDataElementPointer(I);
+                DGet(ContractBuyerX, TempValue);
+                Evaluate(BuyerId, TempValue);
+                CrmB.Get(UnitId, BuyerId);
+                if CrmB."Buyer Is Active" then begin
+                    ShareHolderNo += 1;
+                    AgrTemp."Object of Investing" := CrmB."Object of Investing";
+                    if CrmB."Agreement Start" <> 0D then begin
+                        AgrTemp."Agreement Date" := CrmB."Agreement Start";
+                        AgrTemp."Starting Date" := CrmB."Agreement Start";
+                        AgrTemp."Expire Date" := CrmB."Agreement End";
+                    end;
+                    ContactId := CrmB."Contact Guid";
+                    CustNo := FindCustomer(ShareHolderNo, ContactId, BuyerId, false, CustomerLocations);
+                    if not CustomerLocations.ContainsKey(ShareHolderNo) then begin
+                        LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(ContractContactNotFound, ContactId, UnitId, BuyerId));
+                        ContactIsNotFound := true;
+                    end else begin
+                        if CustNo <> '' then
+                            NavContactNo := GetContactFromCustomer(CustNo)
+                        else begin
+                            CustNo := Format(ShareHolderNo);
+                            NavContactNo := CustNo;
+                        end;
+                        SetShareholderAttributes(AgrTemp, ShareHolderNo, CustNo, NavContactNo, CrmB."Ownership Percentage")
+                    end;
+                end;
+                if ShareHolderNo > 5 then
+                    break;
+            end;
+            if ContactIsNotFound then
+                Error(ContractNotCreatedErr);
+        end;
+
+        AgrTemp."CRM GUID" := FetchedObject.Id;
+        AgrTemp."Version Id" := FetchedObject."Version Id";
+    end;
+
+    [TryFunction]
+    local procedure ValidateContractData2(var FetchedObject: Record "CRM Prefetched Object"; var AgrTemp: Record "Customer Agreement")
+    var
+        Agr, Agr2 : Record "Customer Agreement";
+        AgrNo, CustomerNo : Code[20];
+    begin
+        Agr.SetRange("CRM GUID", FetchedObject.Id);
+        Agr.SetFilter("Agreement Type", '<>%1', Agr."Agreement Type"::Service);
+        if Agr.IsEmpty then
+            exit;
+        Agr.FindFirst();
+        if AgrTemp."Customer No." = Agr."Customer No." then
+            exit;
+
+        AgrNo := Agr."No.";
+        CustomerNo := Agr."Customer No.";
+        if Agr.Get(AgrTemp."Customer No.", AgrNo) then
+            Error(StrSubstNo(ContractAlreadyLinkedErr, CustomerNo, AgrTemp."Customer No."));
+
+    end;
+
+    [TryFunction]
+    local procedure ValidateUnitData(var FetchedObject: Record "CRM Prefetched Object"; var CrmBTemp: Record "CRM Buyers"; var ApartmentTemp: Record Apartments)
+    var
+        TempValue: Text;
+        TempDT: DateTime;
+        I, C : integer;
+        OK: Boolean;
+
+    begin
+        if not CrmBTemp.IsTemporary then
+            Error(RecordMustBeTemporaryErr, CrmBTemp.TableCaption());
+        CrmBTemp.Reset();
+        CrmBTemp.DeleteAll();
+
+        if not ApartmentTemp.IsTemporary then
+            Error(RecordMustBeTemporaryErr, ApartmentTemp.TableCaption());
+        ApartmentTemp.Reset();
+        ApartmentTemp.DeleteAll();
+
+        SetObjectDataPointer(FetchedObject.Id);
+        SetObjectDataElementPointer(1);
+
+        CrmBTemp.Init();
+        CrmBTemp."Unit Guid" := FetchedObject.Id;
+        CrmBTemp."Version Id" := FetchedObject."Version Id";
+        CrmBTemp."Project Id" := FetchedObject.ParentId;
+        if DGet(ReservingContactX, TempValue) then
+            Evaluate(CrmBTemp."Reserving Contact Guid", TempValue);
+        if DGet(InvestmentObjectX, TempValue) then begin
+            CrmBTemp."Object of Investing" := TempValue;
+            ApartmentTemp.Init();
+            ApartmentTemp."Object No." := CrmBTemp."Object of Investing";
+            if DGet(BlockNumberX, TempValue) then
+                ApartmentTemp.Description := TempValue.Trim();
+            if DGet(ApartmentNumberX, TempValue) then begin
+                if (ApartmentTemp.Description <> '') and (not ApartmentTemp.Description.EndsWith(' ')) then
+                    ApartmentTemp.Description += ' ';
+                ApartmentTemp.Description += TempValue.Trim();
+            end;
+            if DGet(ApartmentOriginTypeX, TempValue) then
+                ApartmentTemp."Origin Type" := CopyStr(Format(TempValue), 1, MaxStrLen(ApartmentTemp."Origin Type"));
+            if DGet(ApartmentUnitAreaM2X, TempValue) then
+                OK := Evaluate(ApartmentTemp."Total Area (Project)", TempValue, 9);
+            ApartmentTemp.Insert();
+        end;
+
+        C := GetBuyerCount();
+        if C = 0 then begin
+            CrmBTemp.Insert();
+            exit;
+        end;
+
+        for I := 2 to C + 1 do begin
+            SetObjectDataElementPointer(I);
+            DGet(UnitBuyerX, TempValue);
+            Evaluate(CrmBTemp."Buyer Guid", TempValue);
+            if DGet(UnitBuyerContactX, TempValue) then
+                Evaluate(CrmBTemp."Contact Guid", TempValue);
+            if DGet(UnitBuyerContractX, TempValue) then
+                Evaluate(CrmBTemp."Contract Guid", TempValue);
+            if DGet(UnitBuyerOwnershipPrcX, TempValue) then
+                Evaluate(CrmBTemp."Ownership Percentage", TempValue, 9)
+            Else
+                CrmBTemp."Ownership Percentage" := 100;
+            CrmBTemp."Buyer Is Active" := true;
+            if DGet(UnitBuyerIsActiveX, TempValue) then begin
+                if TempValue = 'false' then
+                    CrmBTemp."Buyer Is Active" := false;
+            end;
+            if CrmBTemp."Buyer Is Active" then begin
+                CrmBTemp."Expected Registration Period" := 0;
+                if DGet(ExpectedRegDateX, TempValue) then
+                    Evaluate(CrmBTemp."Expected Registration Period", TempValue, 9);
+                CrmBTemp."Agreement Start" := 0D;
+                if DGet(ActualDateX, TempValue) then begin
+                    if Evaluate(TempDT, TempValue, 9) then
+                        CrmBTemp."Agreement Start" := DT2Date(TempDT) - CrmBTemp."Expected Registration Period";
+                end;
+                CrmBTemp."Agreement End" := 0D;
+                if DGet(ExpectedDateX, TempValue) then begin
+                    if Evaluate(TempDT, TempValue, 9) then
+                        CrmBTemp."Agreement End" := DT2Date(TempDT);
+                end;
+            end;
+            CrmBTemp."Version Id" := FetchedObject."Version Id";
+            CrmBTemp.Insert();
+        end;
+    end;
+
+
+    local procedure WriteContactToDB(var FetchedObject: Record "CRM Prefetched Object";
+        CustTemp: Record Customer;
+        TargetCompanyName: Text[60];
+        WriteModeEnum: Enum "CRM Import Action") Result: Code[20]
+    var
+        Customer: Record Customer;
+        CrmSetup: Record "CRM Integration Setup";
+        UpdateContFromCust: Codeunit "CustCont-Update";
+        ContBusRelation: Record "Contact Business Relation";
+        LogStatusEnum: Enum "CRM Log Status";
+    begin
+
+        if TargetCompanyName = '' then
+            TargetCompanyName := CompanyName();
+
+        if (WriteModeEnum = WriteModeEnum::Create) and (TargetCompanyName <> CompanyName()) then
+            Error('DBG: WriteContactToDB - Try to insert Contact into Company outside the current!');
+
+        if TargetCompanyName <> CompanyName() then
+            Customer.ChangeCompany(TargetCompanyName);
+
+        Customer.Reset();
+        case WriteModeEnum of
+            WriteModeEnum::Create:
+                begin
+                    Customer.Init();
+                    Customer."No." := '';
+                    Customer.Insert(true);
+                end;
+            WriteModeEnum::Update:
+                begin
+                    Customer.SetRange("CRM GUID", FetchedObject.id);
+                    Customer.SetRange("Version Id");
+                    Customer.FindFirst();
+                end;
+            else
+                Error('DBG: WriteContactToDB - Writemode %1 is not allowed', WriteModeEnum);
+        end;
+        Result := Customer."No.";
+
+        Customer.Validate(Name, CustTemp.Name);
+        Customer.Validate("Name 2", CustTemp."Name 2");
+        Customer.Validate(City, CustTemp.City);
+        Customer.Validate("Country/Region Code", CustTemp."Country/Region Code");
+        Customer.Validate("Post Code", CustTemp."Post Code");
+        Customer.Validate(Address, CustTemp.Address);
+        Customer.Validate("Address 2", CustTemp."Address 2");
+        Customer.Validate("Phone No.", CustTemp."Phone No.");
+        Customer.Validate("E-Mail", CustTemp."E-Mail");
+        Customer."Version Id" := FetchedObject."Version Id";
+        if WriteModeEnum = WriteModeEnum::Create then begin
+            Customer."CRM GUID" := FetchedObject.Id;
+            Customer.Validate("Agreement Posting", Customer."Agreement Posting"::Mandatory);
+            CrmSetup.Get;
+            if Customer."Customer Posting Group" = '' then
+                Customer.Validate("Customer Posting Group", CrmSetup."Customer Posting Group");
+            if Customer."Gen. Bus. Posting Group" = '' then
+                Customer.Validate("Gen. Bus. Posting Group", CrmSetup."Gen. Bus. Posting Group");
+            if Customer."VAT Bus. Posting Group" = '' then
+                Customer.Validate("VAT Bus. Posting Group", CrmSetup."VAT Bus. Posting Group");
+            ContBusRelation.SETCURRENTKEY("Link to Table", "No.");
+            ContBusRelation.SetRange("Link to Table", ContBusRelation."Link to Table"::Customer);
+            ContBusRelation.SetRange("No.", Customer."No.");
+            IF NOT ContBusRelation.FindFirst() THEN BEGIN
+                UpdateContFromCust.InsertNewContact(Customer, FALSE);
+            END;
+        end;
+        Customer.Modify(true);
+
+        LogEvent(FetchedObject, TargetCompanyName, LogStatusEnum::Done, WriteModeEnum, StrSubstNo(ContactProcessedMsg, Customer."No."), '');
+    end;
+
+
+    local procedure WriteContractToDB(var FetchedObject: Record "CRM Prefetched Object";
+        var AgrTemp: Record "Customer Agreement";
+        CustomerLocations: Dictionary of [Integer /*ShareholderNo*/, List of [Text]];
+        WriteModeEnum: Enum "CRM Import Action") Result: Code[20]
+    var
+        ShareHolderNo: Integer;
+        Agr, Agr2 : Record "Customer Agreement";
+        CrmB: Record "CRM Buyers";
+        CLE: Record "Cust. Ledger Entry";
+        LogStatusEnum: Enum "CRM Log Status";
+        Msg, MsgMain : Text;
+        OldCustNo: Code[20];
+        BuyerId: Guid;
+        SearchParamList: List of [Text];
+    begin
+        case WriteModeEnum of
+            WriteModeEnum::Create:
+                begin
+                    Agr := AgrTemp;
+                    Agr."No." := '';
+                    Agr.Insert(true);
+                    UpdateAgreementPostingSettings(Agr);
+                    MsgMain := ContractCreatedMsg;
+                end;
+            WriteModeEnum::Update:
+                begin
+                    Agr.SetRange("CRM GUID", AgrTemp."CRM GUID");
+                    Agr.SetFilter("Agreement Type", '<>%1', Agr."Agreement Type"::Service);
+                    Agr.FindFirst();
+                    if Agr."Customer No." <> AgrTemp."Customer No." then begin
+                        OldCustNo := Agr."Customer No.";
+                        Agr.Rename(AgrTemp."Customer No.", Agr."No.");
+                        UpdateAgreementPostingSettings(Agr);
+                        Agr."Old Customer No." := OldCustNo;
+                        Agr."Contact 1" := GetContactFromCustomer(Agr."Customer No.");
+                        Agr.Modify(true);
+                        CLE.SetCurrentKey("Customer No.");
+                        Cle.SetRange("Customer No.", Agr."Customer No.");
+                        CLE.SetRange("Agreement No.", Agr."No.");
+                        CLE.ModifyAll("Customer No.", AgrTemp."Customer No.", false);
+                    end;
+
+                    MsgMain := ContractUpdatedMsg;
+                end;
+            else begin
+                    LogEvent(FetchedObject, LogStatusEnum::Error, ImportActionNotAllowedErr);
+                    exit;
+                end;
+        end;
+
+        Agr.Validate(Agr."Agreement Type", AgrTemp."Agreement Type");
+        Agr.Validate(Agr.Status, AgrTemp.Status);
+        Agr.Validate(Agr.Active, AgrTemp.Active);
+        Agr.Validate(Agr."Customer 2 No.", AgrTemp."Customer 2 No.");
+        Agr.Validate(Agr."Customer 3 No.", AgrTemp."Customer 3 No.");
+        Agr.Validate(Agr."Customer 4 No.", AgrTemp."Customer 4 No.");
+        Agr.Validate(Agr."Customer 5 No.", AgrTemp."Customer 5 No.");
+        Agr.Validate(Agr."Contact 1", AgrTemp."Contact 1");
+        Agr.Validate(Agr."Contact 2", AgrTemp."Contact 2");
+        Agr.Validate(Agr."Contact 3", AgrTemp."Contact 3");
+        Agr.Validate(Agr."Contact 4", AgrTemp."Contact 4");
+        Agr.Validate(Agr."Contact 5", AgrTemp."Contact 5");
+        Agr.Validate(Agr."External Agreement No.", AgrTemp."External Agreement No.");
+        //Agr.Validate(Agr."Full Agreement No.", AgrTemp."Full Agreement No.");
+        Agr.Validate(Agr."Share in property 3", AgrTemp."Share in property 3");
+        Agr.Validate(Agr."Amount part 1", AgrTemp."Amount part 1");
+        Agr.Validate(Agr."Amount part 2", AgrTemp."Amount part 2");
+        Agr.Validate(Agr."Amount part 3", AgrTemp."Amount part 3");
+        Agr.Validate(Agr."Amount part 4", AgrTemp."Amount part 4");
+        Agr.Validate(Agr."Amount part 5", AgrTemp."Amount part 5");
+        Agr."Object of Investing" := AgrTemp."Object of Investing";
+        Agr.Validate("Agreement Amount", AgrTemp."Agreement Amount");
+        Agr.Validate("Apartment Amount", AgrTemp."Apartment Amount");
+        Agr.Validate("Including Finishing Price", AgrTemp."Including Finishing Price");
+        Agr."Agreement Date" := AgrTemp."Agreement Date";
+        Agr."Starting Date" := AgrTemp."Starting Date";
+        Agr."Expire Date" := AgrTemp."Expire Date";
+        Agr."Version Id" := FetchedObject."Version Id";
+        Agr.Modify(true);
+
+        CreateServiceAgreement(FetchedObject, Agr, 2);
+        CreateServiceAgreement(FetchedObject, Agr, 3);
+        CreateServiceAgreement(FetchedObject, Agr, 4);
+        CreateServiceAgreement(FetchedObject, Agr, 5);
+
+        foreach ShareHolderNo in CustomerLocations.Keys() do begin
+            CustomerLocations.Get(ShareHolderNo, SearchParamList);
+            if SearchParamList.Contains(CustomerSearchReserveContact) then begin
+                CrmB.SetRange("Unit Guid", FetchedObject.ParentId);
+                Crmb.FindFirst();
+                CrmB."Reserving Contract Guid" := FetchedObject.Id;
+                CrmB.Modify(true);
+            end else begin
+                Evaluate(BuyerId, SearchParamList.Get(3));
+                CrmB.Get(FetchedObject.ParentId, BuyerId);
+                if CrmB."Contract Guid" <> FetchedObject.Id then begin
+                    CrmB."Contract Guid" := FetchedObject.Id;
+                    CrmB.Modify(true);
+                end;
+            end;
+        end;
+
+        LogEvent(FetchedObject, LogStatusEnum::Done,
+            StrSubstNo(MsgMain,
+                Agr."No.",
+                Agr.FieldCaption("Agreement Type"),
+                Agr."Agreement Type",
+                Agr.FieldCaption(Status),
+                Agr.Status));
+    end;
+
+
+    local procedure WriteUnitToDB(var FetchedObject: Record "CRM Prefetched Object"; var CrmBTemp: Record "CRM Buyers"; var ApartmentTemp: Record Apartments)
+    var
+        CrmB: Record "CRM Buyers";
+        Apartment: Record Apartments;
+        LogStatusEnum: Enum "CRM Log Status";
+        ImportAction: Enum "CRM Import Action";
+
+    begin
+        ApartmentTemp.Reset();
+        if ApartmentTemp.FindSet() then begin
+            repeat
+                Apartment := ApartmentTemp;
+                if Apartment.Insert(true) then begin
+                    LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(InvestmentObjectCreatedMsg, Apartment."Object No."));
+                end else begin
+                    Apartment.Modify(True);
+                    LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(InvestmentObjectUpdatedMsg, Apartment."Object No."));
+                end;
+            until ApartmentTemp.Next() = 0;
+        end;
+
+        CrmB.Reset();
+        CrmB.SetRange("Unit Guid", FetchedObject.Id);
+        CrmB.DeleteAll(true);
+
+        CrmBTemp.Reset();
+        if CrmBTemp.FindSet() then begin
+            repeat
+                CrmB := CrmBTemp;
+                CrmB.Insert(true);
+                case ImportAction of
+                    ImportAction::Create:
+                        LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(UnitCreatedMsg, CrmB."Unit Guid"));
+                    ImportAction::Update:
+                        LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(UnitUpdatedMsg, CrmB."Unit Guid"));
+                    else
+                        LogEvent(FetchedObject, LogStatusEnum::Error, 'Invalid import action');
+                end
+
+            until CrmBTemp.Next() = 0;
+        end;
+    end;
+
 
     [TryFunction]
     local procedure XmlNodeExists(XmlElem: XmlElement; XPath: Text)
