@@ -62,6 +62,16 @@ page 70257 "CRM Units and Buyers"
 
                 }
 
+                field("Agreement Start"; Rec."Agreement Start")
+                {
+                    ApplicationArea = All;
+                }
+
+                field("Agreement End"; Rec."Agreement End")
+                {
+                    ApplicationArea = All;
+                }
+
                 field("Project Id"; Rec."Project Id")
                 {
                     ApplicationArea = All;

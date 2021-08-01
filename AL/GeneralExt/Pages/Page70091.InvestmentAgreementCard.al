@@ -236,10 +236,11 @@ page 70091 "Investment Agreement Card"
                     ApplicationArea = All;
                 }
 
-                field("Investing Object Description"; lrApartments.Description)
+                field("Investing Object Description"; Apartments.Description)
                 {
                     ApplicationArea = All;
                     Caption = 'Description';
+                    Editable = false;
                 }
 
                 field("Apartment Amount IO"; Rec."Apartment Amount")
@@ -612,8 +613,6 @@ page 70091 "Investment Agreement Card"
     }
 
     trigger OnAfterGetRecord()
-    var
-        Apartments: Record Apartments;
     begin
         FinishingVisible := Finishing;
 
@@ -647,25 +646,13 @@ page 70091 "Investment Agreement Card"
 
 
     var
+        Apartments: Record Apartments;
         gcduERPC: Codeunit "ERPC Funtions";
-        lrApartments: record Apartments;
         ShareHolder2InfoVisible: Boolean;
         ShareHolder3InfoVisible: Boolean;
         ShareHolder4InfoVisible: Boolean;
         ShareHolder5InfoVisible: Boolean;
 
         FinishingVisible: Boolean;
-
-    procedure GetObjValue()
-    var
-        lrContact: record Contact;
-        lrVendor: record Vendor;
-    begin
-        CLEAR(lrApartments);
-        if "Object of Investing" <> '' then begin
-            lrApartments.GET("Object of Investing");
-        end;
-    end;
-
 
 }
