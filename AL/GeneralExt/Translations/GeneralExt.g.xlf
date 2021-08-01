@@ -4244,7 +4244,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractCreatedMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 2571148164" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Conract could not be created. Some of contacts are not created</source>
+          <source>Agreement could not be created. Some of contacts are not created</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotCreated2Err</note>
         </trans-unit>
