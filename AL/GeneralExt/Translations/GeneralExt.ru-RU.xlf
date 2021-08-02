@@ -12897,13 +12897,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control Run Notification Entry Dispatcher - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 3150094508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test Report</source>
-          <target>Тестовый отчет</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Test Report - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Shipment M-15</source>
           <target>Накладная на отпуск материалов на сторону М-15</target>
