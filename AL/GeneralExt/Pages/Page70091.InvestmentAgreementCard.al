@@ -243,6 +243,20 @@ page 70091 "Investment Agreement Card"
                     Editable = false;
                 }
 
+                field("Investing Origin Type"; Apartments."Origin Type")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Object type';
+                    Editable = false;
+                }
+
+                field("Investing Object Total Area"; Apartments."Total Area (Project)")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Total Area';
+                    Editable = false;
+                }
+
                 field("Apartment Amount IO"; Rec."Apartment Amount")
                 {
                     ApplicationArea = All;
