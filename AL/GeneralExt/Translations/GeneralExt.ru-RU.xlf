@@ -5043,11 +5043,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Code Monkey Translation - NamedType ErrText001</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2463777246 - NamedType 3311111878" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer Agrement record must be temporary</source>
-          <target>Договор клиента должна быть временной таблицей</target>
+        <trans-unit id="Codeunit 2463777246 - NamedType 4197778782" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All is up to date</source>
+          <target>Действий не требуется. Данные уже находятся в актуальном состоянии.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType AgrMustBeTemporaryErr</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType AllUpToDateMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 2221351987" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bad soap envelope format</source>
@@ -5067,11 +5067,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContactUnitNotFoundErr</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2463777246 - NamedType 2226781293" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer No. %1 is up to date</source>
-          <target>Клиент %1 находится уже в актуальном состоянии</target>
+        <trans-unit id="Codeunit 2463777246 - NamedType 1878002620" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Another Customer already has the same Agreement Crm Guid, Old Customer No.=%1, New Customer No.=%2</source>
+          <target>Договор с данным Id уже имеется у другого клиента %1, новый клиент %2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContactUpToDateMsg</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractAlreadyLinkedErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1118960650" size-unit="char" translate="yes" xml:space="preserve">
           <source>Buyers are not found</source>
@@ -5084,6 +5084,24 @@
           <target>Контакт %1 не найден, идентификатор родительского объекта (блок) %2, покупатель %3</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractContactNotFound</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 347140877" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Agreement %1 has been created, %2 = %3, %4 = %5</source>
+          <target>Создан договор клиента %1, %2 = %3, %4 = %5</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 2571148164" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement could not be created. Some of contacts are not created</source>
+          <target>Договор клиента не может быть создан. Один или несколько контактов не были созданы.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotCreated2Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 312159366" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement could not be created. Some of contacts are not found</source>
+          <target>Договор клиента не может быть создан. Один или несколько контактов не найдены</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractNotCreatedErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract is not registered, Type %1, Status %2</source>
@@ -5103,6 +5121,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractUnitNotFoundErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 2603215002" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Agreement %1 has been updated, %2 = %3, %4 = %5</source>
+          <target>Обновлен договор клиента %1, %2 = %3, %4 = %5 </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ContractUpdatedMsg</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1295264560" size-unit="char" translate="yes" xml:space="preserve">
           <source>Http request body is empty</source>
           <target>Веб-запрос не содержит тела</target>
@@ -5114,6 +5138,12 @@
           <target>Атрибут %1 не существует</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType FieldNameDoesNotExistErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 401186837" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import action %1 is not allowed</source>
+          <target>Недопустимый режим импорта данных %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ImportActionNotAllowedErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 2041483183" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment object %1 was created</source>
@@ -5163,23 +5193,29 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ProjectNotFoundErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 1863682477" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 record must be temporary</source>
+          <target>%1 должна быть временной</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType RecordMustBeTemporaryErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 4161158581" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The session was not started successfully</source>
+          <target>Ошибка в создании новой сессии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType StartSessionErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 2907044041" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit was created</source>
-          <target>Unit создан</target>
+          <source>Unit and Buyer %1 are created</source>
+          <target>Создана запись в Crm Buyers, Buyer = %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnitCreatedMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 3511750238" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit was updated</source>
-          <target>Unit (и его Buyer) обновлен </target>
+          <source>Unit and Buyer %1 was updated</source>
+          <target>Запись Crm Buyers (Buyer = %1) обновлена </target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnitUpdatedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2463777246 - NamedType 31502207" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit is up to date</source>
-          <target>Unit находится уже в актуальном состоянии. </target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnitUpToDateMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1870025204" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown type of Object %1</source>
@@ -12741,6 +12777,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control Preview - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 4253293261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Customer Agreement</source>
+          <target>Print Customer Agreement</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Print Customer Agreement - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1742529627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Latest Version</source>
           <target>Взбодрить кеш сервера</target>
@@ -13820,6 +13862,12 @@
           <target>Объект инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Customer Agreement (Ext) - Field Object of Investing - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2936356446 - Field 200650072 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2183199486">
+          <source>Old Customer No.</source>
+          <target>Код прежнего клиента</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Customer Agreement (Ext) - Field Old Customer No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2936356446 - Field 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2183199486">
           <source>Payment type</source>
@@ -15086,6 +15134,12 @@
           <target>Код обработчика CRM интеграции</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field CRM Worker Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2733905579 - Field 26189664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Inform Cust. Payment</source>
+          <target>Информ. клиента о получении платежа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Inform Cust. Payment - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2733905579 - Field 1307183859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Prepay. Inv. G/L Acc. No. (ac)</source>

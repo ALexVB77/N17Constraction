@@ -146,12 +146,12 @@ SELECT DISTINCT
 				[Check CF Forecast]
 			 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Dimension Value] AS DimensionValue
 			 WHERE DimensionValue.[Dimension Code] = QueryResult.[Dimension Code] collate Cyrillic_General_100_CI_AS 
-			 AND DimensionValue.[Code] = QueryResult.[New Dimension Value Code] collate Cyrillic_General_100_CI_AS), '') AS [Check CF Forecast],
+			 AND DimensionValue.[Code] = QueryResult.[Old Dimension Value Code] collate Cyrillic_General_100_CI_AS), '') AS [Check CF Forecast],
 	ISNULL ((SELECT 
 				[Cost Holder]
 			FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Dimension Value] AS DimensionValue
 			WHERE DimensionValue.[Dimension Code] = QueryResult.[Dimension Code] collate Cyrillic_General_100_CI_AS 
-			AND DimensionValue.[Code] = QueryResult.[New Dimension Value Code] collate Cyrillic_General_100_CI_AS), '') AS [Cost Holder],
+			AND DimensionValue.[Code] = QueryResult.[Old Dimension Value Code] collate Cyrillic_General_100_CI_AS), '') AS [Cost Holder],
 	ISNULL(BuildingTurn.[Building project Code], '') AS [Building project Code]
 	,ROW_NUMBER() OVER(PARTITION BY QueryResult.[New Dimension Value Code] ORDER BY ISNULL(BuildingTurn.[Building project Code], '') DESC) AS [ROW]
 FROM

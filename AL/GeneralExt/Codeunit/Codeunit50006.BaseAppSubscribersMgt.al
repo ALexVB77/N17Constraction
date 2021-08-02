@@ -423,6 +423,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ism.getBool('VatAllocation', VATEntry."VAT Allocation", true);
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnAfterInitVATAgentDtldVendLedgEntry', '', false, false)]
+    local procedure OnAfterInitVATAgentDtldVendLedgEntry(GenJnlLine: Record "Gen. Journal Line"; var VendLedgEntry: Record "Vendor Ledger Entry"; var DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
+    begin
+        DtldVendLedgEntry."IW Document No." := VendLedgEntry."IW Document No.";
+    end;
 
     // cu 12 <<
 
@@ -739,6 +744,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
             DirectTransLine."Gen. Bus. Posting Group" := TransHeader."Gen. Bus. Posting Group";
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnAfterCreateItemJnlLine', '', false, false)]
+    local procedure OnAfterCreateItemJnlLineDirectTransfer(var ItemJnlLine: Record "Item Journal Line"; TransLine: Record "Transfer Line"; DirectTransHeader: Record "Direct Transfer Header"; DirectTransLine: Record "Direct Transfer Line");
+    begin
+        ItemJnlLine."Gen. Bus. Posting Group" := DirectTransHeader."Gen. Bus. Posting Group";
+    end;
+
     // NC 51411 < EP
 
     // cu 12469 <<
@@ -1014,8 +1025,18 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
     // Report 595 Adjust Exchange Rates
 
-    //\\[EventSubscriber(ObjectType::Report, Report::"Adjust Exchange Rates", 'OnAfterInitDtldCustLedgerEntry2', '', false, false)]
+    [EventSubscriber(ObjectType::Report, Report::"Adjust Exchange Rates", 'OnAfterInitDtldVendLedgerEntry2', '', false, false)]
+    local procedure OnAfterInitDtldVendLedgerEntry2(VendLedgEntry: Record "Vendor Ledger Entry"; var DetailedVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
+    begin
+        DetailedVendLedgEntry."IW Document No." := VendLedgEntry."IW Document No.";
+    end;
 
+    // Report 12453 Return Prepayment
+    [EventSubscriber(ObjectType::Report, Report::"Return Prepayment", 'OnAfterFillVendCVLedgEntryBuf', '', false, false)]
+    local procedure OnReturnPrepAfterFillVendCVLedgEntryBuf(VendLedgEntry: Record "Vendor Ledger Entry"; var CVLedgEntryBuf: Record "CV Ledger Entry Buffer")
+    begin
+        CVLedgEntryBuf."IW Document No." := VendLedgEntry."IW Document No.";
+    end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]
     local procedure SendVendorAgreementMail(var PurchaseHeader: Record "Purchase Header")
