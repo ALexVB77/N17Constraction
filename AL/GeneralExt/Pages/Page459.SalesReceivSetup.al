@@ -35,6 +35,10 @@ pageextension 80459 "Sales & Receiv. Setup (Ext)" extends "Sales & Receivables S
             {
                 ApplicationArea = Basic, Suite;
             }
+            field("Inform Cust. Payment"; Rec."Inform Cust. Payment")
+            {
+                ApplicationArea = Basic, Suite;
+            }
         }
     }
 

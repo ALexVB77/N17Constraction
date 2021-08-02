@@ -22,4 +22,12 @@ report 70060 "Print Customer Agreement"
 
     var
         myInt: Integer;
+
+
+    procedure SendEMail(_CustEMail: Text[80]; _PostDate: Date; _PaidAmt: Decimal; _PaidDate: Date);
+    var
+        myInt: Integer;
+    begin
+
+    end;
 }
