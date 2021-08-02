@@ -12901,7 +12901,6 @@
           <source>Test Report</source>
           <target>Тестовый отчет</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Test Report - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -13011,6 +13010,20 @@
           <target>Использовать RedFlags в договорах</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Company Information (Ext) - Control Use RedFlags in Agreements - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3067811226 - Action 1225782422 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3702551738">
+          <source>Add a file as an attachment. You can attach images as well as documents.</source>
+          <target>Добавление файла как вложения. Можно добавить изображения и документы.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Agreement Card (Ext) - Action Attachments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3067811226 - Action 1225782422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3702551738">
+          <source>Attachments</source>
+          <target>Вложения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Agreement Card (Ext) - Action Attachments - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1740848379 - Action 2292011166 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3557129067">
           <source>Open customer card</source>
