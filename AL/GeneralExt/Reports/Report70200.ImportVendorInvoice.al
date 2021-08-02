@@ -30,6 +30,12 @@ report 70200 "Import Vendor Invoice"
                     {
                         ApplicationArea = All;
                         Caption = 'Vendor No.';
+                        TableRelation = Vendor;
+
+                        trigger OnValidate()
+                        begin
+                            LoadParams(GVendNo);
+                        end;
                     }
                     field(DocNoCell; DocNoCell)
                     {
@@ -118,6 +124,7 @@ report 70200 "Import Vendor Invoice"
             error(ClientTypeErr);
 
         SaveParams(GVendNo);
+
         ExcelBuf.RESET;
         ExcelBuf.DELETEALL;
 
