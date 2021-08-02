@@ -1,6 +1,6 @@
 report 50040 "Cover Sheet"
 {
-    RDLCLayout = './Reports/Layouts/CoverSheet.rdl';
+    RDLCLayout = './Reports/Layouts/CoverSheet.rdlc';
     Caption = 'Cover Sheet';
     DefaultLayout = RDLC;
     EnableHyperlinks = true;
