@@ -292,10 +292,9 @@ page 70000 "Purchase Order App"
             group("Payment Request")
             {
                 Caption = 'Payment Request';
-                field("Vendor Bank Account"; Rec."Vendor Bank Account")
+                field("Vendor Bank Account No."; rec."Vendor Bank Account No.")
                 {
                     ApplicationArea = All;
-                    ShowMandatory = true;
                 }
                 field("Vendor Bank Account Name"; GetVendorBankAccountName)
                 {
@@ -303,9 +302,12 @@ page 70000 "Purchase Order App"
                     Editable = false;
                     Caption = 'Vendor Bank Account Name';
                 }
-                field("Vendor Bank Account No."; rec."Vendor Bank Account No.")
+                field("Vendor Bank Account"; Rec."Vendor Bank Account")
                 {
                     ApplicationArea = All;
+                    Caption = 'Vendor Bank BIC';
+                    Lookup = false;
+                    ShowMandatory = true;
                 }
                 field("Payment Details"; rec."Payment Details")
                 {
