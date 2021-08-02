@@ -1,11 +1,11 @@
 report 50040 "Cover Sheet"
 {
     Caption = 'Cover Sheet';
-    DefaultLayout = RDLC;
+    DefaultLayout = Word;
     //EnableHyperlinks = true;
-    //PreviewMode = PrintLayout;
-    RDLCLayout = './Reports/Layouts/CoverSheet.rdl';
-    //WordMergeDataItem = Header;
+    PreviewMode = PrintLayout;
+    WordLayout = './Reports/Layouts/CoverSheet.docx';
+    WordMergeDataItem = Header;
 
     dataset
     {
