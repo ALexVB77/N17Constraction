@@ -6953,6 +6953,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Object Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3861133141 - Control 1501975749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Area</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Object Total Area - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861133141 - Control 3893737929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Object type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Origin Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3861133141 - Control 3484326744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shareholders details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10842,6 +10852,11 @@
           <source>Use RedFlags in Agreements</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Company Information (Ext) - Control Use RedFlags in Agreements - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2170019272 - Control 1228599924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Passport Data</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Contact Card (Ext) - Control PassportData - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3067811226 - Action 1225782422 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3702551738">
           <source>Add a file as an attachment. You can attach images as well as documents.</source>
