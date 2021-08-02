@@ -34,6 +34,7 @@ report 70200 "Import Vendor Invoice"
 
                         trigger OnValidate()
                         begin
+                            SaveParams(GVendNo);
                             LoadParams(GVendNo);
                         end;
                     }
