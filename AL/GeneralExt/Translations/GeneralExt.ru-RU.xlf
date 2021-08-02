@@ -9903,6 +9903,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Control Payment Request - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3790301120 - Control 4231435149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Bank BIC</source>
+          <target>БИК банка поставщика</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Control Vendor Bank Account - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3790301120 - Control 2344504216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Bank Account Name</source>
           <target>Название банка поставщика</target>
@@ -12897,12 +12904,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control Run Notification Entry Dispatcher - Property Caption</note>
         </trans-unit>
+<<<<<<< HEAD
         <trans-unit id="Report 3150094508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Test Report</source>
           <target>Тестовый отчет</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Test Report - Property Caption</note>
         </trans-unit>
+=======
+>>>>>>> af8e72ef5bb642b2976e0e4409c89e8c6dfcdaac
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Shipment M-15</source>
           <target>Накладная на отпуск материалов на сторону М-15</target>

@@ -156,6 +156,7 @@ codeunit 50010 "Payment Order Management"
     begin
 
         GetPurchSetupWithTestDim;
+        GetInventorySetup();
         PurchSetup.TestField("Base Vendor No.");
 
         grUS.GET(USERID);

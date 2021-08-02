@@ -4,7 +4,7 @@ report 50040 "Cover Sheet"
     DefaultLayout = RDLC;
     //EnableHyperlinks = true;
     //PreviewMode = PrintLayout;
-    RDLCLayout = './Reports/Layouts/CoverSheet.rdlc';
+    RDLCLayout = './Reports/Layouts/CoverSheet.rdl';
     //WordMergeDataItem = Header;
 
     dataset

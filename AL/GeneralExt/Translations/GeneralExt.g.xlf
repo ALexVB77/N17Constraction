@@ -8253,6 +8253,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Control Payment Request - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3790301120 - Control 4231435149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Bank BIC</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Control Vendor Bank Account - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3790301120 - Control 2344504216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Bank Account Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10747,11 +10752,6 @@
           <source>Run Notification Entry Dispatcher</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control Run Notification Entry Dispatcher - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 3150094508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test Report</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Test Report - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Shipment M-15</source>
