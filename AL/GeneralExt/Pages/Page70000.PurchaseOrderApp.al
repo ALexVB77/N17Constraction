@@ -295,6 +295,7 @@ page 70000 "Purchase Order App"
                 field("Vendor Bank Account No."; rec."Vendor Bank Account No.")
                 {
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
                 field("Vendor Bank Account Name"; GetVendorBankAccountName)
                 {
@@ -306,8 +307,8 @@ page 70000 "Purchase Order App"
                 {
                     ApplicationArea = All;
                     Caption = 'Vendor Bank BIC';
+                    Editable = false;
                     Lookup = false;
-                    ShowMandatory = true;
                 }
                 field("Payment Details"; rec."Payment Details")
                 {
