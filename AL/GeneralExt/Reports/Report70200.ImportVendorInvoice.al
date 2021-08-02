@@ -104,6 +104,7 @@ report 70200 "Import Vendor Invoice"
         var
             FileMgt: Codeunit "File Management";
         begin
+            SaveParams(GVendNo);
             if CloseAction = ACTION::OK then begin
                 SheetName := ExcelBuf.SelectSheetsName(ServerFileName);
                 if SheetName = '' then
@@ -123,7 +124,8 @@ report 70200 "Import Vendor Invoice"
         if not (ClientTypeMgt.GetCurrentClientType in [CLIENTTYPE::Web, CLIENTTYPE::Tablet, CLIENTTYPE::Phone, CLIENTTYPE::Desktop]) then
             error(ClientTypeErr);
 
-        SaveParams(GVendNo);
+        // NC AB: move to OnCloseParamPage
+        // SaveParams(GVendNo);
 
         ExcelBuf.RESET;
         ExcelBuf.DELETEALL;
