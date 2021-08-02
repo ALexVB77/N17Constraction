@@ -6973,6 +6973,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control ShareholdersDetails - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3861133141 - Control 2513679400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control RemainingAmtLCYReq - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3861133141 - Control 2206675907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shareholder 2 details</source>
           <note from="Developer" annotates="general" priority="2"></note>
