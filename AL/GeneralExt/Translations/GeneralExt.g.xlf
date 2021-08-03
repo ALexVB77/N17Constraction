@@ -12683,6 +12683,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales Cr.Memo Header (Ext) - Field Credit-Memo Reason - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4146592153 - Field 2993483370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Credit-Memo Reason</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales Header (Ext) - Field Credit-Memo Reason - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4146592153 - Field 3976972112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Gift</source>
           <note from="Developer" annotates="general" priority="2"></note>
