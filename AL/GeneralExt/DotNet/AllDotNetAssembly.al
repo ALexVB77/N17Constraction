@@ -7,4 +7,9 @@ dotnet
         type(ZXing.BarcodeFormat; ZXingBarcodeFormat) { }
         type(ZXing.BarcodeWriter; ZXingBarcodeWriter) { }
     }
+    assembly(System.Drawing)
+    {
+        type(System.Drawing.Bitmap; BitmapExt) { }
+        type(System.Drawing.Imaging.ImageFormat; ImageFormatExt) { }
+    }
 }
