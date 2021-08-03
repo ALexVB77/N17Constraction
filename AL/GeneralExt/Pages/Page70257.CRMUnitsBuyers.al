@@ -1,6 +1,6 @@
 page 70257 "CRM Units and Buyers"
 {
-    Editable = false;
+    //Editable = false;
     SourceTable = "CRM Buyers";
     PageType = List;
     ApplicationArea = All;

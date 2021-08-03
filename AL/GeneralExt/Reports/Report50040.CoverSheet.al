@@ -148,7 +148,8 @@ report 50040 "Cover Sheet"
                 DocDateText := Format("Document Date");
 
                 BarcodeNumber := Barcode.CreateBarcode(COPYSTR("No.", 4, 6));
-                BarcodePrint := Barcode.Ean13(BarcodeNumber);
+                //BarcodePrint := Barcode.Ean13(BarcodeNumber);
+                CreateBarcode();
             end;
         }
     }
@@ -173,4 +174,12 @@ report 50040 "Cover Sheet"
         Text001: Label 'Сопроводительный лист к акту.';
         Text002: Label 'Сопроводительный лист к КС-2.';
         ProblemDocText: Label 'Этот акт имеет статус проблемный!';
+
+    local procedure CreateBarcode()
+    var
+    //EncodingOption: DotNet 
+    begin
+
+    end;
+
 }
