@@ -189,8 +189,8 @@ report 50040 "Cover Sheet"
         OutStr: OutStream;
     begin
         EncodingOption := EncodingOption.EncodingOptions();
-        EncodingOption.Height := 80;
-        EncodingOption.Width := 300;
+        EncodingOption.Height := 90;
+        EncodingOption.Width := 400;
 
         BarcodeWriter := BarcodeWriter.BarcodeWriter();
         BarcodeWriter.Format := BarcodeFormat.EAN_13;
