@@ -8103,6 +8103,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Cover Sheet - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3437592965 - Action 3584557798 - Method 1377591017 - NamedType 1758949055" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The cover sheet can only be printed from the Signing status.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Cover Sheet - Method OnAction - NamedType Text50005</note>
+        </trans-unit>
         <trans-unit id="Page 3437592965 - Action 1332593150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Release</source>
           <note from="Developer" annotates="general" priority="2"></note>

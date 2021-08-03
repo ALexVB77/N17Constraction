@@ -761,7 +761,13 @@ page 70260 "Purchase Order Act"
                     var
                         PurchaseHeader: Record "Purchase Header";
                         CoverSheet: report "Cover Sheet";
+                        Text50005: Label 'The cover sheet can only be printed from the Signing status.';
                     begin
+                        if "Status App Act".AsInteger() < "Status App Act"::Signing.AsInteger() then begin
+                            Message(Text50005);
+                            exit;
+                        end;
+
                         PurchaseHeader := Rec;
                         CurrPage.SetSelectionFilter(PurchaseHeader);
                         CoverSheet.SetTableView(PurchaseHeader);
