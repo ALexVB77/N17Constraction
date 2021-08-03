@@ -1,4 +1,4 @@
-pageextension 80134 MyExtension extends "Posted Sales Credit Memo"
+pageextension 80134 "Posted Sales Credit Memo (Ext)" extends "Posted Sales Credit Memo"
 {
     layout
     {
