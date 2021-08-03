@@ -1666,6 +1666,8 @@ codeunit 99932 "CRM Worker"
         TempDT: DateTime;
         I, C : integer;
         OK: Boolean;
+        ExpectedRegPeriod: Integer;
+        AgrStartDate, AgrEndDate : Date;
 
     begin
         if not CrmBTemp.IsTemporary then
@@ -1711,6 +1713,20 @@ codeunit 99932 "CRM Worker"
             exit;
         end;
 
+        ExpectedRegPeriod := 0;
+        if DGet(ExpectedRegDateX, TempValue) then
+            Evaluate(ExpectedRegPeriod, TempValue, 9);
+        AgrStartDate := 0D;
+        if DGet(ActualDateX, TempValue) then begin
+            if Evaluate(TempDT, TempValue, 9) then
+                AgrStartDate := DT2Date(TempDT) - ExpectedRegPeriod;
+        end;
+        AgrEndDate := 0D;
+        if DGet(ExpectedDateX, TempValue) then begin
+            if Evaluate(TempDT, TempValue, 9) then
+                AgrEndDate := DT2Date(TempDT);
+        end;
+
         for I := 2 to C + 1 do begin
             SetObjectDataElementPointer(I);
             DGet(UnitBuyerX, TempValue);
@@ -1725,23 +1741,13 @@ codeunit 99932 "CRM Worker"
                 CrmBTemp."Ownership Percentage" := 100;
             CrmBTemp."Buyer Is Active" := true;
             if DGet(UnitBuyerIsActiveX, TempValue) then begin
-                if TempValue = 'false' then
+                if TempValue.ToUpper() = 'FALSE' then
                     CrmBTemp."Buyer Is Active" := false;
             end;
             if CrmBTemp."Buyer Is Active" then begin
-                CrmBTemp."Expected Registration Period" := 0;
-                if DGet(ExpectedRegDateX, TempValue) then
-                    Evaluate(CrmBTemp."Expected Registration Period", TempValue, 9);
-                CrmBTemp."Agreement Start" := 0D;
-                if DGet(ActualDateX, TempValue) then begin
-                    if Evaluate(TempDT, TempValue, 9) then
-                        CrmBTemp."Agreement Start" := DT2Date(TempDT) - CrmBTemp."Expected Registration Period";
-                end;
-                CrmBTemp."Agreement End" := 0D;
-                if DGet(ExpectedDateX, TempValue) then begin
-                    if Evaluate(TempDT, TempValue, 9) then
-                        CrmBTemp."Agreement End" := DT2Date(TempDT);
-                end;
+                CrmBTemp."Expected Registration Period" := ExpectedRegPeriod;
+                CrmBTemp."Agreement Start" := AgrStartDate;
+                CrmBTemp."Agreement End" := AgrEndDate;
             end;
             CrmBTemp."Version Id" := FetchedObject."Version Id";
             CrmBTemp.Insert();
@@ -1966,9 +1972,9 @@ codeunit 99932 "CRM Worker"
                 CrmB.Insert(true);
                 case ImportActionEnum of
                     ImportActionEnum::Create:
-                        LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(UnitCreatedMsg, CrmB."Unit Guid"));
+                        LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(UnitCreatedMsg, CrmB."Buyer Guid"));
                     ImportActionEnum::Update:
-                        LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(UnitUpdatedMsg, CrmB."Unit Guid"));
+                        LogEvent(FetchedObject, LogStatusEnum::Done, StrSubstNo(UnitUpdatedMsg, CrmB."Buyer Guid"));
                     else
                         LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(ImportActionNotAllowedErr, ImportActionEnum));
                 end

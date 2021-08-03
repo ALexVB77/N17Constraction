@@ -10,8 +10,10 @@ page 70077 "Apartment Card"
     {
         area(Content)
         {
-            group(GroupName)
+            group(General)
             {
+                Caption = 'General';
+
                 field("Object No."; Rec."Object No.")
                 {
                     ApplicationArea = All;
