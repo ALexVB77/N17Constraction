@@ -4873,6 +4873,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apartment Card - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 265825876 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apartment Card - Control General - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 938572801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment objects</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6953,10 +6958,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Object Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3861133141 - Control 1501975749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Area</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Object Total Area - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861133141 - Control 3893737929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Object type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Origin Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3861133141 - Control 3484326744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shareholders details</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control ShareholdersDetails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861133141 - Control 2513679400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control RemainingAmtLCYReq - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Control 2206675907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shareholder 2 details</source>
@@ -8252,6 +8272,11 @@
           <source>Payment Request</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Control Payment Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3790301120 - Control 4231435149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Bank BIC</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Control Vendor Bank Account - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3790301120 - Control 2344504216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Bank Account Name</source>
@@ -10837,6 +10862,21 @@
           <source>Use RedFlags in Agreements</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Company Information (Ext) - Control Use RedFlags in Agreements - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2170019272 - Control 1228599924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Passport Data</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Contact Card (Ext) - Control PassportData - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3067811226 - Action 1225782422 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3702551738">
+          <source>Add a file as an attachment. You can attach images as well as documents.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Agreement Card (Ext) - Action Attachments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3067811226 - Action 1225782422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3702551738">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Agreement Card (Ext) - Action Attachments - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1740848379 - Action 2292011166 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3557129067">
           <source>Open customer card</source>

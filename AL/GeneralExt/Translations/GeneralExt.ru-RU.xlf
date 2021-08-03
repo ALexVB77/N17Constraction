@@ -5847,6 +5847,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apartment Card - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 265825876 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target>Общее</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apartment Card - Control General - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 938572801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment objects</source>
           <target>Объекты инвестирования</target>
@@ -8343,11 +8349,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Object Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3861133141 - Control 1501975749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Area</source>
+          <target>Общая площадь</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Object Total Area - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861133141 - Control 3893737929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Object type</source>
+          <target>Тип объекта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Origin Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3861133141 - Control 3484326744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shareholders details</source>
           <target>Реквизиты</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control ShareholdersDetails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861133141 - Control 2513679400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <target>Остаток</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control RemainingAmtLCYReq - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Control 2206675907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shareholder 2 details</source>
@@ -9902,6 +9927,12 @@
           <target>Заявка на платеж</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Control Payment Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3790301120 - Control 4231435149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Bank BIC</source>
+          <target>БИК банка поставщика</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Control Vendor Bank Account - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3790301120 - Control 2344504216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Bank Account Name</source>
@@ -13004,6 +13035,24 @@
           <target>Использовать RedFlags в договорах</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Company Information (Ext) - Control Use RedFlags in Agreements - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2170019272 - Control 1228599924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Passport Data</source>
+          <target>Паспортные данные</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Contact Card (Ext) - Control PassportData - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3067811226 - Action 1225782422 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3702551738">
+          <source>Add a file as an attachment. You can attach images as well as documents.</source>
+          <target>Добавление файла как вложения. Можно добавить изображения и документы.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Agreement Card (Ext) - Action Attachments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3067811226 - Action 1225782422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3702551738">
+          <source>Attachments</source>
+          <target>Вложения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Agreement Card (Ext) - Action Attachments - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1740848379 - Action 2292011166 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3557129067">
           <source>Open customer card</source>

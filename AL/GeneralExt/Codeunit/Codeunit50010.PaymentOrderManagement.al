@@ -156,6 +156,7 @@ codeunit 50010 "Payment Order Management"
     begin
 
         GetPurchSetupWithTestDim;
+        GetInventorySetup();
         PurchSetup.TestField("Base Vendor No.");
 
         grUS.GET(USERID);
@@ -1387,9 +1388,9 @@ codeunit 50010 "Payment Order Management"
         PurchHead.VALIDATE("Buy-from Vendor No.", VendExcelHdr."Vendor No.");
         PurchHead.VALIDATE("Document Date", VendExcelHdr."Posting Date");
 
-        // PurchHeaderAdd.AddStorekeeper(PurchHead."Document Type", PurchHead."No.");
-        if PurchHead."Location Document" then
-            PurchHead.VALIDATE("Location Code", StorekeeperLocation.GetDefaultLocation('', false));
+        PurchHead.Storekeeper := UserId;
+        PurchHead."Location Document" := true;
+        PurchHead.VALIDATE("Location Code", StorekeeperLocation.GetDefaultLocation('', false));
 
         PurchHead."Status App Act" := PurchHead."Status App Act"::Controller;
         PurchHead."Process User" := USERID;
