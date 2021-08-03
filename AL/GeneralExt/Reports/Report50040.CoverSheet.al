@@ -184,8 +184,8 @@ report 50040 "Cover Sheet"
         BarcodeWriter: DotNet ZXingBarcodeWriter;
         BarcodeFormat: DotNet ZXingBarcodeFormat;
         BitMatrix: DotNet ZXingCommonBitMatrix;
-        Bitmap: DotNet BitmapExt;
-        ImageFormat: DotNet ImageFormatExt;
+        Bitmap: DotNet Bitmap;
+        ImageFormat: DotNet ImageFormat;
         OutStr: OutStream;
     begin
         EncodingOption := EncodingOption.EncodingOptions();
