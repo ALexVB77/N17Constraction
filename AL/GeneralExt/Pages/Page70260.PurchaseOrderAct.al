@@ -64,6 +64,7 @@ page 70260 "Purchase Order Act"
                     Caption = 'Vendor No.';
                     Editable = not IsEmplPurchase;
                     Enabled = not IsEmplPurchase;
+                    HideValue = IsEmplPurchase;
                     Importance = Promoted;
                     ShowMandatory = not IsEmplPurchase;
 
@@ -78,6 +79,7 @@ page 70260 "Purchase Order Act"
                     Caption = 'Employee No.';
                     Editable = IsEmplPurchase;
                     Enabled = IsEmplPurchase;
+                    HideValue = not IsEmplPurchase;
                     Importance = Promoted;
                     LookupPageID = "Responsible Employees";
                     ShowMandatory = IsEmplPurchase;
