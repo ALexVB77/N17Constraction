@@ -61,7 +61,6 @@ page 70260 "Purchase Order Act"
                 field(VendorNo; "Buy-from Vendor No.")
                 {
                     ApplicationArea = Suite;
-                    Caption = 'Vendor No.';
                     Editable = not IsEmplPurchase;
                     Enabled = not IsEmplPurchase;
                     HideValue = IsEmplPurchase;
