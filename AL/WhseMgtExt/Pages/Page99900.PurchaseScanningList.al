@@ -3,8 +3,10 @@ page 99900 "Purchase Scanning List"
 
     Caption = 'Purchase Scanning List';
     PageType = List;
+    ApplicationArea = All;
     SourceTable = "Purchase Header";
     SourceTableView = WHERE(Status = FILTER(Released));
+    UsageCategory = Lists;
     layout
     {
         area(content)

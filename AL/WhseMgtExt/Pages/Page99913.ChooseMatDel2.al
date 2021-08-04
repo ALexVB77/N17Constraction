@@ -3,6 +3,8 @@ page 99913 ChooseMatDel2
 
     Caption = 'Issuance by prior request';
     PageType = Card;
+    UsageCategory = Lists;
+    ApplicationArea = All;
     layout
     {
         area(content)
