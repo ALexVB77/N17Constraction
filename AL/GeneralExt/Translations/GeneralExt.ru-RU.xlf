@@ -9469,7 +9469,6 @@
           <source>Order</source>
           <target>Заказ</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewOrder - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1370391159 - Action 3513648506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9482,7 +9481,6 @@
           <source>Request</source>
           <target>Заявка</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewRequest - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
@@ -9527,6 +9525,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control Approver - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3437592965 - Control 3230600482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor/Employee Name</source>
+          <target>Название поставщика/сотрудника</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control Buy-from Vendor Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3437592965 - Control 38210337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amounts</source>
           <target>Суммы</target>
@@ -9544,6 +9549,13 @@
           <target>Сумма остатка</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control Remaining Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3437592965 - Control 2526681557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <target>Код сотрудника</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control EmployeeNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Control 3724343034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Date</source>
@@ -9580,6 +9592,13 @@
           <target>Проверяющий</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control Purchaser Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3437592965 - Control 1607295407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <target>Поставщик Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control VendorNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Control 609835670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Warehouse Document</source>

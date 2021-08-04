@@ -20,6 +20,8 @@ page 70260 "Purchase Order Act"
                     ApplicationArea = All;
                     Importance = Standard;
                 }
+
+                /*
                 field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = All;
@@ -55,9 +57,41 @@ page 70260 "Purchase Order Act"
                         end;
                     end;
                 }
+                */
+                field(VendorNo; "Buy-from Vendor No.")
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Vendor No.';
+                    Editable = not IsEmplPurchase;
+                    Enabled = not IsEmplPurchase;
+                    Importance = Promoted;
+                    ShowMandatory = not IsEmplPurchase;
+
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update;
+                    end;
+                }
+                field(EmployeeNo; "Buy-from Vendor No.")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Employee No.';
+                    Editable = IsEmplPurchase;
+                    Enabled = IsEmplPurchase;
+                    Importance = Promoted;
+                    LookupPageID = "Responsible Employees";
+                    ShowMandatory = IsEmplPurchase;
+
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update;
+                    end;
+                }
+
                 field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = All;
+                    Caption = 'Vendor/Employee Name';
                 }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
@@ -804,6 +838,7 @@ page 70260 "Purchase Order Act"
         CopyDocumentEnabled := ("No." <> '') and ("Status App Act" = "Status App Act"::Controller);
 
         EstimatorMandatory := "Act Type" <> "Act Type"::Advance;
+        IsEmplPurchase := "Empl. Purchase";
 
         if "Act Type" = "Act Type"::Advance then
             PreApproverNo := Rec."Pre-Approver"
@@ -876,11 +911,11 @@ page 70260 "Purchase Order Act"
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
         ActTypeEditable, EstimatorEnable, AppButtonEnabled, AllApproverEditable, ReceiveAccountEditable, ShowDocEnabled, PreApproverEditable, CopyDocumentEnabled : Boolean;
-        EstimatorMandatory: Boolean;
-        LocationCodeShowMandatory: Boolean;
+        EstimatorMandatory, LocationCodeShowMandatory : Boolean;
         ApproveButtonEnabled, RejectButtonEnabled : boolean;
         StatusStyleTxt, ProblemDescription : Text;
         PreApproverNo: Code[50];
+        IsEmplPurchase: Boolean;
         CreateAppConfText: Label 'Do you want to create a payment invoice from Act %1?';
 
     local procedure SaveInvoiceDiscountAmount()
