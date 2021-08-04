@@ -252,10 +252,10 @@ page 99901 Scanning
         END;
     end;
 
-    procedure SetParam("Document No.": Code[250]; "EntryType": Option ,Posting,TransOrder,MatOrder,"Write-off",TransOrderNew,MatOrderNew,WrOffNew,Inventory)
+    procedure SetParam("Document No.": Code[250]; v_EntryType: Option ,Posting,TransOrder,MatOrder,"Write-off",TransOrderNew,MatOrderNew,WrOffNew,Inventory)
     begin
         g_DocumentNo := "Document No.";
-        g_EntryType := "Entry Type";
+        g_EntryType := v_EntryType;
     end;
 
     procedure SelectItem(): Boolean
