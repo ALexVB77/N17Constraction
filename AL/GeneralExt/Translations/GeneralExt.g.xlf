@@ -7888,15 +7888,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ResetProblemDoc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1370391159 - Action 540515815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>View</source>
+        <trans-unit id="Page 1370391159 - Action 1507736653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewDoc - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewOrder - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1370391159 - Action 3513648506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewProblemDoc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1370391159 - Action 1343343608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewRequest - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Act,Function,Request Approval,Approve,Release,Navigate,Print</source>
