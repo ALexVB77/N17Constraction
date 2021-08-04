@@ -3,6 +3,8 @@ page 99917 InventoryDataInsert
 
     Caption = 'Inventory of materials';
     PageType = Card;
+    UsageCategory = Lists;
+    ApplicationArea = All;
 
     layout
     {

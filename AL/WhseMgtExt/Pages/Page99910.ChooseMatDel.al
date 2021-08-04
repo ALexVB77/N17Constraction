@@ -3,6 +3,9 @@ page 99910 ChooseMatDel
 
     Caption = 'Selection of materials for the BC document';
     PageType = Card;
+    ApplicationArea = All;
+    UsageCategory = Lists;
+
     layout
     {
         area(content)
