@@ -34,7 +34,7 @@ page 99900 "Purchase Scanning List"
         DocFilter := CopyStr(DocFilter, 1, Len - 1);
         ScanHelper.PrepareScanningBuffer(DocFilter, 1);
         ScanningPage.SetParam(DocFilter, 1);
-        ScanningPage.RUN;
+        ScanningPage.RUNMODAL;
     end;
 
     var
