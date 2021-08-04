@@ -1,4 +1,4 @@
-codeunit 99900 "Isolated Storage Management GE"
+codeunit 50015 "Isolated Storage Management GE"
 
 /*
   Ахтунг: 
