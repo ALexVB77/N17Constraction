@@ -102,21 +102,18 @@ table 70075 "Project Version"
     }
 
     var
-        grPrjStr: Record "Projects Structure";
+        grPrjVer: Record "Project Version";
         grDevelopmentSetup: Record "Development Setup";
 
     trigger OnInsert()
     begin
         if "Version Code" = '' then begin
             "Version Code" := GetNextVersion;
-            grPrjStr.SetRange(Code, "Project Code");
-            grPrjStr.SetRange(Type, "Analysis Type");
-
-            if grPrjStr.Find('-') then begin
-                grPrjStr.LastVersion := grPrjStr.LastVersion + 1;
-                Int := grPrjStr.LastVersion;
-                grPrjStr.Modify();
-            end;
+            grPrjVer.SetCurrentKey(Int);
+            grPrjVer.SetRange("Project Code", "Project Code");
+            grPrjVer.SetRange("Analysis Type", "Analysis Type");
+            if grPrjVer.FindLast then
+                Int := grPrjVer.Int + 1;
         end;
 
         "Version Date" := Today;
@@ -124,12 +121,12 @@ table 70075 "Project Version"
 
     procedure GetNextVersion() Ret: Code[20]
     begin
-        grPrjStr.SETRANGE(Code, "Project Code");
-        grPrjStr.SETRANGE(Type, "Analysis Type");
-        if grPrjStr.FIND('-') then begin
+        grPrjVer.SETRANGE("Project Code", "Project Code");
+        grPrjVer.SETRANGE("Analysis Type", "Analysis Type");
+        if grPrjVer.FindLast() then begin
             grDevelopmentSetup.Get;
             grDevelopmentSetup.TestField("Pref Vesion Code");
-            Ret := grDevelopmentSetup."Pref Vesion Code" + Format(grPrjStr.LastVersion + 1);
+            Ret := grDevelopmentSetup."Pref Vesion Code" + Format(grPrjVer.Int + 1);
         end;
     end;
 }

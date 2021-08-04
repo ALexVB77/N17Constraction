@@ -406,7 +406,7 @@
         SetReservSource(SourceRecRef);
     end;
 
-    [Obsolete('Replaced by SetSource procedure.','16.0')]
+    [Obsolete('Replaced by SetSource procedure.', '16.0')]
     procedure SetItemDocLine(NewItemDocLine: Record "Item Document Line")
     begin
         SourceRecRef.GetTable(NewItemDocLine);
@@ -493,7 +493,7 @@
         CurrentJobPlanningLine.GetReservationQty(QtyReserved, QtyReservedBase, QtyToReserve, QtyToReserveBase);
     end;
 
-    [Obsolete('Replaced by ItemDocLine.GetReservationQty','16.0')]
+    [Obsolete('Replaced by ItemDocLine.GetReservationQty', '16.0')]
     procedure ItemDocLineUpdateValues(var CurrentItemDocLine: Record "Item Document Line"; var QtyToReserve: Decimal; var QtyToReserveBase: Decimal; var QtyReserved: Decimal; var QtyReservedBase: Decimal)
     begin
         CurrentItemDocLine.GetReservationQty(QtyReserved, QtyReservedBase, QtyToReserve, QtyToReserveBase, CurrentItemDocLine."Document Type");
@@ -1335,7 +1335,11 @@
         case ReservSummEntryNo of
             DATABASE::"Item Receipt Header":
                 ItemDocLine.FilterReceiptLinesForReservation(CalcReservEntry, GetAvailabilityFilter(AvailabilityDate), Positive);
-            DATABASE::"Item Shipment Header":
+            // NC GG >>
+            // ReservSummEntryNo принимает два значения 12450 или 12451, Item Shipment Header - это 12454
+            //DATABASE::"Item Shipment Header":
+            Database::"Item Document Header":
+                // NC GG <<
                 ItemDocLine.FilterShipmentLinesForReservation(CalcReservEntry, GetAvailabilityFilter(AvailabilityDate), Positive);
         end;
 

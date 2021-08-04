@@ -196,7 +196,7 @@ table 70094 "Vendor Agreement Details"
         }
         field(70012; "Project Code"; Code[20])
         {
-            TableRelation = "Building Project";
+            TableRelation = "Dimension Value".Code where("Dimension Code" = const('PROJECT'));
         }
         field(70015; "Project Line No."; Integer)
         {
@@ -281,10 +281,10 @@ table 70094 "Vendor Agreement Details"
         BuildingProject: Record "Building Project";
         SkipChekEmptyAmount: Boolean;
         TEXT0001: Label 'It is necessary to determine the construction object';
-        TEXT0002: Label 'No article% 2 found for construction object% 1';
+        TEXT0002: Label 'No article %2 found for construction object %1';
         FRAME: Label 'FRAME';
-        Text50000: Label 'For the project% 1 with the Production type, the fields Amount with VAT and Amount without VAT, etc. both are filled, or both are 0!';
-        Text50001: Label 'Amount with VAT and Amount without VAT must not be equal to 0 for CostPlace% 1!';
+        Text50000: Label 'For the project %1 with the Production type, the fields Amount with VAT and Amount without VAT, etc. both are filled, or both are 0!';
+        Text50001: Label 'Amount with VAT and Amount without VAT must not be equal to 0 for CostPlace %1!';
 
     trigger OnInsert()
     begin
@@ -439,20 +439,25 @@ table 70094 "Vendor Agreement Details"
         PL.SetRange("Shortcut Dimension 1 Code", "Global Dimension 1 Code");
         PL.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Code");
         PL.SETRANGE("Cost Type", "Cost Type");
-        PL.SETRANGE(Paid, FALSE);
+        // NC AB >>
+        // PL.SETRANGE(Paid, FALSE);
+        // NC AB <<
         PL.SETRANGE(IW, FALSE);
         if PL.FindSet() then
             repeat
                 if PH.GetStatusAppAct(PL."Document Type", PL."Document No.") in [PH."Status App Act"::Checker.AsInteger(),
                                                                                  PH."Status App Act"::Approve.AsInteger(),
                                                                                  PH."Status App Act"::Signing.AsInteger()] then
-                    if PH.Get(PL."Document Type", PL."Document No.") and not PH."Problem Document" then begin
-                        if Lookup then begin
-                            PLt := PL;
-                            PLt.Insert();
-                        end else
-                            Amt += gcduERPC.GetLinesDocumentsAmount(PL);
-                    end;
+                    // NC AB >>
+                    if not PH.GetPaymentInvPaidStatus() then
+                        // NC AB <<
+                        if PH.Get(PL."Document Type", PL."Document No.") and not PH."Problem Document" then begin
+                            if Lookup then begin
+                                PLt := PL;
+                                PLt.Insert();
+                            end else
+                                Amt += gcduERPC.GetLinesDocumentsAmount(PL);
+                        end;
             until PL.Next() = 0;
 
         if Lookup then

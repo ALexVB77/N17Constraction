@@ -148,9 +148,11 @@ page 9252 "MyDim Value Combinations"
         Row := _Row;
         ShowColumnName := _ShowColumnName;
         MatrixRecord.SetRange("Dimension Code", _Column);
+
+        OnLoadDimValCombPage(Row, _Column, ShowColumnName, MatrixRecord)//NC 51027 OA
     end;
 
-    local procedure MATRIX_GenerateColumnCaptions(SetWanted: Option Initial,Previous,Same,Next,PreviousColumn,NextColumn)
+    procedure MATRIX_GenerateColumnCaptions(SetWanted: Option Initial,Previous,Same,Next,PreviousColumn,NextColumn)
     var
         RecRef: RecordRef;
         CurrentMatrixRecordOrdinal: Integer;
@@ -173,7 +175,7 @@ page 9252 "MyDim Value Combinations"
         until (CurrentMatrixRecordOrdinal = ArrayLen(MatrixRecords)) or (MatrixRecord.Next <> 1);
     end;
 
-    local procedure UpdateMatrixSubform()
+    procedure UpdateMatrixSubform()
     begin
         CurrPage.MatrixForm.PAGE.SetSelectedDimValue(DimensionValueCombination."Dimension 1 Value Code");
         CurrPage.MatrixForm.PAGE.Load(MATRIX_CaptionSet, MatrixRecords, Row, MATRIX_CurrSetLength);
@@ -184,6 +186,11 @@ page 9252 "MyDim Value Combinations"
     begin
         MATRIX_GenerateColumnCaptions(MATRIX_SetWanted::Same);
         UpdateMatrixSubform;
+    end;
+
+    [IntegrationEvent(true, false)]
+    local procedure OnLoadDimValCombPage(var Row : Code[20]; var Col :Code[20]; var ShowCaption : Boolean; var DimRecord : Record "Dimension Value")
+    begin
     end;
 }
 

@@ -12,11 +12,18 @@ pageextension 84900 "Customer Agreements (Ext)" extends "Customer Agreements"
 
         addlast(Control1210002)
         {
+
+            field("Object of Investing"; Rec."Object of Investing")
+            {
+                ApplicationArea = All;
+            }
+
             field("CRM GUID"; Rec."CRM GUID")
             {
                 ApplicationArea = All;
             }
         }
+
     }
 
     actions
@@ -49,7 +56,4 @@ pageextension 84900 "Customer Agreements (Ext)" extends "Customer Agreements"
         }
 
     }
-
-    var
-        myInt: Integer;
 }

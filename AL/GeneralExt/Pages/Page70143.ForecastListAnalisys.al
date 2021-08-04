@@ -6,6 +6,7 @@ page 70143 "Forecast List Analisys"
     InsertAllowed = true;
     DeleteAllowed = false;
     SourceTable = "Projects Budget Entry";
+    SourceTableView = sorting(Date);
     DelayedInsert = true;
     PopulateAllFields = true;
     Caption = 'Transaction Register';
@@ -14,26 +15,25 @@ page 70143 "Forecast List Analisys"
     {
         area(Content)
         {
-            group(FiltersGr1)
+            group(FilterGr2)
             {
-                Caption = 'Project Filter';
+                Caption = 'Filters';
                 field(TemplateCode; TemplateCode)
                 {
                     ApplicationArea = All;
-                    Caption = 'Code';
+                    Caption = 'Project Code';
                     trigger OnLookup(var Text: text): boolean
+                    var
+                        lDimVal: Record "Dimension Value";
                     begin
-                        // //NC 27251 HR beg
-                        // ProjectStructure.RESET;
-                        // ProjectStructure.FILTERGROUP(2);
-                        // ProjectStructure.SETRANGE(Template, FALSE);
-                        // ProjectStructure.SETFILTER("Development/Production", gcduERPC.GetBldPrjTypeFilter);
-                        // ProjectStructure.FILTERGROUP(0);
-                        // IF PAGE.RUNMODAL(0, ProjectStructure) = ACTION::LookupOK THEN BEGIN
-                        //   TemplateCode := ProjectStructure.Code;
-                        //   ValidateProject;
-                        // END;
-                        // //NC 27251 HR end
+                        GLSetup.Get();
+                        GLSetup.TestField("Project Dimension Code");
+                        lDimVal.Reset();
+                        lDimVal.SetRange("Dimension Code", GLSetup."Project Dimension Code");
+                        if Page.RunModal(PAGE::"Dimension Values", lDimVal) = Action::LookupOK then begin
+                            TemplateCode := lDimVal.Code;
+                            ValidateProject();
+                        end;
                     end;
 
                     trigger OnValidate()
@@ -49,24 +49,21 @@ page 70143 "Forecast List Analisys"
                     ShowCaption = false;
 
                 }
-            }
-            group(FilterGr2)
-            {
-                Caption = 'Filters';
+
                 field(DateFilter1; DateFilter1)
                 {
                     ApplicationArea = All;
                     Caption = 'Date Filter';
-                    // trigger OnValidate()
-                    // var 
-                    //     ApplicationManagement: codeunit ApplicationManagement;
-                    // begin
-                    //     DateFilter1OnAfterValidate; //navnav;
-
-                    //     IF ApplicationManagement.MakeDateFilter(DateFilter1) = 0 THEN;
-                    //     GLAccBudgetBuf.SETFILTER("Date Filter",DateFilter1);
-                    //     DateFilter1 := GLAccBudgetBuf.GETFILTER("Date Filter");
-                    // end;
+                    trigger OnValidate()
+                    var
+                        FltHelpTrigs: codeunit "Filter Helper Triggers";
+                    begin
+                        FltHelpTrigs.MakeDateFilter(DateFilter1);
+                        GLAccBudgetBuf.SETFILTER("Date Filter", DateFilter1);
+                        DateFilter1 := GLAccBudgetBuf.GETFILTER("Date Filter");
+                        Rec.SetFilter(Date, DateFilter1);
+                        CurrPage.Update(false);
+                    end;
 
 
                 }
@@ -76,22 +73,23 @@ page 70143 "Forecast List Analisys"
                     ApplicationArea = All;
                     Caption = 'COST PLACE';
                     trigger OnLookup(var Text: text): boolean
+                    var
+                        lDimVal: Record "Dimension Value";
                     begin
-                        // gvBuildingTurn.SETRANGE("Building project Code", "Project Code");
-                        // IF gvBuildingTurn.FINDFIRST THEN BEGIN
-                        //     IF PAGE.RUNMODAL(PAGE::"Dev Building turn", gvBuildingTurn) = ACTION::LookupOK THEN BEGIN
-                        //         CostPlaceFlt := gvBuildingTurn.Code;
-                        //         SETFILTER("Building Turn", CostPlaceFlt);
-                        //         CurrPage.UPDATE;
-                        //         CurrPage.UPDATECONTROLS;
-                        //     END;
-                        // END;
+                        lDimVal.Reset();
+                        lDimVal.SetRange("Global Dimension No.", 1);
+                        lDimVal.SetFilter("Project Code", TemplateCode);
+                        if Page.RunModal(PAGE::"Dimension Values", lDimVal) = Action::LookupOK then begin
+                            CostPlaceFlt := lDimVal.Code;
+                            Rec.SetFilter("Shortcut Dimension 1 Code", CostPlaceFlt);
+                            CurrPage.Update(false);
+                        end;
                     end;
 
                     trigger OnValidate()
                     begin
-                        // CostPlaceFltOnAfterValidate; //navnav;
-
+                        Rec.SetFilter("Shortcut Dimension 1 Code", CostPlaceFlt);
+                        CurrPage.Update(false);
                     end;
 
 
@@ -102,36 +100,21 @@ page 70143 "Forecast List Analisys"
                     ApplicationArea = All;
                     Caption = 'COST CODE';
                     trigger OnValidate()
-                    var
-                        _PSL: record "Projects Structure Lines";
                     begin
-                        // CostCodeFltOnAfterValidate; //navnav;
-
-                        // //NC 37278 17-09-2019 HR beg
-                        // IF CostCodeFlt <> '' THEN BEGIN
-                        //     _PSL.SETRANGE("Project Code", "Project Code");
-                        //     _PSL.SETRANGE(Version, GetDefVersion1(TemplateCode));
-                        //     _PSL.SETRANGE("Structure Post Type", _PSL."Structure Post Type"::Posting);
-                        //     _PSL.SETFILTER(Code, CostCodeFlt);
-                        //     IF _PSL.ISEMPTY THEN
-                        //         ERROR('Статья бюджета %1 не существует', CostCodeFlt);
-                        // END;
-                        // //NC 37278 17-09-2019 HR end
+                        Rec.SetFilter("Shortcut Dimension 2 Code", CostCodeFlt);
+                        CurrPage.Update(false);
                     end;
 
                     trigger OnLookup(var Text: text): boolean
+                    var
+                        lDimVal: Record "Dimension Value";
                     begin
-                        grProjectsStructureLines1.SETRANGE("Project Code", "Project Code");
-                        grProjectsStructureLines1.SETRANGE(Version, GetDefVersion1(TemplateCode));
-                        grProjectsStructureLines1.SETRANGE("Structure Post Type", grProjectsStructureLines1."Structure Post Type"::Posting);
-                        IF grProjectsStructureLines1.FINDFIRST THEN BEGIN
-                            IF grProjectsStructureLines1.GET("Project Code", "Analysis Type", "Version Code", "Line No.") THEN;
-
-                            IF PAGE.RUNMODAL(PAGE::"Projects Article List", grProjectsStructureLines1) = ACTION::LookupOK THEN BEGIN
-                                CostCodeFlt := grProjectsStructureLines1.Code;
-                                SETFILTER("Shortcut Dimension 2 Code", CostCodeFlt);
-                                CurrPage.UPDATE;
-                            END;
+                        lDimVal.Reset();
+                        lDimVal.SetRange("Global Dimension No.", 2);
+                        IF PAGE.RUNMODAL(PAGE::"Dimension Values", lDimVal) = ACTION::LookupOK THEN BEGIN
+                            CostCodeFlt := lDimVal.Code;
+                            Rec.SETFILTER("Shortcut Dimension 2 Code", CostCodeFlt);
+                            CurrPage.UPDATE;
                         END;
                     end;
 
@@ -144,8 +127,7 @@ page 70143 "Forecast List Analisys"
                     Caption = 'Overdue';
                     trigger OnValidate()
                     begin
-                        // OverdueOnAfterValidate; //navnav;
-
+                        setOverdueFlt();
                     end;
 
 
@@ -157,8 +139,7 @@ page 70143 "Forecast List Analisys"
                     Caption = 'Overdue on Date';
                     trigger OnValidate()
                     begin
-                        // gDateOnAfterValidate; //navnav;
-
+                        setOverdueFlt();
                     end;
 
 
@@ -166,13 +147,11 @@ page 70143 "Forecast List Analisys"
 
                 field(HideZeroAmountLine; HideZeroAmountLine)
                 {
-                    ShowCaption = false;
                     ApplicationArea = All;
                     Caption = 'Don''t show zero amount lines';
                     trigger OnValidate()
                     begin
-                        // HideZeroAmountLineOnAfterValidate; //navnav;
-
+                        BuildView();
                     end;
 
 
@@ -199,7 +178,6 @@ page 70143 "Forecast List Analisys"
                 field(Close; Rec.Close)
                 {
                     Editable = false;
-                    ShowCaption = false;
                     ApplicationArea = All;
                     Caption = 'Actual Flag';
                     StyleExpr = LineStyletxt;
@@ -214,7 +192,7 @@ page 70143 "Forecast List Analisys"
 
                 field("Date"; Rec.Date)
                 {
-                    Editable = true;
+                    Editable = LineEditable;
                     NotBlank = true;
                     ApplicationArea = All;
                     Caption = 'Date';
@@ -234,24 +212,25 @@ page 70143 "Forecast List Analisys"
 
                 field("Project Code"; Rec."Project Code")
                 {
-                    Editable = false;
+                    Editable = ProjectEditable;
                     ApplicationArea = All;
                     Caption = 'Project Code';
                     StyleExpr = LineStyletxt;
                     ShowMandatory = true;
 
                 }
-                field("Cost Code"; Rec."Cost Code")
-                {
-                    Editable = false;
-                    ApplicationArea = All;
-                    StyleExpr = LineStyletxt;
+                // field("Cost Code"; Rec."Cost Code")
+                // {
+                //     Visible = false;
+                //     Editable = false;
+                //     ApplicationArea = All;
+                //     StyleExpr = LineStyletxt;
 
-                }
+                // }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
-                    Visible = false;
-                    Editable = false;
+                    Visible = CPEditable;
+                    Editable = LineEditable;
                     ApplicationArea = All;
                     StyleExpr = LineStyletxt;
                     ShowMandatory = true;
@@ -259,14 +238,14 @@ page 70143 "Forecast List Analisys"
                 }
                 field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
-                    Editable = false;
+                    Editable = LineEditable;
                     ApplicationArea = All;
                     StyleExpr = LineStyletxt;
 
                 }
                 field(Description; Rec.Description)
                 {
-                    Editable = true;
+                    Editable = LineEditable;
                     ApplicationArea = All;
                     Caption = 'Description';
                     StyleExpr = LineStyletxt;
@@ -293,22 +272,23 @@ page 70143 "Forecast List Analisys"
                 }
                 field("Description 2"; Rec."Description 2")
                 {
-                    Editable = true;
+                    Editable = LineEditable;
                     ApplicationArea = All;
                     Caption = 'Description 2';
                     StyleExpr = LineStyletxt;
 
                 }
-                field("Payment Description"; "Payment Description")
+                field("Payment Description"; Rec."Payment Description")
                 {
-                    Editable = true;
+                    Editable = LineEditable;
+                    Visible = false;
                     ApplicationArea = All;
                     StyleExpr = LineStyletxt;
                 }
                 field("Without VAT (LCY)"; Rec."Without VAT (LCY)")
                 {
                     Visible = true;
-                    Editable = false;
+                    Editable = LineEditable;
                     ApplicationArea = All;
                     StyleExpr = LineStyletxt;
                     ShowMandatory = true;
@@ -316,7 +296,7 @@ page 70143 "Forecast List Analisys"
                 }
                 field("Contragent No."; Rec."Contragent No.")
                 {
-                    Editable = true;
+                    Editable = LineEditable;
                     ApplicationArea = All;
                     Caption = 'Vendor No.';
                     StyleExpr = LineStyletxt;
@@ -333,6 +313,7 @@ page 70143 "Forecast List Analisys"
                         IF grVendor.FINDFIRST THEN BEGIN
                             IF grVendor.GET(Rec."Contragent No.") THEN;
                             IF PAGE.RUNMODAL(PAGE::"Vendor List", grVendor) = ACTION::LookupOK THEN BEGIN
+                                Rec."Contragent Type" := Rec."Contragent Type"::Vendor;
                                 Rec.VALIDATE("Contragent No.", grVendor."No.");
                             END;
                         END;
@@ -348,7 +329,7 @@ page 70143 "Forecast List Analisys"
                 }
                 field("Agreement No."; Rec."Agreement No.")
                 {
-                    Editable = true;
+                    Editable = LineEditable;
                     ApplicationArea = All;
                     Caption = 'Agreement No.';
                     StyleExpr = LineStyletxt;
@@ -475,12 +456,14 @@ page 70143 "Forecast List Analisys"
                 {
                     ApplicationArea = All;
                     StyleExpr = LineStyletxt;
+                    Editable = CreateUIDEditable;
 
                 }
                 field("Parent Entry"; Rec."Parent Entry")
                 {
                     ApplicationArea = All;
                     StyleExpr = LineStyletxt;
+                    Editable = false;
                 }
                 field("Close Date"; Rec."Close Date")
                 {
@@ -506,9 +489,13 @@ page 70143 "Forecast List Analisys"
                 var
                     CreateSTPrBEntPage: Page "Create ST Proj Budget Entries";
                 begin
+                    US.Get(UserId);
+                    if not (US."CF Allow Short Entries Edit") then
+                        Error(TEXT0015);
                     Clear(CreateSTPrBEntPage);
                     CreateSTPrBEntPage.SetProjBudEntry(Rec);
-                    CreateSTPrBEntPage.RunModal();
+                    if CreateSTPrBEntPage.RunModal() = action::LookupOK then;
+                    CurrPage.update(false);
                 end;
             }
             action(DeleteSTEntries)
@@ -520,7 +507,7 @@ page 70143 "Forecast List Analisys"
                     lPrBudEntry: Record "Projects Budget Entry";
                 begin
                     CurrPage.SetSelectionFilter(lPrBudEntry);
-                    DeleteSTLine(lPrBudEntry);
+                    PrjBudMgt.DeleteSTLine(lPrBudEntry);
                 end;
             }
             action(ShowRelatedEntries)
@@ -537,10 +524,69 @@ page 70143 "Forecast List Analisys"
             }
         }
     }
+    trigger OnOpenPage()
+    begin
+        //HideZeroAmountLine := true;
+        BuildView();
+        if gDate = 0D then
+            gDate := Today;
+        if US.Get(UserId) then
+            TemplateCode := US."Last Project Code";
+        ValidateProject();
+        setOverdueFlt();
+    end;
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    var
+        lDimVal: Record "Dimension Value";
+    begin
+        CheckAllowChanges();
+        GLSetup.Get;
+        if TemplateCode <> '' then
+            Rec."Project Code" := TemplateCode;
+        if CostPlaceFlt <> '' then begin
+            lDimVal.reset;
+            lDimVal.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
+            lDimVal.SetFilter(Code, CostPlaceFlt);
+            if lDimVal.FindFirst() then
+                Rec."Shortcut Dimension 1 Code" := lDimVal.Code;
+        end;
+        if CostCodeFlt <> '' then begin
+            lDimVal.reset;
+            lDimVal.SetRange("Dimension Code", GLSetup."Global Dimension 2 Code");
+            lDimVal.SetFilter(Code, CostCodeFlt);
+            if lDimVal.FindFirst() then
+                Rec."Shortcut Dimension 2 Code" := lDimVal.Code;
+        end;
+    end;
 
     trigger OnAfterGetRecord()
     begin
         GetLineStyle(Rec);
+        GetLineEditable(Rec);
+    end;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        CheckAllowChanges();
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+        CheckAllowChanges();
+    end;
+
+    trigger OnDeleteRecord(): Boolean
+    begin
+        CheckAllowChanges();
+    end;
+
+    trigger OnClosePage()
+    begin
+        if US.Get(UserId) then begin
+            US."Last Project Code" := TemplateCode;
+            if US.Modify() then;
+        end;
     end;
 
     var
@@ -616,8 +662,8 @@ page 70143 "Forecast List Analisys"
         grVendorAgreement: record "Vendor Agreement";
         OldAgreement: code[20];
         US: record "User Setup";
-        TEXT0012: Label 'Operation is bound to document IW \ Amount available for transfer to 1st level =% 1 \ Continue?';
-        TEXT0013: Label 'Operation is bound to document IW \ Amount available for transfer to 1st level=% 1 \ Transfer is not possible!';
+        TEXT0012: Label 'Operation is bound to document IW \ Amount available for transfer to 1st level = %1 \ Continue?';
+        TEXT0013: Label 'Operation is bound to document IW \ Amount available for transfer to 1st level= %1 \ Transfer is not possible!';
         TEXT0004: Label 'You must set the Project Code!';
         TEXT0005: Label 'You must set CC!';
         TEXT0006: Label 'The amount of the transaction must be determined!';
@@ -628,7 +674,46 @@ page 70143 "Forecast List Analisys"
         TEXT0010: Label 'Unlink payment from supplier and contract (move to level 1)?';
         TEXT0011: Label 'Operations cannot be deleted!';
         TEXT0014: Label 'You are not allowed to copy actual operations.';
+        TEXT0015: Label 'You do not have sufficient rights to perform the action!';
         HideZeroAmountLine: boolean;
+        PrjBudMgt: Codeunit "Project Budget Management";
+        [InDataSet]
+        LineEditable: Boolean;
+        [InDataSet]
+        ProjectEditable: Boolean;
+        [InDataSet]
+        CPEditable: Boolean;
+        [InDataSet]
+        CreateUIDEditable: Boolean;
+
+
+
+    local procedure CheckAllowChanges()
+    begin
+        if not PrjBudMgt.AllowLTEntryChange() then
+            Error(TEXT0015);
+    end;
+
+    local procedure setOverdueFlt()
+    begin
+        if Overdue then begin
+            Rec.SetFilter(Date, '<%1', gDate);
+            Rec.SetRange(Close, false);
+        end else begin
+            Rec.SetRange(Date);
+            Rec.SetRange(Close);
+        end;
+        CurrPage.Update(false);
+    end;
+
+    local procedure BuildView();
+    begin
+        if HideZeroAmountLine then
+            Rec.SetFilter("Without VAT (LCY)", '<>0')
+        else
+            Rec.SetRange("Without VAT (LCY)");
+        CurrPage.UPDATE(FALSE);
+    end;
 
     local procedure TemplateCodeOnAfterValidate()
     begin
@@ -637,6 +722,8 @@ page 70143 "Forecast List Analisys"
     end;
 
     procedure ValidateProject()
+    var
+        lDimVal: Record "Dimension Value";
     begin
         //NC 27251 HR beg
         // IF TemplateCode = '' THEN
@@ -650,15 +737,19 @@ page 70143 "Forecast List Analisys"
         //   TemplateDescription:='';
         //   CalcType:=0;
         // END;
+        GLSetup.Get();
+        GLSetup.TestField("Project Dimension Code");
+        if lDimVal.Get(GLSetup."Project Dimension Code", TemplateCode) then
+            TemplateDescription := lDimVal.Name;
 
         // //SETRANGE("Project Code");
         // //FILTERGROUP(2);
-        // Rec.SETFILTER("Project Code", TemplateCode);
+        Rec.SETFILTER("Project Code", TemplateCode);
         // //FILTERGROUP(0);
 
 
-        // IF Rec.FIND('-') THEN;
-        // CurrPage.UPDATE(FALSE); 
+        IF Rec.FIND('-') THEN;
+        CurrPage.UPDATE(FALSE);
         //NC 27251 HR end
     end;
 
@@ -669,25 +760,22 @@ page 70143 "Forecast List Analisys"
             LineStyletxt := 'StandardAccent';
     end;
 
-    procedure DeleteSTLine(pPrBudEntry: Record "Projects Budget Entry")
-    var
-        lPrBudEntry: Record "Projects Budget Entry";
-        lTextErr001: Label 'Deleting long-term entries denied!';
-        lTextErr002: Label 'Entry %1 is linked to payment document %2. Deleting denied!';
+    local procedure GetLineEditable(pPBE: Record "Projects Budget Entry")
     begin
-        if pPrBudEntry.GetFilters = '' then
-            exit;
-        if pPrBudEntry.FindSet() then
-            repeat
-                if (pPrBudEntry."Parent Entry" = 0) or (pPrBudEntry."Parent Entry" = pPrBudEntry."Entry No.") then
-                    Error(lTextErr001);
-                pPrBudEntry.CalcFields("Payment Doc. No.");
-                if pPrBudEntry."Payment Doc. No." <> '' then
-                    Error(lTextErr002);
-                lPrBudEntry.Get(pPrBudEntry."Parent Entry");
-                lPrBudEntry."Without VAT (LCY)" := lPrBudEntry."Without VAT (LCY)" + pPrBudEntry."Without VAT (LCY)";
-                lPrBudEntry.Modify(false);
-                pPrBudEntry.Delete(true);
-            until pPrBudEntry.Next() = 0;
+        LineEditable := true;
+        CPEditable := true;
+        ProjectEditable := true;
+        CreateUIDEditable := PrjBudMgt.IsMasterCF();
+        pPBE.CalcFields("Payment Doc. No.");
+        if (pPBE."Payment Doc. No." <> '') and (pPBE."Entry No." <> pPBE."Parent Entry") then begin
+            LineEditable := false;
+            CPEditable := false;
+            ProjectEditable := false;
+        end;
+        if (pPBE."Entry No." = pPBE."Parent Entry") then begin
+            LineEditable := true;
+            CPEditable := not PrjBudMgt.HaveSTEntries(pPBE);
+            ProjectEditable := CPEditable;
+        end;
     end;
 }

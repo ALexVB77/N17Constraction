@@ -165,6 +165,13 @@
             Caption = 'Related to Change';
             FieldClass = FlowField;
         }
+        field(50100; "Delegated From Approver ID"; code[50])
+        {
+            Caption = 'Delegated From Approver ID';
+            DataClassification = EndUserIdentifiableInformation;
+            Description = 'NC 51380 AB';
+            TableRelation = User."User Name";
+        }
     }
 
     keys
@@ -192,6 +199,9 @@
         {
         }
         key(Key8; "Table ID", "Document Type", "Document No.", "Date-Time Sent for Approval")
+        {
+        }
+        key(Key50000; "Delegated From Approver ID", Status, "Due Date", "Date-Time Sent for Approval")
         {
         }
     }

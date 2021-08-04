@@ -132,7 +132,10 @@
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnRejectApprovalRequest(var ApprovalEntry: Record "Approval Entry")
+    // NC 51374 AB >>
+    // local procedure OnRejectApprovalRequest(var ApprovalEntry: Record "Approval Entry")
+    procedure OnRejectApprovalRequest(var ApprovalEntry: Record "Approval Entry")
+    // NC 51374 AB <<
     begin
     end;
 

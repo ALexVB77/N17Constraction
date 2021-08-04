@@ -8,7 +8,7 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
             Description = 'NC 51373 AB';
             TableRelation = Vendor."No." where("Vendor Type" = CONST(Vendor));
         }
-        field(50001; "Default Estimator"; code[20])
+        field(50001; "Default Estimator"; code[50])
         {
             Caption = 'Default Estimator';
             Description = 'NC 51373 AB';
@@ -26,11 +26,11 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
                 CheckCostDimension();
             end;
         }
-        field(50004; "Skip Check CF Forecast Filter"; text[100])
+        field(50004; "Base Resp. Employee No."; code[20])
         {
-            InitValue = '?????????P*';
-            Caption = 'Skip Check CF Forecast Filter';
+            Caption = 'Base Resp. Employee No.';
             Description = 'NC 51373 AB';
+            TableRelation = Vendor."No." where("Vendor Type" = CONST("Resp. Employee"));
         }
         field(50005; "Zero VAT Prod. Posting Group"; code[20])
         {
@@ -55,9 +55,53 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
                 CheckCostDimension();
             end;
         }
+        field(50008; "Prices Incl. VAT in Req. Doc."; Boolean)
+        {
+            Description = 'NC 51374 AB';
+            Caption = 'Prices Including VAT in Request Docs.';
+        }
+        field(50010; "Master Approver (Development)"; code[50])
+        {
+            Description = 'NC 51374 AB';
+            Caption = 'Master Approver (Development)';
+            TableRelation = "User Setup";
+        }
+        field(50011; "Master Approver (Production)"; code[50])
+        {
+            Description = 'NC 51374 AB';
+            Caption = 'Master Approver (Production)';
+            TableRelation = "User Setup";
+        }
+        field(50012; "Master Approver (Department)"; code[50])
+        {
+            Description = 'NC 51374 AB';
+            Caption = 'Master Approver (Department)';
+            TableRelation = "User Setup";
+        }
+        field(50013; "Skip Check CF in Doc. Lines"; Boolean)
+        {
+            Description = 'NC 51380 AB';
+            Caption = 'Skip Check Cash Flow in Doc. Lines';
+        }
+        field(50020; "Frame Agreement Group"; Code[20])
+        {
+            Caption = 'Frame Agreement Group';
+            Description = 'NC 51373 AB';
+            TableRelation = "Agreement Group".Code WHERE(Type = CONST(Purchases));
+        }
         field(50030; "Vendor Agreement Template Code"; Code[250])
         {
             Caption = 'Vendor Agreement Template Code';
+            TableRelation = "Excel Template";
+        }
+        field(50031; "Check Vend. Agr. Template Code"; Code[250])
+        {
+            Caption = 'Check Vend. Agr. Template Code';
+            TableRelation = "Excel Template";
+        }
+        field(50032; "Aged Acc. Payable Tmplt Code"; Code[250])
+        {
+            Caption = 'Aged Accounts Payable Template';
             TableRelation = "Excel Template";
         }
         field(70000; "Payment Calendar Tmpl"; Code[10])

@@ -206,10 +206,15 @@ codeunit 5600 "FA Insert Ledger Entry"
             FALedgEntry2."Canceled from FA No." := FALedgEntry2."FA No.";
             FALedgEntry2."FA No." := '';
             FALedgEntry."FA No." := '';
-            if FALedgEntry.Amount = 0 then begin
-                FALedgEntry2."Transaction No." := 0;
-                FALedgEntry."Transaction No." := 0;
-            end;
+            // NC 51138 GG >>
+            OnBeforeClearTransactionNoInFALedgEntry(FALedgEntry, FALedgEntry2, IsHandled);
+            if (not IsHandled) then
+                // NC 51138 GG <<
+
+                if FALedgEntry.Amount = 0 then begin
+                    FALedgEntry2."Transaction No." := 0;
+                    FALedgEntry."Transaction No." := 0;
+                end;
             FALedgEntry2.Modify();
             FALedgEntry.Modify();
             FALedgEntry."FA No." := FALedgEntry3."FA No.";
@@ -1151,5 +1156,13 @@ codeunit 5600 "FA Insert Ledger Entry"
     local procedure OnInsertFAOnBeforeCheckFALedgEntry(FALedgEntry: Record "FA Ledger Entry"; FALedgEntry2: Record "FA Ledger Entry"; var IsHandled: Boolean)
     begin
     end;
+
+    // NC 51138 GG >>
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeClearTransactionNoInFALedgEntry(FALedgEntry: Record "FA Ledger Entry"; FALedgEntry2: Record "FA Ledger Entry"; var IsHandled: Boolean)
+    begin
+    end;
+    // NC 51138 GG <<
+
 }
 

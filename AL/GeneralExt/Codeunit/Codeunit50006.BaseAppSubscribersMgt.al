@@ -1,7 +1,182 @@
 codeunit 50006 "Base App. Subscribers Mgt."
 {
+    // t 17 >>
+    [EventSubscriber(ObjectType::Table, Database::"G/L Entry", 'OnAfterModifyEvent', '', false, false)]
+    local procedure onAfterModifyT17(Rec: record "G/L Entry"; xRec: record "G/L Entry"; RunTrigger: boolean)
+    var
+        gleVeLink: record "G/L Entry - VAT Entry Link";
+        ve: record "Vat Entry";
+    begin
+        if not Rec.IsTemporary() then begin
+            if (Rec."Global Dimension 1 Code" <> xRec."Global Dimension 1 Code") or (Rec."Global Dimension 2 Code" <> xRec."Global Dimension 2 Code") then begin
+                gleVeLink.reset();
+                gleVeLink.setrange("G/L Entry No.", Rec."Entry No.");
+                if (gleVeLink.findset()) then begin
+                    repeat
+                        if (ve.get(gleVeLink."VAT Entry No.")) then begin
+                            ve.validate("Global Dimension 1 Code", Rec."Global Dimension 1 Code");
+                            ve.validate("Global Dimension 2 Code", Rec."Global Dimension 2 Code");
+                            ve.modify(true);
+                        end;
+                    until (gleVeLink.next() = 0);
+                end;
+
+            end;
+        end;
+    end;
+    // t 17 <<
+
+    // t 81 >>
+    [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterValidateEvent', 'Prepayment', false, false)]
+    local procedure onAfterValidatePrepayment(Rec: Record "Gen. Journal Line"; xRec: Record "Gen. Journal Line"; CurrFieldNo: Integer)
+    begin
+        if Rec.Prepayment then begin
+            if (xRec."Prepayment Document No." = '') then begin
+                Rec."Prepayment Document No." := '';
+                SetPrepaymentDoc(Rec);
+            end;
+        end;
+
+    end;
+
+    local procedure SetPrepaymentDoc(var GenJnlLine2: Record "Gen. Journal Line")
+    var
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        SalesSetup: Record "Sales & Receivables Setup";
+        ReleaseDoc: Codeunit "Release Sales Document";
+        LText001: Label 'Advance %1';
+        Text50000: label 'Create sales invoice?';
+    begin
+        //NC 23904 HR beg
+        IF NOT CONFIRM(Text50000, FALSE) THEN
+            EXIT;
+
+        SalesSetup.GET;
+        SalesSetup.TESTFIELD("Invoice Nos.");
+        SalesSetup.TESTFIELD("Prepay. Inv. G/L Acc. No. (ac)");
+
+        SalesHeader.INIT;
+        SalesHeader.VALIDATE("No. Series", SalesSetup."Invoice Nos.");
+        SalesHeader."Document Type" := SalesHeader."Document Type"::Invoice;
+        SalesHeader.VALIDATE("Posting Date", GenJnlLine2."Posting Date");
+        SalesHeader."No." := '';
+        SalesHeader.INSERT(TRUE);
+
+        SalesHeader."External Document No." := GenJnlLine2."Document No.";
+        SalesHeader.VALIDATE("Sell-to Customer No.", GenJnlLine2."Account No.");
+        SalesHeader.VALIDATE("Agreement No.", GenJnlLine2."Agreement No.");
+        SalesHeader."Posting Description" :=
+          COPYSTR(STRSUBSTNO(LText001, GenJnlLine2.Description), 1, MAXSTRLEN(SalesHeader."Posting Description"));
+        SalesHeader.VALIDATE("Shortcut Dimension 1 Code", GenJnlLine2."Shortcut Dimension 1 Code");
+        SalesHeader.VALIDATE("Shortcut Dimension 2 Code", GenJnlLine2."Shortcut Dimension 2 Code");
+        SalesHeader.MODIFY(TRUE);
+
+        SalesLine.INIT;
+        SalesLine.VALIDATE("Document Type", SalesHeader."Document Type");
+        SalesLine.VALIDATE("Document No.", SalesHeader."No.");
+        SalesLine."Line No." := 10000;
+        SalesLine.VALIDATE("Sell-to Customer No.", SalesHeader."Sell-to Customer No.");
+        //SalesLine.VALIDATE("Bill-to Customer No.", SalesHeader."Bill-to Customer No.");
+        SalesLine.VALIDATE(Type, SalesLine.Type::"G/L Account");
+        SalesLine.VALIDATE("No.", SalesSetup."Prepay. Inv. G/L Acc. No. (ac)"); //'901034110'
+        SalesLine.VALIDATE(Quantity, 1);
+        SalesLine.VALIDATE("Unit of Measure Code", 'УСЛ');
+        SalesLine.VALIDATE("Unit Price", ABS(GenJnlLine2.Amount));
+        SalesLine.INSERT(TRUE);
+
+        ReleaseDoc.RUN(SalesHeader);
+
+        GenJnlLine2.VALIDATE("Prepayment Document No.", SalesHeader."No.");
+
+        Page.RUN(page::"Sales Invoice", SalesHeader);
+
+        //NC 23904 HR end
+    end;
+    // t 81 <<
+
+    // t 179 >>
+    [EventSubscriber(ObjectType::Table, Database::"Reversal Entry", 'onAfterSetRegisterReverseFilter', '', false, false)]
+    local procedure onAfterSetRegisterReverseFilter(
+        var GLEntry: Record "G/L Entry";
+        var CustLedgEntry: Record "Cust. Ledger Entry";
+        var VendLedgEntry: Record "Vendor Ledger Entry";
+        var BankAccLedgEntry: Record "Bank Account Ledger Entry";
+        var VATEntry: Record "VAT Entry";
+        var FALedgEntry: Record "FA Ledger Entry";
+        var MaintenanceLedgEntry: Record "Maintenance Ledger Entry";
+        var ValueEntry: Record "Value Entry";
+        var TaxDiffLedgEntry: Record "Tax Diff. Ledger Entry"
+    )
+    begin
+
+        //CSS GS 21.02.2012 >>
+        GLEntry.SETRANGE(Reversed, FALSE);
+        CustLedgEntry.SETRANGE(Reversed, FALSE);
+        VendLedgEntry.SETRANGE(Reversed, FALSE);
+        BankAccLedgEntry.SETRANGE(Reversed, FALSE);
+        FALedgEntry.SETRANGE(Reversed, FALSE);
+        MaintenanceLedgEntry.SETRANGE(Reversed, FALSE);
+        VATEntry.SETRANGE(Reversed, FALSE);
+        ValueEntry.SETRANGE(Reversed, FALSE);
+        TaxDiffLedgEntry.SETRANGE(Reversed, FALSE);
+        //CSS GS 21.02.2012 <<
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Reversal Entry", 'OnBeforeReverseEntries', '', false, false)]
+    local procedure OnBeforeReverseEntries(Number: Integer; RevType: Integer; var IsHandled: Boolean);
+    var
+        vatEntry: Record "VAT Entry";
+        Text50000: label 'Нельзя сторнировать, так как есть НДС операции с типом распределения НДС Расходы';
+    begin
+        IsHandled := false; // NC GG: false специально, это не ошибка!
+        VATEntry.SetRange("Transaction No.", Number);
+        VATEntry.SetRange("VAT Allocation Type", VATEntry."VAT Allocation Type"::Charge);
+        if not VATEntry.IsEmpty then
+            Error(Text50000);
+    end;
+
+    // t 179 <<
+
+    // t 253 >>
+    [EventSubscriber(ObjectType::Table, Database::"G/L Entry - VAT Entry Link", 'OnAfterInsertEvent', '', false, false)]
+    local procedure onAfterInsertT253(Rec: record "G/L Entry - VAT Entry Link"; RunTrigger: boolean)
+    var
+        gle: Record "G/L Entry";
+        ve: Record "Vat Entry";
+    begin
+        if not rec.IsTemporary() then begin
+            if (gle.get(rec."G/L Entry No.")) and (ve.get(rec."VAT Entry No.")) then begin
+                ve.validate("Global Dimension 1 Code", gle."Global Dimension 1 Code");
+                ve.validate("Global Dimension 2 Code", gle."Global Dimension 2 Code");
+                ve.modify(true);
+            end;
+        end;
+
+    end;
+    // t 253 << 
 
     // t 5740 >>
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Header", 'OnAfterInitRecord', '', false, false)]
+    local procedure onAfterInitRecord(var TransferHeader: Record "Transfer Header");
+    var
+        StorekeeperLocation: Record "Warehouse Employee";
+        DefaultLocation: Code[20];
+    begin
+        //if not RunTrigger then exit;
+
+        //NC 22512 > DP
+        DefaultLocation := StorekeeperLocation.GetDefaultLocation('', false);
+        IF DefaultLocation <> '' THEN BEGIN
+            // xRec."Transfer-from Code" := '';
+            TransferHeader.SetHideValidationDialog(TRUE);
+            TransferHeader.VALIDATE("Transfer-from Code", DefaultLocation);
+            TransferHeader.SetHideValidationDialog(FALSE);
+            //TransferHeader.modify();
+        END;
+        //NC 22512 < DP
+    end;
+
     [EventSubscriber(ObjectType::Table, Database::"Transfer Header", 'OnUpdateTransLines', '', false, false)]
     local procedure OnUpdateTransLines(var TransferLine: Record "Transfer Line"; TransferHeader: Record "Transfer Header"; FieldID: Integer);
     var
@@ -28,7 +203,245 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Header", 'onLookupTransferFromCode', '', false, false)]
+    local procedure onLookupTransferFromCode(var TransHeader: Record "Transfer Header");
+    var
+        ERPCFuntions: Codeunit "ERPC Funtions";
+    begin
+        //NC 22512 > DP
+        IF ERPCFuntions.LookUpLocationCode(TransHeader."Transfer-from Code") THEN TransHeader.VALIDATE("Transfer-from Code");
+        //NC 22512 < DP
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Header", 'OnAfterGetNoSeriesCode', '', false, false)]
+    local procedure OnAfterGetNoSeriesCodeTransferHeader(var TransferHeader: Record "Transfer Header"; var NoSeriesCode: Code[20]);
+    var
+        InventorySetup: Record "Inventory Setup";
+    begin
+        // NC 51410 > EP
+        // Используем отдельную серию номеров для заказов на передачу материалов в переработку
+        if TransferHeader."Giv. Type" = TransferHeader."Giv. Type"::"To Contractor" then begin
+            InventorySetup.Get();
+            InventorySetup.TestField("Giv. Transfer Order Nos.");
+            NoSeriesCode := InventorySetup."Giv. Transfer Order Nos.";
+        end;
+        // NC 51410 < EP
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Header", 'OnAfterGetTransferRoute', '', false, false)]
+    local procedure OnAfterGetTransferRouteTransferHeader(var TransferHeader: Record "Transfer Header"; TransferRoute: Record "Transfer Route");
+    var
+        Location: Record Location;
+    begin
+        // NC 51143 > EP
+        // Проставляем в заказ общую бизнес-группу транзитного склада,
+        // когда его код автоматически выставляется из Transfer Route
+        if Location.Get(TransferHeader."In-Transit Code") then
+            TransferHeader.Validate("Gen. Bus. Posting Group", Location."Def. Gen. Bus. Posting Group")
+        else
+            TransferHeader.Validate("Gen. Bus. Posting Group", '');
+        // NC 51143 < EP
+    end;
+
     // t 5740 <<
+
+    // t 5744 >>
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Shipment Header", 'OnAfterCopyFromTransferHeader', '', false, false)]
+    local procedure OnAfterCopyFromTransferHeaderTransferShipmentHeader(var TransferShipmentHeader: Record "Transfer Shipment Header"; TransferHeader: Record "Transfer Header");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Shipment".OnRun()
+
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferShipmentHeader."New Shortcut Dimension 1 Code" := TransferHeader."New Shortcut Dimension 1 Code";
+        TransferShipmentHeader."New Shortcut Dimension 2 Code" := TransferHeader."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
+        // NC 22512 > DP
+        TransferShipmentHeader."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // t 5744 <<
+
+    // t 5745 >>
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Shipment Line", 'OnAfterCopyFromTransferLine', '', false, false)]
+    local procedure OnAfterCopyFromTransferLineTransferShipmentLine(var TransferShipmentLine: Record "Transfer Shipment Line"; TransferLine: Record "Transfer Line");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Shipment".OnRun()
+
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferShipmentLine."New Shortcut Dimension 1 Code" := TransferLine."New Shortcut Dimension 1 Code";
+        TransferShipmentLine."New Shortcut Dimension 2 Code" := TransferLine."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
+        // NC 22512 > DP
+        TransferShipmentLine."Gen. Bus. Posting Group" := TransferLine."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // t 5745 <<
+
+    // t 5746 >>
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Receipt Header", 'OnAfterCopyFromTransferHeader', '', false, false)]
+    local procedure OnAfterCopyFromTransferHeaderTransferReceiptHeader(var TransferReceiptHeader: Record "Transfer Receipt Header"; TransferHeader: Record "Transfer Header");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Receipt".OnRun()
+
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferReceiptHeader."New Shortcut Dimension 1 Code" := TransferHeader."New Shortcut Dimension 1 Code";
+        TransferReceiptHeader."New Shortcut Dimension 2 Code" := TransferHeader."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
+        // NC 22512 > DP
+        TransferReceiptHeader."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // t 5746 <<
+
+    // t 5747 >>
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Receipt Line", 'OnAfterCopyFromTransferLine', '', false, false)]
+    local procedure OnAfterCopyFromTransferLineTransferReceiptLine(var TransferReceiptLine: Record "Transfer Receipt Line"; TransferLine: Record "Transfer Line");
+    var
+        TransferHeader: Record "Transfer Header";
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Receipt".OnRun()
+
+        //NC002 CITRU\ROMB 10.01.12 >
+        TransferReceiptLine."New Shortcut Dimension 1 Code" := TransferLine."New Shortcut Dimension 1 Code";
+        TransferReceiptLine."New Shortcut Dimension 2 Code" := TransferLine."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
+        if TransferHeader.Get(TransferLine."Document No.") then                 // NC 51411 EP
+            // SWC1066 DD 27.06.17 >>
+            TransferReceiptLine."Gen. Bus. Posting Group" := TransferHeader."Gen. Bus. Posting Group";
+        // SWC1066 DD 27.06.17 <<
+
+        // NC 51411 < EP
+    end;
+
+
+    // t 5747 <<
+
+    // t 12450 >>
+
+    [EventSubscriber(ObjectType::Table, Database::"Item Document Header", 'onAfterInitRecord', '', false, false)]
+    local procedure onAfterInitRecordIDH(var ItemDocumentHeader: Record "Item Document Header")
+    var
+        StorekeeperLocation: Record "Warehouse Employee";
+        DefaultLocation: Code[20];
+    begin
+        //if not RunTrigger then exit;
+
+        //NC 22512 > DP
+        DefaultLocation := StorekeeperLocation.GetDefaultLocation('', false);
+        IF DefaultLocation <> '' THEN begin
+            ItemDocumentHeader.VALIDATE("Location Code", DefaultLocation);
+            //ItemDocumentHeader.modify();
+        end;
+        //NC 22512 < DP
+    end;
+
+
+    [EventSubscriber(ObjectType::Table, Database::"Item Document Header", 'onLookupLocationCode', '', false, false)]
+    local procedure onLookupLocationCode(var ItemDocumentHeader: Record "Item Document Header");
+    var
+        ERPCFuntions: Codeunit "ERPC Funtions";
+    begin
+        //NC 22512 > DP
+        IF ERPCFuntions.LookUpLocationCode(ItemDocumentHeader."Location Code") THEN ItemDocumentHeader.VALIDATE("Location Code");
+        //NC 22512 < DP
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Item Document Header", 'OnBeforeValidateEvent', 'Status', false, false)]
+    local procedure OnBeforeValidateItemDocumentHeaderStatus(var Rec: Record "Item Document Header"; var xRec: Record "Item Document Header"; CurrFieldNo: Integer)
+    var
+        InvtSetup: Record "Inventory Setup";
+    begin
+        // NC 51411 > EP
+        // Перенес таким образом модификацию codeunit "Release Item Document".OnRun(),
+        // поскольку в триггере нет доступных публикаторов
+
+        // Проверяем, что документ выпускают
+        if (xRec.Status = xRec.Status::Open) and
+           (Rec.Status = Rec.Status::Released) then begin
+            // SWC816 AK 200416 >>
+            InvtSetup.Get();
+            if InvtSetup."Use Giv. Production Func." then begin
+                InvtSetup.TestField("Giv. Materials Loc. Code");
+                InvtSetup.TestField("Giv. Production Loc. Code");
+                if (Rec."Location Code" = InvtSetup."Giv. Materials Loc. Code") or
+                   (Rec."Location Code" = InvtSetup."Giv. Production Loc. Code") then begin
+                    Rec.TestField("Vendor No.");
+                    Rec.TestField("Agreement No.");
+                end;
+            end;
+            // SWC816 AK 200416 <<
+        end;
+
+        // NC 51411 < EP
+    end;
+
+    // t 12450 <<
+    // t 12477 >>
+    [EventSubscriber(ObjectType::Table, Database::"FA Document Line", 'OnAfterValidateEvent', 'Posting Date', false, false)]
+    local procedure onAfterValidatePostingDate(var Rec: Record "Fa Document Line");
+    begin
+        Rec.CalcQty();
+    end;
+    // t 12477 <<
+
+    // cu 12 >>
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeInsertVAT', '', false, false)]
+    local procedure OnBeforeInsertVAT(var GenJournalLine: Record "Gen. Journal Line"; var VATEntry: Record "VAT Entry"; var UnrealizedVAT: Boolean; var AddCurrencyCode: Code[10]; var VATPostingSetup: Record "VAT Posting Setup"; var GLEntryAmount: Decimal; var GLEntryVATAmount: Decimal; var GLEntryBaseAmount: Decimal; var SrcCurrCode: Code[10]; var SrcCurrGLEntryAmt: Decimal; var SrcCurrGLEntryVATAmt: Decimal; var SrcCurrGLEntryBaseAmt: Decimal);
+    var
+        ism: Codeunit "Isolated Storage Management GE";
+    begin
+        ism.init();
+        ism.setBool('VatAllocation', VATPostingSetup."VAT Allocation");
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnInsertVATOnAfterAssignVATEntryFields', '', false, false)]
+    local procedure OnInsertVATOnAfterAssignVATEntryFields(GenJnlLine: Record "Gen. Journal Line"; var VATEntry: Record "VAT Entry"; CurrExchRate: Record "Currency Exchange Rate");
+    var
+        ism: Codeunit "Isolated Storage Management GE";
+    begin
+        ism.getBool('VatAllocation', VATEntry."VAT Allocation", true);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnAfterInitVATAgentDtldVendLedgEntry', '', false, false)]
+    local procedure OnAfterInitVATAgentDtldVendLedgEntry(GenJnlLine: Record "Gen. Journal Line"; var VendLedgEntry: Record "Vendor Ledger Entry"; var DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
+    begin
+        DtldVendLedgEntry."IW Document No." := VendLedgEntry."IW Document No.";
+    end;
+
+    // cu 12 <<
+
+    // cu 241 >>
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post", 'OnBeforeCode', '', false, false)]
+    local procedure OnBeforeCode(var ItemJournalLine: Record "Item Journal Line"; var HideDialog: Boolean; var SuppressCommit: Boolean; var IsHandled: Boolean);
+    var
+        ism: Codeunit "Isolated Storage Management GE";
+    begin
+        ism.getBool('NotAsk', HideDialog, true);
+    end;
+
+    // cu 241 <<
+
     // cu 367 >>
     [EventSubscriber(ObjectType::Codeunit, Codeunit::CheckManagement, 'OnBeforeVoidCheckGenJnlLine2Modify', '', false, false)]
     local procedure OnBeforeVoidCheckGenJnlLine2Modify(var GenJournalLine2: Record "Gen. Journal Line"; GenJournalLine: Record "Gen. Journal Line");
@@ -170,7 +583,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
         GlobalDimCode2 := '';
         DimSetID := DimMgt.GetDefaultDimID(TableID, No, SourceCode, GlobalDimCode1, GlobalDimCode2, 0, 0);
     end;
-
+    // cu 5600 >>
     [EventSubscriber(ObjectType::Codeunit, COdeunit::"FA Insert Ledger Entry", 'OnBeforeCheckFADocNo', '', true, true)]
     local procedure CheckFADocNo(FALedgEntry: Record "FA Ledger Entry"; var IsHandled: Boolean)
     var
@@ -200,6 +613,147 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
         IsHandled := true;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, COdeunit::"FA Insert Ledger Entry", 'OnBeforeClearTransactionNoInFALedgEntry', '', true, true)]
+    local procedure onBeforeClearTransactionNoInFALedgEntry(FALedgEntry: Record "FA Ledger Entry"; FALedgEntry2: Record "FA Ledger Entry"; var IsHandled: Boolean)
+    begin
+        IsHandled := true;
+    end;
+
+    // cu 5600 <<
+
+    // cu 5704 >>
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Shipment", 'OnBeforeTransferOrderPostShipment', '', false, false)]
+    local procedure OnBeforeTransferOrderPostShipment(var Sender: Codeunit "TransferOrder-Post Shipment"; var TransferHeader: Record "Transfer Header"; CommitIsSuppressed: Boolean);
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Shipment".OnRun()
+
+        // NC 22512 > DP
+        TransferHeader.TestField("Gen. Bus. Posting Group");
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Shipment", 'OnAfterCreateItemJnlLine', '', false, false)]
+    local procedure OnAfterCreateItemJnlLineShipment(var ItemJournalLine: Record "Item Journal Line"; TransferLine: Record "Transfer Line"; TransferShipmentHeader: Record "Transfer Shipment Header"; TransferShipmentLine: Record "Transfer Shipment Line");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Shipment".PostItemJnlLine()
+
+        // NC 22512 > DP
+        ItemJournalLine."Gen. Bus. Posting Group" := TransferShipmentHeader."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // cu 5704 <<
+
+    // cu 5705 >>
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Receipt", 'OnBeforePostItemJournalLine', '', false, false)]
+    local procedure OnBeforePostItemJournalLineReceipt(var ItemJournalLine: Record "Item Journal Line"; TransferLine: Record "Transfer Line"; TransferReceiptHeader: Record "Transfer Receipt Header"; TransferReceiptLine: Record "Transfer Receipt Line"; CommitIsSuppressed: Boolean; TransLine: Record "Transfer Line");
+    begin
+        // NC 51411 > EP
+        // Из модификации cu "TransferOrder-Post Receipt".PostItemJnlLine()
+
+        //NC002 CITRU\ROMB 10.01.12 >
+        ItemJournalLine."New Shortcut Dimension 1 Code" := TransferReceiptLine."New Shortcut Dimension 1 Code";
+        ItemJournalLine."New Shortcut Dimension 2 Code" := TransferReceiptLine."New Shortcut Dimension 2 Code";
+        //NC002 CITRU\ROMB 10.01.12 <
+
+        // NC 22512 > DP
+        ItemJournalLine."Gen. Bus. Posting Group" := TransferReceiptHeader."Gen. Bus. Posting Group";
+        // NC 22512 < DP
+
+        // NC 51411 < EP
+    end;
+
+    // cu 5705 <<
+
+    // cu 12411 >>
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"VAT Settlement Management", 'onAfterInsertGenJnlLine', '', false, false)]
+    local procedure onAfterInsertGenJnlLine(cvLedgerEntryNo: integer; vatEntryNo: integer; dimDetId: integer)
+    var
+        vatAllocLine: Record "VAT Allocation Line";
+        dimMgt: Codeunit DimensionManagement;
+        dimSetIdArr: array[10] of integer;
+    begin
+        vatAllocLine.reset();
+        vatAllocLine.SetRange("CV Ledger Entry No.", cvLedgerEntryNo);
+        vatAllocLine.SetRange("VAT Entry No.", vatEntryNo);
+
+        if (vatAllocLine.findset()) then begin
+            repeat
+                clear(dimSetIdArr);
+                dimSetIdArr[1] := dimDetId;
+                dimSetIdArr[2] := VATAllocLine."Dimension Set ID";
+                dimSetIdArr[3] := 0;
+                VATAllocLine."Dimension Set ID" := dimMgt.GetCombinedDimensionSetID(dimSetIdArr, VATAllocLine."Shortcut Dimension 1 Code", VATAllocLine."Shortcut Dimension 2 Code");
+                VATAllocLine.modify();
+            until (vatAllocLine.next() = 0)
+        end;
+
+    end;
+    // NC 50118 GG >>
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"VAT Settlement Management", 'onAfterSetVatEntryFilter', '', false, false)]
+    local procedure onAfterSetVatEntryFilter(var VATEntry: Record "VAT Entry"; var VATDocEntryBuffer: Record "VAT Document Entry Buffer")
+    begin
+        VATEntry.SetFilter("Global Dimension 1 Code", VATDocEntryBuffer.getfilter("Global Dimension 1 Filter"));
+        VATEntry.SetFilter("Global Dimension 2 Code", VATDocEntryBuffer.getfilter("Global Dimension 2 Filter"));
+        vatentry.SetFilter("Cost Code Type", VATDocEntryBuffer.GetFilter("Cost Code Type Filter"));
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"VAT Settlement Management", 'onBeforeInsertTempVATDocBuf', '', false, false)]
+    local procedure onBeforeInsertTempVATDocBuf(var TempVATDocBuf: record "VAT Document Entry Buffer"; var VATEntry: record "Vat Entry")
+    begin
+        TempVATDocBuf.validate("VAT Allocation", VATEntry."VAT Allocation");
+    end;
+
+    // NC 50118 GG <<
+
+
+    // cu 12411 <<
+
+    // cu 12469 >>
+
+    // NC 51411 > EP
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnBeforeTransferOrderPostTransfer', '', false, false)]
+    local procedure OnBeforeTransferOrderPostTransfer(var TransHeader: Record "Transfer Header");
+    begin
+        TransHeader.TestField("Gen. Bus. Posting Group");
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnBeforeInsertDirectTransHeader', '', false, false)]
+    local procedure OnBeforeInsertDirectTransHeader(var DirectTransHeader: Record "Direct Transfer Header"; TransHeader: Record "Transfer Header");
+    begin
+        DirectTransHeader."Gen. Bus. Posting Group" := TransHeader."Gen. Bus. Posting Group";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnBeforeInsertDirectTransLine', '', false, false)]
+    local procedure OnBeforeInsertDirectTransLine(var DirectTransLine: Record "Direct Transfer Line"; TransLine: Record "Transfer Line";
+                                                  TransHeader: Record "Transfer Header");
+    begin
+        if (TransLine."Gen. Bus. Posting Group" <> '') then
+            DirectTransLine."Gen. Bus. Posting Group" := TransLine."Gen. Bus. Posting Group"
+        else
+            DirectTransLine."Gen. Bus. Posting Group" := TransHeader."Gen. Bus. Posting Group";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnAfterCreateItemJnlLine', '', false, false)]
+    local procedure OnAfterCreateItemJnlLineDirectTransfer(var ItemJnlLine: Record "Item Journal Line"; TransLine: Record "Transfer Line"; DirectTransHeader: Record "Direct Transfer Header"; DirectTransLine: Record "Direct Transfer Line");
+    begin
+        ItemJnlLine."Gen. Bus. Posting Group" := DirectTransHeader."Gen. Bus. Posting Group";
+    end;
+
+    // NC 51411 < EP
+
+    // cu 12469 <<
+
 
     [EventSubscriber(ObjectType::Page, Page::"Document Attachment Factbox", 'OnBeforeDrillDown', '', true, true)]
     local procedure OnBeforeDrillDownDocAttFackBox(DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef)
@@ -255,6 +809,13 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, DATABASE::"Document Attachment", 'OnBeforeSaveAttachment', '', true, true)]
+    local procedure OnBeforeSaveAttachmentDocAtt(var DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef; FileName: Text; var TempBlob: Codeunit "Temp Blob")
+    begin
+        if DocumentAttachment.GetFilter("PK Key 2") <> '' then
+            DocumentAttachment."PK Key 2" := DocumentAttachment.GetFilter("PK Key 2");
+    end;
+
     // Codeunit 5063 ArchiveManagement 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::ArchiveManagement, 'OnAfterStorePurchDocument', '', false, false)]
     local procedure OnAfterStorePurchDocument(var PurchaseHeader: Record "Purchase Header"; var PurchaseHeaderArchive: Record "Purchase Header Archive");
@@ -285,15 +846,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Transfer Document", 'OnBeforeCheckTransLines', '', false, false)]
-    local procedure OnBeforeCheckTransLines(var TransferLine: Record "Transfer Line";
-                                            var IsHandled: Boolean;
-                                            TransHeader: Record "Transfer Header");
+    local procedure OnBeforeCheckTransLines(var TransferLine: Record "Transfer Line"; var IsHandled: Boolean; TransHeader: Record "Transfer Header");
     var
         InvtSetup: Record "Inventory Setup";
     begin
         // NC 51411 > EP
         // Перенес модификацию из cu "Release Transfer Document".OnRun()
-
         // SWC816 AK 200416 >>
         InvtSetup.Get();
         if InvtSetup."Use Giv. Production Func." then begin
@@ -305,11 +863,25 @@ codeunit 50006 "Base App. Subscribers Mgt."
             end;
         end;
         // SWC816 AK 200416 <<
-
         // NC 51411 < EP
     end;
 
+    // Table 25 Vendor Ledger Entry
+
+    [EventSubscriber(ObjectType::Table, Database::"Vendor Ledger Entry", 'OnAfterCopyVendLedgerEntryFromGenJnlLine', '', false, false)]
+    local procedure OnAfterCopyVendLedgerEntryFromGenJnlLine(var VendorLedgerEntry: Record "Vendor Ledger Entry"; GenJournalLine: Record "Gen. Journal Line")
+    begin
+        VendorLedgerEntry."IW Document No." := GenJournalLine."IW Document No.";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Vendor Ledger Entry", 'OnAfterCopyVendLedgerEntryFromCVLedgEntryBuffer', '', false, false)]
+    local procedure OnAfterCopyVendLedgerEntryFromCVLedgEntryBuffer(var VendorLedgerEntry: Record "Vendor Ledger Entry"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
+    begin
+        VendorLedgerEntry."IW Document No." := CVLedgerEntryBuffer."IW Document No.";
+    end;
+
     // Table 38 Purchase Header
+
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforeTestNoSeries', '', false, false)]
     local procedure OnBeforeTestNoSeries(var PurchaseHeader: Record "Purchase Header"; var IsHandled: Boolean);
     var
@@ -364,22 +936,125 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterFinalizePosting', '', false, false)]
-    local procedure SendVendorAgreementMail(var PurchHeader: Record "Purchase Header")
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnRecreatePurchLinesOnBeforeInsertPurchLine', '', false, false)]
+    local procedure OnRecreatePurchLinesOnBeforeInsertPurchLine(var PurchaseLine: Record "Purchase Line"; var TempPurchaseLine: Record "Purchase Line" temporary; ChangedFieldName: Text[100])
+    begin
+        PurchaseLine."Full Description" := TempPurchaseLine."Full Description";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnValidatePurchaseHeaderPayToVendorNo', '', false, false)]
+    procedure OnValidatePurchaseHeaderPayToVendorNo(Vendor: Record Vendor; var PurchaseHeader: Record "Purchase Header")
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
+    begin
+        if PurchaseHeader."Document Type" <> PurchaseHeader."Document Type"::"Credit Memo" then
+            PurchaseHeader."Payment Details" := Vendor.Name;
+        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
+            PurchSetup.Get();
+            if PurchSetup."Prices Incl. VAT in Req. Doc." then
+                PurchaseHeader.Validate("Prices Including VAT", true);
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnValidatePurchaseHeaderAgreementNo', '', false, false)]
+    local procedure OnValidatePurchaseHeaderAgreementNo(VendAgr: Record "Vendor Agreement"; var PurchaseHeader: Record "Purchase Header")
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
+    begin
+        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
+            PurchSetup.Get();
+            if PurchSetup."Prices Incl. VAT in Req. Doc." then
+                PurchaseHeader.Validate("Prices Including VAT", true);
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', false, false)]
+    local procedure OnPurchaseHeaderAfterDelete(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
+    begin
+
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterCreateDimTableIDs', '', false, false)]
+    local procedure OnAfterCreateDimTableIDs(var PurchaseHeader: Record "Purchase Header"; CallingFieldNo: Integer; var TableID: array[10] of Integer; var No: array[10] of Code[20])
+    var
+        ArrayNo, NewPos : Integer;
+    begin
+        // NC AB: добавляем договор после поставщика
+        for ArrayNo := 1 to ArrayLen(TableID) do
+            if TableID[ArrayNo] = Database::Vendor then
+                NewPos := ArrayNo + 1;
+        for ArrayNo := 9 downto NewPos do begin
+            TableID[ArrayNo + 1] := TableID[ArrayNo];
+            No[ArrayNo + 1] := No[ArrayNo];
+        end;
+        TableID[NewPos] := Database::"Vendor Agreement";
+        No[NewPos] := PurchaseHeader."Agreement No.";
+    end;
+
+    // Table 39 Purchase Line
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterAssignItemValues', '', false, false)]
+    local procedure OnAfterAssignItemValues(var PurchLine: Record "Purchase Line"; Item: Record Item; CurrentFieldNo: Integer)
+    begin
+        if CopyStr(Item."Description 2", 1, 1) <> ' ' then
+            PurchLine."Full Description" := Item.Description + ' ' + Item."Description 2"
+        else
+            PurchLine."Full Description" := Item.Description + Item."Description 2";
+    end;
+
+    // Table 382 CV Ledger Entry Buffer
+    [EventSubscriber(ObjectType::Table, Database::"CV Ledger Entry Buffer", 'OnAfterCopyFromVendLedgerEntry', '', false, false)]
+    local procedure OnCVLedgEntryBufAfterCopyFromVendLedgerEntry(var CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer"; VendorLedgerEntry: Record "Vendor Ledger Entry")
+    begin
+        CVLedgerEntryBuffer."IW Document No." := VendorLedgerEntry."IW Document No.";
+    end;
+
+    // Table 383 Detailed CV Ledg. Entry Buffer
+
+    [EventSubscriber(ObjectType::Table, Database::"Detailed CV Ledg. Entry Buffer", 'OnAfterCopyFromGenJnlLine', '', false, false)]
+    local procedure OnDtldCVLedgEntryBufAfterCopyFromGenJnlLine(var DtldCVLedgEntryBuffer: Record "Detailed CV Ledg. Entry Buffer"; GenJnlLine: Record "Gen. Journal Line")
+    begin
+        DtldCVLedgEntryBuffer."IW Document No." := GenJnlLine."IW Document No.";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Detailed CV Ledg. Entry Buffer", 'OnAfterCopyFromCVLedgEntryBuf', '', false, false)]
+    local procedure OnDtldCVLedgEntryBufAfterCopyFromCVLedgEntryBuf(var DetailedCVLedgEntryBuffer: Record "Detailed CV Ledg. Entry Buffer"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
+    begin
+        DetailedCVLedgEntryBuffer."IW Document No." := CVLedgerEntryBuffer."IW Document No.";
+    end;
+
+    // Report 595 Adjust Exchange Rates
+
+    [EventSubscriber(ObjectType::Report, Report::"Adjust Exchange Rates", 'OnAfterInitDtldVendLedgerEntry2', '', false, false)]
+    local procedure OnAfterInitDtldVendLedgerEntry2(VendLedgEntry: Record "Vendor Ledger Entry"; var DetailedVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
+    begin
+        DetailedVendLedgEntry."IW Document No." := VendLedgEntry."IW Document No.";
+    end;
+
+    // Report 12453 Return Prepayment
+    [EventSubscriber(ObjectType::Report, Report::"Return Prepayment", 'OnAfterFillVendCVLedgEntryBuf', '', false, false)]
+    local procedure OnReturnPrepAfterFillVendCVLedgEntryBuf(VendLedgEntry: Record "Vendor Ledger Entry"; var CVLedgEntryBuf: Record "CV Ledger Entry Buffer")
+    begin
+        CVLedgEntryBuf."IW Document No." := VendLedgEntry."IW Document No.";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]
+    local procedure SendVendorAgreementMail(var PurchaseHeader: Record "Purchase Header")
     var
         CompanyInfo: Record "Company Information";
         LocVend: Record Vendor;
         VendAgr: Record "Vendor Agreement";
         CheckLimitDateFilter: Text;
         VendorAgreement: Record "Vendor Agreement";
+        Text001: Label 'The amount of purchases exceeds the amount of the limit!';
     begin
-        if (PurchHeader."Buy-from Address" <> '') AND (PurchHeader."Agreement No." <> '') then begin
+        if (PurchaseHeader."Buy-from Vendor No." <> '') AND (PurchaseHeader."Agreement No." <> '') then begin
             CompanyInfo.Get;
-            LocVend.GET(PurchHeader."Buy-from Address");
+            LocVend.GET(PurchaseHeader."Buy-from Vendor No.");
 
             if CompanyInfo."Use RedFlags in Agreements" then
                 if LocVend.GetLineColor = 'Attention' then begin
-                    VendAgr.Get(PurchHeader."Buy-from Address", PurchHeader."Agreement No.");
+                    VendAgr.Get(PurchaseHeader."Buy-from Vendor No.", PurchaseHeader."Agreement No.");
                     CheckLimitDateFilter := VendAgr.GetLimitDateFilter();
 
                     if CheckLimitDateFilter <> '' then
@@ -389,10 +1064,158 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
                     VendAgr.CalcFields("Purch. Original Amt. (LCY)");
 
-                    if PurchHeader."Original Company" = '' then
-                        if (VendAgr."Check Limit Amount (LCY)" - VendAgr."Purch. Original Amt. (LCY)" < 0) then
+                    if PurchaseHeader."Original Company" = '' then
+                        if (VendAgr."Check Limit Amount (LCY)" - VendAgr."Purch. Original Amt. (LCY)" < 0) then begin
                             VendorAgreement.SendVendAgrMail(VendAgr, 1);
+                            Error(Text001);
+                        end;
                 end;
         end;
     end;
+
+    [EventSubscriber(ObjectType::Page, Page::"MyDim Value Combinations", 'OnLoadDimValCombPage', '', false, false)]
+    local procedure OnLoadDimValueCombPage(var Row: Code[20]; var Col: Code[20]; var ShowCaption: Boolean; var DimRecord: Record "Dimension Value")
+    var
+        IsoMgt: Codeunit "Isolated Storage Management GE";
+        ColFilter: Text;
+    begin
+        if IsoMgt.getString('DimValColumnFilter', ColFilter, true) then begin
+            DimRecord.SetFilter(Code, ColFilter);
+        end
+        else begin
+            IsoMgt.init();
+            IsoMgt.setBool('ShowCaptionFromPage', ShowCaption);
+            IsoMgt.setString('RowFromPage', Row);
+            IsoMgt.setString('ColFromPage', Col);
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"User Setup", 'OnAfterValidateEvent', 'Substitute', false, false)]
+    local procedure OnUserSetupAfterValidateSubstitute(var Rec: Record "User Setup"; xRec: Record "User Setup");
+    var
+        ApprovalEntry: Record "Approval Entry";
+        SubstituteUserId: Code[50];
+        LocText001: Label 'You cannot change the value of %1 because there are active approval entries for user %2.';
+        LocText002: label 'Unable to find a substitute for %1. Check the substitute chain.';
+    begin
+        if Rec.Absents then begin
+            SubstituteUserId := Rec.GetUserSubstitute(xRec.Substitute, -1);
+            if SubstituteUserId = '' then
+                error(LocText002, Rec."User ID");
+            ApprovalEntry.SetRange("Approver ID", SubstituteUserId);
+            ApprovalEntry.SetFilter(Status, '%1|%2', ApprovalEntry.Status::Created, ApprovalEntry.Status::Open);
+            if not ApprovalEntry.IsEmpty then
+                Error(LocText001, Rec.FieldCaption(Substitute), SubstituteUserId);
+        end;
+    end;
+
+    // codeunit 1509 "Notification Entry Dispatcher"
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Notification Entry Dispatcher", 'OnBeforeGetHTMLBodyText', '', false, false)]
+    local procedure OnBeforeGetHTMLBodyText(
+        var NotificationEntry: Record "Notification Entry"; var BodyTextOut: Text; var IsHandled: Boolean; var BodyTextExist: Boolean;
+        var Sender: Codeunit "Notification Entry Dispatcher"; var HtmlBodyFilePath: Text);
+    var
+        ReportLayoutSelection: Record "Report Layout Selection";
+        FileManagement: Codeunit "File Management";
+        ErrorMessageMgt: Codeunit "Error Message Management";
+        TempBlob: Codeunit "Temp Blob";
+        BlobInStream: InStream;
+        DataTypeManagement: Codeunit "Data Type Management";
+        SourceRecRef: RecordRef;
+        ApprovalEntry: Record "Approval Entry";
+        ReportID: Integer;
+    begin
+        if (NotificationEntry.Type <> NotificationEntry.Type::Approval) or (NotificationEntry."Triggered By Record".TableNo <> DATABASE::"Approval Entry") then
+            exit;
+        DataTypeManagement.GetRecordRef(NotificationEntry."Triggered By Record", SourceRecRef);
+        SourceRecRef.SetTable(ApprovalEntry);
+        if (ApprovalEntry."Act Type" = ApprovalEntry."Act Type"::" ") and (not ApprovalEntry."IW Documents") then
+            exit;
+
+        IsHandled := true;
+        ReportID := Report::"Notification Email Act. Inv.";
+
+        HtmlBodyFilePath := FileManagement.ServerTempFileName('html');
+        ReportLayoutSelection.SetTempLayoutSelected('');
+        if not REPORT.SaveAsHtml(ReportID, HtmlBodyFilePath, NotificationEntry) then begin
+            NotificationEntry."Error Message" := GetLastErrorText;
+            NotificationEntry.Modify(true);
+            ErrorMessageMgt.LogError(NotificationEntry, GetLastErrorText(), '');
+            ClearLastError;
+            BodyTextExist := false;
+            exit;
+        end;
+
+        //ConvertHtmlFileToText(HtmlBodyFilePath, BodyTextOut);
+        FileManagement.BLOBImportFromServerFile(TempBlob, HtmlBodyFilePath);
+        TempBlob.CreateInStream(BlobInStream);
+        BlobInStream.ReadText(BodyTextOut);
+
+        BodyTextExist := true;
+    end;
+
+    // codeunit 1510 "Notification Management"
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Notification Management", 'OnBeforeGetActionTextFor', '', false, false)]
+    local procedure OnBeforeGetActionTextFor(var NotificationEntry: Record "Notification Entry"; var CustomText: Text; var IsHandled: Boolean)
+    var
+        ApprovalEntry: Record "Approval Entry";
+        DataTypeManagement: Codeunit "Data Type Management";
+        PaymentOrderMgt: Codeunit "Payment Order Management";
+        RecRef: RecordRef;
+        ApproverType: Text;
+        GenAppStatus: Integer;
+        MessageResponsNo: Integer;
+        ActionApprovedTxt: Label 'has been approved by %1.';
+        ActionApprovalRejectedTxt: Label 'approval has been rejected by %1.';
+        ResponsText: label 'Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer';
+        FinalText: Label 'The document passed all approvals!';
+    begin
+        if NotificationEntry.Type = NotificationEntry.Type::Approval then begin
+            DataTypeManagement.GetRecordRef(NotificationEntry."Triggered By Record", RecRef);
+            RecRef.SetTable(ApprovalEntry);
+            if (ApprovalEntry."Act Type" <> ApprovalEntry."Act Type"::" ") or ApprovalEntry."IW Documents" then begin
+                IsHandled := true;
+                if ApprovalEntry."IW Documents" then
+                    GenAppStatus := ApprovalEntry."Status App".AsInteger()
+                else
+                    GenAppStatus := ApprovalEntry."Status App Act".AsInteger();
+                MessageResponsNo := PaymentOrderMgt.GetMessageResponsNo(ApprovalEntry."IW Documents", GenAppStatus, ApprovalEntry."Preliminary Approval");
+                if not (MessageResponsNo in [8, 9]) then
+                    ApproverType := SelectStr(MessageResponsNo, ResponsText);
+                case ApprovalEntry.Status of
+                    ApprovalEntry.Status::Rejected:
+                        CustomText := StrSubstNo(ActionApprovalRejectedTxt, ApproverType);
+                    ApprovalEntry.Status::Approved:
+                        if MessageResponsNo in [8, 9] then
+                            CustomText := FinalText
+                        else
+                            CustomText := StrSubstNo(ActionApprovedTxt, ApproverType);
+                    else
+                        IsHandled := false;
+                end;
+            end;
+        end;
+    end;
+
+    // codeunit 6620 "Copy Document Mgt."
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnAfterCopyPurchaseHeader', '', false, false)]
+    local procedure OnAfterCopyPurchaseHeader(var ToPurchaseHeader: Record "Purchase Header"; OldPurchaseHeader: Record "Purchase Header"; FromPurchHeader: Record "Purchase Header")
+    begin
+        ToPurchaseHeader."Act Type" := OldPurchaseHeader."Act Type";
+        ToPurchaseHeader."IW Documents" := OldPurchaseHeader."IW Documents";
+        ToPurchaseHeader."Pre-booking Document" := OldPurchaseHeader."Pre-booking Document";
+        ToPurchaseHeader."Empl. Purchase" := OldPurchaseHeader."Empl. Purchase";
+        ToPurchaseHeader."Status App Act" := OldPurchaseHeader."Status App Act";
+        ToPurchaseHeader."Status App" := OldPurchaseHeader."Status App";
+        ToPurchaseHeader."Process User" := OldPurchaseHeader."Process User";
+        ToPurchaseHeader."Payment Doc Type" := OldPurchaseHeader."Payment Doc Type";
+        ToPurchaseHeader."Date Status App" := OldPurchaseHeader."Date Status App";
+        ToPurchaseHeader.Controller := OldPurchaseHeader.Controller;
+        ToPurchaseHeader.Receptionist := OldPurchaseHeader.Receptionist;
+        ToPurchaseHeader."Linked Purchase Order Act No." := '';
+    end;
+
 }

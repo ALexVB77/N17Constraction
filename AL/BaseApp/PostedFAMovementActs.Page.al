@@ -1,6 +1,6 @@
 page 35608 "Posted FA Movement Acts"
 {
-    ApplicationArea = FixedAssets;
+    ApplicationArea = all;
     Caption = 'Posted Fixed Asset Movements';
     CardPageID = "Posted FA Movement Act";
     Editable = false;

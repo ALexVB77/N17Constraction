@@ -4,6 +4,8 @@ page 70076 Apartments
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Apartments;
+    Caption = 'Investment objects';
+    CardPageId = "Apartment Card";
 
     layout
     {

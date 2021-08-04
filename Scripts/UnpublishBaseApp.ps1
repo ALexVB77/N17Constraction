@@ -1,6 +1,4 @@
-﻿cd "C:\Distr\Scripts"
-
-$ServerInstanceName = "BonavaDev"
+﻿$ServerInstanceName = "BonavaDev"
 
 $quietExecution = $null
 

@@ -8,6 +8,7 @@ page 5742 "Transfer Orders"
     PromotedActionCategories = 'New,Process,Report,Release,Posting,Order,Documents,Print/Send,Navigate';
     SourceTable = "Transfer Header";
     UsageCategory = Lists;
+    SourceTableView = sorting("No.") where("Direct Transfer" = filter(<> '1')); // NC 51143 PA
 
     layout
     {
@@ -44,6 +45,7 @@ page 5742 "Transfer Orders"
                 field("Direct Transfer"; "Direct Transfer")
                 {
                     ApplicationArea = Location;
+                    Visible = false; // NC 51143 PA
                     ToolTip = 'Specifies that the transfer does not use an in-transit location.';
                 }
                 field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")

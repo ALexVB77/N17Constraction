@@ -3,21 +3,6 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="Bank Statement">
     <body>
       <group id="body">
-        <trans-unit id="Codeunit 1238839933 - Method 2793022625" size-unit="char" translate="yes" xml:space="preserve">
-          <source>manualAssignPaymentJournalLine</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Additional Management BS - Method manualAssignPaymentJournalLine</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1238839933 - Method 2608931640" size-unit="char" translate="yes" xml:space="preserve">
-          <source>clearAssignPaymentJournalLine</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Additional Management BS - Method clearAssignPaymentJournalLine</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1238839933 - Method 2917405684" size-unit="char" translate="yes" xml:space="preserve">
-          <source>copyReconLine</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Additional Management BS - Method copyReconLine</note>
-        </trans-unit>
         <trans-unit id="Codeunit 1238839933 - Method 3087177095 - NamedType 2041610153" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line status must be %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -52,31 +37,6 @@
           <source>Text length "%1" must be in range %2..%3</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Additional Management BS - Method OnTransformation - NamedType TextLenghtError</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3230913882 - Method 1997126755" size-unit="char" translate="yes" xml:space="preserve">
-          <source>setString</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Isolated Storage Management BS - Method setString</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3230913882 - Method 1828824977" size-unit="char" translate="yes" xml:space="preserve">
-          <source>getString</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Isolated Storage Management BS - Method getString</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3230913882 - Method 4072037636" size-unit="char" translate="yes" xml:space="preserve">
-          <source>delValue</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Isolated Storage Management BS - Method delValue</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3230913882 - Method 1258200911" size-unit="char" translate="yes" xml:space="preserve">
-          <source>clearAll</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Isolated Storage Management BS - Method clearAll</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3230913882 - Method 117289339" size-unit="char" translate="yes" xml:space="preserve">
-          <source>init</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Isolated Storage Management BS - Method init</note>
         </trans-unit>
         <trans-unit id="Codeunit 3230913882 - Method 2028298679 - NamedType 509021276" size-unit="char" translate="yes" xml:space="preserve">
           <source>Error caught in isolated storage: %1</source>
@@ -167,6 +127,11 @@
           <source>Preview</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Bank Payment Order BS - Control SetPreview - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1806751729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TransfeExcelTemplates</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TransferExcelTemplates - Property Caption</note>
         </trans-unit>
         <trans-unit id="XmlPort 4143417745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Exch. Import - CSV BS</source>

@@ -7712,6 +7712,10 @@
         DtldVendLedgEntry."Source Code" := GenJnlLine."Source Code";
         DtldVendLedgEntry."Transaction No." := VendLedgEntry."Transaction No.";
         DtldVendLedgEntry."Vendor Posting Group" := GenJnlLine."Posting Group";
+
+        // NC 50112 AB >>
+        OnAfterInitVATAgentDtldVendLedgEntry(GenJnlLine, VendLedgEntry, DtldVendLedgEntry);
+        // NC 50112 AB <<
     end;
 
     [Scope('OnPrem')]
@@ -9384,4 +9388,11 @@
     local procedure OnUpdatePostingGroupInGenJnlLine(var GenJnlLine: Record "Gen. Journal Line"; var Vend: Record "Vendor"; var VendAgrmt: Record "Vendor Agreement")
     begin
     end;
+
+    // NC 50112 AB >>
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterInitVATAgentDtldVendLedgEntry(GenJnlLine: Record "Gen. Journal Line"; var VendLedgEntry: Record "Vendor Ledger Entry"; var DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
+    begin
+    end;
+    // NC 50112 AB <<
 }

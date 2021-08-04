@@ -7,6 +7,10 @@ page 5601 "Fixed Asset List"
     Editable = false;
     PageType = List;
     SourceTable = "Fixed Asset";
+    // NC 51138 GG >>
+    SourceTableView = SORTING("FA Type")
+                      WHERE("FA Type" = FILTER("Fixed Assets" | "Intangible Asset"));
+    // NC 51138 GG <<
     UsageCategory = Lists;
 
     layout

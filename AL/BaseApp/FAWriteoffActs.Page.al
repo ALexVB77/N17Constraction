@@ -1,6 +1,6 @@
 page 35606 "FA Writeoff Acts"
 {
-    ApplicationArea = FixedAssets;
+    ApplicationArea = All;
     Caption = 'Fixed Asset Writeoffs';
     CardPageID = "FA Writeoff Act";
     Editable = false;

@@ -24,6 +24,11 @@ tableextension 80098 "General Ledger Setup (Ext)" extends "General Ledger Setup"
                 "Shortcut Dimension 1 Code" := "Global Dimension 1 Code";
             end;
         }
+        field(76000; "Project Dimension Code"; Code[20])
+        {
+            Caption = 'Project Dim. Code';
+            TableRelation = Dimension;
+        }
 
     }
 }

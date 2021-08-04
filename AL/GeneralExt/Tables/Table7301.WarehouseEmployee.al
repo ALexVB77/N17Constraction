@@ -1,6 +1,6 @@
 tableextension 87301 "Warehouse Employee (Ext)" extends "Warehouse Employee"
 {
-    procedure GetDefaultLocation(pUserID: code[20]; ShowMessage: Boolean): Code[20]
+    procedure GetDefaultLocation(pUserID: code[50]; ShowMessage: Boolean): Code[20]
     var
         WarehouseEmployee: record "Warehouse Employee";
         Text50002: Label 'There is no Storekeeper Warehouse setting for the current user. Please contact your administrator.';

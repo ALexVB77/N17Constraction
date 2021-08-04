@@ -2,7 +2,7 @@ page 70000 "Purchase Order App"
 {
     Caption = 'Purchase Order App';
     PageType = Document;
-    PromotedActionCategories = 'New,Process,Report,Order,Function,Print';
+    PromotedActionCategories = 'New,Process,Report,Order,Function,Print,Request Approval,Approve,Release,Navigate';
     RefreshOnActivate = true;
     SourceTable = "Purchase Header";
     SourceTableView = WHERE("Document Type" = FILTER(Order));
@@ -97,36 +97,51 @@ page 70000 "Purchase Order App"
                 field("Problem Document"; Rec."Problem Document")
                 {
                     ApplicationArea = All;
+                    Editable = false;
 
                     trigger OnValidate()
                     begin
                         CurrPage.Update(true);
                     end;
                 }
-                field("Problem Type"; ProblemType)
+                field("Problem Type"; Rec."Problem Type")
                 {
-                    Caption = 'Problem Type';
                     ApplicationArea = All;
                     Editable = false;
-                    Enabled = ProblemTypeEnabled;
                 }
+                field("Problem Description"; ProblemDescription)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Problem Description';
+                    Editable = RejectButtonEnabled;
+                    Enabled = RejectButtonEnabled;
 
+                    trigger OnValidate()
+                    begin
+                        if "Status App" = "Status App"::Payment then
+                            Rec.SetAddTypeCommentText(AddCommentType::Problem, ProblemDescription)
+                        else
+                            Rec.SetApprovalCommentText(ProblemDescription);
+                    end;
+                }
                 field("Payment to Person"; Rec."Payment to Person")
                 {
                     ApplicationArea = All;
-                    Editable = false;
 
                     trigger OnValidate()
                     begin
                         PurchSetup.Get();
                         if "Payment to Person" and ("Payment Assignment" = '') then
                             "Payment Assignment" := PurchSetup."Default Payment Assignment";
+                        PaymentAssignmentEnabled := "Payment to Person";
                         CurrPage.Update(true);
                     end;
                 }
                 field("Payment Assignment"; Rec."Payment Assignment")
                 {
                     ApplicationArea = All;
+                    Editable = PaymentAssignmentEnabled;
+                    Enabled = PaymentAssignmentEnabled;
                 }
                 field("Payment Type"; Rec."Payment Type")
                 {
@@ -176,30 +191,17 @@ page 70000 "Purchase Order App"
                         CurrPage.PurchaseOrderAppLines.PAGE.UpdateForm(true);
                     end;
                 }
-                field("PreApprover"; Rec."PreApprover")
+                field("Pre-Approver"; PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID"))
                 {
                     ApplicationArea = All;
-                    Editable = AllApproverEditable;
+                    Caption = 'Pre-Approver';
+                    Editable = false;
                 }
-                field("Pre-Approver"; Rec."Pre-Approver")
+                field("Approver"; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
                 {
                     ApplicationArea = All;
-                    Editable = Rec.PreApprover AND AllApproverEditable;
-
-                    trigger OnLookup(var Text: Text): Boolean
-                    begin
-                        PreApproveOnLookup();
-                    end;
-                }
-                field("Approver"; Rec."Approver")
-                {
-                    ApplicationArea = All;
-                    Editable = AllApproverEditable;
-
-                    trigger OnLookup(var Text: Text): Boolean
-                    begin
-                        ApproveOnLookup();
-                    end;
+                    Caption = 'Approver';
+                    Editable = false;
                 }
                 field("Agreement No."; Rec."Agreement No.")
                 {
@@ -264,6 +266,7 @@ page 70000 "Purchase Order App"
                     ApplicationArea = All;
                     Editable = false;
                     Caption = 'Approval Status';
+                    OptionCaption = ' ,Reception,Сontroller,Checker,Approve,Payment';
                 }
                 field("Date Status App"; Rec."Date Status App")
                 {
@@ -289,21 +292,10 @@ page 70000 "Purchase Order App"
             group("Payment Request")
             {
                 Caption = 'Payment Request';
-                field("Vendor Bank Account"; Rec."Vendor Bank Account")
+                field("Vendor Bank Account No."; rec."Vendor Bank Account No.")
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
-
-                    trigger OnAssistEdit()
-                    var
-                        VendorBankAccount: Record "Vendor Bank Account";
-                    begin
-                        VendorBankAccount.SETRANGE("Vendor No.", Rec."Pay-to Vendor No.");
-                        IF Page.RUNMODAL(0, VendorBankAccount) = ACTION::LookupOK THEN BEGIN
-                            Rec."Vendor Bank Account" := VendorBankAccount.BIC;
-                            Rec."Vendor Bank Account No." := VendorBankAccount."Bank Account No.";
-                        END;
-                    end;
                 }
                 field("Vendor Bank Account Name"; GetVendorBankAccountName)
                 {
@@ -311,9 +303,12 @@ page 70000 "Purchase Order App"
                     Editable = false;
                     Caption = 'Vendor Bank Account Name';
                 }
-                field("Vendor Bank Account No."; rec."Vendor Bank Account No.")
+                field("Vendor Bank Account"; Rec."Vendor Bank Account")
                 {
                     ApplicationArea = All;
+                    Caption = 'Vendor Bank BIC';
+                    Editable = false;
+                    Lookup = false;
                 }
                 field("Payment Details"; rec."Payment Details")
                 {
@@ -417,24 +412,22 @@ page 70000 "Purchase Order App"
                         DocumentAttachmentDetails.RunModal;
                     end;
                 }
-                action(ChangeLog)
+                action(Approvals)
                 {
-                    ApplicationArea = All;
-                    Caption = 'Change Log';
-                    Image = ChangeLog;
+                    AccessByPermission = TableData "Approval Entry" = R;
+                    ApplicationArea = Suite;
+                    Caption = 'Approvals';
+                    Image = Approvals;
                     Promoted = true;
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
 
                     trigger OnAction()
                     var
-                        lrChangeLE: Record "Change Log Entry";
+                        WorkflowsEntriesBuffer: Record "Workflows Entries Buffer";
                     begin
-                        lrChangeLE.SETCURRENTKEY("Table No.", "Primary Key Field 2 Value", "Date and Time");
-                        lrChangeLE.SETRANGE("Table No.", Database::"Purchase Header");
-                        lrChangeLE.SETRANGE("Primary Key Field 2 Value", Rec."No.");
-                        IF NOT lrChangeLE.IsEmpty THEN
-                            Page.RUNMODAL(Page::"Change Log Entries", lrChangeLE);
+                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(
+                            RecordId, DATABASE::"Purchase Header", "Document Type".AsInteger(), "No.");
                     end;
                 }
             }
@@ -450,7 +443,7 @@ page 70000 "Purchase Order App"
                     ApplicationArea = Suite;
                     Caption = 'Copy Document';
                     Ellipsis = true;
-                    Enabled = "No." <> '';
+                    Enabled = CopyDocumentEnabled;
                     Image = CopyDocument;
                     Promoted = true;
                     PromotedCategory = Category5;
@@ -499,8 +492,82 @@ page 70000 "Purchase Order App"
                     end;
                 }
             }
-        }
+            group(Approval)
+            {
+                Caption = 'Approval';
+                action(Approve)
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Approve';
+                    Enabled = ApproveButtonEnabled;
+                    Image = Approve;
+                    Promoted = true;
+                    PromotedCategory = Category8;
+                    PromotedIsBig = true;
 
+                    trigger OnAction()
+                    begin
+                        MessageIfPurchLinesNotExist;
+                        if "Status App" in ["Status App"::" ", "Status App"::Payment] then
+                            FieldError("Status App");
+                        if "Status App" = "Status App"::Reception then begin
+                            IF ApprovalsMgmt.CheckPurchaseApprovalPossible(Rec) THEN
+                                ApprovalsMgmt.OnSendPurchaseDocForApproval(Rec);
+                        end else
+                            ApprovalsMgmt.ApproveRecordApprovalRequest(RECORDID);
+                        CurrPage.Update(false);
+                    end;
+                }
+                action(Reject)
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Reject';
+                    Enabled = RejectButtonEnabled;
+                    Image = Reject;
+                    Promoted = true;
+                    PromotedCategory = Category8;
+                    PromotedIsBig = true;
+
+                    trigger OnAction()
+                    begin
+                        if "Status App" in ["Status App"::" ", "Status App"::Reception, "Status App"::Payment] then
+                            FieldError("Status App");
+                        ApprovalsMgmtExt.RejectPurchActAndPayInvApprovalRequest(RECORDID);
+                        CurrPage.Update(false);
+                    end;
+                }
+                action(Delegate)
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Delegate';
+                    Enabled = false;
+                    Image = Delegate;
+                    Promoted = true;
+                    PromotedCategory = Category8;
+                    Visible = false;
+
+                    trigger OnAction()
+                    begin
+                        //ApprovalsMgmt.DelegateRecordApprovalRequest(RecordId);
+                        Message('Pressed Delegate');
+                    end;
+                }
+                action(Comment)
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Comments';
+                    Enabled = ApproveButtonEnabled or RejectButtonEnabled;
+                    Image = ViewComments;
+                    Promoted = true;
+                    PromotedCategory = Category8;
+
+                    trigger OnAction()
+                    begin
+                        ApprovalsMgmt.GetApprovalComment(Rec);
+                    end;
+                }
+            }
+        }
     }
 
     trigger OnOpenPage()
@@ -519,6 +586,29 @@ page 70000 "Purchase Order App"
 
     trigger OnAfterGetCurrRecord()
     begin
+
+        CalcFields("Payments Amount");
+
+        if "Status App" = "Status App"::Payment then
+            ProblemDescription := Rec.GetAddTypeCommentText(AddCommentType::Problem)
+        else
+            ProblemDescription := Rec.GetApprovalCommentText();
+
+        PaymentAssignmentEnabled := "Payment to Person";
+        CopyDocumentEnabled := ("No." <> '') and ("Status App" = "Status App"::Reception);
+
+        ApproveButtonEnabled := FALSE;
+        RejectButtonEnabled := FALSE;
+
+        // StatusStyleTxt := GetStatusStyleText();
+
+        if (UserId = Rec.Receptionist) and (Rec."Status App" = Rec."Status App"::Reception) then
+            ApproveButtonEnabled := true;
+        if ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(RecordId) then begin
+            ApproveButtonEnabled := true;
+            RejectButtonEnabled := true;
+        end;
+
         UserSetup.GET(USERID);
 
         CurrPage.EDITABLE("Status App" < "Status App"::Approve);
@@ -526,17 +616,6 @@ page 70000 "Purchase Order App"
             CurrPage.EDITABLE(TRUE);
 
         IWPlanRepayDateMandatory := Rec."Payment Type" = Rec."Payment Type"::"pre-pay";
-
-        case true of
-            "Problem Document" and ("Problem Type" = "Problem Type"::" "):
-                ProblemType := Rec."Problem Type Txt";
-            "Problem Document" and ("Problem Type" <> "Problem Type"::" "):
-                ProblemType := FORMAT(Rec."Problem Type");
-            else
-                ProblemType := '';
-        end;
-
-        ProblemTypeEnabled := "Problem Document";
 
         PaymentTypeEditable := "Status App" < "Status App"::Checker;
         AppButtonEnabled :=
@@ -552,15 +631,13 @@ page 70000 "Purchase Order App"
         END;
         IF "Status App" = "Status App"::Request THEN
             AppButtonEnabled := TRUE;
-
-        AllApproverEditable := "Status App" = "Status App"::Checker;
     end;
 
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        UserSetup.GET;
-        IF not ((UserSetup."Status App" = UserSetup."Status App"::Controller) OR UserSetup."Administrator IW") THEN
+        UserSetup.GET(UserId);
+        IF not ((UserSetup."Status App" in [UserSetup."Status App"::Reception, UserSetup."Status App"::Controller]) OR UserSetup."Administrator IW") THEN
             ERROR(TextDelError, Rec."No.");
         IF NOT gcERPC.DeleteInvoice(Rec) then
             ERROR('');
@@ -577,13 +654,13 @@ page 70000 "Purchase Order App"
         gcERPC: Codeunit "ERPC Funtions";
         UserMgt: Codeunit "User Setup Management";
         PaymentOrderMgt: Codeunit "Payment Order Management";
-        AllApproverEditable: Boolean;
-        TextDelError: Label 'You cannot delete Purchase Order Act %1';
-        ProblemType: text;
-        PaymentTypeEditable: Boolean;
-        AppButtonEnabled: Boolean;
-        ProblemTypeEnabled: Boolean;
+        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
+        PaymentTypeEditable, AppButtonEnabled, ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled : Boolean;
         IWPlanRepayDateMandatory: Boolean;
+        ProblemDescription: text[80];
+        AddCommentType: enum "Purchase Comment Add. Type";
+        TextDelError: Label 'You cannot delete Purchase Order Act %1';
 
     local procedure SaveInvoiceDiscountAmount()
     var
@@ -599,109 +676,7 @@ page 70000 "Purchase Order App"
         VendorBankAccount: Record "Vendor Bank Account";
     begin
         if Rec."Vendor Bank Account No." <> '' then
-            if VendorBankAccount.get("Vendor Bank Account No.") then
+            if VendorBankAccount.get("Pay-to Vendor No.", "Vendor Bank Account No.") then
                 exit(VendorBankAccount.Name + VendorBankAccount."Name 2");
-    end;
-
-    local procedure PreApproveOnLookup()
-    begin
-
-        Message('Вызов PreApproveOnLookup');
-
-        /*
-        AT.RESET;
-        AT.SETRANGE("Document Type",AT."Document Type"::Order);
-        AT.SETRANGE("Table ID",DATABASE::"Purchase Header");
-        AT.SETRANGE(Enabled,TRUE);
-        IF AT.FINDFIRST THEN
-        BEGIN
-        AddApp.RESET;
-        AddApp.SETCURRENTKEY("Approver ID","Shortcut Dimension 1 Code");
-        AddApp.SETRANGE("Approval Code",AT."Approval Code");
-        AddApp.SETRANGE("Approval Type",AT."Approval Type");
-        AddApp.SETRANGE("Document Type",AT."Document Type");
-        AddApp.SETRANGE("Limit Type",AT."Limit Type");
-        IF AddApp.FIND('-') THEN
-        REPEAT
-        IF TempApp<>AddApp."Approver ID" THEN
-        AddApp.MARK(TRUE);
-        TempApp:=AddApp."Approver ID";
-        UNTIL AddApp.NEXT=0;
-
-        AddApp.MARKEDONLY(TRUE);
-        AddApp.SETFILTER("Approver ID",'<>%1',USERID);
-        IF AddApp.FINDFIRST THEN;
-
-        IF FORM.RUNMODAL(70067,AddApp)=ACTION::LookupOK THEN
-        BEGIN
-        IF CurrForm.EDITABLE AND ("Status App"="Status App"::Checker) THEN
-        BEGIN
-        IF (Approver<>'') AND (Approver=AddApp."Approver ID") THEN ERROR(Text003);
-
-        "Pre-Approver":=AddApp."Approver ID";
-        CurrForm.UPDATECONTROLS;
-        END;
-        END;
-        END;
-
-        */
-    end;
-
-    local procedure ApproveOnLookup()
-    begin
-
-        Message('Вызов ApproveOnLookup');
-
-        /*
-    AT.RESET;
-    AT.SETRANGE("Document Type",AT."Document Type"::Order);
-    AT.SETRANGE("Table ID",DATABASE::"Purchase Header");
-    AT.SETRANGE(Enabled,TRUE);
-    IF AT.FINDFIRST THEN
-    BEGIN
-
-    TempApp:='';
-    AddApp.RESET;
-    AddApp.SETCURRENTKEY("Approver ID","Shortcut Dimension 1 Code");
-    AddApp.SETRANGE("Approval Code",AT."Approval Code");
-    AddApp.SETRANGE("Approval Type",AT."Approval Type");
-    AddApp.SETRANGE("Document Type",AT."Document Type");
-    AddApp.SETRANGE("Limit Type",AT."Limit Type");
-    IF AddApp.FIND('-') THEN
-    REPEAT
-    IF TempApp<>AddApp."Approver ID" THEN
-    AddApp.MARK(TRUE);
-    TempApp:=AddApp."Approver ID";
-    UNTIL AddApp.NEXT=0;
-
-
-    AddApp.MARKEDONLY(TRUE);
-
-    // SWC1002 DD 13.02.17 >>
-    AddApp.SETRANGE("Approver ID",Approver);
-    IF AddApp.FINDFIRST THEN;
-    // SWC1002 DD 13.02.17 <<
-    AddApp.SETFILTER("Approver ID",'<>%1',USERID);
-    // SWC1002 DD 13.02.17 >>
-    //IF AddApp.FINDFIRST THEN;
-    // SWC1002 DD 13.02.17 <<
-
-    IF FORM.RUNMODAL(70067,AddApp)=ACTION::LookupOK THEN
-    BEGIN
-    IF CurrForm.EDITABLE AND ("Status App"="Status App"::Checker) THEN
-    BEGIN
-    IF ("Pre-Approver"<>'') AND ("Pre-Approver"=AddApp."Approver ID") THEN ERROR(Text003);
-    // SWC1002 DD 13.02.17 >>
-    //IF CheckLinesCostPlace(AddApp."Shortcut Dimension 1 Code") THEN
-    IF CheckLinesApprover(AddApp."Approver ID") THEN
-    // SWC1002 DD 13.02.17 <<
-        Approver:=AddApp."Approver ID";
-
-    CurrForm.UPDATECONTROLS;
-    END;
-    END;
-    END;
-    */
-
     end;
 }

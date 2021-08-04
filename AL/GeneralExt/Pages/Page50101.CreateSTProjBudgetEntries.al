@@ -5,6 +5,7 @@ page 50101 "Create ST Proj Budget Entries"
     // UsageCategory = Lists;
     SourceTable = "Projects Budget Entry";
     SourceTableTemporary = true;
+    AutoSplitKey = true;
 
     layout
     {
@@ -12,7 +13,7 @@ page 50101 "Create ST Proj Budget Entries"
         {
             repeater(GroupName)
             {
-                field("Cost Code"; Rec."Cost Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = All;
                 }
@@ -38,6 +39,10 @@ page 50101 "Create ST Proj Budget Entries"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Rec.Date := Today;
+        if EntryNo = 0 then
+            EntryNo := 1;
+        Rec."Entry No." := EntryNo;
+        EntryNo := EntryNo + 1;
         Rec."Project Code" := gProjBudEntry."Project Code";
         Rec."Shortcut Dimension 1 Code" := gProjBudEntry."Shortcut Dimension 1 Code";
         Rec."Parent Entry" := gProjBudEntry."Entry No.";
@@ -56,13 +61,14 @@ page 50101 "Create ST Proj Budget Entries"
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
-        if CloseAction = Action::LookupOK then
-            CreateSTLines();
+        //if CloseAction = Action::LookupOK then
+        CreateSTLines();
     end;
 
     var
         gProjBudEntry: Record "Projects Budget Entry";
         gAmount: decimal;
+        EntryNo: Integer;
 
     procedure SetProjBudEntry(pPBE: Record "Projects Budget Entry")
     begin
@@ -78,15 +84,22 @@ page 50101 "Create ST Proj Budget Entries"
     procedure CreateSTLines()
     var
         lPBE: Record "Projects Budget Entry";
+        lAmount: Decimal;
         lTextErr001: Label 'Parent Entry amount %1 exeeded by %2';
     begin
+        lAmount := gAmount;
         if Rec.FindSet() then
             repeat
                 lPBE := Rec;
+                lPBE."Entry No." := 0;
                 lPBE.insert(true);
-                gAmount := gAmount - Rec."Without VAT (LCY)";
+                lAmount := lAmount - Rec."Without VAT (LCY)";
             until Rec.Next() = 0;
-        if gAmount < 0 then
-            Error(lTextErr001, gProjBudEntry."Without VAT (LCY)", Abs(gAmount));
+        if lAmount < 0 then
+            Error(lTextErr001, gProjBudEntry."Without VAT (LCY)", Abs(lAmount));
+        gAmount := lAmount;
+        lPBE.Get(gProjBudEntry."Entry No.");
+        lPBE."Without VAT (LCY)" := gAmount;
+        lPBE.Modify();
     end;
 }

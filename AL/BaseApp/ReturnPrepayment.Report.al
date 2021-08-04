@@ -131,11 +131,24 @@ report 12453 "Return Prepayment"
             CVLedgEntryBuf.Prepayment := VendLedgEntry.Prepayment;
             CVLedgEntryBuf."Agreement No." := VendLedgEntry."Agreement No.";
             CVLedgEntryBuf."Dimension Set ID" := VendLedgEntry."Dimension Set ID";
+
+            // NC 50112 AB >>
+            OnAfterFillVendCVLedgEntryBuf(VendLedgEntry, CVLedgEntryBuf);
+            // NC 50112 AB <<    
+
         end;
         PostingType := PostingType::"Reset as Payment";
         PostDescription := Text12401;
         DocumentNo := CVLedgEntryBuf."Document No.";
         PostingDate := WorkDate;
     end;
+
+    // NC 50112 AB >>
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterFillVendCVLedgEntryBuf(VendLedgEntry: Record "Vendor Ledger Entry"; var CVLedgEntryBuf: Record "CV Ledger Entry Buffer")
+    begin
+    end;
+    // NC 50112 AB <<  
+
 }
 

@@ -8,6 +8,10 @@ pageextension 80118 "General Ledger Setup (Ext)" extends "General Ledger Setup"
             {
                 ApplicationArea = All;
             }
+            field("Project Dimension Code"; "Project Dimension Code")
+            {
+                ApplicationArea = All;
+            }
         }
     }
 }

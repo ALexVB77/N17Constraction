@@ -4,7 +4,7 @@ table 5813 "Inventory Posting Setup"
 
     fields
     {
-        field(1; "Location Code"; Code[10])
+        field(1; "Location Code"; Code[20]) //NC Data Migration PA Code[10] -> Code[20]
         {
             Caption = 'Location Code';
             TableRelation = Location;

@@ -31,7 +31,7 @@ tableextension 94901 "Vendor Agreement (Ext)" extends "Vendor Agreement"
         field(70002; "Exists Comment"; Boolean)
         {
             FieldClass = FlowField;
-            CalcFormula = Exist("Comment Line" WHERE("Table Name" = CONST(14901),
+            CalcFormula = Exist("Comment Line" WHERE("Table Name" = CONST("Vendor Agreement"),
                                                       "No." = FIELD("No.")));
             Caption = 'Exists Comment';
             Description = '50085';
@@ -51,18 +51,7 @@ tableextension 94901 "Vendor Agreement (Ext)" extends "Vendor Agreement"
         {
             Caption = 'Project Dimension Code';
             Description = '50085';
-
-            trigger OnLookup()
-            begin
-                grDevSetup.GET;
-                grDevSetup.TESTFIELD("Project Dimension Code");
-
-                grDimValue.SETRANGE("Dimension Code", grDevSetup."Project Dimension Code");
-                IF grDimValue.FindFirst() THEN BEGIN
-                    IF PAGE.RUNMODAL(PAGE::"Dimension Values", grDimValue) = ACTION::LookupOK THEN
-                        "Project Dimension Code" := grDimValue.Code;
-                END
-            end;
+            TableRelation = "Dimension Value".Code where("Dimension Code" = const('ПРОЕКТ'));
         }
         field(70008; "VAT Amount"; Decimal)
         {
@@ -157,6 +146,36 @@ tableextension 94901 "Vendor Agreement (Ext)" extends "Vendor Agreement"
             Caption = 'Don''t Check CashFlow';
             Description = '50085';
         }
+
+        modify("Vendor Posting Group")
+        {
+            trigger OnAfterValidate()
+            var
+                VendLedgEntry: Record "Vendor Ledger Entry";
+                UserSetup: Record "User Setup";
+                PurchSetup: Record "Purchases & Payables Setup";
+                LabelPstGrChanging: Label 'You cannot change %1 till you set up %2 of %3';
+            begin
+                IF "Vendor Posting Group" <> xRec."Vendor Posting Group" THEN BEGIN
+                    VendLedgEntry.RESET;
+                    VendLedgEntry.SETCURRENTKEY("Vendor No.", "Agreement No.");
+                    VendLedgEntry.SETRANGE("Vendor No.", "Vendor No.");
+                    VendLedgEntry.SETRANGE("Agreement No.", "No.");
+                    IF NOT VendLedgEntry.ISEMPTY THEN BEGIN
+                        PurchSetup.GET;
+                        IF NOT PurchSetup."Allow Alter Posting Groups" THEN
+                            ERROR(LabelPstGrChanging, FIELDCAPTION("Vendor Posting Group"),
+                              PurchSetup.FIELDCAPTION("Allow Alter Posting Groups"), PurchSetup.TABLECAPTION);
+                        UserSetup.GET(USERID);
+                        IF NOT UserSetup."Change Agreem. Posting Group" THEN
+                            ERROR(LabelPstGrChanging + '->>%4; %5; %6', FIELDCAPTION("Vendor Posting Group"),
+                              UserSetup.FIELDCAPTION("Change Agreem. Posting Group"), UserSetup.TABLECAPTION,
+                              UserSetup."User ID", UserId(),
+                              UserSetup."Change Agreem. Posting Group");
+                    END;
+                END;
+            end;
+        }
     }
     var
         grDimValue: Record "Dimension Value";
@@ -205,6 +224,8 @@ tableextension 94901 "Vendor Agreement (Ext)" extends "Vendor Agreement"
         CompanyInfo: Record "Company Information";
         Vend: Record "Vendor";
         CheckLimitDateFilter: Text[250];
+        Text001: Label 'FRAME';
+        Text002: Label 'FRAME CUSTOMIZED';
     begin
         CompanyInfo.Get;
         if not CompanyInfo."Use RedFlags in Agreements" then
@@ -220,7 +241,7 @@ tableextension 94901 "Vendor Agreement (Ext)" extends "Vendor Agreement"
             SetRange("Check Limit Date Filter");
         CalcFields("Purch. Original Amt. (LCY)");
 
-        if ("Agreement Group" in ['РАМОЧНЫЙ', 'РАМОЧНЫЙ ПОЗАКАЗНЫЙ']) and
+        if ("Agreement Group" in [Text001, Text002]) and
            (("Check Limit Amount (LCY)" - "Purch. Original Amt. (LCY)" < 0) or ("Check Limit Amount (LCY)" = 0)) and
            ("Expire Date" >= WORKDATE) and
            Active and
@@ -236,49 +257,28 @@ tableextension 94901 "Vendor Agreement (Ext)" extends "Vendor Agreement"
         CompanyInfo: Record "Company Information";
         UserSetupRecip: Record "User Setup";
         UserSetupSend: Record "User Setup";
-        TempPath: Text;
-        TemplateFile: File;
-        InStreamTemplate: InStream;
         SenderAddress: Text;
         Purchaser: Record "Salesperson/Purchaser";
         UserDesc: Text;
         RecipList: Text;
         Subject: Text;
         Body: Text;
-        InSReadChar: Text;
-        CharNo: Text;
         EmailMessage: Codeunit "Email Message";
         Email: Codeunit Email;
-        MessageBody: Text;
-        i: Integer;
         Text091: Label 'Check vendor agreements';
-        Text092: Label 'MESSAGE FROM NAV AGREEMENT SYSTEM CONTROL';
     begin
         CompanyInfo.GET;
         if not CompanyInfo."Use RedFlags in Agreements" then
             exit;
 
-        //UserSetupRecip.Reset();
-        //if RecipientType = RecipientType::Creator then
-        //    UserSetupRecip.SetRange("Vend. Agr. Creator Notif.", true)
-        //else
-        //    UserSetupRecip.SetRange("Vend. Agr. Controller Notif.", true);
-        //
-        //if UserSetupRecip.IsEmpty then
-        //    exit;
+        UserSetupRecip.Reset();
+        if RecipientType = RecipientType::Creator then
+            UserSetupRecip.SetRange("Vend. Agr. Creator Notif.", true)
+        else
+            UserSetupRecip.SetRange("Vend. Agr. Controller Notif.", true);
 
-        //AppSetup.Get;
-        //AppSetup.CalcFields("Check Vend. Agr. Template");
-        //if not AppSetup."Check Vend. Agr. Template".HasValue THEN
-        //    Error(Text090)
-        //else begin
-        //    TempPath := TemporaryPath + 'CheckVendAgrTemplate.htm';
-        //    AppSetup."Check Vend. Agr. Template".Export(TempPath, false);
-        //end;
-
-        TemplateFile.TextMode(true);
-        TemplateFile.Open(TempPath);
-        TemplateFile.CreateInStream(InStreamTemplate);
+        if UserSetupRecip.IsEmpty then
+            exit;
 
         UserSetupSend.Get(UserId);
         UserSetupSend.TestField("E-Mail");
@@ -302,76 +302,54 @@ tableextension 94901 "Vendor Agreement (Ext)" extends "Vendor Agreement"
           UserSetupRecip.Next() = 0;
 
         Subject := Text091;
-        Body := StrSubstNo(Text092, CompanyName);
+        if RecipientType = RecipientType::Creator then
+            Body := CreateMessageBodyCreator(UserDesc, VendAgr)
+        else
+            Body := CreateMessageBodyController(VendAgr);
 
-        Body := '';
-
-        while InStreamTemplate.Read(InSReadChar, 1) <> 0 do begin
-            if InSReadChar = '%' then begin
-                MessageBody := Body;
-                Body := InSReadChar;
-                if InStreamTemplate.Read(InSReadChar, 1) <> 0 then;
-                if (InSReadChar >= '0') and (InSReadChar <= '9') then begin
-                    Body := Body + '1';
-                    CharNo := InSReadChar;
-                    while (InSReadChar >= '0') and (InSReadChar <= '9') do begin
-                        if InStreamTemplate.Read(InSReadChar, 1) <> 0 then;
-                        if (InSReadChar >= '0') and (InSReadChar <= '9') then
-                            CharNo := CharNo + InSReadChar;
-                    end;
-                end else
-                    Body := Body + InSReadChar;
-
-                FillCheckVendAgrTemplate(Body, CharNo, UserDesc, VendAgr, RecipientType);
-                MessageBody := MessageBody + Body;
-                Body := InSReadChar;
-            end else begin
-                Body := Body + InSReadChar;
-                i := i + 1;
-                IF i = 500 then begin
-                    MessageBody := MessageBody + Body;
-                    Body := '';
-                    i := 0;
-                end;
-            end;
-        end;
-
-        MessageBody := MessageBody + Body;
+        Message(Body);
         EmailMessage.Create(RecipList, Subject, Body);
         Email.Send(EmailMessage, Enum::"Email Scenario"::Default);
-        TemplateFile.Close();
     end;
 
-    local procedure FillCheckVendAgrTemplate(var Body: Text; TextNo: Text; UserDesc: Text; VendAgr: Record "Vendor Agreement"; RecipientType: Option Creator,Controller)
+    local procedure CreateMessageBodyCreator(UserDesc: Text; var VendAgr: Record "Vendor Agreement") MessageBody: Text
     var
         Vend: Record "Vendor";
-        Text093: Label 'User %1 created a new agreement with number %2 for vendor% 3';
-        Text094: Label 'It is necessary to fill in the information on the control of the purchase limit';
-        Text095: Label 'Click this link to open document';
-        Text096: Label 'For the agreement with number %1 for the vendor %2, the purchase limit has been exceeded';
-        Text097: Label 'Control is needed';
-        locText001: Label 'RUS="&target=Form 14902%1view=SORTING(Field1,Field2)%2WHERE(Field1=1(%3))%1position=Field1=0(%3),Field2=0(%4)"';
+        CRLF: Text[2];
+        Text001: Label 'MESSAGE FROM BUSINESS CENTRAL AGREEMENT CONTROL SYSTEM';
+        Text002: Label 'User ';
+        Text003: Label ' created a new agreement with No. ';
+        Text004: Label ' by vendor ';
+        Text005: Label 'It is necessary to fill in the information on control of the purchase limit.';
     begin
-        case TextNo of
-            '1':
-                begin
-                    Vend.GET(VendAgr."Vendor No.");
-                    if RecipientType = RecipientType::Creator then
-                        Body := StrSubstNo(Body, StrSubstNo(Text093, UserDesc, VendAgr."No.", Vend."No." + ' ' + Vend."Full Name"))
-                    else
-                        Body := StrSubstNo(Body, StrSubstNo(Text096, VendAgr."No.", Vend."No." + ' ' + Vend."Full Name"));
-                end;
-            '2':
-                begin
-                    if RecipientType = RecipientType::Creator then
-                        Body := StrSubstNo(Body, Text094)
-                    else
-                        Body := StrSubstNo(Body, Text097);
-                end;
-            '253':
-                Body := StrSubstNo(Body, GetUrl(ClientType::Windows) + StrSubstNo(locText001, '%26', '%20', VendAgr."Vendor No.", VendAgr."No.")); //?
-            '4':
-                Body := StrSubstNo(Body, Text095);
-        end;
+        CRLF[1] := 13;
+        CRLF[2] := 10;
+        MessageBody := Text001;
+        MessageBody := MessageBody + ' (' + Format(CompanyName) + ')' + CRLF + CRLF;
+        MessageBody := MessageBody + Text002 + Format(UserDesc) + Text003 + Format(VendAgr."No.");
+        Vend.GET(VendAgr."Vendor No.");
+        MessageBody := MessageBody + Text004 + Format(Vend."No." + ' ' + Vend."Full Name") + CRLF + CRLF;
+        MessageBody := MessageBody + Text005;
+    end;
+
+    local procedure CreateMessageBodyController(var VendAgr: Record "Vendor Agreement") MessageBody: Text
+    var
+        Vend: Record "Vendor";
+        CRLF: Text[2];
+        Text001: Label 'MESSAGE FROM BUSINESS CENTRAL AGREEMENT CONTROL SYSTEM';
+        Text002: Label 'According to the agreement with No. ';
+        Text003: Label ' by vendor ';
+        Text004: Label ' the purchase limit has been exceeded.';
+        Text005: Label 'Control is needed.';
+    begin
+        CRLF[1] := 13;
+        CRLF[2] := 10;
+        MessageBody := Text001;
+        MessageBody := MessageBody + ' (' + Format(CompanyName) + ')' + CRLF + CRLF;
+        MessageBody := MessageBody + Text002 + Format(VendAgr."No.") + Text003;
+        Vend.GET(VendAgr."Vendor No.");
+        MessageBody := MessageBody + Format(Vend."No." + ' ' + Vend."Full Name");
+        MessageBody := MessageBody + Text004 + CRLF + CRLF;
+        MessageBody := MessageBody + Text005;
     end;
 }

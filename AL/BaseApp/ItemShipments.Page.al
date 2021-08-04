@@ -1,5 +1,6 @@
 page 12468 "Item Shipments"
 {
+    ApplicationArea = Basic, Suite; // NC 51414 GG
     Caption = 'Item Shipments';
     CardPageID = "Item Shipment";
     DataCaptionFields = "Document Type";

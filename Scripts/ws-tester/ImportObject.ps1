@@ -1,33 +1,45 @@
-$Cred = New-Object System.Management.Automation.PSCredential -ArgumentList "wsuser", (ConvertTo-SecureString "tk7xhPjZ"  -AsPlainText -Force)
-$WS = New-WebServiceProxy "http://nav-bonava.ncdev.ru:17057/BonavaDev/WS/CRONUS%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F%20%D0%97%D0%90%D0%9E/Codeunit/CRMIntegrationAPI" -UseDefaultCredential
+$CrmWSUrlTest = "https://vm-tst-app035.oneplatform.info:7147/BonavaTest/WS/Bonava/Codeunit/CrmAPI"
+
+$WS = New-WebServiceProxy $CrmWSUrlTest -UseDefaultCredential
 $WS.Timeout = [System.Int32]::MaxValue
+
+$XmlObjectsFolder = 'C:\Temp\CRM\xml'
+$ScriptFolder = 'C:\Temp\CRM\'
+
 
 $SoapEnv = @"
 <?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <soap:Body>
       <crm_objects>
-         <object>__BASE64_ENCODED_OBJECT_XML_1__</object>
-         <object>__BASE64_ENCODED_OBJECT_XML_2__</object>
-         <object>__BASE64_ENCODED_OBJECT_XML_3__</object>
+         _1_
       </crm_objects>
    </soap:Body>
 </soap:Envelope>
 "@
 
-$XmlContent = Get-Content -Path .\t1\Unit.xml -Encoding utf8
-$Base64XmlContent = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($XmlContent))
-$SoapEnv = $SoapEnv.Replace("__BASE64_ENCODED_OBJECT_XML_1__", $Base64XmlContent)
+$XmlObject = "<object>_1_</object>"
+$XmlAllObjects = ""
 
-$XmlContent = Get-Content -Path .\t1\Contact.xml -Encoding utf8
-$Base64XmlContent = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($XmlContent))
-$SoapEnv = $SoapEnv.Replace("__BASE64_ENCODED_OBJECT_XML_2__", $Base64XmlContent)
+$XmlFilesMask = Join-Path -Path $XmlObjectsFolder -ChildPath "\*"
+$Files = Get-ChildItem -Path $XmlFilesMask -Include "*.xml"
+if (!$Files){
+   Write-Host "There are no xml files!"
+} else {
+   $Files | ForEach-Object {
+      $Filename = Join-Path -Path $XmlObjectsFolder -ChildPath $_.Name
+      $XmlContent = Get-Content -Path $Filename -Encoding utf8
+      $Base64XmlContent = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($XmlContent))
+      $XmlAllObjects += $XmlObject.Replace("_1_", $Base64XmlContent)
+   }
+}
 
-$XmlContent = Get-Content -Path .\t1\Contract.xml -Encoding utf8
-$Base64XmlContent = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($XmlContent))
-$SoapEnv = $SoapEnv.Replace("__BASE64_ENCODED_OBJECT_XML_3__", $Base64XmlContent)
+$SoapEnv = $SoapEnv.Replace("_1_", $XmlAllObjects)
 
-$null = Set-Content -path "C:\Temp\out.xml" -Value $SoapEnv
+#$DebugFile = Join-Path -Path $ScriptFolder -ChildPath "debug_request_body.xml"
+#Set-Content -Path $DebugFile  -Value $SoapEnv
 
 $ResponseText = $WS.ImportObject($SoapEnv)
 Write-Host $ResponseText
+pause
+

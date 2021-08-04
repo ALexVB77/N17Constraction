@@ -48,7 +48,7 @@ pageextension 94919 "Excel Templates (Ext)" extends "Excel Templates"
                     Filename := FileMgt.UploadFile(Text002, '');
                     if Filename = '' then
                         exit;
-                    FileMgt.ValidateFileExtension(Filename, '.xlsx');
+                    FileMgt.ValidateFileExtension(Filename, '.xlsx|.html');
                     if Filename = '' then
                         exit;
 

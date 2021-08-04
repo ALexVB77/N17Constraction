@@ -6,6 +6,19 @@ pageextension 80026 "Vendor Card (Ext)" extends "Vendor Card"
         {
             StyleExpr = LineColor;
         }
+        modify(Name)
+        {
+            StyleExpr = LineColor;
+        }
+        modify("Name 2")
+        {
+            StyleExpr = LineColor;
+        }
+        modify("Full Name")
+        {
+            StyleExpr = LineColor;
+        }
+
         addafter("Tax Authority No.")
         {
             field("Vat Agent Posting Group"; Rec."Vat Agent Posting Group")

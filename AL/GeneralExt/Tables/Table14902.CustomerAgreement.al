@@ -2,6 +2,79 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
 {
     fields
     {
+
+        modify("Customer Posting Group")
+        {
+            trigger OnAfterValidate()
+            var
+                CustLedgEntry: Record "Cust. Ledger Entry";
+                UserSetup: Record "User Setup";
+                SalesSetup: Record "Sales & Receivables Setup";
+                LabelPstGrChanging: Label 'You cannot change %1 till you set up %2 of %3';
+            begin
+
+                IF ("Customer Posting Group" <> xRec."Customer Posting Group") THEN BEGIN
+                    CustLedgEntry.RESET;
+                    CustLedgEntry.SETCURRENTKEY("Posting Date", "Customer No.", "Agreement No.");
+                    CustLedgEntry.SETRANGE("Customer No.", "Customer No.");
+                    CustLedgEntry.SETRANGE("Agreement No.", "No.");
+                    IF NOT CustLedgEntry.ISEMPTY THEN BEGIN
+                        SalesSetup.GET;
+                        IF NOT SalesSetup."Allow Alter Posting Groups" THEN
+                            ERROR(LabelPstGrChanging, FIELDCAPTION("Customer Posting Group"),
+                              SalesSetup.FIELDCAPTION("Allow Alter Posting Groups"), SalesSetup.TABLECAPTION);
+                        UserSetup.GET(USERID);
+                        IF NOT UserSetup."Change Agreem. Posting Group" THEN
+                            ERROR(LabelPstGrChanging, FIELDCAPTION("Customer Posting Group"),
+                              UserSetup.FIELDCAPTION("Change Agreem. Posting Group"), UserSetup.TABLECAPTION);
+                    END;
+                END;
+            end;
+        }
+
+
+        /*
+        field(70058; "Installment plan 1 Amount"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Investment Agreement LIne"."Installment plan" WHERE ("Agreement No."=FIELD("No."), "Customer No."=FIELD("Customer No.")));
+            Description = 'BF 6.0.0';
+            Caption = 'Installment amount (holders 1)';
+            trigger OnValidate()
+            begin
+                CalcAmount;
+            end;
+        }
+
+        field(70059; "Installment plan 2 Amount"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Investment Agreement LIne"."Installment plan" WHERE ("Agreement No."=FIELD("No."), "Customer No."=FIELD("Customer 2 No.")));
+            Description = 'BF 6.0.0';
+            Caption = 'Installment amount (holders 2)';
+            trigger OnValidate()
+            begin
+                CalcAmount;
+            end;
+        }
+
+        field(70060; "Installment plan 3 Amount"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Investment Agreement LIne"."Installment plan" WHERE ("Agreement No."=FIELD("No."), "Customer No."=FIELD("Customer 3 No.")));
+            Description = 'BF 6.0.0';
+            Caption = 'Installment amount (holders 3)';
+            trigger OnValidate()
+            begin
+                CalcAmount;
+            end;
+        }
+        */
+
+        field(50011; "C1 Place and BirthDate"; Text[130])
+        {
+            Caption = 'Birthdate and palce';
+        }
         field(50700; "CRM GUID"; GUID)
         {
             Editable = false;
@@ -10,7 +83,7 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
         field(70001; "Agreement Type"; Option)
         {
             Caption = 'Agreement type';
-            OptionCaption = 'Sale Agreement,Iinvestment Agreement, Reservation Agreement,Inv. Sales Agreement,Service,Prev Inv. Sales Agreement';
+            OptionCaption = 'Sale Agreement,Iinvestment Agreement, Reservation Agreement,Inv. Sales Agreement,Service,Prev Inv. Sales Agreement,Transfer of rights';
             OptionMembers = "Sale Agreement","Investment Agreement","Reserving Agreement","Inv. Sales Agreement",Service,"Prev Inv. Sales Agreement","Transfer of rights";
         }
 
@@ -172,10 +245,11 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
 
         }
 
+
         field(70005; Status; Option)
         {
             Caption = 'Status';
-            OptionCaption = 'Procesed,Signed,Change conditions,Registration FRS,Registration FRS Registred,Registration dissolution,Dissolution Registered,Cancelled';
+            OptionCaption = 'Procesed,Signed,Change conditions,FRS registration,FRS registered,Registration of annulled,Annulled registered,Annulled,Cancelled';
             OptionMembers = Procesed,Signed,"Change conditions","FRS registration","FRS registered","Registration of annulled","Annulled registered",Annulled,Cancelled;
             trigger OnValidate()
             begin
@@ -219,48 +293,6 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             end;
         }
 
-        field(70026; "C1 Name"; Text[250])
-        {
-            FieldClass = FlowField;
-            CalcFormula = Lookup(Contact.Name WHERE("No." = FIELD("Contact 1")));
-            Caption = 'Name';
-        }
-
-        field(70020; "C1 Passport No."; Code[20])
-        {
-            Caption = 'Passport No.';
-        }
-
-        field(70086; "C1 Passport Series"; Code[20])
-        {
-            Caption = 'Passport Series';
-        }
-
-        field(70021; "C1 Delivery of passport"; Text[245])
-        {
-            Caption = 'Passport issued';
-        }
-
-        field(70022; "C1 Registration"; Text[245])
-        {
-            Caption = 'Registration Address';
-        }
-
-        field(70023; "C1 Telephone"; Text[30])
-        {
-            Caption = 'Phone';
-        }
-
-        field(70024; "C1 Telephone 1"; Text[30])
-        {
-            Caption = 'Phone Home';
-        }
-
-        field(70025; "C1 E-Mail"; Text[30])
-        {
-            Caption = 'Email';
-        }
-
 
 
         field(70012; "Contact 2"; Code[20])
@@ -292,14 +324,26 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             end;
         }
 
-        field(70037; "Balance Cust 2 (LCY)"; Decimal)
+        field(70013; "Amount part 1"; Decimal)
         {
-            FieldClass = FlowField;
-            CalcFormula = Sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("Customer 2 No."), "Agreement No." = FIELD("No.")));
-            Editable = false;
-            AutoFormatType = 1;
+            Caption = 'Contribution Owner 1';
             BlankZero = true;
-            Caption = 'Balance owner 2 (LCY)';
+            trigger OnValidate()
+            begin
+                "Amount part 1 Amount" := ROUND("Apartment Amount" * ("Amount part 1" / 100), 1);
+            end;
+
+
+        }
+
+        field(70014; "Amount part 2"; Decimal)
+        {
+            Caption = 'Contribution Owner 2';
+            BlankZero = true;
+            trigger OnValidate()
+            begin
+                "Amount part 2 Amount" := ROUND("Apartment Amount" * ("Amount part 2" / 100), 1);
+            end;
         }
 
         field(70015; "Customer 2 No."; Code[20])
@@ -320,11 +364,71 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             end;
         }
 
+
+        field(70018; "Customer 1 Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Customer.Name WHERE("No." = FIELD("Customer No.")));
+            Caption = 'Customer 1 Name';
+        }
+
         field(70019; "Customer 2 Name"; Text[250])
         {
             FieldClass = FlowField;
             CalcFormula = Lookup(Customer.Name WHERE("No." = FIELD("Customer 2 No.")));
             Caption = 'Customer 2 Name';
+        }
+
+        field(70020; "C1 Passport No."; Code[20])
+        {
+            Caption = 'Passport No.';
+        }
+
+        field(70021; "C1 Delivery of passport"; Text[245])
+        {
+            Caption = 'Passport issued';
+        }
+
+        field(70022; "C1 Registration"; Text[245])
+        {
+            Caption = 'Registration Address';
+        }
+
+        field(70023; "C1 Telephone"; Text[30])
+        {
+            Caption = 'Phone';
+        }
+
+        field(70024; "C1 Telephone 1"; Text[30])
+        {
+            Caption = 'Phone Home';
+        }
+
+        field(70025; "C1 E-Mail"; Text[30])
+        {
+            Caption = 'Email';
+        }
+
+        field(70026; "C1 Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Contact.Name WHERE("No." = FIELD("Contact 1")));
+            Caption = 'Name';
+        }
+
+        field(70027; "C2 Passport No."; Code[20])
+        {
+            Caption = 'Passport No.';
+        }
+
+        field(70028; "C2 Delivery of passport"; Text[245])
+        {
+            Caption = 'Passport issued';
+        }
+
+        field(70029; "C2 Registration"; Text[245])
+        {
+            Caption = 'Registration Adress';
         }
 
         field(70030; "C2 Telephone"; Text[30])
@@ -344,27 +448,24 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             Caption = 'Name';
         }
 
-
-        field(70018; "Customer 1 Name"; Text[250])
+        field(70034; "Amount part 1 Amount"; Decimal)
         {
-            FieldClass = FlowField;
-            CalcFormula = Lookup(Customer.Name WHERE("No." = FIELD("Customer No.")));
-            Caption = 'Customer 1 Name';
+            Caption = 'Contribution Amount';
+            BlankZero = true;
+            trigger OnValidate()
+            begin
+                "Amount part 1" := ("Amount part 1 Amount" / "Apartment Amount") * 100;
+            end;
         }
 
-        field(70027; "C2 Passport No."; Code[20])
+        field(70035; "Amount part 2 Amount"; Decimal)
         {
-            Caption = 'Passport No.';
-        }
-
-        field(70028; "C2 Delivery of passport"; Text[245])
-        {
-            Caption = 'Passport issued';
-        }
-
-        field(70029; "C2 Registration"; Text[245])
-        {
-            Caption = 'Registration Adress';
+            Caption = 'Contribution Amount';
+            BlankZero = true;
+            trigger OnValidate()
+            begin
+                "Amount part 2" := ("Amount part 2 Amount" / "Apartment Amount") * 100;
+            end;
         }
 
         field(70036; "Balance Cust 1 (LCY)"; Decimal)
@@ -376,6 +477,16 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             AutoFormatType = 1;
             Caption = 'Balance owner 1 (LCY)';
 
+        }
+
+        field(70037; "Balance Cust 2 (LCY)"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("Customer 2 No."), "Agreement No." = FIELD("No.")));
+            Editable = false;
+            AutoFormatType = 1;
+            BlankZero = true;
+            Caption = 'Balance owner 2 (LCY)';
         }
         field(70041; "Share in property 3"; Option)
         {
@@ -416,6 +527,16 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             end;
         }
 
+        field(70043; "Amount part 3"; Decimal)
+        {
+            Caption = 'Contribution Owner 3';
+            BlankZero = true;
+            trigger OnValidate()
+            begin
+                "Amount part 3 Amount" := ROUND("Apartment Amount" * ("Amount part 3" / 100), 1);
+            end;
+        }
+
         field(70044; "Customer 3 No."; Code[20])
         {
             TableRelation = Customer;
@@ -435,60 +556,17 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
                     VALIDATE("Contact 3", '');
             end;
         }
-
-        field(70052; "C3 name"; Text[250])
+        field(70045; "Customer 3 Name"; Text[250])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup(Contact.Name WHERE("No." = FIELD("Contact 3")));
-            Caption = 'Name';
-        }
+            CalcFormula = Lookup(Customer.Name WHERE("No." = FIELD("Customer 3 No.")));
+            Caption = 'Customer 3 Name';
 
-        field(70061; "Apartment Amount"; Decimal)
-        {
-            BlankZero = true;
-            Caption = 'Cost object (RUB)';
-        }
-
-        field(70080; "Payment Type"; Option)
-        {
-            Caption = 'Payment type';
-            OptionCaption = '100%,Inv,Ipot';
-            OptionMembers = "100%",Inv,Ipot;
-
-        }
-
-        field(70087; "C2 Passport Series"; Code[20])
-        {
-            Caption = 'Passport Series';
-        }
-
-        field(70094; "Including Finishing Price"; Decimal)
-        {
-            Caption = 'Including Finishing Price';
-            trigger OnValidate()
-            begin
-                //SWC711 KAE >>
-                IF "Including Finishing Price" > 0 THEN
-                    VALIDATE(Finishing, TRUE)
-                ELSE
-                    VALIDATE(Finishing, FALSE);
-                //SWC711 KAE <<
-            end;
-        }
-
-        field(70095; Finishing; Boolean)
-        {
-            Caption = 'Finishing';
         }
 
         field(70046; "C3 Passport №"; Code[20])
         {
             Caption = 'Passport No.';
-        }
-
-        field(70088; "C3 Passport Series"; Code[20])
-        {
-            Caption = 'Passport Series';
         }
 
 
@@ -512,12 +590,23 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
         {
             Caption = 'Email';
         }
-        field(70045; "Customer 3 Name"; Text[250])
+
+        field(70052; "C3 name"; Text[250])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup(Customer.Name WHERE("No." = FIELD("Customer 3 No.")));
-            Caption = 'Customer 3 Name';
+            CalcFormula = Lookup(Contact.Name WHERE("No." = FIELD("Contact 3")));
+            Caption = 'Name';
+        }
 
+
+        field(70053; "Amount part 3 Amount"; Decimal)
+        {
+            Caption = 'Contribution Amount';
+            BlankZero = true;
+            trigger OnValidate()
+            begin
+                "Amount part 3" := ("Amount part 3 Amount" / "Apartment Amount") * 100;
+            end;
         }
         field(70054; "Balance Cust 3 (LCY)"; Decimal)
         {
@@ -530,22 +619,86 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
 
         }
 
-        field(72020; "Customer 4 No."; Code[20])
+        field(70055; "Installment plan 1 %"; Decimal)
         {
-            TableRelation = Customer;
-            Caption = 'Customer 4 No.';
+            Caption = 'Installment % (shareholder 1)';
+            BlankZero = true;
+        }
+
+        field(70056; "Installment plan 2 %"; Decimal)
+        {
+            Caption = 'Installment % (shareholder 2)';
+            BlankZero = true;
+        }
+
+        field(70057; "Installment plan 3 %"; Decimal)
+        {
+            Caption = 'Installment % (shareholder 3)';
+            BlankZero = true;
+        }
+
+        field(70061; "Apartment Amount"; Decimal)
+        {
+            BlankZero = true;
+            Caption = 'Cost object (RUB)';
+        }
+
+        field(70062; "Installment Plan Amount"; Decimal)
+        {
+            Caption = 'Cost installment (RUB)';
             trigger OnValidate()
-            var
-                ContBusRel: Record "Contact Business Relation";
             begin
-                ContBusRel.SETCURRENTKEY("Link to Table", "No.");
-                ContBusRel.SETRANGE("Link to Table", ContBusRel."Link to Table"::Customer);
-                ContBusRel.SETRANGE("No.", "Customer 4 No.");
-                IF ContBusRel.FIND('-') then begin
-                    VALIDATE("Contact 4", ContBusRel."Contact No.");
-                end else
-                    VALIDATE("Contact 4", '');
+                //hr bc^
+                //CalcAmount;
             end;
+        }
+
+        field(70080; "Payment Type"; Option)
+        {
+            Caption = 'Payment type';
+            OptionCaption = '100%,Inv,Ipot';
+            OptionMembers = "100%",Inv,Ipot;
+
+        }
+
+        field(70086; "C1 Passport Series"; Code[20])
+        {
+            Caption = 'Passport Series';
+        }
+
+        field(70087; "C2 Passport Series"; Code[20])
+        {
+            Caption = 'Passport Series';
+        }
+
+        field(70088; "C3 Passport Series"; Code[20])
+        {
+            Caption = 'Passport Series';
+        }
+
+        field(70094; "Including Finishing Price"; Decimal)
+        {
+            Caption = 'Including Finishing Price';
+            trigger OnValidate()
+            begin
+                //SWC711 KAE >>
+                IF "Including Finishing Price" > 0 THEN
+                    VALIDATE(Finishing, TRUE)
+                ELSE
+                    VALIDATE(Finishing, FALSE);
+                //SWC711 KAE <<
+            end;
+        }
+
+        field(70095; Finishing; Boolean)
+        {
+            Caption = 'Finishing';
+        }
+
+        field(71020; "Old Customer No."; Code[20])
+        {
+            Caption = 'Old Customer No.';
+
         }
 
         field(72000; "Contact 4"; Code[20])
@@ -566,16 +719,32 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             end;
         }
 
-        field(72050; "C4 name"; Text[250])
+        field(72010; "Amount part 4"; Decimal)
         {
-            FieldClass = FlowField;
-            CalcFormula = Lookup(Contact.Name WHERE("No." = FIELD("Contact 4")));
-            Caption = 'Name';
+            Caption = 'Contribution Owner 4';
+            BlankZero = true;
+            trigger OnValidate()
+            begin
+                "Amount part 4 Amount" := ROUND("Apartment Amount" * ("Amount part 4" / 100), 1);
+            end;
         }
 
-        field(72040; "C4 Telephone"; Text[30])
+        field(72020; "Customer 4 No."; Code[20])
         {
-            Caption = 'Phone';
+            TableRelation = Customer;
+            Caption = 'Customer 4 No.';
+            trigger OnValidate()
+            var
+                ContBusRel: Record "Contact Business Relation";
+            begin
+                ContBusRel.SETCURRENTKEY("Link to Table", "No.");
+                ContBusRel.SETRANGE("Link to Table", ContBusRel."Link to Table"::Customer);
+                ContBusRel.SETRANGE("No.", "Customer 4 No.");
+                IF ContBusRel.FIND('-') then begin
+                    VALIDATE("Contact 4", ContBusRel."Contact No.");
+                end else
+                    VALIDATE("Contact 4", '');
+            end;
         }
 
         field(72030; "Customer 4 Name"; Text[250])
@@ -583,6 +752,28 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             FieldClass = FlowField;
             CalcFormula = Lookup(Customer.Name WHERE("No." = FIELD("Customer 4 No.")));
             Caption = 'Customer 4 Name';
+        }
+
+        field(72040; "C4 Telephone"; Text[30])
+        {
+            Caption = 'Phone';
+        }
+
+        field(72050; "C4 name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Contact.Name WHERE("No." = FIELD("Contact 4")));
+            Caption = 'Name';
+        }
+
+        field(72060; "Amount part 4 Amount"; Decimal)
+        {
+            Caption = 'Contribution Amount';
+            BlankZero = true;
+            trigger OnValidate()
+            begin
+                "Amount part 4" := ("Amount part 4 Amount" / "Apartment Amount") * 100;
+            end;
         }
 
         field(72070; "Balance Cust 4 (LCY)"; Decimal)
@@ -593,6 +784,34 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             AutoFormatType = 1;
             BlankZero = true;
             Caption = 'Balance owner 4 (LCY)';
+        }
+
+        field(72100; "Contact 5"; Code[20])
+        {
+            TableRelation = Contact;
+            Caption = 'Owner 5';
+            trigger OnValidate()
+            var
+                grContact: Record Contact;
+            begin
+                IF grContact.GET("Contact 5") THEN BEGIN
+                    "C5 name" := grContact.Name;
+                    "C5 Telephone" := grContact."Phone No.";
+                END ELSE BEGIN
+                    "C5 name" := '';
+                    "C5 Telephone" := '';
+                END
+            end;
+        }
+
+        field(72110; "Amount part 5"; Decimal)
+        {
+            Caption = 'Contribution Owner 5';
+            BlankZero = true;
+            trigger OnValidate()
+            begin
+                "Amount part 5 Amount" := ROUND("Apartment Amount" * ("Amount part 5" / 100), 1);
+            end;
         }
 
         field(72120; "Customer 5 No."; Code[20])
@@ -611,24 +830,6 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
                     VALIDATE("Contact 5", ContBusRel."Contact No.");
                 end else
                     VALIDATE("Contact 5", '');
-            end;
-        }
-
-        field(72100; "Contact 5"; Code[20])
-        {
-            TableRelation = Contact;
-            Caption = 'Owner 5';
-            trigger OnValidate()
-            var
-                grContact: Record Contact;
-            begin
-                IF grContact.GET("Contact 5") THEN BEGIN
-                    "C5 name" := grContact.Name;
-                    "C5 Telephone" := grContact."Phone No.";
-                END ELSE BEGIN
-                    "C5 name" := '';
-                    "C5 Telephone" := '';
-                END
             end;
         }
 
@@ -651,6 +852,16 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
             Caption = 'Name';
         }
 
+        field(72160; "Amount part 5 Amount"; Decimal)
+        {
+            Caption = 'Contribution Amount';
+            BlankZero = true;
+            trigger OnValidate()
+            begin
+                "Amount part 5" := ("Amount part 5 Amount" / "Apartment Amount") * 100;
+            end;
+        }
+
         field(72170; "Balance Cust 5 (LCY)"; Decimal)
         {
             FieldClass = FlowField;
@@ -662,184 +873,9 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
 
         }
 
-        field(70013; "Amount part 1"; Decimal)
+        field(80010; "Version Id"; Text[40])
         {
-            Caption = 'Contribution Owner 1';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 1 Amount" := ROUND("Apartment Amount" * ("Amount part 1" / 100), 1);
-            end;
-
-
-        }
-
-        field(70014; "Amount part 2"; Decimal)
-        {
-            Caption = 'Contribution Owner 2';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 2 Amount" := ROUND("Apartment Amount" * ("Amount part 2" / 100), 1);
-            end;
-        }
-
-        field(70043; "Amount part 3"; Decimal)
-        {
-            Caption = 'Contribution Owner 3';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 3 Amount" := ROUND("Apartment Amount" * ("Amount part 3" / 100), 1);
-            end;
-        }
-
-        field(72010; "Amount part 4"; Decimal)
-        {
-            Caption = 'Contribution Owner 4';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 4 Amount" := ROUND("Apartment Amount" * ("Amount part 4" / 100), 1);
-            end;
-        }
-
-        field(72110; "Amount part 5"; Decimal)
-        {
-            Caption = 'Contribution Owner 5';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 5 Amount" := ROUND("Apartment Amount" * ("Amount part 5" / 100), 1);
-            end;
-        }
-
-        field(70034; "Amount part 1 Amount"; Decimal)
-        {
-            Caption = 'Contribution Amount';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 1" := ("Amount part 1 Amount" / "Apartment Amount") * 100;
-            end;
-        }
-
-        field(70035; "Amount part 2 Amount"; Decimal)
-        {
-            Caption = 'Contribution Amount';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 2" := ("Amount part 2 Amount" / "Apartment Amount") * 100;
-            end;
-        }
-
-
-        field(70053; "Amount part 3 Amount"; Decimal)
-        {
-            Caption = 'Contribution Amount';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 3" := ("Amount part 3 Amount" / "Apartment Amount") * 100;
-            end;
-        }
-
-        field(72060; "Amount part 4 Amount"; Decimal)
-        {
-            Caption = 'Contribution Amount';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 4" := ("Amount part 4 Amount" / "Apartment Amount") * 100;
-            end;
-        }
-
-        field(72160; "Amount part 5 Amount"; Decimal)
-        {
-            Caption = 'Contribution Amount';
-            BlankZero = true;
-            trigger OnValidate()
-            begin
-                "Amount part 5" := ("Amount part 5 Amount" / "Apartment Amount") * 100;
-            end;
-        }
-
-        field(70062; "Installment Plan Amount"; Decimal)
-        {
-            Caption = 'Cost installment (RUB)';
-            trigger OnValidate()
-            begin
-                //hr bc^
-                //CalcAmount;
-            end;
-        }
-
-        field(70055; "Installment plan 1 %"; Decimal)
-        {
-            Caption = 'Installment % (shareholder 1)';
-            BlankZero = true;
-        }
-
-        field(70056; "Installment plan 2 %"; Decimal)
-        {
-            Caption = 'Installment % (shareholder 2)';
-            BlankZero = true;
-        }
-
-        field(70057; "Installment plan 3 %"; Decimal)
-        {
-            Caption = 'Installment % (shareholder 3)';
-            BlankZero = true;
-        }
-
-
-        /*
-        field(70058; "Installment plan 1 Amount"; Decimal)
-        {
-            FieldClass = FlowField;
-            CalcFormula = Sum("Investment Agreement LIne"."Installment plan" WHERE ("Agreement No."=FIELD("No."), "Customer No."=FIELD("Customer No.")));
-            Description = 'BF 6.0.0';
-            Caption = 'Installment amount (holders 1)';
-            trigger OnValidate()
-            begin
-                CalcAmount;
-            end;
-        }
-
-        field(70059; "Installment plan 2 Amount"; Decimal)
-        {
-            FieldClass = FlowField;
-            CalcFormula = Sum("Investment Agreement LIne"."Installment plan" WHERE ("Agreement No."=FIELD("No."), "Customer No."=FIELD("Customer 2 No.")));
-            Description = 'BF 6.0.0';
-            Caption = 'Installment amount (holders 2)';
-            trigger OnValidate()
-            begin
-                CalcAmount;
-            end;
-        }
-
-        field(70060; "Installment plan 3 Amount"; Decimal)
-        {
-            FieldClass = FlowField;
-            CalcFormula = Sum("Investment Agreement LIne"."Installment plan" WHERE ("Agreement No."=FIELD("No."), "Customer No."=FIELD("Customer 3 No.")));
-            Description = 'BF 6.0.0';
-            Caption = 'Installment amount (holders 3)';
-            trigger OnValidate()
-            begin
-                CalcAmount;
-            end;
-        }
-        */
-
-        field(50011; "C1 Place and BirthDate"; Text[130])
-        {
-            Caption = 'Birthdate and palce';
-        }
-
-        field(80010; "CRM Checksum"; Text[40])
-        {
-            Caption = 'CRM Checksum';
+            Caption = 'Version Id';
         }
 
 

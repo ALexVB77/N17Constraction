@@ -78,6 +78,13 @@
                         "Transfer-from Code" := xRec."Transfer-from Code";
                 end;
             end;
+            // NC 51413 GG >>
+            trigger OnLookup()
+            begin
+                onLookupTransferFromCode(Rec);
+
+            end;
+            // NC 51423 GG <<
         }
         field(3; "Transfer-from Name"; Text[100])
         {
@@ -1347,5 +1354,11 @@
     local procedure OnBeforeDeleteOneTransferOrder(var TransHeader2: Record "Transfer Header"; var TransLine2: Record "Transfer Line"; var IsHandled: Boolean)
     begin
     end;
+    // NC 51413 GG >>
+    [IntegrationEvent(false, false)]
+    local procedure onLookupTransferFromCode(var TransHeader: Record "Transfer Header")
+    begin
+    end;
+    // NC 51423 GG <<           
 }
 

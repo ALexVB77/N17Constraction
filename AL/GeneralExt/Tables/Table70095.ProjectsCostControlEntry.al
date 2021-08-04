@@ -79,7 +79,6 @@ table 70095 "Projects Cost Control Entry"
         field(40; Amount; Decimal)
         {
             Caption = 'Amount';
-            //Caption = 'Сумма';
 
             trigger OnValidate();
             begin
@@ -269,7 +268,6 @@ table 70095 "Projects Cost Control Entry"
         {
             CaptionClass = '1,2,1';
             Caption = 'Shortcut Dimension 1 Code';
-            //            RUS = 'Ярлык Измерение 1 Код';
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1));
 
             trigger OnValidate();
@@ -445,11 +443,11 @@ table 70095 "Projects Cost Control Entry"
         {
             Caption = 'VAT %';
         }
-        // field(50040; "Imported Form File"; Boolean)
-        // {
-        //     Caption = 'Imported Form File';
-        //     Editable = false;
-        // }
+        field(50040; "Imported Form File"; Boolean)
+        {
+            Caption = 'Imported Form File';
+            Editable = false;
+        }
         field(60090; "Original Company"; Code[2])
         {
             Caption = 'Original Company';
@@ -522,10 +520,10 @@ table 70095 "Projects Cost Control Entry"
         //     Caption = 'ByOrder';
         //     FieldClass = FlowField;
         // }
-        // field(70160; "Close Commitment"; Boolean)
-        // {
-        //     Caption = '';
-        // }
+        field(70160; "Close Commitment"; Boolean)
+        {
+            Caption = 'Close Commitment';
+        }
         field(70170; "Estimate Line No."; Integer)
         {
             Caption = 'Estimate Line No.';
@@ -595,7 +593,7 @@ table 70095 "Projects Cost Control Entry"
         //key(Key12; "Reversed Without Entry") { }
         //key(Key13; ID) { }
         //key(Key14; "Create Date") { }
-        //key(Key15; "Analysis Type", "Close Commitment") { }
+        key(Key15; "Analysis Type", "Close Commitment") { }
         key(Key16; "Analysis Type", "Contragent No.", "Agreement No.", "Project Turn Code", "Line No.", "Cost Type")
         {
             SumIndexFields = "Without VAT", "Amount Including VAT 2", "VAT Amount 2";

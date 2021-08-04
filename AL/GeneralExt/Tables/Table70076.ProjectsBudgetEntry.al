@@ -13,7 +13,7 @@ table 70076 "Projects Budget Entry"
         field(2; "Project Code"; Code[20])
         {
             Caption = 'Project Code';
-            TableRelation = "Building project";
+            // TableRelation = "Building project";
         }
         field(3; "Analysis Type"; Option)
         {
@@ -112,7 +112,7 @@ table 70076 "Projects Budget Entry"
         field(24; "Project Turn Code"; Code[20])
         {
             Caption = 'Project Turn Code';
-            TableRelation = "Building Turn";
+            // TableRelation = "Building Turn";
         }
         field(29; Code; Code[20])
         {
@@ -124,6 +124,25 @@ table 70076 "Projects Budget Entry"
             Caption = 'Contragent No.';
             TableRelation = if ("Contragent Type" = const(Vendor)) Vendor else
             if ("Contragent Type" = const(Customer)) Customer;
+            trigger OnValidate()
+            var
+                lVend: Record Vendor;
+                lCust: Record Customer;
+            begin
+                case Rec."Contragent Type" of
+                    Rec."Contragent Type"::Customer:
+                        begin
+                            if lCust.Get(Rec."Contragent No.") then
+                                "Contragent Name" := lCust.Name;
+                        end;
+                    Rec."Contragent Type"::Vendor:
+                        begin
+                            if lVend.Get(Rec."Contragent No.") then
+                                "Contragent Name" := lVend.Name;
+
+                        end;
+                end;
+            end;
         }
         field(32; "Agreement No."; Code[20])
         {
@@ -201,12 +220,22 @@ table 70076 "Projects Budget Entry"
             CaptionClass = '1,2,2';
             Caption = 'Shortcut Dimension 2 Code';
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
+            trigger OnValidate()
+            var
+                lDimVal: Record "Dimension Value";
+            begin
+                lDimVal.Reset();
+                lDimVal.SetRange("Global Dimension No.", 2);
+                lDimVal.SetRange(Code, Rec."Shortcut Dimension 2 Code");
+                if lDimVal.FindFirst() then
+                    Description := lDimVal.Name;
+            end;
         }
         field(47; "Building Turn"; Code[20])
         {
             Caption = 'Stage';
             NotBlank = true;
-            TableRelation = "Building Turn";
+            // TableRelation = "Building Turn";
 
             trigger OnLookup()
             begin
@@ -214,18 +243,6 @@ table 70076 "Projects Budget Entry"
                 gvBuildingTurn.Reset();
                 if "Project Code" <> '' then
                     gvBuildingTurn.SETRANGE("Building project Code", "Project Code");
-
-                if gvBuildingTurn.FindFirst() then begin
-                    //IF FORM.RUNMODAL(Page::"Dev Building turn", gvBuildingTurn) = ACTION::LookupOK THEN BEGIN
-                    //"Building Turn" := gvBuildingTurn.Code;
-                    //VALIDATE("Shortcut Dimension 1 Code", gvBuildingTurn."Turn Dimension Code");
-                    //"Building Turn All" := "Building Turn";
-                    //"Project Turn Code" := "Building Turn";
-                    //"Project Code" := gvBuildingTurn."Building project Code";
-                    //IF "Version Code" = '' THEN
-                    //"Version Code" := GetDefVersion1("Project Code");
-                    //END;
-                end;
             end;
 
             trigger OnValidate()
@@ -397,6 +414,22 @@ table 70076 "Projects Budget Entry"
             Caption = 'Not Visible';
             Description = 'NC 50085 PA';
         }
+        field(66; Reversed; Boolean)
+        {
+
+        }
+        field(67; ID; Integer)
+        {
+
+        }
+        field(69; "Reversed Without Entry"; Boolean)
+        {
+
+        }
+        field(70; "Reversed ID"; Integer)
+        {
+
+        }
         field(71; "Without VAT (LCY)"; Decimal)
         {
             Caption = 'Without VAT (LCY)';
@@ -430,15 +463,25 @@ table 70076 "Projects Budget Entry"
 
     keys
     {
+        // key(PK; "Project Code", "Analysis Type", "Version Code", "Line No.", "Entry No.", "Project Turn Code", "Temp Line No.")
+        // {
+        //     Clustered = true;
+        // }
         key(PK; "Entry No.")
         {
             Clustered = true;
         }
-        key(Date; Date)
+        // key(Key1; "Entry No.")
+        // {
+
+        // }
+        key(Key2; "Project Code", "Analysis Type", "Version Code", "Line No.", Date)
         {
-            Enabled = true;
-            MaintainSqlIndex = true;
-            MaintainSiftIndex = true;
+
+        }
+        key(Key3; Date)
+        {
+
         }
     }
     trigger OnInsert()
@@ -446,7 +489,10 @@ table 70076 "Projects Budget Entry"
         "Create Date" := Today;
         "Create Time" := Time;
         "Create User" := UserId;
-        "Entry No." := GetNextEntryNo();
+        if "Entry No." = 0 then
+            "Entry No." := GetNextEntryNo();
+        if "Parent Entry" = 0 then
+            "Parent Entry" := "Entry No.";
     end;
 
     var
@@ -459,7 +505,7 @@ table 70076 "Projects Budget Entry"
         CurrExchRate: Record "Currency Exchange Rate";
         grProjectsStructureLines1: Record "Projects Structure Lines";
         lrProjectsBudgetEntryLink: Record "Projects Budget Entry Link";
-        Text50000: Label 'The amount cannot be more than indicated in the "% 1" agreement card in the breakdown by letter!';
+        Text50000: Label 'The amount cannot be more than indicated in the "%1" agreement card in the breakdown by letter!';
 
     procedure GetNextEntryNo(): Integer
     var
@@ -564,6 +610,7 @@ table 70076 "Projects Budget Entry"
                 PurchaseHeader.SetRange("Document Type", PurchaseLine."Document Type");
                 PurchaseHeader.SetRange("No.", PurchaseLine."Document No.");
                 if PurchaseHeader.FindFirst() then begin
+                    PurchaseHeader.CalcFields("Paid Date Fact");
                     InvoiceDate := PurchaseHeader."Paid Date Fact";
                 end;
             end;

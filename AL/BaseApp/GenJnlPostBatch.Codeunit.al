@@ -1323,7 +1323,10 @@
                 end;
 
             if PreviewMode then
-                Error('');
+                // NC 51138 GG >>
+                //Error('');
+                GenJnlPostPreview.ThrowError();
+            // NC 51138 GG <<
 
             Commit();
             Clear(GenJnlPostLine);
@@ -1441,7 +1444,10 @@
                 end;
 
             if PreviewMode then
-                Error('');
+                // NC 51138 GG >>
+                //Error('');
+                GenJnlPostPreview.ThrowError();
+                // NC 51138 GG <<
 
             Commit();
             Clear(GenJnlPostLine);

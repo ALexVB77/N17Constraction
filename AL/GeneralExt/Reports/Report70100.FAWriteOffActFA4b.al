@@ -19,6 +19,15 @@ report 70100 "FA Write-off Act FA-4b"
                     DataItemLinkReference = "FA Document Line";
                     DataItemLink = "No." = field("FA No.");
                     CalcFields = Name;
+
+                    trigger OnAfterGetRecord()
+                    begin
+                        AppendString(PrecMetalNames, Name);
+                        AppendString(PrecMetalNos, "Nomenclature No.");
+                        AppendString(PrecMetalUnitOfMeasureCodes, "Unit of Measure Code");
+                        AppendString(PrecMetalQtys, Format(Quantity));
+                        AppendString(PrecMetalMasses, Format(Mass));
+                    end;
                 }
                 dataitem("Item Document Line"; "Item Document Line")
                 {
@@ -44,6 +53,12 @@ report 70100 "FA Write-off Act FA-4b"
 
                 trigger OnAfterGetRecord()
                 begin
+                    Clear(PrecMetalNames);
+                    Clear(PrecMetalMasses);
+                    Clear(PrecMetalNos);
+                    Clear(PrecMetalQtys);
+                    Clear(PrecMetalUnitOfMeasureCodes);
+
                     SetLine("FA Document Line");
                 end;
 
@@ -192,6 +207,11 @@ report 70100 "FA Write-off Act FA-4b"
         ProceedsFromDispAmount: Decimal;
         LineNo: Integer;
         IsHeaderPrinted: Boolean;
+        PrecMetalNames: Text;
+        PrecMetalNos: Text;
+        PrecMetalUnitOfMeasureCodes: Text;
+        PrecMetalQtys: Text;
+        PrecMetalMasses: Text;
 
     local procedure InitReportTemplate()
     begin
@@ -408,6 +428,12 @@ report 70100 "FA Write-off Act FA-4b"
         ExcelReportBuilderManager.AddDataToSection('AmountDepreciation', Depreciation);
         ExcelReportBuilderManager.AddDataToSection('DeprCost', BookValue);
         ExcelReportBuilderManager.AddDataToSection('ReasonDescription', ReasonDescription);
+
+        ExcelReportBuilderManager.AddDataToSection('PrecMetalNames', PrecMetalNames);
+        ExcelReportBuilderManager.AddDataToSection('PrecMetalNos', PrecMetalNos);
+        ExcelReportBuilderManager.AddDataToSection('PrecMetalUnitOfMeasureCodes', PrecMetalUnitOfMeasureCodes);
+        ExcelReportBuilderManager.AddDataToSection('PrecMetalQtys', PrecMetalQtys);
+        ExcelReportBuilderManager.AddDataToSection('PrecMetalMasses', PrecMetalMasses);
     end;
 
     local procedure SetConclusionLine(ItemDocLine: Record "Item Document Line")
@@ -460,7 +486,7 @@ report 70100 "FA Write-off Act FA-4b"
 
     local procedure FillConclusionLine(DocName: Text; DocDate: Text; DocNo: Text; Description: Text; ItemNo: Text; UnitOfMeasure: Text; Qty: Text; UnitAmount: Text; Amount: Decimal; InventoryAccount: Text; InventoryAdjmtAccount: Text; EntryNo: Text)
     begin
-        if not ExcelReportBuilderManager.TryAddSectionWithPlaceForFooter('CONCLUSIONBODY', 'CONCLUSIONPAGEFOOTER') then begin
+        if not ExcelReportBuilderManager.TryAddSectionWithPlaceForFooter('CONCLUSIONBODY', 'CONCLUSIONPAGEHEADER') then begin
             ExcelReportBuilderManager.AddPagebreak;
             ExcelReportBuilderManager.AddSection('CONCLUSIONPAGEHEADER');
             ExcelReportBuilderManager.AddSection('CONCLUSIONBODY');
@@ -522,5 +548,15 @@ report 70100 "FA Write-off Act FA-4b"
     begin
         DocSignMgt.GetPostedDocSign(PostedDocSign, DATABASE::"Posted FA Doc. Header",
             "Posted FA Doc. Header"."Document Type", "Posted FA Doc. Header"."No.", EmpType, false);
+    end;
+
+    local procedure AppendString(var String: text[250]; StrToAppend: text[250]);
+    begin
+
+        if StrLen(String) = 0 then
+            String := StrToAppend
+        else
+            String := String + '; ' + StrToAppend;
+
     end;
 }

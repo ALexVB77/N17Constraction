@@ -8,6 +8,10 @@ pageextension 85607 "Fixed Asset Setup (Ext)" extends "Fixed Asset Setup"
             {
                 ApplicationArea = FixedAssets;
             }
+            field("FA-1b Template Code"; Rec."FA-1b Template Code")
+            {
+                ApplicationArea = FixedAssets;
+            }
         }
         addafter("FA-4a Template Code")
         {

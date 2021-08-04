@@ -19,6 +19,7 @@ codeunit 99930 "CRM Integration API"
             if not WrqDispatcher.Run(Wrq) then
                 Error(GetLastErrorText());
         end;
+        exit('OK');
     end;
 
     local procedure CreateQueueTask(var NewWrq: record "Web Request Queue"; WorkerCode: Code[20]; RequestBodyText: Text)

@@ -22,6 +22,7 @@ page 70002 "Purchase List App"
                     Caption = 'Scope';
                     Enabled = Filter1Enabled;
                     OptionCaption = 'My documents,All documents,My Approved';
+
                     trigger OnValidate()
                     begin
                         SetRecFilters;
@@ -33,6 +34,7 @@ page 70002 "Purchase List App"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Selection';
                     OptionCaption = 'All documents,Documents in processing,Ready-to-pay documents,Paid documents,Problem documents';
+
                     trigger OnValidate()
                     begin
                         SetRecFilters;
@@ -65,7 +67,7 @@ page 70002 "Purchase List App"
 
                     trigger OnAssistEdit()
                     begin
-                        page.Runmodal(Page::"Purchase Order App", Rec);
+                        page.Run(Page::"Purchase Order App", Rec);
                         CurrPage.Update(false);
                     end;
                 }
@@ -105,6 +107,7 @@ page 70002 "Purchase List App"
                 {
                     ApplicationArea = All;
                     Caption = 'Approval Status';
+                    OptionCaption = ' ,Reception,Сontroller,Checker,Approve,Payment';
                 }
                 field("Date Status App"; Rec."Date Status App")
                 {
@@ -149,8 +152,10 @@ page 70002 "Purchase List App"
                 Image = NewDocument;
 
                 trigger OnAction()
+                var
+                    NewPurchHeader: Record "Purchase Header";
                 begin
-                    PaymentOrderMgt.NewOrderApp(Rec);
+                    PaymentOrderMgt.NewOrderApp(true, true, NewPurchHeader);
                     CurrPage.Update(false);
                 end;
             }
@@ -158,9 +163,44 @@ page 70002 "Purchase List App"
             {
                 ApplicationArea = All;
                 Caption = 'Edit';
+                Enabled = EditEnabled;
                 Image = Edit;
                 RunObject = Page "Purchase Order App";
                 RunPageLink = "No." = field("No.");
+            }
+            action(ApproveButton)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Approve';
+                Enabled = ApproveButtonEnabled;
+                Image = Approve;
+
+                trigger OnAction()
+                begin
+                    MessageIfPurchLinesNotExist;
+                    if "Status App" in ["Status App"::" ", "Status App"::Payment] then
+                        FieldError("Status App");
+                    if "Status App" = "Status App"::Reception then begin
+                        IF ApprovalsMgmt.CheckPurchaseApprovalPossible(Rec) THEN
+                            ApprovalsMgmt.OnSendPurchaseDocForApproval(Rec);
+                    end else
+                        ApprovalsMgmt.ApproveRecordApprovalRequest(RECORDID);
+                    CurrPage.Update(false);
+                end;
+            }
+            action(RejectButton)
+            {
+                ApplicationArea = All;
+                Caption = 'Reject';
+                Enabled = RejectButtonEnabled;
+                Image = Reject;
+                trigger OnAction()
+                begin
+                    if "Status App" in ["Status App"::" ", "Status App"::Reception, "Status App"::Payment] then
+                        FieldError("Status App");
+                    ApprovalsMgmtExt.RejectPurchActAndPayInvApprovalRequest(RECORDID);
+                    CurrPage.Update(false);
+                end;
             }
         }
         area(Navigation)
@@ -198,54 +238,69 @@ page 70002 "Purchase List App"
     begin
         grUserSetup.GET(USERID);
 
-        // SWC968 DD 19.12.16 >>
         IF grUserSetup."Show All Pay Inv" AND (Filter1 = Filter1::mydoc) THEN
             Filter1 := Filter1::all;
-        // SWC968 DD 19.12.16 <<
 
         FILTERGROUP(2);
         SETRANGE("IW Documents", TRUE);
-        //SWC004 AKA 120514 >>
         SETFILTER("Act Type", '%1', "Act Type"::" ");
-        //SWC004 AKA 120514 <<
         FILTERGROUP(0);
 
         SetSortType;
         SetRecFilters;
 
-        //IF grUserSetup."Status App"<>grUserSetup."Status App"::Сontroller THEN //SWC318 AKA 151014
-        IF grUserSetup."Status App" = grUserSetup."Status App"::Checker THEN      //SWC318 AKA 151014
+        Filter1Enabled := true;
+        IF grUserSetup."Status App" = grUserSetup."Status App"::Checker THEN
             Filter1Enabled := FALSE;
-
         IF grUserSetup."Administrator IW" THEN
             Filter1Enabled := TRUE;
     end;
 
+    trigger OnAfterGetRecord()
+    begin
+        ApproveButtonEnabled := FALSE;
+        RejectButtonEnabled := FALSE;
+
+        EditEnabled := Rec."No." <> '';
+
+        if (UserId = Rec.Receptionist) and (Rec."Status App" = Rec."Status App"::Reception) then
+            ApproveButtonEnabled := true;
+        if ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(RecordId) then begin
+            ApproveButtonEnabled := true;
+            RejectButtonEnabled := true;
+        end;
+    end;
 
     var
         grUserSetup: Record "User Setup";
         PaymentOrderMgt: Codeunit "Payment Order Management";
+        ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
+        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         Filter1: option mydoc,all,approved;
         Filter1Enabled: Boolean;
         Filter2: option all,inproc,ready,pay,problem;
         SortType: option docno,postdate,vendor,statusapp,userproc;
-
+        ApproveButtonEnabled: boolean;
+        RejectButtonEnabled: boolean;
+        EditEnabled: Boolean;
 
     local procedure SetRecFilters()
     var
-        AE: record "Approval Entry";
-        PH: record "Purchase Header";
+        SaveRec: Record "Purchase Header";
     begin
+        SaveRec := Rec;
+
         FILTERGROUP(2);
 
         SETRANGE("Process User");
         SETRANGE("Status App");
         SETRANGE("Problem Document");
-        SETRANGE(Paid);
-        // SWC1075 DD 28.07.17 >>
-        MARKEDONLY(FALSE);
-        CLEARMARKS;
-        // SWC1075 DD 28.07.17 <<
+        // SETRANGE(Paid);
+        MarkedOnly(false);
+        ClearMarks();
+
+        SetRange("My Approved");
+        SetRange("Approver ID Filter");
 
         SETFILTER("Status App", '<>%1&<>%2', "Status App"::Payment, "Status App"::Request);
 
@@ -255,10 +310,28 @@ page 70002 "Purchase List App"
             Filter2::Ready:
                 BEGIN
                     SETRANGE("Status App", "Status App"::Payment);
-                    SETRANGE(Paid, FALSE);
+                    // SETRANGE(Paid, FALSE);
+                    if not IsEmpty then begin
+                        FindSet();
+                        repeat
+                            CalcFields("Payments Amount");
+                            if "Payments Amount" < "Invoice Amount Incl. VAT" then
+                                Mark(true);
+                        until Next() = 0;
+                        MarkedOnly(true);
+                    end;
                 END;
             Filter2::Pay:
-                SETRANGE(Paid, TRUE);
+                // SETRANGE(Paid, TRUE);
+                if not IsEmpty then begin
+                    FindSet();
+                    repeat
+                        CalcFields("Payments Amount");
+                        if "Payments Amount" >= "Invoice Amount Incl. VAT" then
+                            Mark(true);
+                    until Next() = 0;
+                    MarkedOnly(true);
+                end;
             Filter2::Problem:
                 SETRANGE("Problem Document", TRUE);
         END;
@@ -266,36 +339,24 @@ page 70002 "Purchase List App"
         CASE Filter1 OF
             Filter1::MyDoc:
                 SETRANGE("Process User", USERID);
-            // SWC1075 DD 28.07.17 >>
             Filter1::Approved:
                 BEGIN
-                    PH := Rec;
-                    AE.SETCURRENTKEY("Approver ID", Status);
-                    AE.SETRANGE("Approver ID", USERID);
-                    AE.SETRANGE(Status, AE.Status::Approved);
-                    IF AE.FINDSET THEN
-                        REPEAT
-                            IF GET(AE."Document Type", AE."Document No.") THEN
-                                MARK(TRUE);
-                        UNTIL AE.NEXT = 0;
-                    Rec := PH;
-                    MARKEDONLY(TRUE);
+                    SetRange("Approver ID Filter", UserId);
+                    SetRange("My Approved", true);
                 END;
-        // SWC1075 DD 28.07.17 <<
         END;
 
         FILTERGROUP(0);
+
+        Rec := SaveRec;
+        if find('=<>') then;
     end;
 
     procedure SetSortType()
     begin
-        //--
         CASE SortType OF
             SortType::DocNo:
-                // SWC1075 DD 28.07.17 >>
-                //SETCURRENTKEY("No.");
                 SETCURRENTKEY("Document Type", "No.");
-            // SWC1075 DD 28.07.17 <<
             SortType::PostDate:
                 SETCURRENTKEY("Posting Date");
             SortType::Vendor:

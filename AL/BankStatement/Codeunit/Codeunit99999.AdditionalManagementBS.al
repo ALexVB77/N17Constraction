@@ -36,6 +36,7 @@ codeunit 99999 "Additional Management BS"
         if (RunTrigger) then begin
             if (Rec."Data Exch. Entry No." <> 0) and (Rec."Export Status" <> Rec."Export Status"::Exported) then begin
                 Rec.validate("Export Status", Rec."Export Status"::Exported);
+                Rec.modify();
             end;
         end;
     end;
@@ -149,6 +150,10 @@ codeunit 99999 "Additional Management BS"
     local procedure OnBeforeGenJnlLineInsert(var GenJournalLine: Record "Gen. Journal Line"; BankAccReconciliationLine: Record "Bank Acc. Reconciliation Line");
     begin
 
+        IF (GenJournalLine."Account Type" = GenJournalLine."Account Type"::Customer) THEN BEGIN
+            GenJournalLine.VALIDATE("Document Date", BankAccReconciliationLine."Transaction Date");
+            //GenJournalLine.VALIDATE("Customer Document Date", BankAccReconciliationLine."Transaction Date");
+        END;
         IF (BankAccReconciliationLine."Payment Direction" = BankAccReconciliationLine."Payment Direction"::Incoming) THEN BEGIN
             GenJournalLine.VALIDATE(Amount, -ABS(GenJournalLine.Amount));
         END ELSE BEGIN

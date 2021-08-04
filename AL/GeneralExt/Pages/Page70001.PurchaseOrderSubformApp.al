@@ -149,35 +149,35 @@ page 70001 "Purchase Order Subform App"
                     Editable = false;
                     Enabled = NOT IsBlankNumber;
                 }
-                field(Approver; Approver)
+                field(Approver; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
                 {
-                    Editable = NOT IsBlankNumber;
-                    Enabled = NOT IsBlankNumber;
+                    ApplicationArea = All;
+                    Caption = 'Approver';
                 }
                 field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = All;
                     ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
-
-                    trigger OnValidate()
-                    begin
-                        PaymentOrderMgt.FillPurchLineApproverFromGlobalDim(1, "Shortcut Dimension 1 Code", Rec, false);
-                    end;
                 }
                 field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = All;
                     ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
-
-                    trigger OnValidate()
-                    begin
-                        PaymentOrderMgt.FillPurchLineApproverFromGlobalDim(2, "Shortcut Dimension 2 Code", Rec, false);
-                    end;
                 }
                 field("Forecast Entry"; Rec."Forecast Entry")
                 {
                     ApplicationArea = All;
                     ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
+                    Editable = false;
+                    ToolTip = 'Use action "Link to Cash Flow Entry"';
+                    trigger OnAssistEdit()
+                    var
+                        PrjBudMgt: Codeunit "Project Budget Management";
+                    begin
+                        Clear(PrjBudMgt);
+                        PrjBudMgt.ApplyPrjBudEntrytoPurchLine(Rec);
+                        CurrPage.Update(false);
+                    end;
                 }
                 field("Utilities Dim. Value Code"; UtilitiesDimValueCode)
                 {
@@ -312,6 +312,20 @@ page 70001 "Purchase Order Subform App"
                 }
                 //}
             }
+            action(LinkCFEntry)
+            {
+                ApplicationArea = All;
+                Caption = 'Link Cash Flow Entry';
+                Image = Link;
+                trigger OnAction()
+                var
+                    PrjBudMgt: Codeunit "Project Budget Management";
+                begin
+                    Clear(PrjBudMgt);
+                    PrjBudMgt.ApplyPrjBudEntrytoPurchLine(Rec);
+                    CurrPage.Update(false);
+                end;
+            }
         }
     }
 
@@ -362,7 +376,6 @@ page 70001 "Purchase Order Subform App"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         UpdateTypeText();
-        PaymentOrderMgt.SetPurchLineApprover(Rec, false);
     end;
 
     trigger OnModifyRecord(): Boolean
@@ -390,7 +403,6 @@ page 70001 "Purchase Order Subform App"
                 grInventorySetup.TESTFIELD("Temp Item Code");
                 VALIDATE("No.", grInventorySetup."Temp Item Code");
             END;
-            PaymentOrderMgt.SetPurchLineApprover(Rec, true);
         END;
     end;
 

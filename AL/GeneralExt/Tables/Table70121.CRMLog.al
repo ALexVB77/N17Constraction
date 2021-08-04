@@ -37,25 +37,20 @@ table 70121 "CRM Log"
 
         }
 
-        field(14; "Object Xml Checksum"; Text[40])
+        field(14; "Object Version Id"; Text[40])
         {
-            Caption = 'Object Xml Checksum';
+            Caption = 'Object Version Id';
 
         }
 
-
-        field(20; Action; Option)
+        field(20; Action; Enum "CRM Import Action")
         {
             Caption = 'Action';
-            OptionCaption = 'Create,Update,Remove';
-            OptionMembers = Create,Update,Remove;
         }
 
-        field(21; Status; Option)
+        field(21; Status; Enum "CRM Log Status")
         {
             Caption = 'Status';
-            OptionMembers = Done,Error,Prefetched,Skip;
-            OptionCaption = 'Done,Error,Prefetched,Skip';
 
         }
 
@@ -71,12 +66,19 @@ table 70121 "CRM Log"
 
         }
 
-        field(30; "Web Request Queue Id"; Guid)
+        field(30; "WRQ Id"; Guid)
         {
-            Caption = 'Web Request Queue Id';
+            Caption = 'WRQ Id';
             TableRelation = "Web Request Queue";
 
         }
+
+        field(31; "WRQ Source Company Name"; Text[60])
+        {
+            Caption = 'WRQ Source Company Name';
+
+        }
+
 
 
     }

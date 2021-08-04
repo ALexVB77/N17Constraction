@@ -930,6 +930,7 @@ table 70140 "Proj. Cost Control Entry Buf."
                 lrPH.SETRANGE("Document Type", lrPL."Document Type");
                 lrPH.SETRANGE("No.", lrPL."Document No.");
                 IF lrPH.FINDFIRST THEN BEGIN
+                    lrPH.CalcFields("Paid Date Fact");
                     Ret := lrPH."Paid Date Fact";
                 END;
             END;

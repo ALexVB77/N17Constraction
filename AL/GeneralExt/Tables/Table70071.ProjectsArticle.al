@@ -26,10 +26,10 @@ table 70071 "Projects Article"
         //     OptionCaption = 'Posting,Heading,Total,Begin-Total,End-Total';
         //     OptionMembers = Posting,Heading,Total,"Begin-Total","End-Total";
         // }
-        // field(5; Sequence; Integer)
-        // {
-        //     Caption = 'Succession';
-        // }
+        field(5; Sequence; Integer)
+        {
+            Caption = 'Succession';
+        }
         field(6; "By Building turn"; Boolean)
         {
             Caption = 'In terms of queuing';

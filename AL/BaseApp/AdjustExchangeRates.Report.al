@@ -2144,6 +2144,9 @@ report 595 "Adjust Exchange Rates"
         end;
 
         OnAfterInitDtldVendLedgerEntry(DtldVendLedgEntry);
+        // NC 50112 AB >>
+        OnAfterInitDtldVendLedgerEntry2(VendLedgEntry, DtldVendLedgEntry);
+        // NC 50112 AB <<        
     end;
 
     local procedure SetUnrealizedGainLossFilterCust(var DtldCustLedgEntry: Record "Detailed Cust. Ledg. Entry"; EntryNo: Integer)
@@ -2595,5 +2598,12 @@ report 595 "Adjust Exchange Rates"
     local procedure OnPostGenJnlLineOnBeforeGenJnlPostLineRun(var GenJnlLine: Record "Gen. Journal Line")
     begin
     end;
+
+    // NC 50112 AB >>
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterInitDtldVendLedgerEntry2(VendLedgEntry: Record "Vendor Ledger Entry"; var DetailedVendLedgEntry: Record "Detailed Vendor Ledg. Entry")
+    begin
+    end;
+    // NC 50112 AB <<  
 }
 

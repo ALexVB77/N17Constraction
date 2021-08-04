@@ -4,18 +4,6 @@ pageextension 80119 "User Setup (Ext)" extends "User Setup"
     {
         addlast(Control1)
         {
-            field("Absents"; Rec."Absents")
-            {
-                ApplicationArea = Basic, Suite;
-            }
-            field("Administrator IW"; Rec."Administrator IW")
-            {
-                ApplicationArea = Basic, Suite;
-            }
-            field("Administrator PRJ"; Rec."Administrator PRJ")
-            {
-                ApplicationArea = Basic, Suite;
-            }
             field("Show All Acts KC-2"; Rec."Show All Acts KC-2")
             {
                 ApplicationArea = Basic, Suite;
@@ -24,19 +12,35 @@ pageextension 80119 "User Setup (Ext)" extends "User Setup"
             {
                 ApplicationArea = Basic, Suite;
             }
-            field("Status App"; Rec."Status App")
-            {
-                ApplicationArea = Basic, Suite;
-            }
-            field("Status App Act"; Rec."Status App Act")
-            {
-                ApplicationArea = Basic, Suite;
-            }
             field("CF Allow Long Entries Edit"; Rec."CF Allow Long Entries Edit")
             {
                 ApplicationArea = Basic, Suite;
             }
             field("CF Allow Short Entries Edit"; Rec."CF Allow Short Entries Edit")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            field("Master CF"; Rec."Master CF")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            field("Change Agreem. Posting Group"; Rec."Change Agreem. Posting Group")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            field("Allow Manual Editing"; Rec."Allow Manual Editing")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            field("Allow Edit DenDoc Dimension"; Rec."Allow Edit DenDoc Dimension")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            field("Vend. Agr. Creator Notif."; Rec."Vend. Agr. Creator Notif.")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            field("Vend. Agr. Controller Notif."; Rec."Vend. Agr. Controller Notif.")
             {
                 ApplicationArea = Basic, Suite;
             }

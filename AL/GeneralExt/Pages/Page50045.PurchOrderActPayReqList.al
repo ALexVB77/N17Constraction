@@ -9,6 +9,7 @@ page 50045 "Purch. Order Act PayReq. List"
     Caption = 'Payment Invoices for Act';
     RefreshOnActivate = true;
     CardPageId = "Purchase Order App";
+
     layout
     {
         area(content)

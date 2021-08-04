@@ -30,33 +30,24 @@ page 70164 "Vendor Agreement Details"
             }
             repeater(MainRep)
             {
-                field("Building Turn All"; Rec."Building Turn All")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-
                 field("Project Code"; Rec."Project Code")
                 {
-                    Editable = false;
                     ApplicationArea = All;
                 }
 
                 field("Cost Code"; Rec."Cost Code")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                 {
-                    Editable = false;
                     ApplicationArea = All;
                 }
 
                 field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                 {
-                    Visible = false;
-                    Editable = false;
                     ApplicationArea = All;
                 }
 
@@ -184,6 +175,7 @@ page 70164 "Vendor Agreement Details"
                             vAgreement.MODIFY;
                         end;
                         // SWC1004 DD 18.02.17 <<
+                        CurrPage.Update();
                     end;
 
                     trigger OnAssistEdit()
@@ -199,6 +191,11 @@ page 70164 "Vendor Agreement Details"
                 field("Amount Without VAT"; Rec."Amount Without VAT")
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update();
+                    end;
                 }
 
                 field(AmountLCY; Rec.AmountLCY)

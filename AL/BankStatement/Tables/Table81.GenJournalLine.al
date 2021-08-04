@@ -14,10 +14,12 @@ tableextension 99991 "Gen. Journal Line BS" extends "Gen. Journal Line"
         CASE PageNo OF
             PAGE::"Payment Journal":
                 BEGIN
-                    VALIDATE("Bank Payment Type", "Bank Payment Type"::"Computer Check");
-                    VALIDATE("Payment Method", "Payment Method"::Electronic);
-                    VALIDATE("Payment Subsequence", '5');
-                    VALIDATE("Payment Type", '01');
+                    if ("Bal. Account Type" = "Bal. Account Type"::"Bank Account") then begin
+                        VALIDATE("Bank Payment Type", "Bank Payment Type"::"Computer Check");
+                        VALIDATE("Payment Method", "Payment Method"::Electronic);
+                        VALIDATE("Payment Subsequence", '5');
+                        VALIDATE("Payment Type", '01');
+                    end;
                 END;
             PAGE::"Cash Order Journal":
                 BEGIN

@@ -21,6 +21,10 @@ pageextension 80020 "General Ledger Entries (Ext)" extends "General Ledger Entri
             {
                 ApplicationArea = Basic, Suite;
             }
+            field("Cust. Ext. Agr. No."; "Cust. Ext. Agr. No.")
+            {
+                ApplicationArea = Basic, Suite;
+            }
         }
     }
 

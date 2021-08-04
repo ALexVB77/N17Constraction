@@ -3,6 +3,7 @@ tableextension 85740 "Transfer Header (Ext)" extends "Transfer Header"
     // Подписки в cu 50006 
     fields
     {
+
         modify("In-Transit Code")
         {
             trigger OnAfterValidate()
@@ -44,7 +45,7 @@ tableextension 85740 "Transfer Header (Ext)" extends "Transfer Header"
             Caption = 'New Shortcut Dimension 1 Code';
             DataClassification = CustomerContent;
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
-            CaptionClass = '1,2,1';
+            CaptionClass = '1,2,1,New ';
             trigger OnValidate()
 
             begin
@@ -58,7 +59,7 @@ tableextension 85740 "Transfer Header (Ext)" extends "Transfer Header"
             Caption = 'New Shortcut Dimension 2 Code';
             DataClassification = CustomerContent;
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
-            CaptionClass = '1,2,2';
+            CaptionClass = '1,2,2,New ';
             trigger OnValidate()
 
             begin
@@ -107,6 +108,13 @@ tableextension 85740 "Transfer Header (Ext)" extends "Transfer Header"
             Caption = 'New Dimension Set Id';
             TableRelation = "Dimension Set Entry";
             Editable = false;
+        }
+        field(50482; "Giv. Type"; Enum "Transfer Header Giv. Type")
+        {
+            Caption = 'Giv. Type';
+            Editable = false;
+            DataClassification = CustomerContent;
+            Description = 'NC 51410 EP';
         }
     }
 
@@ -224,7 +232,7 @@ tableextension 85740 "Transfer Header (Ext)" extends "Transfer Header"
                             trackingSpecification.InitTrackingSpecification(32, 0, '', '', 0, ItemLedgEntry."Entry No.", ItemLedgEntry."Variant Code", ItemLedgEntry."Location Code", ItemLedgEntry."Qty. per Unit of Measure");
                             TransferLineReserve.CreateReservationSetFrom(trackingSpecification);
                             TransferLineReserve.CreateReservation(NewTransLine, NewTransLine.Description, NewTransLine."Shipment Date",
-                                                                  NewTransLine.Quantity, NewTransLine."Quantity (Base)", resEntry, transDir::Inbound);
+                                                                  NewTransLine.Quantity, NewTransLine."Quantity (Base)", resEntry, transDir::Outbound);
                             //NC 41281 < DP
                         END ELSE
                             NewTransLine.DELETE(TRUE);

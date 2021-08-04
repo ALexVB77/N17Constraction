@@ -94,9 +94,13 @@ table 70120 "CRM Buyers"
 
         }
 
-        field(80010; "CRM Checksum"; Text[40])
+        field(80000; "Project Id"; Guid)
         {
-            Caption = 'CRM Checksum';
+            Caption = 'Project Id';
+        }
+        field(80010; "Version Id"; Text[40])
+        {
+            Caption = 'Version Id';
         }
 
 

@@ -3,6 +3,7 @@ table 99932 "CRM Prefetched Object"
     Caption = 'CRM Prefetched Object';
     LookupPageId = "CRM Prefetched Objects";
     DrillDownPageId = "CRM Prefetched Objects";
+    DataPerCompany = false;
 
     fields
     {
@@ -30,9 +31,9 @@ table 99932 "CRM Prefetched Object"
 
         }
 
-        field(12; "Checksum"; Text[40])
+        field(12; "Version Id"; Text[40])
         {
-            Caption = 'Xml Checksum';
+            Caption = 'Version Id';
 
         }
 
@@ -48,12 +49,19 @@ table 99932 "CRM Prefetched Object"
 
         }
 
-        field(40; "Web Request Queue Id"; Guid)
+        field(40; "WRQ Id"; Guid)
         {
-            Caption = 'Web Request Queue Id';
+            Caption = 'WRQ Id';
             TableRelation = "Web Request Queue";
 
         }
+
+        field(41; "WRQ Source Company Name"; Text[60])
+        {
+            Caption = 'WRQ Source Company Name';
+
+        }
+
 
     }
 
@@ -97,12 +105,13 @@ table 99932 "CRM Prefetched Object"
         OutStrm: OutStream;
         InStrm: InStream;
         FullFileName: Text;
+        NotAttachedXmlErr: Label 'Xml file is not attached';
     begin
         if IsNullGuid(Id) then
             exit;
         CalcFields(Xml);
         if not Xml.HasValue then
-            exit;
+            Error(NotAttachedXmlErr);
         FullFileName := Format(Id) + '.txt';
         TempBlob.CreateOutStream(OutStrm);
         Xml.CreateInStream(InStrm);

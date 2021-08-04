@@ -766,6 +766,9 @@ codeunit 12411 "VAT Settlement Management"
             VATEntry.SetRange(Base, 0);
             VATEntry.SetFilter("Remaining Unrealized Amount", '<>%1', 0);
             VATEntry.SetRange("Manual VAT Settlement", true);
+            // NC 50118 GG >>
+            onAfterSetVatEntryFilter(VATEntry, VATDocEntryBuffer);
+            // NC 50118 GG <<
             I := 0;
             VATCount := VATEntry.Count();
             if VATEntry.FindSet then
@@ -812,6 +815,9 @@ codeunit 12411 "VAT Settlement Management"
                                 MergeEntryDimSetIDWithVATAllocationDim(VATEntry."Entry No.", DimSetID);
                                 CalcFields("VAT Amount To Allocate");
                                 "Allocated VAT Amount" := "VAT Amount To Allocate";
+                                // NC 50118 GG >>
+                                onBeforeInsertTempVATDocBuf(TempVATDocBuf, VATEntry);
+                                // NC 50118 GG <<
                                 if Insert then
                                     FillCVEntryNo("Transaction No.", "Entry No.");
                             end;
@@ -991,6 +997,7 @@ codeunit 12411 "VAT Settlement Management"
                 if VATEntry."Object Type" = VATEntry."Object Type"::"Fixed Asset" then
                     "VAT Settlement Type" := VATEntry."VAT Settlement Type";
                 Insert;
+
             until DefaultVATAlloc.Next = 0;
         end;
     end;
@@ -1171,6 +1178,9 @@ codeunit 12411 "VAT Settlement Management"
                         GenJnlLine.Validate(Amount, -GenJnlLine."Paid Amount");
                     if InsertLine then
                         GenJnlLine.Insert();
+                    // NC 51138 GG >>
+                    onAfterInsertGenJnlLine(EntryToPost."Entry No.", VATEntry."Entry No.", GenJnlLine."Dimension Set ID");
+                // NC 51138 GG <<
                 until VATEntry.Next = 0;
         until EntryToPost.Next = 0;
     end;
@@ -1308,5 +1318,25 @@ codeunit 12411 "VAT Settlement Management"
         end;
         exit(0);
     end;
+
+    // NC 51138 GG >>
+    [IntegrationEvent(false, false)]
+    local procedure onAfterInsertGenJnlLine(cvLedgerEntryNo: integer; vatEntryNo: integer; dimDetId: integer)
+    begin
+    end;
+    // NC 51138 GG <<
+
+    // NC 50118 GG >>
+    [IntegrationEvent(false, false)]
+    local procedure onAfterSetVatEntryFilter(var VATEntry: record "Vat Entry"; var VATDocEntryBuffer: record "VAT Document Entry Buffer")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure onBeforeInsertTempVATDocBuf(var TempVATDocBuf: record "VAT Document Entry Buffer"; var VATEntry: record "Vat Entry")
+    begin
+    end;
+    // NC 50118 GG <<
+
 }
 

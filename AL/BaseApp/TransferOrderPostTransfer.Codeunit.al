@@ -25,6 +25,10 @@ codeunit 12469 "TransferOrder-Post Transfer"
         TransHeader := Rec;
         TransHeader.SetHideValidationDialog(HideValidationDialog);
 
+        // NC 51411 > EP
+        OnBeforeTransferOrderPostTransfer(TransHeader);
+        // NC 51411 < EP
+
         with TransHeader do begin
             TestField("Transfer-from Code");
             TestField("Transfer-to Code");
@@ -113,6 +117,11 @@ codeunit 12469 "TransferOrder-Post Transfer"
             DirectTransHeader."No." :=
               NoSeriesMgt.GetNextNo(
                 InvtSetup."Posted Direct Transfer Nos.", "Posting Date", true);
+
+            // NC 51411 > EP
+            OnBeforeInsertDirectTransHeader(DirectTransHeader, TransHeader);
+            // NC 51411 < EP
+
             DirectTransHeader.Insert();
 
             DocSignMgt.MoveDocSignToPostedDocSign(
@@ -178,6 +187,10 @@ codeunit 12469 "TransferOrder-Post Transfer"
                         if WhseReceive then
                             PostWhseJnlLine(ItemJnlLine, OriginalQuantity, OriginalQuantityBase, TempHandlingSpecification, 1);
                     end;
+
+                    // NC 51411 > EP
+                    OnBeforeInsertDirectTransLine(DirectTransLine, TransLine, TransHeader);
+                    // NC 51411 < EP
 
                     DirectTransLine.Insert();
                 until TransLine.Next = 0;
@@ -274,6 +287,10 @@ codeunit 12469 "TransferOrder-Post Transfer"
         ItemJnlLine."New Bin Code" := TransLine3."Transfer-To Bin Code";
         ItemJnlLine."Country/Region Code" := DirectTransHeader2."Trsf.-from Country/Region Code";
         ItemJnlLine."Item Category Code" := TransLine3."Item Category Code";
+
+        // NC 51411 > EP
+        OnAfterCreateItemJnlLine(ItemJnlLine, TransLine3, DirectTransHeader2, DirectTransLine2);
+        // NC 51411 < EP
 
         ReserveTransLine.TransferTransferToItemJnlLine(TransLine3,
           ItemJnlLine, ItemJnlLine."Quantity (Base)", "Transfer Direction"::Outbound, true);
@@ -429,5 +446,35 @@ codeunit 12469 "TransferOrder-Post Transfer"
                 end;
         end;
     end;
+
+    // NC 51411 > EP
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeTransferOrderPostTransfer(var TransHeader: Record "Transfer Header")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeInsertDirectTransHeader(var DirectTransHeader: Record "Direct Transfer Header";
+                                                    TransHeader: Record "Transfer Header")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeInsertDirectTransLine(var DirectTransLine: Record "Direct Transfer Line";
+                                                  TransLine: Record "Transfer Line";
+                                                  TransHeader: Record "Transfer Header")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterCreateItemJnlLine(var ItemJnlLine: Record "Item Journal Line";
+                                             TransLine: Record "Transfer Line";
+                                             DirectTransHeader: Record "Direct Transfer Header";
+                                             DirectTransLine: Record "Direct Transfer Line")
+    begin
+    end;
+
+    // NC 51411 < EP
 }
 

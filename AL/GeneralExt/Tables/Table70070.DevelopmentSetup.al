@@ -33,10 +33,10 @@ table 70070 "Development Setup"
         //     Caption = 'Sales Agreement Manager Role';
         //     TableRelation = "User Role";
         // }
-        // field(33; "Pref Forecast Code"; Code[10])
-        // {
-        //     Caption = 'Pref Forecast Code';
-        // }
+        field(33; "Pref Forecast Code"; Code[10])
+        {
+            Caption = 'Pref Forecast Code';
+        }
         // field(34; "Change Agreement CF Role"; Code[20])
         // {
         //     Caption = 'Change Agreement CF Role';

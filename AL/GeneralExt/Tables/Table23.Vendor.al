@@ -98,6 +98,8 @@ tableextension 80023 "Vendor (Ext)" extends Vendor
         VendAgr: Record "Vendor Agreement";
         CheckLimitDateFilter: Text[250];
         CompanyInfo: Record "Company Information";
+        Text001: Label 'FRAME';
+        Text002: Label 'FRAME CUSTOMIZED';
     begin
         CompanyInfo.Get;
         if not CompanyInfo."Use RedFlags in Agreements" then
@@ -119,7 +121,7 @@ tableextension 80023 "Vendor (Ext)" extends Vendor
                    (VendAgr."Expire Date" >= WorkDate()) and
                    not ("Vendor Type" = "Vendor Type"::"Resp. Employee") and
                    not ("Vendor Type" = "Vendor Type"::"Tax Authority") and
-                   ((VendAgr."Agreement Group" IN ['РАМОЧНЫЙ']) OR (VendAgr."Agreement Group" IN ['РАМОЧНЫЙ ПОЗАКАЗНЫЙ'])) then
+                   ((VendAgr."Agreement Group" IN [Text001]) OR (VendAgr."Agreement Group" IN [Text002])) then
                     exit('Attention');
             until VendAgr.Next() = 0;
         end;

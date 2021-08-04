@@ -61,6 +61,26 @@ pageextension 92477 "Posted FA Release Act Sub. Ext" extends "Posted FA Release 
                         FAPostedReleaseActRep.Run;
                     end;
                 }
+                action("FA Release Act FA-1b")
+                {
+                    ApplicationArea = FixedAssets;
+                    Caption = 'FA Posted Release Act FA-1B';
+
+                    trigger OnAction()
+                    var
+
+
+                        PostedFADocHeader: Record "Posted FA Doc. Header";
+                        PostedFADocLine: Record "Posted FA Doc. Line";
+                        FAPostedReleaseActRep: Report "FA Release Act FA-1b";
+                    begin
+                        PostedFADocHeader.Get(rec."Document Type", rec."Document No.");
+                        PostedFADocHeader.SetRecFilter;
+                        FAPostedReleaseActRep.SetTableView(PostedFADocHeader);
+                        FAPostedReleaseActRep.UseRequestPage(true);
+                        FAPostedReleaseActRep.RunModal();
+                    end;
+                }
             }
         }
     }

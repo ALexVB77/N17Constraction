@@ -223,7 +223,14 @@
         ReportLayoutSelection: Record "Report Layout Selection";
         FileManagement: Codeunit "File Management";
         ErrorMessageMgt: Codeunit "Error Message Management";
+        IsHandled, BodyTextExist : Boolean;
     begin
+        // NC 51374 AB >>
+        OnBeforeGetHTMLBodyText(NotificationEntry, BodyTextOut, IsHandled, BodyTextExist);
+        if IsHandled then
+            exit(BodyTextExist);
+        // NC 51374 AB <<
+
         HtmlBodyFilePath := FileManagement.ServerTempFileName('html');
         ReportLayoutSelection.SetTempLayoutSelected('');
         if not REPORT.SaveAsHtml(REPORT::"Notification Email", HtmlBodyFilePath, NotificationEntry) then begin
@@ -333,5 +340,13 @@
     local procedure OnBeforeGetTargetRecRef(var NotificationEntry: Record "Notification Entry"; var TargetRecRefOut: RecordRef; var IsHandled: Boolean)
     begin
     end;
+
+    // NC 51374 AB >>
+    [IntegrationEvent(true, true)]
+    local procedure OnBeforeGetHTMLBodyText(var NotificationEntry: Record "Notification Entry"; var BodyTextOut: Text; var IsHandled: Boolean; var BodyTextExist: Boolean);
+    begin
+    end;
+    // NC 51374 AB <<
+
 }
 

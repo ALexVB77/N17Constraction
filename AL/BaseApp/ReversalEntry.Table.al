@@ -733,6 +733,9 @@ table 179 "Reversal Entry"
                 GLEntry.Find('+')
             end;
             TaxDiffLedgEntry.SetRange("Transaction No.", FromTransactionNo, GLEntry."Transaction No.");
+            // NC 51138 GG >>
+            onAfterSetRegisterReverseFilter(GLEntry, CustLedgEntry, VendLedgEntry, BankAccLedgEntry, VATEntry, FALedgEntry, MaintenanceLedgEntry, ValueEntry, TaxDiffLedgEntry);
+            // NC 51138 GG <<
         end;
 
         OnAfterSetReverseFilter(Number, RevType, GLReg);
@@ -1704,5 +1707,22 @@ table 179 "Reversal Entry"
     local procedure OnCheckGLAccOnBeforeTestFields(GLAcc: Record "G/L Account"; GLEntry: Record "G/L Entry"; var IsHandled: Boolean)
     begin
     end;
+
+    // NC 51138 GG >>
+    [IntegrationEvent(false, false)]
+    local procedure onAfterSetRegisterReverseFilter(
+        var GLEntry: Record "G/L Entry";
+        var CustLedgEntry: Record "Cust. Ledger Entry";
+        var VendLedgEntry: Record "Vendor Ledger Entry";
+        var BankAccLedgEntry: Record "Bank Account Ledger Entry";
+        var VATEntry: Record "VAT Entry";
+        var FALedgEntry: Record "FA Ledger Entry";
+        var MaintenanceLedgEntry: Record "Maintenance Ledger Entry";
+        var ValueEntry: Record "Value Entry";
+        var TaxDiffLedgEntry: Record "Tax Diff. Ledger Entry"
+    )
+    begin
+    end;
+    // NC 51138 GG <<
 }
 

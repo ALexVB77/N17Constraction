@@ -1,6 +1,6 @@
 page 35604 "FA Release Acts"
 {
-    ApplicationArea = FixedAssets;
+    ApplicationArea = all;
     Caption = 'Fixed Asset Releases';
     CardPageID = "FA Release Act";
     Editable = false;
