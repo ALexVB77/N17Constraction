@@ -1,7 +1,7 @@
 page 99908 ItemList3
 {
 
-    Caption = 'ItemList3';
+    Caption = 'Item List';
     PageType = List;
     SourceTable = "Item Document Line";
 
@@ -14,26 +14,31 @@ page 99908 ItemList3
                 field("Document No."; Rec."Document No.")
                 {
                     ToolTip = 'Document No.';
+                    Caption = 'Document No.';
                     ApplicationArea = All;
                 }
                 field("Item No."; Rec."Item No.")
                 {
                     ToolTip = 'Item No.';
+                    Caption = 'Item No.';
                     ApplicationArea = All;
                 }
                 field(Description; Rec.Description)
                 {
                     ToolTip = 'Description';
+                    Caption = 'Description';
                     ApplicationArea = All;
                 }
                 field(Quantity; Rec.Quantity)
                 {
                     ToolTip = 'Quantity';
+                    Caption = 'Quantity';
                     ApplicationArea = All;
                 }
                 field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     ToolTip = 'Unit of Measure';
+                    Caption = 'Unit of Measure';
                     ApplicationArea = All;
                 }
             }

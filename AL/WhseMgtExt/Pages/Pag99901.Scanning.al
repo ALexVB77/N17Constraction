@@ -34,37 +34,91 @@ page 99901 Scanning
                 {
                     ApplicationArea = All;
                     ToolTip = 'Document Number';
+                    Caption = 'Proceed Document Number';
                     Editable = false;
                 }
                 field(ItemNo; ItemNo)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Proceed Item No.';
+                    Caption = 'Scanned Item';
                     Editable = false;
                 }
                 field(Quantity; Quantity)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Quantity';
+                    Caption = 'Quantity in Document';
                     Editable = false;
                 }
                 field(ScannedQuantity; ScannedQuantity)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Scanned Quantity';
+                    Caption = 'Scanned Quantity';
                     Editable = false;
                 }
                 field(UnscannedQty; UnscannedQty)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Unscanned Quantity';
+                    Caption = 'Unscanned Quantity';
                     Editable = false;
+                    Visible = tmpVisible;
                 }
             }
         }
 
     }
-
+    actions
+    {
+        area(Processing)
+        {
+            action("Enter Quantity Manual")
+            {
+                ApplicationArea = All;
+                Caption = 'Enter Quantity Manualy';
+                trigger OnAction()
+                var
+                    EnterPage: Page ScanEnterQty;
+                begin
+                    ScanHelper.EditQuantityManualy;
+                    GetWorkEntryParam;
+                    CurrPage.UPDATE;
+                end;
+            }
+            action("Enter Without Scanning")
+            {
+                ApplicationArea = All;
+                Caption = 'Enter Item without scanning';
+                trigger OnAction()
+                begin
+                    Clear(EnterQty);
+                    SelectItem;
+                    SelectUOM;
+                    EnterQty.SetParam(g_DocumentNo, g_EntryType, g_ItemNo, UOM, '');
+                    EnterQty.RUNMODAL;
+                    GetWorkEntryParam;
+                    CurrPage.UPDATE;
+                end;
+            }
+            action(ScanHistory)
+            {
+                ApplicationArea = All;
+                Caption = 'Scanning History';
+                trigger OnAction()
+                var
+                    ScanHistory: Page ScanningHistory;
+                    ScanEntry: Record "Item Scanning Entry";
+                begin
+                    ScanEntry.RESET;
+                    ScanEntry.SETRANGE("Document No.", g_DocumentNo);
+                    ScanHistory.SETTABLEVIEW(ScanEntry);
+                    ScanHistory.RUNMODAL;
+                end;
+            }
+        }
+    }
     var
         "Document No.": Code[250];
         "Entry Type": Option ,Posting,TransOrder,MatOrder,"Write-off",TransOrderNew,MatOrderNew,WrOffNew,Inventory;
@@ -84,6 +138,7 @@ page 99901 Scanning
         ScanFilter: Text;
         UnscannedQty: Text;
         EnterQty: Page EnterQty;
+        tmpVisible: Boolean;
 
     trigger OnInit()
     begin
@@ -95,11 +150,22 @@ page 99901 Scanning
         ScanFilter := g_DocumentNo;
         DocumentNo := CONVERTSTR(ScanFilter, '|', ';');
         GetWorkEntryParam;
+        tmpVisible := TRUE;
+        IF g_EntryType = g_EntryType::TransOrderNew THEN
+            tmpVisible := FALSE;
     end;
 
     trigger OnModifyRecord(): Boolean
     begin
         GetWorkEntryParam();
+    end;
+
+    trigger OnClosePage()
+    var
+        LineCreatedTxt: Label 'Document Lines for %1 was created';
+    begin
+        IF ScanHelper.CreateDocLines(g_DocumentNo, g_EntryType) THEN
+            MESSAGE(LineCreatedTxt, g_DocumentNo);
     end;
 
     procedure GetWorkEntryParam()
@@ -178,6 +244,12 @@ page 99901 Scanning
                 UnscannedQty := FORMAT(ScanBuffer."Qty(Base)") + ' ' + UOM;
             END;
         END;
+
+        IF (g_EntryType = g_EntryType::TransOrderNew) OR (g_EntryType = g_EntryType::MatOrderNew) OR (g_EntryType = g_EntryType::WrOffNew) THEN BEGIN
+            Quantity := ScannedQuantity;
+            IF l_Item.GET(g_ItemNo) THEN
+                ItemNo := l_Item."No." + ' ' + l_Item.Description;
+        END;
     end;
 
     procedure SetParam("Document No.": Code[250]; "EntryType": Option ,Posting,TransOrder,MatOrder,"Write-off",TransOrderNew,MatOrderNew,WrOffNew,Inventory)
@@ -194,6 +266,8 @@ page 99901 Scanning
         SelectItemPage1: Page ItemList2;
         SelectItemPage2: Page ItemList3;
         WriteoffLines: Record "Item Document Line";
+        SelectItemPage3: Page ItemList4;
+        Item: Record Item;
     begin
 
         //For Purchase Order
@@ -253,6 +327,22 @@ page 99901 Scanning
                 EXIT(TRUE);
             END ELSE BEGIN
                 CLEAR(SelectItemPage1);
+                EXIT(FALSE);
+            END;
+        END;
+
+        //For new Transfer order
+        IF (g_EntryType = g_EntryType::TransOrderNew) OR (g_EntryType = g_EntryType::MatOrderNew) OR (g_EntryType = g_EntryType::WrOffNew) THEN BEGIN
+            SelectItemPage3.LOOKUPMODE(TRUE);
+            Item.SETRANGE(Blocked, FALSE);
+            SelectItemPage3.SETTABLEVIEW(Item);
+            IF SelectItemPage3.RUNMODAL = ACTION::LookupOK THEN BEGIN
+                SelectItemPage3.GETRECORD(Item);
+                g_ItemNo := Item."No.";
+                CLEAR(SelectItemPage3);
+                EXIT(TRUE);
+            END ELSE BEGIN
+                CLEAR(SelectItemPage3);
                 EXIT(FALSE);
             END;
         END;

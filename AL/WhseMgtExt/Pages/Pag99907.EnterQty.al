@@ -1,7 +1,7 @@
 page 99907 EnterQty
 {
 
-    Caption = 'EnterQty';
+    Caption = 'Enter Quantity';
     PageType = Card;
 
     layout
@@ -14,6 +14,7 @@ page 99907 EnterQty
                 {
                     ApplicationArea =true;
                     ToolTip = 'Enter Quantity';
+                    Caption = 'Enter Quantity';
                 }
             }
         }
@@ -25,6 +26,7 @@ page 99907 EnterQty
         g_EntryType: Option ,Posting,TransOrder,MatOrder,"Write-off",TransOrderNew,MatOrderNew,WrOffNew,Inventory;
         g_ItemNo: Code[20];
         g_UOM: Code[10];
+        g_LocationCode: Code[10];
 
     trigger OnClosePage()
     var
@@ -32,16 +34,17 @@ page 99907 EnterQty
     begin
 
         IF EnterQty <> 0 THEN
-            ScanHelper.SetManualyParam(g_DocumentNo, g_EntryType, g_ItemNo, g_UOM, EnterQty)
+            ScanHelper.SetManualyParam(g_DocumentNo, g_EntryType, g_ItemNo, g_UOM, EnterQty, g_LocationCode)
         ELSE
             ERROR(NoNulltxt);
     end;
 
-    procedure SetParam("Document No.": Code[250]; "Entry Type": Option ,Posting,TransOrder,MatOrder,"Write-off",TransOrderNew,MatOrderNew,WrOffNew,Inventory; SelectedItem: Code[20]; SelectedUOM: Code[10])
+    procedure SetParam("Document No.": Code[250]; "Entry Type": Option ,Posting,TransOrder,MatOrder,"Write-off",TransOrderNew,MatOrderNew,WrOffNew,Inventory; SelectedItem: Code[20]; SelectedUOM: Code[10]; LocationCode: Code[10])
     begin
         g_DocumentNo := "Document No.";
         g_EntryType := "Entry Type";
         g_ItemNo := SelectedItem;
         g_UOM := SelectedUOM;
+        g_LocationCode := LocationCode;
     end;
 }

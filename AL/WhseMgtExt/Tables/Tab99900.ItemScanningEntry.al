@@ -76,6 +76,11 @@ table 99900 "Item Scanning Entry"
             Caption = 'SplitWithEntry';
             DataClassification = ToBeClassified;
         }
+        field(15; "Location Code"; Code[10])
+        {
+            Caption = 'Location Code';
+            DataClassification = ToBeClassified;
+        }
     }
     keys
     {
