@@ -38,12 +38,13 @@ page 70009 "Posted Gen. Journals_"
     }
 
     var
-        myInt: Integer;
+        Template: Code[20];
+        Batch: Code[20];
 
     procedure SetParametrs(Templ: Code[20]; Bat: Code[20])
     var
-        myInt: Integer;
     begin
-
+        Template := Templ;
+        Batch := Bat;
     end;
 }
