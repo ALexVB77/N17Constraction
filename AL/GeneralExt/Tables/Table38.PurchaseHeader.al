@@ -680,7 +680,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         DocumentPrint.InsertDocPrintBuffer(DocumentPrintBuffer, DATABASE::"Purchase Header", "Document Type".AsInteger(), "No.");
         Commit();
 
-
         DocumentSendingProfile.TrySendToPrinterVendor(
           ReportSelUsage.AsInteger(), Rec, FieldNo("Buy-from Vendor No."), ShowRequestForm);
     end;
