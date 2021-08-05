@@ -15,11 +15,12 @@ page 70009 "Posted Gen. Journals_"
             {
                 Caption = 'Current Journal Template Name';
                 Enabled = false;
-
+                ApplicationArea = All;
             }
             field(CurrentJnlBatchName; CurrentJnlBatchName)
             {
                 Caption = 'Current Journal Batch Name';
+                ApplicationArea = All;
                 trigger OnValidate()
                 begin
                     GenJnlManagement.CheckName(CurrentJnlBatchName, GenJnlLine);
