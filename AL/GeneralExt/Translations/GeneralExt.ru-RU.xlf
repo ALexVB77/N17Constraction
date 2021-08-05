@@ -9027,6 +9027,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1449143634 - Control 874212758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Journal Batch Name</source>
+          <target>Код раздела журнала</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlBatchName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1449143634 - Control 716077266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Journal Template Name</source>
+          <target>Имя шаблона журнала</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlTemplateName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 756426410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem Document Set</source>
           <target>Проблемный документ</target>

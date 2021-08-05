@@ -7523,6 +7523,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1449143634 - Control 874212758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlBatchName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1449143634 - Control 716077266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Journal Template Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlTemplateName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 756426410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem Document Set</source>
           <note from="Developer" annotates="general" priority="2"></note>

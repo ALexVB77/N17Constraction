@@ -11,6 +11,37 @@ page 70009 "Posted Gen. Journals_"
         area(Content)
         {
 
+            field(CurrentJnlTemplateName; CurrentJnlTemplateName)
+            {
+                Caption = 'Current Journal Template Name';
+                Enabled = false;
+                ApplicationArea = All;
+            }
+            field(CurrentJnlBatchName; CurrentJnlBatchName)
+            {
+                Caption = 'Current Journal Batch Name';
+                ApplicationArea = All;
+                trigger OnValidate()
+                begin
+                    GenJnlManagement.CheckName(CurrentJnlBatchName, GenJnlLine);
+
+                    CurrPage.SaveRecord();
+                    SetName;
+                    CurrPage.Update(false);
+                end;
+
+                trigger OnLookup(var Text: Text): Boolean
+                begin
+
+                    if page.RunModal(Page::"Posted Gen. Journal Batches", GenJnlBatch) = Action::LookupOK then begin
+                        CurrentJnlTemplateName := GenJnlBatch."Journal Template Name";
+                        CurrentJnlBatchName := GenJnlBatch.Name;
+                        SetName;
+                    End;
+                    CurrPage.Update(false);
+                end;
+            }
+
             repeater(GroupName)
             {
                 field("Posting Date"; Rec."Posting Date")
@@ -214,14 +245,14 @@ page 70009 "Posted Gen. Journals_"
 
 
         GenJnlLine: Record "Gen. Journal Line";
-        //GenJnlTemplate	Record	Gen. Journal Template	
-        //GenJnlBatch	Record	Gen. Journal Batch	
+        GenJnlTemplate: Record "Gen. Journal Template";
+        GenJnlBatch: Record "Gen. Journal Batch";
         ChangeExchangeRate: Page "Change Exchange Rate";
         // NavigateForm	Form	Navigate	
-        // GenJnlManagement	Codeunit	GenJnlManagement	
+        GenJnlManagement: Codeunit GenJnlManagement;
         // DimMgt	Codeunit	DimensionManagement	
-        // CurrentJnlTemplateName	Code		[10]
-        // CurrentJnlBatchName	Code		[10]
+        CurrentJnlTemplateName: Code[10];
+        CurrentJnlBatchName: Code[10];
         AccName: Text[50];
         BalAccName: Text[50];
     // ShortcutDimCode	Code		[20]
@@ -293,5 +324,17 @@ page 70009 "Posted Gen. Journals_"
                         lBalAccName := FA.Description;
             end;
 
+    end;
+
+    local procedure SetName()
+    var
+
+    begin
+
+        Rec.FilterGroup := 2;
+        Rec.SetRange("Journal Template Name", CurrentJnlTemplateName);
+        Rec.SetRange("Journal Batch Name", CurrentJnlBatchName);
+        rec.FilterGroup := 0;
+        if Rec.FindSet() then;
     end;
 }
