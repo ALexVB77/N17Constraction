@@ -9741,6 +9741,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Print - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3437592965 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Print</source>
+          <target>&amp;Печать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action &amp;Print - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3437592965 - Action 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cover Sheet</source>
           <target>Сопроводительный лист</target>
@@ -9752,13 +9759,6 @@
           <target>Сопроводительный лист можно распечатать только со статуса Подписание.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Cover Sheet - Method OnAction - NamedType Text50005</note>
-        </trans-unit>
-        <trans-unit id="Page 3437592965 - Action 3729833469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Purchase Receipt M-4</source>
-          <target>Приходный ордер М-4</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Purchase Receipt M-4 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Action 1332593150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Release</source>
@@ -13184,7 +13184,6 @@
           <source>Copy lines from journal archive</source>
           <target>Копировать строки из архива журналов</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 512924377 - Action 3209057264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">

@@ -784,6 +784,26 @@ page 70260 "Purchase Order Act"
             {
                 Caption = 'Print';
                 Image = Print;
+                action("&Print")
+                {
+                    ApplicationArea = Suite;
+                    Caption = '&Print';
+                    Ellipsis = true;
+                    Enabled = GenPrintEnabled;
+                    Image = Print;
+                    Promoted = true;
+                    PromotedCategory = Category10;
+
+                    trigger OnAction()
+                    var
+                        PurchaseHeader: Record "Purchase Header";
+                    begin
+                        PurchaseHeader := Rec;
+                        CurrPage.SetSelectionFilter(PurchaseHeader);
+                        PurchaseHeader.PrintRecords(true);
+                    end;
+                }
+
                 action("Cover Sheet")
                 {
                     ApplicationArea = Suite;
@@ -807,27 +827,6 @@ page 70260 "Purchase Order Act"
                         CurrPage.SetSelectionFilter(PurchaseHeader);
                         CoverSheet.SetTableView(PurchaseHeader);
                         CoverSheet.Run();
-                    end;
-                }
-                action("Purchase Receipt M-4")
-                {
-                    ApplicationArea = Suite;
-                    Caption = 'Purchase Receipt M-4';
-                    Enabled = ReceiptPrintEnabled;
-                    Image = PrintReport;
-                    Promoted = true;
-                    PromotedCategory = Category10;
-
-                    trigger OnAction()
-                    var
-                        PurchaseHeader: Record "Purchase Header";
-                        PurchRcptM4: report "Purchase Receipt M-4";
-                    begin
-                        TestField("Location Document");
-                        PurchaseHeader := Rec;
-                        CurrPage.SetSelectionFilter(PurchaseHeader);
-                        PurchRcptM4.SetTableView(PurchaseHeader);
-                        PurchRcptM4.Run();
                     end;
                 }
             }
@@ -868,7 +867,7 @@ page 70260 "Purchase Order Act"
             PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
         PreApproverEditable := "Act Type" = "Act Type"::Advance;
         ProblemDescription := Rec.GetApprovalCommentText();
-        ReceiptPrintEnabled := Rec."Location Document";
+        GenPrintEnabled := Rec."Location Document";
         CoverSheetPrintEnabled := "Status App Act".AsInteger() >= "Status App Act"::Signing.AsInteger();
 
         WhseEmployee.SetRange("User ID", UserId);
@@ -935,7 +934,7 @@ page 70260 "Purchase Order Act"
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
         ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, PreApproverEditable : boolean;
-        ShowDocEnabled, EstimatorEnable, AppButtonEnabled, CopyDocumentEnabled, ReceiptPrintEnabled, CoverSheetPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
+        ShowDocEnabled, EstimatorEnable, AppButtonEnabled, CopyDocumentEnabled, GenPrintEnabled, CoverSheetPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
         EstimatorMandatory, LocationCodeShowMandatory : Boolean;
         StatusStyleTxt, ProblemDescription : Text;
         PreApproverNo: Code[50];

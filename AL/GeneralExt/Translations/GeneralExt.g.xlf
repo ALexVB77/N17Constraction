@@ -8118,6 +8118,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Print - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3437592965 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action &amp;Print - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3437592965 - Action 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cover Sheet</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8127,11 +8132,6 @@
           <source>The cover sheet can only be printed from the Signing status.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Cover Sheet - Method OnAction - NamedType Text50005</note>
-        </trans-unit>
-        <trans-unit id="Page 3437592965 - Action 3729833469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Purchase Receipt M-4</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Purchase Receipt M-4 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Action 1332593150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Release</source>
