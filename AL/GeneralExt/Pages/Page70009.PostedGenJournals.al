@@ -39,4 +39,11 @@ page 70009 "Posted Gen. Journals_"
 
     var
         myInt: Integer;
+
+    procedure SetParametrs(Templ: Code[20]; Bat: Code[20])
+    var
+        myInt: Integer;
+    begin
+
+    end;
 }
