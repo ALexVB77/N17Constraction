@@ -4,10 +4,10 @@ page 70143 "Forecast List Analisys"
     ApplicationArea = All;
     UsageCategory = Lists;
     InsertAllowed = true;
-    DeleteAllowed = false;
+    //DeleteAllowed = false;
     SourceTable = "Projects Budget Entry";
     SourceTableView = sorting(Date) order(descending);
-    //DelayedInsert = true;
+    DelayedInsert = true;
     PopulateAllFields = true;
     Caption = 'Transaction Register';
 
