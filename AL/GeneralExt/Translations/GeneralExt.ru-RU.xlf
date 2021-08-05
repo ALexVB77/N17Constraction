@@ -6753,6 +6753,27 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0015</note>
         </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 19913447" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select distinct %1 Filter to create new line!</source>
+          <target>Выберите одно значение в %1 фильтр для создания новой строки!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0990</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 657610064" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place</source>
+          <target>Cost Place</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0991</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 1295306681" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Code</source>
+          <target>Cost Code</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0992</note>
+        </trans-unit>
         <trans-unit id="Page 2269272589 - Control 1820841161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filters</source>
           <target>Параметры</target>
@@ -6845,7 +6866,7 @@
         </trans-unit>
         <trans-unit id="Page 2269272589 - Control 47657272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description 2</source>
-          <target>Описание 2</target>
+          <target>Описание оплаты</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - Control Description 2 - Property Caption</note>
         </trans-unit>
@@ -12865,7 +12886,6 @@
           <source>Purchase Receipt M-4</source>
           <target>Приходный ордер М-4</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Receipt M-4 Ext - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1742529627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

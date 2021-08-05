@@ -16,18 +16,22 @@ page 50101 "Create ST Proj Budget Entries"
                 field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
                 field("Contragent No."; Rec."Contragent No.")
                 {
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
                 field("Agreement No."; Rec."Agreement No.")
                 {
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
                 field("Without VAT (LCY)"; Rec."Without VAT (LCY)")
                 {
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
                 field("Payment Description"; Rec."Payment Description")
                 {
@@ -90,6 +94,10 @@ page 50101 "Create ST Proj Budget Entries"
         lAmount := gAmount;
         if Rec.FindSet() then
             repeat
+                Rec.TestField("Shortcut Dimension 2 Code");
+                Rec.TestField("Contragent No.");
+                Rec.TestField("Agreement No.");
+                Rec.TestField("Without VAT (LCY)");
                 lPBE := Rec;
                 lPBE."Entry No." := 0;
                 lPBE.insert(true);
