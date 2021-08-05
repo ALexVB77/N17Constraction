@@ -1,10 +1,10 @@
 report 50040 "Cover Sheet"
 {
-    WordLayout = './Reports/Layouts/CoverSheet.docx';
     Caption = 'Cover Sheet';
     DefaultLayout = Word;
-    EnableHyperlinks = true;
+    //EnableHyperlinks = true;
     PreviewMode = PrintLayout;
+    WordLayout = './Reports/Layouts/CoverSheet.docx';
     WordMergeDataItem = Header;
 
     dataset
@@ -42,6 +42,8 @@ report 50040 "Cover Sheet"
             column(BarcodePrint; BarcodePrint)
             { }
             column(CompName; CompanyName)
+            { }
+            column(BarcodePicture; DummyCompanyInfo.Picture)
             { }
 
             dataitem(Line; "Purchase Line")
@@ -148,7 +150,8 @@ report 50040 "Cover Sheet"
                 DocDateText := Format("Document Date");
 
                 BarcodeNumber := Barcode.CreateBarcode(COPYSTR("No.", 4, 6));
-                BarcodePrint := Barcode.Ean13(BarcodeNumber);
+                //BarcodePrint := Barcode.Ean13(BarcodeNumber);
+                CreateBarcode(BarcodeNumber);
             end;
         }
     }
@@ -164,6 +167,7 @@ report 50040 "Cover Sheet"
         PurchSetup: Record "Purchases & Payables Setup";
         DimSetEntry: Record "Dimension Set Entry";
         Vendor: Record Vendor;
+        DummyCompanyInfo: Record "Company Information";
         PaymentOrderMgt: Codeunit "Payment Order Management";
         Title, ErrStatus, VendorName : text;
         AmountInclVAT: Decimal;
@@ -173,4 +177,30 @@ report 50040 "Cover Sheet"
         Text001: Label 'Сопроводительный лист к акту.';
         Text002: Label 'Сопроводительный лист к КС-2.';
         ProblemDocText: Label 'Этот акт имеет статус проблемный!';
+
+    local procedure CreateBarcode(BarcodeNumber: Code[20])
+    var
+        EncodingOption: DotNet ZXingCommonEncodingOptions;
+        BarcodeWriter: DotNet ZXingBarcodeWriter;
+        BarcodeFormat: DotNet ZXingBarcodeFormat;
+        BitMatrix: DotNet ZXingCommonBitMatrix;
+        Bitmap: DotNet Bitmap;
+        ImageFormat: DotNet ImageFormat;
+        OutStr: OutStream;
+    begin
+        EncodingOption := EncodingOption.EncodingOptions();
+        EncodingOption.Height := 90;
+        EncodingOption.Width := 400;
+
+        BarcodeWriter := BarcodeWriter.BarcodeWriter();
+        BarcodeWriter.Format := BarcodeFormat.EAN_13;
+        BarcodeWriter.Options := EncodingOption;
+
+        BitMatrix := barcodeWriter.Encode(BarcodeNumber);
+        Bitmap := barcodeWriter.Write(BitMatrix);
+        Clear(DummyCompanyInfo.Picture);
+        DummyCompanyInfo.Picture.CreateOutStream(OutStr);
+        Bitmap.Save(OutStr, ImageFormat.Bmp);
+    end;
+
 }

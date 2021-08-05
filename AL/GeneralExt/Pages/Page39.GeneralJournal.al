@@ -17,6 +17,21 @@ pageextension 80039 "General Journal (Ext)" extends "General Journal"
                     ImportGenJournalLines.RunModal();
                 end;
             }
+            action("Copy lines from journal archive")
+            {
+                Caption = 'Copy lines from journal archive';
+                trigger OnAction()
+                var
+                    Archive: Page "Posted Gen. Journals_";
+                begin
+
+                    CLEAR(Archive);
+                    Archive.SetParametrs(Rec."Journal Template Name", Rec."Journal Batch Name");
+                    Archive.LOOKUPMODE(TRUE);
+                    Archive.RUNMODAL;
+                end;
+
+            }
         }
     }
 }

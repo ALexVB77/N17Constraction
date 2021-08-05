@@ -60,6 +60,46 @@ page 70261 "Purchase Order Act Subform"
                         DeltaUpdateTotals();
                     end;
                 }
+                field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
+                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
+                field("VAT Bus. Posting Group"; "VAT Bus. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
+                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
                 field(Description; "Full Description")
                 {
                     ApplicationArea = All;

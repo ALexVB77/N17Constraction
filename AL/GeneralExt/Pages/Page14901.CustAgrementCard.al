@@ -8,9 +8,32 @@ pageextension 94901 "Customer Agreement Card (Ext)" extends "Customer Agreement 
         }
     }
 
+
     actions
     {
-        // Add changes to page actions here
+        addlast("A&greement")
+        {
+            action(Attachments)
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments';
+                Image = Attach;
+                Promoted = true;
+                ToolTip = 'Add a file as an attachment. You can attach images as well as documents.';
+
+                trigger OnAction()
+                var
+                    DocumentAttachmentDetails: Page "Document Attachment Details";
+                    RecRef: RecordRef;
+                begin
+                    RecRef.GetTable(Rec);
+                    DocumentAttachmentDetails.OpenForRecRef(RecRef);
+                    DocumentAttachmentDetails.RunModal;
+                end;
+            }
+
+        }
+
     }
 
     trigger OnAfterGetRecord()

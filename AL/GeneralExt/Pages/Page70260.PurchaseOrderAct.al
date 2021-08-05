@@ -20,6 +20,8 @@ page 70260 "Purchase Order Act"
                     ApplicationArea = All;
                     Importance = Standard;
                 }
+
+                /*
                 field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = All;
@@ -55,9 +57,42 @@ page 70260 "Purchase Order Act"
                         end;
                     end;
                 }
+                */
+                field(VendorNo; "Buy-from Vendor No.")
+                {
+                    ApplicationArea = Suite;
+                    Editable = not IsEmplPurchase;
+                    Enabled = not IsEmplPurchase;
+                    HideValue = IsEmplPurchase;
+                    Importance = Promoted;
+                    ShowMandatory = not IsEmplPurchase;
+
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update;
+                    end;
+                }
+                field(EmployeeNo; "Buy-from Vendor No.")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Employee No.';
+                    Editable = IsEmplPurchase;
+                    Enabled = IsEmplPurchase;
+                    HideValue = not IsEmplPurchase;
+                    Importance = Promoted;
+                    LookupPageID = "Responsible Employees";
+                    ShowMandatory = IsEmplPurchase;
+
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update;
+                    end;
+                }
+
                 field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = All;
+                    Caption = 'Vendor/Employee Name';
                 }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
@@ -749,10 +784,32 @@ page 70260 "Purchase Order Act"
             {
                 Caption = 'Print';
                 Image = Print;
+                action("&Print")
+                {
+                    ApplicationArea = Suite;
+                    Caption = '&Print';
+                    Ellipsis = true;
+                    Enabled = GenPrintEnabled;
+                    Image = Print;
+                    Promoted = true;
+                    PromotedCategory = Category10;
+
+                    trigger OnAction()
+                    var
+                        PurchaseHeader: Record "Purchase Header";
+                        ReportSelUsage: enum "Report Selection Usage";
+                    begin
+                        PurchaseHeader := Rec;
+                        CurrPage.SetSelectionFilter(PurchaseHeader);
+                        PurchaseHeader.PrintRecordsExt(true, ReportSelUsage::PurchOrderAct);
+                    end;
+                }
+
                 action("Cover Sheet")
                 {
                     ApplicationArea = Suite;
                     Caption = 'Cover Sheet';
+                    // Enabled = CoverSheetPrintEnabled;
                     Image = PrintCover;
                     Promoted = true;
                     PromotedCategory = Category10;
@@ -761,7 +818,12 @@ page 70260 "Purchase Order Act"
                     var
                         PurchaseHeader: Record "Purchase Header";
                         CoverSheet: report "Cover Sheet";
+                        Text50005: Label 'The cover sheet can only be printed from the Signing status.';
                     begin
+                        if "Status App Act".AsInteger() < "Status App Act"::Signing.AsInteger() then begin
+                            Message(Text50005);
+                            exit;
+                        end;
                         PurchaseHeader := Rec;
                         CurrPage.SetSelectionFilter(PurchaseHeader);
                         CoverSheet.SetTableView(PurchaseHeader);
@@ -798,6 +860,7 @@ page 70260 "Purchase Order Act"
         CopyDocumentEnabled := ("No." <> '') and ("Status App Act" = "Status App Act"::Controller);
 
         EstimatorMandatory := "Act Type" <> "Act Type"::Advance;
+        IsEmplPurchase := "Empl. Purchase";
 
         if "Act Type" = "Act Type"::Advance then
             PreApproverNo := Rec."Pre-Approver"
@@ -805,6 +868,8 @@ page 70260 "Purchase Order Act"
             PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
         PreApproverEditable := "Act Type" = "Act Type"::Advance;
         ProblemDescription := Rec.GetApprovalCommentText();
+        GenPrintEnabled := Rec."Location Document";
+        CoverSheetPrintEnabled := "Status App Act".AsInteger() >= "Status App Act"::Signing.AsInteger();
 
         WhseEmployee.SetRange("User ID", UserId);
         StatusStyleTxt := GetStatusStyleText();
@@ -869,12 +934,12 @@ page 70260 "Purchase Order Act"
         PurchCalcDiscByType: Codeunit "Purch - Calc Disc. By Type";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ActTypeEditable, EstimatorEnable, AppButtonEnabled, AllApproverEditable, ReceiveAccountEditable, ShowDocEnabled, PreApproverEditable, CopyDocumentEnabled : Boolean;
-        EstimatorMandatory: Boolean;
-        LocationCodeShowMandatory: Boolean;
-        ApproveButtonEnabled, RejectButtonEnabled : boolean;
+        ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, PreApproverEditable : boolean;
+        ShowDocEnabled, EstimatorEnable, AppButtonEnabled, CopyDocumentEnabled, GenPrintEnabled, CoverSheetPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
+        EstimatorMandatory, LocationCodeShowMandatory : Boolean;
         StatusStyleTxt, ProblemDescription : Text;
         PreApproverNo: Code[50];
+        IsEmplPurchase: Boolean;
         CreateAppConfText: Label 'Do you want to create a payment invoice from Act %1?';
 
     local procedure SaveInvoiceDiscountAmount()

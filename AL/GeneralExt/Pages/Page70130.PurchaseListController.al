@@ -116,16 +116,8 @@ page 70130 "Purchase List Controller"
                     ApplicationArea = All;
 
                     trigger OnAssistEdit()
-                    var
-                        GenJnlLine: Record "Gen. Journal Line";
-                        PaymentRequestCard: Page "Payment Request Card";
                     begin
-                        GenJnlLine.SetRange("Journal Template Name", LinkedGenJnlLine."Journal Template Name");
-                        GenJnlLine.SetRange("Journal Batch Name", LinkedGenJnlLine."Journal Batch Name");
-                        GenJnlLine.SetRange("Line No.", LinkedGenJnlLine."Line No.");
-                        PaymentRequestCard.SetTableView(GenJnlLine);
-                        PaymentRequestCard.SetRecord(GenJnlLine);
-                        PaymentRequestCard.Run();
+                        OpenPaymentRequestCard();
                     end;
                 }
                 field("Document Date"; Rec."Document Date")
@@ -197,24 +189,24 @@ page 70130 "Purchase List Controller"
     {
         area(Processing)
         {
-            action(ViewDoc)
+            action(ViewRequest)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'View';
+                Caption = 'Request';
                 Image = View;
 
                 trigger OnAction()
-                var
-                    GenJnlLine: Record "Gen. Journal Line";
-                    PaymentRequestCard: Page "Payment Request Card";
                 begin
-                    GenJnlLine.SetRange("Journal Template Name", LinkedGenJnlLine."Journal Template Name");
-                    GenJnlLine.SetRange("Journal Batch Name", LinkedGenJnlLine."Journal Batch Name");
-                    GenJnlLine.SetRange("Line No.", LinkedGenJnlLine."Line No.");
-                    PaymentRequestCard.SetTableView(GenJnlLine);
-                    PaymentRequestCard.SetRecord(GenJnlLine);
-                    PaymentRequestCard.Run();
+                    OpenPaymentRequestCard();
                 end;
+            }
+            action(ViewOrder)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Order';
+                Image = Order;
+                RunObject = Page "Purchase Order App";
+                RunPageLink = "No." = field("No.");
             }
             action(ViewProblemDoc)
             {
@@ -224,7 +216,6 @@ page 70130 "Purchase List Controller"
                 RunObject = Page "Problem Document Set";
                 RunPageLink = "No." = field("No.");
             }
-
             action(ResetProblemDoc)
             {
                 ApplicationArea = Basic, Suite;
@@ -280,6 +271,17 @@ page 70130 "Purchase List Controller"
 
         SetSortType;
         SetRecFilters;
+    end;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        LinkedGenJnlLine.Reset;
+        LinkedGenJnlLine.SetCurrentKey("IW Document No.");
+        LinkedGenJnlLine.SetRange("IW Document No.", "No.");
+        if not LinkedGenJnlLine.FindFirst() then begin
+            LinkedGenJnlLine.Init();
+            LinkedGenJnlLine."Line No." := 0;
+        end;
     end;
 
     var
@@ -376,4 +378,21 @@ page 70130 "Purchase List Controller"
                 SETCURRENTKEY("Buy-from Vendor Name");
         END;
     end;
+
+    local procedure OpenPaymentRequestCard()
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        PaymentRequestCard: Page "Payment Request Card";
+    begin
+        if LinkedGenJnlLine."Line No." = 0 then
+            exit;
+
+        GenJnlLine.SetRange("Journal Template Name", LinkedGenJnlLine."Journal Template Name");
+        GenJnlLine.SetRange("Journal Batch Name", LinkedGenJnlLine."Journal Batch Name");
+        GenJnlLine.SetRange("Line No.", LinkedGenJnlLine."Line No.");
+        PaymentRequestCard.SetTableView(GenJnlLine);
+        PaymentRequestCard.SetRecord(GenJnlLine);
+        PaymentRequestCard.Run();
+    end;
+
 }

@@ -17,68 +17,81 @@ page 70091 "Investment Agreement Card"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Agreement Type"; Rec."Agreement Type")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Agreement Sub Type"; Rec."Agreement Sub Type")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Payment Type"; Rec."Payment Type")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("External Agreement No."; rec."External Agreement No.")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Agreement Date"; Rec."Agreement Date")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Starting Date"; Rec."Starting Date")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Expire Date"; Rec."Expire Date")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
 
                 field("Apartment Amount"; Rec."Apartment Amount")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Salesperson Code"; Rec."Salesperson Code")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Share in property 3"; Rec."Share in property 3")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
 
                 field(Active; Rec.Active)
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Installment (LCY)"; Rec."Agreement Amount" - Rec."Apartment Amount")
@@ -93,11 +106,13 @@ page 70091 "Investment Agreement Card"
                 field("Agreement Amount"; Rec."Agreement Amount")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Balance (LCY)"; Rec."Balance (LCY)")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
 
                 field("Remaining Amount (LCY)"; Rec."Agreement Amount" + Rec."Balance (LCY)")
@@ -118,28 +133,33 @@ page 70091 "Investment Agreement Card"
                 {
                     ApplicationArea = All;
                     Caption = 'Hand over status';
+                    Editable = false;
                 }
 
                 //Shareholder 1
                 field("Customer No."; Rec."Customer No.")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Customer 1 Name"; Rec."Customer 1 Name")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field("Balance Cust 1 (LCY)"; Rec."Balance Cust 1 (LCY)")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
 
                 group(Shareholder2)
                 {
                     Caption = 'Shareholder 2';
                     Visible = ShareHolder2InfoVisible;
+                    Editable = StatusEditableMod;
 
                     field("Customer 2 No."; Rec."Customer 2 No.")
                     {
@@ -163,6 +183,7 @@ page 70091 "Investment Agreement Card"
                 {
                     Caption = 'Shareholder 3';
                     Visible = ShareHolder3InfoVisible;
+                    Editable = StatusEditableMod;
 
                     field("Customer 3 No."; Rec."Customer 3 No.")
                     {
@@ -186,6 +207,7 @@ page 70091 "Investment Agreement Card"
                 {
                     Caption = 'Shareholder 4';
                     Visible = ShareHolder4InfoVisible;
+                    Editable = StatusEditableMod;
 
                     field("Customer 4 No."; Rec."Customer 4 No.")
                     {
@@ -207,6 +229,7 @@ page 70091 "Investment Agreement Card"
                 {
                     Caption = 'Shareholder 5';
                     Visible = ShareHolder5InfoVisible;
+                    Editable = StatusEditableMod;
 
                     field("Customer 5 No."; Rec."Customer 5 No.")
                     {
@@ -234,28 +257,56 @@ page 70091 "Investment Agreement Card"
                 field("Investing Object"; Rec."Object of Investing")
                 {
                     ApplicationArea = All;
+                    TableRelation = Apartments;
+                    Editable = StatusEditableMod;
+                    trigger OnValidate()
+                    begin
+                        if "Object of Investing" <> '' then
+                            Apartments.GET("Object of Investing")
+                        else
+                            Apartments.Init;
+                    end;
                 }
 
-                field("Investing Object Description"; lrApartments.Description)
+                field("Investing Object Description"; Apartments.Description)
                 {
                     ApplicationArea = All;
                     Caption = 'Description';
+                    Editable = false;
+                }
+
+                field("Investing Origin Type"; Apartments."Origin Type")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Object type';
+                    Editable = false;
+                }
+
+                field("Investing Object Total Area"; Apartments."Total Area (Project)")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Total Area';
+                    Editable = false;
                 }
 
                 field("Apartment Amount IO"; Rec."Apartment Amount")
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
                 }
 
                 field(Finishing; Rec.Finishing)
                 {
                     ApplicationArea = All;
+                    Editable = StatusEditableMod;
+
                 }
 
                 field("Including Finishing Price"; Rec."Including Finishing Price")
                 {
                     ApplicationArea = All;
                     Visible = FinishingVisible;
+                    Editable = StatusEditableMod;
                 }
 
                 field("CRM GUID"; Rec."CRM GUID")
@@ -269,6 +320,7 @@ page 70091 "Investment Agreement Card"
             group(ShareholdersDetails)
             {
                 Caption = 'Shareholders details';
+                Editable = StatusEditableMod;
 
                 field("Contact 1"; Rec."Contact 1")
                 {
@@ -327,9 +379,11 @@ page 70091 "Investment Agreement Card"
                 }
 
                 //"Amount part 1 Amount"+"Installment plan 1 Amount"+"Balance Cust 1 (LCY)"
-                field("RemainingAmtLCYReq"; "Amount part 1 Amount" + "Balance Cust 1 (LCY)")
+                field("RemainingAmtLCYReq"; Rec."Amount part 1 Amount" + Rec."Balance Cust 1 (LCY)")
                 {
                     ApplicationArea = All;
+                    Caption = 'Remaining Amount';
+                    Editable = false;
                 }
 
                 field("C1 Place and BirthDate"; Rec."C1 Place and BirthDate")
@@ -471,7 +525,6 @@ page 70091 "Investment Agreement Card"
                         ApplicationArea = All;
                     }
 
-
                     field("Amount part 5"; Rec."Amount part 5")
                     {
                         ApplicationArea = All;
@@ -575,7 +628,7 @@ page 70091 "Investment Agreement Card"
                     Caption = 'Attachments';
                     Image = Attach;
                     Promoted = true;
-                    PromotedCategory = Category9;
+                    PromotedCategory = Process;
 
                     trigger OnAction()
                     var
@@ -612,12 +665,9 @@ page 70091 "Investment Agreement Card"
     }
 
     trigger OnAfterGetRecord()
-    var
-        Apartments: Record Apartments;
     begin
-        FinishingVisible := Finishing;
 
-        CurrPage.Editable := Rec.Status in [Rec.Status::Procesed, Rec.Status::"Change conditions"];
+        StatusEditableMod := Rec.Status in [Rec.Status::Procesed, Rec.Status::"Change conditions"];
 
         if "Object of Investing" <> '' then
             Apartments.GET("Object of Investing")
@@ -628,6 +678,7 @@ page 70091 "Investment Agreement Card"
         ShareHolder3InfoVisible := Rec."Share in property 3" = rec."Share in property 3"::Owner3;
         ShareHolder4InfoVisible := Rec."Share in property 3" = rec."Share in property 3"::Owner4;
         ShareHolder5InfoVisible := Rec."Share in property 3" = rec."Share in property 3"::Owner5;
+        FinishingVisible := Finishing;
     end;
 
     trigger OnNewRecord(BelowxRec: boolean)
@@ -647,8 +698,8 @@ page 70091 "Investment Agreement Card"
 
 
     var
+        Apartments: Record Apartments;
         gcduERPC: Codeunit "ERPC Funtions";
-        lrApartments: record Apartments;
         ShareHolder2InfoVisible: Boolean;
         ShareHolder3InfoVisible: Boolean;
         ShareHolder4InfoVisible: Boolean;
@@ -656,16 +707,6 @@ page 70091 "Investment Agreement Card"
 
         FinishingVisible: Boolean;
 
-    procedure GetObjValue()
-    var
-        lrContact: record Contact;
-        lrVendor: record Vendor;
-    begin
-        CLEAR(lrApartments);
-        if "Object of Investing" <> '' then begin
-            lrApartments.GET("Object of Investing");
-        end;
-    end;
-
+        StatusEditableMod: Boolean;
 
 }

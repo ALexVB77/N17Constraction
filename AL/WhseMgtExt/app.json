@@ -1,0 +1,28 @@
+{
+  "id": "fe91d658-e7fa-4588-9cd6-9779148c588a",
+  "name": "WhseMgtExt",
+  "publisher": "Default publisher",
+  "version": "1.0.0.1",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 99929
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://WhseMgtExt.com/help/",
+  "showMyCode": true,
+  "runtime": "6.0",
+  "features": ["TranslationFile","GenerateCaptions"],
+  "target": "OnPrem"
+}
