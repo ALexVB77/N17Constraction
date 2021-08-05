@@ -548,6 +548,8 @@ page 70143 "Forecast List Analisys"
             lDimVal.reset;
             lDimVal.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
             lDimVal.SetFilter(Code, CostPlaceFlt);
+            if lDimVal.Count > 1 then
+                Error(StrSubstNo(TEXT0990, TEXT0991));
             if lDimVal.FindFirst() then
                 Rec."Shortcut Dimension 1 Code" := lDimVal.Code;
         end;
@@ -555,6 +557,8 @@ page 70143 "Forecast List Analisys"
             lDimVal.reset;
             lDimVal.SetRange("Dimension Code", GLSetup."Global Dimension 2 Code");
             lDimVal.SetFilter(Code, CostCodeFlt);
+            if lDimVal.Count > 1 then
+                Error(StrSubstNo(TEXT0990, TEXT0992));
             if lDimVal.FindFirst() then
                 Rec."Shortcut Dimension 2 Code" := lDimVal.Code;
         end;
@@ -675,6 +679,9 @@ page 70143 "Forecast List Analisys"
         TEXT0011: Label 'Operations cannot be deleted!';
         TEXT0014: Label 'You are not allowed to copy actual operations.';
         TEXT0015: Label 'You do not have sufficient rights to perform the action!';
+        TEXT0990: Label 'Select distinct %1 Filter to create new line!';
+        TEXT0991: Label 'Cost Place';
+        TEXT0992: Label 'Cost Code';
         HideZeroAmountLine: boolean;
         PrjBudMgt: Codeunit "Project Budget Management";
         [InDataSet]

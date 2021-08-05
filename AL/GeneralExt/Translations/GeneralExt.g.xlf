@@ -5628,6 +5628,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0015</note>
         </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 19913447" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select distinct %1 Filter to create new line!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0990</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 657610064" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0991</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 1295306681" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0992</note>
+        </trans-unit>
         <trans-unit id="Page 2269272589 - Control 1820841161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filters</source>
           <note from="Developer" annotates="general" priority="2"></note>
