@@ -672,7 +672,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
     procedure PrintRecordsExt(ShowRequestForm: Boolean; ReportSelUsage: enum "Report Selection Usage")
     var
         DocumentSendingProfile: Record "Document Sending Profile";
-        DummyReportSelections: Record "Report Selections";
         DocumentPrintBuffer: Record "Document Print Buffer";
         DocumentPrint: Codeunit "Document-Print";
     begin
@@ -681,8 +680,9 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         DocumentPrint.InsertDocPrintBuffer(DocumentPrintBuffer, DATABASE::"Purchase Header", "Document Type".AsInteger(), "No.");
         Commit();
 
+
         DocumentSendingProfile.TrySendToPrinterVendor(
-          DummyReportSelections.Usage.AsInteger(), Rec, FieldNo("Buy-from Vendor No."), ShowRequestForm);
+          ReportSelUsage.AsInteger(), Rec, FieldNo("Buy-from Vendor No."), ShowRequestForm);
     end;
 
 }
