@@ -23,6 +23,11 @@ pageextension 80347 "Report Selection - Purch. Ext" extends "Report Selection - 
         }
     }
 
+    trigger OnOpenPage()
+    begin
+        SetUsageFilterNew(false);
+    end;
+
     var
         ReportUsageNew: Option Quote,"Blanket Order","Order",Invoice,"Return Order","Credit Memo",Receipt,"Return Shipment","Purchase Document - Test","Prepayment Document - Test","Archived Quote","Archived Order","Archived Return Order","Archived Blanket Order","Vendor Remittance","Vendor Remittance - Posted Entries","UnPosted Advance Statement","Advance Statement","UnPosted Invoice","UnPosted Cr. Memo","Purch. Order Act";
 
