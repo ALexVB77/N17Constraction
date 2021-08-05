@@ -7518,6 +7518,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Reject - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1449143634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Gen. Journals</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 756426410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem Document Set</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7992,11 +7997,6 @@
           <source>Checker</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control Purchaser Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3437592965 - Control 1607295407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control VendorNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Control 609835670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Warehouse Document</source>
