@@ -223,6 +223,7 @@ page 70009 "Posted Gen. Journals_"
         }
     }
 
+
     actions
     {
         area(Processing)
@@ -250,22 +251,34 @@ page 70009 "Posted Gen. Journals_"
         ChangeExchangeRate: Page "Change Exchange Rate";
         // NavigateForm	Form	Navigate	
         GenJnlManagement: Codeunit GenJnlManagement;
-        // DimMgt	Codeunit	DimensionManagement	
+        DimMgt: Codeunit DimensionManagement;
         CurrentJnlTemplateName: Code[10];
         CurrentJnlBatchName: Code[10];
         AccName: Text[50];
         BalAccName: Text[50];
-    // ShortcutDimCode	Code		[20]
+        ShortcutDimCode: Code[20];
     // LineNo	Integer		
     // OrigDim	Record	Journal Line Dimension	
     // DestDim	Record	Journal Line Dimension	
     // PostedGenJnlLine	Record	Gen. Journal Line Archive	
     // GLSetup	Record	General Ledger Setup	
 
+    trigger OnOpenPage()
+    begin
 
 
+        if (Rec."Journal Template Name" = '') and (Rec."Journal Batch Name" = '') then begin
+            GenJnlBatch.Reset();
+            GenJnlBatch.FindSet();
+            CurrentJnlTemplateName := GenJnlBatch."Journal Template Name";
+            CurrentJnlBatchName := GenJnlBatch.Name;
+        end else begin
+            CurrentJnlTemplateName := Template;
+            CurrentJnlBatchName := Batch;
+        end;
 
-
+        OpenJnl;
+    end;
 
 
     procedure SetParametrs(Templ: Code[20]; Bat: Code[20])
@@ -331,6 +344,17 @@ page 70009 "Posted Gen. Journals_"
 
     begin
 
+        Rec.FilterGroup := 2;
+        Rec.SetRange("Journal Template Name", CurrentJnlTemplateName);
+        Rec.SetRange("Journal Batch Name", CurrentJnlBatchName);
+        rec.FilterGroup := 0;
+        if Rec.FindSet() then;
+    end;
+
+    local procedure OpenJnl()
+    var
+        myInt: Integer;
+    begin
         Rec.FilterGroup := 2;
         Rec.SetRange("Journal Template Name", CurrentJnlTemplateName);
         Rec.SetRange("Journal Batch Name", CurrentJnlBatchName);
