@@ -797,10 +797,11 @@ page 70260 "Purchase Order Act"
                     trigger OnAction()
                     var
                         PurchaseHeader: Record "Purchase Header";
+                        ReportSelUsage: enum "Report Selection Usage";
                     begin
                         PurchaseHeader := Rec;
                         CurrPage.SetSelectionFilter(PurchaseHeader);
-                        PurchaseHeader.PrintRecords(true);
+                        PurchaseHeader.PrintRecordsExt(true, ReportSelUsage::PurchOrderAct);
                     end;
                 }
 

@@ -9745,7 +9745,6 @@
           <source>&amp;Print</source>
           <target>&amp;Печать</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action &amp;Print - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Action 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -13300,6 +13299,27 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Purchases &amp; Payab. Setup (Ext) - Control Payment requests - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3483304276 - Control 2858319593 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3298048956">
+          <source>Specifies which type of document the report is used for.</source>
+          <target>Определяет тип документа, для которого используется отчет.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Report Selection - Purch. Ext - Control ReportUsageNew - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3483304276 - Control 2858319593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3298048956">
+          <source>Usage</source>
+          <target>Использование</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Report Selection - Purch. Ext - Control ReportUsageNew - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3483304276 - Control 2858319593 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3298048956">
+          <source>Quote,Blanket Order,Order,Invoice,Return Order,Credit Memo,Receipt,Return Shipment,Purchase Document - Test,Prepayment Document - Test,Archived Quote,Archived Order,Archived Return Order,Archived Blanket Order,Vendor Remittance,Vendor Remittance - Posted Entries,UnPosted Advance Statement,Advance Statement,UnPosted Invoice,UnPosted Cr. Memo,Purch. Order Act</source>
+          <target>Предложение,Общий заказ,Заказ,Счет,Возврат,Кредит-нота,Прих. накладная,Возвр. расх. накладная,Документ покупки - тест,Документ предоплаты - тест,Арх. предложение,Арх. заказ,Арх. возврат,Арх. общий заказ,Денежный перевод поставщика,Денежный перевод поставщика - учтенные операции,Неучт. авансовый отчет,Авансовый отчет,Неучт. счет,Неучт. кредит-нота,Документы Акт и КС-2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Report Selection - Purch. Ext - Control ReportUsageNew - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1054806567 - Action 4056321329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 66664215">
           <source>Get Item Ledger Lines</source>
           <target>Получить строки запасов</target>
@@ -16497,6 +16517,13 @@
           <target>816</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension Item Journal Template Type GE - EnumValue 816 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 1616325006 - EnumValue 2401345768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Purchase Order Act</source>
+          <target>[NAB: SUGGESTION]Документы Акт и КС-2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension Report Selection Usage Ext - EnumValue PurchOrderAct - Property Caption</note>
         </trans-unit>
       </group>
     </body>
