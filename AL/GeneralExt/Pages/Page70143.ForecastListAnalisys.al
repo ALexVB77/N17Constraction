@@ -532,7 +532,7 @@ page 70143 "Forecast List Analisys"
             gDate := Today;
         if US.Get(UserId) then
             TemplateCode := US."Last Project Code";
-        ValidateProject();
+        //ValidateProject();
         setOverdueFlt();
     end;
 
