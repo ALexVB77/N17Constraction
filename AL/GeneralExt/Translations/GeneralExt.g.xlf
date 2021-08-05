@@ -7518,6 +7518,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Reject - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1449143634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Gen. Journals</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 756426410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem Document Set</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10977,6 +10982,11 @@
           <source>Specifies a RAS posting group of the fixed asset.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Fixed Asset List (Ext) - Control RAS Posting Group - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 512924377 - Action 1458457591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Copy lines from journal archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 512924377 - Action 3209057264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Import from Excel</source>
