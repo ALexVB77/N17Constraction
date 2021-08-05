@@ -7,7 +7,7 @@ page 70143 "Forecast List Analisys"
     DeleteAllowed = false;
     SourceTable = "Projects Budget Entry";
     SourceTableView = sorting(Date) order(descending);
-    DelayedInsert = true;
+    //DelayedInsert = true;
     PopulateAllFields = true;
     Caption = 'Transaction Register';
 
@@ -588,6 +588,8 @@ page 70143 "Forecast List Analisys"
 
     trigger OnDeleteRecord(): Boolean
     begin
+        if UserId <> Rec."Create User" then
+            Error('');
         CheckAllowChanges();
     end;
 
