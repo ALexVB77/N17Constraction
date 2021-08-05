@@ -9747,6 +9747,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Cover Sheet - Method OnAction - NamedType Text50005</note>
         </trans-unit>
+        <trans-unit id="Page 3437592965 - Action 3729833469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Receipt M-4</source>
+          <target>Приходный ордер М-4</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Purchase Receipt M-4 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3437592965 - Action 1332593150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Release</source>
           <target>Выпустить</target>
