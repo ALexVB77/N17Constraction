@@ -568,6 +568,12 @@ page 70143 "Forecast List Analisys"
     begin
         GetLineStyle(Rec);
         GetLineEditable(Rec);
+        if not OpenFltsApplied then begin
+            HideZeroAmountLine := true;
+            BuildView();
+            ValidateProject();
+            OpenFltsApplied := true;
+        end;
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
@@ -692,7 +698,7 @@ page 70143 "Forecast List Analisys"
         CPEditable: Boolean;
         [InDataSet]
         CreateUIDEditable: Boolean;
-
+        OpenFltsApplied: Boolean;
 
 
     local procedure CheckAllowChanges()
