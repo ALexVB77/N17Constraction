@@ -5,7 +5,7 @@ from posixpath import splitext
 
 
 ObjectInfo = collections.namedtuple('ObjectInfo', 'type id name')
-MapEntry = collections.namedtuple('MapEntry', 'type name old_id new_id al_file')
+MapEntry = collections.namedtuple('MapEntry', 'type name old_id new_id al_file has_new_id')
 
 mapping_filename = './mapping.csv'
 
@@ -60,6 +60,8 @@ class Renumerator:
                 if not obj_info:
                     continue
                 uid = self.__get_uid(obj_info.type, obj_info.id)
+                if uid == 'page$70001':
+                    dbg = True
                 if obj_info.type in self.object_license_assignment:
                     new_id = 0
                     if is_general_ext_folder and self.__check_range(obj_info.type, obj_info.id):
@@ -70,7 +72,7 @@ class Renumerator:
                     if obj_type := self.alt_type_map.get(obj_info.type, None):
                         if self.__check_range(obj_type, obj_info.id):
                             raise ValueError(f'{obj_info.type} {obj_info.id} in license assingnment range!')
-                temp_map[uid] = MapEntry(type=obj_info.type, name=obj_info.name, old_id=obj_info.id, new_id=new_id, al_file=al_file)
+                temp_map[uid] = MapEntry(type=obj_info.type, name=obj_info.name, old_id=obj_info.id, new_id=new_id, al_file=al_file, has_new_id=new_id != obj_info.id)
             me: MapEntry
             for me in temp_map.values():
                 new_id = me.new_id
@@ -78,7 +80,7 @@ class Renumerator:
                     new_id = self.__get_next_id(me.type, me.old_id, is_general_ext_folder)
                     uid = self.__get_uid(me.type, new_id)
                     self.used_object_id[uid] = 1
-                self.__add_to_map(me.type, me.old_id, me.name, new_id, me.al_file)
+                self.__add_to_map(me.type, me.old_id, me.name, new_id, me.al_file, new_id != me.old_id )
             is_general_ext_folder = False
         self.__export_map(mapping_filename)
 
@@ -122,7 +124,7 @@ class Renumerator:
             if id_range[start_id] > last_used_id:
                 last_used_id = id_range[start_id]
                 last_used_id = self.__incid(object_type, last_used_id, True)
-            if last_used_id in range(id_range[start_id], id_range[end_id] + 1, 1):
+            if last_used_id in range(id_range[start_id], id_range[end_id] + 1):
                 new_id = last_used_id
                 break
         if not new_id:
@@ -147,7 +149,7 @@ class Renumerator:
             if id_range[end_id] < last_used_id:
                 last_used_id = id_range[end_id]
                 last_used_id = self.__decid(object_type, last_used_id, True)
-            if last_used_id in range(id_range[start_id], id_range[end_id] + 1, 1):
+            if last_used_id in range(id_range[start_id], id_range[end_id] + 1):
                 new_id = last_used_id
                 break
         if not new_id:
@@ -169,9 +171,9 @@ class Renumerator:
             object_id -= 1
         return object_id
 
-    def __add_to_map(self, object_type: str, object_old_id: int, object_name: str, object_new_id, al_filename: str) -> None:
+    def __add_to_map(self, object_type: str, object_old_id: int, object_name: str, object_new_id, al_filename: str, has_new_id: bool) -> None:
         self.object_id_map[self.__get_uid(object_type, object_old_id)] = \
-            MapEntry(type = object_type, name = object_name, old_id=object_old_id, new_id=object_new_id, al_file = al_filename)
+            MapEntry(type = object_type, name = object_name, old_id=object_old_id, new_id=object_new_id, al_file = al_filename, has_new_id=has_new_id)
 
     def __get_list_of_files(self, basedir: str) -> list:
         list_of_files = []
@@ -199,7 +201,7 @@ class Renumerator:
         id_range: tuple = self.object_id_ranges.get(object_type)
         id_ranges_count = len(id_range) // 2
         for rng in range(id_ranges_count):
-            start_id = rng * (id_ranges_count - 1)
+            start_id = rng * id_ranges_count
             end_id = start_id + 1
             if obj_id in range(id_range[start_id], id_range[end_id] + 1):
                 return True
@@ -215,9 +217,9 @@ class Renumerator:
     def __export_map(self, filename: str) -> None:
         with open(filename, 'w', encoding='utf8') as fo:        
             me: MapEntry
-            fo.write(f'Type;Id;Name;NewId\n')
+            fo.write(f'Type;Id;Name;NewId;HasNewId\n')
             for me in self.object_id_map.values():
-                fo.write(f'{me.type};{me.old_id};{me.name};{me.new_id}\n')
+                fo.write(f'{me.type};{me.old_id};{me.name};{me.new_id};{me.has_new_id}\n')
 
     def __get_uid(self, object_type: str, object_id: int) -> str:
         return(f'{object_type}${object_id}')
@@ -226,7 +228,7 @@ class Renumerator:
 def main():
 
     rn = Renumerator(extension_folder, ranges)
-    rn.create_mapping_file2()
+    rn.create_mapping_file()
 
 
 if __name__ == '__main__':
