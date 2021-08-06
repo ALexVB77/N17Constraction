@@ -1006,6 +1006,19 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', false, false)]
+    local procedure OnPurchaseHeaderAfterDelete(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
+    var
+        GenJnlLine: record "Gen. Journal Line";
+    begin
+        if (not RunTrigger) or Rec.IsTemporary then
+            exit;
+        GenJnlLine.SetCurrentKey("IW Document No.");
+        GenJnlLine.SetRange("IW Document No.", Rec."No.");
+        if not GenJnlLine.IsEmpty then
+            GenJnlLine.DeleteAll(true);
+    end;
+
     // Table 39 Purchase Line
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterAssignItemValues', '', false, false)]

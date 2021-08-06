@@ -213,9 +213,9 @@ codeunit 70000 "ERPC Funtions"
         IF prInvoice.HasBoundedCashFlows THEN
             IF NOT CONFIRM(LocText002, FALSE) THEN
                 EXIT(false);
-        lrGenJnlLine.SetCurrentKey("IW Document No.");
-        if not lrGenJnlLine.IsEmpty then
-            lrGenJnlLine.DeleteAll(true);
+
+        // NC AB: удаление связанных строк журнала в подписчике OnPurchaseHeaderAfterDelete()
+
         exit(true);
         // END;
     end;
