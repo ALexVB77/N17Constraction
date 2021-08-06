@@ -1231,6 +1231,8 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ToPurchaseHeader.Controller := OldPurchaseHeader.Controller;
         ToPurchaseHeader.Receptionist := OldPurchaseHeader.Receptionist;
         ToPurchaseHeader."Linked Purchase Order Act No." := '';
-    end;
 
+        if (FromPurchHeader."Act Type" <> FromPurchHeader."Act Type"::" ") and ToPurchaseHeader."IW Documents" then
+            ToPurchaseHeader."Vendor Invoice No." := '';
+    end;
 }
