@@ -5628,6 +5628,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0015</note>
         </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 19913447" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select distinct %1 Filter to create new line!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0990</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 657610064" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0991</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 1295306681" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0992</note>
+        </trans-unit>
         <trans-unit id="Page 2269272589 - Control 1820841161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filters</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10998,15 +11013,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Fixed Asset List (Ext) - Control RAS Posting Group - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 512924377 - Action 1458457591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
-          <source>Copy lines from journal archive</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 512924377 - Action 3209057264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Import from Excel</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Import from Excel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 512924377 - Action 1458457591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Copy lines from journal archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 250922747 - Control 1231965224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>DenDoc Dim Value</source>

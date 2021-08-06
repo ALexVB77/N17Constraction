@@ -17,9 +17,14 @@ pageextension 80039 "General Journal (Ext)" extends "General Journal"
                     ImportGenJournalLines.RunModal();
                 end;
             }
+
+        }
+        addafter(IncomingDocument)
+        {
             action("Copy lines from journal archive")
             {
                 Caption = 'Copy lines from journal archive';
+                ApplicationArea = Basic, Suite;
                 trigger OnAction()
                 var
                     Archive: Page "Posted Gen. Journals_";
@@ -34,4 +39,5 @@ pageextension 80039 "General Journal (Ext)" extends "General Journal"
             }
         }
     }
+
 }

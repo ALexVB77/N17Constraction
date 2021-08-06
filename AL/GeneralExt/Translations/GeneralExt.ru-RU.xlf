@@ -6753,6 +6753,27 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0015</note>
         </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 19913447" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select distinct %1 Filter to create new line!</source>
+          <target>Выберите одно значение в %1 фильтр для создания новой строки!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0990</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 657610064" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place</source>
+          <target>Cost Place</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0991</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 1295306681" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Code</source>
+          <target>Cost Code</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0992</note>
+        </trans-unit>
         <trans-unit id="Page 2269272589 - Control 1820841161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filters</source>
           <target>Параметры</target>
@@ -6845,7 +6866,7 @@
         </trans-unit>
         <trans-unit id="Page 2269272589 - Control 47657272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description 2</source>
-          <target>Описание 2</target>
+          <target>Описание оплаты</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - Control Description 2 - Property Caption</note>
         </trans-unit>
@@ -9031,14 +9052,12 @@
           <source>Current Journal Batch Name</source>
           <target>Код раздела журнала</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlBatchName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1449143634 - Control 716077266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Current Journal Template Name</source>
           <target>Имя шаблона журнала</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlTemplateName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 756426410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -12867,7 +12886,6 @@
           <source>Purchase Receipt M-4</source>
           <target>Приходный ордер М-4</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Receipt M-4 Ext - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1742529627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -13200,17 +13218,17 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Fixed Asset List (Ext) - Control RAS Posting Group - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 512924377 - Action 1458457591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
-          <source>Copy lines from journal archive</source>
-          <target>Копировать строки из архива журналов</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 512924377 - Action 3209057264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Import from Excel</source>
           <target>Импорт из Excel</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Import from Excel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 512924377 - Action 1458457591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Copy lines from journal archive</source>
+          <target>Копировать строки из архива журналов</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 250922747 - Control 1231965224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>DenDoc Dim Value</source>
@@ -16540,7 +16558,6 @@
           <source>Purchase Order Act</source>
           <target>Документы Акт и КС-2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension Report Selection Usage Ext - EnumValue PurchOrderAct - Property Caption</note>
         </trans-unit>
       </group>

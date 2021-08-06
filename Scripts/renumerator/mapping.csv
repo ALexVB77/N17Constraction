@@ -1,0 +1,378 @@
+Type;Id;Name;NewId;HasNewId
+codeunit;50004;Cen. Jnl. -Post Line (Ext);70001;True
+codeunit;50005;Code Monkey Translation;70002;True
+codeunit;50006;Base App. Subscribers Mgt.;70003;True
+codeunit;50007;Dimension Management (Ext);70006;True
+codeunit;50010;Payment Order Management;70007;True
+codeunit;50011;G/L Account Mapping Migration;70008;True
+codeunit;50012;Period Management Ext;70009;True
+codeunit;50013;Project Budget Management;70010;True
+codeunit;50014;Gen. Jnl.-Post Batch (Ext);70011;True
+codeunit;50015;Isolated Storage Management GE;70012;True
+codeunit;70000;ERPC Funtions;70000;False
+codeunit;70004;Inven.-Get Inventory;70004;False
+codeunit;70005;Barcode;70005;False
+codeunit;70023;G/L Calculation Management;70023;False
+codeunit;81521;Workflow Response Handling Ext;70013;True
+codeunit;81535;Approvals Mgmt. (Ext);70014;True
+codeunit;85642;FA Reclass. Transfer Line Ext;70015;True
+codeunit;99400;Rocket Science;70016;True
+codeunit;99930;CRM Integration API;70017;True
+codeunit;99931;Web Request Queue Dispatcher;70018;True
+codeunit;99932;CRM Worker;70019;True
+codeunit;99933;CRM Import Objects;70020;True
+codeunit;99934;Crm Log Management;70021;True
+enum;50000;Analysis Type;50000;False
+enum;50001;Purchase Act Type;50001;False
+enum;50002;Purchase Problem Type;50002;False
+enum;50003;Purchase Act Approval Status;50003;False
+enum;50004;Purchase Approval Status;50004;False
+enum;50005;User Setup Act Approval Status;50005;False
+enum;50006;User Setup Approval Status;50006;False
+enum;50007;Gen. Journal Approval Status;50007;False
+enum;50008;Amount Type;50008;False
+enum;50009;Transfer Header Giv. Type;50009;False
+enum;50010;Purchase Comment Add. Type;50010;False
+enum;99930;CRM Object Type;99930;False
+enum;99931;CRM Log Status;99931;False
+enum;99932;CRM Import Action;99932;False
+pageextension;80001;Company Information (Ext);80001;False
+pageextension;81173;Document Attachments (Ext);81173;False
+pageextension;80118;General Ledger Setup (Ext);80118;False
+pageextension;80119;User Setup (Ext);80119;False
+pageextension;92426;Cash Account Card (Ext);92426;False
+pageextension;92431;Advance Statement Ext;92431;False
+pageextension;92432;Advance Statement Subform Ext;92432;False
+pageextension;92451;Item Receipt Subform (Ext);92451;False
+pageextension;92452;Item Shipment GE;92452;False
+pageextension;92453;Item Shipment Subform (Ext);92453;False
+pageextension;92458;Posted Item Receipt Sub. GE;92458;False
+pageextension;92461;Posted Item Shipment Sub. GE;92461;False
+pageextension;92471;FA Writeoff Act Subform (Ext);92471;False
+pageextension;92473;Posted FA Writeoff Act Sub Ext;92473;False
+pageextension;92475;FA Release Act Subform (Ext);92475;False
+pageextension;92477;Posted FA Release Act Sub. Ext;92477;False
+pageextension;92479;FA Movement Act Subform (Ext);92479;False
+pageextension;92481;Posted FA Movem. Act Sub. Ext;92481;False
+pageextension;80132;Posted Sales Invoice Ext;80132;False
+pageextension;80134;Posted Sales Credit Memo (Ext);80134;False
+pageextension;80139;Posted Purch. Invoice Sub. GE;80139;False
+pageextension;80141;Posted Purch. Cr. Memo Sub. GE;80141;False
+pageextension;84900;Customer Agreements (Ext);84900;False
+pageextension;94901;Customer Agreement Card (Ext);94901;False
+pageextension;94902;Vendor Agreement Card (Ext);94902;False
+pageextension;94913;Vendor Agreements (Ext);94913;False
+pageextension;94919;Excel Templates (Ext);94919;False
+pageextension;94925;VAT Settlement Worksheet GE;94925;False
+pageextension;94983;Direct Transfer (Ext);94983;False
+pageextension;80015;Location List (Ext);80015;False
+pageextension;80020;General Ledger Entries (Ext);80020;False
+pageextension;80021;Customer Card (Ext);80021;False
+pageextension;80022;Customer List (Ext);80022;False
+pageextension;80256;Payment Journal (Ext);80256;False
+pageextension;80026;Vendor Card (Ext);80026;False
+pageextension;80027;Vendor List (Ext);80027;False
+pageextension;80029;Vendor Ledger Entries (Ext);80029;False
+pageextension;80347;Report Selection - Purch. Ext;80347;False
+pageextension;80370;Bank Account Card Ext;80370;False
+pageextension;80038;Item Ledger Entries (Ext);80038;False
+pageextension;80039;General Journal (Ext);80039;False
+pageextension;80043;Sales Invoice (Ext);80043;False
+pageextension;80044;Sales Credit Memo (Ext);80044;False
+pageextension;80459;Sales & Receiv. Setup (Ext);80459;False
+pageextension;80460;Purchases & Payab. Setup (Ext);80460;False
+pageextension;80461;Inventory Setup (Ext);80461;False
+pageextension;80472;VAT Posting Setup GE;80472;False
+pageextension;80473;VAT Posting Setup Card GE;80473;False
+pageextension;80480;Edit Dimension Set Entries Ext;80480;False
+pageextension;80050;Purchase Order Ext;80050;False
+page;50015;Calculation General Journal;50015;False
+page;50016;Calc. Gen. Journal Update;50016;False
+page;50017;Calc. Operand Subform;50017;False
+page;50026;Giv. Prod. Order;50026;False
+page;50029;Giv. Prod. Order Shipment;50029;False
+page;50030;Giv. Prod. Order Receipt;50030;False
+page;50031;Giv. Prod. Order Job;50031;False
+page;50032;Giv. Prod. Order List;50032;False
+page;50045;Purch. Order Act PayReq. List;50045;False
+page;50080;Vendor Excel;50080;False
+page;50081;Vendor Excel Subform;50081;False
+page;50082;Vendor Excel List;50082;False
+page;50092;Giv. Transfer Order;50092;False
+page;50093;Giv. Transfer Order Subform;50093;False
+page;50097;Item G/L Turnover GE;50097;False
+page;50100;G/L Account Mapping;50100;False
+page;50101;Create ST Proj Budget Entries;50101;False
+page;50102;Dimension Mapping;50102;False
+page;50103;Summary CF Control Matrix;50103;False
+page;50104;Location Mapping;50104;False
+pageextension;85050;Contact Card (Ext);85050;False
+pageextension;80051;Purchase Invoice Ext;80051;False
+pageextension;80537;Dimension Values Ext;80537;False
+pageextension;80560;Dimension Value List (Ext);80560;False
+pageextension;85601;Fixed Asset List (Ext);85601;False
+pageextension;85607;Fixed Asset Setup (Ext);85607;False
+pageextension;85703;Location Card (Ext);85703;False
+pageextension;85740;Transfer Order (Ext);85740;False
+pageextension;85741;Transfer Order Subform (Ext);85741;False
+pageextension;85742;Transfer Orders (Ext);85742;False
+pageextension;85744;Posted Trans. Shpt. Sub. (Ext);85744;False
+pageextension;85745;Posted Transfer Receipt (Ext);85745;False
+pageextension;85746;Posted Trans. Rcpt. Sub. (Ext);85746;False
+pageextension;80658;Approval Entries (Ext);80658;False
+pageextension;80066;Purch. Comment Sheet (Ext);80066;False
+pageextension;80660;Approval Comments (Ext);80660;False
+pageextension;80663;Approval User Setup (Ext);80663;False
+page;70000;Purchase Order App;70000;False
+page;70001;Purchase Order Subform App;70001;False
+page;70002;Purchase List App;70002;False
+page;70004;Documents Approval;70004;False
+page;70005;Payment Request Card;70005;False
+page;70009;Posted Gen. Journals_;70009;False
+page;70069;Get Item Ledger Entry Lines;70069;False
+page;70076;Apartments;70076;False
+page;70077;Apartment Card;70077;False
+page;70090;Investment Agreements;70090;False
+page;70091;Investment Agreement Card;70091;False
+page;70103;Act Stage;70103;False
+page;70109;Req Subform;70109;False
+page;70112;Development Setup;70112;False
+page;70119;Projects Version;70119;False
+page;70127;Projects Budget Entry;70127;False
+page;70130;Purchase List Controller;70130;False
+page;70141;Forecast List;70141;False
+page;70143;Forecast List Analisys;70143;False
+page;70159;Projects Article List;70159;False
+page;70160;Problem Document Set;70160;False
+page;70164;Vendor Agreement Details;70164;False
+page;70166;Vendor Agreement Budget;70166;False
+page;70171;Proj. Cost Control Entry Buf.;70171;False
+page;70177;Payment Invoices Detailed;70177;False
+page;70188;Budget Corrections;70188;False
+page;70189;Budget Correction Card;70189;False
+page;70190;Budget Correction Journal Sub;70190;False
+page;70205;Forecast Versions;70205;False
+page;70209;Cost Control Construction;70209;False
+page;70213;Projects CC Entry Constr 2;70213;False
+page;70215;Budget Cor. Journal Constr;70215;False
+page;70222;Forecast List Analisys Correct;70222;False
+page;70224;Cash Flow Transaction Type;70224;False
+page;70226;CRM Integration Setup;70226;False
+page;70227;CRM Log;70227;False
+page;70228;CRM Company;70228;False
+page;70243;Invoice Detail;70243;False
+page;70255;Summ. Cash Flow Control Detail;70255;False
+page;70256;Summary Cash Flow Control;70256;False
+page;70257;CRM Units and Buyers;70257;False
+page;70260;Purchase Order Act;70260;False
+page;70261;Purchase Order Act Subform;70261;False
+page;70262;Purchase List Act;70262;False
+page;70269;Barcode Act Document;70269;False
+page;70284;Cust. E-Mail Notify Log;70284;False
+page;70300;Giv. Transfer Orders;50010;True
+pageextension;87303;Bin List (Ext);87303;False
+page;90000;Event Subscriptions (Ext);50011;True
+pageextension;80539;MyDim Value Comb Ext;80539;False
+page;99400;Klaz Klaz;50012;True
+page;99880;BW Account;50013;True
+page;99881;BW Accounts (ODATA);50014;True
+page;99882;BW Dimensions;50018;True
+page;99883;BW Dimensions (ODATA);50019;True
+page;99884;BW Translation Entry;50020;True
+page;99885;BW Translation Entry (ODATA);50021;True
+page;99930;Web Request Worker Setup;50022;True
+page;99931;Web Request Queue;50023;True
+page;99932;CRM Prefetched Objects;50024;True
+report;92411;Order Factura-Invoice (A) Ext;70000;True
+report;92418;Posted Factura-Invoice (A) ext;70001;True
+report;82470;Copy Item Document GE;70002;True
+report;82475;Purchase Receipt M-4 Ext;70003;True
+report;92485;FA Comparative Sh. INV-18 New;70004;True
+report;92495;FA Inventory Card FA-6 (Ext);70005;True
+report;94921;FA Phys. Inventory INV-1a New;70006;True
+report;94926;Inv. for Deferrals INV-11 New;70007;True
+report;80322;Aged Accounts Payable Ext;70008;True
+report;50002;Transfer Shipment M-15;70010;True
+report;50005;Payment Report;70011;True
+report;50009;Import Budget CC;70012;True
+report;50010;Fix Forecast;70013;True
+report;50040;Cover Sheet;70014;True
+report;50063;Share Participant Act 2;70015;True
+report;50065;Create Guarantee Deduction;70016;True
+report;50082;ExportSubform;70017;True
+report;50094;Find Error 70095;70018;True
+report;50105;FA Turnover (Excel);70019;True
+report;50120;Data Migration From Excel;70020;True
+report;50121;Notification Email Act. Inv.;70021;True
+report;50122;Import General Journal Lines;70022;True
+report;50270;Change Vendor Agreement;70023;True
+report;50999;TempStarter;70024;True
+report;70009;Item Shipment M-19;70009;False
+report;50050;Create Payment Journal;70025;True
+report;70060;Print Customer Agreement;70060;False
+report;70075;Item Shipment M-15 Posted;70075;False
+report;70100;FA Write-off Act FA-4b;70100;False
+report;70101;FA Release Act FA-1a;70101;False
+report;70102;Fa Release Act FA-1b;70102;False
+report;70200;Import Vendor Invoice;70200;False
+report;99996;Select Latest Version;70026;True
+report;99997;Import Item Remains;70027;True
+tableextension;80112;Sales Invoice Header Ext;80112;False
+tableextension;80114;Sales Cr.Memo Header (Ext);80114;False
+tableextension;81173;Document Attachment (Ext);81173;False
+tableextension;80122;Purch. Inv. Header (Ext);80122;False
+tableextension;80123;Purch. Inv. Line (Ext);80123;False
+tableextension;80124;Purch. Cr. Memo Hdr. (Ext);80124;False
+tableextension;92450;Item Document Header (Ext);92450;False
+tableextension;92451;Item Recept Header (GE);92451;False
+tableextension;92453;Item Document Line GE;92453;False
+tableextension;92454;Item Shipment Header GE;92454;False
+tableextension;82458;Direct Transfer Header (Ext);82458;False
+tableextension;82459;Direct Transfer Line (Ext);82459;False
+tableextension;92472;Posted FA Doc. Line (Ext);92472;False
+tableextension;80125;Purch. Cr. Memo Line (Ext);80125;False
+tableextension;80014;Location (Ext);80014;False
+tableextension;94901;Vendor Agreement (Ext);94901;False
+tableextension;94902;Customer Agreement (Ext);94902;False
+tableextension;94919;Excel Template (Ext);94919;False
+tableextension;94927;VAT Document Entry Buffer GE;94927;False
+tableextension;80017;G/L Entry (Ext);80017;False
+tableextension;80018;Customer (Ext);80018;False
+tableextension;80023;Vendor (Ext);80023;False
+tableextension;80025;Vendor Ledger Entry (Ext);80025;False
+tableextension;80254;Vat Entry GE;80254;False
+tableextension;80270;Bank Account (Ext);80270;False
+tableextension;80311;Sales & Receiv. Setup (Ext);80311;False
+tableextension;80312;Purchases & Payab. Setup (Ext);80312;False
+tableextension;80313;Inventory Setup (Ext);80313;False
+tableextension;80032;Item Ledger Entry (Ext);80032;False
+tableextension;80325;VAT Posting Setup GE;80325;False
+tableextension;80349;Dimension Value (Ext);80349;False
+tableextension;80036;Sales Header (Ext);80036;False
+tableextension;80038;Purchase Header (Ext);80038;False
+tableextension;80382;CV Ledger Entry Buffer Ext;80382;False
+tableextension;80383;Dtld. CV Ledg. Entry Buf. Ext;80383;False
+tableextension;80039;Purchase Line (Ext);80039;False
+tableextension;80043;Purch. Comment Line (Ext);80043;False
+tableextension;80454;Approval Entry (Ext);80454;False
+tableextension;80455;Approval Comment Line (Ext);80455;False
+table;50000;Document Attachment Archive;70000;True
+table;50001;G/L Account Mapping;70001;True
+table;50002;Dimension Mapping;70002;True
+table;50003;Original Budget;70003;True
+table;50004;Location Mapping;70004;True
+tableextension;85050;Contact (Ext);85050;False
+tableextension;85109;Purchase Header Archive (Ext);85109;False
+tableextension;85110;Purchase Line Archive (Ext);85110;False
+tableextension;85200;Employee (Ext);85200;False
+tableextension;85600;Fixed Asset (Ext);85600;False
+tableextension;85603;FA Setup (Ext);85603;False
+tableextension;85740;Transfer Header (Ext);85740;False
+tableextension;85741;Transfer Line (Ext);85741;False
+tableextension;85744;Transfer Shipment Header (Ext);85744;False
+tableextension;85745;Transfer Shipment Line (Ext);85745;False
+tableextension;85764;Transfer Receipt Header (Ext);85764;False
+tableextension;85747;Transfer Receipt Line (Ext);85747;False
+table;70043;Calc. Gen Journal Operand;70043;False
+table;70044;Calculation Month;70044;False
+table;70045;Calculation Journal Line;70045;False
+table;70048;Giv. Prod. Order;70048;False
+table;70049;Cash Flow Transaction Type;70049;False
+table;70050;Building Project;70050;False
+table;70051;Building Turn;70051;False
+table;70053;Apartments;70053;False
+table;70065;Objects Act;70065;False
+table;70066;Act Lines;70066;False
+table;70067;Act Stage;70067;False
+table;70070;Development Setup;70070;False
+table;70071;Projects Article;70071;False
+table;70072;Projects Structure;70072;False
+table;70073;Projects Structure Lines;70073;False
+table;70074;Projects Line Dimension;70074;False
+table;70075;Project Version;70075;False
+table;70076;Projects Budget Entry;70076;False
+table;70078;Projects Budget Entry Link;70078;False
+table;70094;Vendor Agreement Details;70094;False
+table;70095;Projects Cost Control Entry;70095;False
+table;70101;Budget Correction;70101;False
+table;70102;Budget Correction Journal;70102;False
+table;70107;Forecast Version;70107;False
+table;70117;Giv. Prod. Order Shipment;70117;False
+table;70118;Giv. Prod. Order Receipt;70118;False
+table;70120;CRM Buyers;70120;False
+table;70121;CRM Log;70121;False
+table;70125;CRM Integration Setup;70125;False
+table;70129;Commited Detail;70129;False
+table;70132;Invoice Detail;70132;False
+table;70138;CRM Company;70138;False
+table;70140;Proj. Cost Control Entry Buf.;70140;False
+table;70142;Giv. Prod. Order Job;70142;False
+table;70162;Cust. E-Mail Notify Log;70162;False
+table;70166;Credit-Memo Reason;70166;False
+table;70200;Vendor Excel Mapping;70200;False
+table;70201;Vendor Excel Header;70201;False
+table;70202;Vendor Excel Line;70202;False
+tableextension;87301;Warehouse Employee (Ext);87301;False
+tableextension;87354;Bin (Ext);87354;False
+tableextension;80079;Company Information (Ext);80079;False
+tableextension;80081;Gen. Journal Line (Ext);80081;False
+tableextension;80091;User Setup (Ext);80091;False
+tableextension;80098;General Ledger Setup (Ext);80098;False
+table;99400;Test rec;70005;True
+table;99880;BW Account;70006;True
+table;99881;BW Dimension;70007;True
+table;99883;BW Translation Entry;70008;True
+table;99930;Web Request Worker Setup;70009;True
+table;99931;Web Request Queue;70010;True
+table;99932;CRM Prefetched Object;70011;True
+codeunit;99998;Isolated Storage Management BS;70109;True
+codeunit;99999;Additional Management BS;70108;True
+enum;99998;Custom Transformation Type BS;99998;False
+enum;99999;Taxpayer Status Enum BS;99999;False
+pageextension;99997;Data Exch Field Map. Part BS;99997;False
+pageextension;99996;Transformation Rules BS;99996;False
+pageextension;99995;Transformation Rule Card BS;99995;False
+pageextension;99991;General Journal Batches BS;99991;False
+pageextension;99990;Payment Journal BS;99990;False
+pageextension;99999;Bank Account Card BS;99999;False
+pageextension;99998;Bank Account Ledger Entries BS;99998;False
+pageextension;99992;Bank Acc. Reconciliation BS;99992;False
+pageextension;99993;Bank Acc. Reconcil. Lines BS;99993;False
+pageextension;99994;Bank Acc. Reconcil. List BS;99994;False
+report;99998;TransferExcelTemplates;70399;True
+report;99999;Bank Payment Order BS;70398;True
+tableextension;99997;Data Exch. BS;99997;False
+tableextension;99996;Data Exch. Field Mapping BS;99996;False
+tableextension;99995;Payment Export Data BS;99995;False
+tableextension;99994;Transformation Rule BS;99994;False
+tableextension;99990;Gen. Journal Batch BS;99990;False
+tableextension;99999;Bank Account BS;99999;False
+tableextension;99998;Bank Account Ledger Entry BS;99998;False
+tableextension;99992;Bank Acc. Reconciliation BS;99992;False
+tableextension;99993;Bank Acc. Reconcil. Line BS;99993;False
+tableextension;99991;Gen. Journal Line BS;99991;False
+xmlport;99999;Data Exch. Import - CSV BS;70299;True
+enum;99940;Border Style;99940;False
+table;99940;Excel Buffer Mod;70239;True
+codeunit;99900;Scanning Helper;70107;True
+page;99900;Purchase Scanning List;70299;True
+page;99901;Scanning;70298;True
+page;99902;ItemList1;70297;True
+page;99903;UOMList;70296;True
+page;99904;ScanningHistory;70295;True
+page;99905;ScanEnterQty;70294;True
+page;99906;ItemList2;70293;True
+page;99907;EnterQty;70292;True
+page;99908;ItemList3;70291;True
+page;99909;ItemList4;70290;True
+page;99910;ChooseMatDel;70289;True
+page;99911;Transfer Scanning List;70288;True
+page;99912;Writeoff Scanning List;70287;True
+page;99913;ChooseMatDel2;70286;True
+page;99914;TransfOrderDataIns;70285;True
+page;99915;WriteoffDataIns;70283;True
+page;99916;MatOrderDataIns;70282;True
+page;99917;InventoryDataInsert;70281;True
+page;99918;InventoryScanning;70280;True
+table;99900;Item Scanning Entry;70238;True
+table;99901;Scanning Buffer;70237;True
