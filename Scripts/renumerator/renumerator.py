@@ -37,17 +37,19 @@ class Renumerator:
         self.last_id_fwd = {}
         self.last_id_bwd = {}
         self.ext_folders: list = folders
-        self.object_id_ranges: dict = ranges
-        self.object_license_assignment = self.object_id_ranges.keys()
+        self.licensed_ranges: dict = ranges
+        self.license_assignment_objects = self.licensed_ranges.keys()
         self.used_object_id = {}
-        self.object_id_map = {}
+        self.renum_map = {}
 
     def renumerate(self, mapping_filename: str = None) -> None:
         if mapping_filename: 
             pass
         else:
-            self.create_mapping_file2()
-        map(self.__deep_renum, self.object_id_map.values())
+            self.create_mapping_file()
+        assert self.renum_map
+        for me in self.renum_map.values():
+            self.__deep_renum(me)
 
     def create_mapping_file(self) -> None:
         is_general_ext_folder = True
@@ -60,9 +62,7 @@ class Renumerator:
                 if not obj_info:
                     continue
                 uid = self.__get_uid(obj_info.type, obj_info.id)
-                if uid == 'page$70001':
-                    dbg = True
-                if obj_info.type in self.object_license_assignment:
+                if obj_info.type in self.license_assignment_objects:
                     new_id = 0
                     if is_general_ext_folder and self.__check_range(obj_info.type, obj_info.id):
                         self.used_object_id[uid] = 1
@@ -86,7 +86,7 @@ class Renumerator:
 
     def __deep_renum(self, map_entry: MapEntry) -> None:
         def get_new_filename(map_entry: MapEntry) -> str:
-            sfn = f'{map_entry.type}{map_entry.new_id}.{"".join(map_entry.name.split())}.al'
+            sfn = f'{map_entry.type}{map_entry.new_id}.{"".join([s for s in map_entry.name if s.isalpha() or s.isdigit()])}.al'
             dirname = os.path.dirname(map_entry.al_file)
             return os.path.join(dirname, sfn)
         if map_entry.old_id == map_entry.new_id:
@@ -95,23 +95,21 @@ class Renumerator:
             lines = fi.readlines()
         os.remove(map_entry.al_file)
         for n, ln in enumerate(lines):
-            if not ln:
+            if not ln.strip():
                 continue
             if ln.split()[0].lower() in self.allowed_types:
                 lines[n] = ln.replace(str(map_entry.old_id), str(map_entry.new_id))
+                break
         with open(get_new_filename(map_entry), 'w', encoding='utf8') as fo:
             for ln in lines:
                 fo.write(ln)
 
     def __get_next_id(self, object_type: str, current_object_id: int, forward = True) -> int:
-        if forward:
-            return self.__get_next_id_fwd(object_type, current_object_id)
-        else:
-            return self.__get_next_id_bwd(object_type, current_object_id)
+        return (self.__get_next_id_fwd if forward else self.__get_next_id_bwd) (object_type, current_object_id)
 
     def __get_next_id_fwd(self, object_type: str, current_object_id: int) -> int:
         new_id = None
-        id_range: tuple = self.object_id_ranges.get(object_type)
+        id_range: tuple = self.licensed_ranges.get(object_type)
         last_used_id = self.last_id_fwd.get(object_type, 0)
         if not last_used_id: 
             last_used_id = self.__incid(object_type, id_range[0], True)
@@ -135,7 +133,7 @@ class Renumerator:
 
     def __get_next_id_bwd(self, object_type: str, current_object_id: int) -> int:
         new_id = None
-        id_range: tuple = self.object_id_ranges.get(object_type)
+        id_range: tuple = self.licensed_ranges.get(object_type)
         last_used_id = self.last_id_bwd.get(object_type, 0)
         if not last_used_id: 
             last_used_id = self.__decid(object_type, id_range[-1], True)
@@ -172,7 +170,7 @@ class Renumerator:
         return object_id
 
     def __add_to_map(self, object_type: str, object_old_id: int, object_name: str, object_new_id, al_filename: str, has_new_id: bool) -> None:
-        self.object_id_map[self.__get_uid(object_type, object_old_id)] = \
+        self.renum_map[self.__get_uid(object_type, object_old_id)] = \
             MapEntry(type = object_type, name = object_name, old_id=object_old_id, new_id=object_new_id, al_file = al_filename, has_new_id=has_new_id)
 
     def __get_list_of_files(self, basedir: str) -> list:
@@ -198,7 +196,7 @@ class Renumerator:
                     return ObjectInfo(type = object_type, id = int(words[1]), name = self.__get_object_name(words[2]))
 
     def __check_range(self, object_type: str, obj_id: int) -> bool:
-        id_range: tuple = self.object_id_ranges.get(object_type)
+        id_range: tuple = self.licensed_ranges.get(object_type)
         id_ranges_count = len(id_range) // 2
         for rng in range(id_ranges_count):
             start_id = rng * id_ranges_count
@@ -218,7 +216,7 @@ class Renumerator:
         with open(filename, 'w', encoding='utf8') as fo:        
             me: MapEntry
             fo.write(f'Type;Id;Name;NewId;HasNewId\n')
-            for me in self.object_id_map.values():
+            for me in self.renum_map.values():
                 fo.write(f'{me.type};{me.old_id};{me.name};{me.new_id};{me.has_new_id}\n')
 
     def __get_uid(self, object_type: str, object_id: int) -> str:
@@ -226,9 +224,9 @@ class Renumerator:
 
 
 def main():
-
     rn = Renumerator(extension_folder, ranges)
     rn.create_mapping_file()
+    #rn.renumerate()
 
 
 if __name__ == '__main__':
