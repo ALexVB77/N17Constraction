@@ -4353,86 +4353,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnknownObjectTypeErr</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 1454544725" size-unit="char" translate="yes" xml:space="preserve">
-          <source>There is no attachment!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70001</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 816848108" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document has been approved!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70002</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 3836422170" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor does not have to be basic!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70004</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 3198725553" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must specify the Agreement!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70005</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 3627370845" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document is ready to be sent to user %1 for approval.\Send?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70032</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 4096158439" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Canceled by user!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70034</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 762112629" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document is signed by the Approver!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70045</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 124416012" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document has passed all approvals! A purchase invoice for accounting has been generated!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70046</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 2309810774" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document will be posted by quantity and a Posted Purchase Receipt will be created. Proceed?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType Text50013</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 1590263106" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pre-Approver %1 is missing!\The request is being transferred to the Approver: %2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType Text1002</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 1602187639" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Approving employee %1 is missing!\The request is being transferred to the Substitute: %2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType Text132</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 4097093 - NamedType 2561028936" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The agreement Starting Date must not be later than the Order Date.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckActByVendAgreementDates - NamedType TEXT70006</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 4097093 - NamedType 1923332319" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The agreement Expire Date must not be earlier than the Order Date.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckActByVendAgreementDates - NamedType TEXT70007</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 4097093 - NamedType 2898846982" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The agreement Start Date must not be later than the Document Date.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckActByVendAgreementDates - NamedType TEXT70008</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 4097093 - NamedType 2261150365" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The agreement Expire Date must not be earlier than the Document Date.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckActByVendAgreementDates - NamedType TEXT70009</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 1181972351 - NamedType 4210713468" size-unit="char" translate="yes" xml:space="preserve">
-          <source>A dimension used in line %1 has caused an error. %2.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckDimensionComb - NamedType DimCausedErr</note>
-        </trans-unit>
         <trans-unit id="Codeunit 1524225914 - Method 1375976439 - NamedType 3842566867" size-unit="char" translate="yes" xml:space="preserve">
           <source>The invoice Amount including VAT in the header does not match the amount including VAT by lines!</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4447,16 +4367,6 @@
           <source>You must specify %1 and %2 for %3 line %4.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckLineShortCutDim1 - NamedType LocText001</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 2139979417 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must specify %1 and %2 for %3.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckShortCutDim1 - NamedType LocText001</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 129654010 - NamedType 3416294985" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must select the real item before document posting.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CreatePurchOrder - NamedType Text50016</note>
         </trans-unit>
         <trans-unit id="Codeunit 1524225914 - Method 1598329628 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to delete Payment Invoice %1 for %2?</source>
@@ -4492,11 +4402,6 @@
           <source>сч %1 от %2 за __________ по дог. %3 от %4 Сумма %5 в т.ч. НДС(20%) %6</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method GetPaymentDetails - NamedType TEXT0003</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 1810542939 - NamedType 2778598368" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Lines are not filled.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method UpdateActHeaderDimByMaxLine - NamedType Text50015</note>
         </trans-unit>
         <trans-unit id="Codeunit 4047442064 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>is a %1 and %2 is not a %1.</source>
@@ -4742,6 +4647,11 @@
           <source>You can send a document to the archive only at the Verification stage.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQst - NamedType LocText50012</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 3935502648" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to add a document to the archive of problem documents?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText1</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 1715794959 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document %1 has been archived.</source>
@@ -5627,6 +5537,21 @@
           <source>You do not have sufficient rights to perform the action!</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0015</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 19913447" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select distinct %1 Filter to create new line!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0990</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 657610064" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0991</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 1295306681" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0992</note>
         </trans-unit>
         <trans-unit id="Page 2269272589 - Control 1820841161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filters</source>
@@ -7518,6 +7443,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Reject - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1449143634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Gen. Journals</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1449143634 - Control 874212758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlBatchName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1449143634 - Control 716077266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Journal Template Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlTemplateName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 756426410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem Document Set</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7938,6 +7878,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control Approver - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3437592965 - Control 3230600482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor/Employee Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control Buy-from Vendor Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3437592965 - Control 38210337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amounts</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7952,6 +7897,11 @@
           <source>Remaining Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control Remaining Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3437592965 - Control 2526681557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Control EmployeeNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Control 3724343034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Date</source>
@@ -8102,6 +8052,11 @@
           <source>Print</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3437592965 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action &amp;Print - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Action 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cover Sheet</source>
@@ -10688,6 +10643,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Print Customer Agreement - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3444017566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Receipt M-4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Receipt M-4 Ext - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1742529627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Latest Version</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10968,6 +10928,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Import from Excel - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 512924377 - Action 1458457591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Copy lines from journal archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 250922747 - Control 1231965224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>DenDoc Dim Value</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11058,6 +11023,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Purchases &amp; Payab. Setup (Ext) - Control Payment requests - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3483304276 - Control 2858319593 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3298048956">
+          <source>Specifies which type of document the report is used for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Report Selection - Purch. Ext - Control ReportUsageNew - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3483304276 - Control 2858319593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3298048956">
+          <source>Usage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Report Selection - Purch. Ext - Control ReportUsageNew - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3483304276 - Control 2858319593 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3298048956">
+          <source>Quote,Blanket Order,Order,Invoice,Return Order,Credit Memo,Receipt,Return Shipment,Purchase Document - Test,Prepayment Document - Test,Archived Quote,Archived Order,Archived Return Order,Archived Blanket Order,Vendor Remittance,Vendor Remittance - Posted Entries,UnPosted Advance Statement,Advance Statement,UnPosted Invoice,UnPosted Cr. Memo,Purch. Order Act</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Report Selection - Purch. Ext - Control ReportUsageNew - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1054806567 - Action 4056321329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 66664215">
           <source>Get Item Ledger Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11127,6 +11107,11 @@
           <source>Attachments</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Vendor Agreement Card (Ext) - Control Attached Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2153774770 - Control 304272296 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3828088610">
+          <source>Specifies if the Unit Price and Line Amount fields on document lines should be shown with or without VAT.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Vendor Agreement Card (Ext) - Control Prices Including VAT - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1592470163 - Control 3060609304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3623928019">
           <source>Deviation (LCY)</source>
@@ -13722,6 +13707,11 @@
           <source>816</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension Item Journal Template Type GE - EnumValue 816 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 1616325006 - EnumValue 2401345768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Purchase Order Act</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension Report Selection Usage Ext - EnumValue PurchOrderAct - Property Caption</note>
         </trans-unit>
       </group>
     </body>

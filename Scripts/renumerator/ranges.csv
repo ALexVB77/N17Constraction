@@ -1,0 +1,8 @@
+Object Type;Range From;Range To
+TableData;70000;70239
+Report;70000;70399
+Codeunit;70000;70109
+Page;50010;50609
+Page;70000;70299
+XMLPort;70000;70299
+Query;50000;50099

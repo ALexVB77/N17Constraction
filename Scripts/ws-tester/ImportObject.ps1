@@ -1,9 +1,11 @@
+param($XmlObjectsFolder)
+
 $CrmWSUrlTest = "https://vm-tst-app035.oneplatform.info:7147/BonavaTest/WS/Bonava/Codeunit/CrmAPI"
 
 $WS = New-WebServiceProxy $CrmWSUrlTest -UseDefaultCredential
 $WS.Timeout = [System.Int32]::MaxValue
 
-$XmlObjectsFolder = 'C:\Temp\CRM\xml'
+#$XmlObjectsFolder = 'C:\Temp\CRM\xml'
 $ScriptFolder = 'C:\Temp\CRM\'
 
 
@@ -22,7 +24,7 @@ $XmlObject = "<object>_1_</object>"
 $XmlAllObjects = ""
 
 $XmlFilesMask = Join-Path -Path $XmlObjectsFolder -ChildPath "\*"
-$Files = Get-ChildItem -Path $XmlFilesMask -Include "*.xml"
+$Files = Get-ChildItem -Path "$XmlObjectsFolder\*" -Include "*.xml"
 if (!$Files){
    Write-Host "There are no xml files!"
 } else {
@@ -41,5 +43,5 @@ $SoapEnv = $SoapEnv.Replace("_1_", $XmlAllObjects)
 
 $ResponseText = $WS.ImportObject($SoapEnv)
 Write-Host $ResponseText
-pause
 
+pause

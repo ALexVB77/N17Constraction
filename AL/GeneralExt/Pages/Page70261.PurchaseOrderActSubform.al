@@ -60,6 +60,46 @@ page 70261 "Purchase Order Act Subform"
                         DeltaUpdateTotals();
                     end;
                 }
+                field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
+                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
+                field("VAT Bus. Posting Group"; "VAT Bus. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
+                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
                 field(Description; "Full Description")
                 {
                     ApplicationArea = All;
@@ -347,18 +387,20 @@ page 70261 "Purchase Order Act Subform"
             IF DimSetEntry.GET(Rec."Dimension Set ID", GLSetup."Utilities Dimension Code") then
                 UtilitiesDimValueCode := DimSetEntry."Dimension Value Code";
         if (PurchaseHeader."Document Type" <> "Document Type") or (PurchaseHeader."No." <> "Document No.") then
-            PurchaseHeader.get("Document Type", "Document No.");
+            PurchaseHeader.Get("Document Type", "Document No.");
         LocationCodeMandatory := (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::Advance) and (not IsCommentLine) AND ("No." <> '');
     end;
 
     trigger OnDeleteRecord(): Boolean
     begin
         DocumentTotals.PurchaseDocTotalsNotUpToDate();
+        UpdateLCYTotalAmounts();
     end;
 
     trigger OnFindRecord(Which: Text): Boolean
     begin
         DocumentTotals.PurchaseCheckAndClearTotals(Rec, xRec, TotalPurchaseLine, VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct);
+        UpdateLCYTotalAmounts();
         exit(Find(Which));
     end;
 
@@ -380,6 +422,7 @@ page 70261 "Purchase Order Act Subform"
     trigger OnModifyRecord(): Boolean
     begin
         DocumentTotals.PurchaseCheckIfDocumentChanged(Rec, xRec);
+        UpdateLCYTotalAmounts();
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -476,11 +519,13 @@ page 70261 "Purchase Order Act Subform"
             exit;
         DocumentTotals.PurchaseDeltaUpdateTotals(Rec, xRec, TotalPurchaseLine, VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct);
         //CheckSendLineInvoiceDiscountResetNotification();
+        UpdateLCYTotalAmounts();
     end;
 
     local procedure GetTotalPurchHeader()
     begin
         DocumentTotals.GetTotalPurchaseHeaderAndCurrency(Rec, TotalPurchaseHeader, Currency);
+        UpdateLCYTotalAmounts();
     end;
 
     local procedure CalculateTotals()
@@ -492,6 +537,32 @@ page 70261 "Purchase Order Act Subform"
         DocumentTotals.CalculatePurchaseSubPageTotals(
           TotalPurchaseHeader, TotalPurchaseLine, VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct);
         DocumentTotals.RefreshPurchaseLine(Rec);
+        UpdateLCYTotalAmounts();
+    end;
+
+    local procedure UpdateLCYTotalAmounts()
+    var
+        CurrExRate: Record "Currency Exchange Rate";
+        Currency: Record Currency;
+    begin
+        if (PurchaseHeader."Document Type" <> "Document Type") or (PurchaseHeader."No." <> "Document No.") then
+            PurchaseHeader.Get("Document Type", "Document No.");
+        if PurchaseHeader."Currency Code" = '' then begin
+            TotalPurchaseLine."Amount Including VAT (LCY)" := TotalPurchaseLine."Amount Including VAT";
+            TotalPurchaseLine."Amount (LCY)" := TotalPurchaseLine.Amount;
+        end else begin
+            Currency.Get(PurchaseHeader."Currency Code");
+            TotalPurchaseLine."Amount Including VAT (LCY)" :=
+                Round(
+                    CurrExRate.ExchangeAmtFCYToLCY(
+                        PurchaseHeader."Posting Date", PurchaseHeader."Currency Code", TotalPurchaseLine."Amount Including VAT", PurchaseHeader."Currency Factor"),
+                Currency."Amount Rounding Precision");
+            TotalPurchaseLine."Amount (LCY)" :=
+                Round(
+                    CurrExRate.ExchangeAmtFCYToLCY(
+                        PurchaseHeader."Posting Date", PurchaseHeader."Currency Code", TotalPurchaseLine.Amount, PurchaseHeader."Currency Factor"),
+                Currency."Amount Rounding Precision");
+        end;
     end;
 
     local procedure SetDefaultType()

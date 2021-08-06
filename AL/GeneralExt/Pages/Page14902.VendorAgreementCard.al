@@ -160,7 +160,14 @@ pageextension 94902 "Vendor Agreement Card (Ext)" extends "Vendor Agreement Card
         {
             Editable = HasntOpenLedgerEntries;
         }
-
+        addafter("Vendor Posting Group")
+        {
+            field("Prices Including VAT"; "Prices Including VAT")
+            {
+                ApplicationArea = VAT;
+                ToolTip = 'Specifies if the Unit Price and Line Amount fields on document lines should be shown with or without VAT.';
+            }
+        }
     }
     actions
     {
