@@ -949,29 +949,6 @@ codeunit 50006 "Base App. Subscribers Mgt."
     begin
         if PurchaseHeader."Document Type" <> PurchaseHeader."Document Type"::"Credit Memo" then
             PurchaseHeader."Payment Details" := Vendor.Name;
-        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
-            PurchSetup.Get();
-            if PurchSetup."Prices Incl. VAT in Req. Doc." then
-                PurchaseHeader.Validate("Prices Including VAT", true);
-        end;
-    end;
-
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnValidatePurchaseHeaderAgreementNo', '', false, false)]
-    local procedure OnValidatePurchaseHeaderAgreementNo(VendAgr: Record "Vendor Agreement"; var PurchaseHeader: Record "Purchase Header")
-    var
-        PurchSetup: Record "Purchases & Payables Setup";
-    begin
-        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
-            PurchSetup.Get();
-            if PurchSetup."Prices Incl. VAT in Req. Doc." then
-                PurchaseHeader.Validate("Prices Including VAT", true);
-        end;
-    end;
-
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', false, false)]
-    local procedure OnPurchaseHeaderAfterDelete(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
-    begin
-
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterCreateDimTableIDs', '', false, false)]
