@@ -6008,7 +6008,10 @@
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnAfterCheckPayToVendor(var PurchaseHeader: Record "Purchase Header"; xPurchaseHeader: Record "Purchase Header"; Vendor: Record Vendor)
+    // NC 51378 AB >>
+    // local procedure OnAfterCheckPayToVendor(var PurchaseHeader: Record "Purchase Header"; xPurchaseHeader: Record "Purchase Header"; Vendor: Record Vendor)
+    local procedure OnAfterCheckPayToVendor(var PurchaseHeader: Record "Purchase Header"; xPurchaseHeader: Record "Purchase Header"; var Vendor: Record Vendor)
+    // NC 51378 AB <<
     begin
     end;
 
