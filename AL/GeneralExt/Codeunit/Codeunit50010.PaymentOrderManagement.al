@@ -178,6 +178,8 @@ codeunit 50010 "Payment Order Management"
         grPurchHeader."Status App" := grPurchHeader."Status App"::Reception;
         grPurchHeader."Date Status App" := TODAY;
 
+        grPurchHeader."Payment Type" := grPurchHeader."Payment Type"::"post-payment";
+
         grPurchHeader.Receptionist := UserId;
         if PurchSetup."Prices Incl. VAT in Req. Doc." then
             grPurchHeader.Validate("Prices Including VAT", true);
