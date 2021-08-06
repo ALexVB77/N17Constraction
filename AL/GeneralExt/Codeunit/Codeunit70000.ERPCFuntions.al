@@ -209,15 +209,15 @@ codeunit 70000 "ERPC Funtions"
         IF prInvoice."Status App" = prInvoice."Status App"::Payment THEN
             ERROR(LocText50021, prInvoice."No.");
 
-        IF CONFIRM(STRSUBSTNO(LocText001, prInvoice."No.", prInvoice."Buy-from Vendor Name")) THEN BEGIN
-            IF prInvoice.HasBoundedCashFlows THEN
-                IF NOT CONFIRM(LocText002, FALSE) THEN
-                    EXIT(false);
-            lrGenJnlLine.SetCurrentKey("IW Document No.");
-            if not lrGenJnlLine.IsEmpty then
-                lrGenJnlLine.DeleteAll(true);
-            exit(true);
-        END;
+        // IF CONFIRM(STRSUBSTNO(LocText001, prInvoice."No.", prInvoice."Buy-from Vendor Name")) THEN BEGIN
+        IF prInvoice.HasBoundedCashFlows THEN
+            IF NOT CONFIRM(LocText002, FALSE) THEN
+                EXIT(false);
+        lrGenJnlLine.SetCurrentKey("IW Document No.");
+        if not lrGenJnlLine.IsEmpty then
+            lrGenJnlLine.DeleteAll(true);
+        exit(true);
+        // END;
     end;
 
     // NC AB: не используется, к удалению!
