@@ -81,6 +81,7 @@ page 99917 InventoryDataInsert
                         LocationList.LOOKUPMODE(TRUE);
                         Location.SETFILTER(Code, LocFilter);
                         LocationList.SETTABLEVIEW(Location);
+                        Commit();
                         IF LocationList.RUNMODAL = ACTION::LookupOK THEN BEGIN
                             LocationList.GETRECORD(Location);
                             LocationCode := Location.Code;

@@ -14,7 +14,7 @@ table 99900 "Item Scanning Entry"
         {
             Caption = 'Entry Type';
             DataClassification = ToBeClassified;
-            OptionMembers = ,Posting,WriteOff,Inventory;
+            OptionMembers = ,Posting,TransOrder,MatOrder,"Write-off",TransOrderNew,MatOrderNew,WrOffNew,Inventory;
         }
         field(3; "Document No."; Code[250])
         {
