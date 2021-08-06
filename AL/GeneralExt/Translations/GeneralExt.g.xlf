@@ -4353,86 +4353,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnknownObjectTypeErr</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 1454544725" size-unit="char" translate="yes" xml:space="preserve">
-          <source>There is no attachment!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70001</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 816848108" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document has been approved!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70002</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 3836422170" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor does not have to be basic!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70004</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 3198725553" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must specify the Agreement!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70005</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 3627370845" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document is ready to be sent to user %1 for approval.\Send?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70032</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 4096158439" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Canceled by user!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70034</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 762112629" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document is signed by the Approver!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70045</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 124416012" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document has passed all approvals! A purchase invoice for accounting has been generated!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType TEXT70046</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 2309810774" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The document will be posted by quantity and a Posted Purchase Receipt will be created. Proceed?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType Text50013</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 1590263106" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pre-Approver %1 is missing!\The request is being transferred to the Approver: %2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType Text1002</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 935118560 - NamedType 1602187639" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Approving employee %1 is missing!\The request is being transferred to the Substitute: %2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method ChangeActStatus - NamedType Text132</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 4097093 - NamedType 2561028936" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The agreement Starting Date must not be later than the Order Date.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckActByVendAgreementDates - NamedType TEXT70006</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 4097093 - NamedType 1923332319" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The agreement Expire Date must not be earlier than the Order Date.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckActByVendAgreementDates - NamedType TEXT70007</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 4097093 - NamedType 2898846982" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The agreement Start Date must not be later than the Document Date.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckActByVendAgreementDates - NamedType TEXT70008</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 4097093 - NamedType 2261150365" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The agreement Expire Date must not be earlier than the Document Date.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckActByVendAgreementDates - NamedType TEXT70009</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 1181972351 - NamedType 4210713468" size-unit="char" translate="yes" xml:space="preserve">
-          <source>A dimension used in line %1 has caused an error. %2.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckDimensionComb - NamedType DimCausedErr</note>
-        </trans-unit>
         <trans-unit id="Codeunit 1524225914 - Method 1375976439 - NamedType 3842566867" size-unit="char" translate="yes" xml:space="preserve">
           <source>The invoice Amount including VAT in the header does not match the amount including VAT by lines!</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4447,16 +4367,6 @@
           <source>You must specify %1 and %2 for %3 line %4.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckLineShortCutDim1 - NamedType LocText001</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 2139979417 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must specify %1 and %2 for %3.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckShortCutDim1 - NamedType LocText001</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 129654010 - NamedType 3416294985" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must select the real item before document posting.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CreatePurchOrder - NamedType Text50016</note>
         </trans-unit>
         <trans-unit id="Codeunit 1524225914 - Method 1598329628 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to delete Payment Invoice %1 for %2?</source>
@@ -4492,11 +4402,6 @@
           <source>сч %1 от %2 за __________ по дог. %3 от %4 Сумма %5 в т.ч. НДС(20%) %6</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method GetPaymentDetails - NamedType TEXT0003</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1524225914 - Method 1810542939 - NamedType 2778598368" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Lines are not filled.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method UpdateActHeaderDimByMaxLine - NamedType Text50015</note>
         </trans-unit>
         <trans-unit id="Codeunit 4047442064 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>is a %1 and %2 is not a %1.</source>
@@ -4742,6 +4647,11 @@
           <source>You can send a document to the archive only at the Verification stage.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQst - NamedType LocText50012</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 3935502648" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to add a document to the archive of problem documents?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText1</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 1715794959 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document %1 has been archived.</source>
@@ -11197,6 +11107,11 @@
           <source>Attachments</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Vendor Agreement Card (Ext) - Control Attached Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2153774770 - Control 304272296 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3828088610">
+          <source>Specifies if the Unit Price and Line Amount fields on document lines should be shown with or without VAT.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Vendor Agreement Card (Ext) - Control Prices Including VAT - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1592470163 - Control 3060609304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3623928019">
           <source>Deviation (LCY)</source>

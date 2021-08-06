@@ -424,6 +424,21 @@ codeunit 50010 "Payment Order Management"
     //         END;
     // end;
 
+    procedure PurchOrderActArchiveQstNew(PurchHeader: Record "Purchase Header"): Boolean;
+    var
+        PurchRcptHeader: Record "Purch. Rcpt. Header";
+        QuestionText: text;
+        LocText1: Label 'Do you want to add a document to the archive of problem documents?';
+    // LocText2: Label
+    begin
+        PurchHeader.TestField("Process User", UserId);
+        PurchRcptHeader.SetCurrentKey("Order No.");
+        PurchRcptHeader.SetRange("Order No.", PurchHeader."No.");
+        //if (not PurchRcptHeader.IsEmpty) or (PurchHeader."Invoice No." <> '') then
+        //    QuestionText := 
+    end;
+
+
     procedure PurchOrderActArchiveQst(PurchHeader: Record "Purchase Header"): Boolean;
     var
         UserSetup: record "User Setup";
@@ -878,6 +893,8 @@ codeunit 50010 "Payment Order Management"
         end;
     end;
 
+    // NC AB: не используется, к удалению!
+    /*
     local procedure CheckEmptyLines(PurchaseHeader: Record "Purchase Header")
     var
         PurchLineLoc: Record "Purchase Line";
@@ -893,6 +910,7 @@ codeunit 50010 "Payment Order Management"
                 PurchLineLoc.TESTFIELD(Quantity);
             UNTIL PurchLineLoc.NEXT = 0;
     end;
+    */
 
     local procedure GetPurchActChecker(PurchHeader: Record "Purchase Header"): code[50]
     var

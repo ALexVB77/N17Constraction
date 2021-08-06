@@ -2583,6 +2583,10 @@
                                       FieldCaption("Document Date"));
                             end;
 
+                            // NC 51373 AB >>
+                            OnBeforeValidatePurchaseHeaderAgreementNo(VendAgr, Rec);
+                            // NC 51373 AB <<
+
                             if "Gen. Bus. Posting Group" <> VendAgr."Gen. Bus. Posting Group" then
                                 Validate("Gen. Bus. Posting Group", VendAgr."Gen. Bus. Posting Group");
                             if "VAT Bus. Posting Group" <> VendAgr."VAT Bus. Posting Group" then
@@ -6004,7 +6008,10 @@
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnAfterCheckPayToVendor(var PurchaseHeader: Record "Purchase Header"; xPurchaseHeader: Record "Purchase Header"; Vendor: Record Vendor)
+    // NC 51378 AB >>
+    // local procedure OnAfterCheckPayToVendor(var PurchaseHeader: Record "Purchase Header"; xPurchaseHeader: Record "Purchase Header"; Vendor: Record Vendor)
+    local procedure OnAfterCheckPayToVendor(var PurchaseHeader: Record "Purchase Header"; xPurchaseHeader: Record "Purchase Header"; var Vendor: Record Vendor)
+    // NC 51378 AB <<
     begin
     end;
 
@@ -6650,5 +6657,12 @@
     begin
     end;
     // NC 51373 AB <<
+
+    // NC 51378 AB >>
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeValidatePurchaseHeaderAgreementNo(var VendAgr: Record "Vendor Agreement"; var PurchaseHeader: Record "Purchase Header")
+    begin
+    end;
+    // NC 51378 AB <<
 }
 
