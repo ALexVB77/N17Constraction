@@ -1005,6 +1005,30 @@ codeunit 50006 "Base App. Subscribers Mgt."
             IsHandled := true;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforeValidatePurchaseHeaderAgreementNo', '', false, false)]
+    local procedure OnBeforeValidatePurchaseHeaderAgreementNo(var VendAgr: Record "Vendor Agreement"; var PurchaseHeader: Record "Purchase Header")
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
+    begin
+        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
+            PurchSetup.Get();
+            if PurchSetup."Prices Incl. VAT in Req. Doc." then
+                VendAgr."Prices Including VAT" := true;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterCheckPayToVendor', '', false, false)]
+    local procedure OnAfterCheckPayToVendor(var PurchaseHeader: Record "Purchase Header"; xPurchaseHeader: Record "Purchase Header"; var Vendor: Record Vendor)
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
+    begin
+        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
+            PurchSetup.Get();
+            if PurchSetup."Prices Incl. VAT in Req. Doc." then
+                Vendor."Prices Including VAT" := true;
+        end;
+    end;
+
     // Table 39 Purchase Line
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterAssignItemValues', '', false, false)]
