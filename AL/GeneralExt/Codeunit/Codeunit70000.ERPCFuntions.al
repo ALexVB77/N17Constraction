@@ -242,6 +242,8 @@ codeunit 70000 "ERPC Funtions"
         END;
     end;
 
+    // NC AB: не используется, к удалению!
+    /*
     procedure CheckShortCutDim1(PurchHeader: Record "Purchase Header")
     var
         PurchSetup: Record "Purchases & Payables Setup";
@@ -260,6 +262,7 @@ codeunit 70000 "ERPC Funtions"
         if DimSetEntry.Count <> 2 then
             Error(LocText001, PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension", PurchHeader."No.");
     end;
+    */
 
     procedure CheckLineShortCutDim1(PurchLine: Record "Purchase Line"; PurchSetup: Record "Purchases & Payables Setup")
     var
@@ -276,6 +279,8 @@ codeunit 70000 "ERPC Funtions"
             Error(LocText001, PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension", PurchLine."Document No.", PurchLine."Line No.");
     end;
 
+    // NC AB: не используется, к удалению!
+    /*
     local procedure CheckDimensionComb(PurchHeader: Record "Purchase Header")
     var
         PurchLine: Record "Purchase Line";
@@ -303,6 +308,7 @@ codeunit 70000 "ERPC Funtions"
                     ERROR(DimCausedErr, PurchLine."Line No.", DimMgt.GetDimValuePostingErr);
             UNTIL PurchLine.NEXT = 0;
     end;
+    */
 
     procedure CheckDocSum(PurchHeader: Record "Purchase Header")
     var
@@ -331,6 +337,8 @@ codeunit 70000 "ERPC Funtions"
             ERROR(ErrText002);
     end;
 
+    // NC AB: не используется, к удалению!
+    /*
     local procedure CreatePurchOrder(VAR PurchaseHeader: Record "Purchase Header"; CheckOnly: Boolean)
     var
         InvSetup: Record "Inventory Setup";
@@ -344,10 +352,8 @@ codeunit 70000 "ERPC Funtions"
     begin
         InvSetup.GET();
         // DEBUG check later
-        /*
-        InvSetup.TESTFIELD(InvSetup."Warehouse RoleID");
-        IF NOT ExistRoles(USERID,InvSetup."Warehouse RoleID") THEN ERROR(Text50020);
-        */
+        //      InvSetup.TESTFIELD(InvSetup."Warehouse RoleID");
+        //      IF NOT ExistRoles(USERID,InvSetup."Warehouse RoleID") THEN ERROR(Text50020);
         // NC AB: пока просто проверяем что пользователь - сотрудник склада
         WhseEmpl.SetRange("User ID", UserId);
         WhseEmpl.FindFirst();
@@ -400,7 +406,10 @@ codeunit 70000 "ERPC Funtions"
         PurchaseHeader."Invoice No." := PHeader."No.";
         PurchaseHeader.Modify();
     end;
+    */
 
+    // NC AB: не используется, к удалению!
+    /*
     local procedure UpdateActHeaderDimByMaxLine(var PurchHeader: Record "Purchase Header"; var PurchSetup: record "Purchases & Payables Setup"; HardCheck: Boolean)
     var
         PurchLine: Record "Purchase Line";
@@ -463,7 +472,10 @@ codeunit 70000 "ERPC Funtions"
             end
         END;
     end;
+    */
 
+    // NC AB: не используется, к удалению!
+    /*
     local procedure CheckActByVendAgreementDates(PurchHeader: Record "Purchase Header")
     var
         lrVendorAgreem: Record "Vendor Agreement";
@@ -484,7 +496,10 @@ codeunit 70000 "ERPC Funtions"
         IF PurchHeader."Document Date" > lrVendorAgreem."Expire Date" THEN
             ERROR(TEXT70009);
     end;
+    */
 
+    // NC AB: не используется, к удалению!
+    /*
     local procedure CreatePurchInvoice(VAR PurchaseHeader: Record "Purchase Header")
     var
         PHeader: Record "Purchase Header";
@@ -522,9 +537,10 @@ codeunit 70000 "ERPC Funtions"
                 END
             UNTIL PurchLine.NEXT = 0;
     end;
+    */
 
+    // NC AB: не используется, к удалению!
     /*
-    // NC AB: не используется
     local procedure CheckDiffApprover(PurchHeader: Record "Purchase Header"): Boolean
     var
         PurchLineLoc: Record "Purchase Line";
@@ -539,6 +555,8 @@ codeunit 70000 "ERPC Funtions"
     end;
     */
 
+    // NC AB: не используется, к удалению!
+    /*
     local procedure CheckMasterApproverProduction(PurchHeader: Record "Purchase Header"): Boolean
     var
         PurchSetup: Record "Purchases & Payables Setup";
@@ -561,6 +579,7 @@ codeunit 70000 "ERPC Funtions"
             until PurchLineLoc.Next = 0;
         exit(true);
     end;
+    */
 
     /*
     // NC AB: вместо нее используем GetApproverFromActLines() CU 50010
@@ -616,6 +635,8 @@ codeunit 70000 "ERPC Funtions"
     end;
     */
 
+    // NC AB: не используется, к удалению!
+    /*
     procedure ChangeActStatus(VAR grPurchHeader: Record "Purchase Header")
     var
         PurchSetup: Record "Purchases & Payables Setup";
@@ -640,8 +661,6 @@ codeunit 70000 "ERPC Funtions"
         Text1002: label 'Pre-Approver %1 is missing!\The request is being transferred to the Approver: %2';
         Text132: label 'Approving employee %1 is missing!\The request is being transferred to the Substitute: %2';
     begin
-
-        /*    
 
         IF grPurchHeader."Location Document" THEN BEGIN
             grPurchHeader.TESTFIELD("Location Code");
@@ -918,9 +937,8 @@ codeunit 70000 "ERPC Funtions"
             EXIT;
         END;
         // ------- App -> Payment  -------------- <<<<
-        */
-
     end;
+    */
 
     procedure CreateBCPreBookingJConstr(BudCorrJnl: Record "Budget Correction Journal") ret: Boolean
     var
