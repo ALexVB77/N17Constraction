@@ -6655,11 +6655,11 @@
     end;
     // NC 51373 AB <<
 
-    // NC 51373 AB >>
+    // NC 51378 AB >>
     [IntegrationEvent(false, false)]
     local procedure OnBeforeValidatePurchaseHeaderAgreementNo(var VendAgr: Record "Vendor Agreement"; var PurchaseHeader: Record "Purchase Header")
     begin
     end;
-    // NC 51373 AB <<
+    // NC 51378 AB <<
 }
 
