@@ -998,6 +998,13 @@ codeunit 50006 "Base App. Subscribers Mgt."
             IsHandled := true;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforeSetPurchaserCode', '', false, false)]
+    local procedure OnBeforeSetPurchaserCode(var PurchaseHeader: Record "Purchase Header"; PurchaserCodeToCheck: Code[20]; var PurchaserCodeToAssign: Code[20]; var IsHandled: Boolean)
+    begin
+        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then
+            IsHandled := true;
+    end;
+
     // Table 39 Purchase Line
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterAssignItemValues', '', false, false)]
