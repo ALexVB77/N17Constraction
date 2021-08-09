@@ -433,6 +433,7 @@ codeunit 50010 "Payment Order Management"
         QuestionText: text;
         LocText1: Label 'Do you want to add a document to the archive of problem documents?';
         LocText2: Label '/All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!';
+        LocText50013: Label 'Document %1 has been sent to the archive.';
     begin
         PurchHeader.TestField("Process User", UserId);
         PurchRcptHeader.SetCurrentKey("Order No.");
@@ -447,61 +448,19 @@ codeunit 50010 "Payment Order Management"
         if not Confirm(QuestionText) then
             exit;
         PurchOrderActArchive(PurchHeader);
-    end;
 
-
-    /*
-    procedure PurchOrderActArchiveQst(PurchHeader: Record "Purchase Header"): Boolean;
-    var
-        UserSetup: record "User Setup";
-        LocText50000: Label 'Budget data will be deleted. Add a document to the archive of problem documents?';
-        LocText50008: Label 'Do you want to add %1 %2 to the archive of problem documents and send the Order %3 to the archive? Order-related Receipts will be canceled.';
-        LocText50009: Label 'Access is denied.';
-        LocText50010: label 'Do you want to add a document to the archive of problem documents?';
-        LocText50011: Label 'You can send a document to the archive at the stage of Controller, Approve, Signing or Accountant!';
-        LocText50012: Label 'You can send a document to the archive only at the Verification stage.';
-        Txt: Text;
-    begin
-        with PurchHeader do begin
-            IF "Location Document" THEN BEGIN
-                IF "Status App Act" <> "Status App Act"::Checker THEN
-                    ERROR(LocText50012);
-                UserSetup.GET(USERID);
-                IF "Process User" <> USERID THEN
-                    ERROR(LocText50009);
-                IF PurchHeader.GET("Document Type"::Order, "Invoice No.") THEN
-                    Txt := STRSUBSTNO(LocText50008, "Act Type", "No.", PurchHeader."No.")
-                ELSE
-                    Txt := LocText50010;
-                IF NOT CONFIRM(Txt, FALSE) THEN
-                    exit(false);
-                PurchOrderActArchive(PurchHeader);
-                IF PurchHeader.GET("Document Type"::Order, "Invoice No.") THEN
-                    PurchHeader.PurchOrderArchive();
-            END ELSE BEGIN
-                IF "Status App Act" IN
-                    ["Status App Act"::"Controller", "Status App Act"::Approve, "Status App Act"::Signing, "Status App Act"::Accountant]
-                THEN BEGIN
-                    IF "Status App Act" = "Status App Act"::Signing THEN
-                        Txt := LocText50000
-                    ELSE
-                        Txt := LocText50010;
-                    IF not CONFIRM(Txt, TRUE) THEN
-                        exit(false);
-                    PurchOrderActArchive(PurchHeader);
-                END ELSE
-                    ERROR(LocText50011);
-            END;
-        end;
+        MESSAGE(LocText50013, PurchHeader."No.");
         exit(true);
     end;
-    */
 
     local procedure PurchOrderActArchive(PurchHeader: Record "Purchase Header");
     var
         PurchInvoice: Record "Purchase Header";
+        PurchRcptHdr: Record "Purch. Rcpt. Header";
+        PurchRcptLine: Record "Purch. Rcpt. Line";
+        PaymentInvoice: Record "Purchase Header";
         gvduERPC: Codeunit "ERPC Funtions";
-        LocText50013: Label 'Document %1 has been sent to the archive.';
+        UndoPurchRcptLine: Codeunit "Undo Purchase Receipt Line";
         ArchiveMgt: Codeunit ArchiveManagement;
     begin
 
@@ -511,75 +470,84 @@ codeunit 50010 "Payment Order Management"
                 PurchInvoice.Delete(true);
         PurchHeader.Get(PurchHeader."Document Type", PurchHeader."No.");
 
-        DeleteRelatedInvoiceDoc(PurchHeader);
+        // Прих. накладные
+        if not PurchHeader."Act Invoice Posted" then begin
+            PurchRcptHdr.SetCurrentKey("Order No.");
+            PurchRcptHdr.SetRange("Order No.", PurchHeader."No.");
+            if PurchRcptHdr.IsEmpty then begin
+                PurchRcptHdr.FindSet();
+                repeat
+                    PurchRcptLine.SetRange("Document No.", PurchRcptHdr."No.");
+                    PurchRcptLine.SetRange(Type, PurchRcptLine.Type::Item);
+                    PurchRcptLine.SetFilter(Quantity, '<>0');
+                    if not PurchRcptLine.IsEmpty then begin
+                        Clear(UndoPurchRcptLine);
+                        UndoPurchRcptLine.SetHideDialog(true);
+                        UndoPurchRcptLine.Run(PurchRcptLine);
+                    end;
+                until PurchRcptHdr.next = 0;
+            end;
+        end;
+
         gvduERPC.DeleteBCPreBooking(PurchHeader); //Удаление бюджета
+
+        // Счета на оплату
+        PaymentInvoice.SetCurrentKey("Linked Purchase Order Act No.");
+        PaymentInvoice.SetRange("Linked Purchase Order Act No.", PurchHeader."No.");
+        if not PaymentInvoice.IsEmpty then begin
+            repeat
+                PurchPaymentInvoiceArchive(PaymentInvoice);
+            until PaymentInvoice.Next() = 0;
+        end;
+
         PurchHeader."Problem Document" := TRUE;
         PurchHeader."Problem Type" := PurchHeader."Problem Type"::"Act error";
-        // NC AB >>
-        // не оставляем архивный акт в T36 и T37, оправляем его в T5109 и T5110
+        // NC AB : не оставляем архивный акт в T36 и T37, оправляем его в T5109 и T5110
         // PurchHeader.MODIFY();
         PurchHeader."Archiving Type" := PurchHeader."Archiving Type"::"Problem Act";
         ArchiveMgt.StorePurchDocument(PurchHeader, false);
         PurchHeader.SetHideValidationDialog(true);
         PurchHeader.Delete(true);
-        // NC AB <<
-        MESSAGE(LocText50013, PurchHeader."No.");
     end;
 
-    procedure DeleteRelatedInvoiceDoc(var InPurchHeader: Record "Purchase Header")
+    procedure PurchPaymentInvoiceArchiveQst(PurchHeader: Record "Purchase Header"): Boolean;
     var
-        PurchHeader: record "Purchase Header";
-        PurchCommentLine: record "Purch. Comment Line";
-        DocSignMgt: codeunit "Doc. Signature Management";
-    begin
-        /*
-        IF InPurchHeader."Invoice No." <> '' THEN BEGIN
-            IF PurchHeader.GET(PurchHeader."Document Type"::Invoice, InPurchHeader."Invoice No.") THEN BEGIN
-                DocSignMgt.DeleteDocSign(DATABASE::"Purchase Header", PurchHeader."Document Type".AsInteger(), PurchHeader."No.");
-                PurchCommentLine.DeleteComments(PurchHeader."Document Type".AsInteger(), PurchHeader."No.");
-                InPurchHeader."Invoice No." := '';
-                InPurchHeader.MODIFY();
-            END;
-        END;
-        */
-    end;
-
-    procedure PurchPaymentInvoiceArchive(PurchHeader: Record "Purchase Header"): Boolean;
-    var
-        ArchiveMgt: Codeunit ArchiveManagement;
         ConfirmManagement: Codeunit "Confirm Management";
-        LocText001: Label 'Document %1 has been archived.';
         LocText007: Label 'Archive %1 no.: %2?';
+        LocText001: Label 'Document %1 has been archived.';
     begin
         PurchHeader.TestField("Status App", PurchHeader."Status App"::Payment);
-
         if not ConfirmManagement.GetResponseOrDefault(
              StrSubstNo(LocText007, PurchHeader."Document Type", PurchHeader."No."), true)
         then
             exit(false);
-        PurchHeader."Archiving Type" := PurchHeader."Archiving Type"::"Problem Act";
-        ArchiveMgt.StorePurchDocument(PurchHeader, false);
-        //NC 44684 > KGT
-        DisconnectFromAgreement(PurchHeader);
-        //NC 44684 < KGT
-        PurchHeader.SetHideValidationDialog(true);
-        PurchHeader.Delete(true);
+
+        PurchPaymentInvoiceArchive(PurchHeader);
+
         Message(LocText001, PurchHeader."No.");
         exit(true);
     end;
 
-    procedure DisconnectFromAgreement(PurchaseHeader: Record "Purchase Header")
+    local procedure PurchPaymentInvoiceArchive(PurchHeader: Record "Purchase Header");
+    var
+        ArchiveMgt: Codeunit ArchiveManagement;
+    begin
+
+
+        PurchHeader."Archiving Type" := PurchHeader."Archiving Type"::"Problem Act";
+        ArchiveMgt.StorePurchDocument(PurchHeader, false);
+        DisconnectFromAgreement(PurchHeader);
+        PurchHeader.SetHideValidationDialog(true);
+        PurchHeader.Delete(true);
+    end;
+
+    local procedure DisconnectFromAgreement(PurchaseHeader: Record "Purchase Header")
     var
         PurchaseLine: Record "Purchase Line";
         ProjectsBudgetEntry: Record "Projects Budget Entry";
-        ForecastListAnalisys: page "Forecast List Analisys";
+        ForecastListAnalisys: Page "Forecast List Analisys";
         ProjectBudgetMgt: Codeunit "Project Budget Management";
     begin
-        // debug see later
-        message('Вызов DisconnectFromAgreement');
-        exit;
-
-        //NC 44684 > KGT
         PurchaseLine.RESET;
         PurchaseLine.SETRANGE("Document Type", PurchaseHeader."Document Type");
         PurchaseLine.SETRANGE("Document No.", PurchaseHeader."No.");
@@ -592,14 +560,12 @@ codeunit 50010 "Payment Order Management"
                         PurchaseLine."Forecast Entry" := 0;
                         PurchaseLine.MODIFY;
                         ProjectBudgetMgt.DeleteSTLine(ProjectsBudgetEntry);
-                        // ForecastListAnalisys.SETRECORD(ProjectsBudgetEntry);
-                        // message('Вызов ForecastListAnalisys.DisconnectFromAgreement');
-                        // exit;
+                        ForecastListAnalisys.SETRECORD(ProjectsBudgetEntry);
+                        Error('Вызов ForecastListAnalisys.DisconnectFromAgreement');
                     END;
                 END;
             UNTIL PurchaseLine.NEXT = 0;
         END;
-        //NC 44684 < KGT
     end;
 
     local procedure CheckCostDimExists(DimensionSetID: Integer): Boolean
