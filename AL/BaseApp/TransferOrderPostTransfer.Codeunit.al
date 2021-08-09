@@ -177,6 +177,10 @@ codeunit 12469 "TransferOrder-Post Transfer"
                     DirectTransLine."Transfer-from Bin Code" := TransLine."Transfer-from Bin Code";
                     DirectTransLine."Item Category Code" := TransLine."Item Category Code";
 
+                    // NC 51410 > EP
+                    OnAfterCopyDirectTransLineFromTransLine(DirectTransLine, TransLine);
+                    // NC 51410 < EP
+
                     if TransLine.Quantity > 0 then begin
                         OriginalQuantity := TransLine.Quantity;
                         OriginalQuantityBase := TransLine."Quantity (Base)";
@@ -457,6 +461,12 @@ codeunit 12469 "TransferOrder-Post Transfer"
     [IntegrationEvent(false, false)]
     local procedure OnBeforeInsertDirectTransHeader(var DirectTransHeader: Record "Direct Transfer Header";
                                                     TransHeader: Record "Transfer Header")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterCopyDirectTransLineFromTransLine(var DirectTransLine: Record "Direct Transfer Line";
+                                                            TransLine: Record "Transfer Line")
     begin
     end;
 
