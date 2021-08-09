@@ -5,6 +5,7 @@ page 70009 "Posted Gen. Journals_"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Gen. Journal Line Archive";
+    SaveValues = true;
 
     layout
     {
@@ -257,17 +258,16 @@ page 70009 "Posted Gen. Journals_"
         AccName: Text[50];
         BalAccName: Text[50];
         ShortcutDimCode: Code[20];
-    // LineNo	Integer		
-    // OrigDim	Record	Journal Line Dimension	
-    // DestDim	Record	Journal Line Dimension	
-    // PostedGenJnlLine	Record	Gen. Journal Line Archive	
-    // GLSetup	Record	General Ledger Setup	
+        LineNo: Integer;
+        GLSetup: Record "General Ledger Setup";
+        SelectedLine: Record "Gen. Journal Line Archive";
+        i: Integer;
 
     trigger OnOpenPage()
     begin
 
 
-        if (Rec."Journal Template Name" = '') and (Rec."Journal Batch Name" = '') then begin
+        if (Template = '') and (Batch = '') then begin
             GenJnlBatch.Reset();
             GenJnlBatch.FindSet();
             CurrentJnlTemplateName := GenJnlBatch."Journal Template Name";
@@ -353,12 +353,53 @@ page 70009 "Posted Gen. Journals_"
 
     local procedure OpenJnl()
     var
-        myInt: Integer;
+
     begin
         Rec.FilterGroup := 2;
         Rec.SetRange("Journal Template Name", CurrentJnlTemplateName);
         Rec.SetRange("Journal Batch Name", CurrentJnlBatchName);
         rec.FilterGroup := 0;
         if Rec.FindSet() then;
+    end;
+
+    procedure CopyLines()
+    var
+        DimSet: Record "Dimension Set Entry";
+        TempDimSet: Record "Dimension Set Entry" temporary;
+        DimSets: array[10] of Integer;
+    begin
+        //i := SelectedLine.count;
+        GLSetup.get;
+        GenJnlLine.reset;
+        GenJnlLine.SetRange("Journal Template Name", Template);
+        GenJnlLine.SetRange("Journal Batch Name", Batch);
+        if GenJnlLine.FindLast() then
+            LineNo := GenJnlLine."Line No."
+        else
+            LineNo := 0;
+
+        if SelectedLine.FindFirst() then
+            repeat
+                LineNo += 10000;
+                GenJnlLine.Init();
+                GenJnlLine.TransferFields(SelectedLine, FALSE);
+                GenJnlLine."Journal Template Name" := Template;
+                GenJnlLine."Journal Batch Name" := Batch;
+                GenJnlLine."Line No." := LineNo;
+                DimSet.SetRange("Dimension Set ID", SelectedLine."Dimension Set ID");
+                GenJnlLine."Dimension Set ID" := DimMgt.GetDimensionSetID(DimSet);
+                GenJnlLine.insert;
+            until SelectedLine.next = 0;
+        Message('3');
+    end;
+
+
+    procedure SetSelectedLines(var GJLA: Record "Gen. Journal Line Archive")
+    var
+
+    begin
+        selectedLine.Copy(GJLA);
+
+        //i := SelectedLine.count;
     end;
 }
