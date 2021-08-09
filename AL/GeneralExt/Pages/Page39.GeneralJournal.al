@@ -28,12 +28,18 @@ pageextension 80039 "General Journal (Ext)" extends "General Journal"
                 trigger OnAction()
                 var
                     Archive: Page "Posted Gen. Journals_";
+                    ArchivedLine: Record "Gen. Journal Line Archive";
                 begin
 
                     CLEAR(Archive);
                     Archive.SetParametrs(Rec."Journal Template Name", Rec."Journal Batch Name");
                     Archive.LOOKUPMODE(TRUE);
-                    Archive.RUNMODAL;
+                    if Archive.RUNMODAL = Action::LookupOK then begin
+                        Archive.SetSelectionFilter(ArchivedLine);
+                        Archive.SetSelectedLines(ArchivedLine);
+                        Archive.CopyLines();
+
+                    end;
                 end;
 
             }
