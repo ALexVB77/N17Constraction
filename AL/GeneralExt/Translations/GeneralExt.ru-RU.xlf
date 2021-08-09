@@ -9299,7 +9299,7 @@
         </trans-unit>
         <trans-unit id="Page 1370391159 - Method 1591721637 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>No payment journal lines were created from document %1.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Из документа %1 не создано ни одной строки журнала платежей.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Method OpenPaymentRequestCard - NamedType LocText001</note>
@@ -9414,7 +9414,7 @@
         </trans-unit>
         <trans-unit id="Page 1370391159 - Action 1343343608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Request (Journal)</source>
-          <target>[NAB: REVIEW]Заявка</target>
+          <target>Заявка (журнал)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewRequest - Property Caption</note>
