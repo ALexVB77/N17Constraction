@@ -7748,6 +7748,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1370391159 - Method 1591721637 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No payment journal lines were created from document %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Method OpenPaymentRequestCard - NamedType LocText001</note>
+        </trans-unit>
         <trans-unit id="Page 1370391159 - Control 870794884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Selection</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7839,7 +7844,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewProblemDoc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1370391159 - Action 1343343608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Request</source>
+          <source>Request (Journal)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewRequest - Property Caption</note>
         </trans-unit>

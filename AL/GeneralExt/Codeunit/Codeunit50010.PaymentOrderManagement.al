@@ -1361,7 +1361,7 @@ codeunit 50010 "Payment Order Management"
         PurchHeader.SetRange("Problem Document", true);
         if PurchHeader.IsEmpty then
             Error(LocText001);
-        if not Confirm(LocText001) then
+        if not Confirm(LocText002) then
             exit;
         PurchHeader.FindSet();
         repeat

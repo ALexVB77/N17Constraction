@@ -9297,6 +9297,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1370391159 - Method 1591721637 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No payment journal lines were created from document %1.</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Method OpenPaymentRequestCard - NamedType LocText001</note>
+        </trans-unit>
         <trans-unit id="Page 1370391159 - Control 870794884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Selection</source>
           <target>Отбор</target>
@@ -9406,9 +9413,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewProblemDoc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1370391159 - Action 1343343608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Request</source>
-          <target>Заявка</target>
+          <source>Request (Journal)</source>
+          <target>[NAB: REVIEW]Заявка</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Action ViewRequest - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3437592965 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
@@ -13333,7 +13341,6 @@
           <source>Specifies if the Unit Price and Line Amount fields on document lines should be shown with or without VAT.</source>
           <target>Определяет, должны ли поля "Цена единицы" и "Сумма строки" в строках документа содержать значения с НДС или без НДС.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Vendor Agreement Card (Ext) - Control Prices Including VAT - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1592470163 - Control 3060609304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3623928019">
