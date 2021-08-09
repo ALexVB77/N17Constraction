@@ -365,6 +365,8 @@ page 70009 "Posted Gen. Journals_"
     procedure CopyLines()
     var
         DimSet: Record "Dimension Set Entry";
+        TempDimSet: Record "Dimension Set Entry" temporary;
+        DimSets: array[10] of Integer;
     begin
         //i := SelectedLine.count;
         GLSetup.get;
@@ -386,9 +388,9 @@ page 70009 "Posted Gen. Journals_"
                 GenJnlLine."Line No." := LineNo;
                 DimSet.SetRange("Dimension Set ID", SelectedLine."Dimension Set ID");
                 GenJnlLine."Dimension Set ID" := DimMgt.GetDimensionSetID(DimSet);
-                //DimSet.GetDimensionSetID(DimSet);
                 GenJnlLine.insert;
             until SelectedLine.next = 0;
+        Message('3');
     end;
 
 
