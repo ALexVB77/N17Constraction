@@ -385,7 +385,8 @@ page 70009 "Posted Gen. Journals_"
                 GenJnlLine."Journal Batch Name" := Batch;
                 GenJnlLine."Line No." := LineNo;
                 DimSet.SetRange("Dimension Set ID", SelectedLine."Dimension Set ID");
-                GenJnlLine."Dimension Set ID" := DimSet.GetDimensionSetID(DimSet);
+                GenJnlLine."Dimension Set ID" := DimMgt.GetDimensionSetID(DimSet);
+                //DimSet.GetDimensionSetID(DimSet);
                 GenJnlLine.insert;
             until SelectedLine.next = 0;
     end;
