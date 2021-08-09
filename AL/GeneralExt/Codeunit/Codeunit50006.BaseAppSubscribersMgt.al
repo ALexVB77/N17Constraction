@@ -1010,13 +1010,22 @@ codeunit 50006 "Base App. Subscribers Mgt."
     local procedure OnPurchaseHeaderAfterDelete(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
     var
         GenJnlLine: record "Gen. Journal Line";
+        PurchOrder: Record "Purchase Header";
     begin
         if (not RunTrigger) or Rec.IsTemporary then
             exit;
+
         GenJnlLine.SetCurrentKey("IW Document No.");
         GenJnlLine.SetRange("IW Document No.", Rec."No.");
         if not GenJnlLine.IsEmpty then
             GenJnlLine.DeleteAll(true);
+
+        PurchOrder.SetCurrentKey("Act Invoice No.", "Act Invoice Posted", "Act Type");
+        PurchOrder.SetRange("Act Invoice No.", Rec."No.");
+        PurchOrder.SetRange("Act Invoice Posted", false);
+        PurchOrder.SetFilter("Act Type", '<>%1', PurchOrder."Act Type"::" ");
+        if not PurchOrder.IsEmpty then
+            PurchOrder.ModifyAll("Act Invoice No.", '');
     end;
 
     // Table 39 Purchase Line
@@ -1060,11 +1069,14 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
 
     // Report 12453 Return Prepayment
+
     [EventSubscriber(ObjectType::Report, Report::"Return Prepayment", 'OnAfterFillVendCVLedgEntryBuf', '', false, false)]
     local procedure OnReturnPrepAfterFillVendCVLedgEntryBuf(VendLedgEntry: Record "Vendor Ledger Entry"; var CVLedgEntryBuf: Record "CV Ledger Entry Buffer")
     begin
         CVLedgEntryBuf."IW Document No." := VendLedgEntry."IW Document No.";
     end;
+
+    // Codeunit 90 Purch.-Post    
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]
     local procedure SendVendorAgreementMail(var PurchaseHeader: Record "Purchase Header")
@@ -1098,6 +1110,25 @@ codeunit 50006 "Base App. Subscribers Mgt."
                             Error(Text001);
                         end;
                 end;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPurchInvHeaderInsert', '', false, false)]
+    local procedure OnAfterPurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header")
+    var
+        PurchOrder: Record "Purchase Header";
+    begin
+        if PurchHeader."Document Type" = PurchHeader."Document Type"::Invoice then begin
+            PurchOrder.SetCurrentKey("Act Invoice No.", "Act Invoice Posted", "Act Type");
+            PurchOrder.SetRange("Act Invoice No.", PurchHeader."No.");
+            PurchOrder.SetRange("Act Invoice Posted", false);
+            PurchOrder.SetFilter("Act Type", '<>%1', PurchOrder."Act Type"::" ");
+            if not PurchOrder.IsEmpty then begin
+                PurchOrder.FindFirst;
+                PurchOrder."Act Invoice No." := PurchInvHeader."No.";
+                PurchOrder."Act Invoice Posted" := true;
+                PurchOrder.Modify();
+            end;
         end;
     end;
 
@@ -1245,6 +1276,9 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ToPurchaseHeader.Receptionist := OldPurchaseHeader.Receptionist;
         ToPurchaseHeader."Linked Purchase Order Act No." := '';
         ToPurchaseHeader."Payment Type" := OldPurchaseHeader."Payment Type";
+
+        ToPurchaseHeader."Act Invoice No." := '';
+        ToPurchaseHeader."Act Invoice Posted" := false;
 
         if (FromPurchHeader."Act Type" <> FromPurchHeader."Act Type"::" ") and ToPurchaseHeader."IW Documents" then
             ToPurchaseHeader."Vendor Invoice No." := '';

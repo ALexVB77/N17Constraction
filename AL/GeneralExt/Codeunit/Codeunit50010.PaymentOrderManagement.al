@@ -429,18 +429,28 @@ codeunit 50010 "Payment Order Management"
     procedure PurchOrderActArchiveQstNew(PurchHeader: Record "Purchase Header"): Boolean;
     var
         PurchRcptHeader: Record "Purch. Rcpt. Header";
+        PaymentInvoice: Record "Purchase Header";
         QuestionText: text;
         LocText1: Label 'Do you want to add a document to the archive of problem documents?';
-    // LocText2: Label
+        LocText2: Label '/All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!';
     begin
         PurchHeader.TestField("Process User", UserId);
         PurchRcptHeader.SetCurrentKey("Order No.");
         PurchRcptHeader.SetRange("Order No.", PurchHeader."No.");
-        //if (not PurchRcptHeader.IsEmpty) or (PurchHeader."Invoice No." <> '') then
-        //    QuestionText := 
+
+        PaymentInvoice.SetCurrentKey("Linked Purchase Order Act No.");
+        PaymentInvoice.SetRange("Linked Purchase Order Act No.", PurchHeader."No.");
+
+        QuestionText := LocText1;
+        if (not PurchRcptHeader.IsEmpty) or ((PurchHeader."Act Invoice No." <> '') and (not PurchHeader."Act Invoice Posted")) or (not PaymentInvoice.IsEmpty) then
+            QuestionText += LocText2;
+        if not Confirm(QuestionText) then
+            exit;
+        PurchOrderActArchive(PurchHeader);
     end;
 
 
+    /*
     procedure PurchOrderActArchiveQst(PurchHeader: Record "Purchase Header"): Boolean;
     var
         UserSetup: record "User Setup";
@@ -485,13 +495,22 @@ codeunit 50010 "Payment Order Management"
         end;
         exit(true);
     end;
+    */
 
     local procedure PurchOrderActArchive(PurchHeader: Record "Purchase Header");
     var
+        PurchInvoice: Record "Purchase Header";
         gvduERPC: Codeunit "ERPC Funtions";
         LocText50013: Label 'Document %1 has been sent to the archive.';
         ArchiveMgt: Codeunit ArchiveManagement;
     begin
+
+        // Закрывающий счет на все приходные накладные 
+        IF (PurchHeader."Act Invoice No." <> '') and (not PurchHeader."Act Invoice Posted") THEN
+            IF PurchInvoice.GET(PurchInvoice."Document Type"::Invoice, PurchHeader."Act Invoice No.") THEN
+                PurchInvoice.Delete(true);
+        PurchHeader.Get(PurchHeader."Document Type", PurchHeader."No.");
+
         DeleteRelatedInvoiceDoc(PurchHeader);
         gvduERPC.DeleteBCPreBooking(PurchHeader); //Удаление бюджета
         PurchHeader."Problem Document" := TRUE;
@@ -513,6 +532,7 @@ codeunit 50010 "Payment Order Management"
         PurchCommentLine: record "Purch. Comment Line";
         DocSignMgt: codeunit "Doc. Signature Management";
     begin
+        /*
         IF InPurchHeader."Invoice No." <> '' THEN BEGIN
             IF PurchHeader.GET(PurchHeader."Document Type"::Invoice, InPurchHeader."Invoice No.") THEN BEGIN
                 DocSignMgt.DeleteDocSign(DATABASE::"Purchase Header", PurchHeader."Document Type".AsInteger(), PurchHeader."No.");
@@ -521,6 +541,7 @@ codeunit 50010 "Payment Order Management"
                 InPurchHeader.MODIFY();
             END;
         END;
+        */
     end;
 
     procedure PurchPaymentInvoiceArchive(PurchHeader: Record "Purchase Header"): Boolean;
@@ -1207,10 +1228,10 @@ codeunit 50010 "Payment Order Management"
         CopyDocMgt.SetProperties(true, false, false, false, true, PurchSetup."Exact Cost Reversing Mandatory", false);
         CopyDocMgt.CopyPurchDoc(FromDocType, PurchHeader."No.", PurchHeaderInv);
 
-        PurchHeader."Invoice No." := PurchHeaderInv."No.";
+        PurchHeader."Act Invoice No." := PurchHeaderInv."No.";
+        PurchHeader."Act Invoice Posted" := false;
         PurchHeader.Modify();
 
-        PurchHeaderInv."Linked Purchase Order Act No." := PurchHeader."No.";
         PurchHeaderInv."Pre-booking Document" := true;
         PurchHeaderInv."Act Type" := PurchHeaderInv."Act Type"::" ";
         PurchHeaderInv."Process User" := '';

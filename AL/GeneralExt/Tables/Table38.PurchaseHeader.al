@@ -404,11 +404,19 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         //     OptionMembers = " ","Controler app","Estimator app","Estimator rej","Checker app","Checker rej","Approver app","Approver rej";
         // }
 
-        field(90006; "Invoice No."; Code[20])
+        field(90006; "Act Invoice No."; Code[20])
         {
-            Caption = 'Invoice No.';
+            Caption = 'Act Invoice No.';
             Description = 'NC 51373 AB';
-            TableRelation = "Purchase Header"."No." WHERE("Document Type" = CONST(Invoice));
+            TableRelation =
+            if ("Act Invoice Posted" = const(false)) "Purchase Header"."No." WHERE("Document Type" = CONST(Invoice))
+            else
+            if ("Act Invoice Posted" = const(true)) "Purch. Inv. Header"."No.";
+        }
+        field(90007; "Act Invoice Posted"; Boolean)
+        {
+            Caption = 'Act Invoice Posted';
+            Description = 'NC 51373 AB';
         }
 
         // NC AB: не будем использовать
@@ -458,6 +466,9 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         key(Key50000; "IW Documents", "Linked Purchase Order Act No.")
         {
             SumIndexFields = "Invoice Amount Incl. VAT";
+        }
+        key(Key50001; "Act Invoice No.", "Act Invoice Posted", "Act Type")
+        {
         }
     }
 

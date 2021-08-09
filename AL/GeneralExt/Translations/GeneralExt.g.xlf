@@ -4618,40 +4618,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchive - NamedType LocText50013</note>
         </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 2136127796 - NamedType 114918332" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Budget data will be deleted. Add a document to the archive of problem documents?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQst - NamedType LocText50000</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 2136127796 - NamedType 921523972" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Do you want to add %1 %2 to the archive of problem documents and send the Order %3 to the archive? Order-related Receipts will be canceled.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQst - NamedType LocText50008</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 2136127796 - NamedType 283827355" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Access is denied.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQst - NamedType LocText50009</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 2136127796 - NamedType 4133353355" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Do you want to add a document to the archive of problem documents?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQst - NamedType LocText50010</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 2136127796 - NamedType 476082676" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You can send a document to the archive at the stage of Controller, Approve, Signing or Accountant!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQst - NamedType LocText50011</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 2136127796 - NamedType 1113779293" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You can send a document to the archive only at the Verification stage.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQst - NamedType LocText50012</note>
-        </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 3935502648" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to add a document to the archive of problem documents?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText1</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 278231969" size-unit="char" translate="yes" xml:space="preserve">
+          <source>/All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText2</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 1715794959 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document %1 has been archived.</source>
@@ -12023,6 +11998,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Method SetApprovalCommentText - NamedType NoReqToApproveErr</note>
         </trans-unit>
+        <trans-unit id="TableExtension 279653624 - Field 3321113828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Act Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Act Invoice No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 279653624 - Field 2338624330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Act Invoice Posted</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Act Invoice Posted - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 279653624 - Field 3075689437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Act is Received</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12082,11 +12067,6 @@
           <source>Invoice Amount Incl. VAT</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Invoice Amount Incl. VAT - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 279653624 - Field 166038250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
-          <source>Invoice No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Invoice No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 279653624 - Field 3673885986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>VAT Amount</source>

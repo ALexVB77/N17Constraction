@@ -190,19 +190,27 @@ page 70260 "Purchase Order Act"
                         Rec.SetApprovalCommentText(ProblemDescription);
                     end;
                 }
-                field("Invoice No."; Rec."Invoice No.")
+                field("Act Invoice No."; Rec."Act Invoice No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
 
                     trigger OnAssistEdit()
                     var
-                        PurchHeaderInv: Record "Purchase Header";
+                        PurchaseHeader: record "Purchase Header";
+                        PurchInvHeader: record "Purch. Inv. Header";
                     begin
-                        if "Invoice No." <> '' then begin
-                            PurchHeaderInv.SetRange("Document Type", PurchHeaderInv."Document Type"::Invoice);
-                            PurchHeaderInv.SetRange("No.", "Invoice No.");
-                            Page.RunModal(Page::"Purchase Invoice", PurchHeaderInv);
+                        if "Act Invoice No." = '' then
+                            exit;
+                        if not "Act Invoice Posted" then begin
+                            PurchaseHeader.Get("Document Type"::Invoice, "Act Invoice No.");
+                            PurchaseHeader.SetRange("Document Type", "Document Type"::Invoice);
+                            PurchaseHeader.SetRange("No.", "Act Invoice No.");
+                            Page.Run(Page::"Purchase Invoice", PurchaseHeader);
+                        end else begin
+                            PurchInvHeader.Get("Act Invoice No.");
+                            PurchInvHeader.SetRange("No.", "Act Invoice No.");
+                            Page.Run(Page::"Posted Purchase Invoice", PurchInvHeader);
                         end;
                     end;
                 }
@@ -647,7 +655,7 @@ page 70260 "Purchase Order Act"
 
                     trigger OnAction()
                     begin
-                        if PaymentOrderMgt.PurchOrderActArchiveQst(Rec) then
+                        if PaymentOrderMgt.PurchOrderActArchiveQstNew(Rec) then
                             CurrPage.Close();
                     end;
                 }
