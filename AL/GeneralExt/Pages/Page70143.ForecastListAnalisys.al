@@ -579,6 +579,9 @@ page 70143 "Forecast List Analisys"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         CheckAllowChanges();
+        Rec.TestField("Shortcut Dimension 1 Code");
+        Rec.TestField(Date);
+        Rec.TestField("Without VAT (LCY)");
     end;
 
     trigger OnModifyRecord(): Boolean
