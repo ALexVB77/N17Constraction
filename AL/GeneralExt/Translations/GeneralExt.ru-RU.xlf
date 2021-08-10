@@ -4065,6 +4065,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Projects Cost Control Entry - Field Temp Line No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2622754722 - Field 3235876235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Created</source>
+          <target>Создано пользователем</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Projects Cost Control Entry - Field User Created - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2622754722 - Field 1246077090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT %</source>
           <target>НДС (%)</target>
@@ -5851,7 +5858,6 @@
           <source>Data selection options</source>
           <target>Параметры отбора данных</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Budget Correction Card - Control Control12370022 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2285829057 - Control 2553548118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9027,6 +9033,34 @@
           <target>Projects CC Entry Constr 2</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - Action 3640084062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change Log</source>
+          <target>Протокол изменений</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Action ChangeLog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - Action 2178240014 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change</source>
+          <target>Изменить</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Action ChangeRec - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - Action 2570042056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Manual Input</source>
+          <target>Ручной ввод</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Action ManualInput - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - Action 505149012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reverse</source>
+          <target>Сторнировать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Action Reverse - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3500269424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Projects Version</source>

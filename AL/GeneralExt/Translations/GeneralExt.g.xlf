@@ -3388,6 +3388,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Projects Cost Control Entry - Field Temp Line No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2622754722 - Field 3235876235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User Created</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Projects Cost Control Entry - Field User Created - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2622754722 - Field 1246077090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT %</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7522,6 +7527,26 @@
           <source>Projects CC Entry Constr 2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - Action 3640084062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Action ChangeLog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - Action 2178240014 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Action ChangeRec - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - Action 2570042056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Manual Input</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Action ManualInput - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - Action 505149012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reverse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Action Reverse - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3500269424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Projects Version</source>

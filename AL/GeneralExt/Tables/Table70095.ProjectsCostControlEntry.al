@@ -466,6 +466,10 @@ table 70095 "Projects Cost Control Entry"
         //     Caption = 'IFRS Account No.';
         //     FieldClass = FlowField;
         // }
+        field(70025; "User Created"; Boolean)
+        {
+            Caption = 'User Created';
+        }
         // field(70030; "Frc Version Code"; Code[20])
         // {
         // }
