@@ -5088,6 +5088,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cash Flow Transaction Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2465502814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Change Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2465502814 - Action 1068937304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Change Entry - Action Apply - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2081427051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Control Construction</source>
           <note from="Developer" annotates="general" priority="2"></note>
