@@ -29,6 +29,8 @@ codeunit 81521 "Workflow Response Handling Ext"
                 MoveToPrevActStatus(Variant, ResponseWorkflowStepInstance);
             DelegateApprovalRequestsActCode:
                 DelegateApprovalRequestsAct(Variant, ResponseWorkflowStepInstance);
+            CancelApprovalRequestsActCode:
+                CancelApprovalRequestsAct(Variant, ResponseWorkflowStepInstance);
             else
                 exit;
         end;
@@ -71,6 +73,25 @@ codeunit 81521 "Workflow Response Handling Ext"
         ApprovalsMgmtExt.DelegateApprovalRequestsPurchActAndPayInv(RecRef, WorkflowStepInstance);
     end;
 
+    local procedure CancelApprovalRequestsAct(Variant: Variant; WorkflowStepInstance: Record "Workflow Step Instance")
+    var
+        ApprovalEntry: Record "Approval Entry";
+        ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
+        RecRef: RecordRef;
+    begin
+        RecRef.GetTable(Variant);
+        case RecRef.Number of
+            DATABASE::"Approval Entry":
+                begin
+                    ApprovalEntry := Variant;
+                    RecRef.Get(ApprovalEntry."Record ID to Approve");
+                    CancelApprovalRequestsAct(RecRef, WorkflowStepInstance);
+                end;
+            else
+                ApprovalsMgmtExt.CancelOpenApprovalRequestsForRecord(RecRef, WorkflowStepInstance);
+        end;
+    end;
+
     procedure CreateApprovalRequestsActCode(): Code[128]
     begin
         exit(UpperCase('CreateApprovalRequestsAct'));
@@ -89,6 +110,11 @@ codeunit 81521 "Workflow Response Handling Ext"
     procedure DelegateApprovalRequestsActCode(): Code[128]
     begin
         exit(UpperCase('DelegateApprovalRequestsAct'));
+    end;
+
+    procedure CancelApprovalRequestsActCode(): Code[128]
+    begin
+        exit(UpperCase('CancelApprovalRequestsAct'));
     end;
 
 }

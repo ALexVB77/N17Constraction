@@ -192,7 +192,7 @@ page 70130 "Purchase List Controller"
             action(ViewRequest)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Request';
+                Caption = 'Request (Journal)';
                 Image = View;
 
                 trigger OnAction()
@@ -383,16 +383,33 @@ page 70130 "Purchase List Controller"
     var
         GenJnlLine: Record "Gen. Journal Line";
         PaymentRequestCard: Page "Payment Request Card";
+        PaymentJournal: page "Payment Journal";
+        MultiLine: Boolean;
+        LocText001: Label 'No payment journal lines were created from document %1.';
     begin
-        if LinkedGenJnlLine."Line No." = 0 then
+        if LinkedGenJnlLine."Line No." = 0 then begin
+            Message(LocText001, "No.");
             exit;
+        end;
 
+        GenJnlLine.SetCurrentKey("IW Document No.");
+        GenJnlLine.SetRange("IW Document No.", "No.");
+        MultiLine := GenJnlLine.Count > 1;
+
+        GenJnlLine.Reset();
         GenJnlLine.SetRange("Journal Template Name", LinkedGenJnlLine."Journal Template Name");
         GenJnlLine.SetRange("Journal Batch Name", LinkedGenJnlLine."Journal Batch Name");
         GenJnlLine.SetRange("Line No.", LinkedGenJnlLine."Line No.");
-        PaymentRequestCard.SetTableView(GenJnlLine);
-        PaymentRequestCard.SetRecord(GenJnlLine);
-        PaymentRequestCard.Run();
+
+        if not MultiLine then begin
+            PaymentRequestCard.SetTableView(GenJnlLine);
+            PaymentRequestCard.SetRecord(GenJnlLine);
+            PaymentRequestCard.Run();
+        end else begin
+            PaymentJournal.SetTableView(GenJnlLine);
+            PaymentJournal.SetRecord(GenJnlLine);
+            PaymentJournal.Run();
+        end;
     end;
 
 }

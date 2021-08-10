@@ -197,7 +197,6 @@ codeunit 70000 "ERPC Funtions"
 
     procedure DeleteInvoice(prInvoice: record "Purchase Header"): boolean
     var
-        grPurchPay: record "Purchases & Payables Setup";
         lrGenJnlLine: record "Gen. Journal Line";
         LocText001: Label 'Do you want to delete Payment Invoice %1 for %2?';
         LocText002: Label 'There are Cash Flow linked lines. Continue?';
@@ -207,39 +206,18 @@ codeunit 70000 "ERPC Funtions"
         // функция подвешена не к кнопке, на на триггер OnDelete, поэтому саму запись prInvoice не удаляем
         // само удаление надо повесть на триггер OnDelete таблицы 38
 
-        //NC 44343 > KGT
         IF prInvoice."Status App" = prInvoice."Status App"::Payment THEN
             ERROR(LocText50021, prInvoice."No.");
-        //NC 44343 < KGT
 
-        IF CONFIRM(STRSUBSTNO(LocText001, prInvoice."No.", prInvoice."Buy-from Vendor Name")) THEN BEGIN
-            //NC 29594 HR beg
-            IF prInvoice.HasBoundedCashFlows THEN BEGIN
-                IF NOT CONFIRM(LocText002, FALSE) THEN
-                    EXIT(false);
-            END;
-            //NC 29594 HR end
+        // IF CONFIRM(STRSUBSTNO(LocText001, prInvoice."No.", prInvoice."Buy-from Vendor Name")) THEN BEGIN
+        IF prInvoice.HasBoundedCashFlows THEN
+            IF NOT CONFIRM(LocText002, FALSE) THEN
+                EXIT(false);
 
-            grPurchPay.GET;
+        // NC AB: удаление связанных строк журнала в подписчике OnPurchaseHeaderAfterDelete()
 
-            Message('Вызвано удаление строк фин. журнала из DeleteInvoice() CU 70000. ПРОВЕРИТЬ!');
-            /*
-            lrGenJnlLine.SETRANGE("Journal Template Name", grPurchPay."Payment Calendar Tmpl");
-            lrGenJnlLine.SETRANGE("Journal Batch Name", grPurchPay."Payment Calendar Batch");
-            lrGenJnlLine.SETRANGE("Document No.", prInvoice."No.");
-            IF lrGenJnlLine.FINDFIRST THEN 
-                lrGenJnlLine.DELETEALL(TRUE);
-            */
-
-            // NC AB >>
-            // // SWC DD 25.05.17 >>
-            // prInvoice.GET(prInvoice."Document Type", prInvoice."No.");
-            // // SWC DD 25.05.17 <<
-            // prInvoice.DELETE(TRUE);
-            // NC AB <<
-            exit(true);
-
-        END;
+        exit(true);
+        // END;
     end;
 
     // NC AB: не используется, к удалению!

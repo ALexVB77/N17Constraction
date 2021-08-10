@@ -262,4 +262,26 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
         ApprovalsMgmt.OnRejectApprovalRequest(ApprovalEntry);
     end;
 
+    procedure CancelOpenApprovalRequestsForRecord(RecRef: RecordRef; WorkflowStepInstance: Record "Workflow Step Instance")
+    var
+        ApprovalEntry: Record "Approval Entry";
+        ApprovalEntryToUpdate: Record "Approval Entry";
+        OldStatus: Enum "Approval Status";
+    begin
+        ApprovalEntry.SetCurrentKey("Table ID", "Document Type", "Document No.", "Sequence No.");
+        ApprovalEntry.SetRange("Table ID", RecRef.Number);
+        ApprovalEntry.SetRange("Record ID to Approve", RecRef.RecordId);
+        ApprovalEntry.SetFilter(Status, '%1|%2', ApprovalEntry.Status::Created, ApprovalEntry.Status::Open);
+        ApprovalEntry.SetRange("Workflow Step Instance ID", WorkflowStepInstance.ID);
+        if ApprovalEntry.FindSet() then
+            repeat
+                OldStatus := ApprovalEntry.Status;
+                ApprovalEntryToUpdate := ApprovalEntry;
+                ApprovalEntryToUpdate.Validate(Status, ApprovalEntryToUpdate.Status::Canceled);
+                ApprovalEntryToUpdate.Modify(true);
+                if OldStatus = ApprovalEntry.Status::Open then
+                    ApprovalsMgmt.CreateApprovalEntryNotification(ApprovalEntryToUpdate, WorkflowStepInstance);
+            until ApprovalEntry.Next = 0;
+    end;
+
 }

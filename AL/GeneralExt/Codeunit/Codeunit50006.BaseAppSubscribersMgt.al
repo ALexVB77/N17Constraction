@@ -752,6 +752,15 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
     // NC 51411 < EP
 
+    // NC 51410 > EP
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnAfterCopyDirectTransLineFromTransLine', '', false, false)]
+    local procedure OnAfterCopyDirectTransLineFromTransLine(var DirectTransLine: Record "Direct Transfer Line";
+                                                            TransLine: Record "Transfer Line");
+    begin
+        DirectTransLine."Dimension Set ID" := TransLine."Dimension Set ID";
+    end;
+    // NC 51410 < EP
+
     // cu 12469 <<
 
 
@@ -822,6 +831,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
     var
         DocAttach: Record "Document Attachment";
         DocAttachArch: Record "Document Attachment Archive";
+        ApprovalEntry, ApprovalEntryAcr : Record "Approval Entry";
     begin
         if PurchaseHeader."Archiving Type" = PurchaseHeader."Archiving Type"::" " then
             exit;
@@ -843,6 +853,18 @@ codeunit 50006 "Base App. Subscribers Mgt."
                 DocAttachArch."Document Reference ID" := DocAttach."Document Reference ID";
                 DocAttachArch.INSERT;
             until DocAttach.Next() = 0;
+
+        ApprovalEntry.SetCurrentKey("Table ID", "Record ID to Approve");
+        ApprovalEntry.SetRange("Table ID", Database::"Purchase Header");
+        ApprovalEntry.SetRange("Record ID to Approve", PurchaseHeader.RecordId);
+        if ApprovalEntry.FindSet() then
+            repeat
+                ApprovalEntryAcr := ApprovalEntry;
+                ApprovalEntryAcr."Table ID" := Database::"Purchase Header Archive";
+                ApprovalEntryAcr."Record ID to Approve" := PurchaseHeaderArchive.RecordId;
+                ApprovalEntryAcr."Entry No." := 0;
+                ApprovalEntryAcr.Insert;
+            until ApprovalEntry.Next() = 0;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Transfer Document", 'OnBeforeCheckTransLines', '', false, false)]
@@ -949,29 +971,6 @@ codeunit 50006 "Base App. Subscribers Mgt."
     begin
         if PurchaseHeader."Document Type" <> PurchaseHeader."Document Type"::"Credit Memo" then
             PurchaseHeader."Payment Details" := Vendor.Name;
-        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
-            PurchSetup.Get();
-            if PurchSetup."Prices Incl. VAT in Req. Doc." then
-                PurchaseHeader.Validate("Prices Including VAT", true);
-        end;
-    end;
-
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnValidatePurchaseHeaderAgreementNo', '', false, false)]
-    local procedure OnValidatePurchaseHeaderAgreementNo(VendAgr: Record "Vendor Agreement"; var PurchaseHeader: Record "Purchase Header")
-    var
-        PurchSetup: Record "Purchases & Payables Setup";
-    begin
-        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
-            PurchSetup.Get();
-            if PurchSetup."Prices Incl. VAT in Req. Doc." then
-                PurchaseHeader.Validate("Prices Including VAT", true);
-        end;
-    end;
-
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', false, false)]
-    local procedure OnPurchaseHeaderAfterDelete(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
-    begin
-
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterCreateDimTableIDs', '', false, false)]
@@ -1003,6 +1002,52 @@ codeunit 50006 "Base App. Subscribers Mgt."
     begin
         if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then
             IsHandled := true;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnBeforeValidatePurchaseHeaderAgreementNo', '', false, false)]
+    local procedure OnBeforeValidatePurchaseHeaderAgreementNo(var VendAgr: Record "Vendor Agreement"; var PurchaseHeader: Record "Purchase Header")
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
+    begin
+        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
+            PurchSetup.Get();
+            if PurchSetup."Prices Incl. VAT in Req. Doc." then
+                VendAgr."Prices Including VAT" := true;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterCheckPayToVendor', '', false, false)]
+    local procedure OnAfterCheckPayToVendor(var PurchaseHeader: Record "Purchase Header"; xPurchaseHeader: Record "Purchase Header"; var Vendor: Record Vendor)
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
+    begin
+        if (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::" ") or PurchaseHeader."IW Documents" then begin
+            PurchSetup.Get();
+            if PurchSetup."Prices Incl. VAT in Req. Doc." then
+                Vendor."Prices Including VAT" := true;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterDeleteEvent', '', false, false)]
+    local procedure OnPurchaseHeaderAfterDelete(var Rec: Record "Purchase Header"; RunTrigger: Boolean)
+    var
+        GenJnlLine: record "Gen. Journal Line";
+        PurchOrder: Record "Purchase Header";
+    begin
+        if (not RunTrigger) or Rec.IsTemporary then
+            exit;
+
+        GenJnlLine.SetCurrentKey("IW Document No.");
+        GenJnlLine.SetRange("IW Document No.", Rec."No.");
+        if not GenJnlLine.IsEmpty then
+            GenJnlLine.DeleteAll(true);
+
+        PurchOrder.SetCurrentKey("Act Invoice No.", "Act Invoice Posted", "Act Type");
+        PurchOrder.SetRange("Act Invoice No.", Rec."No.");
+        PurchOrder.SetRange("Act Invoice Posted", false);
+        PurchOrder.SetFilter("Act Type", '<>%1', PurchOrder."Act Type"::" ");
+        if not PurchOrder.IsEmpty then
+            PurchOrder.ModifyAll("Act Invoice No.", '');
     end;
 
     // Table 39 Purchase Line
@@ -1046,11 +1091,14 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
 
     // Report 12453 Return Prepayment
+
     [EventSubscriber(ObjectType::Report, Report::"Return Prepayment", 'OnAfterFillVendCVLedgEntryBuf', '', false, false)]
     local procedure OnReturnPrepAfterFillVendCVLedgEntryBuf(VendLedgEntry: Record "Vendor Ledger Entry"; var CVLedgEntryBuf: Record "CV Ledger Entry Buffer")
     begin
         CVLedgEntryBuf."IW Document No." := VendLedgEntry."IW Document No.";
     end;
+
+    // Codeunit 90 Purch.-Post    
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]
     local procedure SendVendorAgreementMail(var PurchaseHeader: Record "Purchase Header")
@@ -1084,6 +1132,25 @@ codeunit 50006 "Base App. Subscribers Mgt."
                             Error(Text001);
                         end;
                 end;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPurchInvHeaderInsert', '', false, false)]
+    local procedure OnAfterPurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header")
+    var
+        PurchOrder: Record "Purchase Header";
+    begin
+        if PurchHeader."Document Type" = PurchHeader."Document Type"::Invoice then begin
+            PurchOrder.SetCurrentKey("Act Invoice No.", "Act Invoice Posted", "Act Type");
+            PurchOrder.SetRange("Act Invoice No.", PurchHeader."No.");
+            PurchOrder.SetRange("Act Invoice Posted", false);
+            PurchOrder.SetFilter("Act Type", '<>%1', PurchOrder."Act Type"::" ");
+            if not PurchOrder.IsEmpty then begin
+                PurchOrder.FindFirst;
+                PurchOrder."Act Invoice No." := PurchInvHeader."No.";
+                PurchOrder."Act Invoice Posted" := true;
+                PurchOrder.Modify();
+            end;
         end;
     end;
 
@@ -1230,6 +1297,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ToPurchaseHeader.Controller := OldPurchaseHeader.Controller;
         ToPurchaseHeader.Receptionist := OldPurchaseHeader.Receptionist;
         ToPurchaseHeader."Linked Purchase Order Act No." := '';
-    end;
+        ToPurchaseHeader."Payment Type" := OldPurchaseHeader."Payment Type";
 
+        ToPurchaseHeader."Act Invoice No." := '';
+        ToPurchaseHeader."Act Invoice Posted" := false;
+
+        if (FromPurchHeader."Act Type" <> FromPurchHeader."Act Type"::" ") and ToPurchaseHeader."IW Documents" then
+            ToPurchaseHeader."Vendor Invoice No." := '';
+    end;
 }

@@ -468,7 +468,7 @@ page 70000 "Purchase Order App"
 
                     trigger OnAction()
                     begin
-                        if PaymentOrderMgt.PurchPaymentInvoiceArchive(Rec) then
+                        if PaymentOrderMgt.PurchPaymentInvoiceArchiveQst(Rec) then
                             CurrPage.Close();
                     end;
                 }

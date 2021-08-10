@@ -92,7 +92,7 @@ page 70262 "Purchase List Act"
                     Caption = 'Approver';
                     Editable = false;
                 }
-                field("Invoice No."; "Invoice No.")
+                field("Act Invoice No."; "Act Invoice No.")
                 {
                     ApplicationArea = All;
                     trigger OnDrillDown()
@@ -100,28 +100,18 @@ page 70262 "Purchase List Act"
                         PurchaseHeader: record "Purchase Header";
                         PurchInvHeader: record "Purch. Inv. Header";
                     begin
-                        //NC 22512 > DP
-                        IF PurchaseHeader.GET(PurchaseHeader."Document Type"::Order, "Invoice No.") THEN BEGIN
-                            PurchaseHeader.RESET;
-                            PurchaseHeader.SETRANGE("Document Type", PurchaseHeader."Document Type"::Order);
-                            PurchaseHeader.SETRANGE("No.", "Invoice No.");
-                            PAGE.RUNMODAL(50, PurchaseHeader)
-                        END ELSE
-                            //NC 22512 < DP
-                            //SWC004 AKA 040914
-                            IF PurchaseHeader.GET(PurchaseHeader."Document Type"::Invoice, "Invoice No.") THEN BEGIN
-                                PurchaseHeader.RESET;
-                                PurchaseHeader.SETFILTER("Document Type", '%1', PurchaseHeader."Document Type"::Invoice);
-                                PurchaseHeader.SETRANGE("No.", "Invoice No.");
-                                PAGE.RUNMODAL(51, PurchaseHeader)
-                            END ELSE BEGIN
-                                IF PurchInvHeader.GET("Invoice No.") THEN BEGIN
-                                    PurchInvHeader.RESET;
-                                    PurchInvHeader.SETRANGE("No.", "Invoice No.");
-                                    PAGE.RUNMODAL(138, PurchInvHeader);
-                                END;
-                            END;
-                        //SWC004 AKA 040914 <<
+                        if "Act Invoice No." = '' then
+                            exit;
+                        if not "Act Invoice Posted" then begin
+                            PurchaseHeader.Get("Document Type"::Invoice, "Act Invoice No.");
+                            PurchaseHeader.SetRange("Document Type", "Document Type"::Invoice);
+                            PurchaseHeader.SetRange("No.", "Act Invoice No.");
+                            Page.Run(Page::"Purchase Invoice", PurchaseHeader);
+                        end else begin
+                            PurchInvHeader.Get("Act Invoice No.");
+                            PurchInvHeader.SetRange("No.", "Act Invoice No.");
+                            Page.Run(Page::"Posted Purchase Invoice", PurchInvHeader);
+                        end;
                     end;
                 }
                 field("Buy-from Vendor No."; "Buy-from Vendor No.")

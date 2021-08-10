@@ -355,11 +355,13 @@ page 70001 "Purchase Order Subform App"
     trigger OnDeleteRecord(): Boolean
     begin
         DocumentTotals.PurchaseDocTotalsNotUpToDate();
+        UpdateLCYTotalAmounts();
     end;
 
     trigger OnFindRecord(Which: Text): Boolean
     begin
         DocumentTotals.PurchaseCheckAndClearTotals(Rec, xRec, TotalPurchaseLine, VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct);
+        UpdateLCYTotalAmounts();
         exit(Find(Which));
     end;
 
@@ -381,6 +383,7 @@ page 70001 "Purchase Order Subform App"
     trigger OnModifyRecord(): Boolean
     begin
         DocumentTotals.PurchaseCheckIfDocumentChanged(Rec, xRec);
+        UpdateLCYTotalAmounts();
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -481,11 +484,13 @@ page 70001 "Purchase Order Subform App"
             exit;
         DocumentTotals.PurchaseDeltaUpdateTotals(Rec, xRec, TotalPurchaseLine, VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct);
         //CheckSendLineInvoiceDiscountResetNotification();
+        UpdateLCYTotalAmounts();
     end;
 
     local procedure GetTotalPurchHeader()
     begin
         DocumentTotals.GetTotalPurchaseHeaderAndCurrency(Rec, TotalPurchaseHeader, Currency);
+        UpdateLCYTotalAmounts();
     end;
 
     local procedure CalculateTotals()
@@ -497,6 +502,32 @@ page 70001 "Purchase Order Subform App"
         DocumentTotals.CalculatePurchaseSubPageTotals(
           TotalPurchaseHeader, TotalPurchaseLine, VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct);
         DocumentTotals.RefreshPurchaseLine(Rec);
+        UpdateLCYTotalAmounts();
+    end;
+
+    local procedure UpdateLCYTotalAmounts()
+    var
+        CurrExRate: Record "Currency Exchange Rate";
+        Currency: Record Currency;
+    begin
+        if (PurchaseHeader."Document Type" <> "Document Type") or (PurchaseHeader."No." <> "Document No.") then
+            PurchaseHeader.Get("Document Type", "Document No.");
+        if PurchaseHeader."Currency Code" = '' then begin
+            TotalPurchaseLine."Amount Including VAT (LCY)" := TotalPurchaseLine."Amount Including VAT";
+            TotalPurchaseLine."Amount (LCY)" := TotalPurchaseLine.Amount;
+        end else begin
+            Currency.Get(PurchaseHeader."Currency Code");
+            TotalPurchaseLine."Amount Including VAT (LCY)" :=
+                Round(
+                    CurrExRate.ExchangeAmtFCYToLCY(
+                        PurchaseHeader."Posting Date", PurchaseHeader."Currency Code", TotalPurchaseLine."Amount Including VAT", PurchaseHeader."Currency Factor"),
+                Currency."Amount Rounding Precision");
+            TotalPurchaseLine."Amount (LCY)" :=
+                Round(
+                    CurrExRate.ExchangeAmtFCYToLCY(
+                        PurchaseHeader."Posting Date", PurchaseHeader."Currency Code", TotalPurchaseLine.Amount, PurchaseHeader."Currency Factor"),
+                Currency."Amount Rounding Precision");
+        end;
     end;
 
     local procedure SetDefaultType()

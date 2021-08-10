@@ -68,6 +68,13 @@ report 50999 "TempStarter"
             'Делегировать Акт, КС-2 и Заявку на оплату новому утверждающему', 'GROUP 10');
         WRH.AddResponsePredecessor(WRHExt.DelegateApprovalRequestsActCode(), WEH.RunWorkflowOnDelegateApprovalRequestCode());
 
+        WRH.AddResponseToLibrary(
+            WRHExt.CancelApprovalRequestsActCode(),
+            0,
+            'Отменить запрос утверждения для Акта, КС-2 и Заявки на оплату и создать уведомление.', 'GROUP 10');
+        WRH.AddResponsePredecessor(WRHExt.CancelApprovalRequestsActCode(), WEH.RunWorkflowOnCancelPurchaseApprovalRequestCode());
+
+
         // WSA.SetFilter("Response Function Name", '%1|%2|%3|%4',
         //     WRHExt.CreateApprovalRequestsActCode(), WRHExt.MoveToNextActStatusCode(),  WRHExt.MoveToPrevActStatusCode(),     
 

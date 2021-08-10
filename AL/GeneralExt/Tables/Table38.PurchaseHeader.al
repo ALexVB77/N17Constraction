@@ -75,11 +75,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             Description = 'NC 51373 AB';
             Caption = 'Process User';
             Editable = false;
-
-            // trigger OnValidate()
-            // begin
-            //     UpdatePurchLinesByFieldNo(FIELDNO("Process User"), CurrFieldNo <> 0);
-            // end;
         }
         field(70003; "Date Status App"; Date)
         {
@@ -112,31 +107,11 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         {
             Description = 'NC 51373 AB';
             Caption = 'VAT Amount';
-            trigger OnValidate()
-            begin
-                // NC 51373 AB >> #CHECKLATER
-                // отключил, мне не надо                
-                // "Invoice Amount":="Invoice Amount Incl. VAT"-"Invoice VAT Amount";
-                // // NCS-026 AP 110314 >>
-                // ExchangeFCYtoLCY();
-                // // NCS-026 AP 110314 <<
-                // NC 51373 AB >>
-            end;
         }
         field(70009; "Invoice Amount Incl. VAT"; Decimal)
         {
             Description = 'NC 51373 AB';
             Caption = 'Invoice Amount Incl. VAT';
-            trigger OnValidate()
-            begin
-                // NC 51373 AB >> #CHECKLATER
-                // отключил, мне не надо
-                // "Invoice Amount":="Invoice Amount Incl. VAT"-"Invoice VAT Amount";
-                // // NCS-026 AP 110314 >>
-                // ExchangeFCYtoLCY();
-                // // NCS-026 AP 110314 <<
-                // NC 51373 AB >>
-            end;
         }
         field(70010; "Payment Type"; Option)
         {
@@ -284,7 +259,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             Description = 'NC 51373 AB';
             Caption = 'OKATO Code';
         }
-
         field(70022; "KBK Code"; Text[30])
         {
             TableRelation = KBK;
@@ -404,11 +378,19 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         //     OptionMembers = " ","Controler app","Estimator app","Estimator rej","Checker app","Checker rej","Approver app","Approver rej";
         // }
 
-        field(90006; "Invoice No."; Code[20])
+        field(90006; "Act Invoice No."; Code[20])
         {
-            Caption = 'Invoice No.';
+            Caption = 'Act Invoice No.';
             Description = 'NC 51373 AB';
-            TableRelation = "Purchase Header"."No." WHERE("Document Type" = CONST(Invoice));
+            TableRelation =
+            if ("Act Invoice Posted" = const(false)) "Purchase Header"."No." WHERE("Document Type" = CONST(Invoice))
+            else
+            if ("Act Invoice Posted" = const(true)) "Purch. Inv. Header"."No.";
+        }
+        field(90007; "Act Invoice Posted"; Boolean)
+        {
+            Caption = 'Act Invoice Posted';
+            Description = 'NC 51373 AB';
         }
 
         // NC AB: не будем использовать
@@ -442,7 +424,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             Description = 'NC 51373 AB';
             Editable = false;
             Caption = 'Location Document';
-
         }
         field(90020; Storekeeper; Code[50])
         {
@@ -458,6 +439,9 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         key(Key50000; "IW Documents", "Linked Purchase Order Act No.")
         {
             SumIndexFields = "Invoice Amount Incl. VAT";
+        }
+        key(Key50001; "Act Invoice No.", "Act Invoice Posted", "Act Type")
+        {
         }
     }
 
