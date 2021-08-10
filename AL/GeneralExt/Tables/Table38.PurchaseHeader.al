@@ -75,11 +75,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             Description = 'NC 51373 AB';
             Caption = 'Process User';
             Editable = false;
-
-            // trigger OnValidate()
-            // begin
-            //     UpdatePurchLinesByFieldNo(FIELDNO("Process User"), CurrFieldNo <> 0);
-            // end;
         }
         field(70003; "Date Status App"; Date)
         {
@@ -112,31 +107,11 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         {
             Description = 'NC 51373 AB';
             Caption = 'VAT Amount';
-            trigger OnValidate()
-            begin
-                // NC 51373 AB >> #CHECKLATER
-                // отключил, мне не надо                
-                // "Invoice Amount":="Invoice Amount Incl. VAT"-"Invoice VAT Amount";
-                // // NCS-026 AP 110314 >>
-                // ExchangeFCYtoLCY();
-                // // NCS-026 AP 110314 <<
-                // NC 51373 AB >>
-            end;
         }
         field(70009; "Invoice Amount Incl. VAT"; Decimal)
         {
             Description = 'NC 51373 AB';
             Caption = 'Invoice Amount Incl. VAT';
-            trigger OnValidate()
-            begin
-                // NC 51373 AB >> #CHECKLATER
-                // отключил, мне не надо
-                // "Invoice Amount":="Invoice Amount Incl. VAT"-"Invoice VAT Amount";
-                // // NCS-026 AP 110314 >>
-                // ExchangeFCYtoLCY();
-                // // NCS-026 AP 110314 <<
-                // NC 51373 AB >>
-            end;
         }
         field(70010; "Payment Type"; Option)
         {
@@ -284,7 +259,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             Description = 'NC 51373 AB';
             Caption = 'OKATO Code';
         }
-
         field(70022; "KBK Code"; Text[30])
         {
             TableRelation = KBK;
@@ -450,7 +424,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
             Description = 'NC 51373 AB';
             Editable = false;
             Caption = 'Location Document';
-
         }
         field(90020; Storekeeper; Code[50])
         {

@@ -2,6 +2,55 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
 {
     fields
     {
+        field(50001; "Payment Assignment"; Text[15])
+        {
+            Description = 'NC 51378 AB';
+            Caption = 'Payment Assignment';
+        }
+        field(50002; "Inv.-Fact. is Received"; Boolean)
+        {
+            Caption = 'Inv.-Fact. is Received';
+            Description = 'NC 50280 OA';
+        }
+        field(50003; "Act is Received"; Boolean)
+        {
+            Caption = 'Act is Received';
+            Description = 'NC 50280 OA';
+        }
+        field(50010; "Linked Purchase Order Act No."; Code[20])
+        {
+            Description = 'NC 51378 AB';
+            Caption = 'Linked Purchase Order Act No.';
+            TableRelation = "Purchase Header"."No." WHERE("Document Type" = CONST(Order));
+        }
+        field(50011; "Archiving Type"; Option)
+        {
+            Description = 'NC 51378 AB';
+            Caption = 'Archiving Type';
+            OptionCaption = ' ,Problem Act,Payment Invoice';
+            OptionMembers = " ","Problem Act","Payment Invoice";
+        }
+        field(50012; "Sent to pre. Approval"; Boolean)
+        {
+            Description = 'NC 51374 AB';
+            Caption = 'Sent to pre. approval';
+        }
+        field(50013; "Receptionist"; code[50])
+        {
+            Caption = 'Receptionist';
+            Description = 'NC 51380 AB';
+        }
+        field(50022; "Spec. Bank Account No."; Code[20])
+        {
+            TableRelation = "Bank Account";
+            Caption = 'Spec. Bank Account No.';
+            Description = 'NC 51379 AB';
+        }
+        field(60088; "Original Company"; Code[2])
+        {
+            Description = 'NC 51432 AP';
+            Caption = 'Original Company';
+        }
         field(70002; "Process User"; Code[50])
         {
             TableRelation = "User Setup";
@@ -20,11 +69,6 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             Description = 'NC 51373 AB';
             Caption = 'Exists Attachment';
         }
-        field(70007; "Payments Amount"; Decimal)
-        {
-            Description = 'NC 51373 AB';
-            Caption = 'Payments Amount';
-        }
         field(70008; "Invoice VAT Amount"; Decimal)
         {
             Description = 'NC 51373 AB';
@@ -34,6 +78,13 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
         {
             Description = 'NC 51373 AB';
             Caption = 'Invoice Amount Incl. VAT';
+        }
+        field(70010; "Payment Type"; Option)
+        {
+            Description = 'NC 51378 AB';
+            Caption = 'Payment Type';
+            OptionCaption = 'Prepay,Postpay';
+            OptionMembers = "pre-pay","post-payment";
         }
         field(70011; "Request Payment Doc Type"; Boolean)
         {
@@ -66,15 +117,12 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             TableRelation = "User Setup"."User ID" WHERE("Status App Act" = CONST(1));
             ValidateTableRelation = false;
         }
-        field(70016; Paid; Boolean)
+        field(70017; "External Agreement No. (Calc)"; Text[30])
         {
-            Caption = 'Paid';
-            Description = 'NC 51373 AB';
-        }
-        field(70018; "Paid Date Fact"; Date)
-        {
-            Caption = 'Paid Date Fact';
-            Description = '50086';
+            CalcFormula = Lookup("Vendor Agreement"."External Agreement No." WHERE("Vendor No." = FIELD("Buy-from Vendor No."), "No." = FIELD("Agreement No.")));
+            Caption = 'External Agreement No.';
+            Description = 'NC 51378 AB';
+            FieldClass = FlowField;
         }
         field(70019; "Problem Document"; Boolean)
         {
@@ -92,56 +140,47 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             Description = 'NC 51373 AB';
             Caption = 'OKATO Code';
         }
-
         field(70022; "KBK Code"; Text[30])
         {
             TableRelation = KBK;
             Description = 'NC 51373 AB';
             Caption = 'KBK Code';
         }
-        field(70023; Approver; Code[50])
-        {
-            Description = 'NC 51373 AB';
-            Caption = 'Approver';
-            TableRelation = "User Setup";
-        }
-
         field(70024; "Pre-Approver"; Code[50])
         {
             Description = 'NC 51373 AB';
             Caption = 'Pre-Approver';
             TableRelation = "User Setup";
         }
-        field(70026; PreApprover; Boolean)
+        field(70027; "IW Planned Repayment Date"; Date)
         {
-            Description = 'NC 51373 AB';
-            Caption = 'Exist Pre-Approver';
-
-            trigger OnValidate()
-            begin
-                IF NOT PreApprover THEN
-                    "Pre-Approver" := '';
-            end;
+            Description = 'NC 51378 AB';
+            Caption = 'IW Planned Repayment Date';
         }
         field(70034; "IW Documents"; Boolean)
         {
             Caption = 'IW Documents';
             Description = 'NC 50085 PA';
         }
-        field(70035; "Problem Type Txt"; Text[180])
-        {
-            Description = 'NC 51373 AB';
-            Caption = 'Problem Type';
-        }
         field(70038; "Pre-booking Document"; Boolean)
         {
             Description = 'NC 51373 AB';
             Caption = 'Pre-booking Document';
         }
+        field(70039; "Pre-booking Accept"; Boolean)
+        {
+            Caption = 'Pre-booking Accept';
+            Description = 'NC 51373 AB';
+        }
         field(70045; "Act Type"; enum "Purchase Act Type")
         {
             Caption = 'Act Type';
             Description = 'NC 51373 AB';
+        }
+        field(70047; "Payment to Person"; Boolean)
+        {
+            Caption = 'Payment to Person';
+            Description = 'NC 51378 AB';
         }
         field(90003; "Status App Act"; Enum "Purchase Act Approval Status")
         {
@@ -157,6 +196,11 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
         field(90006; "Invoice No."; Code[20])
         {
             Caption = 'Invoice No.';
+            Description = 'NC 51373 AB';
+        }
+        field(90007; "Act Invoice Posted"; Boolean)
+        {
+            Caption = 'Act Invoice Posted';
             Description = 'NC 51373 AB';
         }
         field(90009; "Receive Account"; Boolean)

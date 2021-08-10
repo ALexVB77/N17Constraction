@@ -22,16 +22,28 @@ tableextension 85110 "Purchase Line Archive (Ext)" extends "Purchase Line Archiv
             Caption = 'Forecast Entry';
             Description = '50086';
         }
+        field(70013; "Paid Date Fact"; Date)
+        {
+            Caption = 'Paid Date (Fact)';
+            Description = 'NC 51378 AB';
+            Editable = false;
+        }
         field(70016; "Cost Type"; Code[20])
         {
             Caption = 'Cost Type';
             Description = '50085';
         }
-        field(70021; Approver; Code[50])
+        field(70017; "Process User"; Code[20])
         {
-            Description = 'NC 51373 AB';
-            Caption = 'Approver';
+            Caption = 'Process User';
+            Description = 'NC 51378 AB';
             TableRelation = "User Setup";
+        }
+        field(70018; "Purchaser Code"; Code[20])
+        {
+            Caption = 'Purchaser Code';
+            Description = 'NC 51378 AB';
+            TableRelation = "Salesperson/Purchaser";
         }
     }
 }
