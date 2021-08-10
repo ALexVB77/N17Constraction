@@ -8,7 +8,8 @@ tableextension 80039 "Purchase Line (Ext)" extends "Purchase Line"
             Caption = 'Linked Dimension Value Code';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"),
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code"
+                where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = field("Linked Dimension Filter")));
         }
         field(50001; "Linked Dimension Filter"; code[20])
         {
