@@ -4613,11 +4613,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchActPostShipment - NamedType Text50013</note>
         </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 1701143074 - NamedType 1751475910" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document %1 has been sent to the archive.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchive - NamedType LocText50013</note>
-        </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 3935502648" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to add a document to the archive of problem documents?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4628,15 +4623,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText2</note>
         </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 1715794959 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document %1 has been archived.</source>
+        <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 1751475910" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document %1 has been sent to the archive.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchive - NamedType LocText001</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText50013</note>
         </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 1715794959 - NamedType 1999882030" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 47354825 - Method 638387533 - NamedType 1999882030" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archive %1 no.: %2?</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchive - NamedType LocText007</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchiveQst - NamedType LocText007</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 638387533 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document %1 has been archived.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchiveQst - NamedType LocText001</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 2860546455 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>There is no one to register.</source>
@@ -12233,15 +12233,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Vendor Bank Account No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 2338624330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Act Invoice Posted</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Act Invoice Posted - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 3075689437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Act is Received</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Act is Received - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 445905442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Act Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Act Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1116284634 - Field 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
-          <source>Approver</source>
+        <trans-unit id="TableExtension 1116284634 - Field 3086258489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Archiving Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Approver - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Archiving Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 3086258489 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source> ,Problem Act,Payment Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Archiving Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 1010040168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Controller</source>
@@ -12263,6 +12278,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Exists Attachment - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 2913158084 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>External Agreement No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field External Agreement No. (Calc) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 4066496539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Inv.-Fact. is Received</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Inv.-Fact. is Received - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 678730876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Invoice Amount Incl. VAT</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12283,10 +12308,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field IW Documents - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 3407785517 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>IW Planned Repayment Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field IW Planned Repayment Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3021479305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>KBK Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field KBK Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 2330118551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Linked Purchase Order Act No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Linked Purchase Order Act No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 2361543958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Location Document</source>
@@ -12298,40 +12333,50 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field OKATO Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1116284634 - Field 789473408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
-          <source>Paid</source>
+        <trans-unit id="TableExtension 1116284634 - Field 3162765170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Original Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Paid - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Original Company - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1116284634 - Field 4139459292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
-          <source>Paid Date Fact</source>
+        <trans-unit id="TableExtension 1116284634 - Field 3514169027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Payment Assignment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Paid Date Fact - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Assignment - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3955594068 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Payment Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Details - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1116284634 - Field 1021939399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
-          <source>Payments Amount</source>
+        <trans-unit id="TableExtension 1116284634 - Field 3066752552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Payment to Person</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payments Amount - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment to Person - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Payment Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 907492870 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Prepay,Postpay</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3183912585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Pre-Approver</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Pre-Approver - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 2028092477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Pre-booking Accept</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Pre-booking Accept - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3630883352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Pre-booking Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Pre-booking Document - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1116284634 - Field 621741646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
-          <source>Exist Pre-Approver</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field PreApprover - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 4289336288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Problem Document</source>
@@ -12343,11 +12388,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Problem Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1116284634 - Field 239971877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
-          <source>Problem Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Problem Type Txt - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3569568710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Process User</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12358,10 +12398,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Receive Account - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 934100661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Receptionist</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Receptionist - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 2032084525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Request Payment Doc Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Request Payment Doc Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 265037819 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Sent to pre. approval</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Sent to pre. Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 3622778629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Spec. Bank Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Spec. Bank Account No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3132070813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Approval Status</source>
@@ -12478,11 +12533,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Vendor Invoice No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4258310961 - Field 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
-          <source>Approver</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Approver - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 4258310961 - Field 1895217469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
           <source>Cost Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12507,6 +12557,21 @@
           <source>Old VAT Prod. Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Old VAT Prod. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4258310961 - Field 4139459292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
+          <source>Paid Date (Fact)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Paid Date Fact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4258310961 - Field 3569568710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
+          <source>Process User</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Process User - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4258310961 - Field 801304080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
+          <source>Purchaser Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Purchaser Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Method 212421167 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2307367824">
           <source>Same values are selected for %1 and %2.</source>
