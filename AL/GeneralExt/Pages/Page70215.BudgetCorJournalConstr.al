@@ -406,12 +406,12 @@ page 70215 "Budget Cor. Journal Constr"
                     var
                         Buildingproject: record "Building project";
                     begin
-                        // CLEAR(Rep2);
-                        // FILTERGROUP:=0;
-                        // Buildingproject.GET(GETFILTER("Project Code"));
-                        // FILTERGROUP:=2;
-                        // Rep2.Setdate(Buildingproject."Dev. Starting Date",Buildingproject.Code);
-                        // Rep2.RUNMODAL;
+                        CLEAR(Rep2);
+                        Rec.FILTERGROUP := 0;
+                        Buildingproject.GET(Rec.GETFILTER("Project Code"));
+                        Rec.FILTERGROUP := 2;
+                        // Rep2.Setdate(Buildingproject."Dev. Starting Date", Buildingproject.Code);
+                        Rep2.RUNMODAL;
                     end;
 
 
@@ -480,7 +480,7 @@ page 70215 "Budget Cor. Journal Constr"
         Text002: Label 'Do not set no budget line';
         HideNull: boolean;
         Text003: Label 'Operation canceled by user.';
-        // Rep2: report "Get Lines for Budget1";
+        Rep2: report "Get Lines for Budget Constr";
         ERPC: codeunit "ERPC Funtions";
         NavigateForm: page Navigate;
         Text004: Label 'Post Budget Agjustment Journal?';

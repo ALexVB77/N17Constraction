@@ -6109,14 +6109,12 @@
           <source>Change Entry</source>
           <target>Изменить операцию</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Change Entry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2465502814 - Action 1068937304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Apply</source>
           <target>Применить</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Change Entry - Action Apply - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2081427051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -11998,6 +11996,55 @@
           <target>Прогноз версия код</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fix Forecast - Control VersionCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3949860838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Get Lines</source>
+          <target>Получить строки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Get Lines for Budget Constr - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3949860838 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start date cannot be greater End date</source>
+          <target>Начало Периода не можеть быть больше Конца Периода</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Get Lines for Budget Constr - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Report 3949860838 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set start date</source>
+          <target>Укажите начало периода</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Get Lines for Budget Constr - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Report 3949860838 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set end date</source>
+          <target>Укажите конец периода</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Get Lines for Budget Constr - NamedType Text003</note>
+        </trans-unit>
+        <trans-unit id="Report 3949860838 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Correction budget</source>
+          <target>Нужно настроить Бюджет Корректировки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Get Lines for Budget Constr - NamedType Text004</note>
+        </trans-unit>
+        <trans-unit id="Report 3949860838 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line    #1###################\Receiving @2@@@@@@@@@@@@@@@@@@@</source>
+          <target>Строка    #1###################\Получение @2@@@@@@@@@@@@@@@@@@@</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Get Lines for Budget Constr - NamedType Text005</note>
+        </trans-unit>
+        <trans-unit id="Report 3949860838 - Control 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date</source>
+          <target>Конец периода</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Get Lines for Budget Constr - Control EndDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3949860838 - Control 3605153064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Date</source>
+          <target>Начало периода</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Get Lines for Budget Constr - Control StartDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 61001228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import Budget CC</source>
