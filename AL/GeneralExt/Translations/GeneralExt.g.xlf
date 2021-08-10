@@ -4873,6 +4873,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Budget Correction Card - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2285829057 - Control 1725262796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data selection options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Budget Correction Card - Control Control12370022 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2285829057 - Control 2553548118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Save original entry sign</source>
           <note from="Developer" annotates="general" priority="2"></note>
