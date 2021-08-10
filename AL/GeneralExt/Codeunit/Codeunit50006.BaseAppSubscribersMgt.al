@@ -822,6 +822,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
     var
         DocAttach: Record "Document Attachment";
         DocAttachArch: Record "Document Attachment Archive";
+        ApprovalEntry, ApprovalEntryAcr : Record "Approval Entry";
     begin
         if PurchaseHeader."Archiving Type" = PurchaseHeader."Archiving Type"::" " then
             exit;
@@ -843,6 +844,18 @@ codeunit 50006 "Base App. Subscribers Mgt."
                 DocAttachArch."Document Reference ID" := DocAttach."Document Reference ID";
                 DocAttachArch.INSERT;
             until DocAttach.Next() = 0;
+
+        ApprovalEntry.SetCurrentKey("Table ID", "Record ID to Approve");
+        ApprovalEntry.SetRange("Table ID", Database::"Purchase Header");
+        ApprovalEntry.SetRange("Record ID to Approve", PurchaseHeader.RecordId);
+        if ApprovalEntry.FindSet() then
+            repeat
+                ApprovalEntryAcr := ApprovalEntry;
+                ApprovalEntryAcr."Table ID" := Database::"Purchase Header Archive";
+                ApprovalEntryAcr."Record ID to Approve" := PurchaseHeaderArchive.RecordId;
+                ApprovalEntryAcr."Entry No." := 0;
+                ApprovalEntryAcr.Insert;
+            until ApprovalEntry.Next() = 0;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Transfer Document", 'OnBeforeCheckTransLines', '', false, false)]

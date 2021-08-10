@@ -434,8 +434,12 @@ codeunit 50010 "Payment Order Management"
         LocText1: Label 'Do you want to add a document to the archive of problem documents?';
         LocText2: Label '/All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!';
         LocText50013: Label 'Document %1 has been sent to the archive.';
+        LocText3: Label 'You are not the owner or process user in the linked payment invoice %1.';
+        LocText4: Label 'You must be the owner or process user in the document %1.';
     begin
-        PurchHeader.TestField("Process User", UserId);
+        if not (UserId in [PurchHeader.Controller, PurchHeader."Process User"]) then
+            Error(LocText4, PurchHeader."No.");
+
         PurchRcptHeader.SetCurrentKey("Order No.");
         PurchRcptHeader.SetRange("Order No.", PurchHeader."No.");
 
@@ -447,6 +451,14 @@ codeunit 50010 "Payment Order Management"
             QuestionText += LocText2;
         if not Confirm(QuestionText) then
             exit;
+
+        if PaymentInvoice.FindSet() then
+            repeat
+                if not (UserId in [PaymentInvoice.Receptionist, PaymentInvoice."Process User"]) then
+                    Error(LocText3, PaymentInvoice."No.");
+            until PaymentInvoice.next = 0;
+
+
         PurchOrderActArchive(PurchHeader);
 
         MESSAGE(LocText50013, PurchHeader."No.");
@@ -459,10 +471,18 @@ codeunit 50010 "Payment Order Management"
         PurchRcptHdr: Record "Purch. Rcpt. Header";
         PurchRcptLine: Record "Purch. Rcpt. Line";
         PaymentInvoice: Record "Purchase Header";
+        WorkflowWebhookEntry: Record "Workflow Webhook Entry";
         gvduERPC: Codeunit "ERPC Funtions";
         UndoPurchRcptLine: Codeunit "Undo Purchase Receipt Line";
         ArchiveMgt: Codeunit ArchiveManagement;
+        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
     begin
+        // Закрываем аппрувы и процессы    
+        if not (PurchHeader."Status App Act" in [PurchHeader."Status App Act"::Controller, PurchHeader."Status App Act"::Accountant]) then begin
+            ApprovalsMgmt.OnCancelPurchaseApprovalRequest(PurchHeader);
+            WorkflowWebhookMgt.FindAndCancel(PurchHeader.RecordId);
+        end;
 
         // Закрывающий счет на все приходные накладные 
         IF (PurchHeader."Act Invoice No." <> '') and (not PurchHeader."Act Invoice Posted") THEN
@@ -515,8 +535,11 @@ codeunit 50010 "Payment Order Management"
         ConfirmManagement: Codeunit "Confirm Management";
         LocText007: Label 'Archive %1 no.: %2?';
         LocText001: Label 'Document %1 has been archived.';
+        LocText4: Label 'You must be the owner or process user in the document %1.';
     begin
-        PurchHeader.TestField("Status App", PurchHeader."Status App"::Payment);
+        if not (UserId in [PurchHeader.Receptionist, PurchHeader."Process User"]) then
+            Error(LocText4, PurchHeader."No.");
+
         if not ConfirmManagement.GetResponseOrDefault(
              StrSubstNo(LocText007, PurchHeader."Document Type", PurchHeader."No."), true)
         then
@@ -531,10 +554,16 @@ codeunit 50010 "Payment Order Management"
     local procedure PurchPaymentInvoiceArchive(PurchHeader: Record "Purchase Header");
     var
         ArchiveMgt: Codeunit ArchiveManagement;
+        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
     begin
+        // Закрываем аппрувы и процессы    
+        if not (PurchHeader."Status App" in [PurchHeader."Status App"::Reception, PurchHeader."Status App"::Payment]) then begin
+            ApprovalsMgmt.OnCancelPurchaseApprovalRequest(PurchHeader);
+            WorkflowWebhookMgt.FindAndCancel(PurchHeader.RecordId);
+        end;
 
-
-        PurchHeader."Archiving Type" := PurchHeader."Archiving Type"::"Problem Act";
+        PurchHeader."Archiving Type" := PurchHeader."Archiving Type"::"Payment Invoice";
         ArchiveMgt.StorePurchDocument(PurchHeader, false);
         DisconnectFromAgreement(PurchHeader);
         PurchHeader.SetHideValidationDialog(true);
@@ -545,7 +574,6 @@ codeunit 50010 "Payment Order Management"
     var
         PurchaseLine: Record "Purchase Line";
         ProjectsBudgetEntry: Record "Projects Budget Entry";
-        ForecastListAnalisys: Page "Forecast List Analisys";
         ProjectBudgetMgt: Codeunit "Project Budget Management";
     begin
         PurchaseLine.RESET;
@@ -560,8 +588,6 @@ codeunit 50010 "Payment Order Management"
                         PurchaseLine."Forecast Entry" := 0;
                         PurchaseLine.MODIFY;
                         ProjectBudgetMgt.DeleteSTLine(ProjectsBudgetEntry);
-                        ForecastListAnalisys.SETRECORD(ProjectsBudgetEntry);
-                        Error('Вызов ForecastListAnalisys.DisconnectFromAgreement');
                     END;
                 END;
             UNTIL PurchaseLine.NEXT = 0;

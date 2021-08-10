@@ -4628,6 +4628,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText50013</note>
         </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 915928586" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You are not the owner or process user in the linked payment invoice %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText3</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 1553625203" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must be the owner or process user in the document %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText4</note>
+        </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 638387533 - NamedType 1999882030" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archive %1 no.: %2?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4637,6 +4647,11 @@
           <source>Document %1 has been archived.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchiveQst - NamedType LocText001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 638387533 - NamedType 1553625203" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must be the owner or process user in the document %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchiveQst - NamedType LocText4</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 2860546455 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>There is no one to register.</source>
