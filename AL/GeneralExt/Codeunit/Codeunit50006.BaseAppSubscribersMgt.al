@@ -752,6 +752,15 @@ codeunit 50006 "Base App. Subscribers Mgt."
 
     // NC 51411 < EP
 
+    // NC 51410 > EP
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", 'OnAfterCopyDirectTransLineFromTransLine', '', false, false)]
+    local procedure OnAfterCopyDirectTransLineFromTransLine(var DirectTransLine: Record "Direct Transfer Line";
+                                                            TransLine: Record "Transfer Line");
+    begin
+        DirectTransLine."Dimension Set ID" := TransLine."Dimension Set ID";
+    end;
+    // NC 51410 < EP
+
     // cu 12469 <<
 
 
