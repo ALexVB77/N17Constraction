@@ -583,7 +583,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         ApprovalEntry: Record "Approval Entry";
         ApprovalCommentLine: Record "Approval Comment Line";
         ApprovalMgt: Codeunit "Approvals Mgmt.";
-        NoReqToApproveErr: Label 'There is no approval request to approve.';
         StepInstanceID: Guid;
     begin
         if ApprovalMgt.FindOpenApprovalEntryForCurrUser(ApprovalEntry, RecordID) then begin

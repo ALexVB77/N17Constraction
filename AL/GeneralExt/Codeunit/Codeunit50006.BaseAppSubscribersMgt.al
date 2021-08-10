@@ -783,6 +783,8 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
+    // Page 1173 Document Attachment Details
+
     [EventSubscriber(ObjectType::Page, Page::"Document Attachment Details", 'OnAfterOpenForRecRef', '', true, true)]
     local procedure OnAfterOpenForRecRefDocAttDet(var DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef; var FlowFieldsEditable: Boolean)
     var
@@ -799,6 +801,13 @@ codeunit 50006 "Base App. Subscribers Mgt."
                     RecNo := FieldRef.Value;
                     DocumentAttachment.SetRange("PK Key 2", PKNo);
                     DocumentAttachment.SetRange("No.", RecNo);
+                end;
+            Database::"Purchase Header Archive":
+                begin
+                    FieldRef := RecRef.Field(3);
+                    RecNo := FieldRef.Value;
+                    DocumentAttachment.SetRange("No.", RecNo);
+                    FlowFieldsEditable := false;
                 end;
         end;
     end;

@@ -817,7 +817,6 @@ page 70260 "Purchase Order Act"
                 {
                     ApplicationArea = Suite;
                     Caption = 'Cover Sheet';
-                    // Enabled = CoverSheetPrintEnabled;
                     Image = PrintCover;
                     Promoted = true;
                     PromotedCategory = Category10;
@@ -877,7 +876,6 @@ page 70260 "Purchase Order Act"
         PreApproverEditable := "Act Type" = "Act Type"::Advance;
         ProblemDescription := Rec.GetApprovalCommentText();
         GenPrintEnabled := Rec."Location Document";
-        CoverSheetPrintEnabled := "Status App Act".AsInteger() >= "Status App Act"::Signing.AsInteger();
 
         WhseEmployee.SetRange("User ID", UserId);
         StatusStyleTxt := GetStatusStyleText();
@@ -943,7 +941,7 @@ page 70260 "Purchase Order Act"
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
         ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, PreApproverEditable : boolean;
-        ShowDocEnabled, EstimatorEnable, AppButtonEnabled, CopyDocumentEnabled, GenPrintEnabled, CoverSheetPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
+        ShowDocEnabled, EstimatorEnable, AppButtonEnabled, CopyDocumentEnabled, GenPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
         EstimatorMandatory, LocationCodeShowMandatory : Boolean;
         StatusStyleTxt, ProblemDescription : Text;
         PreApproverNo: Code[50];

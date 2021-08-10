@@ -69,6 +69,19 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             Description = 'NC 51373 AB';
             Caption = 'Exists Attachment';
         }
+        field(70007; "Payments Amount"; Decimal)
+        {
+            // Переделано из Normal на FlowField
+            CalcFormula = sum("Detailed Vendor Ledg. Entry".Amount
+                            where("Vendor No." = field("Buy-from Vendor No."),
+                                    "Initial Document Type" = const(Payment),
+                                    "IW Document No." = field("No."),
+                                    "Entry Type" = const("Initial Entry")));
+            Caption = 'Payments Amount';
+            Description = 'NC 51373 AB';
+            Editable = false;
+            FieldClass = FlowField;
+        }
         field(70008; "Invoice VAT Amount"; Decimal)
         {
             Description = 'NC 51373 AB';
@@ -122,6 +135,19 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             CalcFormula = Lookup("Vendor Agreement"."External Agreement No." WHERE("Vendor No." = FIELD("Buy-from Vendor No."), "No." = FIELD("Agreement No.")));
             Caption = 'External Agreement No.';
             Description = 'NC 51378 AB';
+            FieldClass = FlowField;
+        }
+        field(70018; "Paid Date Fact"; Date)
+        {
+            // Переделано из Normal на FlowField
+            CalcFormula = max("Detailed Vendor Ledg. Entry"."Posting Date"
+                            where("Vendor No." = field("Buy-from Vendor No."),
+                                    "Initial Document Type" = const(Payment),
+                                    "IW Document No." = field("No."),
+                                    "Entry Type" = const("Initial Entry")));
+            Caption = 'Paid Date Fact';
+            Description = 'NC 51373 AB';
+            Editable = false;
             FieldClass = FlowField;
         }
         field(70019; "Problem Document"; Boolean)
@@ -193,9 +219,9 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             Description = 'NC 51373 AB';
             TableRelation = "User Setup"."User ID" WHERE("Status App Act" = CONST(Estimator));
         }
-        field(90006; "Invoice No."; Code[20])
+        field(90006; "Act Invoice No."; Code[20])
         {
-            Caption = 'Invoice No.';
+            Caption = 'Act Invoice No.';
             Description = 'NC 51373 AB';
         }
         field(90007; "Act Invoice Posted"; Boolean)
@@ -220,4 +246,16 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             Caption = 'Storekeeper';
         }
     }
+
+    procedure GetAddTypeCommentText(AddType: enum "Purchase Comment Add. Type"): text
+    var
+        PurchCommentLine: Record "Purch. Comment Line";
+    begin
+        PurchCommentLine.SetRange("Document Type", "Document Type");
+        PurchCommentLine.SetRange("No.", "No.");
+        PurchCommentLine.SetRange("Line No.", 0);
+        PurchCommentLine.SetRange("Add. Line Type", AddType);
+        if PurchCommentLine.FindLast() then
+            exit(PurchCommentLine.Comment + PurchCommentLine."Comment 2");
+    end;
 }
