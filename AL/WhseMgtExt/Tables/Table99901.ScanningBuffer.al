@@ -54,7 +54,7 @@ table 99901 "Scanning Buffer"
     }
     keys
     {
-        key(PK; DocumentNo, DocumentLineNo)
+        key(PK; DocumentNo)
         {
             Clustered = true;
         }
