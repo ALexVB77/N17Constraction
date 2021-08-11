@@ -14757,6 +14757,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Inv. Header (Ext) - Field Giv. Prod. Order No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1338405014 - Field 3630883352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Pre-booking Document</source>
+          <target>Pre-booking Document</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Inv. Header (Ext) - Field Pre-booking Document - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3636443165 - Field 1895217469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
           <source>Cost Type</source>
           <target>Тип затрат</target>
@@ -15211,14 +15218,12 @@
           <source>Payment Doc Type</source>
           <target>Тип Документа Платежа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Doc Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 1748113302 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Invoice,Payment Request</source>
           <target>Счет,Заявка на платеж</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Doc Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3066752552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
