@@ -4778,30 +4778,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apartments - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 944283333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Archiving Problem Document</source>
+        <trans-unit id="Page 2191153028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archiving Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 944283333 - Control 140075709 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
-          <source>All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Control AloneStep - Property InstructionalText</note>
-        </trans-unit>
-        <trans-unit id="Page 944283333 - Control 140075709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2191153028 - Control 140075709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to add a document to the archive of problem documents?</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Control AloneStep - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control AloneStep - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 944283333 - Control 1548358520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2191153028 - Control 1548358520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archiving reason</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Control ArchReason - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control ArchReason - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 944283333 - Action 1528185918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2191153028 - Control 1917986722 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control Control32 - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 2191153028 - Action 1528185918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archive</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Action Archive - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Action Archive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1542626159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Barcode Act Document</source>
@@ -5808,11 +5808,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Order - Control Assigned User ID - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2647103437 - Control 2421377490 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies that the transfer does not use an in-transit location. When you transfer directly, the Qty. to Receive field will be locked with the same value as the quantity to ship.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Order - Control Direct Transfer - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 2647103437 - Control 2307065988 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the in-transit code for the transfer order, such as a shipping agent.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6223,6 +6218,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Order - Action Get Bin Content - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2647103437 - Action 4056321329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Get Item Ledger Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Order - Action GetItemLedgerEntryLines - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2647103437 - Action 2115854233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Add transfer order lines from posted purchase receipt lines.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6262,11 +6262,6 @@
           <source>Release</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Order - Action Release - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2647103437 - Action 4056321329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Get Item Ledger Lines</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Order - Action GetItemLedgerEntryLines - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2647103437 - Action 483158641 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Release the document to the next stage of processing. When a document is released, it will be included in all availability calculations from the expected receipt date of the items. You must reopen the document before you can make changes to it.</source>
