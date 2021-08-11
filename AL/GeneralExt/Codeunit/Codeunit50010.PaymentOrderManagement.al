@@ -490,7 +490,7 @@ codeunit 50010 "Payment Order Management"
         if not PurchHeader."Act Invoice Posted" then begin
             PurchRcptHdr.SetCurrentKey("Order No.");
             PurchRcptHdr.SetRange("Order No.", PurchHeader."No.");
-            if PurchRcptHdr.IsEmpty then begin
+            if not PurchRcptHdr.IsEmpty then begin
                 PurchRcptHdr.FindSet();
                 repeat
                     PurchRcptLine.SetRange("Document No.", PurchRcptHdr."No.");
@@ -511,6 +511,7 @@ codeunit 50010 "Payment Order Management"
         PaymentInvoice.SetCurrentKey("Linked Purchase Order Act No.");
         PaymentInvoice.SetRange("Linked Purchase Order Act No.", PurchHeader."No.");
         if not PaymentInvoice.IsEmpty then begin
+            PaymentInvoice.FindSet();
             repeat
                 PurchPaymentInvoiceArchive(PaymentInvoice);
             until PaymentInvoice.Next() = 0;
