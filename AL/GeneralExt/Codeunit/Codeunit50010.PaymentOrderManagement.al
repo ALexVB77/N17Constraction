@@ -435,6 +435,8 @@ codeunit 50010 "Payment Order Management"
         LocText3: Label 'You are not the owner or process user in the linked payment invoice %1.';
         LocText4: Label 'You must be the owner or process user in the document %1.';
     begin
+        PurchHeader.TestField("Problem Document");
+
         if not (UserId in [PurchHeader.Controller, PurchHeader."Process User"]) then
             Error(LocText4, PurchHeader."No.");
 
