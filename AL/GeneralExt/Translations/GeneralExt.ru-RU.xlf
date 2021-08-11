@@ -5733,35 +5733,51 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apartments - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 944283333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Archiving Problem Document</source>
-          <target>Архивация проблемного документа</target>
+        <trans-unit id="Page 2191153028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archiving Document</source>
+          <target>Архивация документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 944283333 - Control 140075709 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
-          <source>All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!</source>
-          <target>Все связанные Счета на оплату будут также отправлены в архив, а Учтенные прих. накладные покупки и Счета покупки будут удалены!</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Control AloneStep - Property InstructionalText</note>
-        </trans-unit>
-        <trans-unit id="Page 944283333 - Control 140075709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2191153028 - Control 140075709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to add a document to the archive of problem documents?</source>
           <target>Добавить документ в архив проблемных документов?</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Control AloneStep - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control AloneStep - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 944283333 - Control 1548358520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2191153028 - Control 1548358520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archiving reason</source>
           <target>Причина архивации</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Control ArchReason - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control ArchReason - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 944283333 - Action 1528185918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2191153028 - Control 63266223 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!</source>
+          <target>Все связанные Счета на оплату будут также отправлены в архив, а Учтенные прих. накладные покупки и Счета покупки будут удалены!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control Control2 - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 2191153028 - Control 700962840 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To archive a document, you must specify the archiving reason.</source>
+          <target>Для архивации документа неободимо указать причину архивации.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control Control3 - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 2191153028 - Action 129874448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archive</source>
           <target>Архивировать</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Action Archive - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Action ActionArchive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2191153028 - Action 389231548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close</source>
+          <target>Закрыть</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Action ActionClose - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1542626159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Barcode Act Document</source>
