@@ -7,24 +7,23 @@ page 71263 "Archiving Document"
     {
         area(content)
         {
-            group(Control17)
+            group(MainPage)
             {
-                ShowCaption = false;
+                Caption = '';
                 Visible = true;
                 group(AloneStep)
                 {
                     Caption = 'Do you want to add a document to the archive of problem documents?';
-
-                    group(Control2)
+                    label(Alarm)
                     {
-                        InstructionalText = 'All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!';
-                        ShowCaption = false;
+                        ApplicationArea = All;
+                        Caption = 'All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!';
                         Visible = ShowAlarm;
                     }
-                    group(Control3)
+                    label(InfoReason)
                     {
-                        InstructionalText = 'To archive a document, you must specify the archiving reason:';
-                        ShowCaption = false;
+                        ApplicationArea = All;
+                        Caption = 'To archive a document, you must specify the archiving reason:';
                     }
                     field(ArchReason; ArchReason)
                     {
@@ -76,7 +75,7 @@ page 71263 "Archiving Document"
         }
     }
 
-    trigger OnAfterGetCurrRecord()
+    trigger OnOpenPage()
     var
         PaymentInvoice: Record "Purchase Header";
         PurchRcptHdr: Record "Purch. Rcpt. Header";
@@ -90,11 +89,8 @@ page 71263 "Archiving Document"
 
     var
         PurchHeader: Record "Purchase Header";
-        MediaRepositoryStandard: Record "Media Repository";
-        MediaRepositoryDone: Record "Media Repository";
-        ClientTypeManagement: Codeunit "Client Type Management";
         ArchReason: Text;
-        ArchiveDoc, ShowAlarm, TopBannerVisible : Boolean;
+        ArchiveDoc, ShowAlarm : Boolean;
 
     procedure SetParam(var ParamPurchHeader: Record "Purchase Header")
     begin
@@ -107,4 +103,5 @@ page 71263 "Archiving Document"
             OutArchReason := ArchReason;
         exit(ArchiveDoc);
     end;
+
 }
