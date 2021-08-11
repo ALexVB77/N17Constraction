@@ -3373,6 +3373,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Projects Cost Control Entry - Field Reversed - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2622754722 - Field 534261515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reversed ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Projects Cost Control Entry - Field Reversed ID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2622754722 - Field 1577567912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shortcut Dimension 1 Code</source>
           <note from="Developer" annotates="general" priority="2"></note>

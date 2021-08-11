@@ -4047,6 +4047,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Projects Cost Control Entry - Field Reversed - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2622754722 - Field 534261515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reversed ID</source>
+          <target>Сторнировано ID</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Projects Cost Control Entry - Field Reversed ID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2622754722 - Field 1577567912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shortcut Dimension 1 Code</source>
           <target>Ярлык Измерение 1 Код</target>
@@ -14761,7 +14768,6 @@
           <source>Pre-booking Document</source>
           <target>Pre-booking Document</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Inv. Header (Ext) - Field Pre-booking Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3636443165 - Field 1895217469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
