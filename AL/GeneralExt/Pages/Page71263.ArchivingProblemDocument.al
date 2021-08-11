@@ -11,6 +11,7 @@ page 71263 "Archiving Document"
     {
         area(content)
         {
+
             group(Control1)
             {
                 ShowCaption = false;
@@ -53,7 +54,7 @@ page 71263 "Archiving Document"
                 ApplicationArea = All;
                 Caption = 'Archive';
                 Enabled = ArchReason <> '';
-                Image = NextRecord;
+                Image = Approve;
                 InFooterBar = true;
 
                 trigger OnAction()
@@ -68,7 +69,7 @@ page 71263 "Archiving Document"
                 ApplicationArea = Basic, Suite, Invoicing;
                 Caption = 'Close';
                 Enabled = true;
-                Image = Approve;
+                Image = Close;
                 InFooterBar = true;
 
                 trigger OnAction()

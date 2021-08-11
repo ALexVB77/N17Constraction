@@ -4798,15 +4798,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control Control3 - Property InstructionalText</note>
         </trans-unit>
-        <trans-unit id="Page 2191153028 - Action 129874448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Archive</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Action ActionArchive - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2191153028 - Action 389231548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2191153028 - Action 3259912055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Close</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Action ActionClose - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Action ActionFinish - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2191153028 - Action 914282563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Action ActionNext - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1542626159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Barcode Act Document</source>
