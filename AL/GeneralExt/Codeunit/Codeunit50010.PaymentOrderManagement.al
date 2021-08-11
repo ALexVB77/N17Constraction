@@ -430,7 +430,7 @@ codeunit 50010 "Payment Order Management"
     var
         PurchHeader2: Record "Purchase Header";
         PaymentInvoice: Record "Purchase Header";
-        ArchProblemDoc: Page "Archiving Problem Document";
+        ArchProblemDoc: Page "Archiving Document";
         ArchReason: Text;
         LocText50013: Label 'Document %1 has been sent to the archive.';
         LocText3: Label 'You are not the owner or process user in the linked payment invoice %1.';
