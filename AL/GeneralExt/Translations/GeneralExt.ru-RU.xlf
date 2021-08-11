@@ -5757,6 +5757,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control InfoReason - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2191153028 - Control 1950321845 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <target></target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control Split1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2191153028 - Control 1312625228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <target></target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control Split2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2191153028 - Action 3259912055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Close</source>
           <target>Закрыть</target>

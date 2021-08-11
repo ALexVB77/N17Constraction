@@ -451,27 +451,26 @@ codeunit 50010 "Payment Order Management"
         if not ArchProblemDoc.GetResult(ArchReason) then
             exit;
 
-        //\\
-        error(ArchReason);
-
-        PurchOrderActArchive(PurchHeader);
+        PurchOrderActArchive(PurchHeader, ArchReason);
 
         MESSAGE(LocText50013, PurchHeader."No.");
         exit(true);
     end;
 
-    local procedure PurchOrderActArchive(PurchHeader: Record "Purchase Header");
+    local procedure PurchOrderActArchive(PurchHeader: Record "Purchase Header"; ArchReason: Text);
     var
         PurchInvoice: Record "Purchase Header";
         PurchRcptHdr: Record "Purch. Rcpt. Header";
         PurchRcptLine: Record "Purch. Rcpt. Line";
         PaymentInvoice: Record "Purchase Header";
         WorkflowWebhookEntry: Record "Workflow Webhook Entry";
+        PurchHeaderArch: Record "Purchase Header Archive";
         gvduERPC: Codeunit "ERPC Funtions";
         UndoPurchRcptLine: Codeunit "Undo Purchase Receipt Line";
         ArchiveMgt: Codeunit ArchiveManagement;
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
+        CommentAddType: enum "Purchase Comment Add. Type";
     begin
         // Закрываем аппрувы и процессы    
         if not (PurchHeader."Status App Act" in [PurchHeader."Status App Act"::Controller, PurchHeader."Status App Act"::Accountant]) then begin
@@ -521,6 +520,13 @@ codeunit 50010 "Payment Order Management"
         // PurchHeader.MODIFY();
         PurchHeader."Archiving Type" := PurchHeader."Archiving Type"::"Problem Act";
         ArchiveMgt.StorePurchDocument(PurchHeader, false);
+
+        // Причина
+        PurchHeaderArch.SetRange("Document Type", PurchHeader."Document Type");
+        PurchHeaderArch.SetRange("No.", PurchHeader."No.");
+        PurchHeaderArch.FindLast();
+        PurchHeaderArch.SetAddTypeCommentArchText(CommentAddType, ArchReason);
+
         PurchHeader.SetHideValidationDialog(true);
         PurchHeader.Delete(true);
     end;

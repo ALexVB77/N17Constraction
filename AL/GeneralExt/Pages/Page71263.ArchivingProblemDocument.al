@@ -14,11 +14,24 @@ page 71263 "Archiving Document"
                 group(AloneStep)
                 {
                     Caption = 'Do you want to add a document to the archive of problem documents?';
+                    label(Split1)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        ShowCaption = false;
+                        Caption = '';
+                        Visible = ShowAlarm;
+                    }
                     label(Alarm)
                     {
                         ApplicationArea = All;
                         Caption = 'All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!';
                         Visible = ShowAlarm;
+                    }
+                    label(Split2)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        ShowCaption = false;
+                        Caption = '';
                     }
                     label(InfoReason)
                     {
@@ -81,12 +94,13 @@ page 71263 "Archiving Document"
         PurchRcptHdr: Record "Purch. Rcpt. Header";
     begin
         MainPageVisible := true;
-
-        PaymentInvoice.SetCurrentKey("Linked Purchase Order Act No.");
-        PaymentInvoice.SetRange("Linked Purchase Order Act No.", PurchHeader."No.");
-        PurchRcptHdr.SetCurrentKey("Order No.");
-        PurchRcptHdr.SetRange("Order No.", PurchHeader."No.");
-        ShowAlarm := (PurchHeader."Act Invoice No." <> '') or (not PaymentInvoice.IsEmpty) or (not PurchRcptHdr.IsEmpty);
+        if PurchHeader."Act Type" <> PurchHeader."Act Type"::" " then begin
+            PaymentInvoice.SetCurrentKey("Linked Purchase Order Act No.");
+            PaymentInvoice.SetRange("Linked Purchase Order Act No.", PurchHeader."No.");
+            PurchRcptHdr.SetCurrentKey("Order No.");
+            PurchRcptHdr.SetRange("Order No.", PurchHeader."No.");
+            ShowAlarm := (PurchHeader."Act Invoice No." <> '') or (not PaymentInvoice.IsEmpty) or (not PurchRcptHdr.IsEmpty);
+        end;
     end;
 
     var
