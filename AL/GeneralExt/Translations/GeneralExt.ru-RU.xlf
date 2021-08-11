@@ -7553,7 +7553,7 @@
         </trans-unit>
         <trans-unit id="Page 3368656099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Giv. Transfer Order Subform</source>
-          <target>Передача материалов в переработку Субформа</target>
+          <target>Строки</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Order Subform - Property Caption</note>
         </trans-unit>
