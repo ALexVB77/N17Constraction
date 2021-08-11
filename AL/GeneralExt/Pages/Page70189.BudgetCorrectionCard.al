@@ -119,6 +119,7 @@ page 70189 "Budget Correction Card"
             }
             group(Control12370022)
             {
+                Caption = 'Data selection options';
                 field("Dimension Totaling 1"; Rec."Dimension Totaling 1")
                 {
                     ApplicationArea = All;

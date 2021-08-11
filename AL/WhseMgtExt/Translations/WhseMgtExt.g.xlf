@@ -39,7 +39,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Entry Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2362525284 - Field 149522872 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>,Posting,WriteOff,Inventory</source>
+          <source>,Posting,TransOrder,MatOrder,Write-off,TransOrderNew,MatOrderNew,WrOffNew,Inventory</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Scanning Entry - Field Entry Type - Property OptionCaption</note>
         </trans-unit>
@@ -787,6 +787,11 @@
           <source>Scanning History</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Scanning - Action ScanHistory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3308952515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ScanningBuffer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ScanningBuffer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 231647941 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ScanningHistory</source>

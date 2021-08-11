@@ -380,7 +380,7 @@ codeunit 99900 "Scanning Helper"
         ScanBuffer: Record "Scanning Buffer";
         RemainsB: Decimal;
         l_ScanEntry: Record "Item Scanning Entry";
-        REmainsOST: Decimal;
+        RemainsOST: Decimal;
         ItemUOM: Record "Item Unit of Measure";
         ExcAmount: label 'The scanned number outweighs the number in the document lines.';
         NoFindItem: label 'Item is not finding in document lines';

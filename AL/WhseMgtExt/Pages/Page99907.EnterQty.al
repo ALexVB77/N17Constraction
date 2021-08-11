@@ -12,7 +12,7 @@ page 99907 EnterQty
             {
                 field(EnterQty; EnterQty)
                 {
-                    ApplicationArea =true;
+                    ApplicationArea = All;
                     ToolTip = 'Enter Quantity';
                     Caption = 'Enter Quantity';
                 }
