@@ -5233,6 +5233,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Create ST Proj Budget Entries - Method CreateSTLines - NamedType lTextErr001</note>
         </trans-unit>
+        <trans-unit id="Page 2993483370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit-Memo Reason</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Credit-Memo Reason - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4148916677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Copmany</source>
           <note from="Developer" annotates="general" priority="2"></note>

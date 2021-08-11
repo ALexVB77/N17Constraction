@@ -5761,14 +5761,12 @@
           <source>Close</source>
           <target>Закрыть</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Action ActionFinish - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2191153028 - Action 914282563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archive</source>
           <target>Архивировать</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Action ActionNext - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1542626159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6280,6 +6278,13 @@
           <target>Сумма долгосрочного планирования %1 превышена на %2. Сохранение операций невозможно!</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Create ST Proj Budget Entries - Method CreateSTLines - NamedType lTextErr001</note>
+        </trans-unit>
+        <trans-unit id="Page 2993483370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit-Memo Reason</source>
+          <target>Причина Кредит-Ноты</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Credit-Memo Reason - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4148916677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Copmany</source>
