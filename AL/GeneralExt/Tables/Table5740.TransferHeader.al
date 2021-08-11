@@ -125,8 +125,8 @@ tableextension 85740 "Transfer Header (Ext)" extends "Transfer Header"
     procedure GetInventoryLines()
     var
         myInt: Integer;
-        Text60001: Label 'For following ILE Remaining Qty is greater than Open Qty =  Remaining Qty - Tracked Qty - Reserved Qty. Only lines with open Quantities are transferred to Order.';
-        Text60002: Label 'ILE No. %1, Remaining Qty %2, Open Qty %3';
+        Text60001: Label 'For following item ledger entry reserved quantity is greater than 0. The transfer lines are created with only open quantity.';
+        Text60002: Label 'ILE No. %1, Remaining Qty. = %2, Open Qty. = %3';
         ItemLedgEntry: Record "Item Ledger Entry";
         ItemLedgEntryPage: Page "Item Ledger Entries";
         NewTransLine: Record "Transfer Line";
