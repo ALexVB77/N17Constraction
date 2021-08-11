@@ -99,10 +99,12 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             OptionCaption = 'Prepay,Postpay';
             OptionMembers = "pre-pay","post-payment";
         }
-        field(70011; "Request Payment Doc Type"; Boolean)
+        field(70011; "Payment Doc Type"; Option)
         {
             Description = 'NC 51373 AB';
-            Caption = 'Request Payment Doc Type';
+            Caption = 'Payment Doc Type';
+            OptionCaption = 'Invoice,Payment Request';
+            OptionMembers = Invoice,"Payment Request";
         }
         field(70012; "Payment Details"; Text[230])
         {
