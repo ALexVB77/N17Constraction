@@ -9,8 +9,8 @@ page 71263 "Archiving Document"
         {
             group(MainPage)
             {
-                Caption = '';
-                Visible = true;
+                ShowCaption = false;
+                Visible = MainPageVisible;
                 group(AloneStep)
                 {
                     Caption = 'Do you want to add a document to the archive of problem documents?';
@@ -80,6 +80,8 @@ page 71263 "Archiving Document"
         PaymentInvoice: Record "Purchase Header";
         PurchRcptHdr: Record "Purch. Rcpt. Header";
     begin
+        MainPageVisible := true;
+
         PaymentInvoice.SetCurrentKey("Linked Purchase Order Act No.");
         PaymentInvoice.SetRange("Linked Purchase Order Act No.", PurchHeader."No.");
         PurchRcptHdr.SetCurrentKey("Order No.");
@@ -90,7 +92,7 @@ page 71263 "Archiving Document"
     var
         PurchHeader: Record "Purchase Header";
         ArchReason: Text;
-        ArchiveDoc, ShowAlarm : Boolean;
+        ArchiveDoc, ShowAlarm, MainPageVisible : Boolean;
 
     procedure SetParam(var ParamPurchHeader: Record "Purchase Header")
     begin

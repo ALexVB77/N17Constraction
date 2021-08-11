@@ -4783,11 +4783,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2191153028 - Control 149499780 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control MainPage - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2191153028 - Control 140075709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to add a document to the archive of problem documents?</source>
           <note from="Developer" annotates="general" priority="2"></note>
