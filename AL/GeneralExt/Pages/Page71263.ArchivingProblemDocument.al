@@ -1,4 +1,4 @@
-page 71263 "Archiving Problem Document'"
+page 71263 "Archiving Problem Document"
 {
     Caption = 'Archiving Problem Document';
     DeleteAllowed = false;
@@ -20,6 +20,11 @@ page 71263 "Archiving Problem Document'"
                 {
                     ApplicationArea = All;
                     Caption = 'Archiving reason';
+
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update();
+                    end;
                 }
             }
         }
@@ -39,9 +44,6 @@ page 71263 "Archiving Problem Document'"
 
                 trigger OnAction()
                 begin
-
-                    // записать причину архивирования!
-
                     ArchiveDoc := true;
                     CurrPage.Close();
                 end;
@@ -51,12 +53,13 @@ page 71263 "Archiving Problem Document'"
     }
 
     var
-        ArchReason: Text[80];
+        ArchReason: Text;
         ArchiveDoc: Boolean;
 
-    procedure RunArchiving(): Boolean
+    procedure GetResult(var OutArchReason: text): Boolean
     begin
+        if ArchiveDoc then
+            OutArchReason := ArchReason;
         exit(ArchiveDoc);
     end;
-
 }

@@ -428,11 +428,10 @@ codeunit 50010 "Payment Order Management"
 
     procedure PurchOrderActArchiveQstNew(PurchHeader: Record "Purchase Header"): Boolean;
     var
-        PurchRcptHeader: Record "Purch. Rcpt. Header";
+        PurchHeader2: Record "Purchase Header";
         PaymentInvoice: Record "Purchase Header";
-        QuestionText: text;
-        LocText1: Label 'Do you want to add a document to the archive of problem documents?';
-        LocText2: Label '/All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!';
+        ArchProblemDoc: Page "Archiving Problem Document";
+        ArchReason: Text;
         LocText50013: Label 'Document %1 has been sent to the archive.';
         LocText3: Label 'You are not the owner or process user in the linked payment invoice %1.';
         LocText4: Label 'You must be the owner or process user in the document %1.';
@@ -440,24 +439,25 @@ codeunit 50010 "Payment Order Management"
         if not (UserId in [PurchHeader.Controller, PurchHeader."Process User"]) then
             Error(LocText4, PurchHeader."No.");
 
-        PurchRcptHeader.SetCurrentKey("Order No.");
-        PurchRcptHeader.SetRange("Order No.", PurchHeader."No.");
-
         PaymentInvoice.SetCurrentKey("Linked Purchase Order Act No.");
         PaymentInvoice.SetRange("Linked Purchase Order Act No.", PurchHeader."No.");
-
-        QuestionText := LocText1;
-        if (not PurchRcptHeader.IsEmpty) or ((PurchHeader."Act Invoice No." <> '') and (not PurchHeader."Act Invoice Posted")) or (not PaymentInvoice.IsEmpty) then
-            QuestionText += LocText2;
-        if not Confirm(QuestionText) then
-            exit;
-
         if PaymentInvoice.FindSet() then
             repeat
                 if not (UserId in [PaymentInvoice.Receptionist, PaymentInvoice."Process User"]) then
                     Error(LocText3, PaymentInvoice."No.");
             until PaymentInvoice.next = 0;
 
+        PurchHeader2 := PurchHeader;
+        PurchHeader2.SetRange("Document Type", PurchHeader2."Document Type");
+        PurchHeader2.SetRange("No.", PurchHeader2."No.");
+        ArchProblemDoc.SetRecord(PurchHeader);
+        ArchProblemDoc.SetTableView(PurchHeader);
+        ArchProblemDoc.RunModal;
+        if not ArchProblemDoc.GetResult(ArchReason) then
+            exit;
+
+        //\\
+        error(ArchReason);
 
         PurchOrderActArchive(PurchHeader);
 

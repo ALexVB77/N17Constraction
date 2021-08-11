@@ -509,7 +509,7 @@ page 71260 "Purchase Order Act Archive"
         else
             PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
 
-        ProblemDescription := Rec.GetAddTypeCommentText(AddCommentType::Archive);
+        ProblemDescription := Rec.GetAddTypeCommentArchText(AddCommentType::Archive);
 
         CalcFields("Exists Attachment");
         ShowDocEnabled := "Exists Attachment";

@@ -5535,58 +5535,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchActPostShipment - NamedType Text50013</note>
         </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 3935502648" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Do you want to add a document to the archive of problem documents?</source>
-          <target>Добавить документ в архив проблемных документов?</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText1</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 278231969" size-unit="char" translate="yes" xml:space="preserve">
-          <source>/All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!</source>
-          <target>/Все связанные счета на оплату будут отправлены в архив, а приходные накладные и счета покупки будут удалены!</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText2</note>
-        </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 1751475910" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document %1 has been sent to the archive.</source>
           <target>Документ %1 отправлен в архив.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText50013</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 915928586" size-unit="char" translate="yes" xml:space="preserve">
           <source>You are not the owner or process user in the linked payment invoice %1.</source>
           <target>Вы не являетесь владельцем или пользователем процесса в связанном счете на оплату %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText3</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 356079192 - NamedType 1553625203" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must be the owner or process user in the document %1.</source>
           <target>Вы должны быть владельцем или пользователем процесса в документе %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText4</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 638387533 - NamedType 1999882030" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archive %1 no.: %2?</source>
           <target>Архивировать %1 с номером: %2?</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchiveQst - NamedType LocText007</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 638387533 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document %1 has been archived.</source>
           <target>Документ %1 сохранен в архиве.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchiveQst - NamedType LocText001</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 638387533 - NamedType 1553625203" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must be the owner or process user in the document %1.</source>
           <target>Вы должны быть владельцем или пользователем процесса в документе %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchiveQst - NamedType LocText4</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 2860546455 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
@@ -5744,6 +5726,41 @@
           <target>Объекты инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apartments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 944283333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archiving Problem Document</source>
+          <target>Архивация проблемного документа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 944283333 - Control 140075709 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!</source>
+          <target>Все связанные Счета на оплату будут также отправлены в архив, а Учтенные прих. накладные покупки и Счета покупки будут удалены!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Control AloneStep - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 944283333 - Control 140075709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to add a document to the archive of problem documents?</source>
+          <target>Добавить документ в архив проблемных документов?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Control AloneStep - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 944283333 - Control 1548358520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archiving reason</source>
+          <target>Причина арховации</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Control ArchReason - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 944283333 - Action 1528185918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive</source>
+          <target>Архивировать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Problem Document - Action Archive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1542626159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Barcode Act Document</source>
@@ -9699,6 +9716,265 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Reopen - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1374213585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <target>Строки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Arch. Sub. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1374213585 - Control 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approver</source>
+          <target>Утверждающий</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Arch. Sub. - Control Approver - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1374213585 - Control 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description/Comment</source>
+          <target>]Описание/комментарий</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Arch. Sub. - Control Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1374213585 - Control 3904971218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Utilities Dim. Value Code</source>
+          <target>ИНЖ. СЕТЬ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Arch. Sub. - Control Utilities Dim. Value Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1374213585 - Action 1402615620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Line</source>
+          <target>&amp;Строка</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Arch. Sub. - Action &amp;Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1374213585 - Action 3000180178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Co&amp;mments</source>
+          <target>Ко&amp;мментарии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Arch. Sub. - Action Co&amp;mments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1374213585 - Action 2173385693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <target>Измерения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Arch. Sub. - Action Dimensions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Act,Function,Request Approval,Approve,Release,Navigate,Print</source>
+          <target>Новый,Процесс,Отчет,Акт,Функции,Запросить утверждение,Утвердить,Выпустить,Навигатор,Печатать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order Act</source>
+          <target>Документы Акт и КС-2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 318613646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Details</source>
+          <target>Реквизиты</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target>Общее</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approver</source>
+          <target>Утверждающий</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Approver - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 3230600482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor/Employee Name</source>
+          <target>Название поставщика/сотрудника</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Buy-from Vendor Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 38210337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amounts</source>
+          <target>Суммы</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control DocAmounts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 3143542455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Amount</source>
+          <target>Сумма счета без НДС</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Invoice Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 2975378708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <target>Сумма остатка</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Remaining Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 2526681557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <target>Код сотрудника</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control EmployeeNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 3724343034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Date</source>
+          <target>Дата Оплаты</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Payment Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 4139459292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fact</source>
+          <target>Факт</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Paid Date Fact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 1611306197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plan</source>
+          <target>План</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Paid Date Plan - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 3183912585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pre-Approver</source>
+          <target>Предв. Утверждающий</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Pre-Approver - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 2414822351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Problem Description</source>
+          <target>Описание проблемы</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Problem Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 801304080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Checker</source>
+          <target>Проверяющий</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Purchaser Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 609835670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse Document</source>
+          <target>Складской документ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Warehouse Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 1725717413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Request</source>
+          <target>Заявка на платеж</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Payment Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Control 2344504216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Bank Account Name</source>
+          <target>Название банка поставщика</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Control Vendor Bank Account Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 3307590636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>O&amp;rder Act</source>
+          <target>Акт</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action OrderAct - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 2941878937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approval Comments</source>
+          <target>Комментарии утверждения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action ApprovalComments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 3860314472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approvals</source>
+          <target>Утверждения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action Approvals - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 3000180178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Co&amp;mments</source>
+          <target>Ко&amp;мментарии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action Co&amp;mments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 2173385693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <target>Измерения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action Dimensions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 1062429549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <target>Вложения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action DocAttach - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 3249535890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents View</source>
+          <target>Просмотр Документа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action ViewAttachDoc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <target>Печать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Print</source>
+          <target>&amp;Печать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action &amp;Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cover Sheet</source>
+          <target>Сопроводительный лист</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action Cover Sheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1712514355 - Action 3584557798 - Method 1377591017 - NamedType 1758949055" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The cover sheet can only be printed from the Signing status.</source>
+          <target>Сопроводительный лист можно распечатать только со статуса Подписание.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Archive - Action Cover Sheet - Method OnAction - NamedType Text50005</note>
+        </trans-unit>
         <trans-unit id="Page 38647611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
           <target>Строки</target>
@@ -11093,7 +11369,7 @@
         </trans-unit>
         <trans-unit id="Report 1402994593 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General</source>
-          <target>]Общее</target>
+          <target>Общее</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control General - Property Caption</note>
         </trans-unit>
@@ -14343,6 +14619,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Comment Line (Ext) - Field Comment 2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3994903524 - Field 1407999211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1533176575">
+          <source>Add. Line Type</source>
+          <target>Доп. тип строки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Comment Line Arch. Ext - Field Add. Line Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3994903524 - Field 3468194771 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1533176575">
+          <source>Comment 2</source>
+          <target>Комментарий 2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Comment Line Arch. Ext - Field Comment 2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1246840681 - Method 2759385843 - NamedType 2432085961" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 1246840681">
           <source>Измерение "%1" в заголовке и в строке %2 счета %3 отличается</source>
           <target>Измерение "%1" в заголовке и в строке %2 счета %3 отличается</target>
@@ -14396,12 +14686,6 @@
           <target>Тип затрат</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch. Inv. Line (Ext) - Field Cost Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 279653624 - Method 4041009753 - NamedType 3135394642" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 279653624">
-          <source>There is no approval request to approve.</source>
-          <target>Нет запроса утверждения, подлежащего утверждению.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Method GetApprovalCommentText - NamedType NoReqToApproveErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 279653624 - Method 1323077645 - NamedType 3076946130" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 279653624">
           <source>Document %1 contains no lines.</source>
@@ -14703,18 +14987,23 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header (Ext) - Field Vendor Bank Account No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 3321113828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Act Invoice No.</source>
+          <target>Счет Покупки Но.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Act Invoice No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 2338624330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Act Invoice Posted</source>
           <target>Счет Покупки Учтен</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Act Invoice Posted - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3075689437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Act is Received</source>
           <target>Акт Есть</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Act is Received - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 445905442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
@@ -14727,14 +15016,12 @@
           <source>Archiving Type</source>
           <target>Тип архивации</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Archiving Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3086258489 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source> ,Problem Act,Payment Invoice</source>
           <target> ,Проблемный Акт,Заявка на Оплату</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Archiving Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 1010040168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
@@ -14765,14 +15052,12 @@
           <source>External Agreement No.</source>
           <target>Номер внешнего договора</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field External Agreement No. (Calc) - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 4066496539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Inv.-Fact. is Received</source>
           <target>Счет-фактура есть</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Inv.-Fact. is Received - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 678730876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
@@ -14780,12 +15065,6 @@
           <target>Сумма счета c НДС</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Invoice Amount Incl. VAT - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1116284634 - Field 166038250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
-          <source>Invoice No.</source>
-          <target>Счет Покупки Но.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Invoice No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3673885986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>VAT Amount</source>
@@ -14803,7 +15082,6 @@
           <source>IW Planned Repayment Date</source>
           <target>Планируемая дата погашения аванса</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field IW Planned Repayment Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3021479305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
@@ -14816,7 +15094,6 @@
           <source>Linked Purchase Order Act No.</source>
           <target>Связанный документ Акт и КС-2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Linked Purchase Order Act No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 2361543958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
@@ -14835,14 +15112,19 @@
           <source>Original Company</source>
           <target>Оригинальная Фирма</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Original Company - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 4139459292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Paid Date Fact</source>
+          <target>Дата оплаты (Факт)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Paid Date Fact - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3514169027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Payment Assignment</source>
           <target>Назначение платежа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Assignment - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3955594068 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
@@ -14855,22 +15137,26 @@
           <source>Payment to Person</source>
           <target>Оплата физ. лицу</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment to Person - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Payment Type</source>
           <target>Тип платежа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 907492870 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Prepay,Postpay</source>
           <target>Предоплата,Постоплата</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 1021939399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Payments Amount</source>
+          <target>Сумма оплат</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payments Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3183912585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Pre-Approver</source>
@@ -14882,7 +15168,6 @@
           <source>Pre-booking Accept</source>
           <target>Pre-booking Accept</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Pre-booking Accept - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3630883352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
@@ -14919,7 +15204,6 @@
           <source>Receptionist</source>
           <target>Receptionist</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Receptionist - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 2032084525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
@@ -14932,14 +15216,12 @@
           <source>Sent to pre. approval</source>
           <target>Отправлен на пред. утверждение</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Sent to pre. Approval - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3622778629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Spec. Bank Account No.</source>
           <target>Номер расч. спец. счета</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Spec. Bank Account No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3132070813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
@@ -15114,21 +15396,18 @@
           <source>Paid Date (Fact)</source>
           <target>Дата оплаты (Факт)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Paid Date Fact - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4258310961 - Field 3569568710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
           <source>Process User</source>
           <target>Пользователь процесса</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Process User - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4258310961 - Field 801304080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
           <source>Purchaser Code</source>
           <target>Код закупщика</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Purchaser Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Method 212421167 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2307367824">
@@ -16318,6 +16597,13 @@
           <target>Доп. информация</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Purchase Comment Add. Type - EnumValue Additional Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2341102937 - EnumValue 1528185918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive</source>
+          <target>Архивировать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Purchase Comment Add. Type - EnumValue Archive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2341102937 - EnumValue 1860360197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem</source>

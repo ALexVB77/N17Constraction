@@ -247,15 +247,40 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
         }
     }
 
-    procedure GetAddTypeCommentText(AddType: enum "Purchase Comment Add. Type"): text
+    procedure GetAddTypeCommentArchText(AddType: enum "Purchase Comment Add. Type"): text
     var
-        PurchCommentLine: Record "Purch. Comment Line";
+        PurchCommentLineArch: Record "Purch. Comment Line Archive";
     begin
-        PurchCommentLine.SetRange("Document Type", "Document Type");
-        PurchCommentLine.SetRange("No.", "No.");
-        PurchCommentLine.SetRange("Line No.", 0);
-        PurchCommentLine.SetRange("Add. Line Type", AddType);
-        if PurchCommentLine.FindLast() then
-            exit(PurchCommentLine.Comment + PurchCommentLine."Comment 2");
+        PurchCommentLineArch.SetRange("Document Type", "Document Type".AsInteger());
+        PurchCommentLineArch.SetRange("No.", "No.");
+        PurchCommentLineArch.SetRange("Document Line No.", 0);
+        PurchCommentLineArch.SetRange("Add. Line Type", AddType);
+        if PurchCommentLineArch.FindLast() then
+            exit(PurchCommentLineArch.Comment + PurchCommentLineArch."Comment 2");
     end;
+
+    procedure SetAddTypeCommentArchText(AddType: enum "Purchase Comment Add. Type"; NewComment: text)
+    var
+        PurchCommentLineArch: Record "Purch. Comment Line Archive";
+    begin
+        PurchCommentLineArch.SetRange("Document Type", "Document Type".AsInteger());
+        PurchCommentLineArch.SetRange("No.", "No.");
+        PurchCommentLineArch.SetRange("Document Line No.", 0);
+        PurchCommentLineArch.SetRange("Add. Line Type", AddType);
+        if not PurchCommentLineArch.FindLast() then begin
+            PurchCommentLineArch.Init();
+            PurchCommentLineArch."Document Type" := "Document Type".AsInteger();
+            PurchCommentLineArch."No." := "No.";
+            PurchCommentLineArch."Document Line No." := 0;
+            PurchCommentLineArch."Line No." := 10000;
+            PurchCommentLineArch.Date := Today;
+            PurchCommentLineArch."Add. Line Type" := AddType;
+            PurchCommentLineArch.Insert(true);
+        end;
+        PurchCommentLineArch.Comment := CopyStr(NewComment, 1, MaxStrLen(PurchCommentLineArch.Comment));
+        PurchCommentLineArch."Comment 2" :=
+          CopyStr(NewComment, MaxStrLen(PurchCommentLineArch.Comment) + 1, MaxStrLen(PurchCommentLineArch."Comment 2"));
+        PurchCommentLineArch.Modify(true);
+    end;
+
 }
