@@ -2,6 +2,10 @@ tableextension 80017 "G/L Entry (Ext)" extends "G/L Entry"
 {
     fields
     {
+        field(50013; ID; Integer)
+        {
+            Caption = 'ID';
+        }
         field(50030; "Cust. Ext. Agr. No."; Text[30])
         {
             Caption = 'Cust. Ext. Agr. No.';
@@ -11,6 +15,14 @@ tableextension 80017 "G/L Entry (Ext)" extends "G/L Entry"
             Editable = false;
         }
 
+    }
+
+    keys
+    {
+        key(Key50000; ID)
+        {
+
+        }
     }
 
 
