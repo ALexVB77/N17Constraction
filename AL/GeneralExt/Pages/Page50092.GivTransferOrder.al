@@ -638,21 +638,6 @@ page 50092 "Giv. Transfer Order"
                         ReleaseTransferDoc.Reopen(Rec);
                     end;
                 }
-
-                action(GetItemLedgerEntryLines)
-                {
-                    Caption = 'Get Item Ledger Lines';
-                    Image = InventoryPick;
-                    ApplicationArea = All;
-                    trigger OnAction()
-                    begin
-
-                        //NC 22512 > DP
-                        rec.GetInventoryLines;
-                        //NC 22512 < DP
-                    end;
-
-                }
             }
             group("F&unctions")
             {
@@ -731,6 +716,18 @@ page 50092 "Giv. Transfer Order"
                     trigger OnAction()
                     begin
                         rec.GetReceiptLines;
+                    end;
+                }
+                action(GetItemLedgerEntryLines)
+                {
+                    Caption = 'Get Item Ledger Lines';
+                    Image = InventoryPick;
+                    ApplicationArea = All;
+                    trigger OnAction()
+                    begin
+                        //NC 22512 > DP
+                        rec.GetInventoryLines;
+                        //NC 22512 < DP
                     end;
                 }
             }
