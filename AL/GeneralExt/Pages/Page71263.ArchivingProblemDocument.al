@@ -1,6 +1,6 @@
-page 71263 "Archiving Problem Document"
+page 71263 "Archiving Document"
 {
-    Caption = 'Archiving Problem Document';
+    Caption = 'Archiving Document';
     DeleteAllowed = false;
     InsertAllowed = false;
     ModifyAllowed = false;
@@ -12,19 +12,29 @@ page 71263 "Archiving Problem Document"
     {
         area(content)
         {
-            group(AloneStep)
-            {
-                Caption = 'Do you want to add a document to the archive of problem documents?';
-                InstructionalText = 'All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!';
-                field(ArchReason; ArchReason)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Archiving reason';
 
-                    trigger OnValidate()
-                    begin
-                        CurrPage.Update();
-                    end;
+            group(Control1)
+            {
+                ShowCaption = false;
+                group(AloneStep)
+                {
+                    Caption = 'Do you want to add a document to the archive of problem documents?';
+
+                    group(Control32)
+                    {
+                        InstructionalText = 'All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!';
+                        ShowCaption = false;
+                    }
+                    field(ArchReason; ArchReason)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Archiving reason';
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update();
+                        end;
+                    }
                 }
             }
         }
