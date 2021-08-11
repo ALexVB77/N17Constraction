@@ -48,12 +48,12 @@ page 71263 "Archiving Document"
     {
         area(processing)
         {
-            action(ActionArchive)
+            action(ActionNext)
             {
                 ApplicationArea = All;
                 Caption = 'Archive';
                 Enabled = ArchReason <> '';
-                Image = Archive;
+                Image = NextRecord;
                 InFooterBar = true;
 
                 trigger OnAction()
@@ -63,12 +63,12 @@ page 71263 "Archiving Document"
                 end;
 
             }
-            action(ActionClose)
+            action(ActionFinish)
             {
                 ApplicationArea = Basic, Suite, Invoicing;
                 Caption = 'Close';
                 Enabled = true;
-                Image = Close;
+                Image = Approve;
                 InFooterBar = true;
 
                 trigger OnAction()
@@ -78,6 +78,16 @@ page 71263 "Archiving Document"
             }
         }
     }
+
+    trigger OnInit()
+    begin
+        LoadTopBanners;
+    end;
+
+    trigger OnOpenPage()
+    begin
+        WizardNotification.Id := Format(CreateGuid);
+    end;
 
     trigger OnAfterGetCurrRecord()
     var
@@ -92,8 +102,12 @@ page 71263 "Archiving Document"
     end;
 
     var
+        MediaRepositoryStandard: Record "Media Repository";
+        MediaRepositoryDone: Record "Media Repository";
+        ClientTypeManagement: Codeunit "Client Type Management";
+        WizardNotification: Notification;
         ArchReason: Text;
-        ArchiveDoc, ShowAlarm : Boolean;
+        ArchiveDoc, ShowAlarm, TopBannerVisible : Boolean;
 
     procedure GetResult(var OutArchReason: text): Boolean
     begin
@@ -101,4 +115,14 @@ page 71263 "Archiving Document"
             OutArchReason := ArchReason;
         exit(ArchiveDoc);
     end;
+
+    local procedure LoadTopBanners()
+    begin
+        if MediaRepositoryStandard.Get('AssistedSetup-NoText-400px.png', Format(ClientTypeManagement.GetCurrentClientType)) and
+           MediaRepositoryDone.Get('AssistedSetupDone-NoText-400px.png', Format(ClientTypeManagement.GetCurrentClientType))
+        then
+            TopBannerVisible := MediaRepositoryDone.Image.HasValue;
+    end;
+
+
 }
