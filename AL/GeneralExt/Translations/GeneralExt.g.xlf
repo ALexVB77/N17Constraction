@@ -12673,6 +12673,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Details - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 1748113302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Payment Doc Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Doc Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1116284634 - Field 1748113302 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
+          <source>Invoice,Payment Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Payment Doc Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 3066752552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Payment to Person</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12732,11 +12742,6 @@
           <source>Receptionist</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Receptionist - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1116284634 - Field 2032084525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
-          <source>Request Payment Doc Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Request Payment Doc Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1116284634 - Field 265037819 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 146271610">
           <source>Sent to pre. approval</source>
