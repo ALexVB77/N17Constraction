@@ -6287,6 +6287,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Create ST Proj Budget Entries - Method CreateSTLines - NamedType lTextErr001</note>
         </trans-unit>
+        <trans-unit id="Page 2993483370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit-Memo Reason</source>
+          <target>Причина Кредит-Ноты</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Credit-Memo Reason - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4148916677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Copmany</source>
           <target>CRM Компания</target>
@@ -15678,14 +15685,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales Invoice Header Ext - Field Government Agreement No - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2802827400 - Method 970250691 - NamedType 1559726398" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2802827400">
-          <source>For following ILE Remaining Qty is greater than Open Qty =  Remaining Qty - Tracked Qty - Reserved Qty. Only lines with open Quantities are transferred to Order.</source>
-          <target>For following ILE Remaining Qty is greater than Open Qty =  Remaining Qty - Tracked Qty - Reserved Qty. Only lines with open Quantities are transferred to Order.</target>
+          <source>For following item ledger entry reserved quantity is greater than 0. The transfer lines are created with only open quantity.</source>
+          <target>В данной товарной операции зарезервированное кол-во больше 0. Строки заказа на перемещения созданы с открытым количеством.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Header (Ext) - Method GetInventoryLines - NamedType Text60001</note>
         </trans-unit>
         <trans-unit id="TableExtension 2802827400 - Method 970250691 - NamedType 3941603843" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2802827400">
-          <source>ILE No. %1, Remaining Qty %2, Open Qty %3</source>
-          <target>ILE No. %1, Remaining Qty %2, Open Qty %3</target>
+          <source>ILE No. %1, Remaining Qty. = %2, Open Qty. = %3</source>
+          <target>Тов. оп. %1, Остаток = %2, Открытое кол-во = %3</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Transfer Header (Ext) - Method GetInventoryLines - NamedType Text60002</note>
         </trans-unit>

@@ -1,5 +1,8 @@
 table 70166 "Credit-Memo Reason"
 {
+    Caption = 'Credit-Memo Reason';
+    LookupPageId = "Credit-Memo Reason";
+
     fields
     {
         field(1; Reason; Text[100])
@@ -7,4 +10,13 @@ table 70166 "Credit-Memo Reason"
             Caption = 'Reason';
         }
     }
+
+    keys
+    {
+        key(Key1; Reason)
+        {
+            Clustered = true;
+        }
+    }
+
 }
