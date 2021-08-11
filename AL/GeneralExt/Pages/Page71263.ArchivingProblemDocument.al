@@ -26,13 +26,13 @@ page 71263 "Archiving Document"
                     }
                     group(Control3)
                     {
-                        InstructionalText = 'To archive a document, you must specify the archiving reason.';
+                        InstructionalText = 'To archive a document, you must specify the archiving reason:';
                         ShowCaption = false;
                     }
                     field(ArchReason; ArchReason)
                     {
                         ApplicationArea = All;
-                        Caption = 'Archiving reason';
+                        ShowCaption = false;
 
                         trigger OnValidate()
                         begin

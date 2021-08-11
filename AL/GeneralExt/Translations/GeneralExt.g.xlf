@@ -4788,18 +4788,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control AloneStep - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2191153028 - Control 1548358520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Archiving reason</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control ArchReason - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2191153028 - Control 63266223 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
           <source>All linked Payment Invoices will be archived, and Posted Purchase Receipt and Purchase Invoices will be deleted as well!</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control Control2 - Property InstructionalText</note>
         </trans-unit>
         <trans-unit id="Page 2191153028 - Control 700962840 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
-          <source>To archive a document, you must specify the archiving reason.</source>
+          <source>To archive a document, you must specify the archiving reason:</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control Control3 - Property InstructionalText</note>
         </trans-unit>
