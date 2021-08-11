@@ -1,25 +1,16 @@
 page 71263 "Archiving Document"
 {
     Caption = 'Archiving Document';
-    DeleteAllowed = false;
-    InsertAllowed = false;
-    ModifyAllowed = false;
     PageType = NavigatePage;
-    SourceTable = "Purchase Header";
 
     layout
     {
         area(content)
         {
-            group(Control96)
-            {
-                Editable = false;
-                ShowCaption = false;
-                Visible = false;
-            }
-            group(Control1)
+            group(Control17)
             {
                 ShowCaption = false;
+                Visible = true;
                 group(AloneStep)
                 {
                     Caption = 'Do you want to add a document to the archive of problem documents?';
@@ -85,35 +76,30 @@ page 71263 "Archiving Document"
         }
     }
 
-    trigger OnInit()
-    begin
-        LoadTopBanners;
-    end;
-
-    trigger OnOpenPage()
-    begin
-        WizardNotification.Id := Format(CreateGuid);
-    end;
-
     trigger OnAfterGetCurrRecord()
     var
         PaymentInvoice: Record "Purchase Header";
         PurchRcptHdr: Record "Purch. Rcpt. Header";
     begin
         PaymentInvoice.SetCurrentKey("Linked Purchase Order Act No.");
-        PaymentInvoice.SetRange("Linked Purchase Order Act No.", "No.");
+        PaymentInvoice.SetRange("Linked Purchase Order Act No.", PurchHeader."No.");
         PurchRcptHdr.SetCurrentKey("Order No.");
-        PurchRcptHdr.SetRange("Order No.", Rec."No.");
-        ShowAlarm := (Rec."Act Invoice No." <> '') or (not PaymentInvoice.IsEmpty) or (not PurchRcptHdr.IsEmpty);
+        PurchRcptHdr.SetRange("Order No.", PurchHeader."No.");
+        ShowAlarm := (PurchHeader."Act Invoice No." <> '') or (not PaymentInvoice.IsEmpty) or (not PurchRcptHdr.IsEmpty);
     end;
 
     var
+        PurchHeader: Record "Purchase Header";
         MediaRepositoryStandard: Record "Media Repository";
         MediaRepositoryDone: Record "Media Repository";
         ClientTypeManagement: Codeunit "Client Type Management";
-        WizardNotification: Notification;
         ArchReason: Text;
         ArchiveDoc, ShowAlarm, TopBannerVisible : Boolean;
+
+    procedure SetParam(var ParamPurchHeader: Record "Purchase Header")
+    begin
+        PurchHeader := ParamPurchHeader;
+    end;
 
     procedure GetResult(var OutArchReason: text): Boolean
     begin
@@ -121,14 +107,4 @@ page 71263 "Archiving Document"
             OutArchReason := ArchReason;
         exit(ArchiveDoc);
     end;
-
-    local procedure LoadTopBanners()
-    begin
-        if MediaRepositoryStandard.Get('AssistedSetup-NoText-400px.png', Format(ClientTypeManagement.GetCurrentClientType)) and
-           MediaRepositoryDone.Get('AssistedSetupDone-NoText-400px.png', Format(ClientTypeManagement.GetCurrentClientType))
-        then
-            TopBannerVisible := MediaRepositoryDone.Image.HasValue;
-    end;
-
-
 }

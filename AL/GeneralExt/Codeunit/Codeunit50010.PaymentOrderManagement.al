@@ -428,7 +428,6 @@ codeunit 50010 "Payment Order Management"
 
     procedure PurchOrderActArchiveQstNew(PurchHeader: Record "Purchase Header"): Boolean;
     var
-        PurchHeader2: Record "Purchase Header";
         PaymentInvoice: Record "Purchase Header";
         ArchProblemDoc: Page "Archiving Document";
         ArchReason: Text;
@@ -447,11 +446,7 @@ codeunit 50010 "Payment Order Management"
                     Error(LocText3, PaymentInvoice."No.");
             until PaymentInvoice.next = 0;
 
-        PurchHeader2 := PurchHeader;
-        PurchHeader2.SetRange("Document Type", PurchHeader2."Document Type");
-        PurchHeader2.SetRange("No.", PurchHeader2."No.");
-        ArchProblemDoc.SetRecord(PurchHeader);
-        ArchProblemDoc.SetTableView(PurchHeader);
+        ArchProblemDoc.SetParam(PurchHeader);
         ArchProblemDoc.RunModal;
         if not ArchProblemDoc.GetResult(ArchReason) then
             exit;
