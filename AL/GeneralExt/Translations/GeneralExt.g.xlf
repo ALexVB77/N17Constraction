@@ -4838,11 +4838,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchOrderActArchiveQstNew - NamedType LocText4</note>
         </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 638387533 - NamedType 1999882030" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Archive %1 no.: %2?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method PurchPaymentInvoiceArchiveQst - NamedType LocText007</note>
-        </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 638387533 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document %1 has been archived.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4989,7 +4984,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2191153028 - Control 140075709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Do you want to add a document to the archive of problem documents?</source>
+          <source>Do you want to add a document to the archive?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control AloneStep - Property Caption</note>
         </trans-unit>

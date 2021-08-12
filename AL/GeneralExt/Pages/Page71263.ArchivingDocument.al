@@ -13,7 +13,7 @@ page 71263 "Archiving Document"
                 Visible = MainPageVisible;
                 group(AloneStep)
                 {
-                    Caption = 'Do you want to add a document to the archive of problem documents?';
+                    Caption = 'Do you want to add a document to the archive?';
                     label(Split1)
                     {
                         ApplicationArea = Basic, Suite;
