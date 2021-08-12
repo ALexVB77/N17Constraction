@@ -281,6 +281,8 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
         PurchCommentLineArch.SetRange("Document Type", "Document Type".AsInteger());
         PurchCommentLineArch.SetRange("No.", "No.");
         PurchCommentLineArch.SetRange("Document Line No.", 0);
+        PurchCommentLineArch.SetRange("Version No.", "Version No.");
+        PurchCommentLineArch.SetRange("Doc. No. Occurrence", "Doc. No. Occurrence");
         PurchCommentLineArch.SetRange("Add. Line Type", AddType);
         if PurchCommentLineArch.FindLast() then
             exit(PurchCommentLineArch.Comment + PurchCommentLineArch."Comment 2");
@@ -293,6 +295,8 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
         PurchCommentLineArch.SetRange("Document Type", "Document Type".AsInteger());
         PurchCommentLineArch.SetRange("No.", "No.");
         PurchCommentLineArch.SetRange("Document Line No.", 0);
+        PurchCommentLineArch.SetRange("Version No.", "Version No.");
+        PurchCommentLineArch.SetRange("Doc. No. Occurrence", "Doc. No. Occurrence");
         PurchCommentLineArch.SetRange("Add. Line Type", AddType);
         if not PurchCommentLineArch.FindLast() then begin
             PurchCommentLineArch.Init();
@@ -300,6 +304,8 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             PurchCommentLineArch."No." := "No.";
             PurchCommentLineArch."Document Line No." := 0;
             PurchCommentLineArch."Line No." := 10000;
+            PurchCommentLineArch."Version No." := "Version No.";
+            PurchCommentLineArch."Doc. No. Occurrence" := "Doc. No. Occurrence";
             PurchCommentLineArch.Date := Today;
             PurchCommentLineArch."Add. Line Type" := AddType;
             PurchCommentLineArch.Insert(true);
