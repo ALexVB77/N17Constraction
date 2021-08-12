@@ -1105,6 +1105,139 @@ codeunit 70000 "ERPC Funtions"
 
     end;
 
+    procedure CreateBCPreBookingActPost(PurchInvHead: Record "Purch. Inv. Header")
+    var
+        PCCE: Record "Projects Cost Control Entry";
+        lPIL: Record "Purch. Inv. Line";
+        lrVendorAgreement: Record "Vendor Agreement";
+        lDimVal: Record "Dimension Value";
+        lrVendor: Record Vendor;
+        lGLSetup: Record "General Ledger Setup";
+        i: Integer;
+    begin
+
+        //SWC318 AKA 241014
+        lrVendor.GET(PurchInvHead."Buy-from Vendor No.");                              //SWC318 AKA 231014
+        IF (lrVendor."Agreement Posting" = lrVendor."Agreement Posting"::Mandatory) THEN //SWC318 AKA 231014
+            PurchInvHead.TESTFIELD("Agreement No.");
+        lPIL.SETRANGE("Document No.", PurchInvHead."No.");
+        IF lPIL.FINDSET THEN
+            REPEAT
+                // BuildingTurnHave := FALSE;    //SWC397 AKA 121214
+                // BuildingProjectHave := FALSE; //SWC397 AKA 121214
+                lPIL.TESTFIELD("Shortcut Dimension 1 Code");
+                // BuildingProject.SETRANGE("Project Dimension Code", lPIL."Shortcut Dimension 1 Code");
+                // // SWC936 DD 17.11.16 >>
+                // GetBuildingProjectPost(PurchInvHead, BuildingProject);
+                // // SWC936 DD 17.11.16 <<
+                // IF BuildingProject.FINDFIRST THEN
+                //     BuildingProjectHave := TRUE; //SWC397 AKA 121214
+                //                                  //BEGIN
+                lPIL.TESTFIELD("Shortcut Dimension 2 Code");
+                // SWC951 DD 17.11.16 >>
+                // IF GetActTypePost(PurchInvHead) > 2 THEN
+                //     // SWC951 DD 17.11.16 <<
+                //     lPIL.TESTFIELD(lPIL."Cost Type");
+
+                // IF NOT BuildingProject."Without Details" THEN BEGIN
+                //     Buildingturn.SETRANGE("Turn Dimension Code", lPIL."Shortcut Dimension 1 Code");
+                //     // SWC936 DD 17.11.16 >>
+                //     GetBuildingTurnPost(PurchInvHead, Buildingturn);
+                //     // SWC936 DD 17.11.16 <<
+                //     //IF NOT Buildingturn.FINDFIRST THEN ERROR(STRSUBSTNO(lTXT0001,lPIL."Shortcut Dimension 1 Code")); //SWC397 AKA 121214
+                //     IF Buildingturn.FINDFIRST THEN
+                //         BuildingTurnHave := TRUE; //SWC397 AKA 121214
+                //                                   //BuildingProject.GET(Buildingturn."Building project Code");        //SWC397 AKA 121214
+                //     IF BuildingTurnHave THEN                                            //SWC397 AKA 170215
+                //         IF BuildingProject.GET(Buildingturn."Building project Code") THEN //SWC397 AKA 121214
+                //             BuildingProjectHave := TRUE;                                    //SWC397 AKA 121214
+                // END;
+                // //SWC397 AKA 121214 >>
+                // IF NOT BuildingProjectHave THEN
+                //     IF NOT CONFIRM(STRSUBSTNO(Text50000, lPIL."Shortcut Dimension 1 Code", lPIL."Line No.", PurchInvHead."No.")) THEN
+                //         ERROR('');
+                // IF BuildingProjectHave THEN
+                // //SWC397 AKA 121214 <<
+                // BEGIN
+                CLEAR(PCCE);
+                PCCE.INIT;
+                lGLSetup.Get();
+                if not lDimVal.Get(lGLSetup."Global Dimension 1 Code", lPIL."Shortcut Dimension 1 Code") then
+                    lDimVal.Init();
+                PCCE."Project Code" := lDimVal."Project Code";
+                // PCCE."Project Code" := BuildingProject.Code;
+                PCCE."Shortcut Dimension 1 Code" := lPIL."Shortcut Dimension 1 Code";
+                PCCE."Shortcut Dimension 2 Code" := lPIL."Shortcut Dimension 2 Code";
+                PCCE."Cost Type" := lPIL."Cost Type";
+                PCCE."Doc No." := PurchInvHead."No.";
+                //PCCE.ByOrder := TRUE; //SWC318 AKA 281114
+                // IF BuildingTurnHave THEN //SWC397 AKA 121214
+                //     PCCE."Project Turn Code" := Buildingturn.Code;
+                PCCE."Original Date" := PurchInvHead."Document Date";
+                PCCE."Company Name" := COMPANYNAME;
+                // IF IsPeriodClose(PCCE."Project Code", PurchInvHead."Document Date") THEN BEGIN
+                //     ProjectPerionClose.SETRANGE("Project code", PCCE."Project Code");
+                //     ProjectPerionClose.SETRANGE(Close, FALSE);
+                //     IF ProjectPerionClose.FINDFIRST THEN
+                //         PCCE.Date := ProjectPerionClose."Period Date";
+                // END ELSE
+                PCCE.Date := PurchInvHead."Document Date";
+
+                PCCE."Create User" := USERID;
+                PCCE."Create Date" := TODAY;
+                PCCE."Create Time" := TIME;
+                PCCE."Doc Type" := 0;
+                // ProjectsLineDimension.SETRANGE("Project No.", PCCE."Project Code");
+                // ProjectsLineDimension.SETRANGE("Dimension Value Code", lPIL."Shortcut Dimension 2 Code");
+                // ProjectsLineDimension.SETRANGE("Detailed Line No.", 0);
+                // ProjectsLineDimension.SETRANGE("Dimension Code", 'CC');
+                // ProjectsLineDimension.SETRANGE("Project Version No.", GetDefVersion1(PCCE."Project Code"));
+
+                // IF NOT ProjectsLineDimension.FINDFIRST THEN
+                //     ERROR(STRSUBSTNO(lTXT0002, lPIL."Shortcut Dimension 2 Code"));
+
+                // IF ProjectsLineDimension.FINDFIRST THEN BEGIN
+                //     PCCE."Line No." := ProjectsLineDimension."Project Line No.";
+                PCCE."Analysis Type" := PCCE."Analysis Type"::Actuals;
+
+                // ProjectsStructureLines.SETRANGE("Project Code", PCCE."Project Code");
+                // ProjectsStructureLines.SETRANGE("Line No.", ProjectsLineDimension."Project Line No.");
+
+                // IF NOT ProjectsStructureLines.FINDFIRST THEN
+                //     ERROR(STRSUBSTNO(lTXT0002, lPIL."Shortcut Dimension 2 Code"));
+
+                // IF ProjectsStructureLines.FINDFIRST THEN BEGIN
+                // PCCE.Code := ProjectsStructureLines.Code;
+                // PCCE.Description := ProjectsStructureLines.Description;
+                if not lDimVal.Get(lGLSetup."Global Dimension 2 Code", lPIL."Shortcut Dimension 2 Code") then
+                    lDimVal.Init();
+                PCCE.Code := lPIL."Shortcut Dimension 2 Code";
+                PCCE.Description := lDimVal.Name;
+                PCCE."Description 2" := lPIL.Description;
+                PCCE."Contragent No." := PurchInvHead."Buy-from Vendor No.";
+                IF lrVendor.GET(PurchInvHead."Buy-from Vendor No.") THEN
+                    PCCE."Contragent Name" := lrVendor.Name;
+                IF lrVendorAgreement.GET(PurchInvHead."Buy-from Vendor No.", PurchInvHead."Agreement No.") THEN
+                    PCCE."External Agreement No." := lrVendorAgreement."External Agreement No.";
+                PCCE."Agreement No." := PurchInvHead."Agreement No.";
+                PCCE."Without VAT" := lPIL."Line Amount";
+                //NC 28312 HR beg
+                PCCE."Amount 2" := lPIL."Line Amount";
+                PCCE."Amount Including VAT 2" := lPIL."Amount Including VAT";
+                PCCE."VAT Amount 2" :=
+                  PCCE."Amount Including VAT 2" - PCCE."Amount 2";
+                PCCE."VAT %" := lPIL."VAT %";
+                //NC 28312 HR end
+                PCCE.INSERT(TRUE);
+            //NC 22512 > DP
+            //         END;
+            //     END;
+            // END;
+            //END;
+            UNTIL lPIL.NEXT = 0;
+
+    end;
+
     procedure CreateBCPreBookingJConstr(BudCorrJnl: Record "Budget Correction Journal") ret: Boolean
     var
         PCCE: Record "Projects Cost Control Entry";
