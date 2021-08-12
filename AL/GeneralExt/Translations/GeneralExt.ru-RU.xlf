@@ -6615,6 +6615,90 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Dimension Mapping - Action ImportDimensionMapping - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3889639842 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attached Documents Archive</source>
+          <target>Архив вложенных документов</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - NamedType 76824375" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Flow to Purch. Trx</source>
+          <target>Переход в транзакцию покупки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - NamedType FlowToPurchTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - NamedType 3781583627" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Flow to Sales Trx</source>
+          <target>Переход в транзакцию продажи</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - NamedType FlowToSalesTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3582274122 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date when the document was attached.</source>
+          <target>Определяет дату вложения документа.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control Attached Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3889306930 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the attachment must flow to transactions.</source>
+          <target>Указывает, должно ли вложение переходить в транзакции.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control Document Flow Purchase - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3916043615 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the attachment must flow to transactions.</source>
+          <target>Указывает, должно ли вложение переходить в транзакции.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control Document Flow Sales - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3414364457 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the file extension of the attachment.</source>
+          <target>пределяет расширение файла вложения.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control File Extension - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3004095410 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the type of document that the attachment is.</source>
+          <target>Определяет тип документа, являющегося вложением.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control File Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 2961552353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the filename of the attachment.</source>
+          <target>Определяет имя файла вложения.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 1814464443 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the user who attached the document.</source>
+          <target>Определяет пользователя, вложившего документ.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control User - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Action 4266201246 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Get a preview of the attachment.</source>
+          <target>Предварительный просмотр вложения.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Action Preview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Action 4266201246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Preview</source>
+          <target>Предварительный просмотр</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Action Preview - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 656867589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Invoices (Approval)</source>
           <target>Счета на оплату (Утверждение)</target>
@@ -17345,7 +17429,7 @@
         </trans-unit>
         <trans-unit id="Enum 2341102937 - EnumValue 1528185918 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archive</source>
-          <target>Архивировать</target>
+          <target>Архив</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Purchase Comment Add. Type - EnumValue Archive - Property Caption</note>
         </trans-unit>

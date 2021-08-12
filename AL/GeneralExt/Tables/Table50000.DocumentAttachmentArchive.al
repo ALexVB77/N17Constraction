@@ -1,7 +1,6 @@
 table 50000 "Document Attachment Archive"
 {
     Caption = 'Document Attachment Archive';
-
     fields
     {
         field(1; ID; Integer)

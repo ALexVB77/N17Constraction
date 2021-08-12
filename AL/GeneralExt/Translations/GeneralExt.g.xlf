@@ -5513,6 +5513,66 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Dimension Mapping - Action ImportDimensionMapping - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3889639842 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attached Documents Archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - NamedType 76824375" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Flow to Purch. Trx</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - NamedType FlowToPurchTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - NamedType 3781583627" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Flow to Sales Trx</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - NamedType FlowToSalesTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3582274122 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date when the document was attached.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control Attached Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3889306930 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the attachment must flow to transactions.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control Document Flow Purchase - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3916043615 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the attachment must flow to transactions.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control Document Flow Sales - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3414364457 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the file extension of the attachment.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control File Extension - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 3004095410 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the type of document that the attachment is.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control File Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 2961552353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the filename of the attachment.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Control 1814464443 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the user who attached the document.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Control User - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Action 4266201246 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Get a preview of the attachment.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Action Preview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3889639842 - Action 4266201246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Preview</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Document Attach. Details Arch. - Action Preview - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 656867589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Invoices (Approval)</source>
           <note from="Developer" annotates="general" priority="2"></note>

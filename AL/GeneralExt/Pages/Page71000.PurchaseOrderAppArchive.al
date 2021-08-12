@@ -295,7 +295,7 @@ page 71000 "Purchase Order App Archive"
 
                     trigger OnAction()
                     var
-                        DocumentAttachmentDetails: Page "Document Attachment Details";
+                        DocumentAttachmentDetails: Page "Document Attach. Details Arch.";
                         RecRef: RecordRef;
                     begin
                         RecRef.GetTable(Rec);
