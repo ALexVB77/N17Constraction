@@ -1,6 +1,6 @@
 page 71000 "Purchase Order App Archive"
 {
-    Caption = 'Purchase Order App';
+    Caption = 'Purchase Order App Archive';
     DeleteAllowed = false;
     Editable = false;
     PageType = Document;
