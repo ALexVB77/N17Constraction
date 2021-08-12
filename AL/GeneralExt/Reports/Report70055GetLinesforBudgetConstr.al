@@ -111,10 +111,10 @@ report 70055 "Get Lines for Budget Constr"
                     END ELSE BEGIN
                         GLE.CHANGECOMPANY(COMPANYNAME);
                     END;
-                    // TO DO CHECK
-                    // GLE.SETCURRENTKEY(ID);
-                    // IF GLE.FINDLAST THEN
-                    //     gID := GLE.ID + 1;
+
+                    GLE.SETCURRENTKEY(ID);
+                    IF GLE.FINDLAST THEN
+                        gID := GLE.ID + 1;
 
                     GLE.RESET;
 
@@ -123,9 +123,9 @@ report 70055 "Get Lines for Budget Constr"
                     END ELSE BEGIN
                         GLE.CHANGECOMPANY(COMPANYNAME);
                     END;
-                    // TO DO CHECK
-                    // GLE.SETCURRENTKEY("G/L Account No.", "Posting Date", "Journal Batch Name",
-                    //   "Global Dimension 1 Code", "Global Dimension 2 Code", "Source Code", ID);
+
+                    GLE.SETCURRENTKEY("G/L Account No.", "Posting Date", "Journal Batch Name",
+                      "Global Dimension 1 Code", "Global Dimension 2 Code", "Source Code", ID);
                     GLE.SETRANGE("Posting Date", StartDate, EndDate);
                     IF BC."Dimension Totaling 1" <> '' THEN
                         GLE.SETFILTER("Global Dimension 1 Code", CreateCPFilter(BC."Dimension Totaling 1"));
@@ -139,8 +139,8 @@ report 70055 "Get Lines for Budget Constr"
                     IF BC."Source Code" <> '' THEN
                         GLE.SETFILTER("Source Code", BC."Source Code");
 
-                    // TO DO CHECK
-                    // GLE.SETRANGE(ID, 0);
+
+                    GLE.SETRANGE(ID, 0);
 
                     w := 0;
 
@@ -157,7 +157,7 @@ report 70055 "Get Lines for Budget Constr"
                                     //NC 22512 > DP
                                     //IF NOT IsPreBooking(GLE."Document No.") THEN BEGIN
                                     // TO DO CHECK
-                                    //   PreBooking := IsPreBooking(GLE."Document No.");
+                                    PreBooking := IsPreBooking(GLE."Document No.");
                                     //NC 32716 HR beg
                                     //IF (NOT PreBooking) OR (PreBooking AND IsLocationDocument(GLE."Document No.")) THEN BEGIN
                                     IF (NOT PreBooking)
@@ -198,15 +198,15 @@ report 70055 "Get Lines for Budget Constr"
                                         BCJ."Dimension Totaling 1" := GLE."Global Dimension 1 Code";//DV.Code;
                                         BCJ."Dimension Totaling 2" := GLE."Global Dimension 2 Code";//DV1.Code;
                                                                                                     // Dim.SETRANGE("Old Dim Code",GLE."Global Dimension 2 Code");
-                                                                                                    // TO DO CHECK
+                                                                                                    // CHECK таблица пустая, не используется
                                                                                                     // IF Dim.FINDFIRST THEN
                                                                                                     //     BCJ."Dimension Totaling 2" := Dim."New Dim Code";
 
                                         // GLE.CALCFIELDS("Cost Type");
                                         // BCJ."Cost Type":=GLE."Cost Type";
                                         BCJ."G/L Account Totaling" := GLE."G/L Account No.";//BC."G/L Account Totaling";
-                                                                                            // TO DO CHECK
-                                                                                            // BCJ."Priod Group Type":=BC."Priod Group Type";
+
+                                        BCJ."Priod Group Type" := BC."Period Group Type";
                                         BCJ."Journal Template Name" := BC."Journal Template Name";
                                         BCJ."Journal Batch Name" := GLE."Journal Batch Name";//BC."Journal Batch Name";
                                         BCJ."Source Code" := GLE."Source Code";
@@ -218,14 +218,14 @@ report 70055 "Get Lines for Budget Constr"
                                         IF Agr.FINDFIRST THEN
                                             BCJ."Vendor No." := Agr."Vendor No.";
                                         BCJ."Original Date" := GLE."Posting Date";
-                                        // TO DO CHECK
+                                        // CHECK использование периода проектов под вопросом
                                         // IF IsPeriodClose(BCJ."Project Code",BCJ."Original Date") THEN BEGIN
                                         //   ProjectPerionClose.SETRANGE("Project code",BCJ."Project Code");
                                         //   ProjectPerionClose.SETRANGE(Close,FALSE);
                                         //   IF ProjectPerionClose.FINDFIRST THEN
                                         //     BCJ.Date:=ProjectPerionClose."Period Date";
                                         // END ELSE
-                                        //   BCJ.Date:=GLE."Posting Date";
+                                        BCJ.Date := GLE."Posting Date";
 
                                         //NC 28312 HR beg
                                         // VATCoef:=1;
@@ -265,8 +265,8 @@ report 70055 "Get Lines for Budget Constr"
                                                 GLE2.GET(GLE."Reversed by Entry No.");
                                             IF GLE."Reversed Entry No." <> 0 THEN
                                                 GLE2.GET(GLE."Reversed Entry No.");
-                                            // TO DO CHECK
-                                            //   BCJ."Reversed ID":=GLE2.ID;
+
+                                            BCJ."Reversed ID" := GLE2.ID;
 
                                         END;
                                         //SWC855 KAE 080716 >>
@@ -280,8 +280,7 @@ report 70055 "Get Lines for Budget Constr"
                                             GLE1.CHANGECOMPANY(COMPANYNAME);
 
                                         IF GLE1.GET(GLE."Entry No.") THEN BEGIN
-                                            // TO DO CHECK
-                                            //    GLE1.ID := gID;
+                                            GLE1.ID := gID;
                                             GLE1.MODIFY;
                                         END;
 
@@ -408,14 +407,14 @@ report 70055 "Get Lines for Budget Constr"
         END;
     end;
 
-    // procedure IsPreBooking(pDocNo: code[20])Ret: boolean
-    // var 
-    //     PurchInvHeader: record "Purch. Inv. Header";
-    // begin
-    //     IF BC."IFRS Costs" THEN EXIT(FALSE); //SWC587 AKA 040815
-    //     IF PurchInvHeader.GET(pDocNo) THEN
-    //       EXIT(PurchInvHeader."Pre-booking Document");
-    // end;
+    procedure IsPreBooking(pDocNo: code[20]) Ret: boolean
+    var
+        PurchInvHeader: record "Purch. Inv. Header";
+    begin
+        // IF BC."IFRS Costs" THEN EXIT(FALSE); //SWC587 AKA 040815
+        IF PurchInvHeader.GET(pDocNo) THEN
+            EXIT(PurchInvHeader."Pre-booking Document");
+    end;
 
     procedure Synch()
     var
@@ -440,9 +439,9 @@ report 70055 "Get Lines for Budget Constr"
                     //SWC697 AKA 271015 <<
                     GLE.CHANGECOMPANY(BudgetCorrectionJournal."Company Name");
                     GLE1.CHANGECOMPANY(BudgetCorrectionJournal."Company Name");
-                    // TO DO CHECK
-                    // GLE.SETCURRENTKEY(ID);
-                    // GLE.SETRANGE(ID,BudgetCorrectionJournal.ID);
+
+                    GLE.SETCURRENTKEY(ID);
+                    GLE.SETRANGE(ID, BudgetCorrectionJournal.ID);
                     IF GLE.FINDFIRST THEN BEGIN
                         BudgetCorrectionJournal.Reversed := GLE.Reversed;
 
@@ -451,8 +450,8 @@ report 70055 "Get Lines for Budget Constr"
                                 GLE1.GET(GLE."Reversed by Entry No.");
                             IF GLE."Reversed Entry No." <> 0 THEN
                                 GLE1.GET(GLE."Reversed Entry No.");
-                            // TO DO CHECK
-                            // BudgetCorrectionJournal."Reversed ID":=GLE1.ID;
+
+                            BudgetCorrectionJournal."Reversed ID" := GLE1.ID;
                         END;
                         BudgetCorrectionJournal.MODIFY;
                     END;

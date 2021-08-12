@@ -481,10 +481,10 @@ table 70095 "Projects Cost Control Entry"
         {
             Caption = 'Reversed';
         }
-        // field(70060; "Reversed ID"; Integer)
-        // {
-        //     Caption = 'Reversed ID';
-        // }
+        field(70060; "Reversed ID"; Integer)
+        {
+            Caption = 'Reversed ID';
+        }
         // field(70070; "User Created"; Boolean)
         // {
         //     Caption = 'User Created';
