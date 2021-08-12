@@ -90,8 +90,11 @@ page 70004 "Documents Approval"
                     ApplicationArea = All;
 
                     trigger OnAssistEdit()
+                    var
+                        PurchHeader: Record "Purchase Header";
                     begin
-                        page.Runmodal(Page::"Payment Request Card", Rec);
+                        PurchHeader.SetRange("No.", Rec."No.");
+                        page.Runmodal(Page::"Payment Request Card", PurchHeader);
                         CurrPage.Update(false);
                     end;
                 }
@@ -180,9 +183,7 @@ page 70004 "Documents Approval"
                 Caption = 'View';
                 Image = View;
                 RunObject = Page "Payment Request Card";
-                //RunPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
-                //                "Journal Batch Name" = FIELD("Journal Batch Name"),
-                //                "Line No." = FIELD("Line No.");
+                RunPageLink = "No." = field("No.");
             }
             action(DocCard)
             {

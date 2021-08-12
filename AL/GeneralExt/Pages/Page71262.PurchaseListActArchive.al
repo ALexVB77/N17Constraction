@@ -1,13 +1,13 @@
-page 70262 "Purchase List Act"
+page 71262 "Purchase List Act Archive"
 {
     ApplicationArea = Basic, Suite;
-    Caption = 'Payment Orders List';
+    Caption = 'Payment Orders List Archive';
     InsertAllowed = false;
     DeleteAllowed = false;
     DataCaptionFields = "Document Type";
     PageType = Worksheet;
     RefreshOnActivate = true;
-    SourceTable = "Purchase Header";
+    SourceTable = "Purchase Header Archive";
     SourceTableView = SORTING("Document Type", "No.") WHERE("Act Type" = FILTER(<> ' '), "Status App" = FILTER(<> Payment), "Problem Type" = FILTER(<> "Act error"));
     UsageCategory = Lists;
     layout
@@ -21,7 +21,7 @@ page 70262 "Purchase List Act"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Selection';
-                    OptionCaption = 'All documents,Documents in processing,Ready-to-pay documents,Paid documents,Problem documents';
+                    OptionCaption = 'All documents,Documents in processing,Ready-to-pay documents,Paid documents';
                     trigger OnValidate()
                     begin
                         SetRecFilters;
@@ -77,9 +77,11 @@ page 70262 "Purchase List Act"
 
                     trigger OnAssistEdit()
                     var
-                        PurchHeader: Record "Purchase Header";
+                        PurchHeaderArch: Record "Purchase Header Archive";
                     begin
-                        PurchHeader.SetRange("No.", Rec."No.");
+                        PurchHeaderArch.SetRange("No.", Rec."No.");
+                        PurchHeaderArch.SetRange("Version No.", Rec."Version No.");
+                        PurchHeaderArch.SetRange("Doc. No. Occurrence", Rec."Doc. No. Occurrence");
                         page.Run(Page::"Purchase Order Act", Rec);
                         CurrPage.Update(false);
                     end;
@@ -193,83 +195,14 @@ page 70262 "Purchase List Act"
     {
         area(Processing)
         {
-            group(New)
-            {
-                Caption = 'New';
-                Image = NewDocument;
-                action(NewAct)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Act';
-                    Enabled = NewActEnabled;
-                    trigger OnAction()
-                    begin
-                        PaymentOrderMgt.FuncNewRec(NewActTypeOption::Act);
-                    end;
-                }
-                action(NewKC2)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'KC-2';
-                    Enabled = NewKC2Enabled;
-                    trigger OnAction()
-                    begin
-                        PaymentOrderMgt.FuncNewRec(NewActTypeOption::"KC-2");
-                    end;
-                }
-                action(NewAdvance)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Advance';
-                    Enabled = NewAdvanceEnabled;
-                    trigger OnAction()
-                    begin
-                        PaymentOrderMgt.FuncNewRec(NewActTypeOption::Advance);
-                    end;
-                }
-            }
             action(DocCard)
             {
                 ApplicationArea = All;
                 Caption = 'Edit';
                 Image = Edit;
                 Enabled = EditEnabled;
-                RunObject = Page "Purchase Order Act";
-                RunPageLink = "No." = field("No.");
-            }
-            action(ApproveButton)
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'Approve';
-                Enabled = ApproveButtonEnabled;
-                Image = Approve;
-
-                trigger OnAction()
-                begin
-                    MessageIfPurchLinesNotExist;
-                    if "Status App Act" in ["Status App Act"::" ", "Status App Act"::Accountant] then
-                        FieldError("Status App Act");
-                    if "Status App Act" = "Status App Act"::Controller then begin
-                        IF ApprovalsMgmt.CheckPurchaseApprovalPossible(Rec) THEN
-                            ApprovalsMgmt.OnSendPurchaseDocForApproval(Rec);
-                    end else
-                        ApprovalsMgmt.ApproveRecordApprovalRequest(RECORDID);
-                    CurrPage.Update(false);
-                end;
-            }
-            action(RejectButton)
-            {
-                ApplicationArea = All;
-                Caption = 'Reject';
-                Enabled = RejectButtonEnabled;
-                Image = Reject;
-                trigger OnAction()
-                begin
-                    if "Status App Act" in ["Status App Act"::" ", "Status App Act"::Controller, "Status App Act"::Accountant] then
-                        FieldError("Status App Act");
-                    ApprovalsMgmtExt.RejectPurchActAndPayInvApprovalRequest(RECORDID);
-                    CurrPage.Update(false);
-                end;
+                RunObject = Page "Purchase Order Act Archive";
+                RunPageLink = "No." = field("No."), "Version No." = field("Version No."), "Doc. No. Occurrence" = field("Doc. No. Occurrence");
             }
         }
         area(Navigation)
@@ -279,10 +212,12 @@ page 70262 "Purchase List Act"
                 ApplicationArea = All;
                 Caption = 'Co&mments';
                 Image = ViewComments;
-                RunObject = Page "Purch. Comment Sheet";
+                RunObject = Page "Purch. Archive Comment Sheet";
                 RunPageLink = "Document Type" = FIELD("Document Type"),
                             "No." = FIELD("No."),
-                            "Document Line No." = CONST(0);
+                            "Document Line No." = CONST(0),
+                            "Doc. No. Occurrence" = FIELD("Doc. No. Occurrence"),
+                            "Version No." = FIELD("Version No.");
             }
             action(DocAttach)
             {
@@ -310,6 +245,16 @@ page 70262 "Purchase List Act"
                                 "IW Documents" = CONST(true),
                                 "Linked Purchase Order Act No." = field("No.");
             }
+            action(PaymentInvoicesArch)
+            {
+                ApplicationArea = All;
+                Caption = 'Payment Invoices Archive';
+                Image = Payment;
+                RunObject = Page "P. Order Act PayReqListArch";
+                RunPageLink = "Document Type" = CONST(Order),
+                                "IW Documents" = CONST(true),
+                                "Linked Purchase Order Act No." = field("No.");
+            }
         }
     }
 
@@ -332,34 +277,17 @@ page 70262 "Purchase List Act"
 
     trigger OnAfterGetRecord()
     begin
-        ApproveButtonEnabled := FALSE;
-        RejectButtonEnabled := FALSE;
-
         EditEnabled := Rec."No." <> '';
-
-        if (UserId = Rec.Controller) and (Rec."Status App Act" = Rec."Status App Act"::Controller) then
-            ApproveButtonEnabled := true;
-        if ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(RecordId) then begin
-            ApproveButtonEnabled := true;
-            RejectButtonEnabled := true;
-        end;
     end;
 
     var
         UserSetup: record "User Setup";
         PaymentOrderMgt: Codeunit "Payment Order Management";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
-        ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-
         Filter1: option mydoc,all,approved;
         Filter1Enabled: Boolean;
-        Filter2: option all,inproc,ready,pay,problem;
+        Filter2: option all,inproc,ready,pay;
         SortType: option docno,postdate,vendor,statusapp,userproc;
         FilterActType: option all,act,"kc-2",advance;
-        NewActTypeOption: Enum "Purchase Act Type";
-        ApproveButtonEnabled: boolean;
-        RejectButtonEnabled: boolean;
-        MyApproved: boolean;
         NewActEnabled: Boolean;
         NewKC2Enabled: Boolean;
         NewAdvanceEnabled: Boolean;
@@ -383,7 +311,7 @@ page 70262 "Purchase List Act"
 
     local procedure SetRecFilters()
     var
-        SaveRec: Record "Purchase Header";
+        SaveRec: Record "Purchase Header Archive";
     begin
         SaveRec := Rec;
 
@@ -424,8 +352,6 @@ page 70262 "Purchase List Act"
                     until Next() = 0;
                     MarkedOnly(true);
                 end;
-            Filter2::Problem:
-                SETRANGE("Problem Document", TRUE);
         END;
 
         CASE Filter1 OF

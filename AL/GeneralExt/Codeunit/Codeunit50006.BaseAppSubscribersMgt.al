@@ -835,6 +835,13 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
 
     // Codeunit 5063 ArchiveManagement 
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::ArchiveManagement, 'OnBeforePurchHeaderArchiveInsert', '', false, false)]
+    local procedure OnBeforePurchHeaderArchiveInsert(var PurchaseHeaderArchive: Record "Purchase Header Archive"; PurchaseHeader: Record "Purchase Header")
+    begin
+        PurchaseHeaderArchive."Status App" := PurchaseHeader."Status App";
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::ArchiveManagement, 'OnAfterStorePurchDocument', '', false, false)]
     local procedure OnAfterStorePurchDocument(var PurchaseHeader: Record "Purchase Header"; var PurchaseHeaderArchive: Record "Purchase Header Archive");
     var
@@ -856,10 +863,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
             repeat
                 DocAttachArch.Init();
                 DocAttachArch.TransferFields(DocAttach);
-                IF DocAttach."Table ID" = Database::"Purchase Header" then
-                    DocAttachArch."Table ID" := Database::"Purchase Header Archive"
-                else
-                    DocAttachArch."Table ID" := Database::"Purchase Line Archive";
+                case DocAttach."Table ID" of
+                    Database::"Purchase Header":
+                        DocAttachArch."Table ID" := Database::"Purchase Header Archive";
+                    Database::"Purchase Line":
+                        DocAttachArch."Table ID" := Database::"Purchase Line Archive";
+                end;
                 DocAttachArch."Version No." := PurchaseHeaderArchive."Version No.";
                 DocAttachArch."Doc. No. Occurrence" := PurchaseHeaderArchive."Doc. No. Occurrence";
                 // DocAttach.CalcFields("Document Reference ID");
@@ -867,7 +876,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
                 DocAttachArch.INSERT;
             until DocAttach.Next() = 0;
 
-        ApprovalEntry.SetCurrentKey("Table ID", "Record ID to Approve");
+        ApprovalEntry.SetCurrentKey("Table ID", "Document Type", "Document No.", "Sequence No.", "Record ID to Approve");
         ApprovalEntry.SetRange("Table ID", Database::"Purchase Header");
         ApprovalEntry.SetRange("Record ID to Approve", PurchaseHeader.RecordId);
         if ApprovalEntry.FindSet() then
@@ -910,6 +919,10 @@ codeunit 50006 "Base App. Subscribers Mgt."
                 ApprCommentLineArch.Insert;
             until ApprCommentLine.Next() = 0;
     end;
+
+
+
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Transfer Document", 'OnBeforeCheckTransLines', '', false, false)]
     local procedure OnBeforeCheckTransLines(var TransferLine: Record "Transfer Line"; var IsHandled: Boolean; TransHeader: Record "Transfer Header");

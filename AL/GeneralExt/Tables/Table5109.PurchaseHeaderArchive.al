@@ -40,6 +40,24 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             Caption = 'Receptionist';
             Description = 'NC 51380 AB';
         }
+        field(50014; "My Approved"; boolean)
+        {
+            CalcFormula = exist("Request Approval Entry Archive" where("Table ID" = const(5109),
+                                                        "Document Type" = field("Document Type"),
+                                                        "Document No." = field("No."),
+                                                        Status = const(Approved),
+                                                        "Approver ID" = field("Approver ID Filter")));
+            Caption = 'My Approved';
+            Description = 'NC 51374 AB';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(50015; "Approver ID Filter"; code[50])
+        {
+            Caption = 'Approver ID Filter';
+            Description = 'NC 51374 AB';
+            FieldClass = FlowFilter;
+        }
         field(50022; "Spec. Bank Account No."; Code[20])
         {
             TableRelation = "Bank Account";
@@ -50,6 +68,13 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
         {
             Description = 'NC 51432 AP';
             Caption = 'Original Company';
+        }
+        field(70001; "Status App"; option)
+        {
+            Caption = 'Status App';
+            OptionCaption = ' ,Reception,Controller,Checker,Approve,Payment,Request';
+            OptionMembers = " ",Reception,Controller,Checker,Approve,Payment,Request;
+            Description = 'NC 51373 AB';
         }
         field(70002; "Process User"; Code[50])
         {

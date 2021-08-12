@@ -1,13 +1,13 @@
-page 70002 "Purchase List App"
+page 71002 "Purchase List App Archive"
 {
     ApplicationArea = Basic, Suite;
-    Caption = 'Payment Invoices (Checking)';
+    Caption = 'Payment Invoices (Archive)';
     DataCaptionFields = "Document Type";
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = Worksheet;
     RefreshOnActivate = true;
-    SourceTable = "Purchase Header";
+    SourceTable = "Purchase Header Archive";
     UsageCategory = Lists;
     layout
     {
@@ -33,7 +33,7 @@ page 70002 "Purchase List App"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Selection';
-                    OptionCaption = 'All documents,Documents in processing,Ready-to-pay documents,Paid documents,Problem documents';
+                    OptionCaption = 'All documents,Documents in processing,Ready-to-pay documents,Paid documents';
 
                     trigger OnValidate()
                     begin
@@ -67,10 +67,12 @@ page 70002 "Purchase List App"
 
                     trigger OnAssistEdit()
                     var
-                        PurchHeader: Record "Purchase Header";
+                        PurchHeaderArch: Record "Purchase Header Archive";
                     begin
-                        PurchHeader.SetRange("No.", Rec."No.");
-                        page.Run(Page::"Purchase Order App", PurchHeader);
+                        PurchHeaderArch.SetRange("No.", Rec."No.");
+                        PurchHeaderArch.SetRange("Version No.", Rec."Version No.");
+                        PurchHeaderArch.SetRange("Doc. No. Occurrence", Rec."Doc. No. Occurrence");
+                        page.Run(Page::"Purchase Order App Archive", Rec);
                         CurrPage.Update(false);
                     end;
                 }
@@ -148,62 +150,14 @@ page 70002 "Purchase List App"
     {
         area(Processing)
         {
-            action(NewOrderApp)
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'New';
-                Image = NewDocument;
-
-                trigger OnAction()
-                var
-                    NewPurchHeader: Record "Purchase Header";
-                begin
-                    PaymentOrderMgt.NewOrderApp(true, true, NewPurchHeader);
-                    CurrPage.Update(false);
-                end;
-            }
             action(DocCard)
             {
                 ApplicationArea = All;
                 Caption = 'Edit';
                 Enabled = EditEnabled;
                 Image = Edit;
-                RunObject = Page "Purchase Order App";
-                RunPageLink = "No." = field("No.");
-            }
-            action(ApproveButton)
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'Approve';
-                Enabled = ApproveButtonEnabled;
-                Image = Approve;
-
-                trigger OnAction()
-                begin
-                    MessageIfPurchLinesNotExist;
-                    if "Status App" in ["Status App"::" ", "Status App"::Payment] then
-                        FieldError("Status App");
-                    if "Status App" = "Status App"::Reception then begin
-                        IF ApprovalsMgmt.CheckPurchaseApprovalPossible(Rec) THEN
-                            ApprovalsMgmt.OnSendPurchaseDocForApproval(Rec);
-                    end else
-                        ApprovalsMgmt.ApproveRecordApprovalRequest(RECORDID);
-                    CurrPage.Update(false);
-                end;
-            }
-            action(RejectButton)
-            {
-                ApplicationArea = All;
-                Caption = 'Reject';
-                Enabled = RejectButtonEnabled;
-                Image = Reject;
-                trigger OnAction()
-                begin
-                    if "Status App" in ["Status App"::" ", "Status App"::Reception, "Status App"::Payment] then
-                        FieldError("Status App");
-                    ApprovalsMgmtExt.RejectPurchActAndPayInvApprovalRequest(RECORDID);
-                    CurrPage.Update(false);
-                end;
+                RunObject = Page "Purchase Order App Archive";
+                RunPageLink = "No." = field("No."), "Version No." = field("Version No."), "Doc. No. Occurrence" = field("Doc. No. Occurrence");
             }
         }
         area(Navigation)
@@ -213,10 +167,13 @@ page 70002 "Purchase List App"
                 ApplicationArea = All;
                 Caption = 'Co&mments';
                 Image = ViewComments;
-                RunObject = Page "Purch. Comment Sheet";
+                RunObject = Page "Purch. Archive Comment Sheet";
                 RunPageLink = "Document Type" = FIELD("Document Type"),
                             "No." = FIELD("No."),
-                            "Document Line No." = CONST(0);
+                            "Document Line No." = CONST(0),
+                            "Doc. No. Occurrence" = FIELD("Doc. No. Occurrence"),
+                            "Version No." = FIELD("Version No.");
+                ;
             }
             action(DocAttach)
             {
@@ -261,35 +218,20 @@ page 70002 "Purchase List App"
 
     trigger OnAfterGetRecord()
     begin
-        ApproveButtonEnabled := FALSE;
-        RejectButtonEnabled := FALSE;
-
         EditEnabled := Rec."No." <> '';
-
-        if (UserId = Rec.Receptionist) and (Rec."Status App" = Rec."Status App"::Reception) then
-            ApproveButtonEnabled := true;
-        if ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(RecordId) then begin
-            ApproveButtonEnabled := true;
-            RejectButtonEnabled := true;
-        end;
     end;
 
     var
         grUserSetup: Record "User Setup";
-        PaymentOrderMgt: Codeunit "Payment Order Management";
-        ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         Filter1: option mydoc,all,approved;
         Filter1Enabled: Boolean;
-        Filter2: option all,inproc,ready,pay,problem;
+        Filter2: option all,inproc,ready,pay;
         SortType: option docno,postdate,vendor,statusapp,userproc;
-        ApproveButtonEnabled: boolean;
-        RejectButtonEnabled: boolean;
         EditEnabled: Boolean;
 
     local procedure SetRecFilters()
     var
-        SaveRec: Record "Purchase Header";
+        SaveRec: Record "Purchase Header Archive";
     begin
         SaveRec := Rec;
 
@@ -335,8 +277,6 @@ page 70002 "Purchase List App"
                     until Next() = 0;
                     MarkedOnly(true);
                 end;
-            Filter2::Problem:
-                SETRANGE("Problem Document", TRUE);
         END;
 
         CASE Filter1 OF

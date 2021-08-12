@@ -1,4 +1,4 @@
-page 70001 "Purchase Order Subform App"
+page 70001 "Purchase Order App Subform"
 {
     AutoSplitKey = true;
     Caption = 'Lines';
