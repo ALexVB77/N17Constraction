@@ -9243,6 +9243,101 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Req Subform - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3250361654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approval Entries Archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 124852388 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the user who must approve the document.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Approver ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 2790486453 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether there are comments relating to the approval of the record. If you want to read the comments, choose the field to open the Approval Comment Sheet window.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Comment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 696551240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date and the time that the document was sent for approval.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Date-Time Sent for Approval - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 486908828 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the document number copied from the relevant sales or purchase document, such as a purchase order or a sales quote.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Document No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 2363328873 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the type of document that an approval entry has been created for. Approval entries can be created for six different types of sales or purchase documents:</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Document Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 45524177 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date when the approval entry was last modified. If, for example, the document approval is canceled, this field will be updated accordingly.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Last Date-Time Modified - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 922263048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the user who last modified the approval entry. If, for example, the document approval is canceled, this field will be updated accordingly.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Last Modified By User ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 958909087 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the record that you are requested to approve.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control RecordIDText - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 958909087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To Approve</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control RecordIDText - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 4160783946 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the user who sent the approval request for the document to be approved.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Sender ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 3014885516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the order of approvers when an approval workflow involves more than one approver.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Sequence No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the approval status for the entry:</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Control 3135334477 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the table where the record that is subject to approval is stored.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Table ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Action 4494671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Show</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Action &amp;Show - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Action 503024588 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or add comments for the record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Action Comments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Action 503024588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Action Comments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Action 3875867463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the document, journal line, or card that the approval request is for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Action Record - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3250361654 - Action 3875867463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Record</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Action Record - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2119146127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Summary Cash Flow Control Detail</source>
           <note from="Developer" annotates="general" priority="2"></note>

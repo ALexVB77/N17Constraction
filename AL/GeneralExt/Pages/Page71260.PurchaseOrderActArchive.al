@@ -388,10 +388,11 @@ page 71260 "Purchase Order Act Archive"
 
                     trigger OnAction()
                     var
-                        WorkflowsEntriesBuffer: Record "Workflows Entries Buffer";
+                        ReqApprEntriesArch: Page "Request Approval Entries Arch.";
                     begin
-                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(
-                            RecordId, DATABASE::"Purchase Header Archive", "Document Type".AsInteger(), "No.");
+                        ReqApprEntriesArch.Setfilters(
+                            Database::"Purchase Header Archive", "Document Type".AsInteger(), "No.", "Doc. No. Occurrence", "Version No.");
+                        ReqApprEntriesArch.Run;
                     end;
                 }
                 action(ApprovalComments)

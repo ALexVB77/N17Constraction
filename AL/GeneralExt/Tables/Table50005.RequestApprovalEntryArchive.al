@@ -143,7 +143,7 @@ table 50005 "Request Approval Entry Archive"
         key(Key2; "Record ID to Approve", "Sequence No.")
         {
         }
-        key(Key3; "Table ID", "Document Type", "Document No.", "Sequence No.", "Record ID to Approve")
+        key(Key3; "Table ID", "Document Type", "Document No.", "Doc. No. Occurrence", "Version No.", "Sequence No.", "Record ID to Approve")
         {
         }
         key(Key4; "Approver ID", Status, "Date-Time Sent for Approval")
@@ -155,7 +155,7 @@ table 50005 "Request Approval Entry Archive"
         key(Key7; "Table ID", "Record ID to Approve", Status, "Sequence No.")
         {
         }
-        key(Key8; "Table ID", "Document Type", "Document No.", "Date-Time Sent for Approval")
+        key(Key8; "Table ID", "Document Type", "Document No.", "Doc. No. Occurrence", "Version No.", "Date-Time Sent for Approval")
         {
         }
         key(Key50000; "Delegated From Approver ID", Status, "Date-Time Sent for Approval")
