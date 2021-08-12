@@ -9532,7 +9532,7 @@
         </trans-unit>
         <trans-unit id="Page 2443352567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Orders List Archive</source>
-          <target>Счета на оплату для Акта</target>
+          <target>Архив документов Акт и КС-2</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act Archive - Property Caption</note>
         </trans-unit>
