@@ -4,7 +4,7 @@ page 71266 "Request Appr. Comments Arch."
     DataCaptionFields = "Record ID to Approve";
     Editable = false;
     PageType = List;
-    SourceTable = "Approval Comment Line";
+    SourceTable = "Request Appr. Com. Line Arch.";
 
     layout
     {
