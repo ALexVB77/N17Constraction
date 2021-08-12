@@ -9253,8 +9253,33 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Req Subform - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1522103534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request Approval Comments Archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Appr. Comments Arch. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1522103534 - Control 2790486453 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the comment. You can enter a maximum of 250 characters, both numbers and letters.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Appr. Comments Arch. - Control Comment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1522103534 - Control 2491730758 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date and time when the comment was made.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Appr. Comments Arch. - Control Date and Time - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1522103534 - Control 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of the entry, as assigned from the specified number series when the entry was created.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Appr. Comments Arch. - Control Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1522103534 - Control 2708250016 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the user who created this approval comment.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Appr. Comments Arch. - Control User ID - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3250361654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Approval Entries Archive</source>
+          <source>Request Approval Entries Archive</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Property Caption</note>
         </trans-unit>

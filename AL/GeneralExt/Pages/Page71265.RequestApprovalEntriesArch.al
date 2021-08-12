@@ -1,13 +1,13 @@
 page 71265 "Request Approval Entries Arch."
 {
-    ApplicationArea = Suite;
-    Caption = 'Approval Entries Archive';
+    //ApplicationArea = Suite;
+    Caption = 'Request Approval Entries Archive';
     Editable = false;
     PageType = List;
     SourceTable = "Request Approval Entry Archive";
     SourceTableView = SORTING("Table ID", "Document Type", "Document No.", "Date-Time Sent for Approval")
                       ORDER(Ascending);
-    UsageCategory = Lists;
+    //UsageCategory = Lists;
 
     layout
     {
