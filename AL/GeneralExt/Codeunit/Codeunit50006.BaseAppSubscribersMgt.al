@@ -840,7 +840,11 @@ codeunit 50006 "Base App. Subscribers Mgt."
     var
         DocAttach: Record "Document Attachment";
         DocAttachArch: Record "Document Attachment Archive";
-        ApprovalEntry, ApprovalEntryAcr : Record "Approval Entry";
+        ApprovalEntry: Record "Approval Entry";
+        ApprovalEntryArch: Record "Request Approval Entry Archive";
+        ApprovalLinkBuffer: Record "Approval Entry" temporary;
+        ApprCommentLine: Record "Approval Comment Line";
+        ApprCommentLineArch: Record "Request Appr. Com. Line Arch.";
     begin
         if PurchaseHeader."Archiving Type" = PurchaseHeader."Archiving Type"::" " then
             exit;
@@ -858,8 +862,8 @@ codeunit 50006 "Base App. Subscribers Mgt."
                     DocAttachArch."Table ID" := Database::"Purchase Line Archive";
                 DocAttachArch."Version No." := PurchaseHeaderArchive."Version No.";
                 DocAttachArch."Doc. No. Occurrence" := PurchaseHeaderArchive."Doc. No. Occurrence";
-                DocAttach.CalcFields("Document Reference ID");
-                DocAttachArch."Document Reference ID" := DocAttach."Document Reference ID";
+                // DocAttach.CalcFields("Document Reference ID");
+                // DocAttachArch."Document Reference ID" := DocAttach."Document Reference ID";
                 DocAttachArch.INSERT;
             until DocAttach.Next() = 0;
 
@@ -868,12 +872,43 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ApprovalEntry.SetRange("Record ID to Approve", PurchaseHeader.RecordId);
         if ApprovalEntry.FindSet() then
             repeat
-                ApprovalEntryAcr := ApprovalEntry;
-                ApprovalEntryAcr."Table ID" := Database::"Purchase Header Archive";
-                ApprovalEntryAcr."Record ID to Approve" := PurchaseHeaderArchive.RecordId;
-                ApprovalEntryAcr."Entry No." := 0;
-                ApprovalEntryAcr.Insert;
+                ApprovalEntryArch.TransferFields(ApprovalEntry);
+                Case ApprovalEntry."Table ID" of
+                    Database::"Purchase Header":
+                        ApprovalEntryArch."Table ID" := Database::"Purchase Header Archive";
+
+                End;
+                ApprovalEntryArch."Record ID to Approve" := PurchaseHeaderArchive.RecordId;
+                ApprovalEntryArch."Doc. No. Occurrence" := PurchaseHeaderArchive."Doc. No. Occurrence";
+                ApprovalEntryArch."Version No." := PurchaseHeaderArchive."Version No.";
+                ApprovalEntryArch."Entry No." := ApprovalEntryArch.GetLastEntryNo() + 1;
+                ApprovalEntryArch.Insert;
+
+                ApprovalLinkBuffer.Init();
+                ApprovalLinkBuffer."Entry No." := ApprovalEntry."Entry No.";
+                ApprovalLinkBuffer."Sequence No." := ApprovalEntryArch."Entry No.";
+                ApprovalLinkBuffer.Insert;
             until ApprovalEntry.Next() = 0;
+
+        ApprCommentLine.SetCurrentKey("Table ID", "Record ID to Approve");
+        ApprCommentLine.SetRange("Table ID", Database::"Purchase Header");
+        ApprCommentLine.SetRange("Record ID to Approve", PurchaseHeader.RecordId);
+        if ApprCommentLine.FindSet() then
+            repeat
+                ApprCommentLineArch.TransferFields(ApprCommentLine);
+                Case ApprCommentLine."Table ID" of
+                    Database::"Purchase Header":
+                        ApprCommentLineArch."Table ID" := Database::"Purchase Header Archive";
+
+                End;
+                ApprCommentLineArch."Record ID to Approve" := PurchaseHeaderArchive.RecordId;
+                ApprCommentLineArch."Linked Approval Entry No." := 0;
+                if ApprCommentLine."Linked Approval Entry No." <> 0 then
+                    if ApprovalLinkBuffer.Get(ApprCommentLine."Linked Approval Entry No.") then
+                        ApprCommentLineArch."Linked Approval Entry No." := ApprovalLinkBuffer."Sequence No.";
+                ApprCommentLineArch."Entry No." := ApprCommentLineArch.GetLastEntryNo() + 1;
+                ApprCommentLineArch.Insert;
+            until ApprCommentLine.Next() = 0;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Transfer Document", 'OnBeforeCheckTransLines', '', false, false)]
