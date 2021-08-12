@@ -8934,6 +8934,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action &amp;Print - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3257172924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+<<<<<<< HEAD
           <source>Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Arch. Sub. - Property Caption</note>
@@ -9108,6 +9109,182 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Property Caption</note>
         </trans-unit>
+=======
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Arch. Sub. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3257172924 - Control 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approver</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Arch. Sub. - Control Approver - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3257172924 - Control 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description/Comment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Arch. Sub. - Control Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3257172924 - Control 2296741137 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Use action "Link to Cash Flow Entry"</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Arch. Sub. - Control Forecast Entry - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3257172924 - Control 3904971218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Utilities Dim. Value Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Arch. Sub. - Control Utilities Dim. Value Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3257172924 - Action 1402615620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Arch. Sub. - Action &amp;Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3257172924 - Action 3000180178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Co&amp;mments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Arch. Sub. - Action Co&amp;mments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3257172924 - Action 2173385693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Arch. Sub. - Action Dimensions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Order,Function,Print,Request Approval,Approve,Release,Navigate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order App Archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 318613646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approver</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Approver - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 38210337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control DocAmounts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 3143542455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Invoice Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 2975378708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Remaining Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 3724343034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Payment Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 4139459292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Paid Date Fact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 1611306197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plan</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Paid Date Plan - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 3183912585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pre-Approver</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Pre-Approver - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 2414822351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Problem Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Problem Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 801304080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Checker</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Purchaser Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 2681784031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approval Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Status App - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 2681784031 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Reception,Сontroller,Checker,Approve,Payment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Status App - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 1725717413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Payment Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 4231435149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Bank BIC</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Vendor Bank Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Control 2344504216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Bank Account Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Control Vendor Bank Account Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Action 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>O&amp;rder</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Action Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Action 2941878937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approval Comments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Action ApprovalComments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Action 3860314472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approvals</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Action Approvals - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Action 3000180178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Co&amp;mments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Action Co&amp;mments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Action 1062429549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attachments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Action DocAttach - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Action Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1213472130 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Action &amp;Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3878240010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Property Caption</note>
+        </trans-unit>
+>>>>>>> 901ff787cb7c12d3db3cbd5d6c8b41ca053b8627
         <trans-unit id="Page 3878240010 - Control 1306780623 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Excluding VAT</source>
           <note from="Developer" annotates="general" priority="2"></note>
