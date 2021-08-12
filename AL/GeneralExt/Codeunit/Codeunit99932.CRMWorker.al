@@ -90,6 +90,8 @@ codeunit 99932 "CRM Worker"
         ContractContactNotFound: Label 'Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3';
         BadSoapEnvFormatErr: Label 'Bad soap envelope format';
         ImportActionNotAllowedErr: Label 'Import action %1 is not allowed';
+        InvalidEmailAddressErr: Label 'The email address "%1" is not valid.';
+        InvalidPhoneNoErr: Label 'The phone no. "%1" is not valid.';
         KeyErr: Label 'No field key is specified!';
         NoObjectIdErr: Label 'No ObjectID in XML Document';
         NoParentObjectIdErr: Label 'No ParentObjectID in XML Document';
@@ -1011,9 +1013,10 @@ codeunit 99932 "CRM Worker"
         XmlNodeList: XmlNodeList;
         OK: Boolean;
         BaseXPath: Text;
-        ElemText, ElemText2, TempValue : Text;
+        ElemText, ElemText2, TempValue, LastValidPhoneNo, LastValidMailAddress : Text;
         ObjDataElement: Dictionary of [Text, Text];
         RetObjectData: List of [Dictionary of [Text, Text]];
+        LogStatusEnum: Enum "CRM Log Status";
     begin
         ObjectData := RetObjectData;
         CreateObjDataElement(ObjectData, ObjDataElement);
@@ -1057,19 +1060,29 @@ codeunit 99932 "CRM Worker"
                         ContactPhoneX:
                             begin
                                 if ElemText2 <> '' then begin
-                                    if not ObjDataElement.Get(ContactPhoneX, TempValue) then
-                                        ObjDataElement.Add(ContactPhoneX, ElemText2)
-                                    else
-                                        ObjDataElement.Set(ContactPhoneX, ElemText2);
+                                    if not CheckValidPhoneNo(ElemText2) then
+                                        LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(InvalidPhoneNoErr, ElemText2))
+                                    else begin
+                                        LastValidPhoneNo := ElemText2;
+                                        if not ObjDataElement.Get(ContactPhoneX, TempValue) then
+                                            ObjDataElement.Add(ContactPhoneX, LastValidPhoneNo)
+                                        else
+                                            ObjDataElement.Set(ContactPhoneX, LastValidPhoneNo);
+                                    end;
                                 end;
                             end;
                         ContactEmailX:
                             begin
                                 if ElemText2 <> '' then begin
-                                    if not ObjDataElement.Get(ContactEmailX, TempValue) then
-                                        ObjDataElement.Add(ContactEmailX, ElemText2)
-                                    else
-                                        ObjDataElement.Set(ContactEmailX, ElemText2);
+                                    if not CheckValidMailAddress(ElemText2) then
+                                        LogEvent(FetchedObject, LogStatusEnum::Error, StrSubstNo(InvalidEmailAddressErr, ElemText2))
+                                    else begin
+                                        LastValidMailAddress := ElemText2;
+                                        if not ObjDataElement.Get(ContactEmailX, TempValue) then
+                                            ObjDataElement.Add(ContactEmailX, LastValidMailAddress)
+                                        else
+                                            ObjDataElement.Set(ContactEmailX, LastValidMailAddress);
+                                    end;
                                 end;
                             end;
                     End
@@ -1991,4 +2004,38 @@ codeunit 99932 "CRM Worker"
     begin
         XmlElem.SelectSingleNode(XPath, TempXmlNode);
     end;
+
+    [TryFunction]
+    local procedure CheckValidMailAddress(Recipients: Text)
+    var
+        TmpRecipients: Text;
+        IsHandled: Boolean;
+        MailMgt: Codeunit "Mail Management";
+    begin
+
+        if Recipients = '' then
+            exit;
+
+        TmpRecipients := DelChr(Recipients, '<>', ';');
+        while StrPos(TmpRecipients, ';') > 1 do begin
+            MailMgt.CheckValidEmailAddress(CopyStr(TmpRecipients, 1, StrPos(TmpRecipients, ';') - 1));
+            TmpRecipients := CopyStr(TmpRecipients, StrPos(TmpRecipients, ';') + 1);
+        end;
+        MailMgt.CheckValidEmailAddress(TmpRecipients);
+    end;
+
+    [TryFunction]
+    local procedure CheckValidPhoneNo(PhoneNo: Text)
+    var
+        Char: DotNet Char;
+        i: Integer;
+    begin
+        if PhoneNo = '' then
+            exit;
+
+        for i := 1 to StrLen(PhoneNo) do
+            if Char.IsLetter(PhoneNo[i]) then
+                Error(InvalidPhoneNoErr, PhoneNo);
+    end;
+
 }
