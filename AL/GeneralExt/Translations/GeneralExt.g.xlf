@@ -8969,7 +8969,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Property PromotedActionCategories</note>
         </trans-unit>
         <trans-unit id="Page 1213472130 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Purchase Order App</source>
+          <source>Purchase Order App Archive</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Archive - Property Caption</note>
         </trans-unit>
