@@ -852,6 +852,9 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ApprovalLinkBuffer: Record "Approval Entry" temporary;
         ApprCommentLine: Record "Approval Comment Line";
         ApprCommentLineArch: Record "Request Appr. Com. Line Arch.";
+        TempBlob: Codeunit "Temp Blob";
+        DocOutStream: OutStream;
+        DocInStream: InStream;
     begin
         if PurchaseHeader."Archiving Type" = PurchaseHeader."Archiving Type"::" " then
             exit;
@@ -871,8 +874,15 @@ codeunit 50006 "Base App. Subscribers Mgt."
                 end;
                 DocAttachArch."Version No." := PurchaseHeaderArchive."Version No.";
                 DocAttachArch."Doc. No. Occurrence" := PurchaseHeaderArchive."Doc. No. Occurrence";
-                // DocAttach.CalcFields("Document Reference ID");
-                // DocAttachArch."Document Reference ID" := DocAttach."Document Reference ID";
+                if DocAttach."Document Reference ID".HasValue then begin
+                    TempBlob.CreateOutStream(DocOutStream);
+                    DocAttach."Document Reference ID".ExportStream(DocOutStream);
+                    TempBlob.CreateInStream(DocInStream);
+                    DocAttachArch."Document Reference ID".ImportStream(DocInStream, DocAttach."File Name");
+                    // NC AB: debug
+                    if not DocAttachArch."Document Reference ID".HasValue then
+                        Error('Вложение не перегружено!');
+                end;
                 DocAttachArch.INSERT;
             until DocAttach.Next() = 0;
 

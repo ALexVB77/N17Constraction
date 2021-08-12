@@ -45,6 +45,8 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             CalcFormula = exist("Request Approval Entry Archive" where("Table ID" = const(5109),
                                                         "Document Type" = field("Document Type"),
                                                         "Document No." = field("No."),
+                                                        "Doc. No. Occurrence" = field("Doc. No. Occurrence"),
+                                                        "Version No." = field("Version No."),
                                                         Status = const(Approved),
                                                         "Approver ID" = field("Approver ID Filter")));
             Caption = 'My Approved';
@@ -90,7 +92,9 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
         field(70005; "Exists Attachment"; Boolean)
         {
             FieldClass = FlowField;
-            CalcFormula = Exist("Document Attachment" WHERE("Table ID" = CONST(5109), "Document Type" = FIELD("Document Type"), "No." = FIELD("No.")));
+            CalcFormula = Exist("Document Attachment Archive"
+                WHERE("Table ID" = CONST(5109), "Document Type" = FIELD("Document Type"), "No." = FIELD("No."),
+                    "Doc. No. Occurrence" = field("Doc. No. Occurrence"), "Version No." = field("Version No.")));
             Description = 'NC 51373 AB';
             Caption = 'Exists Attachment';
         }
