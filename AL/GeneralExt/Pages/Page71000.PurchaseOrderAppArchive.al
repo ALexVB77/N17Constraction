@@ -315,10 +315,11 @@ page 71000 "Purchase Order App Archive"
 
                     trigger OnAction()
                     var
-                        WorkflowsEntriesBuffer: Record "Workflows Entries Buffer";
+                        ReqApprEntriesArch: Page "Request Approval Entries Arch.";
                     begin
-                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(
-                            RecordId, DATABASE::"Purchase Header", "Document Type".AsInteger(), "No.");
+                        ReqApprEntriesArch.Setfilters(
+                            Database::"Purchase Header Archive", "Document Type".AsInteger(), "No.", "Doc. No. Occurrence", "Version No.");
+                        ReqApprEntriesArch.Run;
                     end;
                 }
                 action(ApprovalComments)
@@ -330,8 +331,16 @@ page 71000 "Purchase Order App Archive"
                     PromotedCategory = Category8;
 
                     trigger OnAction()
+                    var
+                        ApprCommentLineArch: Record "Request Appr. Com. Line Arch.";
+                        ApprovalCommentsArch: page "Request Appr. Comments Arch.";
                     begin
-                        ApprovalsMgmt.GetApprovalComment(Rec);
+                        ApprCommentLineArch.FilterGroup(2);
+                        ApprCommentLineArch.SetRange("Table ID", Database::"Purchase Header Archive");
+                        ApprCommentLineArch.SetRange("Record ID to Approve", RecordId);
+                        ApprCommentLineArch.FilterGroup(0);
+                        ApprovalCommentsArch.SetTableView(ApprCommentLineArch);
+                        ApprovalCommentsArch.Run;
                     end;
                 }
             }
@@ -346,6 +355,7 @@ page 71000 "Purchase Order App Archive"
                     ApplicationArea = Basic, Suite;
                     Caption = '&Print';
                     Ellipsis = true;
+                    Enabled = false;
                     Image = Print;
                     Promoted = true;
                     PromotedCategory = Category6;
