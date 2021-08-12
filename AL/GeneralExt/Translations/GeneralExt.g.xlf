@@ -7858,6 +7858,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1985555561 - NamedType 4034540392" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operations cannot be changed!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - NamedType TEXT001</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - NamedType 377269713" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operations cannot be deleted!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - NamedType TEXT002</note>
+        </trans-unit>
+        <trans-unit id="Page 1985555561 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attention! VAT rate = 0. To recalculate, enter the correct rate and then the new Amount without VAT.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - NamedType Text003</note>
+        </trans-unit>
         <trans-unit id="Page 1985555561 - Action 3640084062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Change Log</source>
           <note from="Developer" annotates="general" priority="2"></note>
