@@ -289,7 +289,7 @@ page 71260 "Purchase Order Act Archive"
 
                     trigger OnAction()
                     var
-                        DocumentAttachment: Record "Document Attachment";
+                        DocumentAttachment: Record "Document Attachment Archive";
                         RecRef: RecordRef;
                     begin
                         CalcFields("Exists Attachment");
@@ -297,6 +297,8 @@ page 71260 "Purchase Order Act Archive"
                         DocumentAttachment.SetRange("Table ID", DATABASE::"Purchase Header Archive");
                         DocumentAttachment.SetRange("Document Type", Rec."Document Type");
                         DocumentAttachment.SetRange("No.", Rec."No.");
+                        DocumentAttachment.SetRange("Doc. No. Occurrence", "Doc. No. Occurrence");
+                        DocumentAttachment.SetRange("Version No.", "Version No.");
                         DocumentAttachment.FindFirst();
                         DocumentAttachment.Export(true);
                     end;

@@ -82,7 +82,7 @@ page 71262 "Purchase List Act Archive"
                         PurchHeaderArch.SetRange("No.", Rec."No.");
                         PurchHeaderArch.SetRange("Version No.", Rec."Version No.");
                         PurchHeaderArch.SetRange("Doc. No. Occurrence", Rec."Doc. No. Occurrence");
-                        page.Run(Page::"Purchase Order Act", Rec);
+                        page.Run(Page::"Purchase Order Act Archive", Rec);
                         CurrPage.Update(false);
                     end;
                 }
