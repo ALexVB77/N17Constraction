@@ -11518,6 +11518,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control Preview - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3935068462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Proforma Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4253293261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print Customer Agreement</source>
           <note from="Developer" annotates="general" priority="2"></note>
