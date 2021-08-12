@@ -4478,6 +4478,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType ImportActionNotAllowedErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 3007870474" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The email address "%1" is not valid.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType InvalidEmailAddressErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 1309546067" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The phone no. "%1" is not valid.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType InvalidPhoneNoErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 2041483183" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment object %1 was created</source>
           <note from="Developer" annotates="general" priority="2"></note>
