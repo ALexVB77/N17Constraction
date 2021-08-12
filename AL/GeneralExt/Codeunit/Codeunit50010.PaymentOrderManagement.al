@@ -513,7 +513,7 @@ codeunit 50010 "Payment Order Management"
         if not PaymentInvoice.IsEmpty then begin
             PaymentInvoice.FindSet();
             repeat
-                PurchPaymentInvoiceArchive(PaymentInvoice);
+                PurchPaymentInvoiceArchive(PaymentInvoice, ArchReason);
             until PaymentInvoice.Next() = 0;
         end;
 
@@ -528,7 +528,7 @@ codeunit 50010 "Payment Order Management"
         PurchHeaderArch.SetRange("Document Type", PurchHeader."Document Type");
         PurchHeaderArch.SetRange("No.", PurchHeader."No.");
         PurchHeaderArch.FindLast();
-        PurchHeaderArch.SetAddTypeCommentArchText(CommentAddType::Problem, ArchReason);
+        PurchHeaderArch.SetAddTypeCommentArchText(CommentAddType::Archive, ArchReason);
 
         PurchHeader.SetHideValidationDialog(true);
         PurchHeader.Delete(true);
@@ -536,30 +536,32 @@ codeunit 50010 "Payment Order Management"
 
     procedure PurchPaymentInvoiceArchiveQst(PurchHeader: Record "Purchase Header"): Boolean;
     var
-        ConfirmManagement: Codeunit "Confirm Management";
-        LocText007: Label 'Archive %1 no.: %2?';
+        ArchProblemDoc: Page "Archiving Document";
+        ArchReason: Text;
         LocText001: Label 'Document %1 has been archived.';
         LocText4: Label 'You must be the owner or process user in the document %1.';
     begin
         if not (UserId in [PurchHeader.Receptionist, PurchHeader."Process User"]) then
             Error(LocText4, PurchHeader."No.");
 
-        if not ConfirmManagement.GetResponseOrDefault(
-             StrSubstNo(LocText007, PurchHeader."Document Type", PurchHeader."No."), true)
-        then
-            exit(false);
+        ArchProblemDoc.SetParam(PurchHeader);
+        ArchProblemDoc.RunModal;
+        if not ArchProblemDoc.GetResult(ArchReason) then
+            exit;
 
-        PurchPaymentInvoiceArchive(PurchHeader);
+        PurchPaymentInvoiceArchive(PurchHeader, ArchReason);
 
         Message(LocText001, PurchHeader."No.");
         exit(true);
     end;
 
-    local procedure PurchPaymentInvoiceArchive(PurchHeader: Record "Purchase Header");
+    local procedure PurchPaymentInvoiceArchive(PurchHeader: Record "Purchase Header"; ArchReason: Text);
     var
+        PurchHeaderArch: Record "Purchase Header Archive";
         ArchiveMgt: Codeunit ArchiveManagement;
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
+        CommentAddType: enum "Purchase Comment Add. Type";
     begin
         // Закрываем аппрувы и процессы    
         if not (PurchHeader."Status App" in [PurchHeader."Status App"::Reception, PurchHeader."Status App"::Payment]) then begin
@@ -570,6 +572,13 @@ codeunit 50010 "Payment Order Management"
         PurchHeader."Archiving Type" := PurchHeader."Archiving Type"::"Payment Invoice";
         ArchiveMgt.StorePurchDocument(PurchHeader, false);
         DisconnectFromAgreement(PurchHeader);
+
+        // Причина
+        PurchHeaderArch.SetRange("Document Type", PurchHeader."Document Type");
+        PurchHeaderArch.SetRange("No.", PurchHeader."No.");
+        PurchHeaderArch.FindLast();
+        PurchHeaderArch.SetAddTypeCommentArchText(CommentAddType::Archive, ArchReason);
+
         PurchHeader.SetHideValidationDialog(true);
         PurchHeader.Delete(true);
     end;
