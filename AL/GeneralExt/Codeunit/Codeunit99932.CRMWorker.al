@@ -200,6 +200,39 @@ codeunit 99932 "CRM Worker"
 
     end;
 
+    [TryFunction]
+    local procedure CheckValidMailAddress(Recipients: Text)
+    var
+        TmpRecipients: Text;
+        IsHandled: Boolean;
+        MailMgt: Codeunit "Mail Management";
+    begin
+
+        if Recipients = '' then
+            exit;
+
+        TmpRecipients := DelChr(Recipients, '<>', ';');
+        while StrPos(TmpRecipients, ';') > 1 do begin
+            MailMgt.CheckValidEmailAddress(CopyStr(TmpRecipients, 1, StrPos(TmpRecipients, ';') - 1));
+            TmpRecipients := CopyStr(TmpRecipients, StrPos(TmpRecipients, ';') + 1);
+        end;
+        MailMgt.CheckValidEmailAddress(TmpRecipients);
+    end;
+
+    [TryFunction]
+    local procedure CheckValidPhoneNo(PhoneNo: Text)
+    var
+        Char: DotNet Char;
+        i: Integer;
+    begin
+        if PhoneNo = '' then
+            exit;
+
+        for i := 1 to StrLen(PhoneNo) do
+            if Char.IsLetter(PhoneNo[i]) then
+                Error(InvalidPhoneNoErr, PhoneNo);
+    end;
+
     local procedure Code(var WebRequestQueue: Record "Web Request Queue")
     var
         FetchedObjectBuff: Record "CRM Prefetched Object" temporary;
@@ -307,6 +340,14 @@ codeunit 99932 "CRM Worker"
                 Agr."Agreement Type",
                 Agr.FieldCaption(Status),
                 Agr.Status))
+    end;
+
+    local procedure DeleteObjectFromImport(var FetchedObject: Record "CRM Prefetched Object")
+    var
+        OK: Boolean;
+    begin
+        OK := ParsedObjectsG.Remove(FetchedObject.Id);
+        OK := FetchedObject.Delete();
     end;
 
     [TryFunction]
@@ -875,14 +916,6 @@ codeunit 99932 "CRM Worker"
         if not RootXPath.EndsWith('/') then
             RootXPath := RootXPath + '/';
         Result := RootXPath + ChildXPath;
-    end;
-
-    local procedure DeleteObjectFromImport(var FetchedObject: Record "CRM Prefetched Object")
-    var
-        OK: Boolean;
-    begin
-        OK := ParsedObjectsG.Remove(FetchedObject.Id);
-        OK := FetchedObject.Delete();
     end;
 
     local procedure LogEvent(var FetchedObject: Record "CRM Prefetched Object";
@@ -2003,39 +2036,6 @@ codeunit 99932 "CRM Worker"
         TempXmlNode: XmlNode;
     begin
         XmlElem.SelectSingleNode(XPath, TempXmlNode);
-    end;
-
-    [TryFunction]
-    local procedure CheckValidMailAddress(Recipients: Text)
-    var
-        TmpRecipients: Text;
-        IsHandled: Boolean;
-        MailMgt: Codeunit "Mail Management";
-    begin
-
-        if Recipients = '' then
-            exit;
-
-        TmpRecipients := DelChr(Recipients, '<>', ';');
-        while StrPos(TmpRecipients, ';') > 1 do begin
-            MailMgt.CheckValidEmailAddress(CopyStr(TmpRecipients, 1, StrPos(TmpRecipients, ';') - 1));
-            TmpRecipients := CopyStr(TmpRecipients, StrPos(TmpRecipients, ';') + 1);
-        end;
-        MailMgt.CheckValidEmailAddress(TmpRecipients);
-    end;
-
-    [TryFunction]
-    local procedure CheckValidPhoneNo(PhoneNo: Text)
-    var
-        Char: DotNet Char;
-        i: Integer;
-    begin
-        if PhoneNo = '' then
-            exit;
-
-        for i := 1 to StrLen(PhoneNo) do
-            if Char.IsLetter(PhoneNo[i]) then
-                Error(InvalidPhoneNoErr, PhoneNo);
     end;
 
 }
