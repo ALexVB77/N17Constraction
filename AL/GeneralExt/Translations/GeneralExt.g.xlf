@@ -4568,6 +4568,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CheckLineShortCutDim1 - NamedType LocText001</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1524225914 - Method 2267804255 - NamedType 3923651544" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document approved by </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CreateBCPreBookingAct - NamedType lText005</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1524225914 - Method 2267804255 - NamedType 227811900" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice %1 is posted by this document and budget entries created.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ERPC Funtions - Method CreateBCPreBookingAct - NamedType Text50019</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1524225914 - Method 1598329628 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to delete Payment Invoice %1 for %2?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11612,6 +11622,11 @@
           <source>Preview</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Factura-Invoice (A) ext - Control Preview - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Proforma Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4253293261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print Customer Agreement</source>
