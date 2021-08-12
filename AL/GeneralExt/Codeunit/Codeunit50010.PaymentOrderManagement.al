@@ -528,7 +528,7 @@ codeunit 50010 "Payment Order Management"
         PurchHeaderArch.SetRange("Document Type", PurchHeader."Document Type");
         PurchHeaderArch.SetRange("No.", PurchHeader."No.");
         PurchHeaderArch.FindLast();
-        PurchHeaderArch.SetAddTypeCommentArchText(CommentAddType, ArchReason);
+        PurchHeaderArch.SetAddTypeCommentArchText(CommentAddType::Problem, ArchReason);
 
         PurchHeader.SetHideValidationDialog(true);
         PurchHeader.Delete(true);
