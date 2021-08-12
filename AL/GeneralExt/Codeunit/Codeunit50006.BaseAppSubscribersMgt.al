@@ -1221,6 +1221,22 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterFinalizePosting', '', false, false)]
+    local procedure OnAfterFinalizePostingcu90(var PurchHeader: Record "Purchase Header"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchInvHeader: Record "Purch. Inv. Header"; var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var ReturnShptHeader: Record "Return Shipment Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PreviewMode: Boolean; CommitIsSupressed: Boolean)
+    var
+        lPHead: Record "Purchase Header";
+        lERPC: Codeunit "ERPC Funtions";
+    begin
+        lPHead.SetRange("Act Invoice No.", PurchHeader."No.");
+        if lPHead.FindFirst() then begin
+            lERPC.DeleteBCPreBooking(lPHead);
+            lERPC.CreateBCPreBookingActPost(PurchInvHeader);
+            lPHead."Act Invoice No." := PurchInvHeader."No.";
+            lPHead.Modify();
+        end;
+    end;
+
+
     [EventSubscriber(ObjectType::Page, Page::"MyDim Value Combinations", 'OnLoadDimValCombPage', '', false, false)]
     local procedure OnLoadDimValueCombPage(var Row: Code[20]; var Col: Code[20]; var ShowCaption: Boolean; var DimRecord: Record "Dimension Value")
     var

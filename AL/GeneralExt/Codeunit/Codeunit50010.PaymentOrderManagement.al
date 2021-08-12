@@ -778,8 +778,11 @@ codeunit 50010 "Payment Order Management"
                     else
                         FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Checker, GetPurchActChecker(PurchHeader), ProblemType::RApprover, Reject);
                 end else begin
-                    if not Reject then
-                        FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Signing, GetPurchActChecker(PurchHeader), ProblemType::" ", Reject)
+                    if not Reject then begin
+                        FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Signing, GetPurchActChecker(PurchHeader), ProblemType::" ", Reject);
+                        // AN надо создавать операции по бюджетам
+                        ERPCFunc.CreateBCPreBookingAct(PurchHeader);
+                    end
                     else begin
                         PreAppover := GetPurchActPreApprover(PurchHeader);
                         if PreAppover <> '' then begin
