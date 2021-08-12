@@ -8,7 +8,7 @@ page 71262 "Purchase List Act Archive"
     PageType = Worksheet;
     RefreshOnActivate = true;
     SourceTable = "Purchase Header Archive";
-    SourceTableView = SORTING("Document Type", "No.") WHERE("Act Type" = FILTER(<> ' '), "Status App" = FILTER(<> Payment), "Problem Type" = FILTER(<> "Act error"));
+    SourceTableView = SORTING("Document Type", "No.") WHERE("Act Type" = FILTER(<> ' '));
     UsageCategory = Lists;
     layout
     {
