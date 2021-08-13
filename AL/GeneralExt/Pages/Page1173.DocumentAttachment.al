@@ -7,7 +7,6 @@ pageextension 81173 "Document Attachments (Ext)" extends "Document Attachment De
             field("Attachment Link"; Rec."Attachment Link")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the link the attachment.';
 
                 trigger OnAssistEdit()
                 begin
