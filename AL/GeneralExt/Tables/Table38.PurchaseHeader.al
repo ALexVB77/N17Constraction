@@ -707,7 +707,11 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         DocumentAttachment.SetRange("Document Type", rec."Document Type");
         DocumentAttachment.SetRange("No.", Rec."No.");
         DocumentAttachment.FindFirst();
-        DocumentAttachment.Export(true);
+        if DocumentAttachment."Attachment Link" <> '' then
+            Hyperlink(DocumentAttachment."Attachment Link")
+        else
+            if DocumentAttachment."File Name" <> '' then
+                DocumentAttachment.Export(true);
     end;
 
 }

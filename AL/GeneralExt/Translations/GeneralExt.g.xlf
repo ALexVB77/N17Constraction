@@ -8973,6 +8973,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action Statistics - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3790301120 - Action 3249535890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents View</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action ViewAttachDoc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3790301120 - Action 227370865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approval</source>
           <note from="Developer" annotates="general" priority="2"></note>
