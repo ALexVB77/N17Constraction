@@ -9143,7 +9143,7 @@
         </trans-unit>
         <trans-unit id="Page 2388192425 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Payment Request,Request Approval,Approve,Print</source>
-          <target>[NAB: REVIEW]Новый,Процесс,Отчет,Заявка на Платеж,Запросить утверждение,Утвердить</target>
+          <target>Новый,Процесс,Отчет,Заявка на Платеж,Запросить утверждение,Утвердить,Печать</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Property PromotedActionCategories</note>
@@ -9324,14 +9324,14 @@
         </trans-unit>
         <trans-unit id="Page 2388192425 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print</source>
-          <target>[NAB: SUGGESTION]Печать</target>
+          <target>Печать</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Print - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2388192425 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>&amp;Print</source>
-          <target>[NAB: SUGGESTION]&amp;Печать</target>
+          <target>&amp;Печать</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action &amp;Print - Property Caption</note>
