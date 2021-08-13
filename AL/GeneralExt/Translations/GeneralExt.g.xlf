@@ -11663,6 +11663,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 648353892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copies Number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control CopiesNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 2260021890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control CurrencyPriceAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control ExportExcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control LogInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 4291959338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control ShowDiscount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4253293261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print Customer Agreement</source>
           <note from="Developer" annotates="general" priority="2"></note>

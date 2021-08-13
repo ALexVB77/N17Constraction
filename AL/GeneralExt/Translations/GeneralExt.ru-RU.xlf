@@ -5983,7 +5983,6 @@
           <source>Do you want to add a document to the archive?</source>
           <target>Вы хотите добавить документ в архив?</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control AloneStep - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2191153028 - Control 891703397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9428,21 +9427,18 @@
           <source>Operations cannot be changed!</source>
           <target>Нельзя изменять операции!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - NamedType TEXT001</note>
         </trans-unit>
         <trans-unit id="Page 1985555561 - NamedType 377269713" size-unit="char" translate="yes" xml:space="preserve">
           <source>Operations cannot be deleted!</source>
           <target>Нельзя удалять операции!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - NamedType TEXT002</note>
         </trans-unit>
         <trans-unit id="Page 1985555561 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attention! VAT rate = 0. To recalculate, enter the correct rate and then the new Amount without VAT.</source>
           <target>Внимание! Ставка НДС = 0. Для перерасчета, введите корректную ставку и затем нувую Сумму без НДС.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - NamedType Text003</note>
         </trans-unit>
         <trans-unit id="Page 1985555561 - Action 3640084062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -13998,6 +13994,41 @@
           <target>Учт. счет-проформа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 648353892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copies Number</source>
+          <target>Число Копий</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control CopiesNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 2260021890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency</source>
+          <target>Валюта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control CurrencyPriceAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Excel</source>
+          <target>Выгрузить в  Excel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control ExportExcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source>
+          <target>Журнал Взаимодействий</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control LogInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 4291959338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Discount</source>
+          <target>Показать скидки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control ShowDiscount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4253293261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print Customer Agreement</source>
