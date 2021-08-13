@@ -13625,7 +13625,7 @@
         </trans-unit>
         <trans-unit id="Report 4054452980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Shipment M-15 Posted</source>
-          <target>Накладная на отпуск материалов на сторону М-15</target>
+          <target>Учт. накладная на отпуск материалов на сторону М-15 (перемещения)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 Posted - Property Caption</note>
         </trans-unit>
@@ -13691,7 +13691,7 @@
         </trans-unit>
         <trans-unit id="Report 2721895639 - RequestPage 2516438534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Shipment M-15 Posted</source>
-          <target>Item Shipment M-15 Posted</target>
+          <target>Учт. накладная на отпуск материалов на сторону М-15 (перемещения)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-19 - RequestPage RequestOptionsPage - Property Caption</note>
         </trans-unit>
@@ -14147,7 +14147,7 @@
         </trans-unit>
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Shipment M-15</source>
-          <target>Накладная на отпуск материалов на сторону М-15</target>
+          <target>Накладная на отпуск материалов на сторону М-15 (перемещения)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Transfer Shipment M-15 - Property Caption</note>
         </trans-unit>
