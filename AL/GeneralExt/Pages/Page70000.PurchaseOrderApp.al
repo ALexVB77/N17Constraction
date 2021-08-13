@@ -72,12 +72,22 @@ page 70000 "Purchase Order App"
                         ApplicationArea = All;
                         BlankZero = true;
                         ShowMandatory = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update();
+                        end;
                     }
                     field("Invoice VAT Amount"; Rec."Invoice VAT Amount")
                     {
                         ApplicationArea = All;
                         BlankZero = true;
                         ShowMandatory = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update();
+                        end;
                     }
                     field("Invoice Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount")
                     {
