@@ -104,6 +104,7 @@ report 70043 "Payment Request"
     trigger OnPreReport()
     begin
         CompanyInfo.Get();
+        PurchSetup.Get();
         ReportDT := Format(CurrentDateTime());
     end;
 
