@@ -418,6 +418,10 @@
         PostedReturnShipmentTxt: Label 'Posted Return Shipment';
         PostedTransferShipmentTxt: Label 'Posted Transfer Shipment';
         PostedTransferReceiptTxt: Label 'Posted Transfer Receipt';
+
+        // NC AB: ошибка стандартной версии, забыли про:
+        PostedDirTransferTxt: Label 'Posted Direct Transfer';
+
         SalesQuoteTxt: Label 'Sales Quote';
         SalesOrderTxt: Label 'Sales Order';
         SalesInvoiceTxt: Label 'Sales Invoice';
@@ -471,6 +475,11 @@
         [SecurityFiltering(SecurityFilter::Filtered)]
         TransRcptHeader: Record "Transfer Receipt Header";
         [SecurityFiltering(SecurityFilter::Filtered)]
+
+        // NC AB: ошибка стандартной версии, забыли про:
+        DirectTransferHeader: Record "Direct Transfer Header";
+        [SecurityFiltering(SecurityFilter::Filtered)]
+
         PostedWhseRcptLine: Record "Posted Whse. Receipt Line";
         [SecurityFiltering(SecurityFilter::Filtered)]
         PostedWhseShptLine: Record "Posted Whse. Shipment Line";
@@ -1182,6 +1191,8 @@
         FindPstdPhysInvtOrderHdr();
         FindPostedWhseShptLine();
         FindPostedWhseRcptLine();
+        // NC AB: ошибка стандартной версии, забыли про:
+        FindDirectTransferHeader();
     end;
 
     local procedure FindIncomingDocumentRecords()
@@ -1399,6 +1410,17 @@
             TransRcptHeader.SetFilter("No.", DocNoFilter);
             TransRcptHeader.SetFilter("Posting Date", PostingDateFilter);
             InsertIntoDocEntry(Rec, DATABASE::"Transfer Receipt Header", 0, PostedTransferReceiptTxt, TransRcptHeader.Count);
+        end;
+    end;
+
+    // NC AB: ошибка стандартной версии, забыли про:
+    local procedure FindDirectTransferHeader()
+    begin
+        if DirectTransferHeader.ReadPermission then begin
+            DirectTransferHeader.Reset();
+            DirectTransferHeader.SetFilter("No.", DocNoFilter);
+            DirectTransferHeader.SetFilter("Posting Date", PostingDateFilter);
+            InsertIntoDocEntry(Rec, DATABASE::"Direct Transfer Header", 0, PostedDirTransferTxt, DirectTransferHeader.Count);
         end;
     end;
 
@@ -1719,6 +1741,14 @@
                         PAGE.Run(PAGE::"Posted Transfer Receipt", TransRcptHeader)
                     else
                         PAGE.Run(0, TransRcptHeader);
+
+                // NC AB: ошибка стандартной версии, забыли про:
+                Database::"Direct Transfer Header":
+                    if "No. of Records" = 1 then
+                        Page.Run(Page::"Posted Direct Transfer", DirectTransferHeader)
+                    else
+                        Page.Run(Page::"Posted Direct Transfers");
+
                 DATABASE::"Posted Whse. Shipment Line":
                     PAGE.Run(0, PostedWhseShptLine);
                 DATABASE::"Posted Whse. Receipt Line":
@@ -2040,7 +2070,9 @@
           NoOfRecords(DATABASE::"Purch. Cr. Memo Hdr.") + NoOfRecords(DATABASE::"Purch. Rcpt. Header") +
           NoOfRecords(DATABASE::"Service Invoice Header") + NoOfRecords(DATABASE::"Service Cr.Memo Header") +
           NoOfRecords(DATABASE::"Service Shipment Header") +
-          NoOfRecords(DATABASE::"Transfer Shipment Header") + NoOfRecords(DATABASE::"Transfer Receipt Header");
+          NoOfRecords(DATABASE::"Transfer Shipment Header") + NoOfRecords(DATABASE::"Transfer Receipt Header") +
+          // NC AB: ошибка стандартной версии, забыли про:
+          NoOfRecords(DATABASE::"Direct Transfer Header");
 
         OnAfterGetDocumentCount(DocCount);
     end;
