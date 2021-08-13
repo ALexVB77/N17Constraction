@@ -487,8 +487,12 @@ page 70000 "Purchase Order App"
                     PromotedIsBig = true;
 
                     trigger OnAction()
+                    var
+                        PurchaseHeader: Record "Purchase Header";
                     begin
-                        Message('Нажата кнопка Печать');
+                        PurchaseHeader := Rec;
+                        CurrPage.SetSelectionFilter(PurchaseHeader);
+                        PurchaseHeader.PrintRecords(true);
                     end;
                 }
             }

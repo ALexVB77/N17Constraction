@@ -5983,7 +5983,6 @@
           <source>Do you want to add a document to the archive?</source>
           <target>Вы хотите добавить документ в архив?</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Archiving Document - Control AloneStep - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2191153028 - Control 891703397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9143,9 +9142,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Invoices Detailed - Action DocCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2388192425 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New,Process,Report,Payment Request,Request Approval,Approve</source>
-          <target>Новый,Процесс,Отчет,Заявка на Платеж,Запросить утверждение,Утвердить</target>
+          <source>New,Process,Report,Payment Request,Request Approval,Approve,Print</source>
+          <target>[NAB: REVIEW]Новый,Процесс,Отчет,Заявка на Платеж,Запросить утверждение,Утвердить</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Property PromotedActionCategories</note>
         </trans-unit>
         <trans-unit id="Page 2388192425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9322,6 +9322,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Reject - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2388192425 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <target>[NAB: SUGGESTION]Печать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2388192425 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Print</source>
+          <target>[NAB: SUGGESTION]&amp;Печать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action &amp;Print - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1449143634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Gen. Journals</source>
           <target>Учтенные финансовые журналы</target>
@@ -9428,21 +9442,18 @@
           <source>Operations cannot be changed!</source>
           <target>Нельзя изменять операции!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - NamedType TEXT001</note>
         </trans-unit>
         <trans-unit id="Page 1985555561 - NamedType 377269713" size-unit="char" translate="yes" xml:space="preserve">
           <source>Operations cannot be deleted!</source>
           <target>Нельзя удалять операции!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - NamedType TEXT002</note>
         </trans-unit>
         <trans-unit id="Page 1985555561 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attention! VAT rate = 0. To recalculate, enter the correct rate and then the new Amount without VAT.</source>
           <target>Внимание! Ставка НДС = 0. Для перерасчета, введите корректную ставку и затем нувую Сумму без НДС.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Projects CC Entry Constr 2 - NamedType Text003</note>
         </trans-unit>
         <trans-unit id="Page 1985555561 - Action 3640084062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -13902,6 +13913,18 @@
           <target>Дата начала</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Payment Report - Control StartDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1725717413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Request</source>
+          <target>Заявка на платеж</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Payment Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1725717413 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order App</source>
+          <target>Заказ покупки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Payment Request - ReportDataItem Header - Property RequestFilterHeading</note>
         </trans-unit>
         <trans-unit id="Report 2639967622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Factura-Invoice (A)</source>

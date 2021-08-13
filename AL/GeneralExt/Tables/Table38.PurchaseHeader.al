@@ -667,4 +667,31 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
           ReportSelUsage.AsInteger(), Rec, FieldNo("Buy-from Vendor No."), ShowRequestForm);
     end;
 
+    procedure GetAppoveInfo(CHDate: date; CHUser: Code[50]; ApprDate: date; ApprUser: Code[50])
+    var
+        ApprovalEntry: Record "Approval Entry";
+    begin
+        CHDate := 0D;
+        CHUser := '';
+
+        ApprovalEntry.SetCurrentKey("Table ID", "Document Type", "Document No.", "Sequence No.", "Record ID to Approve");
+        ApprovalEntry.SetRange("Table ID", Database::"Purchase Header");
+        ApprovalEntry.SetRange("Record ID to Approve", Rec.RecordId);
+        ApprovalEntry.SetRange(Status, ApprovalEntry.Status::Approved);
+        ApprovalEntry.SetRange("Status App", ApprovalEntry."Status App"::Checker);
+        if ApprovalEntry.FindLast() then begin
+            CHDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+            CHUser := ApprovalEntry."Approver ID";
+        end;
+
+        ApprDate := 0D;
+        ApprUser := '';
+
+        ApprovalEntry.SetRange("Status App", ApprovalEntry."Status App"::Approve);
+        if ApprovalEntry.FindLast() then begin
+            ApprDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+            ApprUser := ApprovalEntry."Approver ID";
+        end;
+    end;
+
 }
