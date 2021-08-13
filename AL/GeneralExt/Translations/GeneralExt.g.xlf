@@ -7619,7 +7619,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Invoices Detailed - Action DocCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2388192425 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New,Process,Report,Payment Request,Request Approval,Approve</source>
+          <source>New,Process,Report,Payment Request,Request Approval,Approve,Print</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Property PromotedActionCategories</note>
         </trans-unit>
@@ -7767,6 +7767,16 @@
           <source>Reject</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Reject - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2388192425 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2388192425 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action &amp;Print - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1449143634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Gen. Journals</source>
@@ -11582,6 +11592,16 @@
           <source>Start Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Payment Report - Control StartDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1725717413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Payment Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1725717413 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order App</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Payment Request - ReportDataItem Header - Property RequestFilterHeading</note>
         </trans-unit>
         <trans-unit id="Report 2639967622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Factura-Invoice (A)</source>

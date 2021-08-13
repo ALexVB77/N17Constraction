@@ -667,4 +667,33 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
           ReportSelUsage.AsInteger(), Rec, FieldNo("Buy-from Vendor No."), ShowRequestForm);
     end;
 
+    procedure GetAppoveInfo(var CHDate: date; var CHUser: Code[50]; var ApprDate: date; var ApprUser: Code[50])
+    var
+        ApprovalEntry: Record "Approval Entry";
+    begin
+        CHDate := 0D;
+        CHUser := '';
+
+        ApprovalEntry.SetCurrentKey("Table ID", "Document Type", "Document No.", "Sequence No.", "Record ID to Approve");
+        ApprovalEntry.SetRange("Table ID", Database::"Purchase Header");
+        ApprovalEntry.SetRange("Record ID to Approve", Rec.RecordId);
+        ApprovalEntry.SetFilter(Status, '%1|%2', ApprovalEntry.Status::Approved, ApprovalEntry.Status::Open);
+        ApprovalEntry.SetRange("Status App", ApprovalEntry."Status App"::Checker);
+        if ApprovalEntry.FindLast() then begin
+            CHUser := ApprovalEntry."Approver ID";
+            if ApprovalEntry.Status = ApprovalEntry.Status::Approved then
+                CHDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+        end;
+
+        ApprDate := 0D;
+        ApprUser := '';
+
+        ApprovalEntry.SetRange("Status App", ApprovalEntry."Status App"::Approve);
+        if ApprovalEntry.FindLast() then begin
+            ApprUser := ApprovalEntry."Approver ID";
+            if ApprovalEntry.Status = ApprovalEntry.Status::Approved then
+                ApprDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+        end;
+    end;
+
 }

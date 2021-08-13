@@ -4,7 +4,7 @@ page 70005 "Payment Request Card"
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = Document;
-    PromotedActionCategories = 'New,Process,Report,Payment Request,Request Approval,Approve';
+    PromotedActionCategories = 'New,Process,Report,Payment Request,Request Approval,Approve,Print';
     RefreshOnActivate = true;
     SourceTable = "Purchase Header";
     layout
@@ -308,6 +308,30 @@ page 70005 "Payment Request Card"
                     end;
                 }
             }
+            group(Print)
+            {
+                Caption = 'Print';
+                action("&Print")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = '&Print';
+                    Image = Print;
+                    Promoted = true;
+                    PromotedCategory = Category7;
+                    PromotedIsBig = true;
+
+                    trigger OnAction()
+                    var
+                        PurchaseHeader: Record "Purchase Header";
+                        PaymentRequestRep: Report "Payment Request";
+                    begin
+                        PurchaseHeader := Rec;
+                        CurrPage.SetSelectionFilter(PurchaseHeader);
+                        PaymentRequestRep.SetTableView(PurchaseHeader);
+                        PaymentRequestRep.Run();
+                    end;
+                }
+            }
         }
     }
 
@@ -326,7 +350,7 @@ page 70005 "Payment Request Card"
             DelegateButtonEnabled := RejectButtonEnabled;
         end;
 
-        FillAppoveInfo();
+        GetAppoveInfo(CHDate, CHUser, ApprDate, ApprUser);
     end;
 
     var
@@ -336,32 +360,5 @@ page 70005 "Payment Request Card"
         ApproveButtonEnabled, RejectButtonEnabled, DelegateButtonEnabled : Boolean;
         CHDate, ApprDate : date;
         CHUser, ApprUser : Code[50];
-
-    local procedure FillAppoveInfo()
-    var
-        ApprovalEntry: Record "Approval Entry";
-    begin
-        CHDate := 0D;
-        CHUser := '';
-
-        ApprovalEntry.SetCurrentKey("Table ID", "Document Type", "Document No.", "Sequence No.", "Record ID to Approve");
-        ApprovalEntry.SetRange("Table ID", Database::"Purchase Header");
-        ApprovalEntry.SetRange("Record ID to Approve", Rec.RecordId);
-        ApprovalEntry.SetRange(Status, ApprovalEntry.Status::Approved);
-        ApprovalEntry.SetRange("Status App", ApprovalEntry."Status App"::Checker);
-        if ApprovalEntry.FindLast() then begin
-            CHDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
-            CHUser := ApprovalEntry."Approver ID";
-        end;
-
-        ApprDate := 0D;
-        ApprUser := '';
-
-        ApprovalEntry.SetRange("Status App", ApprovalEntry."Status App"::Approve);
-        if ApprovalEntry.FindLast() then begin
-            ApprDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
-            ApprUser := ApprovalEntry."Approver ID";
-        end;
-    end;
 
 }

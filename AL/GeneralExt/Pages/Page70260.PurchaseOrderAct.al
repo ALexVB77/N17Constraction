@@ -136,12 +136,22 @@ page 70260 "Purchase Order Act"
                         ApplicationArea = All;
                         ShowMandatory = true;
                         BlankZero = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update;
+                        end;
                     }
                     field("Invoice VAT Amount"; Rec."Invoice VAT Amount")
                     {
                         ApplicationArea = All;
                         ShowMandatory = true;
                         BlankZero = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update;
+                        end;
                     }
                     field("Invoice Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount")
                     {
