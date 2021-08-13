@@ -10771,7 +10771,6 @@
           <source>Documents View</source>
           <target>Просмотр Документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action ViewAttachDoc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3790301120 - Action 227370865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -14294,22 +14293,13 @@
           <source>Get a preview of the attachment.</source>
           <target>Предварительный просмотр вложения.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Document Attachments (Ext) - Action PreviewNew - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3892788231 - Action 1440861634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 219593816">
           <source>Preview</source>
           <target>Предварительный просмотр</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Document Attachments (Ext) - Action PreviewNew - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3892788231 - Control 3518332187 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 219593816">
-          <source>Specifies the link the attachment.</source>
-          <target>Определяет ссылку на вложение.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Document Attachments (Ext) - Control Attachment Link - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 759612072 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 759612072">
           <source>Do you want to replace the existing definition for template %1?</source>
