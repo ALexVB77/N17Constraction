@@ -702,5 +702,6 @@ page 70000 "Purchase Order App"
             2:
                 exit(Rec."Invoice Amount Incl. VAT" - Rec."Payments Amount");
         end;
+    end;
 
 }
