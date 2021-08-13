@@ -89,14 +89,14 @@ page 70000 "Purchase Order App"
                             CurrPage.Update();
                         end;
                     }
-                    field("Invoice Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount")
+                    field("Invoice Amount"; GetCalcAmount(1))
                     {
                         Caption = 'Invoice Amount';
                         ApplicationArea = All;
                         BlankZero = true;
                         Editable = false;
                     }
-                    field("Remaining Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Payments Amount")
+                    field("Remaining Amount"; GetCalcAmount(2))
                     {
                         Caption = 'Remaining Amount';
                         ApplicationArea = All;
@@ -693,4 +693,14 @@ page 70000 "Purchase Order App"
             if VendorBankAccount.get("Pay-to Vendor No.", "Vendor Bank Account No.") then
                 exit(VendorBankAccount.Name + VendorBankAccount."Name 2");
     end;
+
+    local procedure GetCalcAmount(AmountType: Integer): Decimal;
+    begin
+        case AmountType of
+            1:
+                exit(Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount");
+            2:
+                exit(Rec."Invoice Amount Incl. VAT" - Rec."Payments Amount");
+        end;
+
 }
