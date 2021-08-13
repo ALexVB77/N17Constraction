@@ -89,14 +89,14 @@ page 70000 "Purchase Order App"
                             CurrPage.Update();
                         end;
                     }
-                    field("Invoice Amount"; GetCalcAmount(1))
+                    field("Invoice Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount")//GetCalcAmount(1))
                     {
                         Caption = 'Invoice Amount';
                         ApplicationArea = All;
                         BlankZero = true;
                         Editable = false;
                     }
-                    field("Remaining Amount"; GetCalcAmount(2))
+                    field("Remaining Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Payments Amount")//GetCalcAmount(2))
                     {
                         Caption = 'Remaining Amount';
                         ApplicationArea = All;
