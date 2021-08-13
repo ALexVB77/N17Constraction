@@ -11908,6 +11908,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Agreements (Ext) - Action AgreementCard - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3892788231 - Action 1440861634 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 219593816">
+          <source>Get a preview of the attachment.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Document Attachments (Ext) - Action PreviewNew - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3892788231 - Action 1440861634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 219593816">
+          <source>Preview</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Document Attachments (Ext) - Action PreviewNew - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3892788231 - Control 3518332187 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 219593816">
+          <source>Specifies the link the attachment.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Document Attachments (Ext) - Control Attachment Link - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 759612072 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 759612072">
           <source>Do you want to replace the existing definition for template %1?</source>
           <note from="Developer" annotates="general" priority="2"></note>
