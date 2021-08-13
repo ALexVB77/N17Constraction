@@ -696,4 +696,18 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         end;
     end;
 
+    procedure ViewAttachDocument()
+    var
+        DocumentAttachment: Record "Document Attachment";
+        RecRef: RecordRef;
+    begin
+        CalcFields("Exists Attachment");
+        TestField("Exists Attachment");
+        DocumentAttachment.SetRange("Table ID", DATABASE::"Purchase Header");
+        DocumentAttachment.SetRange("Document Type", rec."Document Type");
+        DocumentAttachment.SetRange("No.", Rec."No.");
+        DocumentAttachment.FindFirst();
+        DocumentAttachment.Export(true);
+    end;
+
 }
