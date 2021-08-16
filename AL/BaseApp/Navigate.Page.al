@@ -421,7 +421,6 @@
 
         // NC AB: ошибка стандартной версии, забыли про:
         PostedDirTransferTxt: Label 'Posted Direct Transfer';
-
         SalesQuoteTxt: Label 'Sales Quote';
         SalesOrderTxt: Label 'Sales Order';
         SalesInvoiceTxt: Label 'Sales Invoice';
