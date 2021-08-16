@@ -4743,15 +4743,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckApprovalCommentLineExist - NamedType LocText021</note>
         </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 2531966983 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 47354825 - Method 43181058 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must specify %1 and %2 for %3.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckCostDimExistsInHeader - NamedType LocText001</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInHeader - NamedType LocText001</note>
         </trans-unit>
-        <trans-unit id="Codeunit 47354825 - Method 2145560992 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 47354825 - Method 43181058 - NamedType 3106366241" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must specify %1 for %2.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInHeader - NamedType LocText002</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 2943676681 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must specify %1 and %2 for %3 line %4.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckCostDimExistsInLine - NamedType LocText001</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInLine - NamedType LocText001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 2943676681 - NamedType 3106366241" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must specify %1 for %2 line %3.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInLine - NamedType LocText002</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 1997063884 - NamedType 3754779571" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unused document type.</source>
@@ -12728,6 +12738,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Dimension Value (Ext) - Field Admin Cost Place Holder - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1546208205 - Field 1207828604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1468132285">
+          <source>Check Address Dimension</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Dimension Value (Ext) - Field Check Address Dimension - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1546208205 - Field 788841756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1468132285">
           <source>Check CF Forecast</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13728,15 +13743,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Purchaser Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2307367824 - Method 212421167 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2307367824">
-          <source>Same values are selected for %1 and %2.</source>
+        <trans-unit id="TableExtension 2307367824 - Method 2367841632 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2307367824">
+          <source>Same values are selected for Dimension Fields.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Method CheckCostDimension - NamedType LocText001</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Method CheckRequestDimensions - NamedType LocText001</note>
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Field 2622566760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Act Order Nos.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Field Act Order Nos. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2307367824 - Field 1858779442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Address Dimension</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Field Address Dimension - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Field 799338482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Aged Accounts Payable Template</source>

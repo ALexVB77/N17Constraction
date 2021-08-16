@@ -70,6 +70,10 @@ pageextension 80460 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payabl
                 {
                     ApplicationArea = Basic, Suite;
                 }
+                field("Address Dimension"; "Address Dimension")
+                {
+                    ApplicationArea = Basic, Suite;
+                }
                 field("Zero VAT Prod. Posting Group"; Rec."Zero VAT Prod. Posting Group")
                 {
                     ApplicationArea = Basic, Suite;

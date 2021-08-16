@@ -607,19 +607,38 @@ codeunit 50010 "Payment Order Management"
         END;
     end;
 
-    local procedure CheckCostDimExists(DimensionSetID: Integer): Boolean
+    local procedure CheckDimExists(DimensionSetID: Integer; DimType: option "CostDim","AddrDim"): Boolean
     var
         DimSetEntry: Record "Dimension Set Entry";
         TempDimSetEntry: Record "Dimension Set Entry" temporary;
+        DimValue: Record "Dimension Value";
         DimMgt: Codeunit DimensionManagement;
     begin
         if DimensionSetID = 0 then
             exit(false);
         GetPurchSetupWithTestDim();
+
         DimSetEntry.SetRange("Dimension Set ID", DimensionSetID);
-        DimSetEntry.SetFilter("Dimension Code", '%1|%2', PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension");
-        if DimSetEntry.Count <> 2 then
-            exit(false);
+        case DimType of
+            DimType::CostDim:
+                begin
+                    DimSetEntry.SetFilter("Dimension Code", '%1|%2', PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension");
+                    if DimSetEntry.Count <> 2 then
+                        exit(false);
+                end;
+            DimType::AddrDim:
+                begin
+                    if PurchSetup."Address Dimension" = '' then
+                        exit(true);
+                    if not DimSetEntry.Get(DimensionSetID, PurchSetup."Cost Place Dimension") then
+                        exit(true);
+                    DimValue.Get(DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code");
+                    if not DimValue."Check Address Dimension" then
+                        exit(true);
+                    if not DimSetEntry.Get(DimensionSetID, PurchSetup."Address Dimension") then
+                        exit(false);
+                end;
+        end;
 
         DimSetEntry.FindSet();
         repeat
@@ -632,20 +651,30 @@ codeunit 50010 "Payment Order Management"
         exit(true);
     end;
 
-    local procedure CheckCostDimExistsInLine(var PurchLine: Record "Purchase Line")
+    local procedure CheckDimExistsInLine(var PurchLine: Record "Purchase Line"; DimType: option "CostDim","AddrDim","All")
     var
         LocText001: Label 'You must specify %1 and %2 for %3 line %4.';
+        LocText002: label 'You must specify %1 for %2 line %3.';
     begin
-        if not CheckCostDimExists(PurchLine."Dimension Set ID") then
-            Error(LocText001, PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension", PurchLine."Document No.", PurchLine."Line No.");
+        if DimType in [DimType::CostDim, DimType::All] then
+            if not CheckDimExists(PurchLine."Dimension Set ID", DimType::CostDim) then
+                Error(LocText001, PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension", PurchLine."Document No.", PurchLine."Line No.");
+        if DimType in [DimType::AddrDim, DimType::All] then
+            if not CheckDimExists(PurchLine."Dimension Set ID", DimType::AddrDim) then
+                Error(LocText002, PurchSetup."Address Dimension", PurchLine."Document No.", PurchLine."Line No.");
     end;
 
-    local procedure CheckCostDimExistsInHeader(var PurchHeader: Record "Purchase Header")
+    local procedure CheckDimExistsInHeader(var PurchHeader: Record "Purchase Header"; DimType: option "CostDim","AddrDim","All")
     var
         LocText001: Label 'You must specify %1 and %2 for %3.';
+        LocText002: Label 'You must specify %1 for %2.';
     begin
-        if not CheckCostDimExists(PurchHeader."Dimension Set ID") then
-            Error(LocText001, PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension", PurchHeader."No.");
+        if DimType in [DimType::CostDim, DimType::All] then
+            if not CheckDimExists(PurchHeader."Dimension Set ID", DimType::CostDim) then
+                Error(LocText001, PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension", PurchHeader."No.");
+        if DimType in [DimType::AddrDim, DimType::All] then
+            if not CheckDimExists(PurchHeader."Dimension Set ID", DimType::AddrDim) then
+                Error(LocText002, PurchSetup."Address Dimension", PurchHeader."No.");
     end;
 
     procedure ChangePurchaseOrderActStatus(var PurchHeader: Record "Purchase Header"; Reject: Boolean; RejectEntryNo: Integer)
@@ -711,13 +740,14 @@ codeunit 50010 "Payment Order Management"
                     PurchLine.TestField("No.");
                     PurchLine.TestField(Quantity);
                     PurchLine.TestField("Location Code");
-                    CheckCostDimExistsInLine(PurchLine);
+                    CheckDimExistsInLine(PurchLine, 0);
                 until PurchLine.Next() = 0;
             end;
         end;
 
         if (PurchHeader."Status App Act".AsInteger() >= PurchHeader."Status App Act"::Checker.AsInteger()) and (not Reject) then begin
             GetInventorySetup;
+            CheckDimExistsInHeader(PurchHeader, 1);
             PurchLine.SETRANGE("Document Type", PurchHeader."Document Type");
             PurchLine.SETRANGE("Document No.", PurchHeader."No.");
             PurchLine.SETRANGE(Type, PurchLine.Type::Item);
@@ -725,7 +755,7 @@ codeunit 50010 "Payment Order Management"
             repeat
                 PurchLine.TestField("No.");
                 PurchLine.TestField(Quantity);
-                CheckCostDimExistsInLine(PurchLine);
+                CheckDimExistsInLine(PurchLine, 2);
                 if GetPurchActApproverFromDim(PurchLine."Dimension Set ID") = '' then
                     Error(LocText010, PurchLine."Line No.");
             until PurchLine.Next() = 0;
@@ -853,7 +883,7 @@ codeunit 50010 "Payment Order Management"
         end;
 
         if (PurchHeader."Status App" >= PurchHeader."Status App"::Checker) and (not Reject) then begin
-            CheckCostDimExistsInHeader(PurchHeader);
+            CheckDimExistsInHeader(PurchHeader, 2);
             VendAreement.Get(PurchHeader."Buy-from Vendor No.", PurchHeader."Agreement No.");
 
             PurchLine.SETRANGE("Document Type", PurchHeader."Document Type");
@@ -865,7 +895,7 @@ codeunit 50010 "Payment Order Management"
                     PurchLine.TestField("No.");
                     PurchLine.TestField(Quantity);
                 end;
-                CheckCostDimExistsInLine(PurchLine);
+                CheckDimExistsInLine(PurchLine, 2);
                 DimSetEntry.Get(PurchLine."Dimension Set ID", PurchSetup."Cost Place Dimension");
                 DimValue.Get(DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code");
                 if (not PurchSetup."Skip Check CF in Doc. Lines") and DimValue."Check CF Forecast" and (not VendAreement."Don't Check CashFlow") then
