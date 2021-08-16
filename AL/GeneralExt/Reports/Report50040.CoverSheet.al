@@ -2,7 +2,6 @@ report 50040 "Cover Sheet"
 {
     Caption = 'Cover Sheet';
     DefaultLayout = Word;
-    //EnableHyperlinks = true;
     PreviewMode = PrintLayout;
     WordLayout = './Reports/Layouts/CoverSheet.docx';
     WordMergeDataItem = Header;

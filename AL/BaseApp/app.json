@@ -53,5 +53,6 @@
     "target":  "OnPrem",
     "showMyCode":  true,
     "brief":  "Base Application (RU)",
-    "runtime": "6.0"
+    "runtime": "6.0",
+    "features": ["TranslationFile","GenerateCaptions"]
 }

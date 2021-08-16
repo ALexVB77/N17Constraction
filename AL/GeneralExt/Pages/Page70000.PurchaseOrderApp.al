@@ -72,12 +72,22 @@ page 70000 "Purchase Order App"
                         ApplicationArea = All;
                         BlankZero = true;
                         ShowMandatory = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update();
+                        end;
                     }
                     field("Invoice VAT Amount"; Rec."Invoice VAT Amount")
                     {
                         ApplicationArea = All;
                         BlankZero = true;
                         ShowMandatory = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update();
+                        end;
                     }
                     field("Invoice Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount")
                     {
@@ -362,6 +372,21 @@ page 70000 "Purchase Order App"
             {
                 Caption = 'O&rder';
                 Image = "Order";
+                action(ViewAttachDoc)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Documents View';
+                    Enabled = ShowDocEnabled;
+                    Image = Export;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+
+                    trigger OnAction()
+                    begin
+                        ViewAttachDocument();
+                    end;
+                }
                 action(Statistics)
                 {
                     ApplicationArea = All;
@@ -487,8 +512,12 @@ page 70000 "Purchase Order App"
                     PromotedIsBig = true;
 
                     trigger OnAction()
+                    var
+                        PurchaseHeader: Record "Purchase Header";
                     begin
-                        Message('Нажата кнопка Печать');
+                        PurchaseHeader := Rec;
+                        CurrPage.SetSelectionFilter(PurchaseHeader);
+                        PurchaseHeader.PrintRecords(true);
                     end;
                 }
             }
@@ -611,6 +640,9 @@ page 70000 "Purchase Order App"
 
         UserSetup.GET(USERID);
 
+        CalcFields("Exists Attachment");
+        ShowDocEnabled := "Exists Attachment";
+
         CurrPage.EDITABLE("Status App" < "Status App"::Approve);
         IF "Status App" = "Status App"::Request THEN
             CurrPage.EDITABLE(TRUE);
@@ -656,7 +688,7 @@ page 70000 "Purchase Order App"
         PaymentOrderMgt: Codeunit "Payment Order Management";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        PaymentTypeEditable, AppButtonEnabled, ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled : Boolean;
+        ShowDocEnabled, PaymentTypeEditable, AppButtonEnabled, ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled : Boolean;
         IWPlanRepayDateMandatory: Boolean;
         ProblemDescription: text[80];
         AddCommentType: enum "Purchase Comment Add. Type";

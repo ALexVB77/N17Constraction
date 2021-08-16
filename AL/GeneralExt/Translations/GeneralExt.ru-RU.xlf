@@ -9142,8 +9142,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Invoices Detailed - Action DocCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2388192425 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New,Process,Report,Payment Request,Request Approval,Approve</source>
-          <target>Новый,Процесс,Отчет,Заявка на Платеж,Запросить утверждение,Утвердить</target>
+          <source>New,Process,Report,Payment Request,Request Approval,Approve,Print</source>
+          <target>Новый,Процесс,Отчет,Заявка на Платеж,Запросить утверждение,Утвердить,Печать</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Property PromotedActionCategories</note>
         </trans-unit>
@@ -9320,6 +9320,18 @@
           <target>Отклонить</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Reject - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2388192425 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <target>Печать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2388192425 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Print</source>
+          <target>&amp;Печать</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Request Card - Action &amp;Print - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1449143634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Gen. Journals</source>
@@ -10754,6 +10766,12 @@
           <target>Статистика</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action Statistics - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3790301120 - Action 3249535890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents View</source>
+          <target>Просмотр Документа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action ViewAttachDoc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3790301120 - Action 227370865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approval</source>
@@ -13613,7 +13631,7 @@
         </trans-unit>
         <trans-unit id="Report 4054452980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Shipment M-15 Posted</source>
-          <target>Накладная на отпуск материалов на сторону М-15</target>
+          <target>Учт. накладная на отпуск материалов на сторону М-15 (перемещения)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 Posted - Property Caption</note>
         </trans-unit>
@@ -13679,7 +13697,7 @@
         </trans-unit>
         <trans-unit id="Report 2721895639 - RequestPage 2516438534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Shipment M-15 Posted</source>
-          <target>Item Shipment M-15 Posted</target>
+          <target>Учт. накладная на отпуск материалов на сторону М-15 (перемещения)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-19 - RequestPage RequestOptionsPage - Property Caption</note>
         </trans-unit>
@@ -13898,6 +13916,18 @@
           <target>Дата начала</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Payment Report - Control StartDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1725717413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Request</source>
+          <target>Заявка на платеж</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Payment Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1725717413 - ReportDataItem 907109761 - Property 1806354803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order App</source>
+          <target>Заказ покупки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Payment Request - ReportDataItem Header - Property RequestFilterHeading</note>
         </trans-unit>
         <trans-unit id="Report 2639967622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Factura-Invoice (A)</source>
@@ -14158,7 +14188,7 @@
         </trans-unit>
         <trans-unit id="Report 329609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Shipment M-15</source>
-          <target>Накладная на отпуск материалов на сторону М-15</target>
+          <target>Накладная на отпуск материалов на сторону М-15 (перемещения)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Transfer Shipment M-15 - Property Caption</note>
         </trans-unit>
@@ -14293,6 +14323,18 @@
           <target>Карточка договора</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Agreements (Ext) - Action AgreementCard - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3892788231 - Action 1440861634 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 219593816">
+          <source>Get a preview of the attachment.</source>
+          <target>Предварительный просмотр вложения.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Document Attachments (Ext) - Action PreviewNew - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3892788231 - Action 1440861634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 219593816">
+          <source>Preview</source>
+          <target>Предварительный просмотр</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Document Attachments (Ext) - Action PreviewNew - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 759612072 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 759612072">
           <source>Do you want to replace the existing definition for template %1?</source>

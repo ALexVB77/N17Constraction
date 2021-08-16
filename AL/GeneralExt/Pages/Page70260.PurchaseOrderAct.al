@@ -136,12 +136,22 @@ page 70260 "Purchase Order Act"
                         ApplicationArea = All;
                         ShowMandatory = true;
                         BlankZero = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update;
+                        end;
                     }
                     field("Invoice VAT Amount"; Rec."Invoice VAT Amount")
                     {
                         ApplicationArea = All;
                         ShowMandatory = true;
                         BlankZero = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update;
+                        end;
                     }
                     field("Invoice Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount")
                     {
@@ -474,17 +484,8 @@ page 70260 "Purchase Order Act"
                     PromotedIsBig = true;
 
                     trigger OnAction()
-                    var
-                        DocumentAttachment: Record "Document Attachment";
-                        RecRef: RecordRef;
                     begin
-                        CalcFields("Exists Attachment");
-                        TestField("Exists Attachment");
-                        DocumentAttachment.SetRange("Table ID", DATABASE::"Purchase Header");
-                        DocumentAttachment.SetRange("Document Type", rec."Document Type");
-                        DocumentAttachment.SetRange("No.", Rec."No.");
-                        DocumentAttachment.FindFirst();
-                        DocumentAttachment.Export(true);
+                        ViewAttachDocument();
                     end;
                 }
                 action(Statistics)
