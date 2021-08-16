@@ -200,12 +200,29 @@ page 50045 "Purch. Order Act PayReq. List"
             {
                 ApplicationArea = All;
                 Caption = 'Link Payment Invoice';
-                Image = LinkWithExisting;
+                Image = LinkAccount;
                 Enabled = LinkPaymentInvoiceEndabled;
 
                 trigger OnAction()
                 begin
                     PaymentOrderMgt.LinkActAndPaymentInvoice(CurrActNo);
+                    UnLinkPaymentInvoiceEndabled := not Rec.IsEmpty;
+                    CurrPage.Update(false);
+                end;
+            }
+            action(UnLinkPaymentInvoice)
+            {
+                ApplicationArea = All;
+                Caption = 'Unlink Payment Invoices';
+                Image = UnLinkAccount;
+                Enabled = UnLinkPaymentInvoiceEndabled;
+
+                trigger OnAction()
+                var
+                    PaymentInvoice: Record "Purchase Header";
+                begin
+                    CurrPage.SetSelectionFilter(PaymentInvoice);
+                    PaymentOrderMgt.UnLinkActAndPaymentInvoice(PaymentInvoice);
                     CurrPage.Update(false);
                 end;
             }
@@ -250,10 +267,11 @@ page 50045 "Purch. Order Act PayReq. List"
         PurchHeader.FilterGroup(0);
         CurrActNo := PurchHeader.GetFilter("Linked Purchase Order Act No.");
         LinkPaymentInvoiceEndabled := CurrActNo <> '';
+        UnLinkPaymentInvoiceEndabled := not Rec.IsEmpty;
     end;
 
     var
         PaymentOrderMgt: Codeunit "Payment Order Management";
-        LinkPaymentInvoiceEndabled: Boolean;
+        LinkPaymentInvoiceEndabled, UnLinkPaymentInvoiceEndabled : Boolean;
         CurrActNo: code[20];
 }

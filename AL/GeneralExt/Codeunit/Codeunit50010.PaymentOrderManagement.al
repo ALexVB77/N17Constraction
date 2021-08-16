@@ -289,6 +289,11 @@ codeunit 50010 "Payment Order Management"
         Message(LocText001);
     end;
 
+    procedure UnLinkActAndPaymentInvoice(PaymentInvoice: Record "Purchase Header");
+    begin
+        PaymentInvoice.ModifyAll("Linked Purchase Order Act No.", '');
+    end;
+
     local procedure CalcActRemaingAmount(PurchaseHeader: Record "Purchase Header"; PaymentInvoice: Record "Purchase Header"; var LinkedActExists: Boolean; var RemActAmount: Decimal)
     var
         LocText001: Label 'The total amount of linked payment orders exceeds the amount of Act %1.';
@@ -628,13 +633,12 @@ codeunit 50010 "Payment Order Management"
                 end;
             DimType::AddrDim:
                 begin
-                    if PurchSetup."Address Dimension" = '' then
-                        exit(true);
                     if not DimSetEntry.Get(DimensionSetID, PurchSetup."Cost Place Dimension") then
                         exit(true);
                     DimValue.Get(DimSetEntry."Dimension Code", DimSetEntry."Dimension Value Code");
                     if not DimValue."Check Address Dimension" then
                         exit(true);
+                    PurchSetup.TestField("Address Dimension");
                     if not DimSetEntry.Get(DimensionSetID, PurchSetup."Address Dimension") then
                         exit(false);
                 end;
