@@ -9,6 +9,28 @@ report 50093 "Posted Proforma Invoice"
     {
         dataitem(Header; "Sales Invoice Header")
         {
+
+            dataitem("Copy Cycle"; Integer)
+            {
+                dataitem("Company Information"; "Company Information")
+                {
+
+                }
+                dataitem("Copy Header"; Integer)
+                {
+
+                }
+                dataitem("Copy Line"; Integer)
+                {
+
+                }
+                dataitem("Copy Ending Of Report"; Integer)
+                {
+
+                }
+
+
+            }
             // column(ColumnName; SourceFieldName)
             // {
 
@@ -33,6 +55,11 @@ report 50093 "Posted Proforma Invoice"
                     {
                         ApplicationArea = All;
                         Caption = 'Currency';
+                        trigger OnValidate()
+                        begin
+                            if CopiesNumber < 1 then
+                                CopiesNumber := 1;
+                        end;
                     }
                     field(ShowDiscount; ShowDiscount)
                     {
@@ -60,17 +87,6 @@ report 50093 "Posted Proforma Invoice"
                 CopiesNumber := 1;
         end;
 
-        // actions
-        // {
-        //     area(processing)
-        //     {
-        //         action(ActionName)
-        //         {
-        //             ApplicationArea = All;
-
-        //         }
-        //     }
-        // }
     }
 
     var
@@ -125,8 +141,28 @@ report 50093 "Posted Proforma Invoice"
         // UnitPriceLCY	Decimal		
         // CustAgr	Record	Customer Agreement	
         ExportExcel: Boolean;
-    // ExcelTemplates	Record	Excel Templates	
-    // EB	Record	Excel Buffer	
-    // RowNo	Integer		
-    // FileName	Text		250
+        ExcelTemplates: Record "Excel Template";
+        EB: Record "Excel Buffer Mod" temporary;
+        RowNo: Integer;
+        FileName: Text[250];
+
+
+
+    trigger OnPreReport()
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+    begin
+
+        if not CurrReport.UseRequestPage then
+            CopiesNumber := 1;
+        SalesSetup.Get();
+        EB.DeleteAll();
+
+        if ExportExcel then begin
+            FileName := ExcelTemplates.OpenTemplate(SalesSetup."Posted Prof-Inv. Template Code");
+            EB.OpenBook(FileName, ExcelTemplates."Sheet Name");
+            RowNo := 18;
+        end;
+
+    end;
 }

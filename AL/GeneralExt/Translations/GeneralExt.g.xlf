@@ -13858,6 +13858,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Inform Cust. Payment - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2733905579 - Field 2341487639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Posted Proforma-Invoice Template Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Posted Prof-Inv. Template Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2733905579 - Field 1307183859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Prepay. Inv. G/L Acc. No. (ac)</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -36,6 +36,11 @@ tableextension 80311 "Sales & Receiv. Setup (Ext)" extends "Sales & Receivables 
             Description = 'NC 50601 PA';
             TableRelation = Dimension;
         }
+        field(50100; "Posted Prof-Inv. Template Code"; Code[20])
+        {
+            Caption = 'Posted Proforma-Invoice Template Code';
+            TableRelation = "Excel Template";
+        }
         field(70000; "Building Act Nos."; Code[10])
         {
             TableRelation = "No. Series";
