@@ -5693,28 +5693,28 @@
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 43181058 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must specify %1 and %2 for %3.</source>
-          <target>[NAB: SUGGESTION]Укажите %1 и %2 для %3.</target>
+          <target>Укажите %1 и %2 для %3.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInHeader - NamedType LocText001</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 43181058 - NamedType 3106366241" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must specify %1 for %2.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Укажите %1 для %2.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInHeader - NamedType LocText002</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 2943676681 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must specify %1 and %2 for %3 line %4.</source>
-          <target>[NAB: SUGGESTION]Укажите %1 и %2 для %3 строка %4.</target>
+          <target>Укажите %1 и %2 для %3 строка %4.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInLine - NamedType LocText001</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 2943676681 - NamedType 3106366241" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must specify %1 for %2 line %3.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Укажите %1 для %2 строка %3.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInLine - NamedType LocText002</note>
@@ -15261,7 +15261,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 1546208205 - Field 1207828604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1468132285">
           <source>Check Address Dimension</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Проверять измерение Address</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Dimension Value (Ext) - Field Check Address Dimension - Property Caption</note>
@@ -16468,7 +16468,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Method 2367841632 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2307367824">
           <source>Same values are selected for Dimension Fields.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Указаны одинаковые значения для полей измерений.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Method CheckRequestDimensions - NamedType LocText001</note>
@@ -16481,7 +16481,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Field 1858779442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Address Dimension</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Измерение Address</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Field Address Dimension - Property Caption</note>
