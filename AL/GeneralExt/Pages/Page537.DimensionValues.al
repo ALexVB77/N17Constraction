@@ -32,6 +32,10 @@ pageextension 80537 "Dimension Values Ext" extends "Dimension Values"
             {
                 ApplicationArea = Basic, Suite;
             }
+            field("Check Address Dimension"; "Check Address Dimension")
+            {
+                ApplicationArea = Basic, Suite;
+            }
         }
     }
 }

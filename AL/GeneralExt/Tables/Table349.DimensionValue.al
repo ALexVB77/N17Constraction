@@ -10,7 +10,7 @@ tableextension 80349 "Dimension Value (Ext)" extends "Dimension Value"
 
             trigger OnValidate()
             begin
-                CheckCostDimension(true);
+                CheckRequestDimensions(0);
             end;
         }
         field(50020; "Cost Code Type"; Option)
@@ -22,7 +22,7 @@ tableextension 80349 "Dimension Value (Ext)" extends "Dimension Value"
 
             trigger OnValidate()
             begin
-                CheckCostDimension(true);
+                CheckRequestDimensions(0);
             end;
         }
         field(50021; "Development Cost Place Holder"; code[50])
@@ -33,7 +33,7 @@ tableextension 80349 "Dimension Value (Ext)" extends "Dimension Value"
 
             trigger OnValidate()
             begin
-                CheckCostDimension(false);
+                CheckRequestDimensions(1);
             end;
         }
         field(50022; "Production Cost Place Holder"; code[50])
@@ -44,7 +44,7 @@ tableextension 80349 "Dimension Value (Ext)" extends "Dimension Value"
 
             trigger OnValidate()
             begin
-                CheckCostDimension(false);
+                CheckRequestDimensions(1);
             end;
         }
         field(50023; "Admin Cost Place Holder"; code[50])
@@ -55,7 +55,17 @@ tableextension 80349 "Dimension Value (Ext)" extends "Dimension Value"
 
             trigger OnValidate()
             begin
-                CheckCostDimension(false);
+                CheckRequestDimensions(1);
+            end;
+        }
+        field(50024; "Check Address Dimension"; Boolean)
+        {
+            Description = 'NC 53376 AB';
+            Caption = 'Check Address Dimension';
+
+            trigger OnValidate()
+            begin
+                CheckRequestDimensions(2);
             end;
         }
         field(51000; "Project Code"; Code[20])
@@ -72,15 +82,25 @@ tableextension 80349 "Dimension Value (Ext)" extends "Dimension Value"
     var
         PurchSetup: Record "Purchases & Payables Setup";
 
-    local procedure CheckCostDimension(IsCostCode: Boolean)
+    local procedure CheckRequestDimensions(DimType: Option "CostCode","CostPlace","Address")
     begin
         PurchSetup.Get();
-        IF IsCostCode then begin
-            PurchSetup.TestField("Cost Code Dimension");
-            TestField("Dimension Code", PurchSetup."Cost Code Dimension");
-        end else begin
-            PurchSetup.TestField("Cost Place Dimension");
-            TestField("Dimension Code", PurchSetup."Cost Place Dimension");
+        case DimType of
+            DimType::CostCode:
+                begin
+                    PurchSetup.TestField("Cost Code Dimension");
+                    TestField("Dimension Code", PurchSetup."Cost Code Dimension");
+                end;
+            DimType::CostPlace:
+                begin
+                    PurchSetup.TestField("Cost Place Dimension");
+                    TestField("Dimension Code", PurchSetup."Cost Place Dimension");
+                end;
+            DimType::Address:
+                begin
+                    PurchSetup.TestField("Address Dimension");
+                    CheckRequestDimensions(1);
+                end;
         end;
     end;
 

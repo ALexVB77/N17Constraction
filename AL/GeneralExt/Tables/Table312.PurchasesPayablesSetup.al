@@ -23,7 +23,7 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
 
             trigger OnValidate()
             begin
-                CheckCostDimension();
+                CheckRequestDimensions("Cost Place Dimension");
             end;
         }
         field(50004; "Base Resp. Employee No."; code[20])
@@ -52,13 +52,24 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
 
             trigger OnValidate()
             begin
-                CheckCostDimension();
+                CheckRequestDimensions("Cost Code Dimension");
             end;
         }
         field(50008; "Prices Incl. VAT in Req. Doc."; Boolean)
         {
             Description = 'NC 51374 AB';
             Caption = 'Prices Including VAT in Request Docs.';
+        }
+        field(50009; "Address Dimension"; Code[20])
+        {
+            Caption = 'Address Dimension';
+            Description = 'NC 53376 AB';
+            TableRelation = Dimension;
+
+            trigger OnValidate()
+            begin
+                CheckRequestDimensions("Address Dimension");
+            end;
         }
         field(50010; "Master Approver (Development)"; code[50])
         {
@@ -142,11 +153,17 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
         }
     }
 
-    local procedure CheckCostDimension()
+    local procedure CheckRequestDimensions(NewDimCode: Code[20])
     var
-        LocText001: Label 'Same values are selected for %1 and %2.';
+        LocText001: Label 'Same values are selected for Dimension Fields.';
     begin
-        IF ("Cost Place Dimension" <> '') and ("Cost Code Dimension" <> '') and ("Cost Code Dimension" = "Cost Place Dimension") then
-            Error(LocText001, FieldCaption("Cost Code Dimension"), FieldCaption("Cost Place Dimension"));
+        if NewDimCode = '' then
+            exit;
+
+        if ("Cost Place Dimension" in ["Cost Code Dimension", "Address Dimension"]) or
+           ("Cost Code Dimension" in ["Cost Place Dimension", "Address Dimension"]) or
+           ("Address Dimension" in ["Cost Code Dimension", "Cost Place Dimension"])
+        then
+            error(LocText001);
     end;
 }
