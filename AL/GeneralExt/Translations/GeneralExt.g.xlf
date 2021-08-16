@@ -11698,6 +11698,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 648353892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copies Number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control CopiesNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 2260021890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control CurrencyPriceAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control ExportExcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control LogInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - Control 4291959338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control ShowDiscount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4253293261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print Customer Agreement</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13852,6 +13877,11 @@
           <source>Inform Cust. Payment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Inform Cust. Payment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2733905579 - Field 2341487639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Posted Proforma-Invoice Template Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Posted Prof-Inv. Template Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2733905579 - Field 1307183859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Prepay. Inv. G/L Acc. No. (ac)</source>
