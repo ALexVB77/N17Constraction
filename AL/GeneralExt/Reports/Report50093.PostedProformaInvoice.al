@@ -472,7 +472,7 @@ report 50093 "Posted Proforma Invoice"
 
         if ExportExcel then begin
             FileName := ExcelTemplates.OpenTemplate(SalesSetup."Posted Prof-Inv. Template Code");
-            EB.OpenBook(FileName, ExcelTemplates."Sheet Name");
+            //EB.OpenBook(FileName, ExcelTemplates."Sheet Name");
             RowNo := 18;
 
         end;
