@@ -465,10 +465,10 @@ page 70000 "Purchase Order App"
 
                     trigger OnAction()
                     var
-                        WorkflowsEntriesBuffer: Record "Workflows Entries Buffer";
+                        RequestApprovalEntries: Page "Request Approval Entries";
                     begin
-                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(
-                            RecordId, DATABASE::"Purchase Header", "Document Type".AsInteger(), "No.");
+                        RequestApprovalEntries.Setfilters(Database::"Purchase Header", Rec."Document Type".AsInteger(), Rec."No.");
+                        RequestApprovalEntries.Run;
                     end;
                 }
             }
