@@ -102,7 +102,7 @@ page 71268 "Request Approval Entries"
                     Caption = 'To Approve';
                     ToolTip = 'Specifies the record that you are requested to approve.';
                 }
-                field(Details; RecordDetails)
+                field(Details; RecordDetails2)
                 {
                     ApplicationArea = Suite;
                     Caption = 'Details';
@@ -284,6 +284,7 @@ page 71268 "Request Approval Entries"
         ShowChangeFactBox: Boolean;
         DelegateEnable: Boolean;
         ShowRecCommentsEnabled: Boolean;
+        RecNotExistTxt: Label 'The record does not exist.';
 
     procedure Setfilters(TableId: Integer; DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order"; DocumentNo: Code[20])
     begin
@@ -311,6 +312,17 @@ page 71268 "Request Approval Entries"
     procedure CalledFrom()
     begin
         Overdue := Overdue::" ";
+    end;
+
+    procedure RecordDetails2() Details: Text
+    var
+        PurchHeader: Record "Purchase Header";
+        RecRef: RecordRef;
+    begin
+        if not RecRef.Get("Record ID to Approve") then
+            exit(RecNotExistTxt);
+        RecRef.SetTable(PurchHeader);
+        Details := PurchHeader."Buy-from Vendor Name";
     end;
 }
 
