@@ -455,7 +455,7 @@ page 70260 "Purchase Order Act"
                 SubPageLink = "Table ID" = CONST(38),
                               "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
-                Visible = AppButtonEnabled;
+                Visible = ApproveButtonEnabled or RejectButtonEnabled;
             }
             part(ApprovalFactBox; "Approval FactBox")
             {
@@ -813,7 +813,6 @@ page 70260 "Purchase Order Act"
                         PurchaseHeader.PrintRecordsExt(true, ReportSelUsage::PurchOrderAct);
                     end;
                 }
-
                 action("Cover Sheet")
                 {
                     ApplicationArea = Suite;
@@ -896,6 +895,7 @@ page 70260 "Purchase Order Act"
         ShowDocEnabled := "Exists Attachment";
         LocationCodeShowMandatory := Rec."Location Document";
 
+        /*
         AppButtonEnabled :=
             NOT ((UPPERCASE("Process User") <> UPPERCASE(USERID)) AND (UserSetup."Status App Act" <> Rec."Status App Act"));
         IF "Status App Act" = "Status App Act"::Approve THEN BEGIN
@@ -906,6 +906,7 @@ page 70260 "Purchase Order Act"
             IF ApprovalEntry.FINDSET THEN
                 AppButtonEnabled := NOT ApprovalEntry.IsEmpty;
         END;
+        */
 
         AllApproverEditable := "Status App" = "Status App"::Checker;
 
@@ -942,7 +943,7 @@ page 70260 "Purchase Order Act"
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
         ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, PreApproverEditable : boolean;
-        ShowDocEnabled, EstimatorEnable, AppButtonEnabled, CopyDocumentEnabled, GenPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
+        ShowDocEnabled, EstimatorEnable, CopyDocumentEnabled, GenPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
         EstimatorMandatory, LocationCodeShowMandatory : Boolean;
         StatusStyleTxt, ProblemDescription : Text;
         PreApproverNo: Code[50];

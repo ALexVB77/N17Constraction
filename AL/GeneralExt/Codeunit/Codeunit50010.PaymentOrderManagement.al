@@ -449,6 +449,7 @@ codeunit 50010 "Payment Order Management"
         PaymentInvoice.SetRange("Linked Purchase Order Act No.", PurchHeader."No.");
         if PaymentInvoice.FindSet() then
             repeat
+                PaymentInvoice.TestField("Status App", PaymentInvoice."Status App"::Payment);
                 if not (UserId in [PaymentInvoice.Receptionist, PaymentInvoice."Process User"]) then
                     Error(LocText3, PaymentInvoice."No.");
             until PaymentInvoice.next = 0;
@@ -568,6 +569,8 @@ codeunit 50010 "Payment Order Management"
         WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
         CommentAddType: enum "Purchase Comment Add. Type";
     begin
+        PurchHeader.TestField("Status App", PurchHeader."Status App"::Payment);
+
         // Закрываем аппрувы и процессы    
         if not (PurchHeader."Status App" in [PurchHeader."Status App"::Reception, PurchHeader."Status App"::Payment]) then begin
             ApprovalsMgmt.OnCancelPurchaseApprovalRequest(PurchHeader);

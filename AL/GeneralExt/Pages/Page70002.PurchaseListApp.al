@@ -197,6 +197,7 @@ page 70002 "Purchase List App"
                 Caption = 'Reject';
                 Enabled = RejectButtonEnabled;
                 Image = Reject;
+
                 trigger OnAction()
                 begin
                     if "Status App" in ["Status App"::" ", "Status App"::Reception, "Status App"::Payment] then
@@ -205,9 +206,37 @@ page 70002 "Purchase List App"
                     CurrPage.Update(false);
                 end;
             }
+            action("Archive Document")
+            {
+                ApplicationArea = Suite;
+                Caption = 'Archi&ve Document';
+                Enabled = ArchiveDocEnabled;
+                Image = Archive;
+
+                trigger OnAction()
+                begin
+                    if PaymentOrderMgt.PurchPaymentInvoiceArchiveQst(Rec) then
+                        CurrPage.Update();
+                end;
+            }
         }
         area(Navigation)
         {
+            action(ViewAttachDoc)
+            {
+                ApplicationArea = All;
+                Caption = 'Documents View';
+                Enabled = ShowDocEnabled;
+                Image = Export;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    ViewAttachDocument();
+                end;
+            }
             action("Co&mments")
             {
                 ApplicationArea = All;
@@ -272,6 +301,10 @@ page 70002 "Purchase List App"
             ApproveButtonEnabled := true;
             RejectButtonEnabled := true;
         end;
+
+        ArchiveDocEnabled := ("No." <> '') and ("Status App" = "Status App"::Payment);
+        CalcFields("Exists Attachment");
+        ShowDocEnabled := "Exists Attachment";
     end;
 
     var
@@ -283,8 +316,7 @@ page 70002 "Purchase List App"
         Filter1Enabled: Boolean;
         Filter2: option all,inproc,ready,pay,problem;
         SortType: option docno,postdate,vendor,statusapp,userproc;
-        ApproveButtonEnabled: boolean;
-        RejectButtonEnabled: boolean;
+        ApproveButtonEnabled, RejectButtonEnabled, ArchiveDocEnabled, ShowDocEnabled : boolean;
         EditEnabled: Boolean;
 
     local procedure SetRecFilters()

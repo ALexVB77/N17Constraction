@@ -233,8 +233,24 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
 
     local procedure RejectApprovalRequests(var ApprovalEntry: Record "Approval Entry")
     var
+        ApprovalCommentLine: Record "Approval Comment Line";
         ApprovalEntryToUpdate: Record "Approval Entry";
+        PurchHeader: Record "Purchase Header";
+        RejectApproval: page "Reject Approval";
+        RejectReason: Text;
     begin
+        if ApprovalEntry.FindSet() then
+            repeat
+                ApprovalCommentLine.SetCurrentKey("Linked Approval Entry No.");
+                ApprovalCommentLine.SetRange("Linked Approval Entry No.", ApprovalEntry."Entry No.");
+                if ApprovalCommentLine.IsEmpty then begin
+                    RejectApproval.RunModal;
+                    if not RejectApproval.GetResult(RejectReason) then
+                        error('');
+                    PurchHeader.SetApprovalCommentTextForEntry(RejectReason, ApprovalEntry);
+                end;
+            until ApprovalEntry.Next = 0;
+
         if ApprovalEntry.FindSet() then
             repeat
                 ApprovalEntryToUpdate := ApprovalEntry;

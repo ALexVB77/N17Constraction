@@ -6,6 +6,10 @@ tableextension 94919 "Excel Template (Ext)" extends "Excel Template"
         {
             Caption = 'Sheet Name';
         }
+        field(50009; "Top Margin"; Integer)
+        {
+            Caption = 'Top Margin';
+        }
     }
 
 }
