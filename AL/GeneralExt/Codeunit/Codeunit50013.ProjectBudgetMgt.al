@@ -88,7 +88,7 @@ codeunit 50013 "Project Budget Management"
         lPHead.CalcFields("External Agreement No. (Calc)");
         GLSetup.Get;
         // lDimVal.Get(GLSetup."Global Dimension 1 Code", pPLine."Shortcut Dimension 1 Code");
-        lLineAmt := pPLine.Amount / lExchRate.ExchangeRate(WorkDate(), pPLine."Currency Code");
+        lLineAmt := pPLine."Amount Including VAT" / lExchRate.ExchangeRate(WorkDate(), pPLine."Currency Code");
         lPBE.Init();
         lPBE.Date := lPHead."Posting Date";
         lPBE."Project Code" := pPBE."Project Code"; //lDimVal."Project Code";
