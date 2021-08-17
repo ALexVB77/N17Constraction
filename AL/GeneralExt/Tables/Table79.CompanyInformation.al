@@ -9,6 +9,16 @@ tableextension 80079 "Company Information (Ext)" extends "Company Information"
             OptionCaption = 'Housing,Construction';
             Description = '50086';
         }
+        field(50005; "Expired Date"; Date)
+        {
+            Caption = 'Expired Date';
+            Description = '50543';
+        }
+        field(50006; "Director Name 2"; Text[50])
+        {
+            Caption = 'Director Name 2';
+            Description = '50543';
+        }
         field(50008; "Use RedFlags in Agreements"; Boolean)
         {
             Caption = 'Use RedFlags in Agreements';

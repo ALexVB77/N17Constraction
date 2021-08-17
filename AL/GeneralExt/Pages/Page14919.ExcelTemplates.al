@@ -24,6 +24,10 @@ pageextension 94919 "Excel Templates (Ext)" extends "Excel Templates"
                     end;
                 end;
             }
+            field("Top Margin"; "Top Margin")
+            {
+                ApplicationArea = All;
+            }
         }
     }
 
