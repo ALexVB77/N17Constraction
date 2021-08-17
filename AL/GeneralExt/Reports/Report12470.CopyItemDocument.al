@@ -115,104 +115,105 @@ report 82470 "Copy Item Document GE"
         dimMgt: Codeunit "DimensionManagement";
         dimSetIds: array[10] of integer;
     begin
+        // NC 51415 > EP
+        // Заменил if..else на case of
+        case DocType of
+            DocType::"Posted Transfer Rcpt.":
+                begin
+                    // SWC806 AK 230316 >>
+                    ItemDocHeader.VALIDATE("Location Code", FromTransferRcptHdr."Transfer-to Code");
+                    ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromTransferRcptHdr."Shortcut Dimension 1 Code");
+                    ItemDocHeader.VALIDATE("Shortcut Dimension 2 Code", FromTransferRcptHdr."Shortcut Dimension 2 Code");
+                    ItemDocHeader.MODIFY(TRUE);
 
-        // SWC806 AK 230316 >>
-        IF DocType = DocType::"Posted Transfer Rcpt." THEN BEGIN
+                    LastLineNo := 0;
+                    ItemDocLine.RESET;
+                    ItemDocLine.SETRANGE("Document Type", ItemDocHeader."Document Type");
+                    ItemDocLine.SETRANGE("Document No.", ItemDocHeader."No.");
+                    IF ItemDocLine.FINDLAST THEN
+                        LastLineNo := ItemDocLine."Line No.";
 
-            ItemDocHeader.VALIDATE("Location Code", FromTransferRcptHdr."Transfer-to Code");
-            ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromTransferRcptHdr."Shortcut Dimension 1 Code");
-            ItemDocHeader.VALIDATE("Shortcut Dimension 2 Code", FromTransferRcptHdr."Shortcut Dimension 2 Code");
-            ItemDocHeader.MODIFY(TRUE);
+                    FromTransferRcptLine.RESET;
+                    FromTransferRcptLine.SETRANGE("Document No.", FromTransferRcptHdr."No.");
+                    IF FromTransferRcptLine.FINDSET THEN
+                        REPEAT
+                            LastLineNo += 10000;
 
-            LastLineNo := 0;
-            ItemDocLine.RESET;
-            ItemDocLine.SETRANGE("Document Type", ItemDocHeader."Document Type");
-            ItemDocLine.SETRANGE("Document No.", ItemDocHeader."No.");
-            IF ItemDocLine.FINDLAST THEN
-                LastLineNo := ItemDocLine."Line No.";
+                            ItemDocLine.INIT;
+                            ItemDocLine."Document Type" := ItemDocHeader."Document Type";
+                            ItemDocLine."Document No." := ItemDocHeader."No.";
+                            ItemDocLine."Line No." := LastLineNo;
+                            ItemDocLine.INSERT(TRUE);
 
-            FromTransferRcptLine.RESET;
-            FromTransferRcptLine.SETRANGE("Document No.", FromTransferRcptHdr."No.");
-            IF FromTransferRcptLine.FINDSET THEN
-                REPEAT
-                    LastLineNo += 10000;
-
-                    ItemDocLine.INIT;
-                    ItemDocLine."Document Type" := ItemDocHeader."Document Type";
-                    ItemDocLine."Document No." := ItemDocHeader."No.";
-                    ItemDocLine."Line No." := LastLineNo;
-                    ItemDocLine.INSERT(TRUE);
-
-                    ItemDocLine.VALIDATE("Item No.", FromTransferRcptLine."Item No.");
-                    ItemDocLine.VALIDATE("Location Code", FromTransferRcptLine."Transfer-to Code");
-                    ItemDocLine.VALIDATE("Shortcut Dimension 1 Code", FromTransferRcptLine."Shortcut Dimension 1 Code");
-                    ItemDocLine.VALIDATE("Shortcut Dimension 2 Code", FromTransferRcptLine."Shortcut Dimension 2 Code");
-                    ItemDocLine.VALIDATE(Quantity, FromTransferRcptLine.Quantity);
-                    ItemDocLine.VALIDATE("Unit of Measure Code", FromTransferRcptLine."Unit of Measure Code");
-                    ItemDocLine.VALIDATE(Description, FromTransferRcptLine.Description);
-                    ItemDocLine.MODIFY(TRUE);
+                            ItemDocLine.VALIDATE("Item No.", FromTransferRcptLine."Item No.");
+                            ItemDocLine.VALIDATE("Location Code", FromTransferRcptLine."Transfer-to Code");
+                            ItemDocLine.VALIDATE("Shortcut Dimension 1 Code", FromTransferRcptLine."Shortcut Dimension 1 Code");
+                            ItemDocLine.VALIDATE("Shortcut Dimension 2 Code", FromTransferRcptLine."Shortcut Dimension 2 Code");
+                            ItemDocLine.VALIDATE(Quantity, FromTransferRcptLine.Quantity);
+                            ItemDocLine.VALIDATE("Unit of Measure Code", FromTransferRcptLine."Unit of Measure Code");
+                            ItemDocLine.VALIDATE(Description, FromTransferRcptLine.Description);
+                            ItemDocLine.MODIFY(TRUE);
 
 
-                    CopyDims(ItemDocLine, FromTransferRcptLine."Dimension Set ID");
-                //CopyDims(DATABASE::"Transfer Receipt Line",
-                //  FromTransferRcptLine."Document No.", FromTransferRcptLine."Line No.");
-                UNTIL
-                  FromTransferRcptLine.NEXT = 0;
-        END
-        ELSE
-            // SWC806 AK 230316 <<
-            //NC 22512 > DP
-            IF DocType = DocType::"Purch. Rcpt. Header" THEN BEGIN
-                ItemDocHeader."Posting Date" := FromPurchRcptHeader."Posting Date";
-                ItemDocHeader."Document Date" := FromPurchRcptHeader."Posting Date";
+                            CopyDims(ItemDocLine, FromTransferRcptLine."Dimension Set ID");
+                        //CopyDims(DATABASE::"Transfer Receipt Line",
+                        //  FromTransferRcptLine."Document No.", FromTransferRcptLine."Line No.");
+                        UNTIL
+                          FromTransferRcptLine.NEXT = 0;
+                    // SWC806 AK 230316 <<
+                end;
+            DocType::"Purch. Rcpt. Header":
+                begin
+                    //NC 22512 > DP
+                    ItemDocHeader."Posting Date" := FromPurchRcptHeader."Posting Date";
+                    ItemDocHeader."Document Date" := FromPurchRcptHeader."Posting Date";
 
-                ItemDocHeader.VALIDATE("Location Code", FromPurchRcptHeader."Location Code");
-                ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromPurchRcptHeader."Shortcut Dimension 1 Code");
-                ItemDocHeader.VALIDATE("Shortcut Dimension 2 Code", FromPurchRcptHeader."Shortcut Dimension 2 Code");
-                ItemDocHeader.MODIFY(TRUE);
+                    ItemDocHeader.VALIDATE("Location Code", FromPurchRcptHeader."Location Code");
+                    ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromPurchRcptHeader."Shortcut Dimension 1 Code");
+                    ItemDocHeader.VALIDATE("Shortcut Dimension 2 Code", FromPurchRcptHeader."Shortcut Dimension 2 Code");
+                    ItemDocHeader.MODIFY(TRUE);
 
-                LastLineNo := 0;
-                ItemDocLine.RESET;
-                ItemDocLine.SETRANGE("Document Type", ItemDocHeader."Document Type");
-                ItemDocLine.SETRANGE("Document No.", ItemDocHeader."No.");
-                IF ItemDocLine.FINDLAST THEN
-                    LastLineNo := ItemDocLine."Line No.";
+                    LastLineNo := 0;
+                    ItemDocLine.RESET;
+                    ItemDocLine.SETRANGE("Document Type", ItemDocHeader."Document Type");
+                    ItemDocLine.SETRANGE("Document No.", ItemDocHeader."No.");
+                    IF ItemDocLine.FINDLAST THEN
+                        LastLineNo := ItemDocLine."Line No.";
 
-                FromPurchRcptLine.RESET;
-                FromPurchRcptLine.SETRANGE("Document No.", FromPurchRcptHeader."No.");
-                IF FromPurchRcptLine.FINDSET THEN
-                    REPEAT
-                        LastLineNo += 10000;
+                    FromPurchRcptLine.RESET;
+                    FromPurchRcptLine.SETRANGE("Document No.", FromPurchRcptHeader."No.");
+                    IF FromPurchRcptLine.FINDSET THEN
+                        REPEAT
+                            LastLineNo += 10000;
 
-                        ItemDocLine.INIT;
-                        ItemDocLine."Document Type" := ItemDocHeader."Document Type";
-                        ItemDocLine."Document No." := ItemDocHeader."No.";
-                        ItemDocLine."Line No." := LastLineNo;
-                        ItemDocLine.INSERT(TRUE);
+                            ItemDocLine.INIT;
+                            ItemDocLine."Document Type" := ItemDocHeader."Document Type";
+                            ItemDocLine."Document No." := ItemDocHeader."No.";
+                            ItemDocLine."Line No." := LastLineNo;
+                            ItemDocLine.INSERT(TRUE);
 
-                        ItemDocLine.VALIDATE("Item No.", FromPurchRcptLine."No.");
-                        ItemDocLine.VALIDATE("Location Code", FromPurchRcptLine."Location Code");
-                        ItemDocLine.VALIDATE("Shortcut Dimension 1 Code", FromPurchRcptLine."Shortcut Dimension 1 Code");
-                        ItemDocLine.VALIDATE("Shortcut Dimension 2 Code", FromPurchRcptLine."Shortcut Dimension 2 Code");
-                        ItemDocLine.VALIDATE(Quantity, FromPurchRcptLine.Quantity);
-                        ItemDocLine.VALIDATE("Unit of Measure Code", FromPurchRcptLine."Unit of Measure Code");
-                        ItemDocLine.VALIDATE(Description, FromPurchRcptLine.Description);
+                            ItemDocLine.VALIDATE("Item No.", FromPurchRcptLine."No.");
+                            ItemDocLine.VALIDATE("Location Code", FromPurchRcptLine."Location Code");
+                            ItemDocLine.VALIDATE("Shortcut Dimension 1 Code", FromPurchRcptLine."Shortcut Dimension 1 Code");
+                            ItemDocLine.VALIDATE("Shortcut Dimension 2 Code", FromPurchRcptLine."Shortcut Dimension 2 Code");
+                            ItemDocLine.VALIDATE(Quantity, FromPurchRcptLine.Quantity);
+                            ItemDocLine.VALIDATE("Unit of Measure Code", FromPurchRcptLine."Unit of Measure Code");
+                            ItemDocLine.VALIDATE(Description, FromPurchRcptLine.Description);
 
-                        ItemDocLine.VALIDATE("Unit Amount", FromPurchRcptLine."Direct Unit Cost");
-                        ItemDocLine.VALIDATE("Unit Cost", FromPurchRcptLine."Direct Unit Cost");
-                        ItemDocLine.VALIDATE("Applies-from Entry", FromPurchRcptLine."Item Rcpt. Entry No.");
-                        ItemDocLine.MODIFY(TRUE);
+                            ItemDocLine.VALIDATE("Unit Amount", FromPurchRcptLine."Direct Unit Cost");
+                            ItemDocLine.VALIDATE("Unit Cost", FromPurchRcptLine."Direct Unit Cost");
+                            ItemDocLine.VALIDATE("Applies-from Entry", FromPurchRcptLine."Item Rcpt. Entry No.");
+                            ItemDocLine.MODIFY(TRUE);
 
-                        CopyDims(ItemDocLine, FromPurchRcptLine."Dimension Set ID");
-                    //CopyDims(DATABASE::"Purch. Rcpt. Line",
-                    //  FromPurchRcptLine."Document No.", FromPurchRcptLine."Line No.");
-                    UNTIL FromPurchRcptLine.NEXT = 0;
-            END
-            ELSE
-                //NC 22512 < DP
-
-                //NCC0002 CITRU\ROMB 01.12.11 >
-                IF DocType = DocType::"Post.Purch.Invoice" THEN BEGIN
+                            CopyDims(ItemDocLine, FromPurchRcptLine."Dimension Set ID");
+                        //CopyDims(DATABASE::"Purch. Rcpt. Line",
+                        //  FromPurchRcptLine."Document No.", FromPurchRcptLine."Line No.");
+                        UNTIL FromPurchRcptLine.NEXT = 0;
+                    //NC 22512 < DP
+                end;
+            DocType::"Post.Purch.Invoice":
+                begin
+                    //NCC0002 CITRU\ROMB 01.12.11 >
                     ItemDocHeader."Location Code" := PurchInvHeader."Location Code";
                     ItemDocHeader."Posting Date" := PurchInvHeader."Posting Date";
                     ItemDocHeader."Document Date" := PurchInvHeader."Posting Date";
@@ -263,11 +264,16 @@ report 82470 "Copy Item Document GE"
                         // PurchInvLine."Document No.",  // SWC806 AK 230316
                         //PurchInvLine."Line No.");
                         UNTIL PurchInvLine.NEXT = 0;
-                END ELSE BEGIN
                     //NCC0002 CITRU\ROMB 01.12.11 <
+                end;
+            else begin
+                    // NC 51415 EP
+                    //  для стандартных значений DocType: Receipt,Shipment,"Posted Receipt","Posted Shipment"
                     CopyItemDocMgt.SetProperties(IncludeHeader, RecalculateLines, false, false, AutoFillAppliesFields);
                     CopyItemDocMgt.CopyItemDoc(DocType, DocNo, ItemDocHeader);
                 end;
+        end;
+        // NC 51415 < EP
     end;
 
     var
