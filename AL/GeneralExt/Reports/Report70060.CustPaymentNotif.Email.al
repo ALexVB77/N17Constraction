@@ -132,7 +132,6 @@ report 70060 "Cust. Payment Notif. Email"
 
         Log: Record "Cust. E-Mail Notify Log";
 
-        Smtp: Codeunit "SMTP Mail";
 
     begin
         Cust."E-Mail" := 'rkharitonov@navicons.ru';
@@ -149,10 +148,6 @@ report 70060 "Cust. Payment Notif. Email"
         InS.ReadText(MailBody);
 
         Recipients.Add(Cust."E-Mail");
-        Smtp.CreateMessage(Smtp.GetFrom())
-        /*
-        
-        */
         MailMsg.Create(Cust."E-Mail", CompanyName(), MailBody);
         MailMsg.IsBodyHTMLFormatted();
 
