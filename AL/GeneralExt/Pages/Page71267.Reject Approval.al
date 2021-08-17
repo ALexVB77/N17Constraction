@@ -64,7 +64,7 @@ page 71267 "Reject Approval"
                 ApplicationArea = All;
                 Caption = 'Close';
                 Enabled = true;
-                //Image = Approve;
+                Image = Approve;
                 InFooterBar = true;
 
                 trigger OnAction()
