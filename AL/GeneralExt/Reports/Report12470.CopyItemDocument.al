@@ -54,8 +54,7 @@ report 82470 "Copy Item Document GE"
                         ToolTip = 'Specifies if you want to copy information from the document header you are copying.';
 
                         // NC 51415 > EP
-                        Enabled = (DocType = DocType::Receipt) or (DocType = DocType::Shipment) or
-                                  (DocType = DocType::"Posted Receipt") or (DocType = DocType::"Posted Shipment");
+                        Enabled = AreOptionFieldsEnabled;
                         // NC 51415 < EP
 
                         trigger OnValidate()
@@ -70,8 +69,7 @@ report 82470 "Copy Item Document GE"
                         ToolTip = 'Specifies that lines are recalculate and inserted on the document you are creating. The batch job retains the item numbers and item quantities but recalculates the amounts on the lines based on the customer information on the new document header.';
 
                         // NC 51415 > EP
-                        Enabled = (DocType = DocType::Receipt) or (DocType = DocType::Shipment) or
-                                  (DocType = DocType::"Posted Receipt") or (DocType = DocType::"Posted Shipment");
+                        Enabled = AreOptionFieldsEnabled;
                         // NC 51415 < EP
 
                         trigger OnValidate()
@@ -85,8 +83,7 @@ report 82470 "Copy Item Document GE"
                         Caption = 'Specify appl. entries';
 
                         // NC 51415 > EP
-                        Enabled = (DocType = DocType::Receipt) or (DocType = DocType::Shipment) or
-                                  (DocType = DocType::"Posted Receipt") or (DocType = DocType::"Posted Shipment");
+                        Enabled = AreOptionFieldsEnabled;
                         // NC 51415 < EP
                     }
                 }
@@ -310,6 +307,10 @@ report 82470 "Copy Item Document GE"
         FromTransferRcptLine: Record "Transfer Receipt Line";
         FromPurchRcptHeader: Record "Purch. Rcpt. Header";
         FromPurchRcptLine: Record "Purch. Rcpt. Line";
+        // NC 51415 > EP
+        [InDataSet]
+        AreOptionFieldsEnabled: Boolean;
+    // NC 51415 < EP
 
     [Scope('OnPrem')]
     procedure SetItemDocHeader(var NewItemDocHeader: Record "Item Document Header")
@@ -362,6 +363,16 @@ report 82470 "Copy Item Document GE"
 
         IncludeHeader := true;
         ValidateIncludeHeader;
+
+        // NC 51415 > EP
+        if DocType in [DocType::Receipt, DocType::Shipment,
+                       DocType::"Posted Receipt", DocType::"Posted Shipment"] then
+            // Для стандартных типов документов
+            AreOptionFieldsEnabled := true
+        else
+            // Для кастомных типов значения в полях ReqPage не влияют на обработку
+            AreOptionFieldsEnabled := false;
+        // NC 51415 < EP
     end;
 
     local procedure LookupDocNo()
