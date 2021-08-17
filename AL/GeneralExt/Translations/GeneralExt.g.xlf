@@ -13898,16 +13898,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Paid Date Fact - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4258310961 - Field 3569568710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
-          <source>Process User</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Process User - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 4258310961 - Field 801304080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
-          <source>Purchaser Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Archive (Ext) - Field Purchaser Code - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Method 2367841632 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2307367824">
           <source>Same values are selected for Dimension Fields.</source>
           <note from="Developer" annotates="general" priority="2"></note>
