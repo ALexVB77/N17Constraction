@@ -176,6 +176,30 @@ codeunit 50013 "Project Budget Management"
             until pPrBudEntry.Next() = 0;
     end;
 
+    procedure CheckPurchLineGlDims(var vPline: Record "Purchase Line")
+    var
+        lPBE: Record "Projects Budget Entry";
+        ConfText: Text;
+        lText001: Label '%1 diffes in the CF Entry. Delete CF Entry?';
+    begin
+        if vPline."Forecast Entry" <> 0 then begin
+            lPBE.Get(vPline."Forecast Entry");
+            if vPline."Shortcut Dimension 1 Code" <> lPBE."Shortcut Dimension 1 Code" then
+                ConfText := StrSubstNo(lText001, vPline.FieldCaption("Shortcut Dimension 1 Code"));
+            if vPline."Shortcut Dimension 2 Code" <> lPBE."Shortcut Dimension 2 Code" then
+                ConfText := StrSubstNo(lText001, vPline.FieldCaption("Shortcut Dimension 2 Code"));
+
+            if Confirm(ConfText) then begin
+                lPBE.Reset();
+                lPBE.SetRange("Entry No.", vPLine."Forecast Entry");
+                vPLine."Forecast Entry" := 0;
+                vPline.Modify(false);
+                DeleteSTLine(lPBE);
+            end else
+                Error('');
+        end;
+    end;
+
     procedure AllowLTEntryChange() ret: Boolean
     begin
         if US.Get(UserId) then

@@ -26,6 +26,25 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
     // t 17 <<
 
+    // t 39 >>
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterValidateEvent', 'Shortcut Dimension 1 Code', false, false)]
+    local procedure OnAfterValidateShortDim1CodePurchLine(Rec: Record "Purchase Line"; xRec: Record "Purchase Line"; CurrFieldNo: Integer)
+    var
+        PrjBudMgt: Codeunit "Project Budget Management";
+    begin
+        PrjBudMgt.CheckPurchLineGlDims(Rec);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterValidateEvent', 'Shortcut Dimension 1 Code', false, false)]
+    local procedure OnAfterValidateShortDim2CodePurchLine(Rec: Record "Purchase Line"; xRec: Record "Purchase Line"; CurrFieldNo: Integer)
+    var
+        PrjBudMgt: Codeunit "Project Budget Management";
+    begin
+        PrjBudMgt.CheckPurchLineGlDims(Rec);
+    end;
+    // t 39 <<
+
+
     // t 81 >>
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterValidateEvent', 'Prepayment', false, false)]
     local procedure onAfterValidatePrepayment(Rec: Record "Gen. Journal Line"; xRec: Record "Gen. Journal Line"; CurrFieldNo: Integer)

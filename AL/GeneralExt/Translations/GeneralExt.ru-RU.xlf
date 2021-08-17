@@ -5943,6 +5943,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - NamedType Text002</note>
         </trans-unit>
+        <trans-unit id="Codeunit 439680645 - Method 1662331872 - NamedType 2179470716" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 diffes in the CF Entry. Delete CF Entry?</source>
+          <target>%1 отличается от значения в привязанной операции реестра CF. Удалить операцию CF и продолжить?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - Method CheckPurchLineGlDims - NamedType lText001</note>
+        </trans-unit>
         <trans-unit id="Codeunit 439680645 - Method 877441836 - NamedType 2264140679" size-unit="char" translate="yes" xml:space="preserve">
           <source>Deleting long-term entries denied!</source>
           <target>Нельзя удалять долгосрочные операции!</target>
@@ -14479,7 +14486,6 @@
           <source>Delegated From Approver ID</source>
           <target>Делегировано от утверждающего</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Approval Entries (Ext) - Control Delegated From Approver ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3049249875 - Action 2257859320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4261702675">

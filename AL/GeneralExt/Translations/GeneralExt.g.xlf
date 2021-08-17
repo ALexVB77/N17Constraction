@@ -4953,6 +4953,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - NamedType Text002</note>
         </trans-unit>
+        <trans-unit id="Codeunit 439680645 - Method 1662331872 - NamedType 2179470716" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 diffes in the CF Entry. Delete CF Entry?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - Method CheckPurchLineGlDims - NamedType lText001</note>
+        </trans-unit>
         <trans-unit id="Codeunit 439680645 - Method 877441836 - NamedType 2264140679" size-unit="char" translate="yes" xml:space="preserve">
           <source>Deleting long-term entries denied!</source>
           <note from="Developer" annotates="general" priority="2"></note>
