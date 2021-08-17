@@ -35,7 +35,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
         PrjBudMgt.CheckPurchLineGlDims(Rec);
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterValidateEvent', 'Shortcut Dimension 1 Code', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterValidateEvent', 'Shortcut Dimension 2 Code', false, false)]
     local procedure OnAfterValidateShortDim2CodePurchLine(Rec: Record "Purchase Line"; xRec: Record "Purchase Line"; CurrFieldNo: Integer)
     var
         PrjBudMgt: Codeunit "Project Budget Management";
