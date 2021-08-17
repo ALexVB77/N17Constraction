@@ -8193,6 +8193,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List App - Action ApproveButton - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 758120940 - Action 3304622623 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archi&amp;ve Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List App - Action Archive Document - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 758120940 - Action 3358363584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Edit</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9287,6 +9292,36 @@
           <source>Link Cash Flow Entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Action LinkCFEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3710957980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reject Approval</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Reject Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3710957980 - Control 140075709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to reject document approval?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Reject Approval - Control AloneStep - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3710957980 - Control 522087942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For rejection, you must specify the reason for sending the document back for revision:</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Reject Approval - Control InfoReason - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3710957980 - Control 1312625228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Reject Approval - Control Split2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3710957980 - Action 3259912055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Reject Approval - Action ActionFinish - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3710957980 - Action 914282563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reject</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Reject Approval - Action ActionNext - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 51120936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Details</source>

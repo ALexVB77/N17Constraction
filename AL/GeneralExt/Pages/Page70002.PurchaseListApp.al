@@ -197,12 +197,26 @@ page 70002 "Purchase List App"
                 Caption = 'Reject';
                 Enabled = RejectButtonEnabled;
                 Image = Reject;
+
                 trigger OnAction()
                 begin
                     if "Status App" in ["Status App"::" ", "Status App"::Reception, "Status App"::Payment] then
                         FieldError("Status App");
                     ApprovalsMgmtExt.RejectPurchActAndPayInvApprovalRequest(RECORDID);
                     CurrPage.Update(false);
+                end;
+            }
+            action("Archive Document")
+            {
+                ApplicationArea = Suite;
+                Caption = 'Archi&ve Document';
+                Enabled = ArchiveDocEnabled;
+                Image = Archive;
+
+                trigger OnAction()
+                begin
+                    if PaymentOrderMgt.PurchPaymentInvoiceArchiveQst(Rec) then
+                        CurrPage.Update();
                 end;
             }
         }
@@ -272,6 +286,8 @@ page 70002 "Purchase List App"
             ApproveButtonEnabled := true;
             RejectButtonEnabled := true;
         end;
+
+        ArchiveDocEnabled := ("No." <> '') and ("Status App" = "Status App"::Payment);
     end;
 
     var
@@ -283,8 +299,7 @@ page 70002 "Purchase List App"
         Filter1Enabled: Boolean;
         Filter2: option all,inproc,ready,pay,problem;
         SortType: option docno,postdate,vendor,statusapp,userproc;
-        ApproveButtonEnabled: boolean;
-        RejectButtonEnabled: boolean;
+        ApproveButtonEnabled, RejectButtonEnabled, ArchiveDocEnabled : boolean;
         EditEnabled: Boolean;
 
     local procedure SetRecFilters()

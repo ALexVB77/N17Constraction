@@ -480,12 +480,11 @@ page 70000 "Purchase Order App"
                         if Get("Document Type", "No.") then;
                     end;
                 }
-
                 action("Archive Document")
                 {
                     ApplicationArea = Suite;
                     Caption = 'Archi&ve Document';
-                    Enabled = "No." <> '';
+                    Enabled = ArchiveDocEnabled;
                     Image = Archive;
                     Promoted = true;
                     PromotedCategory = Category5;
@@ -628,6 +627,7 @@ page 70000 "Purchase Order App"
 
         ApproveButtonEnabled := FALSE;
         RejectButtonEnabled := FALSE;
+        ArchiveDocEnabled := ("No." <> '') and ("Status App" = "Status App"::Payment);
 
         // StatusStyleTxt := GetStatusStyleText();
 
@@ -650,9 +650,10 @@ page 70000 "Purchase Order App"
         IWPlanRepayDateMandatory := Rec."Payment Type" = Rec."Payment Type"::"pre-pay";
 
         PaymentTypeEditable := "Status App" < "Status App"::Checker;
+
+        /*        
         AppButtonEnabled :=
             NOT ((UPPERCASE("Process User") <> UPPERCASE(USERID)) AND (UserSetup."Status App Act" <> Rec."Status App Act"));
-
         IF "Status App Act" = "Status App Act"::Approve THEN BEGIN
             ApprovalEntry.SETRANGE("Table ID", Database::"Purchase Header");
             ApprovalEntry.SETRANGE("Document Type", ApprovalEntry."Document Type"::Order);
@@ -663,6 +664,7 @@ page 70000 "Purchase Order App"
         END;
         IF "Status App" = "Status App"::Request THEN
             AppButtonEnabled := TRUE;
+        */
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -688,7 +690,8 @@ page 70000 "Purchase Order App"
         PaymentOrderMgt: Codeunit "Payment Order Management";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ShowDocEnabled, PaymentTypeEditable, AppButtonEnabled, ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled : Boolean;
+        ShowDocEnabled, PaymentTypeEditable : boolean;
+        ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled, ArchiveDocEnabled : Boolean;
         IWPlanRepayDateMandatory: Boolean;
         ProblemDescription: text[80];
         AddCommentType: enum "Purchase Comment Add. Type";

@@ -612,13 +612,18 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
     procedure SetApprovalCommentText(NewComment: text)
     var
         ApprovalEntry: Record "Approval Entry";
-        ApprovalCommentLine: Record "Approval Comment Line";
         ApprovalMgt: Codeunit "Approvals Mgmt.";
         NoReqToApproveErr: Label 'There is no approval request to approve.';
     begin
         if not ApprovalMgt.FindOpenApprovalEntryForCurrUser(ApprovalEntry, RecordID) then
             Error(NoReqToApproveErr);
+        SetApprovalCommentTextForEntry(NewComment, ApprovalEntry);
+    end;
 
+    procedure SetApprovalCommentTextForEntry(NewComment: text; ApprovalEntry: Record "Approval Entry")
+    var
+        ApprovalCommentLine: Record "Approval Comment Line";
+    begin
         ApprovalCommentLine.SetCurrentKey("Linked Approval Entry No.");
         ApprovalCommentLine.SetRange("Linked Approval Entry No.", ApprovalEntry."Entry No.");
         if not ApprovalCommentLine.FindLast() then begin
