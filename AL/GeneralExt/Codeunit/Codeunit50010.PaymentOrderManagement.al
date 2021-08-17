@@ -1192,7 +1192,7 @@ codeunit 50010 "Payment Order Management"
         PurchHeader."Problem Document" := ProblemType <> ProblemType::" ";
         PurchHeader.Modify;
 
-        SetChangeStatusMessage(PurchHeader, GetMessageResponsNo(false, AppStatus.AsInteger(), PurchHeader."Sent to pre. Approval"), Reject);
+        SetChangeStatusMessage(PurchHeader, GetMessageResponsNo(true, AppStatus.AsInteger(), PurchHeader."Sent to pre. Approval"), Reject);
     end;
 
     procedure ChangePayInvStatusWhenDelegate(var PurchHeader: Record "Purchase Header"; ProcessUser: code[50])
