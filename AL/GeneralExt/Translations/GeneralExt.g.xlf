@@ -9383,6 +9383,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 90268272 - NamedType 2040845566" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The record does not exist.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - NamedType RecNotExistTxt</note>
+        </trans-unit>
         <trans-unit id="Page 90268272 - Control 124852388 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the ID of the user who must approve the document.</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -5947,7 +5947,6 @@
           <source>%1 diffes in the CF Entry. Delete CF Entry?</source>
           <target>%1 отличается от значения в привязанной операции реестра CF. Удалить операцию CF и продолжить?</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - Method CheckPurchLineGlDims - NamedType lText001</note>
         </trans-unit>
         <trans-unit id="Codeunit 439680645 - Method 877441836 - NamedType 2264140679" size-unit="char" translate="yes" xml:space="preserve">
@@ -11258,203 +11257,181 @@
           <source>Request Approval Entries</source>
           <target>Операция утверждения заявок</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 90268272 - NamedType 2040845566" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The record does not exist.</source>
+          <target>Запись не существует.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - NamedType RecNotExistTxt</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 124852388 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the ID of the user who must approve the document.</source>
           <target>Определяет код пользователя, который должен утвердить этот документ.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Approver ID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 2790486453 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies whether there are comments relating to the approval of the record. If you want to read the comments, choose the field to open the Approval Comment Sheet window.</source>
           <target>Определяет, имеются ли комментарии, относящиеся к утверждению записи. Если вы хотите ознакомиться с комментариями, выберите поле, чтобы открыть окно "Утверждение - комментарии".</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Comment - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 696551240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the date and the time that the document was sent for approval.</source>
           <target>Определяет дату и время, когда документ был отправлен на утверждение.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Date-Time Sent for Approval - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 3682199207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delegated From Approver ID</source>
           <target>Делегировано от утверждающего</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Delegated From Approver ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 318613646 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the record that the approval is related to.</source>
           <target>Определяет запись, к которой относится утверждение.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Details - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 318613646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Details</source>
           <target>Сведения</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Details - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 4085727052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies when the record must be approved, by one or more approvers.</source>
           <target>Указывает, что запись должна быть утверждена несколькими утверждающими лицами.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Due Date - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 45524177 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the date when the approval entry was last modified. If, for example, the document approval is canceled, this field will be updated accordingly.</source>
           <target>Определяет дату последнего изменения операции утверждения. Если, например, утверждение документа отменяется, это поле будет соответствующим образом обновлено.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Last Date-Time Modified - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 922263048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the ID of the user who last modified the approval entry. If, for example, the document approval is canceled, this field will be updated accordingly.</source>
           <target>Определяет код пользователя, который последним изменил операцию утверждения. Если, например, утверждение документа отменено, это поле будет соответствующим образом обновлено.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Last Modified By User ID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 4263389294 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies that the approval is overdue.</source>
           <target>Указывает, что срок ожидания утверждения истек.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Overdue - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 4263389294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Overdue</source>
           <target>Просроченные</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Overdue - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 958909087 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the record that you are requested to approve.</source>
           <target>Определяет запись, утверждение которой запрошено.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control RecordIDText - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 958909087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>To Approve</source>
           <target>На утверждение</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control RecordIDText - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 3883264070 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the code for the salesperson or purchaser that was in the document to be approved. It is not a mandatory field, but is useful if a salesperson or a purchaser responsible for the customer/vendor needs to approve the document before it is processed.</source>
           <target>Определяет код менеджера по продажам или покупкам, который содержался в утверждаемом документе. Это поле не является обязательным, но его удобно использовать, если менеджеру, ответственному за этого клиента/поставщика, требуется утвердить документ до его обработки.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Salespers./Purch. Code - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 4160783946 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the ID of the user who sent the approval request for the document to be approved.</source>
           <target>Определяет код пользователя, который отправил запрос на утверждение документа.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Sender ID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 3014885516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the order of approvers when an approval workflow involves more than one approver.</source>
           <target>Определяет порядок утверждающих лиц, когда рабочий процесс утверждения включает несколько утверждающих лиц.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Sequence No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the approval status for the entry:</source>
           <target>Определяет статус утверждения операции:</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Control Status - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 4494671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>&amp;Show</source>
           <target>&amp;Показать</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action &amp;Show - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 4110790909 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View all approval entries.</source>
           <target>Просмотр всех операций утверждения.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action All Entries - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 4110790909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>All Entries</source>
           <target>Все операции</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action All Entries - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 503024588 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View or add comments for the record.</source>
           <target>Просмотр или добавление комментариев к записи.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action Comments - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 503024588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comments</source>
           <target>Комментарии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action Comments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 4016025634 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View approval requests that are overdue.</source>
           <target>Просмотр просроченных запросов утверждения.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action O&amp;verdue Entries - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 4016025634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>O&amp;verdue Entries</source>
           <target>&amp;Просроченные операции</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action O&amp;verdue Entries - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 3875867463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open the document, journal line, or card that the approval request is for.</source>
           <target>Открытие документа, строки журнала или карточки, для которых запрошено утверждение.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action Record - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 3875867463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Record</source>
           <target>Запись</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action Record - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 2073222195 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delegate the approval request to another approver that has been set up as your substitute approver.</source>
           <target>Делегирование запроса на утверждение другому утверждающему лицу, которое было задано в качестве вашего заместителя утверждающего лица.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action &amp;Delegate - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 90268272 - Action 2073222195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>&amp;Delegate</source>
           <target>&amp;Делегировать</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries - Action &amp;Delegate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3250361654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -11485,7 +11462,6 @@
           <source>Delegated From Approver ID</source>
           <target>Делегировано от утверждающего</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Control Delegated From Approver ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3250361654 - Control 45524177 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -14673,12 +14649,6 @@
           <target>Договоры</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Advance Statement Ext - Control Agreements - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2066280439 - Control 3682199207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3480666215">
-          <source>Delegated From Approver ID</source>
-          <target>Делегировано от утверждающего</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Approval Entries (Ext) - Control Delegated From Approver ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3049249875 - Action 2257859320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4261702675">
           <source>Register Absence</source>
