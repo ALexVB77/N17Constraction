@@ -53,6 +53,11 @@ report 82470 "Copy Item Document GE"
                         Caption = 'Include Header';
                         ToolTip = 'Specifies if you want to copy information from the document header you are copying.';
 
+                        // NC 51415 > EP
+                        Enabled = (DocType = DocType::Receipt) or (DocType = DocType::Shipment) or
+                                  (DocType = DocType::"Posted Receipt") or (DocType = DocType::"Posted Shipment");
+                        // NC 51415 < EP
+
                         trigger OnValidate()
                         begin
                             ValidateIncludeHeader;
@@ -64,6 +69,11 @@ report 82470 "Copy Item Document GE"
                         Caption = 'Recalculate Lines';
                         ToolTip = 'Specifies that lines are recalculate and inserted on the document you are creating. The batch job retains the item numbers and item quantities but recalculates the amounts on the lines based on the customer information on the new document header.';
 
+                        // NC 51415 > EP
+                        Enabled = (DocType = DocType::Receipt) or (DocType = DocType::Shipment) or
+                                  (DocType = DocType::"Posted Receipt") or (DocType = DocType::"Posted Shipment");
+                        // NC 51415 < EP
+
                         trigger OnValidate()
                         begin
                             RecalculateLines := true;
@@ -73,6 +83,11 @@ report 82470 "Copy Item Document GE"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Specify appl. entries';
+
+                        // NC 51415 > EP
+                        Enabled = (DocType = DocType::Receipt) or (DocType = DocType::Shipment) or
+                                  (DocType = DocType::"Posted Receipt") or (DocType = DocType::"Posted Shipment");
+                        // NC 51415 < EP
                     }
                 }
             }
