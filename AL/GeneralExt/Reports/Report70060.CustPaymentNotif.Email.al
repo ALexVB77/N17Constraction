@@ -7,7 +7,6 @@ report 70060 "Cust. Payment Notif. Email"
     UsageCategory = Administration;
     ApplicationArea = All;
     UseRequestPage = false;
-    ProcessingOnly = true;
     DefaultLayout = Word;
     WordLayout = './Reports/Layouts/CustPaymentNotificationEmail.docx';
 
