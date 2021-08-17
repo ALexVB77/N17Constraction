@@ -4,11 +4,28 @@ report 50093 "Posted Proforma Invoice"
     ApplicationArea = All;
     DefaultLayout = Word;
     WordLayout = './Reports/Layouts/PostedProformaInvoice.docx';
+    PreviewMode = PrintLayout;
+    WordMergeDataItem = Header;
+    //ProcessingOnly = ;
 
     dataset
     {
         dataitem(Header; "Sales Invoice Header")
         {
+            // column(Header1; STRSUBSTNO(Text019, TitleDoc, LocMgt.Date2Text(DateNameInvoice))) { }
+            // column(Buyer1; STRSUBSTNO(Text012, Cust."VAT Registration No.", Cust."KPP Code")) { }
+            // column(Buyer2; CustomerAddr[1]) { }
+            // column(Buyer3; CustomerAddr[2]) { }
+            // column(Buyer4; CustomerAddr[3]) { }
+            // column(Buyer5; CustomerAddr[4]) { }
+            // column(Buyer6; CustomerAddr[5]) { }
+
+            // column(Seller1; STRSUBSTNO(Text012, CompanyInfo."VAT Registration No.", CompanyInfo."KPP Code")) { }
+            // column(Seller2; CompanyAddress[1]) { }
+            // column(Seller3; CompanyAddress[2]) { }
+            // column(Seller4; CompanyAddress[3]) { }
+            // column(Seller5; CompanyAddress[4]) { }
+            // column(Seller6; CompanyAddress[5]) { }
 
             dataitem("CopyCycle"; Integer)
             {
@@ -164,6 +181,20 @@ report 50093 "Posted Proforma Invoice"
                 {
                     DataItemTableView = sorting(Number);
                     MaxIteration = 1;
+                    column(Header1; STRSUBSTNO(Text019, TitleDoc, LocMgt.Date2Text(DateNameInvoice))) { }
+                    column(Buyer1; STRSUBSTNO(Text012, Cust."VAT Registration No.", Cust."KPP Code")) { }
+                    column(Buyer2; CustomerAddr[1]) { }
+                    column(Buyer3; CustomerAddr[2]) { }
+                    column(Buyer4; CustomerAddr[3]) { }
+                    column(Buyer5; CustomerAddr[4]) { }
+                    column(Buyer6; CustomerAddr[5]) { }
+
+                    column(Seller1; STRSUBSTNO(Text012, CompanyInfo."VAT Registration No.", CompanyInfo."KPP Code")) { }
+                    column(Seller2; CompanyAddress[1]) { }
+                    column(Seller3; CompanyAddress[2]) { }
+                    column(Seller4; CompanyAddress[3]) { }
+                    column(Seller5; CompanyAddress[4]) { }
+                    column(Seller6; CompanyAddress[5]) { }
 
                 }
                 trigger OnPreDataitem()
@@ -183,8 +214,8 @@ report 50093 "Posted Proforma Invoice"
                     ItemLineNo := 0;
 
                     IF NOT (Number = 1) THEN BEGIN
-                        CurrReport.NEWPAGE;
-                        CurrReport.PAGENO := 1;
+                        //CurrReport.NEWPAGE;!!!!!!!!
+                        //CurrReport.PAGENO := 1;!!!!!!!!
                     END;
                     NewInvoce := TRUE;
                 end;
@@ -227,8 +258,8 @@ report 50093 "Posted Proforma Invoice"
                 END;
 
                 IF NOT FirstStep THEN BEGIN
-                    CurrReport.NEWPAGE;
-                    CurrReport.PAGENO := 1;
+                    //CurrReport.NEWPAGE;!!!!!!!!
+                    //CurrReport.PAGENO := 1!!!!!!!!!!!!!;
                 END ELSE
                     FirstStep := FALSE;
                 NewInvoce := TRUE;
