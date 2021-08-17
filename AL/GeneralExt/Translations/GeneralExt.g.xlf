@@ -10343,6 +10343,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control CurrentJnlBatchName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3688692159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Payment Notification Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cust. Payment Notif. Email - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1104067303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Migration From Excel</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11762,11 +11767,6 @@
           <source>Show Discount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control ShowDiscount - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 4253293261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Print Customer Agreement</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Print Customer Agreement - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3444017566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Receipt M-4</source>
