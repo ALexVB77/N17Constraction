@@ -23,10 +23,17 @@ codeunit 50013 "Project Budget Management"
             if Confirm(Text001 + Text002, false) then begin
                 lPBE.Reset();
                 lPBE.SetRange("Entry No.", vPLine."Forecast Entry");
-                DeleteSTLine(lPBE);
                 vPLine."Forecast Entry" := 0;
-            end else
+                vPLine.Modify(false);
+                DeleteSTLine(lPBE);
+                // vPLine."Forecast Entry" := 0;
+            end else begin
+                lPBE.Reset();
+                lPBE.SetRange("Entry No.", vPLine."Forecast Entry");
+                Page.RunModal(70141, lPBE);
                 exit;
+            end;
+
         end;
         vPLine.TestField("Shortcut Dimension 1 Code");
         vPLine.TestField("Shortcut Dimension 2 Code");
@@ -160,7 +167,7 @@ codeunit 50013 "Project Budget Management"
                     Error(lTextErr001);
                 pPrBudEntry.CalcFields("Payment Doc. No.");
                 if pPrBudEntry."Payment Doc. No." <> '' then
-                    Error(lTextErr002);
+                    Error(lTextErr002, pPrBudEntry."Entry No.", pPrBudEntry."Payment Doc. No.");
                 lPrBudEntry.Get(pPrBudEntry."Parent Entry");
                 lPrBudEntry."Without VAT (LCY)" := lPrBudEntry."Without VAT (LCY)" + pPrBudEntry."Without VAT (LCY)";
                 lPrBudEntry.Modify(false);
