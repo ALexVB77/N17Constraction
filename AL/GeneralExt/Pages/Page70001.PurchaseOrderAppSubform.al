@@ -326,6 +326,23 @@ page 70001 "Purchase Order App Subform"
                     CurrPage.Update(false);
                 end;
             }
+            action(unLinkCFEntry)
+            {
+                ApplicationArea = All;
+                Caption = 'Unlink Cash Flow Entry';
+                Image = UnLinkAccount;
+                trigger OnAction()
+                var
+                    PrjBudMgt: Codeunit "Project Budget Management";
+                    lPBE: Record "Projects Budget Entry";
+                begin
+                    lPBE.Reset();
+                    lPBE.SetRange("Entry No.", Rec."Forecast Entry");
+                    Rec."Forecast Entry" := 0;
+                    Rec.Modify(false);
+                    PrjBudMgt.DeleteSTLine(lPBE);
+                end;
+            }
         }
     }
 

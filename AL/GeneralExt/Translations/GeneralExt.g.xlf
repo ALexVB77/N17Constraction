@@ -9298,6 +9298,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Action LinkCFEntry - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3878240010 - Action 807320326 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unlink Cash Flow Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Action unLinkCFEntry - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3710957980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reject Approval</source>
           <note from="Developer" annotates="general" priority="2"></note>
