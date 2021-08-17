@@ -222,6 +222,21 @@ page 70002 "Purchase List App"
         }
         area(Navigation)
         {
+            action(ViewAttachDoc)
+            {
+                ApplicationArea = All;
+                Caption = 'Documents View';
+                Enabled = ShowDocEnabled;
+                Image = Export;
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    ViewAttachDocument();
+                end;
+            }
             action("Co&mments")
             {
                 ApplicationArea = All;
@@ -288,6 +303,8 @@ page 70002 "Purchase List App"
         end;
 
         ArchiveDocEnabled := ("No." <> '') and ("Status App" = "Status App"::Payment);
+        CalcFields("Exists Attachment");
+        ShowDocEnabled := "Exists Attachment";
     end;
 
     var
@@ -299,7 +316,7 @@ page 70002 "Purchase List App"
         Filter1Enabled: Boolean;
         Filter2: option all,inproc,ready,pay,problem;
         SortType: option docno,postdate,vendor,statusapp,userproc;
-        ApproveButtonEnabled, RejectButtonEnabled, ArchiveDocEnabled : boolean;
+        ApproveButtonEnabled, RejectButtonEnabled, ArchiveDocEnabled, ShowDocEnabled : boolean;
         EditEnabled: Boolean;
 
     local procedure SetRecFilters()

@@ -8188,6 +8188,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List App - Action DocAttach - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 758120940 - Action 3249535890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents View</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List App - Action ViewAttachDoc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 758120940 - Action 1020004867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approve</source>
           <note from="Developer" annotates="general" priority="2"></note>
