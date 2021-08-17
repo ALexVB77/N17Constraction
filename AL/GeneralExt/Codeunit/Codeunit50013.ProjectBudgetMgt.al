@@ -50,6 +50,7 @@ codeunit 50013 "Project Budget Management"
         lPBE.SetRange("Contragent Type", lPBE."Contragent Type"::Vendor);
         lPBE.SetFilter("Contragent No.", '%1|%2', '', lPHead."Buy-from Vendor No.");
         lPBE.SetFilter("Agreement No.", '%1|%2', '', lPHead."Agreement No.");
+        lPBE.SetRange("Payment Doc. No.", '');
         //lLineAmt := vPLine.Amount / lExchRate.ExchangeRate(WorkDate(), vPLine."Currency Code");
         lLineAmt := vPLine."Outstanding Amount (LCY)";
         lPBE.SetFilter("Without VAT (LCY)", '>=%1', lLineAmt);
@@ -88,7 +89,7 @@ codeunit 50013 "Project Budget Management"
         lPHead.CalcFields("External Agreement No. (Calc)");
         GLSetup.Get;
         // lDimVal.Get(GLSetup."Global Dimension 1 Code", pPLine."Shortcut Dimension 1 Code");
-        lLineAmt := pPLine.Amount / lExchRate.ExchangeRate(WorkDate(), pPLine."Currency Code");
+        lLineAmt := pPLine."Amount Including VAT" / lExchRate.ExchangeRate(WorkDate(), pPLine."Currency Code");
         lPBE.Init();
         lPBE.Date := lPHead."Posting Date";
         lPBE."Project Code" := pPBE."Project Code"; //lDimVal."Project Code";
@@ -174,6 +175,30 @@ codeunit 50013 "Project Budget Management"
                 lPrBudEntry.Modify(false);
                 pPrBudEntry.Delete(true);
             until pPrBudEntry.Next() = 0;
+    end;
+
+    procedure CheckPurchLineGlDims(var vPline: Record "Purchase Line")
+    var
+        lPBE: Record "Projects Budget Entry";
+        ConfText: Text;
+        lText001: Label '%1 diffes in the CF Entry. Delete CF Entry?';
+    begin
+        if vPline."Forecast Entry" <> 0 then begin
+            lPBE.Get(vPline."Forecast Entry");
+            if vPline."Shortcut Dimension 1 Code" <> lPBE."Shortcut Dimension 1 Code" then
+                ConfText := StrSubstNo(lText001, vPline.FieldCaption("Shortcut Dimension 1 Code"));
+            if vPline."Shortcut Dimension 2 Code" <> lPBE."Shortcut Dimension 2 Code" then
+                ConfText := StrSubstNo(lText001, vPline.FieldCaption("Shortcut Dimension 2 Code"));
+
+            if Confirm(ConfText) then begin
+                lPBE.Reset();
+                lPBE.SetRange("Entry No.", vPLine."Forecast Entry");
+                vPLine."Forecast Entry" := 0;
+                vPline.Modify(false);
+                DeleteSTLine(lPBE);
+            end else
+                Error('');
+        end;
     end;
 
     procedure AllowLTEntryChange() ret: Boolean
