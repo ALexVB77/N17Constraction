@@ -11161,8 +11161,21 @@
           <source>Unlink Cash Flow Entry</source>
           <target>Удалить связь с реестром Cash Flow</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Action unLinkCFEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3878240010 - Action 807320326 - Method 1377591017 - NamedType 2179470716" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete linked CF Entry?</source>
+          <target>Удалить привязанную операцию реестра CF?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Action unLinkCFEntry - Method OnAction - NamedType lText001</note>
+        </trans-unit>
+        <trans-unit id="Page 3878240010 - Action 807320326 - Method 1377591017 - NamedType 2817167333" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CF Link deleted</source>
+          <target>Привязанная операция реестра CF удалена.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Action unLinkCFEntry - Method OnAction - NamedType lText002</note>
         </trans-unit>
         <trans-unit id="Page 3710957980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reject Approval</source>
