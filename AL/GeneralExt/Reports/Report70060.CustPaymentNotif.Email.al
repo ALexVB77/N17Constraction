@@ -132,8 +132,10 @@ report 70060 "Cust. Payment Notif. Email"
 
         Log: Record "Cust. E-Mail Notify Log";
 
+        Smtp: Codeunit "SMTP Mail";
+
     begin
-        Cust."E-Mail" := 'rkhariotnov@naviocns.ru';
+        Cust."E-Mail" := 'rkharitonov@navicons.ru';
 
         TempBlob.CreateOutStream(OutS);
         RecRef.Open(Database::"Customer Agreement");
@@ -147,7 +149,13 @@ report 70060 "Cust. Payment Notif. Email"
         InS.ReadText(MailBody);
 
         Recipients.Add(Cust."E-Mail");
+        Smtp.CreateMessage(Smtp.GetFrom())
+        /*
+        
+        */
         MailMsg.Create(Cust."E-Mail", CompanyName(), MailBody);
+        MailMsg.IsBodyHTMLFormatted();
+
         if Mail.Send(MailMsg, Enum::"Email Scenario"::Default) then begin
             Log.Init();
             Log."Agreement No." := CustAgr."No.";
