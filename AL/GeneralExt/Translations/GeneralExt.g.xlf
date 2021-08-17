@@ -9993,6 +9993,76 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Web Request Worker Setup - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 4075460265 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act Performed Work</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - NamedType 1940672225" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Для Клиент Но. %1 не задан Банковский Счет.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - NamedType Text020</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - NamedType 2421669268" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%2. Стр. %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - NamedType Text14800</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - NamedType 1783972651" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 от %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - NamedType Text14801</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - NamedType 3697062502" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ИНН %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - NamedType Text14802</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - NamedType 3059365885" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Курс</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - NamedType Text14803</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - NamedType 4165850096" size-unit="char" translate="yes" xml:space="preserve">
+          <source>СЧЕТ %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - NamedType Text14804</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - NamedType 1615063628" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Менеджер</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - NamedType Text14808</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - NamedType 977367011" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Мы, нижеподписавшиеся, составили настоящий Акт о том, что результаты работ удовлетворяют условиям Договора %1 от %2 и в надлежащем порядке оформлены.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - NamedType Text14809</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - NamedType 3234470083" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Мы, нижеподписавшиеся, составили настоящий Акт о том, что результаты работ удовлетворяют условиям Договора и в надлежащем порядке оформлены.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - NamedType Text14810</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - Control 648353892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copies Number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - Control CopiesNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - Control 2260021890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - Control CurrencyPriceAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - Control LogInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4075460265 - Control 4291959338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Act Performed Work - Control ShowDiscount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4024062002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged Accounts Payable Ext</source>
           <note from="Developer" annotates="general" priority="2"></note>
