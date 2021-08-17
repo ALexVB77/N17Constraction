@@ -1138,9 +1138,9 @@ codeunit 50010 "Payment Order Management"
             end
         else
             case true of
-                GenAppStatus = AppStatus::Reception.AsInteger():
+                GenAppStatus in [AppStatus::Reception.AsInteger(), AppStatus::Controller.AsInteger()]:
                     MessageResponsNo := GenAppStatus;
-                GenAppStatus in [AppStatus::Controller.AsInteger(), AppStatus::Checker.AsInteger()]:
+                GenAppStatus = AppStatus::Checker.AsInteger():
                     MessageResponsNo := GenAppStatus + 1;
                 (GenAppStatus = AppStatus::Approve.AsInteger()) and SentToPreApproval:
                     MessageResponsNo := GenAppStatus + 1;
