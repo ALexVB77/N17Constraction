@@ -33,17 +33,5 @@ tableextension 85110 "Purchase Line Archive (Ext)" extends "Purchase Line Archiv
             Caption = 'Cost Type';
             Description = '50085';
         }
-        field(70017; "Process User"; Code[20])
-        {
-            Caption = 'Process User';
-            Description = 'NC 51378 AB';
-            TableRelation = "User Setup";
-        }
-        field(70018; "Purchaser Code"; Code[20])
-        {
-            Caption = 'Purchaser Code';
-            Description = 'NC 51378 AB';
-            TableRelation = "Salesperson/Purchaser";
-        }
     }
 }

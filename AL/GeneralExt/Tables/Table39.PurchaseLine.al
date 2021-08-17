@@ -168,16 +168,20 @@ tableextension 80039 "Purchase Line (Ext)" extends "Purchase Line"
                 end;
             end;
         }
-        field(70017; "Process User"; Code[20])
+        field(70017; "Process User"; Code[50])
         {
+            CalcFormula = Lookup("Purchase Header"."Process User" WHERE("Document Type" = FIELD("Document Type"), "No." = FIELD("Document No.")));
             Caption = 'Process User';
             Description = 'NC 51378 AB';
+            FieldClass = FlowField;
             TableRelation = "User Setup";
         }
         field(70018; "Purchaser Code"; Code[20])
         {
+            CalcFormula = Lookup("Purchase Header"."Purchaser Code" WHERE("Document Type" = FIELD("Document Type"), "No." = FIELD("Document No.")));
             Caption = 'Purchaser Code';
             Description = 'NC 51378 AB';
+            FieldClass = FlowField;
             TableRelation = "Salesperson/Purchaser";
         }
     }
