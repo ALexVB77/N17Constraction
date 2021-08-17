@@ -133,7 +133,10 @@ report 82470 "Copy Item Document GE"
             DocType::"Posted Transfer Rcpt.":
                 begin
                     // SWC806 AK 230316 >>
-                    ItemDocHeader.VALIDATE("Location Code", FromTransferRcptHdr."Transfer-to Code");
+                    // NC 51415 > EP
+                    if FromTransferRcptHdr."Transfer-to Code" <> '' then
+                        // NC 51415 < EP
+                        ItemDocHeader.VALIDATE("Location Code", FromTransferRcptHdr."Transfer-to Code");
                     ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromTransferRcptHdr."Shortcut Dimension 1 Code");
                     ItemDocHeader.VALIDATE("Shortcut Dimension 2 Code", FromTransferRcptHdr."Shortcut Dimension 2 Code");
                     ItemDocHeader.MODIFY(TRUE);
@@ -180,7 +183,10 @@ report 82470 "Copy Item Document GE"
                     ItemDocHeader."Posting Date" := FromPurchRcptHeader."Posting Date";
                     ItemDocHeader."Document Date" := FromPurchRcptHeader."Posting Date";
 
-                    ItemDocHeader.VALIDATE("Location Code", FromPurchRcptHeader."Location Code");
+                    // NC 51415 > EP
+                    if FromPurchRcptHeader."Location Code" <> '' then
+                        // NC 51415 < EP
+                        ItemDocHeader.Validate("Location Code", FromPurchRcptHeader."Location Code");
                     ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromPurchRcptHeader."Shortcut Dimension 1 Code");
                     ItemDocHeader.VALIDATE("Shortcut Dimension 2 Code", FromPurchRcptHeader."Shortcut Dimension 2 Code");
                     ItemDocHeader.MODIFY(TRUE);
