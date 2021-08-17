@@ -1123,22 +1123,38 @@ codeunit 50010 "Payment Order Management"
     var
         ActAppStatus: Enum "Purchase Act Approval Status";
         AppStatus: enum "Purchase Approval Status";
+    // 'Reception,Controller,Estimator,Checker,Pre. Approver,Approver,Signer';
     begin
-        if not IWDocument then begin
-            MessageResponsNo := GenAppStatus + 1;
-            if ((GenAppStatus = ActAppStatus::Approve.AsInteger()) and (not SentToPreApproval)) or (GenAppStatus >= ActAppStatus::Signing.AsInteger()) then
-                MessageResponsNo := GenAppStatus + 2;
-        end else begin
-            MessageResponsNo := GenAppStatus;
-            if (GenAppStatus = AppStatus::Approve.AsInteger()) and (not SentToPreApproval) then
-                MessageResponsNo := GenAppStatus + 1;
-            if GenAppStatus = AppStatus::Payment.AsInteger() then
-                MessageResponsNo := 9;
-        end;
+        if not IWDocument then
+            case true of
+                GenAppStatus in [ActAppStatus::Controller.AsInteger(), ActAppStatus::Estimator.AsInteger(), ActAppStatus::Checker.AsInteger()]:
+                    MessageResponsNo := GenAppStatus + 1;
+                (GenAppStatus = ActAppStatus::Approve.AsInteger()) and SentToPreApproval:
+                    MessageResponsNo := GenAppStatus + 1;
+                (GenAppStatus = ActAppStatus::Approve.AsInteger()) and (not SentToPreApproval):
+                    MessageResponsNo := GenAppStatus + 2;
+                GenAppStatus in [ActAppStatus::Signing.AsInteger(), ActAppStatus::Accountant.AsInteger()]:
+                    MessageResponsNo := 8;
+            end
+        else
+            case true of
+                GenAppStatus = AppStatus::Reception.AsInteger():
+                    MessageResponsNo := GenAppStatus;
+                GenAppStatus in [AppStatus::Controller.AsInteger(), AppStatus::Checker.AsInteger()]:
+                    MessageResponsNo := GenAppStatus + 1;
+                (GenAppStatus = AppStatus::Approve.AsInteger()) and SentToPreApproval:
+                    MessageResponsNo := GenAppStatus + 1;
+                (GenAppStatus = AppStatus::Approve.AsInteger()) and (not SentToPreApproval):
+                    MessageResponsNo := GenAppStatus + 2;
+                GenAppStatus = AppStatus::Payment.AsInteger():
+                    MessageResponsNo := 9;
+            end;
     end;
 
     local procedure FillPurchActStatus(
-        var PurchHeader: Record "Purchase Header"; ActAppStatus: Enum "Purchase Act Approval Status"; ProcessUser: code[50]; ProblemType: enum "Purchase Problem Type"; Reject: Boolean)
+        var PurchHeader: Record "Purchase Header"; ActAppStatus: Enum "Purchase Act Approval Status"; ProcessUser: code[50];
+                                                                     ProblemType: enum "Purchase Problem Type";
+                                                                     Reject: Boolean)
     var
         UserSetup: Record "User Setup";
         LocText001: Label 'Failed to define user for process %1!';
@@ -1158,7 +1174,9 @@ codeunit 50010 "Payment Order Management"
     end;
 
     local procedure FillPayInvStatus(
-        var PurchHeader: Record "Purchase Header"; AppStatus: Enum "Purchase Approval Status"; ProcessUser: code[50]; ProblemType: enum "Purchase Problem Type"; Reject: Boolean)
+        var PurchHeader: Record "Purchase Header"; AppStatus: Enum "Purchase Approval Status"; ProcessUser: code[50];
+                                                                  ProblemType: enum "Purchase Problem Type";
+                                                                  Reject: Boolean)
     var
         UserSetup: Record "User Setup";
         LocText001: Label 'Failed to define user for process %1!';

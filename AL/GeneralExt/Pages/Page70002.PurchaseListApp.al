@@ -228,9 +228,6 @@ page 70002 "Purchase List App"
                 Caption = 'Documents View';
                 Enabled = ShowDocEnabled;
                 Image = Export;
-                Promoted = true;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
