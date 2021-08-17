@@ -19,6 +19,7 @@ pageextension 80658 "Approval Entries (Ext)" extends "Approval Entries"
             field("Delegated From Approver ID"; "Delegated From Approver ID")
             {
                 ApplicationArea = All;
+                Caption = 'Delegated From Approver ID';
             }
         }
     }
