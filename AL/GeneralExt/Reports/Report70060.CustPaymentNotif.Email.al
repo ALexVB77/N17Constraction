@@ -135,8 +135,7 @@ report 70060 "Cust. Payment Notif. Email"
 
     begin
         Cust."E-Mail" := 'rkharitonov@navicons.ru';
-
-        TempBlob.CreateOutStream(OutS);
+        TempBlob.CreateOutStream(OutS, TextEncoding::UTF8);
         RecRef.Open(Database::"Customer Agreement");
         FldRef := RecRef.Field(1);
         FldRef.SetRange(CustAgr."Customer No.");
@@ -144,13 +143,9 @@ report 70060 "Cust. Payment Notif. Email"
         FldRef.SetRange(CustAgr."No.");
         self.SetParam(PaymentAmount);
         self.SaveAs('', ReportFormat::Html, OutS, RecRef);
-        TempBlob.CreateInStream(InS);
+        TempBlob.CreateInStream(InS, TextEncoding::UTF8);
         InS.ReadText(MailBody);
-
-        Recipients.Add(Cust."E-Mail");
-        MailMsg.Create(Cust."E-Mail", CompanyName(), MailBody);
-        MailMsg.IsBodyHTMLFormatted();
-
+        MailMsg.Create(Cust."E-Mail", CompanyName(), MailBody, true);
         if Mail.Send(MailMsg, Enum::"Email Scenario"::Default) then begin
             Log.Init();
             Log."Agreement No." := CustAgr."No.";
