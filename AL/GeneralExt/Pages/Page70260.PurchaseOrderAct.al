@@ -874,8 +874,11 @@ page 70260 "Purchase Order Act"
         else
             PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
         PreApproverEditable := "Act Type" = "Act Type"::Advance;
-        ProblemDescription := Rec.GetApprovalCommentText();
         GenPrintEnabled := Rec."Location Document";
+
+        ProblemDescription := '';
+        if "Problem Document" then
+            ProblemDescription := Rec.GetApprovalCommentText();
 
         WhseEmployee.SetRange("User ID", UserId);
         StatusStyleTxt := GetStatusStyleText();

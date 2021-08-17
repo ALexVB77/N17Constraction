@@ -633,10 +633,13 @@ page 70000 "Purchase Order App"
 
         CalcFields("Payments Amount");
 
-        if "Status App" = "Status App"::Payment then
-            ProblemDescription := Rec.GetAddTypeCommentText(AddCommentType::Problem)
-        else
-            ProblemDescription := Rec.GetApprovalCommentText();
+        ProblemDescription := '';
+        if "Problem Document" then begin
+            if "Status App" = "Status App"::Payment then
+                ProblemDescription := Rec.GetAddTypeCommentText(AddCommentType::Problem)
+            else
+                ProblemDescription := Rec.GetApprovalCommentText();
+        end;
 
         PaymentAssignmentEnabled := "Payment to Person";
         CopyDocumentEnabled := ("No." <> '') and ("Status App" = "Status App"::Reception);
