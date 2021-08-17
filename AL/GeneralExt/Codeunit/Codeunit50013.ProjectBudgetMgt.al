@@ -20,14 +20,15 @@ codeunit 50013 "Project Budget Management"
         lLineAmt: Decimal;
     begin
         if vPLine."Forecast Entry" <> 0 then begin
-            if Confirm(Text001 + Text002, false) then begin
-                lPBE.Reset();
-                lPBE.SetRange("Entry No.", vPLine."Forecast Entry");
-                vPLine."Forecast Entry" := 0;
-                vPLine.Modify(false);
-                DeleteSTLine(lPBE);
-                // vPLine."Forecast Entry" := 0;
-            end else begin
+            // if Confirm(Text001 + Text002, false) then begin
+            //     lPBE.Reset();
+            //     lPBE.SetRange("Entry No.", vPLine."Forecast Entry");
+            //     vPLine."Forecast Entry" := 0;
+            //     vPLine.Modify(false);
+            //     DeleteSTLine(lPBE);
+            //     // vPLine."Forecast Entry" := 0;
+            // end else 
+            begin
                 lPBE.Reset();
                 lPBE.SetRange("Entry No.", vPLine."Forecast Entry");
                 Page.RunModal(70141, lPBE);
@@ -98,7 +99,7 @@ codeunit 50013 "Project Budget Management"
         lPBE."Temp Line No." := pPBE."Temp Line No.";
 
         lPBE."Shortcut Dimension 1 Code" := pPLine."Shortcut Dimension 1 Code";
-        lPBE."Shortcut Dimension 2 Code" := pPLine."Shortcut Dimension 2 Code";
+        lPBE.validate("Shortcut Dimension 2 Code", pPLine."Shortcut Dimension 2 Code");
         lPBE."Payment Description" := pPLine.Description;
         lPBE."Without VAT (LCY)" := lLineAmt;
         lPBE."Contragent Type" := lPBE."Contragent Type"::Vendor;
