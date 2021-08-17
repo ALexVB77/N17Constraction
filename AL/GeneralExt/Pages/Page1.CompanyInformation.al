@@ -9,6 +9,14 @@ pageextension 80001 "Company Information (Ext)" extends "Company Information"
                 ApplicationArea = Basic, Suite;
                 Caption = 'Use RedFlags in Agreements';
             }
+            field("Expired Date"; "Expired Date")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            field("Director Name 2"; "Director Name 2")
+            {
+                ApplicationArea = Basic, Suite;
+            }
         }
     }
 }

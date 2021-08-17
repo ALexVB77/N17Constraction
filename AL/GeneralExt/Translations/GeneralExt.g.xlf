@@ -11748,6 +11748,111 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 2997799352" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Proforma Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType PostedProformaInvCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;Integer Thousand&gt;&lt;Decimals,</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Менеджер</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Покупатель</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text003</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Продавец</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text004</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Курс</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text005</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Сумма\РУБ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text006</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Скидка\%%</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text007</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 3283546407" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Цена\РУБ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text008</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Цена\</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text009</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Сумма</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text010</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 1026443335" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Цена</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text011</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 2939533186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ИНН %1, КПП %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text012</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 2301836569" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%2. Стр. %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text013</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 4214926420" size-unit="char" translate="yes" xml:space="preserve">
+          <source>СЧЕТ %1 ПО ЗАКАЗУ № %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text014</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 3577229803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>СЧЕТ № %1 (%2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text015</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 219837695" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 от %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text019</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 2137401166" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Тел.:</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text12400</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 1499704549" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Факс.:</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text12401</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Генеральный директор</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text50000</note>
+        </trans-unit>
+        <trans-unit id="Report 3935068462 - NamedType 14768227" size-unit="char" translate="yes" xml:space="preserve">
+          <source>СЧЕТ № %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - NamedType Text50001</note>
+        </trans-unit>
         <trans-unit id="Report 3935068462 - Control 648353892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copies Number</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12343,6 +12448,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Company Information (Ext) - Field Company Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1214534909 - Field 1115358679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>Director Name 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Company Information (Ext) - Field Director Name 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1214534909 - Field 4129461381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>Expired Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Company Information (Ext) - Field Expired Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1214534909 - Field 3364076239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>Use RedFlags in Agreements</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12862,6 +12977,11 @@
           <source>Sheet Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Excel Template (Ext) - Field Sheet Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2071349393 - Field 1562767415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 351637841">
+          <source>Top Margin</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Excel Template (Ext) - Field Top Margin - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 520650564 - Field 2399978131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3400326196">
           <source>FA Turnover Template Code</source>
