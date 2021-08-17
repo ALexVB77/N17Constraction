@@ -127,7 +127,8 @@ report 70060 "Cust. Payment Notif. Email"
         TEmpBlob: Codeunit "Temp Blob";
         MailBody: Text;
         Recipients: List of [Text];
-        Mail: Codeunit Mail;
+        Mail: Codeunit Email;
+        MailMsg: Codeunit "Email Message";
 
         Log: Record "Cust. E-Mail Notify Log";
 
@@ -146,8 +147,8 @@ report 70060 "Cust. Payment Notif. Email"
         InS.ReadText(MailBody);
 
         Recipients.Add(Cust."E-Mail");
-        Mail.CreateMessage(Cust."E-Mail", '', '', CompanyName(), MailBody, false, false);
-        if Mail.Send() then begin
+        MailMsg.Create(Cust."E-Mail", CompanyName(), MailBody);
+        if Mail.Send(MailMsg, Enum::"Email Scenario"::Default) then begin
             Log.Init();
             Log."Agreement No." := CustAgr."No.";
             Log."Customer No." := CustAgr."Customer No.";
