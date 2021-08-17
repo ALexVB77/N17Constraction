@@ -50,6 +50,7 @@ codeunit 50013 "Project Budget Management"
         lPBE.SetRange("Contragent Type", lPBE."Contragent Type"::Vendor);
         lPBE.SetFilter("Contragent No.", '%1|%2', '', lPHead."Buy-from Vendor No.");
         lPBE.SetFilter("Agreement No.", '%1|%2', '', lPHead."Agreement No.");
+        lPBE.SetRange("Payment Doc. No.", '');
         //lLineAmt := vPLine.Amount / lExchRate.ExchangeRate(WorkDate(), vPLine."Currency Code");
         lLineAmt := vPLine."Outstanding Amount (LCY)";
         lPBE.SetFilter("Without VAT (LCY)", '>=%1', lLineAmt);
