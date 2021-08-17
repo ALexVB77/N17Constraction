@@ -47,7 +47,7 @@ report 70060 "Cust. Payment Notif. Email"
                 ContBusRel: Record "Contact Business Relation";
                 LocMgt: Codeunit "Localisation Management";
             begin
-                AgrDateFull := LocMgt.Date2Text(Agr."Agreement Date");
+                AgrDateFull := FmtDate(Agr."Agreement Date");
                 PaymentAmountText := LowerCase(LocMgt.Amount2Text('', PaymentAmount));
                 Clear(Cont);
                 if Cust.Get(Agr."Customer No.") then begin
@@ -153,8 +153,16 @@ report 70060 "Cust. Payment Notif. Email"
     end;
 
     local procedure FmtDate(DateToFormat: Date) Result: Text
+    var
+        MonthRus: Option " ",января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря;
+        D, M, Y : Text;
     begin
-
+        D := Format(Date2DMY(DateToFormat, 1));
+        if StrLen(D) = 1 then
+            D := '0' + D;
+        MonthRus := Date2DMY(DateToFormat, 2);
+        Y := Format(Date2DMY(DateToFormat, 3));
+        Result := StrSubstNo('%1 %2 %3 года', D, MonthRus, Y);
     end;
 
 
