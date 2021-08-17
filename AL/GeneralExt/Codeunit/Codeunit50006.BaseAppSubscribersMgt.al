@@ -1388,4 +1388,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
         if (FromPurchHeader."Act Type" <> FromPurchHeader."Act Type"::" ") and ToPurchaseHeader."IW Documents" then
             ToPurchaseHeader."Vendor Invoice No." := '';
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopyPurchDocPurchLineOnAfterCopyPurchLine', '', false, false)]
+    local procedure OnCopyPurchDocPurchLineOnAfterCopyPurchLine(ToPurchHeader: Record "Purchase Header"; var ToPurchLine: Record "Purchase Line"; FromPurchHeader: Record "Purchase Header"; var FromPurchLine: Record "Purchase Line"; IncludeHeader: Boolean; RecalculateLines: Boolean);
+    begin
+        ToPurchLine."Forecast Entry" := 0;
+    end;
+
+
 }

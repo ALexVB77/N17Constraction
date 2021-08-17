@@ -288,6 +288,22 @@ page 70000 "Purchase Order App"
                     ApplicationArea = All;
                     Editable = false;
                 }
+                field("Linked Purchase Order Act No."; "Linked Purchase Order Act No.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+
+                    trigger OnDrillDown()
+                    var
+                        PurchHeader: Record "Purchase Header";
+                    begin
+                        if "Linked Purchase Order Act No." <> '' then begin
+                            PurchHeader.SetRange("Document Type", "Document Type");
+                            PurchHeader.SetRange("No.", "Linked Purchase Order Act No.");
+                            Page.Run(Page::"Purchase Order Act", PurchHeader);
+                        end;
+                    end;
+                }
             }
 
             part(PurchaseOrderAppLines; "Purchase Order App Subform")
