@@ -117,4 +117,47 @@ report 70060 "Cust. Payment Notif. Email"
 
     end;
 
+    procedure SendMailDBG(var CustAgr: Record "Customer Agreement"; PaymentAmount: Decimal)
+    var
+        Cust: Record Customer;
+        self: Report "Cust. Payment Notif. Email";
+        OutS: OutStream;
+        InS: InStream;
+        RecRef: RecordRef;
+        FldRef: FieldRef;
+        TEmpBlob: Codeunit "Temp Blob";
+        MailBody: Text;
+        Recipients: List of [Text];
+        Mail: Codeunit Mail;
+
+        Log: Record "Cust. E-Mail Notify Log";
+
+    begin
+        Cust."E-Mail" := 'rkhariotnov@naviocns.ru';
+
+        TempBlob.CreateOutStream(OutS);
+        RecRef.Open(Database::"Customer Agreement");
+        FldRef := RecRef.Field(1);
+        FldRef.SetRange(CustAgr."Customer No.");
+        FldRef := RecRef.Field(2);
+        FldRef.SetRange(CustAgr."No.");
+        self.SetParam(PaymentAmount);
+        self.SaveAs('', ReportFormat::Html, OutS, RecRef);
+        TempBlob.CreateInStream(InS);
+        InS.ReadText(MailBody);
+
+        Recipients.Add(Cust."E-Mail");
+        Mail.CreateMessage(Cust."E-Mail", '', '', CompanyName(), MailBody, false, false);
+        if Mail.Send() then begin
+            Log.Init();
+            Log."Agreement No." := CustAgr."No.";
+            Log."Customer No." := CustAgr."Customer No.";
+            Log.Body.CreateOutStream(OutS);
+            Log."E-Mail" := Cust."E-Mail";
+            CopyStream(OutS, InS);
+            Log.Insert(true);
+        end;
+    end;
+
+
 }
