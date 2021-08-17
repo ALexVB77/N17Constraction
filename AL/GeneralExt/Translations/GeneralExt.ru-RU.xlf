@@ -9535,7 +9535,6 @@
           <source>Unlink Payment Invoices</source>
           <target>Отвязать счета на оплату</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purch. Order Act PayReq. List - Action UnLinkPaymentInvoice - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2825229705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -12370,6 +12369,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Create Payment Journal - Control CurrentJnlBatchName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3688692159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Payment Notification Email</source>
+          <target>Информ. о получении оплаты от клиента</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cust. Payment Notif. Email - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1104067303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Migration From Excel</source>
           <target>Миграция данных из Excel</target>
@@ -14073,12 +14079,6 @@
           <target>Показать скидки</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Proforma Invoice - Control ShowDiscount - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 4253293261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Print Customer Agreement</source>
-          <target>Print Customer Agreement</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Print Customer Agreement - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3444017566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Receipt M-4</source>

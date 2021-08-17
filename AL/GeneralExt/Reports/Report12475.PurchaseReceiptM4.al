@@ -1,4 +1,5 @@
 // NC AB: на основе стандартного 12475 "Purchase Receipt M-4"
+
 report 82475 "Purchase Receipt M-4 Ext"
 {
     Caption = 'Purchase Receipt M-4';
@@ -282,4 +283,3 @@ report 82475 "Purchase Receipt M-4 Ext"
         exit(StdRepMgt.FormatReportValue(Amount, 2));
     end;
 }
-
