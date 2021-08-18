@@ -33,6 +33,7 @@ page 71002 "Purchase List App Archive"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Selection';
+                    Enabled = false;
                     OptionCaption = 'All documents,Documents in processing,Ready-to-pay documents,Paid documents';
 
                     trigger OnValidate()
