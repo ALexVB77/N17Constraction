@@ -1,7 +1,7 @@
 // NC 54882 AB: сделал проставление параметров как надо и добавил прямое перемещение
 report 82470 "Copy Item Document (Ext)"
 {
-    Caption = 'Copy Item Document (new)';
+    Caption = 'Copy Item Document';
     ProcessingOnly = true;
 
     dataset
@@ -23,7 +23,7 @@ report 82470 "Copy Item Document (Ext)"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Document Type';
-                        OptionCaption = 'Receipt,Shipment,Posted Receipt,Posted Shipment,,,Post.Purch.Invoice,Posted Transfer Rcpt.,Purch. Rcpt. Header';
+                        OptionCaption = 'Receipt,Shipment,Posted Receipt,Posted Shipment,,,Posted Purchase Invoice,Posted Transfer Receipt,Posted Purchase Receipt,Posted Direct Transfer';
                         ToolTip = 'Specifies the type of the related document.';
 
                         trigger OnValidate()

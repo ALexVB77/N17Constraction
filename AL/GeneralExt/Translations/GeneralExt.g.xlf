@@ -10524,7 +10524,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Change Vendor Agreement - Control TestRegim - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy Item Document (new)</source>
+          <source>Copy Item Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Property Caption</note>
         </trans-unit>
@@ -10559,7 +10559,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control DocType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 3819526884 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Receipt,Shipment,Posted Receipt,Posted Shipment,,,Post.Purch.Invoice,Posted Transfer Rcpt.,Purch. Rcpt. Header</source>
+          <source>Receipt,Shipment,Posted Receipt,Posted Shipment,,,Posted Purchase Invoice,Posted Transfer Receipt,Posted Purchase Receipt,Posted Direct Transfer</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control DocType - Property OptionCaption</note>
         </trans-unit>
