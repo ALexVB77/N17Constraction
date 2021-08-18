@@ -574,6 +574,17 @@ page 70260 "Purchase Order Act"
                         RequestApprovalEntries.Run;
                     end;
                 }
+                action(ChangeLog)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Change Log';
+                    Image = ChangeLog;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    RunObject = Page "Request Change Log Entries";
+                    RunPageLink = "Primary Key Field 2 Value" = field("No.");
+                }
             }
             group(Documents)
             {

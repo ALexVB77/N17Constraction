@@ -8518,6 +8518,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action Approvals - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3437592965 - Action 3640084062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act - Action ChangeLog - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3437592965 - Action 3000180178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Co&amp;mments</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8987,6 +8992,11 @@
           <source>Approvals</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action Approvals - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3790301120 - Action 3640084062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action ChangeLog - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3790301120 - Action 3000180178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Co&amp;mments</source>
@@ -9612,6 +9622,171 @@
           <source>Record</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Request Approval Entries Arch. - Action Record - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request Change Log Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 2491730758 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date and time when this change log entry was created.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Date and Time - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of the entry, as assigned from the specified number series when the entry was created.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 823559016 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the field caption of the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Field Caption - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3531868071 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the field number of the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Field No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 2432660905 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value that the field had after a user made changes to the field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control New Value - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 819043534 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value that the field had after a user made changes to the field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control New Value Local - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 819043534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Value (Local)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control New Value Local - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3205443024 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value that the field had before a user made changes to the field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Old Value - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3618572387 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value that the field had before a user made changes to the field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Old Value Local - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3618572387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Old Value (Local)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Old Value Local - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 1663593181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the primary key or keys of the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 2155743826 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the field name of the first primary key for the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key Field 1 Caption - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 1948702161 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the field number of the first primary key for the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key Field 1 No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3681225053 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the first primary key for the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key Field 1 Value - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 772689159 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the field name of the second primary key for the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key Field 2 Caption - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 192072616 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the field number of the second primary key for the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key Field 2 No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3436809572 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the second primary key for the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key Field 2 Value - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3420811712 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the field name of the third primary key for the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key Field 3 Caption - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3044796447 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the field number of the third primary key for the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key Field 3 No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3910660555 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the third primary key for the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Primary Key Field 3 Value - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 1393533604 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the table containing the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Table Caption - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3017471043 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of the table containing the changed field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Table No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 3425031793 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the type of change made to the field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control Type of Change - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Control 2708250016 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the user who posted the entry, to be used, for example, in the change log.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Control User ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Action 1344672713 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prepare to print the document. A report request window for the document opens where you can specify what to include on the print-out.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Action &amp;Print - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Action 1344672713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Action &amp;Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Action 4026041789 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Find and delete change log entries.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Action Delete Entries - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Action 4026041789 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Action Delete Entries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Action 1409077016 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or Edit the retention policy.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Action RetentionPolicy - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Action 1409077016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Retention Policy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Action RetentionPolicy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Action 1514883969 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enable, disable or setup change logging.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Action Setup - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4116090083 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Request Change Log Entries - Action Setup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2119146127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Summary Cash Flow Control Detail</source>

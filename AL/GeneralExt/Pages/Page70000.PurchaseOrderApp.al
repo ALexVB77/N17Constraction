@@ -471,6 +471,17 @@ page 70000 "Purchase Order App"
                         RequestApprovalEntries.Run;
                     end;
                 }
+                action(ChangeLog)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Change Log';
+                    Image = ChangeLog;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    RunObject = Page "Request Change Log Entries";
+                    RunPageLink = "Primary Key Field 2 Value" = field("No.");
+                }
             }
         }
         area(processing)

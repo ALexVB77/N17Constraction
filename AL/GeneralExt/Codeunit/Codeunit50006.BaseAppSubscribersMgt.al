@@ -1416,6 +1416,4 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ToPurchLine."Forecast Entry" := 0;
         ToPurchLine.Modify();
     end;
-
-
 }
