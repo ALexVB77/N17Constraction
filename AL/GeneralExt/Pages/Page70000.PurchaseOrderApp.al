@@ -1,7 +1,6 @@
 page 70000 "Purchase Order App"
 {
     Caption = 'Purchase Order App';
-    Editable = GlobalEditable;
     PageType = Document;
     PromotedActionCategories = 'New,Process,Report,Order,Function,Print,Request Approval,Approve,Release,Navigate';
     RefreshOnActivate = true;
@@ -682,7 +681,7 @@ page 70000 "Purchase Order App"
 
         PaymentTypeEditable := "Status App" < "Status App"::Checker;
 
-        GlobalEditable := "Status App" < "Status App"::Approve;
+        CurrPage.Update();
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -708,7 +707,7 @@ page 70000 "Purchase Order App"
         PaymentOrderMgt: Codeunit "Payment Order Management";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ShowDocEnabled, PaymentTypeEditable, GlobalEditable : boolean;
+        ShowDocEnabled, PaymentTypeEditable : boolean;
         ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled, ArchiveDocEnabled : Boolean;
         IWPlanRepayDateMandatory: Boolean;
         ProblemDescription: text[80];
