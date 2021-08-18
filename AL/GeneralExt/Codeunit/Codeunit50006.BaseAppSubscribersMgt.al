@@ -1400,11 +1400,12 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ToPurchaseHeader.Receptionist := OldPurchaseHeader.Receptionist;
         ToPurchaseHeader."Linked Purchase Order Act No." := '';
         ToPurchaseHeader."Payment Type" := OldPurchaseHeader."Payment Type";
+        ToPurchaseHeader."Problem Document" := false;
 
         ToPurchaseHeader."Act Invoice No." := '';
         ToPurchaseHeader."Act Invoice Posted" := false;
 
-        if (FromPurchHeader."Act Type" <> FromPurchHeader."Act Type"::" ") and ToPurchaseHeader."IW Documents" then
+        if (FromPurchHeader."Act Type" <> FromPurchHeader."Act Type"::" ") or ToPurchaseHeader."IW Documents" then
             ToPurchaseHeader."Vendor Invoice No." := '';
     end;
 
