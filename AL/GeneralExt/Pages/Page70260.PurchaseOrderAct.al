@@ -15,49 +15,12 @@ page 70260 "Purchase Order Act"
             group(General)
             {
                 Caption = 'General';
+                Editable = GlobalEditable;
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     Importance = Standard;
                 }
-
-                /*
-                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
-                {
-                    ApplicationArea = All;
-                    CaptionClass = GetVendorNoCaptionClass();
-                    Importance = Promoted;
-                    ShowMandatory = true;
-
-                    trigger OnLookup(var Text: Text): Boolean
-                    var
-                        Vendor: Record Vendor;
-                    begin
-                        if "Act Type" = "Act Type"::Advance then begin
-                            Vendor.SetRange(Blocked, Vendor.Blocked::" ");
-                            if Page.RunModal(Page::"Responsible Employees", Vendor) = Action::LookupOK then
-                                Validate("Buy-from Vendor No.", Vendor."No.");
-                        end else begin
-                            if Page.RunModal(0, Vendor) = Action::LookupOK then
-                                Validate("Buy-from Vendor No.", Vendor."No.");
-                        end;
-                        CurrPage.Update;
-                    end;
-
-                    trigger OnValidate()
-                    var
-                        Vendor: Record Vendor;
-                    begin
-                        if "Buy-from Vendor No." <> '' then begin
-                            Vendor.Get("Buy-from Vendor No.");
-                            if "Act Type" = "Act Type"::Advance then
-                                Vendor.TestField("Vendor Type", Vendor."Vendor Type"::"Resp. Employee")
-                            else
-                                Vendor.TestField("Vendor Type", Vendor."Vendor Type"::Vendor);
-                        end;
-                    end;
-                }
-                */
                 field(VendorNo; "Buy-from Vendor No.")
                 {
                     ApplicationArea = Suite;
@@ -372,7 +335,7 @@ page 70260 "Purchase Order Act"
             part(PurchaseOrderActLines; "Purchase Order Act Subform")
             {
                 ApplicationArea = All;
-                Editable = "Buy-from Vendor No." <> '';
+                Editable = ("Buy-from Vendor No." <> '') and GlobalEditable;
                 Enabled = "Buy-from Vendor No." <> '';
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
@@ -380,6 +343,7 @@ page 70260 "Purchase Order Act"
             group("Payment Request")
             {
                 Caption = 'Payment Request';
+                Editable = GlobalEditable;
                 field("Vendor Bank Account"; Rec."Vendor Bank Account")
                 {
                     ApplicationArea = All;
@@ -421,6 +385,7 @@ page 70260 "Purchase Order Act"
             group("Details")
             {
                 Caption = 'Details';
+                Editable = GlobalEditable;
                 field("Buy-from Contact No."; "Buy-from Contact No.")
                 {
                     ApplicationArea = All;
@@ -909,36 +874,24 @@ page 70260 "Purchase Order Act"
         ShowDocEnabled := "Exists Attachment";
         LocationCodeShowMandatory := Rec."Location Document";
 
-        /*
-        AppButtonEnabled :=
-            NOT ((UPPERCASE("Process User") <> UPPERCASE(USERID)) AND (UserSetup."Status App Act" <> Rec."Status App Act"));
-        IF "Status App Act" = "Status App Act"::Approve THEN BEGIN
-            ApprovalEntry.SETRANGE("Table ID", Database::"Purchase Header");
-            ApprovalEntry.SETRANGE("Document Type", ApprovalEntry."Document Type"::Order);
-            ApprovalEntry.SETRANGE("Document No.", "No.");
-            ApprovalEntry.SETRANGE("Approver ID", USERID);
-            IF ApprovalEntry.FINDSET THEN
-                AppButtonEnabled := NOT ApprovalEntry.IsEmpty;
-        END;
-        */
-
         AllApproverEditable := "Status App" = "Status App"::Checker;
 
+        GlobalEditable := true;
         IF ("Status App Act" = "Status App Act"::Accountant) THEN
-            CurrPage.EDITABLE := FALSE
+            GlobalEditable := FALSE
         ELSE
             IF ("Status App Act" = "Status App Act"::Estimator) THEN
-                CurrPage.EDITABLE := FALSE
+                GlobalEditable := FALSE
             ELSE
-                CurrPage.EDITABLE := TRUE;
+                GlobalEditable := TRUE;
         IF "Problem Type" = "Problem Type"::"Act error" THEN
-            CurrPage.EDITABLE := FALSE;
+            GlobalEditable := FALSE;
         IF UserSetup."Status App Act" = UserSetup."Status App Act"::"сontroller" THEN BEGIN
-            CurrPage.EDITABLE := TRUE;
+            GlobalEditable := TRUE;
             ReceiveAccountEditable := TRUE;
         END;
         IF "Location Document" THEN
-            CurrPage.EDITABLE := NOT ("Status App Act" IN ["Status App Act"::Approve, "Status App Act"::Signing, "Status App Act"::Accountant]);
+            GlobalEditable := NOT ("Status App Act" IN ["Status App Act"::Approve, "Status App Act"::Signing, "Status App Act"::Accountant]);
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -956,7 +909,7 @@ page 70260 "Purchase Order Act"
         PurchCalcDiscByType: Codeunit "Purch - Calc Disc. By Type";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, PreApproverEditable : boolean;
+        ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, PreApproverEditable, GlobalEditable : boolean;
         ShowDocEnabled, EstimatorEnable, CopyDocumentEnabled, GenPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
         EstimatorMandatory, LocationCodeShowMandatory : Boolean;
         StatusStyleTxt, ProblemDescription : Text;
