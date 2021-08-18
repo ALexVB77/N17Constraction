@@ -639,6 +639,11 @@ page 70000 "Purchase Order App"
         "Responsibility Center" := UserMgt.GetPurchasesFilter;
     end;
 
+    trigger OnAfterGetRecord()
+    begin
+        CurrPage.EDITABLE("Status App" < "Status App"::Approve);
+    end;
+
     trigger OnAfterGetCurrRecord()
     begin
 
@@ -673,15 +678,9 @@ page 70000 "Purchase Order App"
         CalcFields("Exists Attachment");
         ShowDocEnabled := "Exists Attachment";
 
-        CurrPage.EDITABLE("Status App" < "Status App"::Approve);
-        IF "Status App" = "Status App"::Request THEN
-            CurrPage.EDITABLE(TRUE);
-
         IWPlanRepayDateMandatory := Rec."Payment Type" = Rec."Payment Type"::"pre-pay";
 
         PaymentTypeEditable := "Status App" < "Status App"::Checker;
-
-        CurrPage.Update();
     end;
 
     trigger OnDeleteRecord(): Boolean
