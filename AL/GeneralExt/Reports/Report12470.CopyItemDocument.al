@@ -1,4 +1,4 @@
-// NC 54882 AB: сделал проставление параметров как надо.
+// NC 54882 AB: сделал проставление параметров как надо и добавил прямое перемещение
 report 82470 "Copy Item Document (Ext)"
 {
     Caption = 'Copy Item Document (new)';
@@ -110,6 +110,20 @@ report 82470 "Copy Item Document (Ext)"
                     DocType::"Posted Shipment":
                         if FromItemShptHeader.Get(DocNo) then
                             FromItemDocHeader.TransferFields(FromItemShptHeader);
+                    // NC 54882 AB >>
+                    DocType::PostPurchInvoice:
+                        if FromPurchInvHeader.Get(DocNo) then
+                            ;
+                    DocType::PostTransferRcpt:
+                        if FromTransferRcptHdr.Get(DocNo) then
+                            ;
+                    DocType::PostPurchReceipt:
+                        if FromPurchRcptHeader.Get(DocNo) then
+                            ;
+                    DocType::PostDirTransfer:
+                        if FromDirTransHeader.Get(DocNo) then
+                            ;
+                // NC 54882 AB <<
                 end;
                 if FromItemDocHeader."No." = '' then
                     DocNo := '';
@@ -123,19 +137,185 @@ report 82470 "Copy Item Document (Ext)"
     }
 
     trigger OnPreReport()
-    var
-        dimMgt: Codeunit "DimensionManagement";
-        dimSetIds: array[10] of integer;
     begin
-        // NC 51415 > EP
-        // Заменил if..else на case of
+        // NC 54882 AB >>
+        if ProcessAddDocTypes then
+            CurrReport.Break();
+        // NC 54882 AB <<
+
+        CopyItemDocMgt.SetProperties(IncludeHeader, RecalculateLines, false, false, AutoFillAppliesFields);
+        CopyItemDocMgt.CopyItemDoc(DocType, DocNo, ItemDocHeader)
+    end;
+
+    var
+        ItemDocHeader: Record "Item Document Header";
+        FromItemDocHeader: Record "Item Document Header";
+        FromItemRcptHeader: Record "Item Receipt Header";
+        FromItemShptHeader: Record "Item Shipment Header";
+        CopyItemDocMgt: Codeunit "Copy Item Document Mgt.";
+        DocType: Option Receipt,Shipment,"Posted Receipt","Posted Shipment",,,"PostPurchInvoice","PostTransferRcpt","PostPurchReceipt","PostDirTransfer";
+        DocNo: Code[20];
+        IncludeHeader: Boolean;
+        RecalculateLines: Boolean;
+        AutoFillAppliesFields: Boolean;
+        LastLineNo: Integer;
+
+        // NC 51415 EP, 54882 AB:
+        ItemDocLine: Record "Item Document Line";
+        FromPurchInvHeader: Record "Purch. Inv. Header";
+        FromPurchInvLine: Record "Purch. Inv. Line";
+        FromTransferRcptHdr: Record "Transfer Receipt Header";
+        FromTransferRcptLine: Record "Transfer Receipt Line";
+        FromPurchRcptHeader: Record "Purch. Rcpt. Header";
+        FromPurchRcptLine: Record "Purch. Rcpt. Line";
+        FromDirTransHeader: Record "Direct Transfer Header";
+        FromDirTransLine: Record "Direct Transfer Line";
+
+        IncludeHeaderEnabled, RecalculateLinesEnabled, AutoFillAppliesFieldsEnabled : boolean;
+
+    [Scope('OnPrem')]
+    procedure SetItemDocHeader(var NewItemDocHeader: Record "Item Document Header")
+    begin
+        ItemDocHeader := NewItemDocHeader;
+    end;
+
+    local procedure ValidateDocNo()
+    begin
+        if DocNo = '' then
+            FromItemDocHeader.Init
+        else
+            if FromItemDocHeader."No." = '' then begin
+                FromItemDocHeader.Init();
+                case DocType of
+                    DocType::Receipt, DocType::Shipment:
+                        FromItemDocHeader.Get(DocType, DocNo);
+                    DocType::"Posted Receipt":
+                        begin
+                            FromItemRcptHeader.Get(DocNo);
+                            FromItemDocHeader.TransferFields(FromItemRcptHeader);
+                        end;
+                    DocType::"Posted Shipment":
+                        begin
+                            FromItemShptHeader.Get(DocNo);
+                            FromItemDocHeader.TransferFields(FromItemShptHeader);
+                        end;
+                    // NC 54882 AB >>
+                    DocType::PostPurchInvoice:
+                        FromPurchInvHeader.Get(DocNo);
+                    DocType::PostTransferRcpt:
+                        FromTransferRcptHdr.Get(DocNo);
+                    DocType::PostPurchReceipt:
+                        FromPurchRcptHeader.Get(DocNo);
+                    DocType::PostDirTransfer:
+                        FromDirTransHeader.Get(DocNo);
+                // NC 54882 AB <<
+                end;
+            end;
+        FromItemDocHeader."No." := '';
+
+        IncludeHeader := true;
+
+        // NC 51415 > EP, 54882 AB
+        IncludeHeader := DocType <= DocType::"Posted Shipment";
+        IncludeHeaderEnabled := DocType <= DocType::"Posted Shipment";
+        // NC 51415 < EP, 54882 AB
+
+        ValidateIncludeHeader;
+    end;
+
+    local procedure LookupDocNo()
+    begin
         case DocType of
-            DocType::"Posted Transfer Rcpt.":
+            DocType::Receipt,
+            DocType::Shipment:
                 begin
-                    // SWC806 AK 230316 >>
-                    // NC 51415 > EP
+                    FromItemDocHeader.FilterGroup := 2;
+                    FromItemDocHeader.SetRange("Document Type", DocType);
+                    if ItemDocHeader."Document Type" = DocType then
+                        FromItemDocHeader.SetFilter("No.", '<>%1', ItemDocHeader."No.");
+                    FromItemDocHeader.FilterGroup := 0;
+                    FromItemDocHeader."Document Type" := DocType;
+                    FromItemDocHeader."No." := DocNo;
+                    if DocType = DocType::Receipt then begin
+                        if PAGE.RunModal(PAGE::"Item Receipts", FromItemDocHeader, FromItemDocHeader."No.") = ACTION::LookupOK then
+                            DocNo := FromItemDocHeader."No.";
+                    end else begin
+                        if PAGE.RunModal(PAGE::"Item Shipments", FromItemDocHeader, FromItemDocHeader."No.") = ACTION::LookupOK then
+                            DocNo := FromItemDocHeader."No.";
+                    end;
+                end;
+            DocType::"Posted Receipt":
+                begin
+                    FromItemRcptHeader."No." := DocNo;
+                    if PAGE.RunModal(0, FromItemRcptHeader) = ACTION::LookupOK then
+                        DocNo := FromItemRcptHeader."No.";
+                end;
+            DocType::"Posted Shipment":
+                begin
+                    FromItemShptHeader."No." := DocNo;
+                    if PAGE.RunModal(0, FromItemShptHeader) = ACTION::LookupOK then
+                        DocNo := FromItemShptHeader."No.";
+                end;
+
+            // NC 51415 > EP, 54882 AB
+            DocType::PostPurchInvoice:
+                BEGIN
+                    FromPurchInvHeader."No." := DocNo;
+                    IF Page.RUNMODAL(0, FromPurchInvHeader) = ACTION::LookupOK THEN
+                        DocNo := FromPurchInvHeader."No.";
+                END;
+            DocType::PostTransferRcpt:
+                BEGIN
+                    FromTransferRcptHdr."No." := DocNo;
+                    IF Page.RUNMODAL(0, FromTransferRcptHdr) = ACTION::LookupOK THEN
+                        DocNo := FromTransferRcptHdr."No.";
+                END;
+            DocType::PostPurchReceipt:
+                BEGIN
+                    FromPurchRcptHeader."No." := DocNo;
+                    IF Page.RUNMODAL(0, FromPurchRcptHeader) = ACTION::LookupOK THEN
+                        DocNo := FromPurchRcptHeader."No.";
+                END;
+            DocType::PostDirTransfer:
+                BEGIN
+                    FromDirTransHeader."No." := DocNo;
+                    IF Page.RUNMODAL(0, FromDirTransHeader) = ACTION::LookupOK THEN
+                        DocNo := FromDirTransHeader."No.";
+                END;
+        // NC 51415 > EP, 54882 AB
+        end;
+        ValidateDocNo;
+    end;
+
+    local procedure ValidateIncludeHeader()
+    begin
+        RecalculateLines :=
+          not IncludeHeader;
+
+        // NC 51415 > EP, 54882 AB
+        RecalculateLinesEnabled := true;
+        AutoFillAppliesFields := true;
+        if DocType > DocType::"Posted Shipment" then begin
+            RecalculateLines := false;
+            RecalculateLinesEnabled := false;
+            AutoFillAppliesFields := false;
+        end else
+            if (ItemDocHeader."Document Type" = ItemDocHeader."Document Type"::Shipment) or
+               (DocType in [DocType::Shipment, DocType::"Posted Shipment"])
+            then begin
+                RecalculateLines := true;
+                RecalculateLinesEnabled := false;
+            end;
+        // NC 51415 < EP, 54882 AB
+    end;
+
+    local procedure ProcessAddDocTypes(): Boolean
+    begin
+        // NC 51415 > EP, 54882 AB
+        case DocType of
+            DocType::PostTransferRcpt:
+                begin
                     if FromTransferRcptHdr."Transfer-to Code" <> '' then
-                        // NC 51415 < EP
                         ItemDocHeader.VALIDATE("Location Code", FromTransferRcptHdr."Transfer-to Code");
                     ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromTransferRcptHdr."Shortcut Dimension 1 Code");
                     ItemDocHeader.VALIDATE("Shortcut Dimension 2 Code", FromTransferRcptHdr."Shortcut Dimension 2 Code");
@@ -169,23 +349,15 @@ report 82470 "Copy Item Document (Ext)"
                             ItemDocLine.VALIDATE(Description, FromTransferRcptLine.Description);
                             ItemDocLine.MODIFY(TRUE);
 
-
                             CopyDims(ItemDocLine, FromTransferRcptLine."Dimension Set ID");
-                        //CopyDims(DATABASE::"Transfer Receipt Line",
-                        //  FromTransferRcptLine."Document No.", FromTransferRcptLine."Line No.");
-                        UNTIL
-                          FromTransferRcptLine.NEXT = 0;
-                    // SWC806 AK 230316 <<
+                        UNTIL FromTransferRcptLine.NEXT = 0;
                 end;
-            DocType::"Purch. Rcpt. Header":
+            DocType::PostPurchReceipt:
                 begin
-                    //NC 22512 > DP
                     ItemDocHeader."Posting Date" := FromPurchRcptHeader."Posting Date";
                     ItemDocHeader."Document Date" := FromPurchRcptHeader."Posting Date";
 
-                    // NC 51415 > EP
                     if FromPurchRcptHeader."Location Code" <> '' then
-                        // NC 51415 < EP
                         ItemDocHeader.Validate("Location Code", FromPurchRcptHeader."Location Code");
                     ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromPurchRcptHeader."Shortcut Dimension 1 Code");
                     ItemDocHeader.VALIDATE("Shortcut Dimension 2 Code", FromPurchRcptHeader."Shortcut Dimension 2 Code");
@@ -224,248 +396,106 @@ report 82470 "Copy Item Document (Ext)"
                             ItemDocLine.MODIFY(TRUE);
 
                             CopyDims(ItemDocLine, FromPurchRcptLine."Dimension Set ID");
-                        //CopyDims(DATABASE::"Purch. Rcpt. Line",
-                        //  FromPurchRcptLine."Document No.", FromPurchRcptLine."Line No.");
                         UNTIL FromPurchRcptLine.NEXT = 0;
-                    //NC 22512 < DP
                 end;
-            DocType::"Post.Purch.Invoice":
+            DocType::PostPurchInvoice:
                 begin
-                    //NCC0002 CITRU\ROMB 01.12.11 >
-                    ItemDocHeader."Location Code" := PurchInvHeader."Location Code";
-                    ItemDocHeader."Posting Date" := PurchInvHeader."Posting Date";
-                    ItemDocHeader."Document Date" := PurchInvHeader."Posting Date";
-                    ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", PurchInvHeader."Shortcut Dimension 1 Code");
+                    ItemDocHeader."Location Code" := FromPurchInvHeader."Location Code";
+                    ItemDocHeader."Posting Date" := FromPurchInvHeader."Posting Date";
+                    ItemDocHeader."Document Date" := FromPurchInvHeader."Posting Date";
+                    ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromPurchInvHeader."Shortcut Dimension 1 Code");
                     ItemDocHeader.MODIFY;
+
                     ItemDocLine.RESET;
                     ItemDocLine.SETRANGE("Document Type", ItemDocHeader."Document Type");
                     ItemDocLine.SETRANGE("Document No.", ItemDocHeader."No.");
                     IF NOT (ItemDocLine.FINDLAST) THEN
                         ItemDocLine."Line No." := 0;
                     LastLineNo := ItemDocLine."Line No.";
-                    PurchInvLine.RESET;
-                    PurchInvLine.SETRANGE("Document No.", PurchInvHeader."No.");
-                    PurchInvLine.SETRANGE(Type, PurchInvLine.Type::Item);
-                    IF PurchInvLine.FINDSET THEN
+
+                    FromPurchInvLine.RESET;
+                    FromPurchInvLine.SETRANGE("Document No.", FromPurchInvHeader."No.");
+                    FromPurchInvLine.SETRANGE(Type, FromPurchInvLine.Type::Item);
+                    IF FromPurchInvLine.FINDSET THEN
                         REPEAT
                             ItemDocLine.INIT;
                             ItemDocLine."Document Type" := ItemDocHeader."Document Type";
                             ItemDocLine."Document No." := ItemDocHeader."No.";
                             LastLineNo += 10000;
                             ItemDocLine."Line No." := LastLineNo;
-                            ItemDocLine.VALIDATE("Item No.", PurchInvLine."No.");
+                            ItemDocLine.VALIDATE("Item No.", FromPurchInvLine."No.");
                             ItemDocLine.INSERT(TRUE);
-                            // MC IK 20120823 >>
-                            ItemDocLine.VALIDATE("Location Code", PurchInvLine."Location Code");
-                            // MC IK 20120823 <<
-                            ItemDocLine.VALIDATE(Quantity, PurchInvLine.Quantity);
+                            ItemDocLine.VALIDATE("Location Code", FromPurchInvLine."Location Code");
+                            ItemDocLine.VALIDATE(Quantity, FromPurchInvLine.Quantity);
 
                             //?
                             /*ValueEntry.RESET;
-                            ValueEntry.SETRANGE("Document No.", PurchInvLine."Document No.");
-                            ValueEntry.SETRANGE("Document Line No.", PurchInvLine."Line No.");
-                            ValueEntry.SETRANGE("Posting Date", PurchInvHeader."Posting Date");
+                            ValueEntry.SETRANGE("Document No.", FromPurchInvLine."Document No.");
+                            ValueEntry.SETRANGE("Document Line No.", FromPurchInvLine."Line No.");
+                            ValueEntry.SETRANGE("Posting Date", FromPurchInvHeader."Posting Date");
                             ValueEntry.FINDFIRST;
                             ItemDocLine."Applies-to Entry" := ValueEntry."Item Ledger Entry No.";*/
                             //?
 
-                            ItemDocLine.VALIDATE("Shortcut Dimension 1 Code", PurchInvLine."Shortcut Dimension 1 Code");
-                            ItemDocLine.VALIDATE("Shortcut Dimension 2 Code", PurchInvLine."Shortcut Dimension 2 Code");
-                            ItemDocLine.VALIDATE("Unit of Measure Code", PurchInvLine."Unit of Measure Code");
-                            ItemDocLine.VALIDATE("Unit Amount", PurchInvLine."Direct Unit Cost");
-                            ItemDocLine.VALIDATE("Unit Cost", PurchInvLine."Direct Unit Cost");
-                            ItemDocLine.Description := PurchInvLine.Description;
+                            ItemDocLine.VALIDATE("Shortcut Dimension 1 Code", FromPurchInvLine."Shortcut Dimension 1 Code");
+                            ItemDocLine.VALIDATE("Shortcut Dimension 2 Code", FromPurchInvLine."Shortcut Dimension 2 Code");
+                            ItemDocLine.VALIDATE("Unit of Measure Code", FromPurchInvLine."Unit of Measure Code");
+                            ItemDocLine.VALIDATE("Unit Amount", FromPurchInvLine."Direct Unit Cost");
+                            ItemDocLine.VALIDATE("Unit Cost", FromPurchInvLine."Direct Unit Cost");
+                            ItemDocLine.Description := FromPurchInvLine.Description;
                             ItemDocLine.MODIFY;
 
-                            CopyDims(ItemDocLine, PurchInvLine."Dimension Set ID");
-                        //CopyDims(DATABASE::"Purch. Inv. Line",
-                        // PurchInvLine."Document No.",  // SWC806 AK 230316
-                        //PurchInvLine."Line No.");
-                        UNTIL PurchInvLine.NEXT = 0;
-                    //NCC0002 CITRU\ROMB 01.12.11 <
+                            CopyDims(ItemDocLine, FromPurchInvLine."Dimension Set ID");
+                        UNTIL FromPurchInvLine.NEXT = 0;
+
                 end;
-            else begin
-                    // NC 51415 EP
-                    //  для стандартных значений DocType: Receipt,Shipment,"Posted Receipt","Posted Shipment"
-                    CopyItemDocMgt.SetProperties(IncludeHeader, RecalculateLines, false, false, AutoFillAppliesFields);
-                    CopyItemDocMgt.CopyItemDoc(DocType, DocNo, ItemDocHeader);
+            DocType::PostDirTransfer:
+                begin
+                    if FromDirTransHeader."Transfer-to Code" <> '' then
+                        ItemDocHeader.VALIDATE("Location Code", FromDirTransHeader."Transfer-to Code");
+                    ItemDocHeader.VALIDATE("Shortcut Dimension 1 Code", FromDirTransHeader."Shortcut Dimension 1 Code");
+                    ItemDocHeader.VALIDATE("Shortcut Dimension 2 Code", FromDirTransHeader."Shortcut Dimension 2 Code");
+                    ItemDocHeader.MODIFY(TRUE);
+
+                    LastLineNo := 0;
+                    ItemDocLine.RESET;
+                    ItemDocLine.SETRANGE("Document Type", ItemDocHeader."Document Type");
+                    ItemDocLine.SETRANGE("Document No.", ItemDocHeader."No.");
+                    IF ItemDocLine.FINDLAST THEN
+                        LastLineNo := ItemDocLine."Line No.";
+
+                    FromDirTransLine.RESET;
+                    FromDirTransLine.SETRANGE("Document No.", FromDirTransHeader."No.");
+                    IF FromDirTransLine.FINDSET THEN
+                        REPEAT
+                            LastLineNo += 10000;
+
+                            ItemDocLine.INIT;
+                            ItemDocLine."Document Type" := ItemDocHeader."Document Type";
+                            ItemDocLine."Document No." := ItemDocHeader."No.";
+                            ItemDocLine."Line No." := LastLineNo;
+                            ItemDocLine.INSERT(TRUE);
+
+                            ItemDocLine.VALIDATE("Item No.", FromDirTransLine."Item No.");
+                            ItemDocLine.VALIDATE("Location Code", FromDirTransLine."Transfer-to Code");
+                            ItemDocLine.VALIDATE("Shortcut Dimension 1 Code", FromDirTransLine."Shortcut Dimension 1 Code");
+                            ItemDocLine.VALIDATE("Shortcut Dimension 2 Code", FromDirTransLine."Shortcut Dimension 2 Code");
+                            ItemDocLine.VALIDATE(Quantity, FromDirTransLine.Quantity);
+                            ItemDocLine.VALIDATE("Unit of Measure Code", FromDirTransLine."Unit of Measure Code");
+                            ItemDocLine.VALIDATE(Description, FromDirTransLine.Description);
+                            ItemDocLine.MODIFY(TRUE);
+
+                            CopyDims(ItemDocLine, FromDirTransLine."Dimension Set ID");
+                        UNTIL FromDirTransLine.NEXT = 0;
                 end;
+            else
+                exit(false);
         end;
-        // NC 51415 < EP
+        exit(true);
+        // NC 51415 < EP, 54882 AB
     end;
 
-    var
-        ItemDocHeader: Record "Item Document Header";
-        FromItemDocHeader: Record "Item Document Header";
-        FromItemRcptHeader: Record "Item Receipt Header";
-        FromItemShptHeader: Record "Item Shipment Header";
-        CopyItemDocMgt: Codeunit "Copy Item Document Mgt.";
-        DocType: Option Receipt,Shipment,"Posted Receipt","Posted Shipment",,,"Post.Purch.Invoice","Posted Transfer Rcpt.","Purch. Rcpt. Header","Posted Direct Transfer";
-        DocNo: Code[20];
-        IncludeHeader: Boolean;
-        RecalculateLines: Boolean;
-        AutoFillAppliesFields: Boolean;
-        PurchInvHeader: Record "Purch. Inv. Header";
-        PurchInvLine: Record "Purch. Inv. Line";
-        ItemDocLine: Record "Item Document Line";
-        LastLineNo: Integer;
-        FromTransferRcptHdr: Record "Transfer Receipt Header";
-        FromTransferRcptLine: Record "Transfer Receipt Line";
-        FromPurchRcptHeader: Record "Purch. Rcpt. Header";
-        FromPurchRcptLine: Record "Purch. Rcpt. Line";
-        // NC 51415 EP, 54882 AB:
-        IncludeHeaderEnabled, RecalculateLinesEnabled, AutoFillAppliesFieldsEnabled : boolean;
-
-    [Scope('OnPrem')]
-    procedure SetItemDocHeader(var NewItemDocHeader: Record "Item Document Header")
-    begin
-        ItemDocHeader := NewItemDocHeader;
-    end;
-
-    local procedure ValidateDocNo()
-    begin
-        if DocNo = '' then
-            FromItemDocHeader.Init
-        else
-            if FromItemDocHeader."No." = '' then begin
-                FromItemDocHeader.Init();
-                case DocType of
-                    DocType::Receipt,
-                  DocType::Shipment:
-                        FromItemDocHeader.Get(DocType, DocNo);
-                    DocType::"Posted Receipt":
-                        begin
-                            FromItemRcptHeader.Get(DocNo);
-                            FromItemDocHeader.TransferFields(FromItemRcptHeader);
-                        end;
-                    DocType::"Posted Shipment":
-                        begin
-                            FromItemShptHeader.Get(DocNo);
-                            FromItemDocHeader.TransferFields(FromItemShptHeader);
-                        end;
-                    //NC 22512 > DP
-                    DocType::"Purch. Rcpt. Header":
-                        BEGIN
-                            FromPurchRcptHeader.GET(DocNo);
-                        END;
-                //NC 22512 < DP
-                end;
-            end;
-        FromItemDocHeader."No." := '';
-
-        //NCC0002 CITRU\ROMB 01.12.11 >
-        IF (DocType = DocType::"Post.Purch.Invoice") AND (DocNo <> '') THEN
-            PurchInvHeader.GET(DocNo);
-        //NCC0002 CITRU\ROMB 01.12.11 <
-
-        // SWC806 AK 230316 >>
-        IF DocType = DocType::"Posted Transfer Rcpt." THEN
-            IF NOT FromTransferRcptHdr.GET(DocNo) THEN
-                CLEAR(FromTransferRcptHdr);
-        // SWC806 AK 230316 <<
-
-        IncludeHeader := true;
-        ValidateIncludeHeader;
-
-        /*
-                // NC 51415 > EP
-                if DocType in [DocType::Receipt, DocType::Shipment,
-                               DocType::"Posted Receipt", DocType::"Posted Shipment"] then
-                    // Для стандартных типов документов
-                    AreOptionFieldsEnabled := true
-                else
-                    // Для кастомных типов значения в полях ReqPage не влияют на обработку
-                    AreOptionFieldsEnabled := false;
-                // NC 51415 < EP
-
-        */
-    end;
-
-    local procedure LookupDocNo()
-    begin
-        case DocType of
-            DocType::Receipt,
-            DocType::Shipment:
-                begin
-                    FromItemDocHeader.FilterGroup := 2;
-                    FromItemDocHeader.SetRange("Document Type", DocType);
-                    if ItemDocHeader."Document Type" = DocType then
-                        FromItemDocHeader.SetFilter("No.", '<>%1', ItemDocHeader."No.");
-                    FromItemDocHeader.FilterGroup := 0;
-                    FromItemDocHeader."Document Type" := DocType;
-                    FromItemDocHeader."No." := DocNo;
-                    if DocType = DocType::Receipt then begin
-                        if PAGE.RunModal(PAGE::"Item Receipts", FromItemDocHeader, FromItemDocHeader."No.") = ACTION::LookupOK then
-                            DocNo := FromItemDocHeader."No.";
-                    end else begin
-                        if PAGE.RunModal(PAGE::"Item Shipments", FromItemDocHeader, FromItemDocHeader."No.") = ACTION::LookupOK then
-                            DocNo := FromItemDocHeader."No.";
-                    end;
-                end;
-            DocType::"Posted Receipt":
-                begin
-                    FromItemRcptHeader."No." := DocNo;
-                    if PAGE.RunModal(0, FromItemRcptHeader) = ACTION::LookupOK then
-                        DocNo := FromItemRcptHeader."No.";
-                end;
-            DocType::"Posted Shipment":
-                begin
-                    FromItemShptHeader."No." := DocNo;
-                    if PAGE.RunModal(0, FromItemShptHeader) = ACTION::LookupOK then
-                        DocNo := FromItemShptHeader."No.";
-                end;
-
-            //NCC0002 CITRU\ROMB 01.12.11 >
-            DocType::"Post.Purch.Invoice":
-                BEGIN
-                    PurchInvHeader."No." := DocNo;
-                    IF page.RUNMODAL(0, PurchInvHeader) = ACTION::LookupOK THEN
-                        DocNo := PurchInvHeader."No.";
-                END;
-            //NCC0002 CITRU\ROMB 01.12.11 <
-
-            // SWC806 AK 230316 >>
-            DocType::"Posted Transfer Rcpt.":
-                BEGIN
-                    FromTransferRcptHdr."No." := DocNo;
-                    IF page.RUNMODAL(0, FromTransferRcptHdr) = ACTION::LookupOK THEN
-                        DocNo := FromTransferRcptHdr."No.";
-                END;
-            // SWC806 AK 230316 <<
-            //NC 22512 > DP
-            DocType::"Purch. Rcpt. Header":
-                BEGIN
-                    FromPurchRcptHeader."No." := DocNo;
-                    IF page.RUNMODAL(0, FromPurchRcptHeader) = ACTION::LookupOK THEN
-                        DocNo := FromPurchRcptHeader."No.";
-                END;
-        //NC 22512 < DP
-        end;
-        ValidateDocNo;
-    end;
-
-    local procedure ValidateIncludeHeader()
-    begin
-        RecalculateLines :=
-          not IncludeHeader;
-
-        //NCC0002 CITRU\ROMB 01.12.11 >
-        IF (DocType = DocType::"Post.Purch.Invoice")
-           OR (DocType = DocType::"Posted Transfer Rcpt.")  // SWC806 AK 230316
-           OR (DocType = DocType::"Purch. Rcpt. Header")    //NC 22512 DP
-        THEN BEGIN
-            // SWC816 AK 110516 >>
-            // ItemDocHeader.TESTFIELD("Document Type", ItemDocHeader."Document Type"::Shipment);
-            // либо надо снимать SaveValues на форме, не могу акт оприх. копированием создать
-            // SWC816 AK 110516 <<
-            IncludeHeader := FALSE;
-            RecalculateLines := FALSE;
-            AutoFillAppliesFields := FALSE;
-        END;
-        //NCC0002 CITRU\ROMB 01.12.11 <
-    end;
-
-    procedure CopyDims(var idl: Record "Item Document Line"; srcDimSetId: integer)
+    local procedure CopyDims(var idl: Record "Item Document Line"; srcDimSetId: integer)
     var
         dimSetIds: array[10] of Integer;
         dimMgt: Codeunit DimensionManagement;
