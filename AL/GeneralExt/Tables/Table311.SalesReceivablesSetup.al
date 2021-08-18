@@ -41,6 +41,11 @@ tableextension 80311 "Sales & Receiv. Setup (Ext)" extends "Sales & Receivables 
             Caption = 'Posted Proforma-Invoice Template Code';
             TableRelation = "Excel Template";
         }
+        field(50101; "Posted Act PerfWork Templ Code"; Code[20])
+        {
+            Caption = 'Posted Act Performed Work Template Code';
+            TableRelation = "Excel Template";
+        }
         field(70000; "Building Act Nos."; Code[10])
         {
             TableRelation = "No. Series";
