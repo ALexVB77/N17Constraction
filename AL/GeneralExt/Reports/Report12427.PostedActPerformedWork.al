@@ -3,11 +3,11 @@ report 92427 "Posted Act Performed Work"
     UsageCategory = Administration;
     ApplicationArea = All;
     Caption = 'Posted Act Performed Work';
-    DefaultLayout = Word;
-    WordLayout = './Reports/Layouts/Posted ActPerformedWork.docx';
-    PreviewMode = PrintLayout;
-    WordMergeDataItem = Header;
-
+    // DefaultLayout = Word;
+    // WordLayout = './Reports/Layouts/Posted ActPerformedWork.docx';
+    // PreviewMode = PrintLayout;
+    // WordMergeDataItem = Header;
+    ProcessingOnly = true;
     dataset
     {
         dataitem(Header; "Sales Invoice Header")
@@ -377,11 +377,16 @@ report 92427 "Posted Act Performed Work"
                         ApplicationArea = All;
                         Caption = 'Log Interaction';
                     }
+                    field(ActType; ActType)
+                    {
+                        Caption = 'Act Type';
+                    }
                     field(ExportExcel; ExportExcel)
                     {
                         ApplicationArea = All;
                         Caption = 'Export Excel';
                     }
+
                 }
             }
         }
@@ -409,6 +414,16 @@ report 92427 "Posted Act Performed Work"
         END;
     end;
 
+    trigger OnPostReport()
+    begin
+        if ExportExcel then begin
+            EB.SetFriendlyFilename('Posted Act Performed Work');
+            EB.UpdateBook(Filename, 'Sheet1');
+            EB.WriteSheet('Posted Act Performed Work', CompanyName, UserId);
+            EB.CloseBook();
+            EB.OpenExcel();
+        end;
+    end;
 
     var
 

@@ -14491,189 +14491,168 @@
           <source>Posted Act Performed Work</source>
           <target>Учт. акт выполненных работ</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;Integer Thousand&gt;&lt;Decimals,</source>
           <target>Integer Thousand&gt;&lt;Decimals,</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Менеджер</source>
           <target>Менеджер</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
           <source>Покупатель</source>
           <target>Покупатель</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text003</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
           <source>Продавец</source>
           <target>Продавец</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text004</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
           <source>Курс</source>
           <target>Курс</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text005</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
           <source>Сумма\РУБ</source>
           <target>Сумма\РУБ</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text006</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
           <source>Скидка\%%</source>
           <target>Скидка\%%</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text007</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 3283546407" size-unit="char" translate="yes" xml:space="preserve">
           <source>Цена\РУБ</source>
           <target>Цена\РУБ</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text008</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve">
           <source>Цена\</source>
           <target>Цена\</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text009</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve">
           <source>Сумма</source>
           <target>Сумма</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text010</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 1026443335" size-unit="char" translate="yes" xml:space="preserve">
           <source>Цена</source>
           <target>Цена</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text011</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 2939533186" size-unit="char" translate="yes" xml:space="preserve">
           <source>ИНН %1</source>
           <target>ИНН %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text012</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 2301836569" size-unit="char" translate="yes" xml:space="preserve">
           <source>%2. Стр. %1</source>
           <target>%2. Стр. %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text013</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 4214926420" size-unit="char" translate="yes" xml:space="preserve">
           <source>СЧЕТ %1 ПО ЗАКАЗУ № %2</source>
           <target>СЧЕТ %1 ПО ЗАКАЗУ № %2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text014</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 3577229803" size-unit="char" translate="yes" xml:space="preserve">
           <source>СЧЕТ № %1 (%2)</source>
           <target>СЧЕТ № %1 (%2)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text015</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 219837695" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1 от %2</source>
           <target>%1 от %2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text019</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 1940672225" size-unit="char" translate="yes" xml:space="preserve">
           <source>Для Клиент Но. %1 не задан Банковский Счет.</source>
           <target>Для Клиент Но. %1 не задан Банковский Счет.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text020</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 977367011" size-unit="char" translate="yes" xml:space="preserve">
           <source>Мы, нижеподписавшиеся, составили настоящий Акт о том, что результаты работ удовлетворяют условиям Договора %1 от %2 и в надлежащем порядке оформлены.</source>
           <target>Мы, нижеподписавшиеся, составили настоящий Акт о том, что результаты работ удовлетворяют условиям Договора %1 от %2 и в надлежащем порядке оформлены.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text14809</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 3234470083" size-unit="char" translate="yes" xml:space="preserve">
           <source>Мы, нижеподписавшиеся, составили настоящий Акт о том, что результаты работ удовлетворяют условиям Договора и в надлежащем порядке оформлены.</source>
           <target>Мы, нижеподписавшиеся, составили настоящий Акт о том, что результаты работ удовлетворяют условиям Договора и в надлежащем порядке оформлены.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text14810</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 781450499" size-unit="char" translate="yes" xml:space="preserve">
           <source>Мы, нижеподписавшиеся, составили настоящий Акт о том, что %3 удовлетворяют условиям Договора %1 от %2 и в надлежащем порядке оформлены.</source>
           <target>Мы, нижеподписавшиеся, составили настоящий Акт о том, что %3 удовлетворяют условиям Договора %1 от %2 и в надлежащем порядке оформлены.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text50809</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - NamedType 3017765219" size-unit="char" translate="yes" xml:space="preserve">
           <source>Мы, нижеподписавшиеся, составили настоящий Акт о том, что %1 удовлетворяют условиям Договора и в надлежащем порядке оформлены.</source>
           <target>Мы, нижеподписавшиеся, составили настоящий Акт о том, что %1 удовлетворяют условиям Договора и в надлежащем порядке оформлены.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text50810</note>
+        </trans-unit>
+        <trans-unit id="Report 885344026 - Control 794488730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act Type</source>
+          <target>Вид акта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - Control ActType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - Control 648353892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copies Number</source>
           <target>Число Копий</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - Control CopiesNumber - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - Control 2260021890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency</source>
           <target>Валюта</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - Control CurrencyPriceAmount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - Control 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export Excel</source>
           <target>Выгрузить в  Excel</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - Control ExportExcel - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log Interaction</source>
           <target>Регистрировать взаимодействие</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - Control LogInteraction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 885344026 - Control 4291959338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Show Discount</source>
           <target>Показать скидки</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - Control ShowDiscount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2639967622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -17518,7 +17497,6 @@
           <source>Posted Act Performed Work Template Code</source>
           <target>Код шаблона Учт. Акт Выполненных работ</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Posted Act PerfWork Templ Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2733905579 - Field 2341487639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">

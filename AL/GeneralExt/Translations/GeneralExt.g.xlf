@@ -12183,6 +12183,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - NamedType Text50810</note>
         </trans-unit>
+        <trans-unit id="Report 885344026 - Control 794488730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Posted Act Performed Work - Control ActType - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 885344026 - Control 648353892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copies Number</source>
           <note from="Developer" annotates="general" priority="2"></note>
