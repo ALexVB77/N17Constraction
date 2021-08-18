@@ -1,3 +1,4 @@
+// NC 54882 AB: сделал проставление параметров как надо.
 report 82470 "Copy Item Document GE"
 {
     Caption = 'Copy Item Document (new)';
@@ -52,10 +53,9 @@ report 82470 "Copy Item Document GE"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Include Header';
                         ToolTip = 'Specifies if you want to copy information from the document header you are copying.';
-
-                        // NC 51415 > EP
-                        Enabled = AreOptionFieldsEnabled;
-                        // NC 51415 < EP
+                        // NC 51415 > EP, 54882 AB
+                        Enabled = IncludeHeaderEnabled;
+                        // NC 51415 < EP, 54882 AB
 
                         trigger OnValidate()
                         begin
@@ -67,23 +67,23 @@ report 82470 "Copy Item Document GE"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Recalculate Lines';
                         ToolTip = 'Specifies that lines are recalculate and inserted on the document you are creating. The batch job retains the item numbers and item quantities but recalculates the amounts on the lines based on the customer information on the new document header.';
-
-                        // NC 51415 > EP
-                        Enabled = AreOptionFieldsEnabled;
-                        // NC 51415 < EP
+                        // NC 51415 > EP, 54882 AB
+                        Enabled = RecalculateLinesEnabled;
+                        // NC 51415 < EP, 54882 AB
 
                         trigger OnValidate()
                         begin
-                            RecalculateLines := true;
+                            // NC 54882 AB >>
+                            // RecalculateLines := true;
+                            // NC 54882 AB <<
                         end;
                     }
                     field(AutoFillAppliesFields; AutoFillAppliesFields)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Specify appl. entries';
-
                         // NC 51415 > EP
-                        Enabled = AreOptionFieldsEnabled;
+                        Enabled = AutoFillAppliesFieldsEnabled;
                         // NC 51415 < EP
                     }
                 }
@@ -300,7 +300,7 @@ report 82470 "Copy Item Document GE"
         FromItemRcptHeader: Record "Item Receipt Header";
         FromItemShptHeader: Record "Item Shipment Header";
         CopyItemDocMgt: Codeunit "Copy Item Document Mgt.";
-        DocType: Option Receipt,Shipment,"Posted Receipt","Posted Shipment",,,"Post.Purch.Invoice","Posted Transfer Rcpt.","Purch. Rcpt. Header";
+        DocType: Option Receipt,Shipment,"Posted Receipt","Posted Shipment",,,"Post.Purch.Invoice","Posted Transfer Rcpt.","Purch. Rcpt. Header","Posted Direct Transfer";
         DocNo: Code[20];
         IncludeHeader: Boolean;
         RecalculateLines: Boolean;
@@ -313,10 +313,8 @@ report 82470 "Copy Item Document GE"
         FromTransferRcptLine: Record "Transfer Receipt Line";
         FromPurchRcptHeader: Record "Purch. Rcpt. Header";
         FromPurchRcptLine: Record "Purch. Rcpt. Line";
-        // NC 51415 > EP
-        [InDataSet]
-        AreOptionFieldsEnabled: Boolean;
-    // NC 51415 < EP
+        // NC 51415 EP, 54882 AB:
+        IncludeHeaderEnabled, RecalculateLinesEnabled, AutoFillAppliesFieldsEnabled : boolean;
 
     [Scope('OnPrem')]
     procedure SetItemDocHeader(var NewItemDocHeader: Record "Item Document Header")
@@ -345,7 +343,6 @@ report 82470 "Copy Item Document GE"
                             FromItemShptHeader.Get(DocNo);
                             FromItemDocHeader.TransferFields(FromItemShptHeader);
                         end;
-
                     //NC 22512 > DP
                     DocType::"Purch. Rcpt. Header":
                         BEGIN
