@@ -15,6 +15,7 @@ page 70000 "Purchase Order App"
             group(General)
             {
                 Caption = 'General';
+                Editable = GlobalEditable;
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
@@ -310,7 +311,7 @@ page 70000 "Purchase Order App"
             {
                 ApplicationArea = All;
                 Editable = "Buy-from Vendor No." <> '';
-                Enabled = "Buy-from Vendor No." <> '';
+                Enabled = ("Buy-from Vendor No." <> '') and GlobalEditable;
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
             }
@@ -318,6 +319,7 @@ page 70000 "Purchase Order App"
             group("Payment Request")
             {
                 Caption = 'Payment Request';
+                Editable = GlobalEditable;
                 field("Vendor Bank Account No."; rec."Vendor Bank Account No.")
                 {
                     ApplicationArea = All;
@@ -352,6 +354,7 @@ page 70000 "Purchase Order App"
             group("Details")
             {
                 Caption = 'Details';
+                Editable = GlobalEditable;
                 field("Buy-from Contact No."; "Buy-from Contact No.")
                 {
                     ApplicationArea = All;
@@ -639,13 +642,6 @@ page 70000 "Purchase Order App"
         "Responsibility Center" := UserMgt.GetPurchasesFilter;
     end;
 
-    trigger OnAfterGetRecord()
-    begin
-        CurrPage.Editable := true;
-        if "Status App" >= "Status App"::Approve then
-            CurrPage.Editable := false;
-    end;
-
     trigger OnAfterGetCurrRecord()
     begin
 
@@ -684,9 +680,7 @@ page 70000 "Purchase Order App"
 
         PaymentTypeEditable := "Status App" < "Status App"::Checker;
 
-        CurrPage.Editable := true;
-        if "Status App" >= "Status App"::Approve then
-            CurrPage.Editable := false;
+        GlobalEditable := "Status App" < "Status App"::Approve;
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -712,7 +706,7 @@ page 70000 "Purchase Order App"
         PaymentOrderMgt: Codeunit "Payment Order Management";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ShowDocEnabled, PaymentTypeEditable : boolean;
+        ShowDocEnabled, PaymentTypeEditable, GlobalEditable : boolean;
         ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled, ArchiveDocEnabled : Boolean;
         IWPlanRepayDateMandatory: Boolean;
         ProblemDescription: text[80];
