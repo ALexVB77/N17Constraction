@@ -1,6 +1,7 @@
 page 70000 "Purchase Order App"
 {
     Caption = 'Purchase Order App';
+    Editable = GlobalEditable;
     PageType = Document;
     PromotedActionCategories = 'New,Process,Report,Order,Function,Print,Request Approval,Approve,Release,Navigate';
     RefreshOnActivate = true;
@@ -681,20 +682,7 @@ page 70000 "Purchase Order App"
 
         PaymentTypeEditable := "Status App" < "Status App"::Checker;
 
-        /*        
-        AppButtonEnabled :=
-            NOT ((UPPERCASE("Process User") <> UPPERCASE(USERID)) AND (UserSetup."Status App Act" <> Rec."Status App Act"));
-        IF "Status App Act" = "Status App Act"::Approve THEN BEGIN
-            ApprovalEntry.SETRANGE("Table ID", Database::"Purchase Header");
-            ApprovalEntry.SETRANGE("Document Type", ApprovalEntry."Document Type"::Order);
-            ApprovalEntry.SETRANGE("Document No.", "No.");
-            ApprovalEntry.SETRANGE("Approver ID", USERID);
-            IF ApprovalEntry.FINDSET THEN
-                AppButtonEnabled := NOT ApprovalEntry.IsEmpty;
-        END;
-        IF "Status App" = "Status App"::Request THEN
-            AppButtonEnabled := TRUE;
-        */
+        GlobalEditable := "Status App" < "Status App"::Approve;
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -720,7 +708,7 @@ page 70000 "Purchase Order App"
         PaymentOrderMgt: Codeunit "Payment Order Management";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ShowDocEnabled, PaymentTypeEditable : boolean;
+        ShowDocEnabled, PaymentTypeEditable, GlobalEditable : boolean;
         ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled, ArchiveDocEnabled : Boolean;
         IWPlanRepayDateMandatory: Boolean;
         ProblemDescription: text[80];
