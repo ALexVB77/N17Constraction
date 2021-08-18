@@ -1401,6 +1401,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ToPurchaseHeader."Linked Purchase Order Act No." := '';
         ToPurchaseHeader."Payment Type" := OldPurchaseHeader."Payment Type";
         ToPurchaseHeader."Problem Document" := false;
+        ToPurchaseHeader."Problem Type" := ToPurchaseHeader."Problem Type"::" ";
 
         ToPurchaseHeader."Act Invoice No." := '';
         ToPurchaseHeader."Act Invoice Posted" := false;
@@ -1413,6 +1414,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
     local procedure OnCopyPurchDocPurchLineOnAfterCopyPurchLine(ToPurchHeader: Record "Purchase Header"; var ToPurchLine: Record "Purchase Line"; FromPurchHeader: Record "Purchase Header"; var FromPurchLine: Record "Purchase Line"; IncludeHeader: Boolean; RecalculateLines: Boolean);
     begin
         ToPurchLine."Forecast Entry" := 0;
+        ToPurchLine.Modify();
     end;
 
 
