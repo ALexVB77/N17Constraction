@@ -6,6 +6,14 @@ pageextension 94901 "Customer Agreement Card (Ext)" extends "Customer Agreement 
         {
             Editable = HasntOpenLedgerEntries;
         }
+
+        addlast(General)
+        {
+            field("Agreement Type"; Rec."Agreement Type")
+            {
+                ApplicationArea = All;
+            }
+        }
     }
 
 
