@@ -1,5 +1,5 @@
 // NC 54882 AB: сделал проставление параметров как надо.
-report 82470 "Copy Item Document GE"
+report 82470 "Copy Item Document (Ext)"
 {
     Caption = 'Copy Item Document (new)';
     ProcessingOnly = true;
@@ -367,15 +367,18 @@ report 82470 "Copy Item Document GE"
         IncludeHeader := true;
         ValidateIncludeHeader;
 
-        // NC 51415 > EP
-        if DocType in [DocType::Receipt, DocType::Shipment,
-                       DocType::"Posted Receipt", DocType::"Posted Shipment"] then
-            // Для стандартных типов документов
-            AreOptionFieldsEnabled := true
-        else
-            // Для кастомных типов значения в полях ReqPage не влияют на обработку
-            AreOptionFieldsEnabled := false;
-        // NC 51415 < EP
+        /*
+                // NC 51415 > EP
+                if DocType in [DocType::Receipt, DocType::Shipment,
+                               DocType::"Posted Receipt", DocType::"Posted Shipment"] then
+                    // Для стандартных типов документов
+                    AreOptionFieldsEnabled := true
+                else
+                    // Для кастомных типов значения в полях ReqPage не влияют на обработку
+                    AreOptionFieldsEnabled := false;
+                // NC 51415 < EP
+
+        */
     end;
 
     local procedure LookupDocNo()
