@@ -12631,84 +12631,72 @@
           <source>Copy Item Document</source>
           <target>Копирование товарного документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>
           <target>Параметры</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control Options - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 574805549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specify appl. entries</source>
           <target>Указать прим. операции</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control AutoFillAppliesFields - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 2738103555 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of the related document.</source>
           <target>Определяет номер связанного документа.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control DocNo - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 2738103555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
           <target>Номер документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control DocNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 3819526884 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the type of the related document.</source>
           <target>Определяет тип связанного документа.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control DocType - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 3819526884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Type</source>
           <target>Тип документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control DocType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 3819526884 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Receipt,Shipment,Posted Receipt,Posted Shipment,,,Posted Purchase Invoice,Posted Transfer Receipt,Posted Purchase Receipt,Posted Direct Transfer</source>
           <target>Прих. накладная,Расх. накладная,Учт. прих. накладная,Учт. расх. накладная,,,Учтенный счет покупки,Учт. прих. накладная на перемещение,Учтенная прих. накладная покупки,Учтенное прямое перемещение</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control DocType - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 2536364149 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want to copy information from the document header you are copying.</source>
           <target>Указывает, нужно ли скопировать информацию из заголовка копируемого документа.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control IncludeHeader - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 2536364149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Include Header</source>
           <target>Включать заголовок</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control IncludeHeader - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 4188008842 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies that lines are recalculate and inserted on the document you are creating. The batch job retains the item numbers and item quantities but recalculates the amounts on the lines based on the customer information on the new document header.</source>
           <target>Указывает, что строки пересчитываются и вставляются в создаваемый документ. Пакетное задание сохраняет номера и количество товаров, но пересчитывает суммы в строках в соответствии с информацией о клиенте в заголовке нового документа.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control RecalculateLines - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 214019713 - Control 4188008842 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Recalculate Lines</source>
           <target>Пересчитать строки</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Copy Item Document (Ext) - Control RecalculateLines - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3584557798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -15303,11 +15291,19 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Inventory Setup (Ext) - Control Another - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1313060217 - Action 59861814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 214241839">
+        <trans-unit id="PageExtension 657115875 - Action 59861814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2989831139">
           <source>Copy Document...</source>
           <target>Копировать документ...</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Item Shipment GE - Action Copy Document - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Item Receipt (Ext) - Action Copy Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2033491119 - Action 59861814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 214241839">
+          <source>Copy Document...</source>
+          <target>Копировать документ...</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Item Shipment (Ext) - Action Copy Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3985024665 - Action 4056321329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 858112265">
           <source>Get Item Ledger Lines</source>
