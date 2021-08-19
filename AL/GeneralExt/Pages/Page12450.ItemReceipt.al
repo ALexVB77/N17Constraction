@@ -1,19 +1,5 @@
-pageextension 92452 "Item Shipment (Ext)" extends "Item Shipment"
+pageextension 92450 "Item Receipt (Ext)" extends "Item Receipt"
 {
-    layout
-    {
-        addafter("Gen. Bus. Posting Group")
-        {
-            field("Vendor No."; Rec."Vendor No.")
-            {
-                ApplicationArea = all;
-            }
-            field("Agreement No."; Rec."Agreement No.")
-            {
-                ApplicationArea = all;
-            }
-        }
-    }
     actions
     {
         addafter("Copy Document...")

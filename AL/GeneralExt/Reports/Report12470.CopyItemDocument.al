@@ -1,6 +1,6 @@
 // NC 54882 AB: сделал проставление параметров как надо и добавил прямое перемещение
 // EP, в отчетах нельзя управлять свойством Enabled контролов параметров, почему - хз.
-report 82470 "Copy Item Document (Ext)"
+report 92470 "Copy Item Document (Ext)"
 {
     Caption = 'Copy Item Document';
     ProcessingOnly = true;

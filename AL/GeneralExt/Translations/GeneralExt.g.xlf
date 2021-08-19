@@ -8323,6 +8323,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Control Additional Info - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1370391159 - Control 2147217700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exists Comments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Control Exists Comments - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1370391159 - Control 3143542455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12763,10 +12768,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Inventory Setup (Ext) - Control Another - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1313060217 - Action 59861814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 214241839">
+        <trans-unit id="PageExtension 657115875 - Action 59861814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2989831139">
           <source>Copy Document...</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Item Shipment GE - Action Copy Document - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Item Receipt (Ext) - Action Copy Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2033491119 - Action 59861814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 214241839">
+          <source>Copy Document...</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Item Shipment (Ext) - Action Copy Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3985024665 - Action 4056321329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 858112265">
           <source>Get Item Ledger Lines</source>

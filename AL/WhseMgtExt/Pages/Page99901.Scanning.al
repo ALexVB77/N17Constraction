@@ -180,7 +180,8 @@ page 99901 Scanning
         ScannedQuantity := '0';
         Quantity := '0';
         UnscannedQty := '0';
-        g_ItemNo := ScanHelper.SetWorkEntryParam;
+        IF g_ItemNo = '' THEN
+            g_ItemNo := ScanHelper.SetWorkEntryParam;
         IF l_Item.GET(g_ItemNo) THEN
             UOM := l_Item."Base Unit of Measure";
         ScanEntry.RESET;

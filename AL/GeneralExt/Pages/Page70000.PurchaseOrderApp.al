@@ -202,11 +202,25 @@ page 70000 "Purchase Order App"
                         CurrPage.PurchaseOrderAppLines.PAGE.UpdateForm(true);
                     end;
                 }
-                field("Pre-Approver"; PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID"))
+                field("Pre-Approver"; PreApproverNo)
                 {
                     ApplicationArea = All;
                     Caption = 'Pre-Approver';
-                    Editable = false;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        UserSetup.Reset;
+                        UserSetup.SetRange("Status App", UserSetup."Status App"::Approve);
+                        if Page.RunModal(Page::"Approval User Setup", UserSetup) = Action::LookupOK then begin
+                            PreApproverNo := UserSetup."User ID";
+                            Validate("Pre-Approver", PreApproverNo);
+                        end;
+                    end;
+
+                    trigger OnValidate()
+                    begin
+                        Validate("Pre-Approver", PreApproverNo);
+                    end;
                 }
                 field("Approver"; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
                 {
@@ -658,6 +672,11 @@ page 70000 "Purchase Order App"
         PaymentAssignmentEnabled := "Payment to Person";
         CopyDocumentEnabled := ("No." <> '') and ("Status App" = "Status App"::Reception);
 
+        if Rec."Pre-Approver" <> '' then
+            PreApproverNo := Rec."Pre-Approver"
+        else
+            PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
+
         ApproveButtonEnabled := FALSE;
         RejectButtonEnabled := FALSE;
         ArchiveDocEnabled := ("No." <> '') and ("Status App" = "Status App"::Payment);
@@ -712,6 +731,7 @@ page 70000 "Purchase Order App"
         ProblemDescription: text[80];
         AddCommentType: enum "Purchase Comment Add. Type";
         TextDelError: Label 'You cannot delete Purchase Order Act %1';
+        PreApproverNo: Code[50];
 
     local procedure SaveInvoiceDiscountAmount()
     var

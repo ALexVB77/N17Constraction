@@ -256,13 +256,20 @@ page 70260 "Purchase Order Act"
                 {
                     ApplicationArea = All;
                     Caption = 'Pre-Approver';
-                    Editable = PreApproverEditable;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        UserSetup.Reset;
+                        UserSetup.SetRange("Status App", UserSetup."Status App"::Approve);
+                        if Page.RunModal(Page::"Approval User Setup", UserSetup) = Action::LookupOK then begin
+                            PreApproverNo := UserSetup."User ID";
+                            Validate("Pre-Approver", PreApproverNo);
+                        end;
+                    end;
 
                     trigger OnValidate()
                     begin
-                        if PreApproverNo <> '' then
-                            TestField("Act Type", "Act Type"::Advance);
-                        "Pre-Approver" := PreApproverNo;
+                        Validate("Pre-Approver", PreApproverNo);
                     end;
                 }
                 field("Approver"; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
@@ -845,11 +852,11 @@ page 70260 "Purchase Order Act"
         EstimatorMandatory := "Act Type" <> "Act Type"::Advance;
         IsEmplPurchase := "Empl. Purchase";
 
-        if "Act Type" = "Act Type"::Advance then
+        if ("Act Type" = "Act Type"::Advance) or (Rec."Pre-Approver" <> '') then
             PreApproverNo := Rec."Pre-Approver"
         else
             PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
-        PreApproverEditable := "Act Type" = "Act Type"::Advance;
+
         GenPrintEnabled := Rec."Location Document";
 
         ProblemDescription := '';
@@ -909,7 +916,7 @@ page 70260 "Purchase Order Act"
         PurchCalcDiscByType: Codeunit "Purch - Calc Disc. By Type";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, PreApproverEditable, GlobalEditable : boolean;
+        ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, GlobalEditable : boolean;
         ShowDocEnabled, EstimatorEnable, CopyDocumentEnabled, GenPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
         EstimatorMandatory, LocationCodeShowMandatory : Boolean;
         StatusStyleTxt, ProblemDescription : Text;
