@@ -256,12 +256,9 @@ page 70260 "Purchase Order Act"
                 {
                     ApplicationArea = All;
                     Caption = 'Pre-Approver';
-                    Editable = PreApproverEditable;
 
                     trigger OnValidate()
                     begin
-                        if PreApproverNo <> '' then
-                            TestField("Act Type", "Act Type"::Advance);
                         "Pre-Approver" := PreApproverNo;
                     end;
                 }
@@ -845,11 +842,11 @@ page 70260 "Purchase Order Act"
         EstimatorMandatory := "Act Type" <> "Act Type"::Advance;
         IsEmplPurchase := "Empl. Purchase";
 
-        if "Act Type" = "Act Type"::Advance then
+        if ("Act Type" = "Act Type"::Advance) or (Rec."Pre-Approver" <> '') then
             PreApproverNo := Rec."Pre-Approver"
         else
             PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
-        PreApproverEditable := "Act Type" = "Act Type"::Advance;
+
         GenPrintEnabled := Rec."Location Document";
 
         ProblemDescription := '';
@@ -909,7 +906,7 @@ page 70260 "Purchase Order Act"
         PurchCalcDiscByType: Codeunit "Purch - Calc Disc. By Type";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, PreApproverEditable, GlobalEditable : boolean;
+        ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, GlobalEditable : boolean;
         ShowDocEnabled, EstimatorEnable, CopyDocumentEnabled, GenPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
         EstimatorMandatory, LocationCodeShowMandatory : Boolean;
         StatusStyleTxt, ProblemDescription : Text;

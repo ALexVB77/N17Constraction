@@ -269,13 +269,10 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         {
             Description = 'NC 51373 AB';
             Caption = 'Pre-Approver';
-            TableRelation = "User Setup";
-
-            trigger OnValidate()
-            begin
-                if "Pre-Approver" <> '' then
-                    TestField("Act Type", "Act Type"::Advance);
-            end;
+            TableRelation =
+            if ("IW Documents" = const(true)) "User Setup"."User ID" WHERE("Status App" = CONST(4))
+            else
+            if ("IW Documents" = const(false)) "User Setup"."User ID" WHERE("Status App Act" = CONST(4));
         }
 
         // NC AB:

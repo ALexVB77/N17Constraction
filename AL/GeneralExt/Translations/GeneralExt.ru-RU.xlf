@@ -9991,7 +9991,6 @@
           <source>Exists Comments</source>
           <target>Есть комментарии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Control Exists Comments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1370391159 - Control 3143542455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
