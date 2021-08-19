@@ -23,6 +23,12 @@ tableextension 80023 "Vendor (Ext)" extends Vendor
             Description = 'SWC816,NC 51412 EP';
         }
     }
+    fieldgroups
+    {
+        addlast(DropDown; "VAT Registration No.")
+        {
+        }
+    }
 
     trigger OnAfterDelete()
     var

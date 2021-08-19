@@ -502,6 +502,25 @@ report 80120 "Aged Accounts Receivable Ext"
                             TotalCustLedgEntry[1].Amount += CustLedgEntryEndingDate."Remaining Amount";
                             TotalCustLedgEntry[1]."Amount (LCY)" += CustLedgEntryEndingDate."Remaining Amt. (LCY)";
                             GrandTotalCustLedgEntry[1]."Amount (LCY)" += CustLedgEntryEndingDate."Remaining Amt. (LCY)";
+
+                            if ExportExcel then BEGIN
+                                RowNo += 1;
+                                AddCell(RowNo, 1, Customer."No.", false, xl."Cell Type"::Text, false);
+                                AddCell(RowNo, 2, Customer.Name, false, xl."Cell Type"::Text, false);
+                                AddCell(RowNo, 3, FORMAT(CustLedgEntryEndingDate."Posting Date"), false, xl."Cell Type"::Date, false);
+                                AddCell(RowNo, 4, FORMAT(CustLedgEntryEndingDate."Document Type"), false, xl."Cell Type"::Text, false);
+                                AddCell(RowNo, 5, Customer."Customer Posting Group", false, xl."Cell Type"::Text, false);
+                                AddCell(RowNo, 6, CustLedgEntryEndingDate."Document No.", false, xl."Cell Type"::Text, false);
+                                AddCell(RowNo, 7, CustLedgEntryEndingDate."Agreement No.", false, xl."Cell Type"::Text, false);
+                                AddCell(RowNo, 8, CustLedgEntryEndingDate."Global Dimension 1 Code", false, xl."Cell Type"::Text, false);
+                                AddCell(RowNo, 9, RepFormat(CustLedgEntryEndingDate."Amount (LCY)"), false, xl."Cell Type"::Number, false);
+                                AddCell(RowNo, 10, RepFormat(CustLedgEntryEndingDate."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                                AddCell(RowNo, 11, RepFormat(AgedCustLedgEntry[1]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                                AddCell(RowNo, 12, RepFormat(AgedCustLedgEntry[2]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                                AddCell(RowNo, 13, RepFormat(AgedCustLedgEntry[3]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                                AddCell(RowNo, 14, RepFormat(AgedCustLedgEntry[4]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                                AddCell(RowNo, 15, RepFormat(AgedCustLedgEntry[5]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                            END;
                         end;
 
                         trigger OnPostDataItem()
@@ -550,6 +569,20 @@ report 80120 "Aged Accounts Receivable Ext"
                         NumberOfCurrencies := 0;
                     end;
                 }
+                trigger OnPreDataItem()
+                begin
+                    IF ExportExcel THEN BEGIN
+                        AddCell(1, 4, FORMAT(EndingDate), false, xl."Cell Type"::Text, false);
+                        AddCell(2, 2, CustFilter, false, xl."Cell Type"::Text, false);
+                        AddCellWithBorder(4, 12, STRSUBSTNO(Text007, SELECTSTR(AgingBy + 1, Text009)), false, xl."Cell Type"::Text, false, false, true, true);
+                        AddCell(RowNoBegin, 11, HeaderTextExcel[1], false, xl."Cell Type"::Text, true);
+                        AddCell(RowNoBegin, 12, HeaderTextExcel[2], false, xl."Cell Type"::Text, true);
+                        AddCell(RowNoBegin, 13, HeaderTextExcel[3], false, xl."Cell Type"::Text, true);
+                        AddCell(RowNoBegin, 14, HeaderTextExcel[4], false, xl."Cell Type"::Text, true);
+                        AddCell(RowNoBegin, 15, HeaderTextExcel[5], false, xl."Cell Type"::Text, true);
+
+                    END;
+                end;
 
                 trigger OnAfterGetRecord()
                 begin
@@ -559,6 +592,39 @@ report 80120 "Aged Accounts Receivable Ext"
                     TempCurrency.DeleteAll();
                     TempCustLedgEntry.Reset();
                     TempCustLedgEntry.DeleteAll();
+                end;
+
+                trigger OnPostDataItem()
+                begin
+                    if ExportExcel then begin
+                        RowNo += 1;
+                        AddCell(RowNo, 1, TotalLCYCptnLbl, false, xl."Cell Type"::Text, false);
+
+                        AddCell(RowNo, 10, RepFormat(GrandTotalCustLedgEntry[1]."Amount (LCY)"), false, xl."Cell Type"::Number, false);
+                        AddCell(RowNo, 11, RepFormat(GrandTotalCustLedgEntry[1]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                        AddCell(RowNo, 12, RepFormat(GrandTotalCustLedgEntry[2]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                        AddCell(RowNo, 13, RepFormat(GrandTotalCustLedgEntry[3]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                        AddCell(RowNo, 14, RepFormat(GrandTotalCustLedgEntry[4]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+                        AddCell(RowNo, 15, RepFormat(GrandTotalCustLedgEntry[5]."Remaining Amt. (LCY)"), false, xl."Cell Type"::Number, false);
+
+                        RowNo += 1;
+
+                        AddCell(RowNo, 11,
+                          Pct(GrandTotalCustLedgEntry[1]."Remaining Amt. (LCY)", GrandTotalCustLedgEntry[1]."Amount (LCY)"),
+                          false, xl."Cell Type"::Number, false);
+                        AddCell(RowNo, 12,
+                          Pct(GrandTotalCustLedgEntry[2]."Remaining Amt. (LCY)", GrandTotalCustLedgEntry[1]."Amount (LCY)"),
+                          false, xl."Cell Type"::Number, false);
+                        AddCell(RowNo, 13,
+                          Pct(GrandTotalCustLedgEntry[3]."Remaining Amt. (LCY)", GrandTotalCustLedgEntry[1]."Amount (LCY)"),
+                          false, xl."Cell Type"::Number, false);
+                        AddCell(RowNo, 14,
+                          Pct(GrandTotalCustLedgEntry[4]."Remaining Amt. (LCY)", GrandTotalCustLedgEntry[1]."Amount (LCY)"),
+                          false, xl."Cell Type"::Number, false);
+                        AddCell(RowNo, 15,
+                          Pct(GrandTotalCustLedgEntry[5]."Remaining Amt. (LCY)", GrandTotalCustLedgEntry[1]."Amount (LCY)"),
+                          false, xl."Cell Type"::Number, false);
+                    end;
                 end;
             }
             dataitem(CurrencyTotals; "Integer")
@@ -685,6 +751,12 @@ report 80120 "Aged Accounts Receivable Ext"
                         Caption = 'New Page per Customer';
                         ToolTip = 'Specifies if each customer''s information is printed on a new page if you have chosen two or more customers to be included in the report.';
                     }
+                    field(ExportExcel; ExportExcel)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Export Excel';
+
+                    }
                     field(CPFilter; CPFilter)
                     {
                         ApplicationArea = Basic, Suite;
@@ -743,6 +815,29 @@ report 80120 "Aged Accounts Receivable Ext"
         CustFilterCheck := (CustFilter <> 'No.');
 
         CompanyDisplayName := COMPANYPROPERTY.DisplayName;
+
+        SalesSetup.Get();
+        XL.DeleteAll();
+
+        if ExportExcel then begin
+            Filename := ExcelTemplate.OpenTemplate((SalesSetup."Aged Acc. Receiv. Tmplt Code"));
+            FontSize := 11;
+            RowNoBegin := 5;
+            RowNo := 5;
+        end;
+        CRLF[1] := 13;
+        CRLF[2] := 10;
+    end;
+
+    trigger OnPostReport()
+    begin
+        if ExportExcel then begin
+            xl.SetFriendlyFilename(AgedAccReceivableCptnLbl);
+            xl.UpdateBook(Filename, ExcelTemplate."Sheet Name");
+            xl.WriteSheet(AgedAccReceivableCptnLbl, CompanyName, UserId);
+            xl.CloseBook();
+            xl.OpenExcel();
+        end;
     end;
 
     var
@@ -809,8 +904,9 @@ report 80120 "Aged Accounts Receivable Ext"
         SalesSetup: Record "Sales & Receivables Setup";
         FileMgt: Codeunit "File Management";
         Text0002: Label '.xlsx';
-        ServerFileName: Text;
         CRLF: Text[2];
+        UseComma: Boolean;
+        HeaderTextExcel: Array[5] of Text[30];
 
     local procedure CalcDates()
     var
@@ -847,17 +943,22 @@ report 80120 "Aged Accounts Receivable Ext"
         end else
             i := 1;
         while i < ArrayLen(PeriodEndDate) do begin
-            if HeadingType = HeadingType::"Date Interval" then
-                HeaderText[i] := StrSubstNo('%1\..%2', PeriodStartDate[i], PeriodEndDate[i])
-            else
+            if HeadingType = HeadingType::"Date Interval" then begin
+                HeaderText[i] := StrSubstNo('%1\..%2', PeriodStartDate[i], PeriodEndDate[i]);
+                HeaderTextExcel[i] := STRSUBSTNO('%1 %3 ..%2', PeriodStartDate[i], PeriodEndDate[i], CRLF);
+            end
+            else begin
                 HeaderText[i] :=
                   StrSubstNo('%1 - %2 %3', EndingDate - PeriodEndDate[i] + 1, EndingDate - PeriodStartDate[i] + 1, Text002);
+                HeaderTextExcel[i] := HeaderText[i];
+            end;
             i := i + 1;
         end;
         if HeadingType = HeadingType::"Date Interval" then
             HeaderText[i] := StrSubstNo('%1 %2', BeforeTok, PeriodStartDate[i - 1])
         else
             HeaderText[i] := StrSubstNo('%1 %2 %3', BeforeTok, EndingDate - PeriodStartDate[i - 1] + 1, Text002);
+        HeaderTextExcel[i] := HeaderText[i];
     end;
 
     local procedure InsertTemp(var CustLedgEntry: Record "Cust. Ledger Entry")
@@ -958,6 +1059,44 @@ report 80120 "Aged Accounts Receivable Ext"
             CustLedgerEntry.SetFilter("Global Dimension 1 Code", Customer.GetFilter("Global Dimension 1 Filter"));
         if Customer.GetFilter("Global Dimension 2 Filter") <> '' then
             CustLedgerEntry.SetFilter("Global Dimension 2 Code", Customer.GetFilter("Global Dimension 2 Filter"));
+    end;
+
+    local procedure RepFormat(dec: Decimal) ResultText: text[250]
+    var
+    begin
+        ResultText := Format(Dec, 0, 2);
+        if UseComma then
+            if StrPos(ResultText, '.') <> 0 then
+                ResultText := ConvertStr(ResultText, '.', ',');
+
+    end;
+
+    local procedure AddCell(RowNo: Integer; ColumnNo: Integer; CellValue: Text; Bold: Boolean; CellType: Integer; IsBorder: Boolean)
+    begin
+        XL.Init();
+        XL.Validate("Row No.", RowNo);
+        XL.Validate("Column No.", ColumnNo);
+        XL."Cell Value as Text" := CellValue;
+        XL.Formula := '';
+        XL.Bold := Bold;
+        XL."Cell Type" := CellType;
+        if IsBorder then
+            XL.SetBorder(true, true, true, true, false, "Border Style"::Thick);
+        if not xl.Modify() then
+            XL.Insert();
+    end;
+
+    local procedure AddCellWithBorder(RowNo: Integer; ColumnNo: Integer; CellValue: Text; Bold: Boolean; CellType: Integer; border1: Boolean; border2: Boolean; border3: Boolean; border4: Boolean)
+    begin
+        XL.Init();
+        XL.Validate("Row No.", RowNo);
+        XL.Validate("Column No.", ColumnNo);
+        XL."Cell Value as Text" := CellValue;
+        XL.Formula := '';
+        XL.Bold := Bold;
+        XL."Cell Type" := CellType;
+        XL.SetBorder(border1, border2, border3, border4, false, "Border Style"::Medium);
+        XL.Insert();
     end;
 }
 

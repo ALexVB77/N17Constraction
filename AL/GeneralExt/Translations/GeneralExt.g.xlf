@@ -10688,6 +10688,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control CPFilter - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control ExportExcel - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3263168732 - Control 336339332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if the column heading for the three periods will indicate a date interval or the number of days overdue.</source>
           <note from="Developer" annotates="general" priority="2"></note>
