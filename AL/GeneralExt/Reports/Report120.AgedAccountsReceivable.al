@@ -3,7 +3,7 @@ report 80120 "Aged Accounts Receivable Ext"
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/Layouts/AgedAccountsReceivableExt.rdl';
     ApplicationArea = Basic, Suite;
-    Caption = 'Aged Accounts Receivable';
+    Caption = 'Aged Accounts Receivable New';
     PreviewMode = PrintLayout;
     UsageCategory = ReportsAndAnalysis;
     DataAccessIntent = ReadOnly;
