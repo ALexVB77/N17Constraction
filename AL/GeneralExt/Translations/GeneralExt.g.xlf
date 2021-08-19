@@ -10504,7 +10504,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control UseExternalDocNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Aged Accounts Receivable</source>
+          <source>Aged Accounts Receivable New</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Property Caption</note>
         </trans-unit>
@@ -12068,40 +12068,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - NamedType Text12401</note>
         </trans-unit>
-        <trans-unit id="Report 171109171 - Control 2851454604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export to Excel</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control ExportToExcel - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Report 171109171 - Control 987782936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print with Price</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control PrintPrice - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 171109171 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Log Interaction</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control LogInteraction - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 2578066365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. of Copies</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control NoOfCopies - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 1548924671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Operation Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control OperationType - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Report 171109171 - Control 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reason</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Reason - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 342758792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Save in Archive</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control SaveInArchive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1214298328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Responsible</source>
