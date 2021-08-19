@@ -207,9 +207,19 @@ page 70000 "Purchase Order App"
                     ApplicationArea = All;
                     Caption = 'Pre-Approver';
 
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        UserSetup.Reset;
+                        UserSetup.SetRange("Status App", UserSetup."Status App"::Approve);
+                        if Page.RunModal(Page::"Approval User Setup", UserSetup) = Action::LookupOK then begin
+                            PreApproverNo := UserSetup."User ID";
+                            Validate("Pre-Approver", PreApproverNo);
+                        end;
+                    end;
+
                     trigger OnValidate()
                     begin
-                        "Pre-Approver" := PreApproverNo;
+                        Validate("Pre-Approver", PreApproverNo);
                     end;
                 }
                 field("Approver"; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
