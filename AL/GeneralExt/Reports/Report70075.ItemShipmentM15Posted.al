@@ -24,6 +24,8 @@ report 70075 "Item Shipment M-15"
                 trigger OnAfterGetRecord()
                 var
                     ILE: Record "Item Ledger Entry";
+                    VATPostingSetup: Record "VAT Posting Setup";
+                    Item: Record Item;
                 begin
                     i += 1;
 
@@ -39,11 +41,13 @@ report 70075 "Item Shipment M-15"
 
                     ItemDescription := Description + "Description 2";
 
-                    if ILE.Get("Item Rcpt. Entry No.") then begin
+                    if ILE.Get("Item Rcpt. Entry No.") and Vendor.Get(TransferHeader."Vendor No.") then begin
                         ILE.CalcFields("Cost Amount (Actual)");
                         UnitCostTxt := Format(Abs(ILE."Cost Amount (Actual)" / ILE.Quantity), 0, '<Precision,2:2><Standard Format,0>');
                         AmountTxt := Format(Abs(ILE."Cost Amount (Actual)"), 0, '<Precision,2:2><Standard Format,0>');
                         TotalAmount += Abs(ILE."Cost Amount (Actual)");
+                        if Item.Get(ILE."Item No.") and VATPostingSetup.Get(Vendor."VAT Bus. Posting Group", Item."VAT Prod. Posting Group") then
+                            VATAmount := Round(TotalAmount * VATPostingSetup."VAT %" / 100);
                     end;
 
                     if not PrintPrice then begin
@@ -57,15 +61,11 @@ report 70075 "Item Shipment M-15"
                     txtItemNo := "Item No.";
                     if "Variant Code" <> '' then
                         txtItemNo := txtItemNo + '(' + "Variant Code" + ')';
+
+                    FillBody("Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", "Unit of Measure Code");
                 end;
-            }
 
-            dataitem(Integer; Integer)
-            {
-                DataItemTableView = sorting(Number);
-                MaxIteration = 1;
-
-                trigger OnAfterGetRecord()
+                trigger OnPostDataItem()
                 begin
                     TotalAmountTxt := LocalManagement.Amount2Text('', TotalAmount);
                     TotalVATAmountTxt := LocalManagement.Amount2Text('', VATAmount);
@@ -73,6 +73,8 @@ report 70075 "Item Shipment M-15"
                         TotalAmountTxt := '-';
                         TotalVATAmountTxt := '-';
                     end;
+
+                    FillFooter();
                 end;
             }
 
