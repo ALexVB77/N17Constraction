@@ -10,7 +10,7 @@ report 82470 "Copy Item Document (Ext)"
 
     requestpage
     {
-        SaveValues = true;
+        // SaveValues = true;
 
         layout
         {
@@ -294,11 +294,11 @@ report 82470 "Copy Item Document (Ext)"
 
         // NC 51415 > EP, 54882 AB
         RecalculateLinesEnabled := true;
-        AutoFillAppliesFields := true;
+        AutoFillAppliesFieldsEnabled := true;
         if DocType > DocType::"Posted Shipment" then begin
             RecalculateLines := false;
             RecalculateLinesEnabled := false;
-            AutoFillAppliesFields := false;
+            AutoFillAppliesFieldsEnabled := false;
         end else
             if (ItemDocHeader."Document Type" = ItemDocHeader."Document Type"::Shipment) or
                (DocType in [DocType::Shipment, DocType::"Posted Shipment"])
