@@ -14533,15 +14533,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - NamedType Text12401</note>
         </trans-unit>
-<<<<<<< HEAD
-        <trans-unit id="Report 171109171 - Control 2851454604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export to Excel</source>
-          <target>Выгрузка в Excel</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control ExportToExcel - Property Caption</note>
-        </trans-unit>
-=======
->>>>>>> 18fb629615bfa7e4d79e55da84f5bbc149da34ef
         <trans-unit id="Report 171109171 - Control 987782936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print with Price</source>
           <target>Печать с Ценой</target>
@@ -14557,48 +14548,6 @@
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 2578066365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No. of Copies</source>
-          <target>Число копий</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control NoOfCopies - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 1548924671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Operation Type</source>
-          <target>Вид операции</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control OperationType - Property Caption</note>
-        </trans-unit>
-=======
->>>>>>> 18fb629615bfa7e4d79e55da84f5bbc149da34ef
-        <trans-unit id="Report 171109171 - Control 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reason</source>
-          <target>Основание</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Reason - Property Caption</note>
-        </trans-unit>
-<<<<<<< HEAD
-        <trans-unit id="Report 171109171 - Control 342758792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Save in Archive</source>
-          <target>Сохранить в архиве</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control SaveInArchive - Property Caption</note>
-        </trans-unit>
-=======
->>>>>>> 18fb629615bfa7e4d79e55da84f5bbc149da34ef
-        <trans-unit id="Report 171109171 - Control 1214298328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Responsible</source>
-          <target>Ответственный</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Responsible - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 1456871694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Allowed Employee</source>
-          <target>Разрешил (Сотрудник)</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control AllowedEmployee - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 1418306143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Recieved Employee</source>
-          <target>Получил</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control RecievedEmployee - Property Caption</note>
         </trans-unit>
