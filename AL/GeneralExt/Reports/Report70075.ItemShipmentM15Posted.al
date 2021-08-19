@@ -475,6 +475,7 @@ report 70075 "Item Shipment M-15"
             dataitem(CopyCycle; Integer)
             {
                 DataItemTableView = sorting(Number);
+                MaxIteration = 1;
 
                 dataitem(LineCycle; Integer)
                 {
