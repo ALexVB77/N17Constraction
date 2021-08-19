@@ -70,6 +70,7 @@ report 82470 "Copy Item Document (Ext)"
                         begin
                             // NC 54882 AB >>
                             // RecalculateLines := true;
+                            ValidateRecalculateLines();
                             // NC 54882 AB <<
                         end;
                     }
@@ -77,6 +78,14 @@ report 82470 "Copy Item Document (Ext)"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Specify appl. entries';
+
+                        trigger OnValidate()
+                        begin
+                            // NC 54882 AB >>
+                            if AutoFillAppliesFields then
+                                AutoFillAppliesFields := DocType <= DocType::"Posted Shipment";
+                            // NC 54882 AB <<
+                        end;
                     }
                 }
             }
@@ -205,11 +214,6 @@ report 82470 "Copy Item Document (Ext)"
         FromItemDocHeader."No." := '';
 
         IncludeHeader := true;
-
-        // NC 51415 > EP, 54882 AB
-        IncludeHeader := DocType <= DocType::"Posted Shipment";
-        // NC 51415 < EP, 54882 AB
-
         ValidateIncludeHeader;
     end;
 
@@ -279,15 +283,25 @@ report 82470 "Copy Item Document (Ext)"
 
     local procedure ValidateIncludeHeader()
     begin
+        // NC 51415 > EP, 54882 AB
+        IncludeHeader := DocType <= DocType::"Posted Shipment";
+        AutoFillAppliesFields := DocType <= DocType::"Posted Shipment";
+        // NC 51415 < EP, 54882 AB
+
         RecalculateLines :=
           not IncludeHeader;
 
+        // NC 54882 AB >>
+        ValidateRecalculateLines();
+        // NC 54882 AB <<
+    end;
+
+    local procedure ValidateRecalculateLines()
+    begin
         // NC 51415 > EP, 54882 AB
-        AutoFillAppliesFields := true;
-        if DocType > DocType::"Posted Shipment" then begin
-            RecalculateLines := false;
-            AutoFillAppliesFields := false;
-        end else
+        if DocType > DocType::"Posted Shipment" then
+            RecalculateLines := false
+        else
             if (ItemDocHeader."Document Type" = ItemDocHeader."Document Type"::Shipment) or
                (DocType in [DocType::Shipment, DocType::"Posted Shipment"])
             then
