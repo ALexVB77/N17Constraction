@@ -412,7 +412,10 @@ report 92470 "Copy Item Document (Ext)"
 
                             ItemDocLine.VALIDATE("Unit Amount", FromPurchRcptLine."Direct Unit Cost");
                             ItemDocLine.VALIDATE("Unit Cost", FromPurchRcptLine."Direct Unit Cost");
-                            ItemDocLine.VALIDATE("Applies-from Entry", FromPurchRcptLine."Item Rcpt. Entry No.");
+                            // NC 51415 > EP
+                            // ItemDocLine.VALIDATE("Applies-from Entry", FromPurchRcptLine."Item Rcpt. Entry No.");
+                            ItemDocLine.Validate("Applies-to Entry", FromPurchRcptLine."Item Rcpt. Entry No.");
+                            // NC 51415 < EP
                             ItemDocLine.MODIFY(TRUE);
 
                             CopyDims(ItemDocLine, FromPurchRcptLine."Dimension Set ID");
