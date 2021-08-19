@@ -876,7 +876,7 @@
         </trans-unit>
         <trans-unit id="Page 3051801611 - Control 3117834186 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proceed Document Number</source>
-          <target>НОмер обрабатываемого документа</target>
+          <target>Номер обрабатываемого документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Scanning - Control DocumentNo - Property Caption</note>
         </trans-unit>
