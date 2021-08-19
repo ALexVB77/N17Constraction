@@ -269,13 +269,10 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         {
             Description = 'NC 51373 AB';
             Caption = 'Pre-Approver';
-            TableRelation = "User Setup";
-
-            trigger OnValidate()
-            begin
-                if "Pre-Approver" <> '' then
-                    TestField("Act Type", "Act Type"::Advance);
-            end;
+            TableRelation =
+            if ("IW Documents" = const(true)) "User Setup"."User ID" WHERE("Status App" = CONST(4))
+            else
+            if ("IW Documents" = const(false)) "User Setup"."User ID" WHERE("Status App Act" = CONST(4));
         }
 
         // NC AB:
@@ -548,7 +545,7 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
     begin
         PurchCommentLine.SetRange("Document Type", "Document Type");
         PurchCommentLine.SetRange("No.", "No.");
-        PurchCommentLine.SetRange("Line No.", 0);
+        PurchCommentLine.SetRange("Document Line No.", 0);
         PurchCommentLine.SetRange("Add. Line Type", AddType);
         if PurchCommentLine.FindLast() then
             exit(PurchCommentLine.Comment + PurchCommentLine."Comment 2");
@@ -557,17 +554,22 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
     procedure SetAddTypeCommentText(AddType: enum "Purchase Comment Add. Type"; NewComment: text)
     var
         PurchCommentLine: Record "Purch. Comment Line";
+        NextLineNo: Integer;
     begin
         PurchCommentLine.SetRange("Document Type", "Document Type");
         PurchCommentLine.SetRange("No.", "No.");
-        PurchCommentLine.SetRange("Line No.", 0);
+        PurchCommentLine.SetRange("Document Line No.", 0);
         PurchCommentLine.SetRange("Add. Line Type", AddType);
         if not PurchCommentLine.FindLast() then begin
+            PurchCommentLine.SetRange("Add. Line Type");
+            if PurchCommentLine.FindLast() then
+                NextLineNo := PurchCommentLine."Line No.";
+            NextLineNo += 10000;
             PurchCommentLine.Init();
             PurchCommentLine."Document Type" := "Document Type";
             PurchCommentLine."No." := "No.";
-            PurchCommentLine."Line No." := 0;
             PurchCommentLine."Document Line No." := 0;
+            PurchCommentLine."Line No." := NextLineNo;
             PurchCommentLine.Date := Today;
             PurchCommentLine."Add. Line Type" := AddType;
             PurchCommentLine.Insert(true);
@@ -583,7 +585,6 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         ApprovalEntry: Record "Approval Entry";
         ApprovalCommentLine: Record "Approval Comment Line";
         ApprovalMgt: Codeunit "Approvals Mgmt.";
-        NoReqToApproveErr: Label 'There is no approval request to approve.';
         StepInstanceID: Guid;
     begin
         if ApprovalMgt.FindOpenApprovalEntryForCurrUser(ApprovalEntry, RecordID) then begin
@@ -613,13 +614,18 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
     procedure SetApprovalCommentText(NewComment: text)
     var
         ApprovalEntry: Record "Approval Entry";
-        ApprovalCommentLine: Record "Approval Comment Line";
         ApprovalMgt: Codeunit "Approvals Mgmt.";
         NoReqToApproveErr: Label 'There is no approval request to approve.';
     begin
         if not ApprovalMgt.FindOpenApprovalEntryForCurrUser(ApprovalEntry, RecordID) then
             Error(NoReqToApproveErr);
+        SetApprovalCommentTextForEntry(NewComment, ApprovalEntry);
+    end;
 
+    procedure SetApprovalCommentTextForEntry(NewComment: text; ApprovalEntry: Record "Approval Entry")
+    var
+        ApprovalCommentLine: Record "Approval Comment Line";
+    begin
         ApprovalCommentLine.SetCurrentKey("Linked Approval Entry No.");
         ApprovalCommentLine.SetRange("Linked Approval Entry No.", ApprovalEntry."Entry No.");
         if not ApprovalCommentLine.FindLast() then begin
@@ -666,6 +672,53 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
 
         DocumentSendingProfile.TrySendToPrinterVendor(
           ReportSelUsage.AsInteger(), Rec, FieldNo("Buy-from Vendor No."), ShowRequestForm);
+    end;
+
+    procedure GetAppoveInfo(var CHDate: date; var CHUser: Code[50]; var ApprDate: date; var ApprUser: Code[50])
+    var
+        ApprovalEntry: Record "Approval Entry";
+    begin
+        CHDate := 0D;
+        CHUser := '';
+
+        ApprovalEntry.SetCurrentKey("Table ID", "Document Type", "Document No.", "Sequence No.", "Record ID to Approve");
+        ApprovalEntry.SetRange("Table ID", Database::"Purchase Header");
+        ApprovalEntry.SetRange("Record ID to Approve", Rec.RecordId);
+        ApprovalEntry.SetFilter(Status, '%1|%2', ApprovalEntry.Status::Approved, ApprovalEntry.Status::Open);
+        ApprovalEntry.SetRange("Status App", ApprovalEntry."Status App"::Checker);
+        if ApprovalEntry.FindLast() then begin
+            CHUser := ApprovalEntry."Approver ID";
+            if ApprovalEntry.Status = ApprovalEntry.Status::Approved then
+                CHDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+        end;
+
+        ApprDate := 0D;
+        ApprUser := '';
+
+        ApprovalEntry.SetRange("Status App", ApprovalEntry."Status App"::Approve);
+        if ApprovalEntry.FindLast() then begin
+            ApprUser := ApprovalEntry."Approver ID";
+            if ApprovalEntry.Status = ApprovalEntry.Status::Approved then
+                ApprDate := DT2Date(ApprovalEntry."Last Date-Time Modified");
+        end;
+    end;
+
+    procedure ViewAttachDocument()
+    var
+        DocumentAttachment: Record "Document Attachment";
+        RecRef: RecordRef;
+    begin
+        CalcFields("Exists Attachment");
+        TestField("Exists Attachment");
+        DocumentAttachment.SetRange("Table ID", DATABASE::"Purchase Header");
+        DocumentAttachment.SetRange("Document Type", rec."Document Type");
+        DocumentAttachment.SetRange("No.", Rec."No.");
+        DocumentAttachment.FindFirst();
+        if DocumentAttachment."Attachment Link" <> '' then
+            Hyperlink(DocumentAttachment."Attachment Link")
+        else
+            if DocumentAttachment."File Name" <> '' then
+                DocumentAttachment.Export(true);
     end;
 
 }

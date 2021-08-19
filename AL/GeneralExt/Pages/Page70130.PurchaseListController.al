@@ -42,34 +42,40 @@ page 70130 "Purchase List Controller"
 
             repeater(Repeater12370003)
             {
-                Editable = false;
                 field("Paid Date Fact"; Rec."Paid Date Fact")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Paid; GetPaymentInvPaidStatus())
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Payment Type"; "Payment Type")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Agreement No."; Rec."Agreement No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Problem Document"; Rec."Problem Document")
                 {
@@ -78,42 +84,51 @@ page 70130 "Purchase List Controller"
                 field("Problem Type"; "Problem Type")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Invoice Amount Incl. VAT (LCY)"; Rec.GetInvoiceAmountsLCY(AmountType::"Include VAT"))
                 {
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Invoice Amount Incl. VAT (LCY)';
+                    Editable = false;
                 }
                 field("Due Date"; Rec."Due Date")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Status App"; Rec."Status App")
                 {
                     ApplicationArea = All;
                     Caption = 'Approval Status';
                     OptionCaption = ' ,Reception,Сontroller,Checker,Approve,Payment';
+                    Editable = false;
                 }
                 field("Date Status App"; Rec."Date Status App")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Process User"; Rec."Process User")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
 
                     trigger OnAssistEdit()
                     begin
@@ -123,14 +138,17 @@ page 70130 "Purchase List Controller"
                 field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Order Date"; Rec."Order Date")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Controller; Controller)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Invoice Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount")
                 {
@@ -142,6 +160,7 @@ page 70130 "Purchase List Controller"
                 {
                     ApplicationArea = All;
                     BlankZero = true;
+                    Editable = false;
                 }
                 field("Invoice Amount (LCY)"; GetInvoiceAmountsLCY(AmountType::"Exclude VAT"))
                 {
@@ -149,9 +168,11 @@ page 70130 "Purchase List Controller"
                     BlankZero = true;
                     Caption = 'Invoice Amount (LCY)';
                 }
-                field("Exists Comment"; Rec."Comment")
+                field("Exists Comments"; Rec."Comment")
                 {
                     ApplicationArea = All;
+                    Caption = 'Exists Comments';
+                    Editable = false;
                 }
                 field("Exists Attachment"; Rec."Exists Attachment")
                 {
@@ -161,21 +182,34 @@ page 70130 "Purchase List Controller"
                 {
                     ApplicationArea = All;
                     Caption = 'Journal Batch Name';
+                    Editable = false;
                 }
                 field("Journal Line No."; LinkedGenJnlLine."Line No.")
                 {
                     ApplicationArea = All;
                     Caption = 'Journal Line No.';
+                    Editable = false;
+                    BlankZero = true;
                 }
-                field("Additional Info"; Rec.GetAddTypeCommentText(CommentAddType::"Additional Info"))
+                field("Additional Info"; CommentAddInfo)
                 {
                     ApplicationArea = All;
                     Caption = 'Comment';
+
+                    trigger OnValidate()
+                    begin
+                        Rec.SetAddTypeCommentText(CommentAddType::"Additional Info", CommentAddInfo);
+                    end;
                 }
-                field(Reason; Rec.GetAddTypeCommentText(CommentAddType::Reason))
+                field(Reason; CommentAddReason)
                 {
                     ApplicationArea = All;
                     Caption = 'Reason';
+
+                    trigger OnValidate()
+                    begin
+                        Rec.SetAddTypeCommentText(CommentAddType::Reason, CommentAddReason);
+                    end;
                 }
                 field("Spec. Bank Account No."; "Spec. Bank Account No.")
                 {
@@ -282,6 +316,9 @@ page 70130 "Purchase List Controller"
             LinkedGenJnlLine.Init();
             LinkedGenJnlLine."Line No." := 0;
         end;
+
+        CommentAddInfo := Rec.GetAddTypeCommentText(CommentAddType::"Additional Info");
+        CommentAddReason := Rec.GetAddTypeCommentText(CommentAddType::Reason);
     end;
 
     var
@@ -292,6 +329,7 @@ page 70130 "Purchase List Controller"
         SortType1: option PayDate,PayDateFact,DocNo,Vendor;
         AmountType: Enum "Amount Type";
         CommentAddType: Enum "Purchase Comment Add. Type";
+        CommentAddInfo, CommentAddReason : Text;
 
     local procedure SetRecFilters()
     var

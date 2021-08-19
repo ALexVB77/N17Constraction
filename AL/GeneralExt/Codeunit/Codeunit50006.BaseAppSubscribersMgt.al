@@ -26,6 +26,25 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
     // t 17 <<
 
+    // t 39 >>
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterValidateEvent', 'Shortcut Dimension 1 Code', false, false)]
+    local procedure OnAfterValidateShortDim1CodePurchLine(Rec: Record "Purchase Line"; xRec: Record "Purchase Line"; CurrFieldNo: Integer)
+    var
+        PrjBudMgt: Codeunit "Project Budget Management";
+    begin
+        PrjBudMgt.CheckPurchLineGlDims(Rec);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterValidateEvent', 'Shortcut Dimension 2 Code', false, false)]
+    local procedure OnAfterValidateShortDim2CodePurchLine(Rec: Record "Purchase Line"; xRec: Record "Purchase Line"; CurrFieldNo: Integer)
+    var
+        PrjBudMgt: Codeunit "Project Budget Management";
+    begin
+        PrjBudMgt.CheckPurchLineGlDims(Rec);
+    end;
+    // t 39 <<
+
+
     // t 81 >>
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterValidateEvent', 'Prepayment', false, false)]
     local procedure onAfterValidatePrepayment(Rec: Record "Gen. Journal Line"; xRec: Record "Gen. Journal Line"; CurrFieldNo: Integer)
@@ -783,6 +802,8 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
+    // Page 1173 Document Attachment Details
+
     [EventSubscriber(ObjectType::Page, Page::"Document Attachment Details", 'OnAfterOpenForRecRef', '', true, true)]
     local procedure OnAfterOpenForRecRefDocAttDet(var DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef; var FlowFieldsEditable: Boolean)
     var
@@ -799,6 +820,13 @@ codeunit 50006 "Base App. Subscribers Mgt."
                     RecNo := FieldRef.Value;
                     DocumentAttachment.SetRange("PK Key 2", PKNo);
                     DocumentAttachment.SetRange("No.", RecNo);
+                end;
+            Database::"Purchase Header Archive":
+                begin
+                    FieldRef := RecRef.Field(3);
+                    RecNo := FieldRef.Value;
+                    DocumentAttachment.SetRange("No.", RecNo);
+                    FlowFieldsEditable := false;
                 end;
         end;
     end;
@@ -826,12 +854,26 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
 
     // Codeunit 5063 ArchiveManagement 
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::ArchiveManagement, 'OnBeforePurchHeaderArchiveInsert', '', false, false)]
+    local procedure OnBeforePurchHeaderArchiveInsert(var PurchaseHeaderArchive: Record "Purchase Header Archive"; PurchaseHeader: Record "Purchase Header")
+    begin
+        PurchaseHeaderArchive."Status App" := PurchaseHeader."Status App";
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::ArchiveManagement, 'OnAfterStorePurchDocument', '', false, false)]
     local procedure OnAfterStorePurchDocument(var PurchaseHeader: Record "Purchase Header"; var PurchaseHeaderArchive: Record "Purchase Header Archive");
     var
         DocAttach: Record "Document Attachment";
         DocAttachArch: Record "Document Attachment Archive";
-        ApprovalEntry, ApprovalEntryAcr : Record "Approval Entry";
+        ApprovalEntry: Record "Approval Entry";
+        ApprovalEntryArch: Record "Request Approval Entry Archive";
+        ApprovalLinkBuffer: Record "Approval Entry" temporary;
+        ApprCommentLine: Record "Approval Comment Line";
+        ApprCommentLineArch: Record "Request Appr. Com. Line Arch.";
+        TempBlob: Codeunit "Temp Blob";
+        DocOutStream: OutStream;
+        DocInStream: InStream;
     begin
         if PurchaseHeader."Archiving Type" = PurchaseHeader."Archiving Type"::" " then
             exit;
@@ -843,29 +885,73 @@ codeunit 50006 "Base App. Subscribers Mgt."
             repeat
                 DocAttachArch.Init();
                 DocAttachArch.TransferFields(DocAttach);
-                IF DocAttach."Table ID" = Database::"Purchase Header" then
-                    DocAttachArch."Table ID" := Database::"Purchase Header Archive"
-                else
-                    DocAttachArch."Table ID" := Database::"Purchase Line Archive";
+                case DocAttach."Table ID" of
+                    Database::"Purchase Header":
+                        DocAttachArch."Table ID" := Database::"Purchase Header Archive";
+                    Database::"Purchase Line":
+                        DocAttachArch."Table ID" := Database::"Purchase Line Archive";
+                end;
                 DocAttachArch."Version No." := PurchaseHeaderArchive."Version No.";
                 DocAttachArch."Doc. No. Occurrence" := PurchaseHeaderArchive."Doc. No. Occurrence";
-                DocAttach.CalcFields("Document Reference ID");
-                DocAttachArch."Document Reference ID" := DocAttach."Document Reference ID";
+                if DocAttach."Document Reference ID".HasValue then begin
+                    TempBlob.CreateOutStream(DocOutStream);
+                    DocAttach."Document Reference ID".ExportStream(DocOutStream);
+                    TempBlob.CreateInStream(DocInStream);
+                    DocAttachArch."Document Reference ID".ImportStream(DocInStream, DocAttach."File Name");
+                    // NC AB: debug
+                    if not DocAttachArch."Document Reference ID".HasValue then
+                        Error('Вложение не перегружено!');
+                end;
                 DocAttachArch.INSERT;
             until DocAttach.Next() = 0;
 
-        ApprovalEntry.SetCurrentKey("Table ID", "Record ID to Approve");
+        ApprovalEntry.SetCurrentKey("Table ID", "Document Type", "Document No.", "Sequence No.", "Record ID to Approve");
         ApprovalEntry.SetRange("Table ID", Database::"Purchase Header");
         ApprovalEntry.SetRange("Record ID to Approve", PurchaseHeader.RecordId);
         if ApprovalEntry.FindSet() then
             repeat
-                ApprovalEntryAcr := ApprovalEntry;
-                ApprovalEntryAcr."Table ID" := Database::"Purchase Header Archive";
-                ApprovalEntryAcr."Record ID to Approve" := PurchaseHeaderArchive.RecordId;
-                ApprovalEntryAcr."Entry No." := 0;
-                ApprovalEntryAcr.Insert;
+                ApprovalEntryArch.TransferFields(ApprovalEntry);
+                Case ApprovalEntry."Table ID" of
+                    Database::"Purchase Header":
+                        ApprovalEntryArch."Table ID" := Database::"Purchase Header Archive";
+
+                End;
+                ApprovalEntryArch."Record ID to Approve" := PurchaseHeaderArchive.RecordId;
+                ApprovalEntryArch."Doc. No. Occurrence" := PurchaseHeaderArchive."Doc. No. Occurrence";
+                ApprovalEntryArch."Version No." := PurchaseHeaderArchive."Version No.";
+                ApprovalEntryArch."Entry No." := ApprovalEntryArch.GetLastEntryNo() + 1;
+                ApprovalEntryArch.Insert;
+
+                ApprovalLinkBuffer.Init();
+                ApprovalLinkBuffer."Entry No." := ApprovalEntry."Entry No.";
+                ApprovalLinkBuffer."Sequence No." := ApprovalEntryArch."Entry No.";
+                ApprovalLinkBuffer.Insert;
             until ApprovalEntry.Next() = 0;
+
+        ApprCommentLine.SetCurrentKey("Table ID", "Record ID to Approve");
+        ApprCommentLine.SetRange("Table ID", Database::"Purchase Header");
+        ApprCommentLine.SetRange("Record ID to Approve", PurchaseHeader.RecordId);
+        if ApprCommentLine.FindSet() then
+            repeat
+                ApprCommentLineArch.TransferFields(ApprCommentLine);
+                Case ApprCommentLine."Table ID" of
+                    Database::"Purchase Header":
+                        ApprCommentLineArch."Table ID" := Database::"Purchase Header Archive";
+
+                End;
+                ApprCommentLineArch."Record ID to Approve" := PurchaseHeaderArchive.RecordId;
+                ApprCommentLineArch."Linked Approval Entry No." := 0;
+                if ApprCommentLine."Linked Approval Entry No." <> 0 then
+                    if ApprovalLinkBuffer.Get(ApprCommentLine."Linked Approval Entry No.") then
+                        ApprCommentLineArch."Linked Approval Entry No." := ApprovalLinkBuffer."Sequence No.";
+                ApprCommentLineArch."Entry No." := ApprCommentLineArch.GetLastEntryNo() + 1;
+                ApprCommentLineArch.Insert;
+            until ApprCommentLine.Next() = 0;
     end;
+
+
+
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Transfer Document", 'OnBeforeCheckTransLines', '', false, false)]
     local procedure OnBeforeCheckTransLines(var TransferLine: Record "Transfer Line"; var IsHandled: Boolean; TransHeader: Record "Transfer Header");
@@ -1154,6 +1240,22 @@ codeunit 50006 "Base App. Subscribers Mgt."
         end;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterFinalizePosting', '', false, false)]
+    local procedure OnAfterFinalizePostingcu90(var PurchHeader: Record "Purchase Header"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchInvHeader: Record "Purch. Inv. Header"; var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var ReturnShptHeader: Record "Return Shipment Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PreviewMode: Boolean; CommitIsSupressed: Boolean)
+    var
+        lPHead: Record "Purchase Header";
+        lERPC: Codeunit "ERPC Funtions";
+    begin
+        lPHead.SetRange("Act Invoice No.", PurchHeader."No.");
+        if lPHead.FindFirst() then begin
+            lERPC.DeleteBCPreBooking(lPHead);
+            lERPC.CreateBCPreBookingActPost(PurchInvHeader);
+            lPHead."Act Invoice No." := PurchInvHeader."No.";
+            lPHead.Modify();
+        end;
+    end;
+
+
     [EventSubscriber(ObjectType::Page, Page::"MyDim Value Combinations", 'OnLoadDimValCombPage', '', false, false)]
     local procedure OnLoadDimValueCombPage(var Row: Code[20]; var Col: Code[20]; var ShowCaption: Boolean; var DimRecord: Record "Dimension Value")
     var
@@ -1298,11 +1400,20 @@ codeunit 50006 "Base App. Subscribers Mgt."
         ToPurchaseHeader.Receptionist := OldPurchaseHeader.Receptionist;
         ToPurchaseHeader."Linked Purchase Order Act No." := '';
         ToPurchaseHeader."Payment Type" := OldPurchaseHeader."Payment Type";
+        ToPurchaseHeader."Problem Document" := false;
+        ToPurchaseHeader."Problem Type" := ToPurchaseHeader."Problem Type"::" ";
 
         ToPurchaseHeader."Act Invoice No." := '';
         ToPurchaseHeader."Act Invoice Posted" := false;
 
-        if (FromPurchHeader."Act Type" <> FromPurchHeader."Act Type"::" ") and ToPurchaseHeader."IW Documents" then
+        if (FromPurchHeader."Act Type" <> FromPurchHeader."Act Type"::" ") or ToPurchaseHeader."IW Documents" then
             ToPurchaseHeader."Vendor Invoice No." := '';
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Copy Document Mgt.", 'OnCopyPurchDocPurchLineOnAfterCopyPurchLine', '', false, false)]
+    local procedure OnCopyPurchDocPurchLineOnAfterCopyPurchLine(ToPurchHeader: Record "Purchase Header"; var ToPurchLine: Record "Purchase Line"; FromPurchHeader: Record "Purchase Header"; var FromPurchLine: Record "Purchase Line"; IncludeHeader: Boolean; RecalculateLines: Boolean);
+    begin
+        ToPurchLine."Forecast Entry" := 0;
+        ToPurchLine.Modify();
     end;
 }

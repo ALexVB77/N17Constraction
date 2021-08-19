@@ -1,4 +1,4 @@
-pageextension 92452 "Item Shipment GE" extends "Item Shipment"
+pageextension 92452 "Item Shipment (Ext)" extends "Item Shipment"
 {
     layout
     {
@@ -26,7 +26,7 @@ pageextension 92452 "Item Shipment GE" extends "Item Shipment"
 
                 trigger OnAction()
                 var
-                    CopyItemDocument: Report "Copy Item Document GE";
+                    CopyItemDocument: Report "Copy Item Document (Ext)";
                 begin
                     CopyItemDocument.SetItemDocHeader(Rec);
                     CopyItemDocument.RunModal;

@@ -40,6 +40,17 @@ pageextension 80459 "Sales & Receiv. Setup (Ext)" extends "Sales & Receivables S
                 ApplicationArea = Basic, Suite;
             }
         }
+        addlast(Templates)
+        {
+            field("Order Prof-Inv. Template Code"; Rec."Posted Prof-Inv. Template Code")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            field("Posted Act PerfWork Templ Code"; "Posted Act PerfWork Templ Code")
+            {
+                ApplicationArea = All;
+            }
+        }
     }
 
 }

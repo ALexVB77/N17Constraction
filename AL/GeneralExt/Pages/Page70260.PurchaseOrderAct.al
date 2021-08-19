@@ -15,49 +15,12 @@ page 70260 "Purchase Order Act"
             group(General)
             {
                 Caption = 'General';
+                Editable = GlobalEditable;
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     Importance = Standard;
                 }
-
-                /*
-                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
-                {
-                    ApplicationArea = All;
-                    CaptionClass = GetVendorNoCaptionClass();
-                    Importance = Promoted;
-                    ShowMandatory = true;
-
-                    trigger OnLookup(var Text: Text): Boolean
-                    var
-                        Vendor: Record Vendor;
-                    begin
-                        if "Act Type" = "Act Type"::Advance then begin
-                            Vendor.SetRange(Blocked, Vendor.Blocked::" ");
-                            if Page.RunModal(Page::"Responsible Employees", Vendor) = Action::LookupOK then
-                                Validate("Buy-from Vendor No.", Vendor."No.");
-                        end else begin
-                            if Page.RunModal(0, Vendor) = Action::LookupOK then
-                                Validate("Buy-from Vendor No.", Vendor."No.");
-                        end;
-                        CurrPage.Update;
-                    end;
-
-                    trigger OnValidate()
-                    var
-                        Vendor: Record Vendor;
-                    begin
-                        if "Buy-from Vendor No." <> '' then begin
-                            Vendor.Get("Buy-from Vendor No.");
-                            if "Act Type" = "Act Type"::Advance then
-                                Vendor.TestField("Vendor Type", Vendor."Vendor Type"::"Resp. Employee")
-                            else
-                                Vendor.TestField("Vendor Type", Vendor."Vendor Type"::Vendor);
-                        end;
-                    end;
-                }
-                */
                 field(VendorNo; "Buy-from Vendor No.")
                 {
                     ApplicationArea = Suite;
@@ -136,12 +99,22 @@ page 70260 "Purchase Order Act"
                         ApplicationArea = All;
                         ShowMandatory = true;
                         BlankZero = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update;
+                        end;
                     }
                     field("Invoice VAT Amount"; Rec."Invoice VAT Amount")
                     {
                         ApplicationArea = All;
                         ShowMandatory = true;
                         BlankZero = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update;
+                        end;
                     }
                     field("Invoice Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount")
                     {
@@ -283,13 +256,20 @@ page 70260 "Purchase Order Act"
                 {
                     ApplicationArea = All;
                     Caption = 'Pre-Approver';
-                    Editable = PreApproverEditable;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        UserSetup.Reset;
+                        UserSetup.SetRange("Status App", UserSetup."Status App"::Approve);
+                        if Page.RunModal(Page::"Approval User Setup", UserSetup) = Action::LookupOK then begin
+                            PreApproverNo := UserSetup."User ID";
+                            Validate("Pre-Approver", PreApproverNo);
+                        end;
+                    end;
 
                     trigger OnValidate()
                     begin
-                        if PreApproverNo <> '' then
-                            TestField("Act Type", "Act Type"::Advance);
-                        "Pre-Approver" := PreApproverNo;
+                        Validate("Pre-Approver", PreApproverNo);
                     end;
                 }
                 field("Approver"; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
@@ -362,7 +342,7 @@ page 70260 "Purchase Order Act"
             part(PurchaseOrderActLines; "Purchase Order Act Subform")
             {
                 ApplicationArea = All;
-                Editable = "Buy-from Vendor No." <> '';
+                Editable = ("Buy-from Vendor No." <> '') and GlobalEditable;
                 Enabled = "Buy-from Vendor No." <> '';
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
@@ -370,6 +350,7 @@ page 70260 "Purchase Order Act"
             group("Payment Request")
             {
                 Caption = 'Payment Request';
+                Editable = GlobalEditable;
                 field("Vendor Bank Account"; Rec."Vendor Bank Account")
                 {
                     ApplicationArea = All;
@@ -411,6 +392,7 @@ page 70260 "Purchase Order Act"
             group("Details")
             {
                 Caption = 'Details';
+                Editable = GlobalEditable;
                 field("Buy-from Contact No."; "Buy-from Contact No.")
                 {
                     ApplicationArea = All;
@@ -445,7 +427,7 @@ page 70260 "Purchase Order Act"
                 SubPageLink = "Table ID" = CONST(38),
                               "Document Type" = FIELD("Document Type"),
                               "Document No." = FIELD("No.");
-                Visible = AppButtonEnabled;
+                Visible = ApproveButtonEnabled or RejectButtonEnabled;
             }
             part(ApprovalFactBox; "Approval FactBox")
             {
@@ -474,17 +456,8 @@ page 70260 "Purchase Order Act"
                     PromotedIsBig = true;
 
                     trigger OnAction()
-                    var
-                        DocumentAttachment: Record "Document Attachment";
-                        RecRef: RecordRef;
                     begin
-                        CalcFields("Exists Attachment");
-                        TestField("Exists Attachment");
-                        DocumentAttachment.SetRange("Table ID", DATABASE::"Purchase Header");
-                        DocumentAttachment.SetRange("Document Type", rec."Document Type");
-                        DocumentAttachment.SetRange("No.", Rec."No.");
-                        DocumentAttachment.FindFirst();
-                        DocumentAttachment.Export(true);
+                        ViewAttachDocument();
                     end;
                 }
                 action(Statistics)
@@ -567,11 +540,22 @@ page 70260 "Purchase Order Act"
 
                     trigger OnAction()
                     var
-                        WorkflowsEntriesBuffer: Record "Workflows Entries Buffer";
+                        RequestApprovalEntries: Page "Request Approval Entries";
                     begin
-                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(
-                            RecordId, DATABASE::"Purchase Header", "Document Type".AsInteger(), "No.");
+                        RequestApprovalEntries.Setfilters(Database::"Purchase Header", Rec."Document Type".AsInteger(), Rec."No.");
+                        RequestApprovalEntries.Run;
                     end;
+                }
+                action(ChangeLog)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Change Log';
+                    Image = ChangeLog;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    RunObject = Page "Request Change Log Entries";
+                    RunPageLink = "Primary Key Field 2 Value" = field("No.");
                 }
             }
             group(Documents)
@@ -812,12 +796,10 @@ page 70260 "Purchase Order Act"
                         PurchaseHeader.PrintRecordsExt(true, ReportSelUsage::PurchOrderAct);
                     end;
                 }
-
                 action("Cover Sheet")
                 {
                     ApplicationArea = Suite;
                     Caption = 'Cover Sheet';
-                    // Enabled = CoverSheetPrintEnabled;
                     Image = PrintCover;
                     Promoted = true;
                     PromotedCategory = Category10;
@@ -870,14 +852,16 @@ page 70260 "Purchase Order Act"
         EstimatorMandatory := "Act Type" <> "Act Type"::Advance;
         IsEmplPurchase := "Empl. Purchase";
 
-        if "Act Type" = "Act Type"::Advance then
+        if ("Act Type" = "Act Type"::Advance) or (Rec."Pre-Approver" <> '') then
             PreApproverNo := Rec."Pre-Approver"
         else
             PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
-        PreApproverEditable := "Act Type" = "Act Type"::Advance;
-        ProblemDescription := Rec.GetApprovalCommentText();
+
         GenPrintEnabled := Rec."Location Document";
-        CoverSheetPrintEnabled := "Status App Act".AsInteger() >= "Status App Act"::Signing.AsInteger();
+
+        ProblemDescription := '';
+        if "Problem Document" then
+            ProblemDescription := Rec.GetApprovalCommentText();
 
         WhseEmployee.SetRange("User ID", UserId);
         StatusStyleTxt := GetStatusStyleText();
@@ -897,34 +881,24 @@ page 70260 "Purchase Order Act"
         ShowDocEnabled := "Exists Attachment";
         LocationCodeShowMandatory := Rec."Location Document";
 
-        AppButtonEnabled :=
-            NOT ((UPPERCASE("Process User") <> UPPERCASE(USERID)) AND (UserSetup."Status App Act" <> Rec."Status App Act"));
-        IF "Status App Act" = "Status App Act"::Approve THEN BEGIN
-            ApprovalEntry.SETRANGE("Table ID", Database::"Purchase Header");
-            ApprovalEntry.SETRANGE("Document Type", ApprovalEntry."Document Type"::Order);
-            ApprovalEntry.SETRANGE("Document No.", "No.");
-            ApprovalEntry.SETRANGE("Approver ID", USERID);
-            IF ApprovalEntry.FINDSET THEN
-                AppButtonEnabled := NOT ApprovalEntry.IsEmpty;
-        END;
-
         AllApproverEditable := "Status App" = "Status App"::Checker;
 
+        GlobalEditable := true;
         IF ("Status App Act" = "Status App Act"::Accountant) THEN
-            CurrPage.EDITABLE := FALSE
+            GlobalEditable := FALSE
         ELSE
             IF ("Status App Act" = "Status App Act"::Estimator) THEN
-                CurrPage.EDITABLE := FALSE
+                GlobalEditable := FALSE
             ELSE
-                CurrPage.EDITABLE := TRUE;
+                GlobalEditable := TRUE;
         IF "Problem Type" = "Problem Type"::"Act error" THEN
-            CurrPage.EDITABLE := FALSE;
+            GlobalEditable := FALSE;
         IF UserSetup."Status App Act" = UserSetup."Status App Act"::"сontroller" THEN BEGIN
-            CurrPage.EDITABLE := TRUE;
+            GlobalEditable := TRUE;
             ReceiveAccountEditable := TRUE;
         END;
         IF "Location Document" THEN
-            CurrPage.EDITABLE := NOT ("Status App Act" IN ["Status App Act"::Approve, "Status App Act"::Signing, "Status App Act"::Accountant]);
+            GlobalEditable := NOT ("Status App Act" IN ["Status App Act"::Approve, "Status App Act"::Signing, "Status App Act"::Accountant]);
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -942,8 +916,8 @@ page 70260 "Purchase Order Act"
         PurchCalcDiscByType: Codeunit "Purch - Calc Disc. By Type";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, PreApproverEditable : boolean;
-        ShowDocEnabled, EstimatorEnable, AppButtonEnabled, CopyDocumentEnabled, GenPrintEnabled, CoverSheetPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
+        ActTypeEditable, AllApproverEditable, ReceiveAccountEditable, GlobalEditable : boolean;
+        ShowDocEnabled, EstimatorEnable, CopyDocumentEnabled, GenPrintEnabled, ApproveButtonEnabled, RejectButtonEnabled : Boolean;
         EstimatorMandatory, LocationCodeShowMandatory : Boolean;
         StatusStyleTxt, ProblemDescription : Text;
         PreApproverNo: Code[50];

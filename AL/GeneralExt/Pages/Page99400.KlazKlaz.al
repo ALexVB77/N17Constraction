@@ -40,12 +40,12 @@ page 99400 "Klaz Klaz"
                 trigger OnAction();
                 var
                     cc: codeunit "Rocket Science";
+                    rep: Report "Cust. Payment Notif. Email";
+                    ca: Record "Customer Agreement";
                 begin
-                    //cc.TryToWriteTestRec();
-                    //cc.InsertTry()
-                    cc.ModifyTry();
-                    CurrPage.Update();
-
+                    ca.SetRange("Agreement Type", ca."Agreement Type"::"Investment Agreement");
+                    ca.FindFirst();
+                    rep.SendMailDBG(ca, 99991);
                 end;
             }
         }

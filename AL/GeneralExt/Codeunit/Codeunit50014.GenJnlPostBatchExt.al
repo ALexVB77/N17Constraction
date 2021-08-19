@@ -6,7 +6,7 @@ codeunit 50014 "Gen. Jnl.-Post Batch (Ext)"
         SalesSetup: Record "Sales & Receivables Setup";
         Cust: Record Customer;
         CustAgr: Record "Customer Agreement";
-        PrintCustAgr: Report "Print Customer Agreement";
+        CustPmtNotifEmail: Report "Cust. Payment Notif. Email";
     begin
 
         SalesSetup.GET;
@@ -17,11 +17,8 @@ codeunit 50014 "Gen. Jnl.-Post Batch (Ext)"
                        (Cust.get(GenJournalLine."Account No.")) and (Cust."E-Mail" <> '') and
                        (CustAgr.Get(GenJournalLine."Account No.", GenJournalLine."Agreement No.")) then begin
                         CustAgr.SetRecFilter();
-                        Clear(PrintCustAgr);
-                        PrintCustAgr.UseRequestPage(false);
-                        PrintCustAgr.SetTableView(CustAgr);
-                        PrintCustAgr.SendEMail(Cust."E-Mail", GenJournalLine."Posting Date", -GenJournalLine.Amount, GenJournalLine."Payment Date");
-                        PrintCustAgr.RunModal();
+                        Clear(CustPmtNotifEmail);
+                        CustPmtNotifEmail.SendMail(CustAgr, -GenJournalLine.Amount);
                     end;
             until GenJournalLine.Next() = 0;
 

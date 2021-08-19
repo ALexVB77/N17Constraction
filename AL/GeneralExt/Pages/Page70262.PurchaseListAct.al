@@ -39,7 +39,6 @@ page 70262 "Purchase List Act"
                         CurrPage.UPDATE(FALSE);
                     end;
                 }
-
                 field(cFilter1; Filter1)
                 {
                     ApplicationArea = All;
@@ -52,7 +51,6 @@ page 70262 "Purchase List Act"
                         CurrPage.UPDATE(FALSE);
                     end;
                 }
-
                 field(FilterActType; FilterActType)
                 {
                     ApplicationArea = All;
@@ -78,8 +76,12 @@ page 70262 "Purchase List Act"
                     ApplicationArea = All;
 
                     trigger OnAssistEdit()
+                    var
+                        PurchHeader: Record "Purchase Header";
                     begin
-                        OpenActCard();
+                        PurchHeader.SetRange("No.", Rec."No.");
+                        page.Run(Page::"Purchase Order Act", Rec);
+                        CurrPage.Update(false);
                     end;
                 }
                 field("Act Type"; "Act Type")
@@ -232,11 +234,8 @@ page 70262 "Purchase List Act"
                 Caption = 'Edit';
                 Image = Edit;
                 Enabled = EditEnabled;
-
-                trigger OnAction()
-                begin
-                    OpenActCard();
-                end;
+                RunObject = Page "Purchase Order Act";
+                RunPageLink = "No." = field("No.");
             }
             action(ApproveButton)
             {
@@ -365,17 +364,6 @@ page 70262 "Purchase List Act"
         NewKC2Enabled: Boolean;
         NewAdvanceEnabled: Boolean;
         EditEnabled: Boolean;
-
-    local procedure OpenActCard()
-    begin
-        case Rec."Act Type" of
-            Rec."Act Type"::Advance:
-                page.Run(Page::"Purchase Order Act", Rec)
-            else
-                page.Run(Page::"Purchase Order Act", Rec);
-        end;
-        CurrPage.Update(false);
-    end;
 
     local procedure SetSortType()
     begin

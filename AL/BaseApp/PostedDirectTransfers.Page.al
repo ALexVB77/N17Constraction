@@ -6,6 +6,10 @@ page 14982 "Posted Direct Transfers"
     PageType = List;
     SourceTable = "Direct Transfer Header";
 
+    // NC AB: ошибка стандартной версии, забыли про:
+    ApplicationArea = Location;
+    UsageCategory = History;
+
     layout
     {
         area(content)

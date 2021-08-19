@@ -1,4 +1,4 @@
-page 70001 "Purchase Order Subform App"
+page 70001 "Purchase Order App Subform"
 {
     AutoSplitKey = true;
     Caption = 'Lines';
@@ -323,6 +323,29 @@ page 70001 "Purchase Order Subform App"
                 begin
                     Clear(PrjBudMgt);
                     PrjBudMgt.ApplyPrjBudEntrytoPurchLine(Rec);
+                    CurrPage.Update(false);
+                end;
+            }
+            action(unLinkCFEntry)
+            {
+                ApplicationArea = All;
+                Caption = 'Unlink Cash Flow Entry';
+                Image = UnLinkAccount;
+                trigger OnAction()
+                var
+                    PrjBudMgt: Codeunit "Project Budget Management";
+                    lPBE: Record "Projects Budget Entry";
+                    lText001: Label 'Delete linked CF Entry?';
+                    lText002: Label 'CF Link deleted';
+                begin
+                    if not Confirm(lText001) then
+                        exit;
+                    lPBE.Reset();
+                    lPBE.SetRange("Entry No.", Rec."Forecast Entry");
+                    Rec."Forecast Entry" := 0;
+                    Rec.Modify(false);
+                    PrjBudMgt.DeleteSTLine(lPBE);
+                    Message(lText002);
                     CurrPage.Update(false);
                 end;
             }

@@ -48,18 +48,6 @@ page 50092 "Giv. Transfer Order"
                     Visible = false;
                     Importance = Promoted;
                 }
-                field("Direct Transfer"; Rec."Direct Transfer")
-                {
-                    ApplicationArea = Location;
-                    Editable = (rec.Status = rec.Status::Open) AND EnableTransferFields;
-                    Importance = Promoted;
-                    ToolTip = 'Specifies that the transfer does not use an in-transit location. When you transfer directly, the Qty. to Receive field will be locked with the same value as the quantity to ship.';
-
-                    trigger OnValidate()
-                    begin
-                        CurrPage.Update;
-                    end;
-                }
                 field("In-Transit Code"; Rec."In-Transit Code")
                 {
                     ApplicationArea = Location;
@@ -638,21 +626,6 @@ page 50092 "Giv. Transfer Order"
                         ReleaseTransferDoc.Reopen(Rec);
                     end;
                 }
-
-                action(GetItemLedgerEntryLines)
-                {
-                    Caption = 'Get Item Ledger Lines';
-                    Image = InventoryPick;
-                    ApplicationArea = All;
-                    trigger OnAction()
-                    begin
-
-                        //NC 22512 > DP
-                        rec.GetInventoryLines;
-                        //NC 22512 < DP
-                    end;
-
-                }
             }
             group("F&unctions")
             {
@@ -731,6 +704,18 @@ page 50092 "Giv. Transfer Order"
                     trigger OnAction()
                     begin
                         rec.GetReceiptLines;
+                    end;
+                }
+                action(GetItemLedgerEntryLines)
+                {
+                    Caption = 'Get Item Ledger Lines';
+                    Image = InventoryPick;
+                    ApplicationArea = All;
+                    trigger OnAction()
+                    begin
+                        //NC 22512 > DP
+                        rec.GetInventoryLines;
+                        //NC 22512 < DP
                     end;
                 }
             }

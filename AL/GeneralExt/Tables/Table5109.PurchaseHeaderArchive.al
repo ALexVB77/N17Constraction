@@ -40,6 +40,26 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             Caption = 'Receptionist';
             Description = 'NC 51380 AB';
         }
+        field(50014; "My Approved"; boolean)
+        {
+            CalcFormula = exist("Request Approval Entry Archive" where("Table ID" = const(5109),
+                                                        "Document Type" = field("Document Type"),
+                                                        "Document No." = field("No."),
+                                                        "Doc. No. Occurrence" = field("Doc. No. Occurrence"),
+                                                        "Version No." = field("Version No."),
+                                                        Status = const(Approved),
+                                                        "Approver ID" = field("Approver ID Filter")));
+            Caption = 'My Approved';
+            Description = 'NC 51374 AB';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(50015; "Approver ID Filter"; code[50])
+        {
+            Caption = 'Approver ID Filter';
+            Description = 'NC 51374 AB';
+            FieldClass = FlowFilter;
+        }
         field(50022; "Spec. Bank Account No."; Code[20])
         {
             TableRelation = "Bank Account";
@@ -50,6 +70,13 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
         {
             Description = 'NC 51432 AP';
             Caption = 'Original Company';
+        }
+        field(70001; "Status App"; option)
+        {
+            Caption = 'Status App';
+            OptionCaption = ' ,Reception,Controller,Checker,Approve,Payment,Request';
+            OptionMembers = " ",Reception,Controller,Checker,Approve,Payment,Request;
+            Description = 'NC 51373 AB';
         }
         field(70002; "Process User"; Code[50])
         {
@@ -65,9 +92,24 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
         field(70005; "Exists Attachment"; Boolean)
         {
             FieldClass = FlowField;
-            CalcFormula = Exist("Document Attachment" WHERE("Table ID" = CONST(5109), "Document Type" = FIELD("Document Type"), "No." = FIELD("No.")));
+            CalcFormula = Exist("Document Attachment Archive"
+                WHERE("Table ID" = CONST(5109), "Document Type" = FIELD("Document Type"), "No." = FIELD("No."),
+                    "Doc. No. Occurrence" = field("Doc. No. Occurrence"), "Version No." = field("Version No.")));
             Description = 'NC 51373 AB';
             Caption = 'Exists Attachment';
+        }
+        field(70007; "Payments Amount"; Decimal)
+        {
+            // Переделано из Normal на FlowField
+            CalcFormula = sum("Detailed Vendor Ledg. Entry".Amount
+                            where("Vendor No." = field("Buy-from Vendor No."),
+                                    "Initial Document Type" = const(Payment),
+                                    "IW Document No." = field("No."),
+                                    "Entry Type" = const("Initial Entry")));
+            Caption = 'Payments Amount';
+            Description = 'NC 51373 AB';
+            Editable = false;
+            FieldClass = FlowField;
         }
         field(70008; "Invoice VAT Amount"; Decimal)
         {
@@ -86,10 +128,12 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             OptionCaption = 'Prepay,Postpay';
             OptionMembers = "pre-pay","post-payment";
         }
-        field(70011; "Request Payment Doc Type"; Boolean)
+        field(70011; "Payment Doc Type"; Option)
         {
             Description = 'NC 51373 AB';
-            Caption = 'Request Payment Doc Type';
+            Caption = 'Payment Doc Type';
+            OptionCaption = 'Invoice,Payment Request';
+            OptionMembers = Invoice,"Payment Request";
         }
         field(70012; "Payment Details"; Text[230])
         {
@@ -122,6 +166,19 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             CalcFormula = Lookup("Vendor Agreement"."External Agreement No." WHERE("Vendor No." = FIELD("Buy-from Vendor No."), "No." = FIELD("Agreement No.")));
             Caption = 'External Agreement No.';
             Description = 'NC 51378 AB';
+            FieldClass = FlowField;
+        }
+        field(70018; "Paid Date Fact"; Date)
+        {
+            // Переделано из Normal на FlowField
+            CalcFormula = max("Detailed Vendor Ledg. Entry"."Posting Date"
+                            where("Vendor No." = field("Buy-from Vendor No."),
+                                    "Initial Document Type" = const(Payment),
+                                    "IW Document No." = field("No."),
+                                    "Entry Type" = const("Initial Entry")));
+            Caption = 'Paid Date Fact';
+            Description = 'NC 51373 AB';
+            Editable = false;
             FieldClass = FlowField;
         }
         field(70019; "Problem Document"; Boolean)
@@ -193,9 +250,9 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             Description = 'NC 51373 AB';
             TableRelation = "User Setup"."User ID" WHERE("Status App Act" = CONST(Estimator));
         }
-        field(90006; "Invoice No."; Code[20])
+        field(90006; "Act Invoice No."; Code[20])
         {
-            Caption = 'Invoice No.';
+            Caption = 'Act Invoice No.';
             Description = 'NC 51373 AB';
         }
         field(90007; "Act Invoice Posted"; Boolean)
@@ -220,4 +277,47 @@ tableextension 85109 "Purchase Header Archive (Ext)" extends "Purchase Header Ar
             Caption = 'Storekeeper';
         }
     }
+
+    procedure GetAddTypeCommentArchText(AddType: enum "Purchase Comment Add. Type"): text
+    var
+        PurchCommentLineArch: Record "Purch. Comment Line Archive";
+    begin
+        PurchCommentLineArch.SetRange("Document Type", "Document Type".AsInteger());
+        PurchCommentLineArch.SetRange("No.", "No.");
+        PurchCommentLineArch.SetRange("Document Line No.", 0);
+        PurchCommentLineArch.SetRange("Version No.", "Version No.");
+        PurchCommentLineArch.SetRange("Doc. No. Occurrence", "Doc. No. Occurrence");
+        PurchCommentLineArch.SetRange("Add. Line Type", AddType);
+        if PurchCommentLineArch.FindLast() then
+            exit(PurchCommentLineArch.Comment + PurchCommentLineArch."Comment 2");
+    end;
+
+    procedure SetAddTypeCommentArchText(AddType: enum "Purchase Comment Add. Type"; NewComment: text)
+    var
+        PurchCommentLineArch: Record "Purch. Comment Line Archive";
+    begin
+        PurchCommentLineArch.SetRange("Document Type", "Document Type".AsInteger());
+        PurchCommentLineArch.SetRange("No.", "No.");
+        PurchCommentLineArch.SetRange("Document Line No.", 0);
+        PurchCommentLineArch.SetRange("Version No.", "Version No.");
+        PurchCommentLineArch.SetRange("Doc. No. Occurrence", "Doc. No. Occurrence");
+        PurchCommentLineArch.SetRange("Add. Line Type", AddType);
+        if not PurchCommentLineArch.FindLast() then begin
+            PurchCommentLineArch.Init();
+            PurchCommentLineArch."Document Type" := "Document Type".AsInteger();
+            PurchCommentLineArch."No." := "No.";
+            PurchCommentLineArch."Document Line No." := 0;
+            PurchCommentLineArch."Line No." := 10000;
+            PurchCommentLineArch."Version No." := "Version No.";
+            PurchCommentLineArch."Doc. No. Occurrence" := "Doc. No. Occurrence";
+            PurchCommentLineArch.Date := Today;
+            PurchCommentLineArch."Add. Line Type" := AddType;
+            PurchCommentLineArch.Insert(true);
+        end;
+        PurchCommentLineArch.Comment := CopyStr(NewComment, 1, MaxStrLen(PurchCommentLineArch.Comment));
+        PurchCommentLineArch."Comment 2" :=
+          CopyStr(NewComment, MaxStrLen(PurchCommentLineArch.Comment) + 1, MaxStrLen(PurchCommentLineArch."Comment 2"));
+        PurchCommentLineArch.Modify(true);
+    end;
+
 }

@@ -15,6 +15,7 @@ page 70000 "Purchase Order App"
             group(General)
             {
                 Caption = 'General';
+                Editable = GlobalEditable;
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
@@ -72,12 +73,22 @@ page 70000 "Purchase Order App"
                         ApplicationArea = All;
                         BlankZero = true;
                         ShowMandatory = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update();
+                        end;
                     }
                     field("Invoice VAT Amount"; Rec."Invoice VAT Amount")
                     {
                         ApplicationArea = All;
                         BlankZero = true;
                         ShowMandatory = true;
+
+                        trigger OnValidate()
+                        begin
+                            CurrPage.Update();
+                        end;
                     }
                     field("Invoice Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Invoice VAT Amount")
                     {
@@ -191,11 +202,25 @@ page 70000 "Purchase Order App"
                         CurrPage.PurchaseOrderAppLines.PAGE.UpdateForm(true);
                     end;
                 }
-                field("Pre-Approver"; PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID"))
+                field("Pre-Approver"; PreApproverNo)
                 {
                     ApplicationArea = All;
                     Caption = 'Pre-Approver';
-                    Editable = false;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        UserSetup.Reset;
+                        UserSetup.SetRange("Status App", UserSetup."Status App"::Approve);
+                        if Page.RunModal(Page::"Approval User Setup", UserSetup) = Action::LookupOK then begin
+                            PreApproverNo := UserSetup."User ID";
+                            Validate("Pre-Approver", PreApproverNo);
+                        end;
+                    end;
+
+                    trigger OnValidate()
+                    begin
+                        Validate("Pre-Approver", PreApproverNo);
+                    end;
                 }
                 field("Approver"; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
                 {
@@ -278,13 +303,29 @@ page 70000 "Purchase Order App"
                     ApplicationArea = All;
                     Editable = false;
                 }
+                field("Linked Purchase Order Act No."; "Linked Purchase Order Act No.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+
+                    trigger OnDrillDown()
+                    var
+                        PurchHeader: Record "Purchase Header";
+                    begin
+                        if "Linked Purchase Order Act No." <> '' then begin
+                            PurchHeader.SetRange("Document Type", "Document Type");
+                            PurchHeader.SetRange("No.", "Linked Purchase Order Act No.");
+                            Page.Run(Page::"Purchase Order Act", PurchHeader);
+                        end;
+                    end;
+                }
             }
 
-            part(PurchaseOrderAppLines; "Purchase Order Subform App")
+            part(PurchaseOrderAppLines; "Purchase Order App Subform")
             {
                 ApplicationArea = All;
                 Editable = "Buy-from Vendor No." <> '';
-                Enabled = "Buy-from Vendor No." <> '';
+                Enabled = ("Buy-from Vendor No." <> '') and GlobalEditable;
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
             }
@@ -292,6 +333,7 @@ page 70000 "Purchase Order App"
             group("Payment Request")
             {
                 Caption = 'Payment Request';
+                Editable = GlobalEditable;
                 field("Vendor Bank Account No."; rec."Vendor Bank Account No.")
                 {
                     ApplicationArea = All;
@@ -326,6 +368,7 @@ page 70000 "Purchase Order App"
             group("Details")
             {
                 Caption = 'Details';
+                Editable = GlobalEditable;
                 field("Buy-from Contact No."; "Buy-from Contact No.")
                 {
                     ApplicationArea = All;
@@ -362,6 +405,21 @@ page 70000 "Purchase Order App"
             {
                 Caption = 'O&rder';
                 Image = "Order";
+                action(ViewAttachDoc)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Documents View';
+                    Enabled = ShowDocEnabled;
+                    Image = Export;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+
+                    trigger OnAction()
+                    begin
+                        ViewAttachDocument();
+                    end;
+                }
                 action(Statistics)
                 {
                     ApplicationArea = All;
@@ -424,11 +482,22 @@ page 70000 "Purchase Order App"
 
                     trigger OnAction()
                     var
-                        WorkflowsEntriesBuffer: Record "Workflows Entries Buffer";
+                        RequestApprovalEntries: Page "Request Approval Entries";
                     begin
-                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(
-                            RecordId, DATABASE::"Purchase Header", "Document Type".AsInteger(), "No.");
+                        RequestApprovalEntries.Setfilters(Database::"Purchase Header", Rec."Document Type".AsInteger(), Rec."No.");
+                        RequestApprovalEntries.Run;
                     end;
+                }
+                action(ChangeLog)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Change Log';
+                    Image = ChangeLog;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    RunObject = Page "Request Change Log Entries";
+                    RunPageLink = "Primary Key Field 2 Value" = field("No.");
                 }
             }
         }
@@ -455,12 +524,11 @@ page 70000 "Purchase Order App"
                         if Get("Document Type", "No.") then;
                     end;
                 }
-
                 action("Archive Document")
                 {
                     ApplicationArea = Suite;
                     Caption = 'Archi&ve Document';
-                    Enabled = "No." <> '';
+                    Enabled = ArchiveDocEnabled;
                     Image = Archive;
                     Promoted = true;
                     PromotedCategory = Category5;
@@ -487,8 +555,12 @@ page 70000 "Purchase Order App"
                     PromotedIsBig = true;
 
                     trigger OnAction()
+                    var
+                        PurchaseHeader: Record "Purchase Header";
                     begin
-                        Message('Нажата кнопка Печать');
+                        PurchaseHeader := Rec;
+                        CurrPage.SetSelectionFilter(PurchaseHeader);
+                        PurchaseHeader.PrintRecords(true);
                     end;
                 }
             }
@@ -589,16 +661,25 @@ page 70000 "Purchase Order App"
 
         CalcFields("Payments Amount");
 
-        if "Status App" = "Status App"::Payment then
-            ProblemDescription := Rec.GetAddTypeCommentText(AddCommentType::Problem)
-        else
-            ProblemDescription := Rec.GetApprovalCommentText();
+        ProblemDescription := '';
+        if "Problem Document" then begin
+            if "Status App" = "Status App"::Payment then
+                ProblemDescription := Rec.GetAddTypeCommentText(AddCommentType::Problem)
+            else
+                ProblemDescription := Rec.GetApprovalCommentText();
+        end;
 
         PaymentAssignmentEnabled := "Payment to Person";
         CopyDocumentEnabled := ("No." <> '') and ("Status App" = "Status App"::Reception);
 
+        if Rec."Pre-Approver" <> '' then
+            PreApproverNo := Rec."Pre-Approver"
+        else
+            PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
+
         ApproveButtonEnabled := FALSE;
         RejectButtonEnabled := FALSE;
+        ArchiveDocEnabled := ("No." <> '') and ("Status App" = "Status App"::Payment);
 
         // StatusStyleTxt := GetStatusStyleText();
 
@@ -611,26 +692,14 @@ page 70000 "Purchase Order App"
 
         UserSetup.GET(USERID);
 
-        CurrPage.EDITABLE("Status App" < "Status App"::Approve);
-        IF "Status App" = "Status App"::Request THEN
-            CurrPage.EDITABLE(TRUE);
+        CalcFields("Exists Attachment");
+        ShowDocEnabled := "Exists Attachment";
 
         IWPlanRepayDateMandatory := Rec."Payment Type" = Rec."Payment Type"::"pre-pay";
 
         PaymentTypeEditable := "Status App" < "Status App"::Checker;
-        AppButtonEnabled :=
-            NOT ((UPPERCASE("Process User") <> UPPERCASE(USERID)) AND (UserSetup."Status App Act" <> Rec."Status App Act"));
 
-        IF "Status App Act" = "Status App Act"::Approve THEN BEGIN
-            ApprovalEntry.SETRANGE("Table ID", Database::"Purchase Header");
-            ApprovalEntry.SETRANGE("Document Type", ApprovalEntry."Document Type"::Order);
-            ApprovalEntry.SETRANGE("Document No.", "No.");
-            ApprovalEntry.SETRANGE("Approver ID", USERID);
-            IF ApprovalEntry.FINDSET THEN
-                AppButtonEnabled := NOT ApprovalEntry.IsEmpty;
-        END;
-        IF "Status App" = "Status App"::Request THEN
-            AppButtonEnabled := TRUE;
+        GlobalEditable := "Status App" < "Status App"::Approve;
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -656,11 +725,13 @@ page 70000 "Purchase Order App"
         PaymentOrderMgt: Codeunit "Payment Order Management";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-        PaymentTypeEditable, AppButtonEnabled, ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled : Boolean;
+        ShowDocEnabled, PaymentTypeEditable, GlobalEditable : boolean;
+        ApproveButtonEnabled, RejectButtonEnabled, PaymentAssignmentEnabled, CopyDocumentEnabled, ArchiveDocEnabled : Boolean;
         IWPlanRepayDateMandatory: Boolean;
         ProblemDescription: text[80];
         AddCommentType: enum "Purchase Comment Add. Type";
         TextDelError: Label 'You cannot delete Purchase Order Act %1';
+        PreApproverNo: Code[50];
 
     local procedure SaveInvoiceDiscountAmount()
     var

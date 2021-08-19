@@ -8,6 +8,10 @@ tableextension 80122 "Purch. Inv. Header (Ext)" extends "Purch. Inv. Header"
             DataClassification = CustomerContent;
             TableRelation = "Giv. Prod. Order";
         }
+        field(70038; "Pre-booking Document"; Boolean)
+        {
+            Caption = 'Pre-booking Document';
+        }
     }
     procedure GivProdOrderCheckDocDim(RcptActNo: code[20]; RcptActPosted: boolean)
     var
