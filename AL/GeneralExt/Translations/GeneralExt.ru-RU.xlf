@@ -14539,7 +14539,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control PrintPrice - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
         <trans-unit id="Report 171109171 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log Interaction</source>
           <target>Журнал Взаимодействий</target>
