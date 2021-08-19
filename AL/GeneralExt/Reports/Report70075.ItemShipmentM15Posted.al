@@ -115,8 +115,8 @@ report 70075 "Item Shipment M-15"
 
                 FillHeader("No.",
                     "Posting Date",
-                    Format(GetCostCodeName(1, TransferHeader."Shortcut Dimension 1 Code")),
-                    Format(GetCostCodeName(1, TransferHeader."New Shortcut Dimension 1 Code")));
+                    Format(GetCostCodeName(1, TransferReceiptHeader."Shortcut Dimension 1 Code")),
+                    Format(GetCostCodeName(1, TransferReceiptHeader."New Shortcut Dimension 1 Code")));
             end;
         }
 
@@ -362,8 +362,8 @@ report 70075 "Item Shipment M-15"
 
                 FillHeader("No.",
                     "Posting Date",
-                    Format(GetCostCodeName(1, TransferHeader."Shortcut Dimension 1 Code")),
-                    Format(GetCostCodeName(1, TransferHeader."New Shortcut Dimension 1 Code")));
+                    Format(GetCostCodeName(1, ItemDocHeader."Shortcut Dimension 1 Code")),
+                    Format(GetCostCodeName(1, '')));
             end;
         }
 
@@ -460,8 +460,8 @@ report 70075 "Item Shipment M-15"
 
                 FillHeader("No.",
                     "Posting Date",
-                    Format(GetCostCodeName(1, TransferHeader."Shortcut Dimension 1 Code")),
-                    Format(GetCostCodeName(1, TransferHeader."New Shortcut Dimension 1 Code")));
+                    Format(GetCostCodeName(1, ItemShipmentHeader."Shortcut Dimension 1 Code")),
+                    Format(GetCostCodeName(1, '')));
             end;
         }
 
