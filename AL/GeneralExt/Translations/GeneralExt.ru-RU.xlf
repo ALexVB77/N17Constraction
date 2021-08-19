@@ -14503,28 +14503,24 @@
           <source>Reason</source>
           <target>Основание</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Reason - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1214298328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Responsible</source>
           <target>Ответственные</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Responsible - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1456871694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Allowed Employee</source>
           <target>Разрешил (Сотрудник)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control AllowedEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1418306143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Recieved Employee</source>
           <target>Получил</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control RecievedEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 435501545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
