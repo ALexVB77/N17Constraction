@@ -14203,91 +14203,48 @@
           <source>Item Shipment M-15</source>
           <target>Накладная на отпуск материалов на сторону М-15</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - NamedType 1499704549" size-unit="char" translate="yes" xml:space="preserve">
           <source>By agreement %1</source>
           <target>По договору %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - NamedType Text12401</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 2851454604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export to Excel</source>
-          <target>Выгрузка в Excel</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control ExportToExcel - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 987782936 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print with Price</source>
           <target>Печать с Ценой</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control PrintPrice - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Log Interaction</source>
-          <target>Журнал Взаимодействий</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control LogInteraction - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 2578066365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. of Copies</source>
-          <target>Число копий</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control NoOfCopies - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 1548924671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Operation Type</source>
-          <target>Вид операции</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control OperationType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reason</source>
           <target>Основание</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Reason - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 171109171 - Control 342758792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Save in Archive</source>
-          <target>Сохранить в архиве</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control SaveInArchive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1214298328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Responsible</source>
           <target>Ответственный</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Responsible - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1456871694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Allowed Employee</source>
           <target>Разрешил (Сотрудник)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control AllowedEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1418306143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Recieved Employee</source>
           <target>Получил</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control RecievedEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 435501545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Released Employee</source>
           <target>Отпустил</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control ReleasedEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2721895639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
