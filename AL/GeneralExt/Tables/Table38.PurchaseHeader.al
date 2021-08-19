@@ -557,17 +557,22 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
     procedure SetAddTypeCommentText(AddType: enum "Purchase Comment Add. Type"; NewComment: text)
     var
         PurchCommentLine: Record "Purch. Comment Line";
+        NextLineNo: Integer;
     begin
         PurchCommentLine.SetRange("Document Type", "Document Type");
         PurchCommentLine.SetRange("No.", "No.");
         PurchCommentLine.SetRange("Document Line No.", 0);
         PurchCommentLine.SetRange("Add. Line Type", AddType);
         if not PurchCommentLine.FindLast() then begin
+            PurchCommentLine.SetRange("Add. Line Type");
+            if PurchCommentLine.FindLast() then
+                NextLineNo := PurchCommentLine."Line No.";
+            NextLineNo += 10000;
             PurchCommentLine.Init();
             PurchCommentLine."Document Type" := "Document Type";
             PurchCommentLine."No." := "No.";
             PurchCommentLine."Document Line No." := 0;
-            PurchCommentLine."Line No." := 10000;
+            PurchCommentLine."Line No." := NextLineNo;
             PurchCommentLine.Date := Today;
             PurchCommentLine."Add. Line Type" := AddType;
             PurchCommentLine.Insert(true);
