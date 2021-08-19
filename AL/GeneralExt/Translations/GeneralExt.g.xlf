@@ -10503,6 +10503,231 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control UseExternalDocNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3263168732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aged Accounts Receivable</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 2402552187" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aged Accounts Receivable</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType AgedAccReceivableCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 2555393066" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aged Overdue Amounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType AgedOverdueAmtCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 3284058877" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All Amounts in LCY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType AllAmtinLCYCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 1350921099" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Before</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType BeforeTok</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 1707603408" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Original Amount </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDateAmtLCYCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 394537149" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDateDocNoCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 1747274374" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDateDocTypeCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 3808507638" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDateDueDateCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 2244048076" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDatePstngDateCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 2959174789" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CostPlaceCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 3193990627" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CurrReportPageNoCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 269144572" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Specification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CurrSpecificationCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 3657847815" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CustPostGroupCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 82002553" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enter a date formula in the Period Length field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType EnterDateFormulaErr</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 2813197814" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType OriginalAmtCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not Due</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>days</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aged by %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text004</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total for %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text005</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aged as of %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text006</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aged by %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text007</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date,Posting Date,Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text009</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The Date Formula %1 cannot be used. Try to restate it. E.g. 1M+CM instead of CM+1M.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text010</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 2353355232" size-unit="char" translate="yes" xml:space="preserve">
+          <source>-%1</source>
+          <note from="Developer" annotates="general" priority="2">Negating the period length: %1 is the period length</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text032Txt</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - NamedType 1865626161" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total (LCY)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType TotalLCYCptnLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - ReportLabel 3857790676" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - ReportLabel BalanceCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 2060407144 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date that you want the aging calculated for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control AgedAsOf - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 2060407144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aged As Of</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control AgedAsOf - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 3438973743 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the aging will be calculated from the due date, the posting date, or the document date.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control Agingby - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 3438973743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aging by</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control Agingby - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 3438973743 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date,Posting Date,Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control Agingby - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 4096492506 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the report to specify the aging per customer ledger entry.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control AmountsinLCY - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 4096492506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Amounts in LCY</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control AmountsinLCY - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 1678117997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place Filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control CPFilter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 336339332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the column heading for the three periods will indicate a date interval or the number of days overdue.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control HeadingType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 336339332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Heading Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control HeadingType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 336339332 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date Interval,Number of Days</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control HeadingType - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 2035961037 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if each customer's information is printed on a new page if you have chosen two or more customers to be included in the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control perCustomer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 2035961037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Page per Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control perCustomer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 2740290379 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the period for which data is shown in the report. For example, enter "1M" for one month, "30D" for thirty days, "3Q" for three quarters, or "5Y" for five years.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control PeriodLength - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 2740290379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period Length</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control PeriodLength - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 568987109 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the report to show the detailed entries that add up the total balance for each customer.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control PrintDetails - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3263168732 - Control 568987109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control PrintDetails - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 850119152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Change Vendor Agreement</source>
           <note from="Developer" annotates="general" priority="2"></note>
