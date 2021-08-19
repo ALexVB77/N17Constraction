@@ -1,4 +1,5 @@
 // NC 54882 AB: сделал проставление параметров как надо и добавил прямое перемещение
+// EP, в отчетах нельзя управлять свойством Enabled контролов параметров, почему - хз.
 report 82470 "Copy Item Document (Ext)"
 {
     Caption = 'Copy Item Document';
@@ -10,7 +11,7 @@ report 82470 "Copy Item Document (Ext)"
 
     requestpage
     {
-        // SaveValues = true;
+        SaveValues = true;
 
         layout
         {
@@ -53,9 +54,6 @@ report 82470 "Copy Item Document (Ext)"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Include Header';
                         ToolTip = 'Specifies if you want to copy information from the document header you are copying.';
-                        // NC 51415 > EP, 54882 AB
-                        Enabled = IncludeHeaderEnabled;
-                        // NC 51415 < EP, 54882 AB
 
                         trigger OnValidate()
                         begin
@@ -67,9 +65,6 @@ report 82470 "Copy Item Document (Ext)"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Recalculate Lines';
                         ToolTip = 'Specifies that lines are recalculate and inserted on the document you are creating. The batch job retains the item numbers and item quantities but recalculates the amounts on the lines based on the customer information on the new document header.';
-                        // NC 51415 > EP, 54882 AB
-                        Enabled = RecalculateLinesEnabled;
-                        // NC 51415 < EP, 54882 AB
 
                         trigger OnValidate()
                         begin
@@ -82,9 +77,6 @@ report 82470 "Copy Item Document (Ext)"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Specify appl. entries';
-                        // NC 51415 > EP
-                        Enabled = AutoFillAppliesFieldsEnabled;
-                        // NC 51415 < EP
                     }
                 }
             }
@@ -171,7 +163,6 @@ report 82470 "Copy Item Document (Ext)"
         FromDirTransHeader: Record "Direct Transfer Header";
         FromDirTransLine: Record "Direct Transfer Line";
 
-        IncludeHeaderEnabled, RecalculateLinesEnabled, AutoFillAppliesFieldsEnabled : boolean;
 
     [Scope('OnPrem')]
     procedure SetItemDocHeader(var NewItemDocHeader: Record "Item Document Header")
@@ -217,7 +208,6 @@ report 82470 "Copy Item Document (Ext)"
 
         // NC 51415 > EP, 54882 AB
         IncludeHeader := DocType <= DocType::"Posted Shipment";
-        IncludeHeaderEnabled := DocType <= DocType::"Posted Shipment";
         // NC 51415 < EP, 54882 AB
 
         ValidateIncludeHeader;
@@ -293,19 +283,15 @@ report 82470 "Copy Item Document (Ext)"
           not IncludeHeader;
 
         // NC 51415 > EP, 54882 AB
-        RecalculateLinesEnabled := true;
-        AutoFillAppliesFieldsEnabled := true;
+        AutoFillAppliesFields := true;
         if DocType > DocType::"Posted Shipment" then begin
             RecalculateLines := false;
-            RecalculateLinesEnabled := false;
-            AutoFillAppliesFieldsEnabled := false;
+            AutoFillAppliesFields := false;
         end else
             if (ItemDocHeader."Document Type" = ItemDocHeader."Document Type"::Shipment) or
                (DocType in [DocType::Shipment, DocType::"Posted Shipment"])
-            then begin
+            then
                 RecalculateLines := true;
-                RecalculateLinesEnabled := false;
-            end;
         // NC 51415 < EP, 54882 AB
     end;
 
