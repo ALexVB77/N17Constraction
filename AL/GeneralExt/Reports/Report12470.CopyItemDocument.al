@@ -284,14 +284,18 @@ report 82470 "Copy Item Document (Ext)"
     local procedure ValidateIncludeHeader()
     begin
         // NC 51415 > EP, 54882 AB
-        // RecalculateLines :=
-        //   not IncludeHeader;
         if IncludeHeader then
             IncludeHeader := DocType <= DocType::"Posted Shipment";
         if AutoFillAppliesFields then
             AutoFillAppliesFields := DocType <= DocType::"Posted Shipment";
-        ValidateRecalculateLines();
         // NC 51415 < EP, 54882 AB
+
+        RecalculateLines :=
+          not IncludeHeader;
+
+        // NC 54882 AB >>
+        ValidateRecalculateLines();
+        // NC 54882 AB <<
     end;
 
     local procedure ValidateRecalculateLines()
