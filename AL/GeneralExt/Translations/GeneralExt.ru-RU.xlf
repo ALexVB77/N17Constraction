@@ -12829,7 +12829,6 @@
           <source>Export Excel</source>
           <target>Выгрузить в  Excel</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control ExportExcel - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 336339332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -14502,30 +14501,28 @@
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reason</source>
-          <target>[NAB: SUGGESTION]Причина</target>
-          <target>[NAB: SUGGESTION]Основание</target>
+          <target>Основание</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Reason - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1214298328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Responsible</source>
-          <target>[NAB: SUGGESTION]Ответственный</target>
-          <target>[NAB: SUGGESTION]Ответственные</target>
+          <target>Ответственные</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Responsible - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1456871694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Allowed Employee</source>
-          <target>[NAB: SUGGESTION]Разрешил (Сотрудник)</target>
+          <target>Разрешил (Сотрудник)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control AllowedEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 1418306143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Recieved Employee</source>
-          <target>[NAB: SUGGESTION]Получил</target>
+          <target>Получил</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control RecievedEmployee - Property Caption</note>

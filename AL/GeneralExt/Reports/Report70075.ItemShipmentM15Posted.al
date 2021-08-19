@@ -63,6 +63,7 @@ report 70075 "Item Shipment M-15"
             dataitem(Integer; Integer)
             {
                 DataItemTableView = sorting(Number);
+                MaxIteration = 1;
 
                 trigger OnAfterGetRecord()
                 begin
