@@ -46,7 +46,11 @@ pageextension 80459 "Sales & Receiv. Setup (Ext)" extends "Sales & Receivables S
             {
                 ApplicationArea = Basic, Suite;
             }
-            field("Posted Act PerfWork Templ Code"; "Posted Act PerfWork Templ Code")
+            field("Posted Act PerfWork Templ Code"; Rec."Posted Act PerfWork Templ Code")
+            {
+                ApplicationArea = All;
+            }
+            field("Aged Acc. Receiv. Tmplt Code"; Rec."Aged Acc. Receiv. Tmplt Code")
             {
                 ApplicationArea = All;
             }

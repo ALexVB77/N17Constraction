@@ -799,6 +799,18 @@ report 80120 "Aged Accounts Receivable Ext"
         CPFilter: Text;
         CustPostGroupCptnLbl: Label 'Customer Posting Group';
         CostPlaceCptnLbl: Label 'Cost Place';
+        ExportExcel: Boolean;
+        ExcelTemplate: Record "Excel Template";
+        XL: Record "Excel Buffer Mod" temporary;
+        Filename: Text[250];
+        FontSize: Integer;
+        RowNoBegin: Integer;
+        RowNo: Integer;
+        SalesSetup: Record "Sales & Receivables Setup";
+        FileMgt: Codeunit "File Management";
+        Text0002: Label '.xlsx';
+        ServerFileName: Text;
+        CRLF: Text[2];
 
     local procedure CalcDates()
     var
