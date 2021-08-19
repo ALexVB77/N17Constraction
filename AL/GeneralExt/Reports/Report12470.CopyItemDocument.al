@@ -54,6 +54,9 @@ report 92470 "Copy Item Document (Ext)"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Include Header';
                         ToolTip = 'Specifies if you want to copy information from the document header you are copying.';
+                        // NC 51415 > EP
+                        Enabled = IsIncludeHeaderEnabled;
+                        // NC 51415 < EP
 
                         trigger OnValidate()
                         begin
@@ -65,7 +68,9 @@ report 92470 "Copy Item Document (Ext)"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Recalculate Lines';
                         ToolTip = 'Specifies that lines are recalculate and inserted on the document you are creating. The batch job retains the item numbers and item quantities but recalculates the amounts on the lines based on the customer information on the new document header.';
-
+                        // NC 51415 > EP
+                        Enabled = IsRecalculateLinesEnabled;
+                        // NC 51415 < EP
                         trigger OnValidate()
                         begin
                             // NC 54882 AB >>
@@ -78,7 +83,9 @@ report 92470 "Copy Item Document (Ext)"
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Specify appl. entries';
-
+                        // NC 51415 > EP
+                        Enabled = IsAutoFillAppliesFieldsEnabled;
+                        // NC 51415 < EP
                         trigger OnValidate()
                         begin
                             // NC 54882 AB >>
@@ -171,6 +178,12 @@ report 92470 "Copy Item Document (Ext)"
         FromPurchRcptLine: Record "Purch. Rcpt. Line";
         FromDirTransHeader: Record "Direct Transfer Header";
         FromDirTransLine: Record "Direct Transfer Line";
+        [InDataSet]
+        IsIncludeHeaderEnabled: Boolean;
+        [InDataSet]
+        IsRecalculateLinesEnabled: Boolean;
+        [InDataSet]
+        IsAutoFillAppliesFieldsEnabled: Boolean;
 
 
     [Scope('OnPrem')]
@@ -215,6 +228,11 @@ report 92470 "Copy Item Document (Ext)"
 
         IncludeHeader := true;
         ValidateIncludeHeader;
+
+        // NC 51415 > EP
+        SetOptionFieldsEnabled(DocType in [DocType::Receipt, DocType::Shipment,
+                                           DocType::"Posted Receipt", DocType::"Posted Shipment"]);
+        // NC 51415 < EP
     end;
 
     local procedure LookupDocNo()
@@ -508,5 +526,14 @@ report 92470 "Copy Item Document (Ext)"
         idl."Dimension Set ID" := dimMgt.GetCombinedDimensionSetID(dimSetIds, idl."Shortcut Dimension 1 Code", idl."Shortcut Dimension 2 Code");
         idl.modify(true);
     end;
+
+    // NC 51415 > EP
+    local procedure SetOptionFieldsEnabled(Enabled: boolean)
+    begin
+        IsIncludeHeaderEnabled := Enabled;
+        IsRecalculateLinesEnabled := Enabled;
+        IsAutoFillAppliesFieldsEnabled := Enabled;
+    end;
+    // NC 51415 < EP
 }
 
