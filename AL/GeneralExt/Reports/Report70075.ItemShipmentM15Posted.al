@@ -571,11 +571,6 @@ report 70075 "Item Shipment M-15"
                     end;
                 }
 
-                trigger OnPreDataItem()
-                begin
-                    SetRange(Number, 1, CopiesNumber);
-                end;
-
                 trigger OnAfterGetRecord()
                 begin
                     Clear(TotalAmount);
@@ -682,11 +677,10 @@ report 70075 "Item Shipment M-15"
                         ApplicationArea = All;
                         Caption = 'Print with Price';
                     }
-                    field(ExportToExcel; ExportToExcel)
+                    field(Reason; ReasonName3)
                     {
-                        Caption = 'Export to Excel';
+                        Caption = 'Reason';
                         ApplicationArea = All;
-                        Visible = false;
                     }
                 }
                 group(Responsible)
@@ -711,48 +705,12 @@ report 70075 "Item Shipment M-15"
                         TableRelation = Employee;
                     }
                 }
-                group(GroupName2)
-                {
-                    ShowCaption = false;
-                    field(Reason; ReasonName3)
-                    {
-                        Caption = 'Reason';
-                        ApplicationArea = All;
-                    }
-                    field(SaveInArchive; ArchiveDocument)
-                    {
-                        Caption = 'Save in Archive';
-                        ApplicationArea = All;
-                    }
-                    field(LogInteraction; LogInteraction)
-                    {
-                        Caption = 'Log Interaction';
-                        ApplicationArea = All;
-                    }
-                    field(OperationType; OperationType)
-                    {
-                        Caption = 'Operation Type';
-                        ApplicationArea = All;
-                    }
-                    field(NoOfCopies; CopiesNumber)
-                    {
-                        Caption = 'No. of Copies';
-                        ApplicationArea = All;
-
-                        trigger OnValidate()
-                        begin
-                            if CopiesNumber < 1 then
-                                CopiesNumber := 1;
-                        end;
-                    }
-                }
             }
         }
 
         trigger OnOpenPage()
         begin
             PrintPrice := true;
-            ExportToExcel := true;
         end;
     }
 
@@ -764,7 +722,6 @@ report 70075 "Item Shipment M-15"
         VendorAgreement: Record "Vendor Agreement";
         ReasonName3: Text;
         Text12401: Label 'By agreement %1';
-        ExportToExcel: Boolean;
         LocRepMgt: Codeunit "Local Report Management";
         CompanyInfo: Record "Company Information";
         PrintPrice: Boolean;
@@ -792,10 +749,6 @@ report 70075 "Item Shipment M-15"
         Employee4: Code[20];
         SalesLine1: Record "Sales Line" temporary;
         TotalAmount1: Decimal;
-        CopiesNumber: Integer;
-        ArchiveDocument: Boolean;
-        LogInteraction: Boolean;
-        OperationType: Text;
 
     trigger OnPreReport()
     begin
@@ -811,6 +764,20 @@ report 70075 "Item Shipment M-15"
             ExcelReportBuilderManager.ExportDataToClientFile(FileName);
     end;
 
+    local procedure InitReportTemplate()
+    begin
+        ExcelReportBuilderManager.InitTemplate('М-15-Н');
+        ExcelReportBuilderManager.SetSheet('Sheet1');
+    end;
+
+    local procedure CheckSignature(var DocSign: Record "Posted Document Signature"; EmpType: Integer)
+    var
+        InvSetup: Record "Inventory Setup";
+        DocSignMgt: Codeunit "Doc. Signature Management";
+    begin
+        DocSignMgt.GetPostedDocSign(DocSign, Database::"Transfer Shipment Header", 0, TransferHeader."No.", EmpType, true);
+    end;
+
     local procedure GetCostCodeName(GlobalDimNo: Integer; GlobalDimCode: Code[20]): Text
     var
         DimensionValue: Record "Dimension Value";
@@ -824,89 +791,69 @@ report 70075 "Item Shipment M-15"
 
     local procedure FillHeader(DocNo: Code[20]; PostingDate: Date; SenderStructDpt: Text; ReceiverStructDpt: Text)
     begin
-        if ExportToExcel then begin
-            if not ExcelReportBuilderManager.TryAddSection('REPORTHEADER') then begin
-                ExcelReportBuilderManager.AddPagebreak;
-                ExcelReportBuilderManager.AddSection('REPORTHEADER');
-            end;
-            ExcelReportBuilderManager.AddDataToSection('InvoiceID', Format(DocNo));
-            ExcelReportBuilderManager.AddDataToSection('Organisation', Format(LocRepMgt.GetCompanyName()));
-            ExcelReportBuilderManager.AddDataToSection('OKPO', Format(CompanyInfo."OKPO Code"));
-            ExcelReportBuilderManager.AddDataToSection('InvoiceDate', Format(PostingDate));
-            ExcelReportBuilderManager.AddDataToSection('Sender_StructDpt', SenderStructDpt);
-            ExcelReportBuilderManager.AddDataToSection('Receiver_StructDpt', ReceiverStructDpt);
-            ExcelReportBuilderManager.AddDataToSection('InvoiceBasis', Format(ReasonName3));
-            ExcelReportBuilderManager.AddDataToSection('Header_ToWhom', Format(Consignee));
+        if not ExcelReportBuilderManager.TryAddSection('REPORTHEADER') then begin
+            ExcelReportBuilderManager.AddPagebreak;
+            ExcelReportBuilderManager.AddSection('REPORTHEADER');
+        end;
+        ExcelReportBuilderManager.AddDataToSection('InvoiceID', Format(DocNo));
+        ExcelReportBuilderManager.AddDataToSection('Organisation', Format(LocRepMgt.GetCompanyName()));
+        ExcelReportBuilderManager.AddDataToSection('OKPO', Format(CompanyInfo."OKPO Code"));
+        ExcelReportBuilderManager.AddDataToSection('InvoiceDate', Format(PostingDate));
+        ExcelReportBuilderManager.AddDataToSection('Sender_StructDpt', SenderStructDpt);
+        ExcelReportBuilderManager.AddDataToSection('Receiver_StructDpt', ReceiverStructDpt);
+        ExcelReportBuilderManager.AddDataToSection('InvoiceBasis', Format(ReasonName3));
+        ExcelReportBuilderManager.AddDataToSection('Header_ToWhom', Format(Consignee));
 
-            if not ExcelReportBuilderManager.TryAddSection('PAGEHEADER') then begin
-                ExcelReportBuilderManager.AddPagebreak;
-                ExcelReportBuilderManager.AddSection('PAGEHEADER');
-            end;
+        if not ExcelReportBuilderManager.TryAddSection('PAGEHEADER') then begin
+            ExcelReportBuilderManager.AddPagebreak;
+            ExcelReportBuilderManager.AddSection('PAGEHEADER');
         end;
     end;
 
     local procedure FillBody(ShortcutDimension1Code: Code[20]; ShortcutDimension2Code: Code[20]; UnitofMeasureCode: Code[20])
     begin
-        if ExportToExcel then begin
-            if not ExcelReportBuilderManager.TryAddSection('BODY') then begin
-                ExcelReportBuilderManager.AddPagebreak;
-                ExcelReportBuilderManager.AddSection('BODY');
-            end;
-            ExcelReportBuilderManager.AddDataToSection('AccountNum', Format(BalAccount));
-            ExcelReportBuilderManager.AddDataToSection('ItemName', Format(ItemDescription));
-            ExcelReportBuilderManager.AddDataToSection('ItemId', Format(txtItemNo));
-            ExcelReportBuilderManager.AddDataToSection('CostPlace', Format(ShortcutDimension1Code));
-            ExcelReportBuilderManager.AddDataToSection('CostCode', Format(ShortcutDimension2Code));
-            ExcelReportBuilderManager.AddDataToSection('CodeOKEI', Format(UnitOfMeasure."OKEI Code"));
-            ExcelReportBuilderManager.AddDataToSection('UnitId', Format(UnitofMeasureCode));
-            ExcelReportBuilderManager.AddDataToSection('Qty', Format(Qty1Txt));
-            ExcelReportBuilderManager.AddDataToSection('QtyIssue', Format(Qty2Txt));
-            ExcelReportBuilderManager.AddDataToSection('Price', Format(UnitCostTxt));
-            ExcelReportBuilderManager.AddDataToSection('LineAmount', Format(AmountTxt));
+        if not ExcelReportBuilderManager.TryAddSection('BODY') then begin
+            ExcelReportBuilderManager.AddPagebreak;
+            ExcelReportBuilderManager.AddSection('BODY');
+        end;
+        ExcelReportBuilderManager.AddDataToSection('AccountNum', Format(BalAccount));
+        ExcelReportBuilderManager.AddDataToSection('ItemName', Format(ItemDescription));
+        ExcelReportBuilderManager.AddDataToSection('ItemId', Format(txtItemNo));
+        ExcelReportBuilderManager.AddDataToSection('CostPlace', Format(ShortcutDimension1Code));
+        ExcelReportBuilderManager.AddDataToSection('CostCode', Format(ShortcutDimension2Code));
+        ExcelReportBuilderManager.AddDataToSection('CodeOKEI', Format(UnitOfMeasure."OKEI Code"));
+        ExcelReportBuilderManager.AddDataToSection('UnitId', Format(UnitofMeasureCode));
+        ExcelReportBuilderManager.AddDataToSection('Qty', Format(Qty1Txt));
+        ExcelReportBuilderManager.AddDataToSection('QtyIssue', Format(Qty2Txt));
+        ExcelReportBuilderManager.AddDataToSection('Price', Format(UnitCostTxt));
+        ExcelReportBuilderManager.AddDataToSection('LineAmount', Format(AmountTxt));
 
-            if VATAmountTxt = '' then
-                ExcelReportBuilderManager.AddDataToSection('VATAmount', '-')
-            else
-                ExcelReportBuilderManager.AddDataToSection('VATAmount', VATAmountTxt);
+        if VATAmountTxt = '' then
+            ExcelReportBuilderManager.AddDataToSection('VATAmount', '-')
+        else
+            ExcelReportBuilderManager.AddDataToSection('VATAmount', VATAmountTxt);
 
-            if IncVATAmountTxt = '' then
-                ExcelReportBuilderManager.AddDataToSection('LineAmountWithVAT', '-')
-            else
-                ExcelReportBuilderManager.AddDataToSection('LineAmountWithVAT', IncVATAmountTxt);
-        END;
+        if IncVATAmountTxt = '' then
+            ExcelReportBuilderManager.AddDataToSection('LineAmountWithVAT', '-')
+        else
+            ExcelReportBuilderManager.AddDataToSection('LineAmountWithVAT', IncVATAmountTxt);
     end;
 
     local procedure FillFooter()
     begin
-        if ExportToExcel then begin
-            if not ExcelReportBuilderManager.TryAddSection('REPORTFOOTER') then begin
-                ExcelReportBuilderManager.AddPagebreak;
-                ExcelReportBuilderManager.AddSection('REPORTFOOTER');
-            end;
-            ExcelReportBuilderManager.AddDataToSection('F_TotalItemsShipped', Format(LocalManagement.Integer2Text(i, 2, 'наименование', 'наименования', 'наименований')));
-            ExcelReportBuilderManager.AddDataToSection('F_TotalAmtWithVAT_Letters', TotalAmountTxt);
-            ExcelReportBuilderManager.AddDataToSection('F_TotalVAT', TotalVATAmountTxt);
-            ExcelReportBuilderManager.AddDataToSection('Director_Position', LocRepMgt.GetEmpPosition(Employee2));
-            ExcelReportBuilderManager.AddDataToSection('Director_Name', LocRepMgt.GetEmpName(Employee2));
-            ExcelReportBuilderManager.AddDataToSection('Accountant_Name', LocRepMgt.GetEmpName(CompanyInfo."Accountant No."));
-            ExcelReportBuilderManager.AddDataToSection('Supplier_Position', LocRepMgt.GetEmpPosition(Employee3));
-            ExcelReportBuilderManager.AddDataToSection('Supplier_Name', LocRepMgt.GetEmpName(Employee3));
-            ExcelReportBuilderManager.AddDataToSection('Taker_Position', LocRepMgt.GetEmpPosition(Employee4));
-            ExcelReportBuilderManager.AddDataToSection('Taker_Name', LocRepMgt.GetEmpName(Employee4));
+        if not ExcelReportBuilderManager.TryAddSection('REPORTFOOTER') then begin
+            ExcelReportBuilderManager.AddPagebreak;
+            ExcelReportBuilderManager.AddSection('REPORTFOOTER');
         end;
-    end;
-
-    local procedure InitReportTemplate()
-    begin
-        ExcelReportBuilderManager.InitTemplate('М-15-Н');
-        ExcelReportBuilderManager.SetSheet('Sheet1');
-    end;
-
-    local procedure CheckSignature(var DocSign: Record "Posted Document Signature"; EmpType: Integer)
-    var
-        InvSetup: Record "Inventory Setup";
-        DocSignMgt: Codeunit "Doc. Signature Management";
-    begin
-        DocSignMgt.GetPostedDocSign(DocSign, Database::"Transfer Shipment Header", 0, TransferHeader."No.", EmpType, true);
+        ExcelReportBuilderManager.AddDataToSection('F_TotalItemsShipped', Format(LocalManagement.Integer2Text(i, 2, 'наименование', 'наименования', 'наименований')));
+        ExcelReportBuilderManager.AddDataToSection('F_TotalAmtWithVAT_Letters', TotalAmountTxt);
+        ExcelReportBuilderManager.AddDataToSection('F_TotalVAT', TotalVATAmountTxt);
+        ExcelReportBuilderManager.AddDataToSection('Director_Position', LocRepMgt.GetEmpPosition(Employee2));
+        ExcelReportBuilderManager.AddDataToSection('Director_Name', LocRepMgt.GetEmpName(Employee2));
+        ExcelReportBuilderManager.AddDataToSection('Accountant_Name', LocRepMgt.GetEmpName(CompanyInfo."Accountant No."));
+        ExcelReportBuilderManager.AddDataToSection('Supplier_Position', LocRepMgt.GetEmpPosition(Employee3));
+        ExcelReportBuilderManager.AddDataToSection('Supplier_Name', LocRepMgt.GetEmpName(Employee3));
+        ExcelReportBuilderManager.AddDataToSection('Taker_Position', LocRepMgt.GetEmpPosition(Employee4));
+        ExcelReportBuilderManager.AddDataToSection('Taker_Name', LocRepMgt.GetEmpName(Employee4));
     end;
 }

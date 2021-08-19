@@ -60,6 +60,26 @@ page 70001 "Purchase Order App Subform"
                         DeltaUpdateTotals();
                     end;
                 }
+                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
+                field("VAT Bus. Posting Group"; "VAT Bus. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
                 field(Description; "Full Description")
                 {
                     ApplicationArea = All;
