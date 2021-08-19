@@ -24,6 +24,12 @@ tableextension 80023 "Vendor (Ext)" extends Vendor
         }
     }
 
+    fieldgroups
+    {
+        addlast(DropDown; "No.", Name, "VAT Registration No.", "Phone No.", Contact)
+        { }
+    }
+
     trigger OnAfterDelete()
     var
         InvtSetup: Record "Inventory Setup";
