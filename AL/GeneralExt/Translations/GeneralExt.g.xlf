@@ -10504,7 +10504,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Payable Ext - Control UseExternalDocNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Aged Accounts Receivable</source>
+          <source>Aged Accounts Receivable New</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Property Caption</note>
         </trans-unit>
