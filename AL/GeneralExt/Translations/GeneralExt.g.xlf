@@ -4768,6 +4768,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckUnusedPurchActType - NamedType Text50100</note>
         </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 2344277623 - NamedType 2810311271" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The amount for document %1 (%2) exceeds the approval limit of user %3 (%4).\You can delegate document approval to another user.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckUserApprovalLimit - NamedType ErrorText</note>
+        </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 3459981648 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>The act has already been created!</source>
           <note from="Developer" annotates="general" priority="2"></note>

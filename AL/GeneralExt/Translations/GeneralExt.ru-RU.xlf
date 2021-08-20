@@ -5721,6 +5721,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckUnusedPurchActType - NamedType Text50100</note>
         </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 2344277623 - NamedType 2810311271" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document amount (%1) exceeds the approval limit of user %2 (%3).\You can delegate document approval to another user.</source>
+          <target>Сумма документа (%1) превышает лимит утвержения пользователя %2 (%3).\Вы можете делегировать утверждение документа другому пользователю.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckUserApprovalLimit - NamedType ErrorText</note>
+        </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 3459981648 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>The act has already been created!</source>
           <target>Акт уже создан!</target>
@@ -12607,322 +12614,276 @@
           <source>Aged Accounts Receivable New</source>
           <target>Дебиторская задолженность по срокам давности (Новый)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2402552187" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged Accounts Receivable</source>
           <target>Дебиторская задолженность по срокам давности</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType AgedAccReceivableCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2555393066" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged Overdue Amounts</source>
           <target>Cуммы просроченного платежа по срокам давности</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType AgedOverdueAmtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 3284058877" size-unit="char" translate="yes" xml:space="preserve">
           <source>All Amounts in LCY</source>
           <target>Все суммы в руб.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType AllAmtinLCYCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 1350921099" size-unit="char" translate="yes" xml:space="preserve">
           <source>Before</source>
           <target>До</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType BeforeTok</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 1707603408" size-unit="char" translate="yes" xml:space="preserve">
           <source>Original Amount </source>
           <target>Исходная сумма </target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDateAmtLCYCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 394537149" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
           <target>Номер документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDateDocNoCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 1747274374" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Type</source>
           <target>Тип документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDateDocTypeCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 3808507638" size-unit="char" translate="yes" xml:space="preserve">
           <source>Due Date</source>
           <target>Срок оплаты</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDateDueDateCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2244048076" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
           <target>Дата Учета</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CLEEndDatePstngDateCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2959174789" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Place</source>
           <target>Cost Place</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CostPlaceCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 3193990627" size-unit="char" translate="yes" xml:space="preserve">
           <source>Page</source>
           <target>Стр.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CurrReportPageNoCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 269144572" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency Specification</source>
           <target>Спецификация валюты</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CurrSpecificationCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 3657847815" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Posting Group</source>
           <target>Учетная группа клиента</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType CustPostGroupCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 82002553" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enter a date formula in the Period Length field.</source>
           <target>Введите формулу даты в поле "Длина периода".</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType EnterDateFormulaErr</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2813197814" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency Code</source>
           <target>Код валюты</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType OriginalAmtCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Not Due</source>
           <target>Не просрочено</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2982235937" size-unit="char" translate="yes" xml:space="preserve">
           <source>.xlsx</source>
           <target>.xlsx</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text0002</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>days</source>
           <target>дней</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged by %1</source>
           <target>Историч. данные на %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text004</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total for %1</source>
           <target>Всего для %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text005</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged as of %1</source>
           <target>Ретроспектива по состоянию на  %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text006</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged by %1</source>
           <target>Историч. данные на %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text007</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve">
           <source>Due Date,Posting Date,Document Date</source>
           <target>Срок оплаты,Дата учета,Дата документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text009</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve">
           <source>The Date Formula %1 cannot be used. Try to restate it. E.g. 1M+CM instead of CM+1M.</source>
           <target>Использование формулы даты %1 невозможно. Попробуйте переформулировать ее. Например, укажите 1M+ТМ вместо ТМ+1M.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text010</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 2353355232" size-unit="char" translate="yes" xml:space="preserve">
           <source>-%1</source>
           <target>-%1</target>
           <note from="Developer" annotates="general" priority="2">Negating the period length: %1 is the period length</note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType Text032Txt</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - NamedType 1865626161" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total (LCY)</source>
           <target>Всего (руб.)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - NamedType TotalLCYCptnLbl</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - ReportLabel 3857790676" size-unit="char" translate="yes" xml:space="preserve">
           <source>Balance</source>
           <target>Сальдо</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - ReportLabel BalanceCaption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>
           <target>Параметры</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control Options - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 2060407144 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the date that you want the aging calculated for.</source>
           <target>Определяет дату, для которой нужно выполнить расчет срока.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control AgedAsOf - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 2060407144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aged As Of</source>
           <target>Ретроспектива по состоянию на</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control AgedAsOf - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 3438973743 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if the aging will be calculated from the due date, the posting date, or the document date.</source>
           <target>Указывает, будет ли срок давности отсчитываться от крайнего срока оплаты, от даты учета или от даты документа.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control Agingby - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 3438973743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aging by</source>
           <target>Распределение по срокам</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control Agingby - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 3438973743 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Due Date,Posting Date,Document Date</source>
           <target>Срок оплаты,Дата учета,Дата документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control Agingby - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 4096492506 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want the report to specify the aging per customer ledger entry.</source>
           <target>Определяет, что в отчете должен быть указан срок задолженности по каждой операции книги клиентов.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control AmountsinLCY - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 4096492506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print Amounts in LCY</source>
           <target>Печатать суммы в руб.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control AmountsinLCY - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 1678117997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Place Filter</source>
           <target>Фильтр по Cost Place</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control CPFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 336339332 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if the column heading for the three periods will indicate a date interval or the number of days overdue.</source>
           <target>Определяет, что будет указано в заголовке столбца для трех периодов — интервал дат или количество дней просрочки.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control HeadingType - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 336339332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Heading Type</source>
           <target>Тип заголовка</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control HeadingType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 336339332 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Date Interval,Number of Days</source>
           <target>Период,Число дней</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control HeadingType - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 2035961037 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if each customer's information is printed on a new page if you have chosen two or more customers to be included in the report.</source>
           <target>Указывает, будет ли информация по каждому клиенту печататься на отдельной странице, если для включения в отчет выбрано более одного клиента.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control perCustomer - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 2035961037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New Page per Customer</source>
           <target>Новая страница для клиента</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control perCustomer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 2740290379 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the period for which data is shown in the report. For example, enter "1M" for one month, "30D" for thirty days, "3Q" for three quarters, or "5Y" for five years.</source>
           <target>Определяет период, данные за который отображаются в отчете. Например, "1M" означает один месяц, "30D" — тридцать дней, "3Q" — три квартала, "5Y" — 5 лет.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control PeriodLength - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 2740290379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Period Length</source>
           <target>Длина периода</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control PeriodLength - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 568987109 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want the report to show the detailed entries that add up the total balance for each customer.</source>
           <target>Указывает, что в отчет должны быть включены подробные операции, которые в сумме дают общее сальдо по каждому клиенту.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control PrintDetails - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 3263168732 - Control 568987109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print Details</source>
           <target>Печать сведений</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Aged Accounts Receivable Ext - Control PrintDetails - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 850119152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -14539,15 +14500,34 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control PrintPrice - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 171109171 - Control 816368762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Log Interaction</source>
-          <target>Журнал Взаимодействий</target>
+        <trans-unit id="Report 171109171 - Control 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason</source>
+          <target>[NAB: SUGGESTION]Причина</target>
+          <target>[NAB: SUGGESTION]Основание</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control LogInteraction - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Reason - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 171109171 - Control 2578066365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. of Copies</source>
+        <trans-unit id="Report 171109171 - Control 1214298328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Responsible</source>
+          <target>[NAB: SUGGESTION]Ответственный</target>
+          <target>[NAB: SUGGESTION]Ответственные</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control Responsible - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 171109171 - Control 1456871694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Allowed Employee</source>
+          <target>[NAB: SUGGESTION]Разрешил (Сотрудник)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control AllowedEmployee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 171109171 - Control 1418306143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recieved Employee</source>
+          <target>[NAB: SUGGESTION]Получил</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control RecievedEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 435501545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -17794,7 +17774,6 @@
           <source>Aged Accounts Receivable Template</source>
           <target>Дебиторская задолженость по срокам давности Код Шаблона</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Aged Acc. Receiv. Tmplt Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2733905579 - Field 2732122360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
