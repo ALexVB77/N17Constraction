@@ -5725,7 +5725,6 @@
           <source>Document amount (%1) exceeds the approval limit of user %2 (%3).\You can delegate document approval to another user.</source>
           <target>Сумма документа (%1) превышает лимит утвержения пользователя %2 (%3).\Вы можете делегировать утверждение документа другому пользователю.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckUserApprovalLimit - NamedType ErrorText</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 3459981648 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
@@ -14528,7 +14527,6 @@
           <source>Recieved Employee</source>
           <target>Получил</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Item Shipment M-15 - Control RecievedEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 171109171 - Control 435501545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

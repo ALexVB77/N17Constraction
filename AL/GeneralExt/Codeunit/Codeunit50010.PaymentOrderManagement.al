@@ -989,7 +989,7 @@ codeunit 50010 "Payment Order Management"
         Currency: Record Currency;
         UserSetup: Record "User Setup";
         ApprovalAmountLCY: Decimal;
-        ErrorText: Label 'The amount for document %1 (%2) exceeds the approval limit of user %3 (%4).\You can delegate document approval to another user.';
+        ErrorText: Label 'Document amount (%1) exceeds the approval limit of user %2 (%3).\You can delegate document approval to another user.';
     begin
         if PurchHeader."Invoice Amount Incl. VAT" = 0 then
             exit;
@@ -1010,7 +1010,7 @@ codeunit 50010 "Payment Order Management"
         end;
 
         if not (UserSetup."Unlimited Purchase Approval" or (ApprovalAmountLCY <= UserSetup."Purchase Amount Approval Limit")) then
-            error(ErrorText, PurchHeader."No.", ApprovalAmountLCY, UserSetup."User ID", UserSetup."Purchase Amount Approval Limit");
+            error(ErrorText, ApprovalAmountLCY, UserSetup."User ID", UserSetup."Purchase Amount Approval Limit");
     end;
 
     local procedure GetPurchActChecker(PurchHeader: Record "Purchase Header"): code[50]
