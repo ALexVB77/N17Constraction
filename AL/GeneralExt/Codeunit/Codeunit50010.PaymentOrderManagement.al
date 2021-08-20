@@ -995,8 +995,8 @@ codeunit 50010 "Payment Order Management"
             exit;
 
         UserSetup.Get(UserId);
-        if not UserSetup."Unlimited Purchase Approval" then
-            UserSetup.TestField("Purchase Amount Approval Limit");
+        // if not UserSetup."Unlimited Purchase Approval" then
+        //    UserSetup.TestField("Purchase Amount Approval Limit");
 
         if PurchHeader."Currency Code" = '' then
             ApprovalAmountLCY := PurchHeader."Invoice Amount Incl. VAT"
