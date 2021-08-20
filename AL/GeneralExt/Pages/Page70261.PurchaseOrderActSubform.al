@@ -231,7 +231,7 @@ page 70261 "Purchase Order Act Subform"
 
                     trigger OnValidate()
                     begin
-                        Rec.ValidateUtilitiesDimValueCode(UtilitiesDimValueCode);
+                        Rec.ValidateAddDimValueCode(UtilitiesDimValueCode, 0);
                     end;
 
                     trigger OnLookup(var Text: Text): Boolean
@@ -245,7 +245,7 @@ page 70261 "Purchase Order Act Subform"
                             DimValue.FilterGroup(0);
                             IF page.RunModal(0, DimValue) = Action::LookupOK then begin
                                 UtilitiesDimValueCode := DimValue.Code;
-                                Rec.ValidateUtilitiesDimValueCode(UtilitiesDimValueCode);
+                                Rec.ValidateAddDimValueCode(UtilitiesDimValueCode, 0);
                             end;
                         end;
                     end;

@@ -14503,10 +14503,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Vendor Bank Account No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Method 413587170 - NamedType 3744062858" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
+        <trans-unit id="TableExtension 363487199 - Method 47764654 - NamedType 3373620497" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
+          <source>Utilities Dim. Value Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method GetAddDimValueCaption - NamedType UtilitCaption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 363487199 - Method 3300363475 - NamedType 3744062858" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
           <source>%1 is not an available %2 for that dimension.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method ValidateUtilitiesDimValueCode - NamedType LocText003</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method ValidateAddDimValueCode - NamedType LocText003</note>
         </trans-unit>
         <trans-unit id="TableExtension 363487199 - Field 3230600482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Buy-from Vendor Name</source>

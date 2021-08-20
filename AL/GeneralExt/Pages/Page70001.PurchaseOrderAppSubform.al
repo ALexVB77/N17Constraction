@@ -202,13 +202,14 @@ page 70001 "Purchase Order App Subform"
                 field("Utilities Dim. Value Code"; UtilitiesDimValueCode)
                 {
                     Caption = 'Utilities Dim. Value Code';
+                    CaptionClass = GetAddDimValueCaption(0);
                     ApplicationArea = All;
                     Editable = UtilitiesEnabled;
                     Enabled = UtilitiesEnabled;
 
                     trigger OnValidate()
                     begin
-                        Rec.ValidateUtilitiesDimValueCode(UtilitiesDimValueCode);
+                        Rec.ValidateAddDimValueCode(UtilitiesDimValueCode, 0);
                     end;
 
                     trigger OnLookup(var Text: Text): Boolean
@@ -222,7 +223,7 @@ page 70001 "Purchase Order App Subform"
                             DimValue.FilterGroup(0);
                             IF page.RunModal(0, DimValue) = Action::LookupOK then begin
                                 UtilitiesDimValueCode := DimValue.Code;
-                                Rec.ValidateUtilitiesDimValueCode(UtilitiesDimValueCode);
+                                Rec.ValidateAddDimValueCode(UtilitiesDimValueCode, 0);
                             end;
                         end;
                     end;
