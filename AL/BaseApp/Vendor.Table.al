@@ -1455,7 +1455,7 @@
         }
         field(12404; "Customer Name"; Text[50])
         {
-            CalcFormula = Lookup (Customer.Name WHERE("No." = FIELD("Customer No.")));
+            CalcFormula = Lookup(Customer.Name WHERE("No." = FIELD("Customer No.")));
             Caption = 'Customer Name';
             Editable = false;
             FieldClass = FlowField;
@@ -1527,7 +1527,7 @@
         field(12427; "G/L Starting Balance"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum ("G/L Entry".Amount WHERE("Source Type" = CONST(Vendor),
+            CalcFormula = Sum("G/L Entry".Amount WHERE("Source Type" = CONST(Vendor),
                                                         "Source No." = FIELD("No."),
                                                         "G/L Account No." = FIELD("G/L Account Filter"),
                                                         "Global Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
@@ -1541,7 +1541,7 @@
         field(12428; "G/L Net Change"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum ("G/L Entry".Amount WHERE("Source Type" = CONST(Vendor),
+            CalcFormula = Sum("G/L Entry".Amount WHERE("Source Type" = CONST(Vendor),
                                                         "Source No." = FIELD("No."),
                                                         "G/L Account No." = FIELD("G/L Account Filter"),
                                                         "Global Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
@@ -1555,7 +1555,7 @@
         field(12429; "G/L Debit Amount"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum ("G/L Entry"."Debit Amount" WHERE("Source Type" = CONST(Vendor),
+            CalcFormula = Sum("G/L Entry"."Debit Amount" WHERE("Source Type" = CONST(Vendor),
                                                                 "Source No." = FIELD("No."),
                                                                 "G/L Account No." = FIELD("G/L Account Filter"),
                                                                 "Global Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
@@ -1569,7 +1569,7 @@
         field(12430; "G/L Credit Amount"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum ("G/L Entry"."Credit Amount" WHERE("Source Type" = CONST(Vendor),
+            CalcFormula = Sum("G/L Entry"."Credit Amount" WHERE("Source Type" = CONST(Vendor),
                                                                  "Source No." = FIELD("No."),
                                                                  "G/L Account No." = FIELD("G/L Account Filter"),
                                                                  "Global Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
@@ -1583,7 +1583,7 @@
         field(12431; "G/L Balance to Date"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = Sum ("G/L Entry".Amount WHERE("Source Type" = CONST(Vendor),
+            CalcFormula = Sum("G/L Entry".Amount WHERE("Source Type" = CONST(Vendor),
                                                         "Source No." = FIELD("No."),
                                                         "G/L Account No." = FIELD("G/L Account Filter"),
                                                         "Global Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
@@ -1705,7 +1705,7 @@
 
     fieldgroups
     {
-        fieldgroup(DropDown; "No.", Name, City, "Post Code", "Phone No.", Contact)
+        fieldgroup(DropDown; "No.", "VAT Registration No.", Name, City, "Post Code", "Phone No.", Contact)
         {
         }
         fieldgroup(Brick; "No.", Name, "Balance (LCY)", Contact, "Balance Due (LCY)", Image)
