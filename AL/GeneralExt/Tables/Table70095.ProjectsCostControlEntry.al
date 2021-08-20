@@ -107,7 +107,7 @@ table 70095 "Projects Cost Control Entry"
         {
             Caption = 'Date';
         }
-        field(90; "Create User"; Code[20])
+        field(90; "Create User"; Code[65])
         {
             Caption = 'Create User';
         }
