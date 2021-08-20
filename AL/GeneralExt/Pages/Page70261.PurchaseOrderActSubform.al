@@ -224,7 +224,7 @@ page 70261 "Purchase Order Act Subform"
                 field("Utilities Dim. Value Code"; UtilitiesDimValueCode)
                 {
                     Caption = 'Utilities Dim. Value Code';
-                    CaptionClass = GetAddDimValueCaption(0);
+                    CaptionClass = GetAddDimCaption(0);
                     ApplicationArea = All;
                     Editable = UtilitiesEnabled;
                     Enabled = UtilitiesEnabled;
@@ -238,7 +238,6 @@ page 70261 "Purchase Order Act Subform"
                     var
                         DimValue: Record "Dimension Value";
                     begin
-                        GLSetup.GET;
                         IF GLSetup."Utilities Dimension Code" <> '' then begin
                             DimValue.FilterGroup(3);
                             DimValue.SetRange("Dimension Code", GLSetup."Utilities Dimension Code");
@@ -253,7 +252,7 @@ page 70261 "Purchase Order Act Subform"
                 field("Address Dim. Value Code"; AddressDimValueCode)
                 {
                     Caption = 'Address Dim. Value Code';
-                    CaptionClass = GetAddDimValueCaption(1);
+                    CaptionClass = GetAddDimCaption(1);
                     ApplicationArea = All;
                     Editable = AddressEnabled;
                     Enabled = AddressEnabled;
@@ -267,7 +266,6 @@ page 70261 "Purchase Order Act Subform"
                     var
                         DimValue: Record "Dimension Value";
                     begin
-                        GLSetup.GET;
                         IF PurchasesSetup."Address Dimension" <> '' then begin
                             DimValue.FilterGroup(3);
                             DimValue.SetRange("Dimension Code", PurchasesSetup."Address Dimension");

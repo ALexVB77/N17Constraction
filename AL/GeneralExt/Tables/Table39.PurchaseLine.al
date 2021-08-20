@@ -208,7 +208,7 @@ tableextension 80039 "Purchase Line (Ext)" extends "Purchase Line"
         TESTFIELD("Forecast Entry", 0);
     end;
 
-    procedure GetAddDimValueCaption(DimType: Option "Utilit","Address"): Text
+    procedure GetAddDimCaption(DimType: Option "Utilit","Address"): Text
     var
         GLSetup: Record "General Ledger Setup";
         PurchSetup: Record "Purchases & Payables Setup";
