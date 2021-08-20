@@ -125,6 +125,7 @@ page 70269 "Barcode Act Document"
     begin
         if FindPurchAct(PurchHeader) then begin
             PurchHeader."Receive Account" := true;
+            PurchHeader.Modify;
             Message(Text003);
         end;
     end;
