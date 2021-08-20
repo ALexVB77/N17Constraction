@@ -423,6 +423,10 @@ page 70001 "Purchase Order App Subform"
         IF (GLSetup."Utilities Dimension Code" <> '') and (Rec."Dimension Set ID" <> 0) then
             IF DimSetEntry.GET(Rec."Dimension Set ID", GLSetup."Utilities Dimension Code") then
                 UtilitiesDimValueCode := DimSetEntry."Dimension Value Code";
+        AddressDimValueCode := '';
+        IF (PurchasesSetup."Address Dimension" <> '') and (Rec."Dimension Set ID" <> 0) then
+            IF DimSetEntry.GET(Rec."Dimension Set ID", PurchasesSetup."Address Dimension") then
+                AddressDimValueCode := DimSetEntry."Dimension Value Code";
     end;
 
     trigger OnDeleteRecord(): Boolean

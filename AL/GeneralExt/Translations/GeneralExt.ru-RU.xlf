@@ -10635,6 +10635,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Subform - Control VATTotals - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 38647611 - Control 3118802434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address Dim. Value Code</source>
+          <target>Значение измерения Address</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Subform - Control Address Dim. Value Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 38647611 - Control 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approver</source>
           <target>Утверждающий</target>
@@ -17419,7 +17426,6 @@
           <source>Address Dim. Value Code</source>
           <target>Значение измерения Address</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method GetAddDimValueCaption - NamedType AddressCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 363487199 - Method 3300363475 - NamedType 3744062858" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">

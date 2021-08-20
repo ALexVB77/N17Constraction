@@ -8863,6 +8863,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Subform - Control VATTotals - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 38647611 - Control 3118802434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address Dim. Value Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Subform - Control Address Dim. Value Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 38647611 - Control 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approver</source>
           <note from="Developer" annotates="general" priority="2"></note>
