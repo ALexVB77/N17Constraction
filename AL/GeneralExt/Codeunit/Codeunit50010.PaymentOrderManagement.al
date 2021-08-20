@@ -917,6 +917,9 @@ codeunit 50010 "Payment Order Management"
                 PurchHeader.Testfield("IW Planned Repayment Date");
         end;
 
+        if PurchHeader."Status App" = PurchHeader."Status App"::Approve then
+            CheckUserApprovalLimit(PurchHeader);
+
         // изменение статусов
 
         case PurchHeader."Status App" of
@@ -979,6 +982,36 @@ codeunit 50010 "Payment Order Management"
             UNTIL PurchLineLoc.NEXT = 0;
     end;
     */
+
+    local procedure CheckUserApprovalLimit(PurchHeader: Record "Purchase Header")
+    var
+        CurrExRate: Record "Currency Exchange Rate";
+        Currency: Record Currency;
+        UserSetup: Record "User Setup";
+        ApprovalAmountLCY: Decimal;
+        ErrorText: Label 'Document amount (%1) exceeds the approval limit of user %2 (%3).\You can delegate document approval to another user.';
+    begin
+        if PurchHeader."Invoice Amount Incl. VAT" = 0 then
+            exit;
+
+        UserSetup.Get(UserId);
+        // if not UserSetup."Unlimited Purchase Approval" then
+        //    UserSetup.TestField("Purchase Amount Approval Limit");
+
+        if PurchHeader."Currency Code" = '' then
+            ApprovalAmountLCY := PurchHeader."Invoice Amount Incl. VAT"
+        else begin
+            Currency.Get(PurchHeader."Currency Code");
+            ApprovalAmountLCY :=
+                Round(
+                    CurrExRate.ExchangeAmtFCYToLCY(
+                        PurchHeader."Posting Date", PurchHeader."Currency Code", PurchHeader."Invoice Amount Incl. VAT", PurchHeader."Currency Factor"),
+                Currency."Amount Rounding Precision");
+        end;
+
+        if not (UserSetup."Unlimited Purchase Approval" or (ApprovalAmountLCY <= UserSetup."Purchase Amount Approval Limit")) then
+            error(ErrorText, ApprovalAmountLCY, UserSetup."User ID", UserSetup."Purchase Amount Approval Limit");
+    end;
 
     local procedure GetPurchActChecker(PurchHeader: Record "Purchase Header"): code[50]
     var
