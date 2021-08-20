@@ -650,29 +650,29 @@ table 70095 "Projects Cost Control Entry"
         "Create Time" := Time();
         begin
             lrGeneralLedgerSetup.Get;
-            grProjectsLineDimension.SetRange("Project No.", "Project Code");
-            grProjectsLineDimension.SetRange("Project Line No.", "Line No.");
-            grProjectsLineDimension.SetRange("Detailed Line No.", 0);
-            grProjectsLineDimension.SetRange("Project Version No.", GetDefVersion("Project Code"));
-            if grProjectsLineDimension.Find('-') then begin
-                Repeat
-                    if lrGeneralLedgerSetup."Global Dimension 2 Code" = grProjectsLineDimension."Dimension Code" then
-                        "Shortcut Dimension 2 Code" := grProjectsLineDimension."Dimension Value Code";
-                until grProjectsLineDimension.Next = 0;
-            end;
+            // grProjectsLineDimension.SetRange("Project No.", "Project Code");
+            // grProjectsLineDimension.SetRange("Project Line No.", "Line No.");
+            // grProjectsLineDimension.SetRange("Detailed Line No.", 0);
+            // grProjectsLineDimension.SetRange("Project Version No.", GetDefVersion("Project Code"));
+            // if grProjectsLineDimension.Find('-') then begin
+            //     Repeat
+            //         if lrGeneralLedgerSetup."Global Dimension 2 Code" = grProjectsLineDimension."Dimension Code" then
+            //             "Shortcut Dimension 2 Code" := grProjectsLineDimension."Dimension Value Code";
+            //     until grProjectsLineDimension.Next = 0;
+            // end;
 
-            if "Project Turn Code" <> '' then begin
-                grBuildingturn.Get("Project Turn Code");
-                if grBuildingturn."Turn Dimension Code" <> '' then begin
-                    "Shortcut Dimension 1 Code" := grBuildingturn."Turn Dimension Code";
-                end;
-            END
-            else begin
-                grBuildingProect.Get("Project Code");
-                if grBuildingProect."Project Dimension Code" <> '' then begin
-                    "Shortcut Dimension 1 Code" := grBuildingProect."Project Dimension Code";
-                end;
-            end;
+            // if "Project Turn Code" <> '' then begin
+            //     grBuildingturn.Get("Project Turn Code");
+            //     if grBuildingturn."Turn Dimension Code" <> '' then begin
+            //         "Shortcut Dimension 1 Code" := grBuildingturn."Turn Dimension Code";
+            //     end;
+            // END
+            // else begin
+            //     grBuildingProect.Get("Project Code");
+            //     if grBuildingProect."Project Dimension Code" <> '' then begin
+            //         "Shortcut Dimension 1 Code" := grBuildingProect."Project Dimension Code";
+            //     end;
+            // end;
         end;
 
         CompanyInformation.Get();
