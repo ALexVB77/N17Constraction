@@ -965,7 +965,7 @@ codeunit 70000 "ERPC Funtions"
             PurchCommentLine."Line No." := i;
             PurchCommentLine.Date := TODAY;
             // PurchCommentLine."User Code" := USERID;
-            PurchCommentLine.Comment := lText005 + USERID + ',  ' + FORMAT(TODAY) + ', ' + FORMAT(TIME);
+            PurchCommentLine.Comment := COPYSTR(lText005 + USERID + ',  ' + FORMAT(TODAY) + ', ' + FORMAT(TIME), 1, 80);
             PurchCommentLine.INSERT;
             i := i + 1;
             REPEAT
