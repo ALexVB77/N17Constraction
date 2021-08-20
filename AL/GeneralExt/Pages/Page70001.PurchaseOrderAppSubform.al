@@ -228,7 +228,36 @@ page 70001 "Purchase Order App Subform"
                         end;
                     end;
                 }
-            } // repeater end
+                field("Address Dim. Value Code"; AddressDimValueCode)
+                {
+                    Caption = 'Address Dim. Value Code';
+                    CaptionClass = GetAddDimValueCaption(1);
+                    ApplicationArea = All;
+                    Editable = AddressEnabled;
+                    Enabled = AddressEnabled;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.ValidateAddDimValueCode(AddressDimValueCode, 1);
+                    end;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        DimValue: Record "Dimension Value";
+                    begin
+                        GLSetup.GET;
+                        IF PurchasesSetup."Address Dimension" <> '' then begin
+                            DimValue.FilterGroup(3);
+                            DimValue.SetRange("Dimension Code", PurchasesSetup."Address Dimension");
+                            DimValue.FilterGroup(0);
+                            IF page.RunModal(0, DimValue) = Action::LookupOK then begin
+                                AddressDimValueCode := DimValue.Code;
+                                Rec.ValidateAddDimValueCode(AddressDimValueCode, 1);
+                            end;
+                        end;
+                    end;
+                }
+            }
 
             group(LineTotals)
             {
@@ -412,6 +441,7 @@ page 70001 "Purchase Order App Subform"
     trigger OnInit()
     begin
         PurchasesSetup.Get();
+        AddressEnabled := PurchasesSetup."Address Dimension" <> '';
         Currency.InitRoundingPrecision();
         TempOptionLookupBuffer.FillBuffer(TempOptionLookupBuffer."Lookup Type"::Purchases);
         //IsFoundation := ApplicationAreaMgmtFacade.IsFoundationEnabled();
@@ -477,8 +507,8 @@ page 70001 "Purchase Order App Subform"
         VATAmount: Decimal;
         InvoiceDiscountAmount: Decimal;
         InvoiceDiscountPct: Decimal;
-        UtilitiesDimValueCode: code[20];
-        UtilitiesEnabled: Boolean;
+        UtilitiesDimValueCode, AddressDimValueCode : code[20];
+        UtilitiesEnabled, AddressEnabled : Boolean;
         IsSaaSExcelAddinEnabled: Boolean;
 
     procedure UpdateForm(SetSaveRecord: Boolean)
