@@ -14513,6 +14513,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method GetAddDimValueCaption - NamedType UtilitCaption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 363487199 - Method 47764654 - NamedType 508519572" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
+          <source>Address Dim. Value Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method GetAddDimValueCaption - NamedType AddressCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 363487199 - Method 3300363475 - NamedType 3744062858" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
           <source>%1 is not an available %2 for that dimension.</source>
           <note from="Developer" annotates="general" priority="2"></note>

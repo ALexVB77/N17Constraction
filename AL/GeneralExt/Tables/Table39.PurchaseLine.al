@@ -213,6 +213,7 @@ tableextension 80039 "Purchase Line (Ext)" extends "Purchase Line"
         GLSetup: Record "General Ledger Setup";
         PurchSetup: Record "Purchases & Payables Setup";
         UtilitCaption: Label 'Utilities Dim. Value Code';
+        AddressCaption: Label 'Address Dim. Value Code';
     begin
         case DimType of
             DimType::Utilit:
@@ -222,6 +223,14 @@ tableextension 80039 "Purchase Line (Ext)" extends "Purchase Line"
                         exit(CaptionClassTranslate('1,5,' + GLSetup."Utilities Dimension Code"))
                     else
                         exit(UtilitCaption);
+                end;
+            DimType::Address:
+                begin
+                    PurchSetup.Get;
+                    if PurchSetup."Address Dimension" <> '' then
+                        exit(CaptionClassTranslate('1,5,' + PurchSetup."Address Dimension"))
+                    else
+                        exit(AddressCaption);
                 end;
         end;
     end;
