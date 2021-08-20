@@ -754,7 +754,7 @@ codeunit 50010 "Payment Order Management"
 
         if (PurchHeader."Status App Act".AsInteger() >= PurchHeader."Status App Act"::Checker.AsInteger()) and (not Reject) then begin
             GetInventorySetup;
-            CheckDimExistsInHeader(PurchHeader, 1);
+            // CheckDimExistsInHeader(PurchHeader, 1);
             PurchLine.SETRANGE("Document Type", PurchHeader."Document Type");
             PurchLine.SETRANGE("Document No.", PurchHeader."No.");
             PurchLine.SETRANGE(Type, PurchLine.Type::Item);
@@ -890,7 +890,7 @@ codeunit 50010 "Payment Order Management"
         end;
 
         if (PurchHeader."Status App" >= PurchHeader."Status App"::Checker) and (not Reject) then begin
-            CheckDimExistsInHeader(PurchHeader, 2);
+            CheckDimExistsInHeader(PurchHeader, 0);
             VendAreement.Get(PurchHeader."Buy-from Vendor No.", PurchHeader."Agreement No.");
 
             PurchLine.SETRANGE("Document Type", PurchHeader."Document Type");
