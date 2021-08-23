@@ -10148,6 +10148,71 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details - Action ActionName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 948348486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Agreement Details List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - NamedType 4034540392" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount Exceeded!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - NamedType TEXT001</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3366197612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Breakdown by Letter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control BreakdownByLetter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 1794219516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control RemainingAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3980010935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actual Costs Project (VAT)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Actuals - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 4106488158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not broken</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Not broken - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3502635538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>On Approval</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control On Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3303652745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Paid Amount without VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Paid Amount without VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3789019539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Invoice Without VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control PostInv - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 126036342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Invoice with VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control PostInvVAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 179298956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remain Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Remain Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 1125664310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unaccounted VAT Invoices</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Unaccounted VAT Invoices - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Action 1692444235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Other combinations of Actuals</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Action ActionName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3482076077 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Invoice,Function</source>
           <note from="Developer" annotates="general" priority="2"></note>

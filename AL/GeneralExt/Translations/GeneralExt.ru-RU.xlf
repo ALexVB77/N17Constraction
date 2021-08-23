@@ -9709,7 +9709,6 @@
           <source>Documents View</source>
           <target>Просмотр Документа</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act - Action ViewAttachDoc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2443352567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -12177,6 +12176,99 @@
           <target>Остальные комбинации Actuals</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details - Action ActionName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Agreement Details List</source>
+          <target>Детали соглашения с поставщиком - Список</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - NamedType 4034540392" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount Exceeded!</source>
+          <target>Превышена Сумма Остатка!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - NamedType TEXT001</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3366197612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Breakdown by Letter</source>
+          <target>Разбито по литерам</target>
+          <target>Разбивка по литерам</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control BreakdownByLetter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 1794219516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <target>Остаток</target>
+          <target>Сумма остатка</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control RemainingAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3980010935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actual Costs Project (VAT)</source>
+          <target>Фактическая стоимость проекта (НДС)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Actuals - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 4106488158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not broken</source>
+          <target>Не разбито</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Not broken - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3502635538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>On Approval</source>
+          <target>На Утверждении</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control On Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3303652745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Paid Amount without VAT</source>
+          <target>Выплачено по договору, без НДС</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Paid Amount without VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 3789019539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Invoice Without VAT</source>
+          <target>Учтенные Счета, без НДС</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control PostInv - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 126036342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Invoice with VAT</source>
+          <target>Учтенные Счета с НДС</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control PostInvVAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 179298956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remain Amount</source>
+          <target>Сумма Остатка</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Remain Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Control 1125664310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unaccounted VAT Invoices</source>
+          <target>Неучтенные Счета с НДС</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Control Unaccounted VAT Invoices - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 948348486 - Action 1692444235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Other combinations of Actuals</source>
+          <target>Остальные комбинации Actuals</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Vendor Agreement Details List - Action ActionName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3482076077 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Invoice,Function</source>
