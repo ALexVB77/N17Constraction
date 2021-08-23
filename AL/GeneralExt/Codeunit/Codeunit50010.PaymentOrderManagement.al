@@ -783,7 +783,7 @@ codeunit 50010 "Payment Order Management"
             end;
         end;
 
-        if PurchHeader."Status App" = PurchHeader."Status App"::Approve then
+        if PurchHeader."Status App Act" = PurchHeader."Status App Act"::Approve then
             CheckUserApprovalLimit(PurchHeader);
 
         // изменение статусов
