@@ -412,7 +412,6 @@ report 92427 "Posted Act Performed Work"
 
 
         //         RowNo := 12;
-        PurchAndPbleSetup.Get();
         EB.DeleteAll();
         //Clear(XL);
         if ExportExcel then begin

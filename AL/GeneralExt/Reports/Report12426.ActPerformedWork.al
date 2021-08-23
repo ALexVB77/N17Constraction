@@ -4,11 +4,11 @@ report 92426 "Act Performed Work"
     UsageCategory = Administration;
     ApplicationArea = All;
     Caption = 'Act Performed Work';
-    DefaultLayout = Word;
-    WordLayout = './Reports/Layouts/ActPerformedWork.docx';
-    PreviewMode = PrintLayout;
-    WordMergeDataItem = Header;
-
+    //DefaultLayout = Word;
+    //WordLayout = './Reports/Layouts/ActPerformedWork.docx';
+    //PreviewMode = PrintLayout;
+    //WordMergeDataItem = Header;
+    ProcessingOnly = true;
     dataset
     {
         dataitem(Header; "Sales Header")
@@ -353,10 +353,17 @@ report 92426 "Act Performed Work"
     }
 
     trigger OnPreReport()
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
     begin
 
         IF NOT CurrReport.UseRequestPage THEN
             CopiesNumber := 1;
+        XL.DeleteAll();
+        SalesSetup.get;
+        Filename := ExcelTemplates.OpenTemplate((SalesSetup."Act PerfWork Templ Code"));
+        RowNo := 5;
+
     end;
 
 
@@ -416,6 +423,10 @@ report 92426 "Act Performed Work"
         UnitPrice: Decimal;
         UnitPriceLCY: Decimal;
         CurrencyInfo: Text[250];
+        XL: Record "Excel Buffer Mod" temporary;
+        ExcelTemplates: Record "Excel Template";
+        RowNo: Integer;
+        FileName: Text[250];
         //----------------------------
 
         Text14800: Label '%2. Стр. %1';
@@ -439,5 +450,34 @@ report 92426 "Act Performed Work"
         TotalAmount[2] := TotalAmount[2] + SalesLine2."Amount Including VAT" - SalesLine2.Amount;
         TotalAmount[3] := TotalAmount[3] + SalesLine2."Amount Including VAT";
         TotalAmount[4] := TotalAmount[4] + SalesLine2."Inv. Discount Amount";
+    end;
+
+    local procedure AddCell(RowNo: Integer; ColumnNo: Integer; CellValue: Text; Bold: Boolean; CellType: Integer; IsBorder: Boolean; FontSize: Integer)
+    begin
+        XL.Init();
+        XL.Validate("Row No.", RowNo);
+        XL.Validate("Column No.", ColumnNo);
+        XL."Cell Value as Text" := CellValue;
+        XL.Formula := '';
+        XL.Bold := Bold;
+        XL."Cell Type" := CellType;
+        XL."Font Size" := FontSize;
+        if IsBorder then
+            XL.SetBorder(true, true, true, true, false, "Border Style"::Thick);
+        if not XL.Modify() then
+            XL.Insert();
+    end;
+
+    local procedure AddCellWithBorder(RowNo: Integer; ColumnNo: Integer; CellValue: Text; Bold: Boolean; CellType: Integer; border1: Boolean; border2: Boolean; border3: Boolean; border4: Boolean)
+    begin
+        XL.Init();
+        XL.Validate("Row No.", RowNo);
+        XL.Validate("Column No.", ColumnNo);
+        XL."Cell Value as Text" := CellValue;
+        XL.Formula := '';
+        XL.Bold := Bold;
+        XL."Cell Type" := CellType;
+        XL.SetBorder(border1, border2, border3, border4, false, "Border Style"::Medium);
+        XL.Insert();
     end;
 }
