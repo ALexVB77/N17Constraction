@@ -51,6 +51,11 @@ tableextension 80311 "Sales & Receiv. Setup (Ext)" extends "Sales & Receivables 
             Caption = 'Aged Accounts Receivable Template';
             TableRelation = "Excel Template";
         }
+        field(50103; "Act PerfWork Templ Code"; Code[20])
+        {
+            Caption = 'Act Performed Work Template Code';
+            TableRelation = "Excel Template";
+        }
         field(70000; "Building Act Nos."; Code[10])
         {
             TableRelation = "No. Series";

@@ -14,6 +14,7 @@ report 50093 "Posted Proforma Invoice"
         dataitem(Header; "Sales Invoice Header")
         {
             DataItemTableView = SORTING("No.");
+            RequestFilterFields = "No.";
             // column(Header1; STRSUBSTNO(Text019, TitleDoc, LocMgt.Date2Text(DateNameInvoice))) { }
             // column(Buyer1; STRSUBSTNO(Text012, Cust."VAT Registration No.", Cust."KPP Code")) { }
             // column(Buyer2; CustomerAddr[1]) { }
@@ -69,6 +70,7 @@ report 50093 "Posted Proforma Invoice"
                                                     SETRANGE(Number, 1, 8);
 
                         SETRANGE(Number, 1);
+                        SalesLine1.SetRange("Document No.", Header."No.");
                     end;
 
 
@@ -89,75 +91,88 @@ report 50093 "Posted Proforma Invoice"
                             Currency.GET(Header."Currency Code")
                         ELSE
                             Currency.InitRoundingPrecision;
+                        SalesLine1.SetRange("No.", Header."No.");
                     end;
 
                     trigger OnAfterGetRecord()
                     var
 
                         CheckSalesLine: Record "Sales Invoice Line";
+                        SL2: Record "Sales Invoice Line";
                     begin
 
+                        // IF Number = 1 THEN BEGIN
+                        //     IF NOT SalesLine1.FIND('-') THEN
+                        //         CurrReport.BREAK;
+                        // END ELSE
+                        //     IF SalesLine1.NEXT(1) = 0 THEN
+                        //         CurrReport.BREAK;
+                        SL2.SetRange("Document No.", Header."No.");
+                        if SL2.FindSet() then begin
+                            repeat
+                                COPYARRAY(LastTotalAmount, TotalAmount, 1);
+
+                                IF Header."Prices Including VAT" THEN
+                                    LastTotalAmount[1] := TotalAmount[3];
+
+                                WITH SL2 DO
+                                    IF Type <> Type::" " THEN BEGIN
+                                        IF Quantity = 0 THEN
+                                            CurrReport.SKIP;
+                                        "OrderedNo" := "OrderedNo" + 1;
+                                        ItemLineNo := "OrderedNo";
+                                        IF CurrentCurrencyAmountPrice = CurrentCurrencyAmountPrice::LCY THEN BEGIN
+                                            Amount := "Amount (LCY)";
+                                            "Amount Including VAT" := "Amount Including VAT (LCY)";
+                                        END;
+                                        IncrAmount(SL2);
+                                        IF Header."Prices Including VAT" THEN BEGIN
+                                            Amount := "Amount Including VAT";
+                                            "Amount (LCY)" := "Amount Including VAT (LCY)";
+                                        END;
+                                        UnitPrice :=
+                                          ROUND(Amount / Quantity, Currency."Unit-Amount Rounding Precision");
+                                        UnitPriceLCY :=
+                                          ROUND("Amount (LCY)" / Quantity, Currency."Unit-Amount Rounding Precision");
+                                    END ELSE BEGIN
+                                        IF CheckSalesLine.GET("Document No.", "Attached to Line No.") THEN
+                                            IF CheckSalesLine.Quantity = 0 THEN
+                                                CurrReport.SKIP;
+
+                                        "No." := '';
+                                        ItemLineNo := 0;
+                                    END;
+
+                                // SWC1070 DD 06.07.17 >>
+                                IF ExportExcel THEN BEGIN
+                                    RowNo += 1;
+                                    //IF RowNo <> ExcelTemplates."Top Margin" THEN!!!!!!!!!!!
+                                    //EB.CopyRow(ExcelTemplates."Top Margin");!!!!!!!!!!
+
+                                    AddCell(RowNo, 3, SL2.Description + ' ' + SL2."Description 2", FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                    IF SL2.Type = SL2.Type::" " THEN BEGIN
+                                        AddCell(RowNo, 2, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                        AddCell(RowNo, 5, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                        AddCell(RowNo, 6, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                        AddCell(RowNo, 7, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                        AddCell(RowNo, 8, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                    END ELSE BEGIN
+                                        AddCell(RowNo, 2, FORMAT(ItemLineNo), FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                        AddCell(RowNo, 5, SL2."Unit of Measure", FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                        AddCell(RowNo, 6, FORMAT(SL2.Quantity, 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                        AddCell(RowNo, 7, FORMAT(UnitPriceLCY, 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                        AddCell(RowNo, 8, FORMAT(SL2."Amount (LCY)", 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                    END;
+                                END;
+                            until SL2.Next() = 0;
+                        end;
                         IF Number = 1 THEN BEGIN
-                            IF NOT SalesLine1.FIND('-') THEN
+                            //IF NOT SalesLine1.FIND('-') THEN
+                            //  CurrReport.BREAK;
+                            //END ELSE
+                            IF SL2.NEXT = 0 THEN
                                 CurrReport.BREAK;
-                        END ELSE
-                            IF SalesLine1.NEXT(1) = 0 THEN
-                                CurrReport.BREAK;
-
-                        COPYARRAY(LastTotalAmount, TotalAmount, 1);
-
-                        IF Header."Prices Including VAT" THEN
-                            LastTotalAmount[1] := TotalAmount[3];
-
-                        WITH SalesLine1 DO
-                            IF Type <> Type::" " THEN BEGIN
-                                IF Quantity = 0 THEN
-                                    CurrReport.SKIP;
-                                "OrderedNo" := "OrderedNo" + 1;
-                                ItemLineNo := "OrderedNo";
-                                IF CurrentCurrencyAmountPrice = CurrentCurrencyAmountPrice::LCY THEN BEGIN
-                                    Amount := "Amount (LCY)";
-                                    "Amount Including VAT" := "Amount Including VAT (LCY)";
-                                END;
-                                IncrAmount(SalesLine1);
-                                IF Header."Prices Including VAT" THEN BEGIN
-                                    Amount := "Amount Including VAT";
-                                    "Amount (LCY)" := "Amount Including VAT (LCY)";
-                                END;
-                                UnitPrice :=
-                                  ROUND(Amount / Quantity, Currency."Unit-Amount Rounding Precision");
-                                UnitPriceLCY :=
-                                  ROUND("Amount (LCY)" / Quantity, Currency."Unit-Amount Rounding Precision");
-                            END ELSE BEGIN
-                                IF CheckSalesLine.GET("Document No.", "Attached to Line No.") THEN
-                                    IF CheckSalesLine.Quantity = 0 THEN
-                                        CurrReport.SKIP;
-
-                                "No." := '';
-                                ItemLineNo := 0;
-                            END;
-
-                        // SWC1070 DD 06.07.17 >>
-                        IF ExportExcel THEN BEGIN
-                            RowNo += 1;
-                            //IF RowNo <> ExcelTemplates."Top Margin" THEN!!!!!!!!!!!
-                            //EB.CopyRow(ExcelTemplates."Top Margin");!!!!!!!!!!
-
-                            AddCell(RowNo, 3, SalesLine1.Description + ' ' + SalesLine1."Description 2", FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            IF SalesLine1.Type = SalesLine1.Type::" " THEN BEGIN
-                                AddCell(RowNo, 2, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 5, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 6, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 7, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 8, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            END ELSE BEGIN
-                                AddCell(RowNo, 2, FORMAT(ItemLineNo), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 5, SalesLine1."Unit of Measure", FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 6, FORMAT(SalesLine1.Quantity, 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 7, FORMAT(UnitPriceLCY, 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 8, FORMAT(SalesLine1."Amount (LCY)", 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            END;
-                        END;
+                        end;
                     end;
 
                     trigger OnPostDataItem()
@@ -165,9 +180,12 @@ report 50093 "Posted Proforma Invoice"
 
                         // SWC1070 DD 06.07.17 >>
                         IF ExportExcel THEN BEGIN
-                            AddCell(RowNo + 1, 8, FORMAT(TotalAmount[1], 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            AddCell(RowNo + 2, 8, FORMAT(TotalAmount[2], 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            AddCell(RowNo + 3, 8, FORMAT(TotalAmount[3], 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo + 1, 7, 'Итого:', true, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo + 1, 8, 'Итого НДС:', True, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo + 1, 8, 'Всего к оплате:', true, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo + 1, 8, FORMAT(TotalAmount[1], 0, 1), true, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo + 2, 8, FORMAT(TotalAmount[2], 0, 1), true, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo + 3, 8, FORMAT(TotalAmount[3], 0, 1), true, EB."Cell Type"::Text, FALSE, 9);
                             AddCell(RowNo + 5, 2, 'Всего оказано услуг на сумму: ' + LocMgt.Amount2Text(CurrencyForAmountWritten, TotalAmount[3])
                                           + ', в т.ч.: НДС - ' + LocMgt.Amount2Text(CurrencyForAmountWritten, TotalAmount[2]) + '.', FALSE, EB."Cell Type"::Text, FALSE, 9);
                             AddCell(RowNo + 7, 2, 'Руководитель предприятия_____________________ (' +
@@ -202,7 +220,7 @@ report 50093 "Posted Proforma Invoice"
                 trigger OnPreDataitem()
                 var
                 begin
-
+                    SalesLine1.SetRange("Document No.", Header."No.");
                     IF NOT SalesLine1.FIND('-') THEN
                         CurrReport.BREAK;
 
@@ -240,6 +258,7 @@ report 50093 "Posted Proforma Invoice"
 
                 FirstStep := true;
                 SalesRecSetup.get;
+                SalesLine1.SetRange("Document No.", Header."No.");
             end;
 
             trigger OnPostDataItem()
@@ -500,6 +519,7 @@ report 50093 "Posted Proforma Invoice"
     begin
 
         ExportExcel := true;
+        SalesLine1.SetRange("Document No.", Header."No.");
 
         if not CurrReport.UseRequestPage then
             CopiesNumber := 1;

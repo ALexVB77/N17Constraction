@@ -360,7 +360,6 @@ codeunit 50010 "Payment Order Management"
                         PurchLine.VALIDATE("Direct Unit Cost", PurchLine."Unit Cost (LCY)");
                         PurchLine.VALIDATE("Shortcut Dimension 1 Code", VendArgDtld2."Global Dimension 1 Code");
                         PurchLine.VALIDATE("Shortcut Dimension 2 Code", VendArgDtld2."Global Dimension 2 Code");
-                        PurchLine.VALIDATE("Cost Type", VendArgDtld2."Cost Type");
                         PurchLine.VALIDATE("VAT Prod. Posting Group");
                         PurchLine.MODIFY(TRUE);
 
