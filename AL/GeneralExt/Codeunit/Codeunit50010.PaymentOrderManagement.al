@@ -320,7 +320,7 @@ codeunit 50010 "Payment Order Management"
         PurchLine: Record "Purchase Line";
         VendArgDtld: Record "Vendor Agreement Details";
         VendArgDtld2: Record "Vendor Agreement Details";
-        VendArgDtldPage: Page "Vendor Agreement Details";
+        VendArgDtldPage: Page "Vendor Agreement Details List";
         Text001: Label 'Nothing selected!';
         LineNo: Integer;
         Amt: Decimal;
