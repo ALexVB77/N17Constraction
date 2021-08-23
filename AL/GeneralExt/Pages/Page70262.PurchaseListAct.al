@@ -8,7 +8,7 @@ page 70262 "Purchase List Act"
     PageType = Worksheet;
     RefreshOnActivate = true;
     SourceTable = "Purchase Header";
-    SourceTableView = SORTING("Document Type", "No.") WHERE("Act Type" = FILTER(<> ' '), "Status App" = FILTER(<> Payment), "Problem Type" = FILTER(<> "Act error"));
+    SourceTableView = SORTING("Document Type", "No.") WHERE("Act Type" = FILTER(<> ' '), "Status App" = FILTER(<> Payment)/*, "Problem Type" = FILTER(<> "Act error")*/);
     UsageCategory = Lists;
     layout
     {
@@ -417,6 +417,9 @@ page 70262 "Purchase List Act"
         SETRANGE("Status App");
         SETRANGE("Problem Document");
         // SETRANGE(Paid);
+        SetRange("My Approved");
+        SETRANGE("Act Type");
+
         MarkedOnly(false);
         ClearMarks();
 

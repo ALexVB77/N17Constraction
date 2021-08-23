@@ -328,6 +328,7 @@ page 70002 "Purchase List App"
         SETRANGE("Status App");
         SETRANGE("Problem Document");
         // SETRANGE(Paid);
+        SetRange("My Approved");
         MarkedOnly(false);
         ClearMarks();
 

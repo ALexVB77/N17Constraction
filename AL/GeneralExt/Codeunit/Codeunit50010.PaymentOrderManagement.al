@@ -783,7 +783,7 @@ codeunit 50010 "Payment Order Management"
             end;
         end;
 
-        if PurchHeader."Status App" = PurchHeader."Status App"::Approve then
+        if PurchHeader."Status App Act" = PurchHeader."Status App Act"::Approve then
             CheckUserApprovalLimit(PurchHeader);
 
         // изменение статусов
@@ -1182,7 +1182,9 @@ codeunit 50010 "Payment Order Management"
                     MessageResponsNo := GenAppStatus + 1;
                 (GenAppStatus = ActAppStatus::Approve.AsInteger()) and (not SentToPreApproval):
                     MessageResponsNo := GenAppStatus + 2;
-                GenAppStatus in [ActAppStatus::Signing.AsInteger(), ActAppStatus::Accountant.AsInteger()]:
+                GenAppStatus = ActAppStatus::Signing.AsInteger:
+                    MessageResponsNo := GenAppStatus + 2;
+                GenAppStatus = ActAppStatus::Accountant.AsInteger():
                     MessageResponsNo := 8;
             end
         else
