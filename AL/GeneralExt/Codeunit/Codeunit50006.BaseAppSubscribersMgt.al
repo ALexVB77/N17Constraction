@@ -1119,6 +1119,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
     var
         GenJnlLine: record "Gen. Journal Line";
         PurchOrder: Record "Purchase Header";
+        VendExcelHdr: Record "Vendor Excel Header";
     begin
         if (not RunTrigger) or Rec.IsTemporary then
             exit;
@@ -1134,6 +1135,10 @@ codeunit 50006 "Base App. Subscribers Mgt."
         PurchOrder.SetFilter("Act Type", '<>%1', PurchOrder."Act Type"::" ");
         if not PurchOrder.IsEmpty then
             PurchOrder.ModifyAll("Act Invoice No.", '');
+
+        VendExcelHdr.SetRange("Act No.", Rec."No.");
+        if not VendExcelHdr.IsEmpty then
+            VendExcelHdr.ModifyAll("Act No.", '');
     end;
 
     // Table 39 Purchase Line
