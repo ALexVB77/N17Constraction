@@ -4,11 +4,8 @@ page 70269 "Barcode Act Document"
     Caption = 'Barcode Act Document';
     DeleteAllowed = false;
     InsertAllowed = false;
-    //ModifyAllowed = false;
     PageType = Document;
     SaveValues = false;
-    //SourceTable = Integer;
-    //SourceTableView = WHERE(Number = const(1));
     UsageCategory = Tasks;
 
     layout
@@ -59,6 +56,7 @@ page 70269 "Barcode Act Document"
                 trigger OnAction()
                 begin
                     SetReceivedAcc();
+                    CurrPage.Update;
                 end;
             }
         }
@@ -127,6 +125,7 @@ page 70269 "Barcode Act Document"
     begin
         if FindPurchAct(PurchHeader) then begin
             PurchHeader."Receive Account" := true;
+            PurchHeader.Modify;
             Message(Text003);
         end;
     end;

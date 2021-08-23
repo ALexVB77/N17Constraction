@@ -899,6 +899,9 @@ page 70260 "Purchase Order Act"
         END;
         IF "Location Document" THEN
             GlobalEditable := NOT ("Status App Act" IN ["Status App Act"::Approve, "Status App Act"::Signing, "Status App Act"::Accountant]);
+
+        if GlobalEditable then
+            GlobalEditable := "Status App Act".AsInteger() < "Status App Act"::Approve.AsInteger();
     end;
 
     trigger OnDeleteRecord(): Boolean

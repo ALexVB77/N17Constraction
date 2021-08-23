@@ -221,35 +221,61 @@ page 70261 "Purchase Order Act Subform"
                     ApplicationArea = All;
                     ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
                 }
-
                 field("Utilities Dim. Value Code"; UtilitiesDimValueCode)
                 {
                     Caption = 'Utilities Dim. Value Code';
+                    CaptionClass = GetAddDimCaption(0);
                     ApplicationArea = All;
                     Editable = UtilitiesEnabled;
                     Enabled = UtilitiesEnabled;
 
                     trigger OnValidate()
                     begin
-                        Rec.ValidateUtilitiesDimValueCode(UtilitiesDimValueCode);
+                        Rec.ValidateAddDimValueCode(UtilitiesDimValueCode, 0);
                     end;
 
                     trigger OnLookup(var Text: Text): Boolean
                     var
                         DimValue: Record "Dimension Value";
                     begin
-                        GLSetup.Get();
                         IF GLSetup."Utilities Dimension Code" <> '' then begin
                             DimValue.FilterGroup(3);
                             DimValue.SetRange("Dimension Code", GLSetup."Utilities Dimension Code");
                             DimValue.FilterGroup(0);
                             IF page.RunModal(0, DimValue) = Action::LookupOK then begin
                                 UtilitiesDimValueCode := DimValue.Code;
-                                Rec.ValidateUtilitiesDimValueCode(UtilitiesDimValueCode);
+                                Rec.ValidateAddDimValueCode(UtilitiesDimValueCode, 0);
                             end;
                         end;
                     end;
+                }
+                field("Address Dim. Value Code"; AddressDimValueCode)
+                {
+                    Caption = 'Address Dim. Value Code';
+                    CaptionClass = GetAddDimCaption(1);
+                    ApplicationArea = All;
+                    Editable = AddressEnabled;
+                    Enabled = AddressEnabled;
 
+                    trigger OnValidate()
+                    begin
+                        Rec.ValidateAddDimValueCode(AddressDimValueCode, 1);
+                    end;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        DimValue: Record "Dimension Value";
+                    begin
+                        IF PurchasesSetup."Address Dimension" <> '' then begin
+                            DimValue.FilterGroup(3);
+                            DimValue.SetRange("Dimension Code", PurchasesSetup."Address Dimension");
+                            DimValue.FilterGroup(0);
+                            IF page.RunModal(0, DimValue) = Action::LookupOK then begin
+                                AddressDimValueCode := DimValue.Code;
+                                Rec.ValidateAddDimValueCode(AddressDimValueCode, 1);
+                            end;
+                        end;
+                    end;
                 }
                 field(Approver; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
                 {
@@ -386,6 +412,10 @@ page 70261 "Purchase Order Act Subform"
         IF (GLSetup."Utilities Dimension Code" <> '') and (Rec."Dimension Set ID" <> 0) then
             IF DimSetEntry.GET(Rec."Dimension Set ID", GLSetup."Utilities Dimension Code") then
                 UtilitiesDimValueCode := DimSetEntry."Dimension Value Code";
+        AddressDimValueCode := '';
+        IF (PurchasesSetup."Address Dimension" <> '') and (Rec."Dimension Set ID" <> 0) then
+            IF DimSetEntry.GET(Rec."Dimension Set ID", PurchasesSetup."Address Dimension") then
+                AddressDimValueCode := DimSetEntry."Dimension Value Code";
         if (PurchaseHeader."Document Type" <> "Document Type") or (PurchaseHeader."No." <> "Document No.") then
             PurchaseHeader.Get("Document Type", "Document No.");
         LocationCodeMandatory := (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::Advance) and (not IsCommentLine) AND ("No." <> '');
@@ -407,6 +437,7 @@ page 70261 "Purchase Order Act Subform"
     trigger OnInit()
     begin
         PurchasesSetup.Get();
+        AddressEnabled := PurchasesSetup."Address Dimension" <> '';
         Currency.InitRoundingPrecision();
         TempOptionLookupBuffer.FillBuffer(TempOptionLookupBuffer."Lookup Type"::Purchases);
         //IsFoundation := ApplicationAreaMgmtFacade.IsFoundationEnabled();
@@ -464,11 +495,11 @@ page 70261 "Purchase Order Act Subform"
         ApplicationAreaMgmtFacade: Codeunit "Application Area Mgmt. Facade";
         PaymentOrderMgt: Codeunit "Payment Order Management";
         IsCommentLine, IsBlankNumber : Boolean;
-        UnitofMeasureCodeIsChangeable, CurrPageIsEditable, IsSaaSExcelAddinEnabled, UtilitiesEnabled : Boolean;
+        UnitofMeasureCodeIsChangeable, CurrPageIsEditable, IsSaaSExcelAddinEnabled, UtilitiesEnabled, AddressEnabled : Boolean;
         TypeAsText: Text[30];
         SuppressTotals: Boolean;
         ShortcutDimCode: array[8] of Code[20];
-        UtilitiesDimValueCode: code[20];
+        UtilitiesDimValueCode, AddressDimValueCode : code[20];
         VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct : Decimal;
         LocationCodeMandatory: Boolean;
 

@@ -208,46 +208,86 @@ tableextension 80039 "Purchase Line (Ext)" extends "Purchase Line"
         TESTFIELD("Forecast Entry", 0);
     end;
 
-    procedure ValidateUtilitiesDimValueCode(var UtilitiesDimCode: code[20])
+    procedure GetAddDimCaption(DimType: Option "Utilit","Address"): Text
     var
         GLSetup: Record "General Ledger Setup";
+        PurchSetup: Record "Purchases & Payables Setup";
+        UtilitCaption: Label 'Utilities Dim. Value Code';
+        AddressCaption: Label 'Address Dim. Value Code';
+    begin
+        case DimType of
+            DimType::Utilit:
+                begin
+                    GLSetup.Get();
+                    if GLSetup."Utilities Dimension Code" <> '' then
+                        exit(CaptionClassTranslate('1,5,' + GLSetup."Utilities Dimension Code"))
+                    else
+                        exit(UtilitCaption);
+                end;
+            DimType::Address:
+                begin
+                    PurchSetup.Get;
+                    if PurchSetup."Address Dimension" <> '' then
+                        exit(CaptionClassTranslate('1,5,' + PurchSetup."Address Dimension"))
+                    else
+                        exit(AddressCaption);
+                end;
+        end;
+    end;
+
+    procedure ValidateAddDimValueCode(var DimValueCode: code[20]; DimType: Option "Utilit","Address")
+    var
+        GLSetup: Record "General Ledger Setup";
+        PurchSetup: Record "Purchases & Payables Setup";
         TempDimSetEntry: Record "Dimension Set Entry" temporary;
         DimVal: Record "Dimension Value";
         DimMgt: Codeunit DimensionManagement;
         LocText003: Label '%1 is not an available %2 for that dimension.';
     begin
-        GLSetup.Get();
-        GLSetup.TestField("Utilities Dimension Code");
-
-        DimVal.SetRange("Dimension Code", GLSetup."Utilities Dimension Code");
-        if UtilitiesDimCode <> '' then begin
-            DimVal.SetRange(Code, UtilitiesDimCode);
-            if not DimVal.FindFirst then begin
-                DimVal.SetFilter(Code, StrSubstNo('%1*', UtilitiesDimCode));
-                if DimVal.FindFirst then
-                    UtilitiesDimCode := DimVal.Code
-                else
-                    Error(
-                      LocText003,
-                      UtilitiesDimCode, DimVal.FieldCaption(Code));
-            end;
-            DimVal.Get(GLSetup."Utilities Dimension Code", UtilitiesDimCode);
+        case DimType of
+            DimType::Utilit:
+                begin
+                    GLSetup.Get();
+                    GLSetup.TestField("Utilities Dimension Code");
+                    DimVal.SetRange("Dimension Code", GLSetup."Utilities Dimension Code");
+                    if DimValueCode <> '' then begin
+                        DimVal.SetRange(Code, DimValueCode);
+                        if not DimVal.FindFirst then begin
+                            DimVal.SetFilter(Code, StrSubstNo('%1*', DimValueCode));
+                            if DimVal.FindFirst then
+                                DimValueCode := DimVal.Code
+                            else
+                                Error(
+                                  LocText003,
+                                  DimValueCode, DimVal.FieldCaption(Code));
+                        end;
+                        DimVal.Get(GLSetup."Utilities Dimension Code", DimValueCode);
+                    end;
+                end;
+            DimType::Address:
+                begin
+                    PurchSetup.Get;
+                    PurchSetup.TestField("Address Dimension");
+                    if DimValueCode <> '' then
+                        DimVal.Get(PurchSetup."Address Dimension", DimValueCode);
+                end;
+        end;
+        if DimValueCode <> '' then begin
             if not DimMgt.CheckDim(DimVal."Dimension Code") then
                 Error(DimMgt.GetDimErr);
-            if not DimMgt.CheckDimValue(DimVal."Dimension Code", UtilitiesDimCode) then
+            if not DimMgt.CheckDimValue(DimVal."Dimension Code", DimValueCode) then
                 Error(DimMgt.GetDimErr);
         end;
         DimMgt.GetDimensionSet(TempDimSetEntry, Rec."Dimension Set ID");
         if TempDimSetEntry.Get(TempDimSetEntry."Dimension Set ID", DimVal."Dimension Code") then
-            if TempDimSetEntry."Dimension Value Code" <> UtilitiesDimCode then
+            if TempDimSetEntry."Dimension Value Code" <> DimValueCode then
                 TempDimSetEntry.Delete();
-        if UtilitiesDimCode <> '' then begin
+        if DimValueCode <> '' then begin
             TempDimSetEntry."Dimension Code" := DimVal."Dimension Code";
-            TempDimSetEntry."Dimension Value Code" := DimVal.Code;
+            TempDimSetEntry."Dimension Value Code" := DimValueCode;
             TempDimSetEntry."Dimension Value ID" := DimVal."Dimension Value ID";
             if TempDimSetEntry.Insert() then;
         end;
         Rec."Dimension Set ID" := DimMgt.GetDimensionSetID(TempDimSetEntry);
     end;
-
 }

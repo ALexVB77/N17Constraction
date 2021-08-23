@@ -54,6 +54,11 @@ table 70202 "Vendor Excel Line"
         {
             Caption = 'Vendor No.';
         }
+        field(28; "Location Code"; Code[20])
+        {
+            Caption = 'Location Code';
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false));
+        }
         field(40; "Shortcut Dimension 1 Code"; Code[20])
         {
             TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));

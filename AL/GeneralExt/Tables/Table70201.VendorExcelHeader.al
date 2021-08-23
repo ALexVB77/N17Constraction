@@ -42,6 +42,11 @@ table 70201 "Vendor Excel Header"
             Editable = false;
             Caption = 'Act No.';
         }
+        field(28; "Location Code"; Code[10])
+        {
+            Caption = 'Location Code';
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false));
+        }
     }
 
     keys

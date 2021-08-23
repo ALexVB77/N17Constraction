@@ -222,6 +222,7 @@ codeunit 50010 "Payment Order Management"
         CopyDocMgt.SetProperties(true, false, false, false, false, PurchSetup."Exact Cost Reversing Mandatory", false);
         CopyDocMgt.CopyPurchDoc(FromDocType::Order, PurchaseHeader."No.", PaymentInvoice);
 
+        PaymentInvoice."Location Document" := false;
         if LinkedActExists then begin
             InvtSetup.Get();
             InvtSetup.TestField("Temp Item Code");
@@ -440,7 +441,7 @@ codeunit 50010 "Payment Order Management"
         LocText3: Label 'You are not the owner or process user in the linked payment invoice %1.';
         LocText4: Label 'You must be the owner or process user in the document %1.';
     begin
-        PurchHeader.TestField("Problem Document");
+        // PurchHeader.TestField("Problem Document");
 
         if not (UserId in [PurchHeader.Controller, PurchHeader."Process User"]) then
             Error(LocText4, PurchHeader."No.");
@@ -754,7 +755,7 @@ codeunit 50010 "Payment Order Management"
 
         if (PurchHeader."Status App Act".AsInteger() >= PurchHeader."Status App Act"::Checker.AsInteger()) and (not Reject) then begin
             GetInventorySetup;
-            CheckDimExistsInHeader(PurchHeader, 1);
+            // CheckDimExistsInHeader(PurchHeader, 1);
             PurchLine.SETRANGE("Document Type", PurchHeader."Document Type");
             PurchLine.SETRANGE("Document No.", PurchHeader."No.");
             PurchLine.SETRANGE(Type, PurchLine.Type::Item);
@@ -782,6 +783,9 @@ codeunit 50010 "Payment Order Management"
             end;
         end;
 
+        if PurchHeader."Status App Act" = PurchHeader."Status App Act"::Approve then
+            CheckUserApprovalLimit(PurchHeader);
+
         // изменение статусов
 
         case PurchHeader."Status App Act" of
@@ -801,7 +805,10 @@ codeunit 50010 "Payment Order Management"
                     FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Controller, PurchHeader.Controller, ProblemType::REstimator, Reject);
             PurchHeader."Status App Act"::Checker:
                 if not Reject then begin
-                    PreAppover := GetPurchActPreApprover(PurchHeader);
+                    if PurchHeader."Pre-Approver" <> '' then
+                        PreAppover := PurchHeader."Pre-Approver"
+                    else
+                        PreAppover := GetPurchActPreApprover(PurchHeader);
                     if PreAppover <> '' then begin
                         PurchHeader."Sent to pre. Approval" := true;
                         FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Approve, PreAppover, ProblemType::" ", Reject);
@@ -830,7 +837,10 @@ codeunit 50010 "Payment Order Management"
                         ERPCFunc.CreateBCPreBookingAct(PurchHeader);
                     end
                     else begin
-                        PreAppover := GetPurchActPreApprover(PurchHeader);
+                        if PurchHeader."Pre-Approver" <> '' then
+                            PreAppover := PurchHeader."Pre-Approver"
+                        else
+                            PreAppover := GetPurchActPreApprover(PurchHeader);
                         if PreAppover <> '' then begin
                             PurchHeader."Sent to pre. Approval" := true;
                             FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Approve, PreAppover, ProblemType::RApprover, Reject);
@@ -890,7 +900,7 @@ codeunit 50010 "Payment Order Management"
         end;
 
         if (PurchHeader."Status App" >= PurchHeader."Status App"::Checker) and (not Reject) then begin
-            CheckDimExistsInHeader(PurchHeader, 2);
+            CheckDimExistsInHeader(PurchHeader, 0);
             VendAreement.Get(PurchHeader."Buy-from Vendor No.", PurchHeader."Agreement No.");
 
             PurchLine.SETRANGE("Document Type", PurchHeader."Document Type");
@@ -917,6 +927,9 @@ codeunit 50010 "Payment Order Management"
                 PurchHeader.Testfield("IW Planned Repayment Date");
         end;
 
+        if PurchHeader."Status App" = PurchHeader."Status App"::Approve then
+            CheckUserApprovalLimit(PurchHeader);
+
         // изменение статусов
 
         case PurchHeader."Status App" of
@@ -929,7 +942,10 @@ codeunit 50010 "Payment Order Management"
                     FillPayInvStatus(PurchHeader, AppStatus::Reception, PurchHeader.Receptionist, ProblemType::RController, Reject);
             PurchHeader."Status App"::Checker:
                 if not Reject then begin
-                    PreAppover := GetPurchActPreApprover(PurchHeader);
+                    if PurchHeader."Pre-Approver" <> '' then
+                        PreAppover := PurchHeader."Pre-Approver"
+                    else
+                        PreAppover := GetPurchActPreApprover(PurchHeader);
                     if PreAppover <> '' then begin
                         PurchHeader."Sent to pre. Approval" := true;
                         FillPayInvStatus(PurchHeader, AppStatus::Approve, PreAppover, ProblemType::" ", Reject);
@@ -950,7 +966,10 @@ codeunit 50010 "Payment Order Management"
                     if not Reject then
                         FillPayInvStatus(PurchHeader, AppStatus::Payment, PurchHeader.Receptionist, ProblemType::" ", Reject)
                     else begin
-                        PreAppover := GetPurchActPreApprover(PurchHeader);
+                        if PurchHeader."Pre-Approver" <> '' then
+                            PreAppover := PurchHeader."Pre-Approver"
+                        else
+                            PreAppover := GetPurchActPreApprover(PurchHeader);
                         if PreAppover <> '' then begin
                             PurchHeader."Sent to pre. Approval" := true;
                             FillPayInvStatus(PurchHeader, AppStatus::Approve, PreAppover, ProblemType::RApprover, Reject);
@@ -979,6 +998,36 @@ codeunit 50010 "Payment Order Management"
             UNTIL PurchLineLoc.NEXT = 0;
     end;
     */
+
+    local procedure CheckUserApprovalLimit(PurchHeader: Record "Purchase Header")
+    var
+        CurrExRate: Record "Currency Exchange Rate";
+        Currency: Record Currency;
+        UserSetup: Record "User Setup";
+        ApprovalAmountLCY: Decimal;
+        ErrorText: Label 'Document amount (%1) exceeds the approval limit of user %2 (%3).\You can delegate document approval to another user.';
+    begin
+        if PurchHeader."Invoice Amount Incl. VAT" = 0 then
+            exit;
+
+        UserSetup.Get(UserId);
+        // if not UserSetup."Unlimited Purchase Approval" then
+        //    UserSetup.TestField("Purchase Amount Approval Limit");
+
+        if PurchHeader."Currency Code" = '' then
+            ApprovalAmountLCY := PurchHeader."Invoice Amount Incl. VAT"
+        else begin
+            Currency.Get(PurchHeader."Currency Code");
+            ApprovalAmountLCY :=
+                Round(
+                    CurrExRate.ExchangeAmtFCYToLCY(
+                        PurchHeader."Posting Date", PurchHeader."Currency Code", PurchHeader."Invoice Amount Incl. VAT", PurchHeader."Currency Factor"),
+                Currency."Amount Rounding Precision");
+        end;
+
+        if not (UserSetup."Unlimited Purchase Approval" or (ApprovalAmountLCY <= UserSetup."Purchase Amount Approval Limit")) then
+            error(ErrorText, ApprovalAmountLCY, UserSetup."User ID", UserSetup."Purchase Amount Approval Limit");
+    end;
 
     local procedure GetPurchActChecker(PurchHeader: Record "Purchase Header"): code[50]
     var
@@ -1300,6 +1349,7 @@ codeunit 50010 "Payment Order Management"
         PurchHeaderInv."Process User" := '';
         PurchHeaderInv."Status App Act" := PurchHeaderInv."Status App Act"::" ";
         PurchHeaderInv."Date Status App" := 0D;
+        PurchHeaderInv."Vendor Invoice No." := PurchHeader."Vendor Invoice No.";
         PurchHeaderInv.Modify();
 
         PurchLine.SetRange("Document Type", PurchHeader."Document Type");
@@ -1494,7 +1544,10 @@ codeunit 50010 "Payment Order Management"
 
         PurchHead.Storekeeper := UserId;
         PurchHead."Location Document" := true;
-        PurchHead.VALIDATE("Location Code", StorekeeperLocation.GetDefaultLocation('', false));
+        if VendExcelHdr."Location Code" <> '' then
+            PurchHead.VALIDATE("Location Code", VendExcelHdr."Location Code")
+        else
+            PurchHead.VALIDATE("Location Code", StorekeeperLocation.GetDefaultLocation('', false));
 
         PurchHead."Status App Act" := PurchHead."Status App Act"::Controller;
         PurchHead."Process User" := USERID;
@@ -1525,6 +1578,8 @@ codeunit 50010 "Payment Order Management"
                 PurchLine.INSERT(TRUE);
                 PurchLine.Type := PurchLine.Type::Item;
                 PurchLine.VALIDATE("No.", SourceLine."Item No.");
+                if PurchHead."Location Code" <> '' then
+                    PurchLine.Validate("Location Code", PurchHead."Location Code");
                 PurchLine.VALIDATE(Quantity, SourceLine.Quantity);
                 PurchLine.VALIDATE("Unit of Measure Code", SourceLine."Unit of Measure");
                 PurchLine.VALIDATE("Direct Unit Cost", SourceLine."Unit Price");

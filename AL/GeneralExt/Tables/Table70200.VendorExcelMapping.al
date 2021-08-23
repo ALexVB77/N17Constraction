@@ -55,6 +55,11 @@ table 70200 "Vendor Excel Mapping"
         {
             Caption = 'ItemVendNo Cell';
         }
+        field(50000; "Default Location Code"; code[20])
+        {
+            Caption = 'Default Location Code';
+            TableRelation = Location WHERE("Use As In-Transit" = CONST(false));
+        }
     }
 
     keys

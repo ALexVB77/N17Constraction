@@ -97,6 +97,12 @@ report 70200 "Import Vendor Invoice"
                         ApplicationArea = All;
                         Caption = 'Tax Amount Column';
                     }
+                    field(DefaultLocationCode; DefLocCode)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Default Location Code';
+                        TableRelation = Location WHERE("Use As In-Transit" = CONST(false));
+                    }
                 }
             }
         }
@@ -169,6 +175,7 @@ report 70200 "Import Vendor Invoice"
             END;
         END;
 
+        VendHead."Location Code" := DefLocCode;
         VendHead.INSERT;
 
         ExcelBuf.RESET;
@@ -228,6 +235,7 @@ report 70200 "Import Vendor Invoice"
                 Item.SETRANGE("Vendor No.", VendHead."Vendor No.");
                 IF Item.FINDFIRST THEN
                     VendLine."Item No." := Item."No.";
+
                 VendLine.Quantity := _ItemQty;
                 VendLine."Unit of Measure" := _ItemUoM;
                 VendLine."Unit Price" := _Price;
@@ -237,6 +245,8 @@ report 70200 "Import Vendor Invoice"
                 VendLine."Vendor Item No." := _VendItemNo;
                 IF VendLine."Item No." = '' THEN
                     VendLine."Item Action" := VendLine."Item Action"::CreateItem;
+
+                VendLine."Location Code" := VendHead."Location Code";
                 VendLine.INSERT;
             END;
 
@@ -258,7 +268,7 @@ report 70200 "Import Vendor Invoice"
         RowStart: Integer;
         GVendNo: code[20];
         VATRegCell, DocNoCell, DocDateCell : code[20];
-        ItemDescCol, ItemQtyCol, ItemUoMCol, VATPerCol, AmountCol, TaxCol, PriceCol, ItemVendNoCol : code[20];
+        ItemDescCol, ItemQtyCol, ItemUoMCol, VATPerCol, AmountCol, TaxCol, PriceCol, ItemVendNoCol, DefLocCode : code[20];
         FileName, SheetName, ServerFileName : text;
         RowNo, MaxRow : integer;
         i: Integer;
@@ -295,6 +305,7 @@ report 70200 "Import Vendor Invoice"
         VendMap."Tax Cell" := TaxCol;
         VendMap."Price Cell" := PriceCol;
         VendMap."ItemVendNo Cell" := ItemVendNoCol;
+        VendMap."Default Location Code" := DefLocCode;
         VendMap.MODIFY;
         COMMIT;
     end;
@@ -315,6 +326,7 @@ report 70200 "Import Vendor Invoice"
             TaxCol := VendMap."Tax Cell";
             PriceCol := VendMap."Price Cell";
             ItemVendNoCol := VendMap."ItemVendNo Cell";
+            DefLocCode := VendMap."Default Location Code";
         END;
     end;
 
@@ -332,6 +344,7 @@ report 70200 "Import Vendor Invoice"
         TaxCol := '';
         PriceCol := '';
         ItemVendNoCol := '';
+        DefLocCode := '';
     end;
 
 }

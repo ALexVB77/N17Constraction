@@ -4863,6 +4863,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1089551496 - Field 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location Code</source>
+          <target>Код склада</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Header - Field Location Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1089551496 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <target>Но.</target>
@@ -4953,6 +4959,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Line No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2454155887 - Field 2161572060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location Code</source>
+          <target>Код склада</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Line - Field Location Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2454155887 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quatity</source>
           <target>Количество</target>
@@ -5012,6 +5024,12 @@
           <target>Ячейка суммы</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field Amount Cell - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3742899449 - Field 2477103885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Location Code</source>
+          <target>Код склада по умолчанию</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vendor Excel Mapping - Field Default Location Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3742899449 - Field 1234283255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date Cell</source>
@@ -5720,6 +5738,12 @@
           <target>Неиспользуемый Тип Акта.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckUnusedPurchActType - NamedType Text50100</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 2344277623 - NamedType 2810311271" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document amount (%1) exceeds the approval limit of user %2 (%3).\You can delegate document approval to another user.</source>
+          <target>Сумма документа (%1) превышает лимит утвержения пользователя %2 (%3).\Вы можете делегировать утверждение документа другому пользователю.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckUserApprovalLimit - NamedType ErrorText</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 3459981648 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>The act has already been created!</source>
@@ -9639,6 +9663,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act - Action ApproveButton - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2825229705 - Action 3954252683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive Problem Document</source>
+          <target>Архивировать проблемный документ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act - Action ArchiveProblemDoc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2825229705 - Action 3358363584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Edit</source>
           <target>Изменить</target>
@@ -9674,6 +9704,13 @@
           <target>Отклонить</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act - Action RejectButton - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2825229705 - Action 3249535890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents View</source>
+          <target>Просмотр Документа</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act - Action ViewAttachDoc - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2443352567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Orders List Archive</source>
@@ -10629,6 +10666,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Subform - Control VATTotals - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 38647611 - Control 3118802434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address Dim. Value Code</source>
+          <target>Значение измерения Address</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order Act Subform - Control Address Dim. Value Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 38647611 - Control 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approver</source>
           <target>Утверждающий</target>
@@ -11132,6 +11175,12 @@
           <target>НДС</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Control VATTotals - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3878240010 - Control 3118802434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address Dim. Value Code</source>
+          <target>Значение измерения Address</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App Subform - Control Address Dim. Value Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3878240010 - Control 700150807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approver</source>
@@ -14258,6 +14307,12 @@
           <target>Столбец стоимости</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control AmountCol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3956600988 - Control 1456564405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Location Code</source>
+          <target>Код склада по умолчанию</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import Vendor Invoice - Control DefaultLocationCode - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3956600988 - Control 973198246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date Cell</source>
@@ -17397,11 +17452,23 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Vendor Bank Account No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Method 413587170 - NamedType 3744062858" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
+        <trans-unit id="TableExtension 363487199 - Method 2882825971 - NamedType 3373620497" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
+          <source>Utilities Dim. Value Code</source>
+          <target>ИНЖ. СЕТЬ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method GetAddDimCaption - NamedType UtilitCaption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 363487199 - Method 2882825971 - NamedType 508519572" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
+          <source>Address Dim. Value Code</source>
+          <target>Значение измерения Address</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method GetAddDimCaption - NamedType AddressCaption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 363487199 - Method 3300363475 - NamedType 3744062858" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
           <source>%1 is not an available %2 for that dimension.</source>
           <target>%1 не доступно %2 для этого измерения.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method ValidateUtilitiesDimValueCode - NamedType LocText003</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method ValidateAddDimValueCode - NamedType LocText003</note>
         </trans-unit>
         <trans-unit id="TableExtension 363487199 - Field 3230600482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Buy-from Vendor Name</source>
