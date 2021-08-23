@@ -1,5 +1,6 @@
 report 92426 "Act Performed Work"
 {
+    //ПРЗК-23-00015
     UsageCategory = Administration;
     ApplicationArea = All;
     Caption = 'Act Performed Work';
@@ -25,6 +26,38 @@ report 92426 "Act Performed Work"
                 dataitem(CopyHeader; Integer)
                 {
                     DataItemTableView = SORTING(Number);
+                    column(CompanyAddress1; CompanyAddress[1]) { }
+                    column(CompanyAddress2; CompanyAddress[2]) { }
+                    column(CompanyAddress3; CompanyAddress[3]) { }
+                    column(CompanyAddress4; CompanyAddress[4]) { }
+                    column(CompanyAddress5; CompanyAddress[5]) { }
+                    column(CompanyAddress6; CompanyAddress[6]) { }
+                    column(CompanyAddress7; CompanyAddress[7]) { }
+                    column(CompanyAddress8; CompanyAddress[8]) { }
+                    column(CompanyAddress9; STRSUBSTNO('р/с %1 в %2 \К/с %3 \БИК %4', CompanyInfo."Bank Account No.", CompanyInfo."Bank Name", BankDirectory."Corr. Account No.", CompanyInfo."Bank BIC")) { }
+                    column(CompanyAddress10; STRSUBSTNO('ИНН %1 ', CompanyInfo."VAT Registration No.")) { }
+                    column(CompanyAddress11; CompanyInfo."Phone No.") { }
+                    column(CompanyAddress12; CompanyInfo."Fax No.") { }
+                    column(CustomerAddr1; CustomerAddr[1]) { }
+                    column(CustomerAddr2; CustomerAddr[2]) { }
+                    column(CustomerAddr3; CustomerAddr[3]) { }
+                    column(CustomerAddr4; CustomerAddr[4]) { }
+                    column(CustomerAddr5; CustomerAddr[5]) { }
+                    column(CustomerAddr6; CustomerAddr[6]) { }
+                    column(CustomerAddr7; CustomerAddr[7]) { }
+                    column(CustomerAddr8; CustomerAddr[8]) { }
+                    column(CustomerAddr9; STRSUBSTNO('р/с %1 в %2 \К/с %3 \БИК %4', CustBankAcc."Bank Account No.", CustBankAcc.Name, CustBankAcc."Bank Corresp. Account No.", CustBankAcc.BIC)) { }
+                    column(CustomerAddr10; STRSUBSTNO('ИНН %1', Cust."VAT Registration No.")) { }
+                    column(CustomerAddr11; Cust."Phone No.") { }
+                    column(CustomerAddr12; Cust."Fax No.") { }
+                    column(AddrInfo13; STRSUBSTNO('Акт сдачи-приемки оказанных услуг  № %1\от  %2', Header."Posting No.", LocMgt.Date2Text(Header."Document Date"))) { }
+                    column(AddrInfo14; CurrencyInfo) { }
+                    column(AddrInfo15; AgreementDescription) { }
+
+
+
+
+
                     trigger OnPreDataItem()
                     begin
 
@@ -52,6 +85,13 @@ report 92426 "Act Performed Work"
                 dataitem(CopyLine; Integer)
                 {
                     DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
+                    column(No2; SalesLine1."No.") { }
+                    column(Description2; SalesLine1.Description) { }
+                    column(UoM2; SalesLine1."Unit of Measure") { }
+                    column(QtyToInv2; SalesLine1."Qty. to Invoice") { }
+                    column(UnitPrice2; UnitPrice) { }
+                    column(Amount2; SalesLine1.Amount) { }
+
                     trigger OnPreDataItem()
                     begin
 
@@ -246,10 +286,13 @@ report 92426 "Act Performed Work"
                     CurrencyForAmountWritten := Currency.Code;
                 END ELSE
                     CurrencyForAmountWritten := '';
+                if CurrencyCode <> '' then
+                    CurrencyInfo := StrSubstNo('Курс %1   %2', CurrencyCode, CurrencyExchRate);
 
                 IF NOT CurrReport.PREVIEW THEN BEGIN
                     IF ArchiveDocument THEN
                         ArchiveManagement.StoreSalesDocument(Header, LogInteraction);
+
 
                     IF LogInteraction THEN BEGIN
                         CALCFIELDS("No. of Archived Versions");
@@ -372,6 +415,7 @@ report 92426 "Act Performed Work"
         LogInteraction: Boolean;
         UnitPrice: Decimal;
         UnitPriceLCY: Decimal;
+        CurrencyInfo: Text[250];
         //----------------------------
 
         Text14800: Label '%2. Стр. %1';

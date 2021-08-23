@@ -4,7 +4,7 @@ report 92427 "Posted Act Performed Work"
     ApplicationArea = All;
     Caption = 'Posted Act Performed Work';
     // DefaultLayout = Word;
-    // WordLayout = './Reports/Layouts/Posted ActPerformedWork.docx';
+    // WordLayout = './Reports/Layouts/PostedActPerformedWork.docx';
     // PreviewMode = PrintLayout;
     // WordMergeDataItem = Header;
     ProcessingOnly = true;
@@ -397,24 +397,38 @@ report 92427 "Posted Act Performed Work"
     trigger OnPreReport()
     var
         SalesSetup: Record "Sales & Receivables Setup";
+        PurchAndPbleSetup: Record "Purchases & Payables Setup";
     begin
 
-        IF NOT CurrReport.UseRequestPage THEN
-            CopiesNumber := 1;
+        // IF NOT CurrReport.UseRequestPage THEN
+        //     CopiesNumber := 1;
 
-        IF ExportExcel THEN BEGIN
-            SalesSetup.Get();
-            EB.DeleteAll();
+        // IF ExportExcel THEN BEGIN
+        SalesSetup.Get();
+        //     EB.DeleteAll();
+        //     ExcelTemplates.Get(SalesSetup."Posted Act PerfWork Templ Code");
+        //     if ExportExcel then begin
+        //         FileName := ExcelTemplates.OpenTemplate(SalesSetup."Posted Act PerfWork Templ Code");
 
-            if ExportExcel then begin
-                FileName := ExcelTemplates.OpenTemplate(SalesSetup."Posted Act PerfWork Templ Code");
 
-                RowNo := ExcelTemplates."Top Margin" - 1;
-            end;
-        END;
+        //         RowNo := 12;
+        PurchAndPbleSetup.Get();
+        EB.DeleteAll();
+        //Clear(XL);
+        if ExportExcel then begin
+            Filename := ExcelTemplates.OpenTemplate((SalesSetup."Posted Act PerfWork Templ Code"));
+            //XL.OpenBook(Filename, 'Sheet1');
+            //xl.OpenBookForUpdate(Filename);
+            //xl.SetActiveWriterSheet('Sheet1');
+            //FontSize := 11;
+            //RowNoBegin := 5;
+            RowNo := 5;
+        end;
     end;
 
     trigger OnPostReport()
+    var
+    //AgedAcctPayableCaptionLbl: Label 'Aged Accounts Payable';
     begin
         if ExportExcel then begin
             EB.SetFriendlyFilename('Posted Act Performed Work');
@@ -423,6 +437,7 @@ report 92427 "Posted Act Performed Work"
             EB.CloseBook();
             EB.OpenExcel();
         end;
+
     end;
 
     var
