@@ -124,50 +124,7 @@ tableextension 80039 "Purchase Line (Ext)" extends "Purchase Line"
             Description = 'NC 51378 AB';
             Editable = false;
         }
-        field(70016; "Cost Type"; Code[20])
-        {
-            Caption = 'Cost Type';
-            Description = '50085';
 
-            trigger OnValidate()
-            var
-                GLS: Record "General Ledger Setup";
-                DimensionValue: Record "Dimension Value";
-                DimensionManagement: Codeunit "Dimension Management (Ext)";
-            begin
-                if "Line No." <> 0 then begin
-                    GLS.Get;
-                    // NC AB >>
-                    // DimensionManagement.valDimValue(GLS."Cost Type Dimension Code", "Cost Type", "Dimension Set ID");
-                    GLS.TestField("Cost Type Dimension Code");
-                    DimensionManagement.valDimValueWithUpdGlobalDim(GLS."Cost Type Dimension Code", "Cost Type", "Dimension Set ID", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
-                    // NC AB <<
-                end;
-            end;
-
-            trigger OnLookup()
-            var
-                GLS: Record "General Ledger Setup";
-                DimensionValue: Record "Dimension Value";
-                DimensionManagement: Codeunit "Dimension Management (Ext)";
-            begin
-                GLS.Get;
-                // NC AB >>
-                GLS.TestField("Cost Type Dimension Code");
-                // NC AB <<
-                DimensionValue.SetRange("Dimension Code", GLS."Cost Type Dimension Code");
-                if DimensionValue.FindFirst() then begin
-                    if DimensionValue.Get(GLS."Cost Type Dimension Code", "Cost Type") then;
-                    if Page.RUNMODAL(Page::"Dimension Value List", DimensionValue) = Action::LookupOK then begin
-                        "Cost Type" := DimensionValue.Code;
-                        // NC AB >>
-                        // DimensionManagement.valDimValue(GLS."Cost Type Dimension Code", "Cost Type", "Dimension Set ID");
-                        DimensionManagement.valDimValueWithUpdGlobalDim(GLS."Cost Type Dimension Code", "Cost Type", "Dimension Set ID", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
-                        // NC AB <<
-                    end;
-                end;
-            end;
-        }
         field(70017; "Process User"; Code[50])
         {
             CalcFormula = Lookup("Purchase Header"."Process User" WHERE("Document Type" = FIELD("Document Type"), "No." = FIELD("Document No.")));

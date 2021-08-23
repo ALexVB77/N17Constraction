@@ -438,7 +438,6 @@ table 70094 "Vendor Agreement Details"
         PL.SetRange("Agreement No.", "Agreement No.");
         PL.SetRange("Shortcut Dimension 1 Code", "Global Dimension 1 Code");
         PL.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Code");
-        PL.SETRANGE("Cost Type", "Cost Type");
         // NC AB >>
         // PL.SETRANGE(Paid, FALSE);
         // NC AB <<
@@ -540,12 +539,11 @@ table 70094 "Vendor Agreement Details"
         PH.SetRange("Agreement No.", "Agreement No.");
         if PH.FINDSET then begin
             repeat
-                PL.SetCurrentKey("Document No.", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", "Cost Type");
+                PL.SetCurrentKey("Document No.", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
                 PL.SetRange("Document No.", PH."No.");
                 PL.SetRange("Document Type", PH."Document Type");
                 PL.SetRange("Shortcut Dimension 1 Code", "Global Dimension 1 Code");
                 PL.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Code");
-                PL.SetRange("Cost Type", "Cost Type");
                 if WithVAT then begin
                     if PL.FINDSET then
                         repeat
@@ -648,12 +646,11 @@ table 70094 "Vendor Agreement Details"
         PH.SetRange("Agreement No.", "Agreement No.");
         if PH.FindSet() then begin
             repeat
-                PL.SetCurrentKey("Document No.", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code", "Cost Type");
+                PL.SetCurrentKey("Document No.", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
                 PL.SetRange("Document No.", PH."No.");
                 PL.SetRange("Document Type", PH."Document Type");
                 PL.SetRange("Shortcut Dimension 1 Code", "Global Dimension 1 Code");
                 PL.SetRange("Shortcut Dimension 2 Code", "Global Dimension 2 Code");
-                PL.SetRange("Cost Type", "Cost Type");
                 if PL.FindSet() then
                     PH.Mark(true);
             until PH.Next() = 0;
