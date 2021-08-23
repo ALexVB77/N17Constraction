@@ -237,6 +237,18 @@ page 70262 "Purchase List Act"
                 RunObject = Page "Purchase Order Act";
                 RunPageLink = "No." = field("No.");
             }
+            action(ViewAttachDoc)
+            {
+                ApplicationArea = All;
+                Caption = 'Documents View';
+                Enabled = ShowDocEnabled;
+                Image = Export;
+
+                trigger OnAction()
+                begin
+                    ViewAttachDocument();
+                end;
+            }
             action(ApproveButton)
             {
                 ApplicationArea = Basic, Suite;
@@ -356,6 +368,9 @@ page 70262 "Purchase List Act"
             ApproveButtonEnabled := true;
             RejectButtonEnabled := true;
         end;
+
+        CalcFields("Exists Attachment");
+        ShowDocEnabled := "Exists Attachment";
     end;
 
     var
@@ -363,20 +378,16 @@ page 70262 "Purchase List Act"
         PaymentOrderMgt: Codeunit "Payment Order Management";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
-
         Filter1: option mydoc,all,approved;
         Filter1Enabled: Boolean;
         Filter2: option all,inproc,ready,pay,problem;
         SortType: option docno,postdate,vendor,statusapp,userproc;
         FilterActType: option all,act,"kc-2",advance;
         NewActTypeOption: Enum "Purchase Act Type";
-        ApproveButtonEnabled: boolean;
-        RejectButtonEnabled: boolean;
+        ApproveButtonEnabled, RejectButtonEnabled : boolean;
         MyApproved: boolean;
-        NewActEnabled: Boolean;
-        NewKC2Enabled: Boolean;
-        NewAdvanceEnabled: Boolean;
-        EditEnabled: Boolean;
+        NewActEnabled, NewKC2Enabled, NewAdvanceEnabled : Boolean;
+        EditEnabled, ShowDocEnabled : Boolean;
 
     local procedure SetSortType()
     begin

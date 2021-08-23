@@ -1334,6 +1334,7 @@ codeunit 50010 "Payment Order Management"
         PurchHeaderInv."Process User" := '';
         PurchHeaderInv."Status App Act" := PurchHeaderInv."Status App Act"::" ";
         PurchHeaderInv."Date Status App" := 0D;
+        PurchHeaderInv."Vendor Invoice No." := PurchHeader."Vendor Invoice No.";
         PurchHeaderInv.Modify();
 
         PurchLine.SetRange("Document Type", PurchHeader."Document Type");
