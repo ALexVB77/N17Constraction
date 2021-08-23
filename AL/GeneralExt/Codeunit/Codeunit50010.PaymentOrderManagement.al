@@ -783,6 +783,9 @@ codeunit 50010 "Payment Order Management"
             end;
         end;
 
+        if PurchHeader."Status App" = PurchHeader."Status App"::Approve then
+            CheckUserApprovalLimit(PurchHeader);
+
         // изменение статусов
 
         case PurchHeader."Status App Act" of
@@ -802,7 +805,10 @@ codeunit 50010 "Payment Order Management"
                     FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Controller, PurchHeader.Controller, ProblemType::REstimator, Reject);
             PurchHeader."Status App Act"::Checker:
                 if not Reject then begin
-                    PreAppover := GetPurchActPreApprover(PurchHeader);
+                    if PurchHeader."Pre-Approver" <> '' then
+                        PreAppover := PurchHeader."Pre-Approver"
+                    else
+                        PreAppover := GetPurchActPreApprover(PurchHeader);
                     if PreAppover <> '' then begin
                         PurchHeader."Sent to pre. Approval" := true;
                         FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Approve, PreAppover, ProblemType::" ", Reject);
@@ -831,7 +837,10 @@ codeunit 50010 "Payment Order Management"
                         ERPCFunc.CreateBCPreBookingAct(PurchHeader);
                     end
                     else begin
-                        PreAppover := GetPurchActPreApprover(PurchHeader);
+                        if PurchHeader."Pre-Approver" <> '' then
+                            PreAppover := PurchHeader."Pre-Approver"
+                        else
+                            PreAppover := GetPurchActPreApprover(PurchHeader);
                         if PreAppover <> '' then begin
                             PurchHeader."Sent to pre. Approval" := true;
                             FillPurchActStatus(PurchHeader, PurchHeader."Status App Act"::Approve, PreAppover, ProblemType::RApprover, Reject);
@@ -933,7 +942,10 @@ codeunit 50010 "Payment Order Management"
                     FillPayInvStatus(PurchHeader, AppStatus::Reception, PurchHeader.Receptionist, ProblemType::RController, Reject);
             PurchHeader."Status App"::Checker:
                 if not Reject then begin
-                    PreAppover := GetPurchActPreApprover(PurchHeader);
+                    if PurchHeader."Pre-Approver" <> '' then
+                        PreAppover := PurchHeader."Pre-Approver"
+                    else
+                        PreAppover := GetPurchActPreApprover(PurchHeader);
                     if PreAppover <> '' then begin
                         PurchHeader."Sent to pre. Approval" := true;
                         FillPayInvStatus(PurchHeader, AppStatus::Approve, PreAppover, ProblemType::" ", Reject);
@@ -954,7 +966,10 @@ codeunit 50010 "Payment Order Management"
                     if not Reject then
                         FillPayInvStatus(PurchHeader, AppStatus::Payment, PurchHeader.Receptionist, ProblemType::" ", Reject)
                     else begin
-                        PreAppover := GetPurchActPreApprover(PurchHeader);
+                        if PurchHeader."Pre-Approver" <> '' then
+                            PreAppover := PurchHeader."Pre-Approver"
+                        else
+                            PreAppover := GetPurchActPreApprover(PurchHeader);
                         if PreAppover <> '' then begin
                             PurchHeader."Sent to pre. Approval" := true;
                             FillPayInvStatus(PurchHeader, AppStatus::Approve, PreAppover, ProblemType::RApprover, Reject);
