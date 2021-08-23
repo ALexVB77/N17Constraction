@@ -2,16 +2,18 @@ report 50093 "Posted Proforma Invoice"
 {
     UsageCategory = Administration;
     ApplicationArea = All;
-    DefaultLayout = Word;
-    WordLayout = './Reports/Layouts/PostedProformaInvoice.docx';
-    PreviewMode = PrintLayout;
-    WordMergeDataItem = Header;
-    //ProcessingOnly = ;
+    //DefaultLayout = RDLC;
+
+    //WordLayout = './Reports/Layouts/PostedProformaInvoice.docx';
+    //PreviewMode = PrintLayout;
+    //WordMergeDataItem = Header;
+    ProcessingOnly = true;
 
     dataset
     {
         dataitem(Header; "Sales Invoice Header")
         {
+            DataItemTableView = SORTING("No.");
             // column(Header1; STRSUBSTNO(Text019, TitleDoc, LocMgt.Date2Text(DateNameInvoice))) { }
             // column(Buyer1; STRSUBSTNO(Text012, Cust."VAT Registration No.", Cust."KPP Code")) { }
             // column(Buyer2; CustomerAddr[1]) { }
@@ -404,6 +406,7 @@ report 50093 "Posted Proforma Invoice"
 
             if CopiesNumber < 1 then
                 CopiesNumber := 1;
+            ExportExcel := true;
         end;
 
     }
@@ -495,6 +498,8 @@ report 50093 "Posted Proforma Invoice"
     var
         SalesSetup: Record "Sales & Receivables Setup";
     begin
+
+        ExportExcel := true;
 
         if not CurrReport.UseRequestPage then
             CopiesNumber := 1;
