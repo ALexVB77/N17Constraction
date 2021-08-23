@@ -1182,7 +1182,9 @@ codeunit 50010 "Payment Order Management"
                     MessageResponsNo := GenAppStatus + 1;
                 (GenAppStatus = ActAppStatus::Approve.AsInteger()) and (not SentToPreApproval):
                     MessageResponsNo := GenAppStatus + 2;
-                GenAppStatus in [ActAppStatus::Signing.AsInteger(), ActAppStatus::Accountant.AsInteger()]:
+                GenAppStatus = ActAppStatus::Signing.AsInteger:
+                    MessageResponsNo := GenAppStatus + 2;
+                GenAppStatus = ActAppStatus::Accountant.AsInteger():
                     MessageResponsNo := 8;
             end
         else
