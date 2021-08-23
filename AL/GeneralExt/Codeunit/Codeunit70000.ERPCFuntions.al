@@ -186,7 +186,6 @@ codeunit 70000 "ERPC Funtions"
                     VendorAgreementDetails1.SETRANGE("Agreement No.", PurchaseHeader."Agreement No.");
                     VendorAgreementDetails1.SETRANGE("Global Dimension 1 Code", PurchLine."Shortcut Dimension 1 Code");
                     VendorAgreementDetails1.SETRANGE("Global Dimension 2 Code", PurchLine."Shortcut Dimension 2 Code");
-                    VendorAgreementDetails1.SETRANGE("Cost Type", PurchLine."Cost Type");
                     IF VendorAgreementDetails1.FINDFIRST THEN BEGIN
                         VendorAgreementDetails1.Amount := VendorAgreementDetails1.Amount - PurchLine."Line Amount";
                         VendorAgreementDetails1.MODIFY(TRUE);
@@ -991,7 +990,7 @@ codeunit 70000 "ERPC Funtions"
                 //                          ' | (CT)'+lPL."Cost Type"+' | '+FORMAT(lPL."Direct Unit Cost");
                 PurchCommentLine.Comment := COPYSTR('   ' + lPL.Description + ' | (CP)' + lPL."Shortcut Dimension 1 Code" +
                                           ' | (CC)' + lPL."Shortcut Dimension 2 Code" +
-                                          ' | (CT)' + lPL."Cost Type" + ' | ' + FORMAT(lPL."Direct Unit Cost"), 1, 80);
+                                          ' | (CT)' + ' | ' + FORMAT(lPL."Direct Unit Cost"), 1, 80);
                 //SWC318 AKA 221014 <<
                 PurchCommentLine.INSERT;
                 i := i + 1;
@@ -1031,7 +1030,6 @@ codeunit 70000 "ERPC Funtions"
                 PCCE."Project Code" := lDimVal."Project Code";
                 PCCE."Shortcut Dimension 1 Code" := lPL."Shortcut Dimension 1 Code";
                 PCCE."Shortcut Dimension 2 Code" := lPL."Shortcut Dimension 2 Code";
-                PCCE."Cost Type" := lPL."Cost Type";
                 PCCE."Doc No." := PurchaseHeader."No.";//'PMR003384'
                                                        //PCCE.ByOrder := TRUE; //SWC318 AKA 281114
                                                        // IF BuildingTurnHave THEN //SWC397 AKA 121214
