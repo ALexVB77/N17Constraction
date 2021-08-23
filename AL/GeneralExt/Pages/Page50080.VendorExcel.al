@@ -41,6 +41,10 @@ page 50080 "Vendor Excel"
                     ApplicationArea = All;
                     ShowMandatory = true;
                 }
+                field("Location Code"; "Location Code")
+                {
+                    ApplicationArea = All;
+                }
                 field("Act Type"; "Act Type")
                 {
                     ApplicationArea = All;

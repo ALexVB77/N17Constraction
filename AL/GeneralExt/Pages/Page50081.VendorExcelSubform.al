@@ -34,6 +34,10 @@ page 50081 "Vendor Excel Subform"
                 {
                     ApplicationArea = All;
                 }
+                field("Location Code"; "Location Code")
+                {
+                    ApplicationArea = All;
+                }
                 field(Quantity; Quantity)
                 {
                     ApplicationArea = All;
