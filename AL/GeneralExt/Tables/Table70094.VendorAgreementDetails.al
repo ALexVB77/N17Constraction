@@ -1,8 +1,8 @@
 table 70094 "Vendor Agreement Details"
 {
     DataClassification = ToBeClassified;
-    // DrillDownFormID = Form70216;
-    // LookupFormID = Form70216;
+    DrillDownPageID = "Vendor Agreement Details List";
+    LookupPageID = "Vendor Agreement Details List";
     Permissions = TableData 380 = r;
     fields
     {
