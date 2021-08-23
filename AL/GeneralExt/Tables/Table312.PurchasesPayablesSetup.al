@@ -138,6 +138,11 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
             Description = 'NC 51373 AB';
             Caption = 'Payment Delay Period';
         }
+        field(70003; "Approvement Delay Period"; DateFormula)
+        {
+            Description = 'NC 51373 AB';
+            Caption = 'PAY/PAC Approv. Delay Period (Days)';
+        }
         field(75007; "Payment Request Nos."; Code[10])
         {
             TableRelation = "No. Series";
@@ -150,6 +155,11 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
             TableRelation = "No. Series";
             Caption = 'Act Order Nos.';
             Description = 'NC 51378 AB';
+        }
+        field(75016; "Act Approve CC Mail"; Text[250])
+        {
+            Description = 'NC 51373 AB';
+            Caption = 'Act Approve CC Mail';
         }
     }
 
