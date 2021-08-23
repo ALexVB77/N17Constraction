@@ -1546,11 +1546,6 @@ codeunit 50010 "Payment Order Management"
 
         PurchHead.Storekeeper := UserId;
         PurchHead."Location Document" := true;
-        if VendExcelHdr."Location Code" <> '' then
-            PurchHead.VALIDATE("Location Code", VendExcelHdr."Location Code")
-        else
-            PurchHead.VALIDATE("Location Code", StorekeeperLocation.GetDefaultLocation('', false));
-
         PurchHead."Status App Act" := PurchHead."Status App Act"::Controller;
         PurchHead."Process User" := USERID;
         PurchHead."Payment Doc Type" := PurchHead."Payment Doc Type"::"Payment Request";
@@ -1563,6 +1558,10 @@ codeunit 50010 "Payment Order Management"
             PurchHead.VALIDATE("Agreement No.", VendExcelHdr."Agreement No.");
         IF VendorAgreement.GET(PurchHead."Buy-from Vendor No.", PurchHead."Agreement No.") THEN
             PurchHead."Purchaser Code" := VendorAgreement."Purchaser Code";
+        if VendExcelHdr."Location Code" <> '' then
+            PurchHead.VALIDATE("Location Code", VendExcelHdr."Location Code")
+        else
+            PurchHead.VALIDATE("Location Code", StorekeeperLocation.GetDefaultLocation('', false));
         PurchHead."Vendor Invoice No." := VendExcelHdr."No.";
         PurchHead.MODIFY(TRUE);
 
