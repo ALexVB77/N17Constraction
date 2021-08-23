@@ -441,7 +441,7 @@ codeunit 50010 "Payment Order Management"
         LocText3: Label 'You are not the owner or process user in the linked payment invoice %1.';
         LocText4: Label 'You must be the owner or process user in the document %1.';
     begin
-        PurchHeader.TestField("Problem Document");
+        // PurchHeader.TestField("Problem Document");
 
         if not (UserId in [PurchHeader.Controller, PurchHeader."Process User"]) then
             Error(LocText4, PurchHeader."No.");
@@ -1528,7 +1528,10 @@ codeunit 50010 "Payment Order Management"
 
         PurchHead.Storekeeper := UserId;
         PurchHead."Location Document" := true;
-        PurchHead.VALIDATE("Location Code", StorekeeperLocation.GetDefaultLocation('', false));
+        if VendExcelHdr."Location Code" <> '' then
+            PurchHead.VALIDATE("Location Code", VendExcelHdr."Location Code")
+        else
+            PurchHead.VALIDATE("Location Code", StorekeeperLocation.GetDefaultLocation('', false));
 
         PurchHead."Status App Act" := PurchHead."Status App Act"::Controller;
         PurchHead."Process User" := USERID;
@@ -1559,6 +1562,8 @@ codeunit 50010 "Payment Order Management"
                 PurchLine.INSERT(TRUE);
                 PurchLine.Type := PurchLine.Type::Item;
                 PurchLine.VALIDATE("No.", SourceLine."Item No.");
+                if PurchHead."Location Code" <> '' then
+                    PurchLine.Validate("Location Code", PurchHead."Location Code");
                 PurchLine.VALIDATE(Quantity, SourceLine.Quantity);
                 PurchLine.VALIDATE("Unit of Measure Code", SourceLine."Unit of Measure");
                 PurchLine.VALIDATE("Direct Unit Cost", SourceLine."Unit Price");

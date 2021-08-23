@@ -271,6 +271,19 @@ page 70262 "Purchase List Act"
                     CurrPage.Update(false);
                 end;
             }
+            action(ArchiveProblemDoc)
+            {
+                ApplicationArea = Suite;
+                Caption = 'Archive Problem Document';
+                Enabled = "No." <> '';
+                Image = Archive;
+
+                trigger OnAction()
+                begin
+                    if PaymentOrderMgt.PurchOrderActArchiveQstNew(Rec) then
+                        CurrPage.Close();
+                end;
+            }
         }
         area(Navigation)
         {
