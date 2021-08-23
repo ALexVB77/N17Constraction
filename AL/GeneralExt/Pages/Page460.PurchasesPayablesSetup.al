@@ -62,6 +62,14 @@ pageextension 80460 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payabl
                 {
                     ApplicationArea = Basic, Suite;
                 }
+                field("Approvement Delay Period"; Rec."Approvement Delay Period")
+                {
+                    ApplicationArea = Basic, Suite;
+                }
+                field("Act Approve CC Mail"; Rec."Act Approve CC Mail")
+                {
+                    ApplicationArea = Basic, Suite;
+                }
                 field("Cost Place Dimension"; Rec."Cost Place Dimension")
                 {
                     ApplicationArea = Basic, Suite;

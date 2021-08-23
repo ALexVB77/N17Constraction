@@ -41,6 +41,8 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
 
     [EventSubscriber(ObjectType::Codeunit, 1535, 'OnBeforeApprovalEntryInsert', '', false, false)]
     local procedure OnBeforeApprovalEntryInsert(var ApprovalEntry: Record "Approval Entry"; ApprovalEntryArgument: Record "Approval Entry")
+    var
+        PurchSetup: Record "Purchases & Payables Setup";
     begin
         ApprovalEntry."Status App Act" := ApprovalEntryArgument."Status App Act";
         ApprovalEntry."Act Type" := ApprovalEntryArgument."Act Type";
@@ -57,8 +59,12 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
         then
             ApprovalEntry.Status := ApprovalEntry.Status::Created;
         ApprovalEntry."Preliminary Approval" := ApprovalEntryArgument."Preliminary Approval";
-        if (ApprovalEntry."Act Type" <> ApprovalEntry."Act Type"::" ") or ApprovalEntry."IW Documents" then
+        if (ApprovalEntry."Act Type" <> ApprovalEntry."Act Type"::" ") or ApprovalEntry."IW Documents" then begin
             ApprovalEntry."Sender ID" := ApprovalEntryArgument."Sender ID";
+            PurchSetup.Get();
+            if Format(PurchSetup."Approvement Delay Period") <> '' then
+                ApprovalEntry."Due Date" := CalcDate(PurchSetup."Approvement Delay Period", Today);
+        end;
     end;
 
     procedure CreateApprovalRequestsPurchActAndPayInv(RecRef: RecordRef; WorkflowStepInstance: Record "Workflow Step Instance")
@@ -80,11 +86,13 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
             ApprovalEntryArgument."Status App Act" := ApprovalEntryArgument."Status App Act"::Controller;
             CreateApprovalRequestForSpecificUser(WorkflowStepArgument, ApprovalEntryArgument, PurchHeader.Controller);
             ApprovalEntryArgument."Status App Act" := PurchHeader."Status App Act";
+            ApprovalEntryArgument."Sender ID" := PurchHeader.Controller;
         end else begin
             ApprovalEntryArgument."IW Documents" := PurchHeader."IW Documents";
             ApprovalEntryArgument."Status App" := ApprovalEntryArgument."Status App"::Reception;
             CreateApprovalRequestForSpecificUser(WorkflowStepArgument, ApprovalEntryArgument, PurchHeader.Receptionist);
-            ApprovalEntryArgument."Status App" := Enum::"Purchase Approval Status".FromInteger(PurchHeader."Status App")
+            ApprovalEntryArgument."Status App" := Enum::"Purchase Approval Status".FromInteger(PurchHeader."Status App");
+            ApprovalEntryArgument."Sender ID" := PurchHeader.Receptionist;
         end;
 
         PurchHeader.TestField("Process User");
@@ -184,6 +192,7 @@ codeunit 81535 "Approvals Mgmt. (Ext)"
     local procedure PopulateApprovalEntryArgumentPurchAct(RecRef: RecordRef; WorkflowStepInstance: Record "Workflow Step Instance"; var ApprovalEntryArgument: Record "Approval Entry")
     var
         PurchaseHeader: Record "Purchase Header";
+
         EnumAssignmentMgt: Codeunit "Enum Assignment Management";
         ApprovalAmount: Decimal;
         ApprovalAmountLCY: Decimal;
