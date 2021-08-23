@@ -417,6 +417,9 @@ page 70262 "Purchase List Act"
         SETRANGE("Status App");
         SETRANGE("Problem Document");
         // SETRANGE(Paid);
+        SetRange("My Approved");
+        SETRANGE("Act Type");
+
         MarkedOnly(false);
         ClearMarks();
 
