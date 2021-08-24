@@ -1070,7 +1070,7 @@ codeunit 50010 "Payment Order Management"
     var
         DimSetEntry: Record "Dimension Set Entry";
         DimValueCC: Record "Dimension Value";
-
+        UserSetup: Record "User Setup";
     begin
         if DimSetID = 0 then
             exit('');
@@ -1083,17 +1083,17 @@ codeunit 50010 "Payment Order Management"
             DimValueCC."Cost Code Type"::Development:
                 begin
                     PurchSetup.TestField("Master Approver (Development)");
-                    exit(PurchSetup."Master Approver (Development)");
+                    exit(UserSetup.GetUserSubstitute(PurchSetup."Master Approver (Development)", 0));
                 end;
             DimValueCC."Cost Code Type"::Production:
                 begin
                     PurchSetup.TestField("Master Approver (Production)");
-                    exit(PurchSetup."Master Approver (Production)");
+                    exit(UserSetup.GetUserSubstitute(PurchSetup."Master Approver (Production)", 0));
                 end;
             DimValueCC."Cost Code Type"::Admin:
                 begin
                     PurchSetup.TestField("Master Approver (Department)");
-                    exit(PurchSetup."Master Approver (Department)");
+                    exit(UserSetup.GetUserSubstitute(PurchSetup."Master Approver (Department)", 0));
                 end;
         end;
     end;
@@ -1144,7 +1144,7 @@ codeunit 50010 "Payment Order Management"
             repeat
                 LineApprover := GetPurchActApproverFromDim(PurchLine."Dimension Set ID");
                 LineMasterApprover := GetPurchActMasterApproverFromDim(PurchLine."Dimension Set ID");
-                if CurrentApprover = '' then
+                if (CurrentApprover = '') and (LineApprover <> UserSetup."User ID") then
                     CurrentApprover := LineApprover
                 else
                     if (CurrentApprover <> LineApprover) or (LineApprover = UserSetup."User ID") then begin
@@ -1154,17 +1154,19 @@ codeunit 50010 "Payment Order Management"
                             if CurrentMasterApprover <> LineMasterApprover then
                                 exit(GetPurchActMasterApproverFromDim(PurchHeader."Dimension Set ID"));
                     end;
-            until PurchLine.next = 0
-        else
-            exit(GetPurchActApproverFromDim(PurchHeader."Dimension Set ID"));
+            until PurchLine.next = 0;
 
         if CurrentMasterApprover <> '' then
             exit(CurrentMasterApprover)
         else
             if CurrentApprover <> '' then
                 exit(CurrentApprover)
-            else
-                exit(GetPurchActApproverFromDim(PurchHeader."Dimension Set ID"));
+            else begin
+                if GetPurchActApproverFromDim(PurchHeader."Dimension Set ID") = UserSetup."User ID" then
+                    exit(GetPurchActMasterApproverFromDim(PurchHeader."Dimension Set ID"))
+                else
+                    exit(GetPurchActApproverFromDim(PurchHeader."Dimension Set ID"));
+            end
     end;
 
     procedure GetMessageResponsNo(IWDocument: Boolean; GenAppStatus: Integer; SentToPreApproval: Boolean) MessageResponsNo: Integer
