@@ -12784,7 +12784,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Select Latest Version - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1503765490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Share Participant Act 2</source>
+          <source>Share Participant Act</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Property Caption</note>
         </trans-unit>

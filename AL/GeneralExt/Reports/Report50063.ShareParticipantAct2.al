@@ -1,7 +1,7 @@
 report 50063 "Share Participant Act 2"
 {
     WordLayout = './Reports/Layouts/FinancialObligationsCertificateTemplate.docx';
-    Caption = 'Share Participant Act 2';
+    Caption = 'Share Participant Act';
     DefaultLayout = Word;
     PreviewMode = PrintLayout;
     UsageCategory = Administration;

@@ -15342,9 +15342,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Select Latest Version - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1503765490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Share Participant Act 2</source>
-          <target>Акт вып. фин. обяз. дольщиком 2</target>
+          <source>Share Participant Act</source>
+          <target>Акт вып. фин. обяз. дольщиком</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1503765490 - NamedType 3417035070" size-unit="char" translate="yes" xml:space="preserve">
@@ -17697,7 +17698,6 @@
           <source>Act Approve CC Mail</source>
           <target>Копия при отправке уведомлений на утверждение</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Field Act Approve CC Mail - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Field 2622566760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
@@ -17722,7 +17722,6 @@
           <source>PAY/PAC Approv. Delay Period (Days)</source>
           <target>PAY/PAC период утверждения (дни)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Ext) - Field Approvement Delay Period - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2307367824 - Field 585850838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
@@ -17843,7 +17842,6 @@
           <source>Act Performed Work Template Code</source>
           <target>Код шаблона Акт выполненных работ</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receiv. Setup (Ext) - Field Act PerfWork Templ Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2733905579 - Field 4149835360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
