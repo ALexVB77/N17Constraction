@@ -8,13 +8,31 @@ report 92426 "Act Performed Work"
     //WordLayout = './Reports/Layouts/ActPerformedWork.docx';
     //PreviewMode = PrintLayout;
     //WordMergeDataItem = Header;
-    ProcessingOnly = true;
+    //ProcessingOnly = true;
+    DefaultLayout = RDLC;
+    RDLCLayout = './Reports/Layouts/ActPerformedWork.rdl';
+    PreviewMode = PrintLayout;
+
+
     dataset
     {
         dataitem(Header; "Sales Header")
         {
             DataItemTableView = SORTING("Document Type", "No.");
             RequestFilterFields = "No.";
+            column(Footer1; PayComment) { }
+            column(Footer2Comp; StandRepManagement.GetDirectorName(FALSE, 36, Header."Document Type".AsInteger(), Header."No.")) { }
+            column(Footer2Cust; Cust."Act Signed by Position" + ' \' + Cust."Act Signed by Name") { }
+            column(Footer3Comp; FORMAT(TODAY, 0, '<year4>')) { }
+            column(Footer3Cust; FORMAT(TODAY, 0, '<year4>')) { }
+            column(Footer4Comp; EmplSign) { }
+            column(LastTotalAmount; LastTotalAmount[1]) { }
+            column(TotalAmount1; TotalAmount[1]) { }
+            column(TotalAmount2; TotalAmount[2]) { }
+            column(TotalAmount3; TotalAmount[3]) { }
+            column(TotalAmount4; TotalAmount[4]) { }
+            column(LineFooter1; LocMgt.Amount2Text(CurrencyForAmountWritten, TotalAmount[3])) { }
+            column(LineFooter2; LocMgt.Amount2Text(CurrencyForAmountWritten, TotalAmount[2])) { }
             dataitem(CopyCycle; Integer)
             {
                 DataItemTableView = SORTING(Number);
@@ -53,6 +71,16 @@ report 92426 "Act Performed Work"
                     column(AddrInfo13; STRSUBSTNO('Акт сдачи-приемки оказанных услуг  № %1\от  %2', Header."Posting No.", LocMgt.Date2Text(Header."Document Date"))) { }
                     column(AddrInfo14; CurrencyInfo) { }
                     column(AddrInfo15; AgreementDescription) { }
+                    column(ShowDiscount; ShowDiscount) { }
+                    column(isCurrency; CurrencyPriceAmount = currencyPriceAmount::Currency) { }
+                    column(isLCY; CurrencyPriceAmount = currencyPriceAmount::LCY) { }
+                    column(isLCYCurrency; CurrencyPriceAmount = currencyPriceAmount::"LCY+Currency") { }
+                    column(AmountInclVAT; AmountInclVAT) { }
+                    column(CurrencyCode; CurrencyCode) { }
+                    column(CurrencyExchRate; CurrencyExchRate) { }
+
+
+
 
 
 
@@ -87,10 +115,15 @@ report 92426 "Act Performed Work"
                     DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 ..));
                     column(No2; SalesLine1."No.") { }
                     column(Description2; SalesLine1.Description) { }
-                    column(UoM2; SalesLine1."Unit of Measure") { }
+                    column(UoM2; SalesLine1."Unit of Measure Code") { }
                     column(QtyToInv2; SalesLine1."Qty. to Invoice") { }
                     column(UnitPrice2; UnitPrice) { }
                     column(Amount2; SalesLine1.Amount) { }
+                    column(UnitPriceLCY; UnitPriceLCY) { }
+
+
+
+
 
                     trigger OnPreDataItem()
                     begin
@@ -156,6 +189,16 @@ report 92426 "Act Performed Work"
                 {
                     DataItemTableView = SORTING(Number);
                     MaxIteration = 1;
+
+
+
+                    trigger OnPreDataItem()
+                    var
+                        JobTitle: Text[250];
+                        EmplName: Text[250];
+                    begin
+                        StandRepManagement.GetDocSignEmplInfo(FALSE, 36, Header."Document Type".AsInteger(), Header."No.", 0, JobTitle, EmplName, EmplSign);
+                    end;
                 }
 
                 trigger OnPreDataItem()
@@ -346,9 +389,16 @@ report 92426 "Act Performed Work"
                         Caption = 'Log Interaction';
                     }
                 }
-            }
-        }
 
+            }
+
+        }
+        trigger OnOpenPage()
+        var
+            myInt: Integer;
+        begin
+            CopiesNumber := 1;
+        end;
 
     }
 
@@ -359,10 +409,10 @@ report 92426 "Act Performed Work"
 
         IF NOT CurrReport.UseRequestPage THEN
             CopiesNumber := 1;
-        XL.DeleteAll();
-        SalesSetup.get;
-        Filename := ExcelTemplates.OpenTemplate((SalesSetup."Act PerfWork Templ Code"));
-        RowNo := 5;
+        // XL.DeleteAll();
+        // SalesSetup.get;
+        // Filename := ExcelTemplates.OpenTemplate((SalesSetup."Act PerfWork Templ Code"));
+        // RowNo := 5;
 
     end;
 
@@ -427,6 +477,7 @@ report 92426 "Act Performed Work"
         ExcelTemplates: Record "Excel Template";
         RowNo: Integer;
         FileName: Text[250];
+        EmplSign: Text[250];
         //----------------------------
 
         Text14800: Label '%2. Стр. %1';
