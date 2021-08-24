@@ -1,5 +1,6 @@
 report 92427 "Posted Act Performed Work"
 {
+    //ПРСЧ-23-00026
     UsageCategory = Administration;
     ApplicationArea = All;
     Caption = 'Posted Act Performed Work';
@@ -64,6 +65,15 @@ report 92427 "Posted Act Performed Work"
                             Currency.GET(Header."Currency Code")
                         ELSE
                             Currency.InitRoundingPrecision;
+                        if ExportExcel then begin
+                            RowNo += 1;
+                            AddCell(RowNo, 2, '№', FALSE, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo, 3, 'Наименование работы (услуги)', FALSE, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo, 4, 'Ед. изм.', FALSE, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo, 5, 'Количество', FALSE, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo, 6, 'Цена', FALSE, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo, 7, 'Сумма', FALSE, EB."Cell Type"::Text, true, 9);
+                        end;
                     end;
 
                     trigger OnAfterGetRecord()
@@ -113,23 +123,24 @@ report 92427 "Posted Act Performed Work"
 
                         // SWC1070 DD 06.07.17 >>
                         IF ExportExcel THEN BEGIN
+
                             RowNo += 1;
                             //IF RowNo <> ExcelTemplates."Top Margin" THEN
                             //EB.CopyRow(ExcelTemplates."Top Margin");
 
-                            AddCell(RowNo, 3, SalesLine1.Description + ' ' + SalesLine1."Description 2", FALSE, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo, 3, SalesLine1.Description + ' ' + SalesLine1."Description 2", FALSE, EB."Cell Type"::Text, true, 9);
                             IF SalesLine1.Type = SalesLine1.Type::" " THEN BEGIN
-                                AddCell(RowNo, 2, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 4, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 5, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 6, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 7, '', FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                AddCell(RowNo, 2, '', FALSE, EB."Cell Type"::Text, true, 9);
+                                AddCell(RowNo, 4, '', FALSE, EB."Cell Type"::Text, true, 9);
+                                AddCell(RowNo, 5, '', FALSE, EB."Cell Type"::Text, true, 9);
+                                AddCell(RowNo, 6, '', FALSE, EB."Cell Type"::Text, true, 9);
+                                AddCell(RowNo, 7, '', FALSE, EB."Cell Type"::Text, true, 9);
                             END ELSE BEGIN
-                                AddCell(RowNo, 2, FORMAT(ItemLineNo), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 4, SalesLine1."Unit of Measure", FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 5, FORMAT(SalesLine1.Quantity, 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 6, FORMAT(UnitPriceLCY, 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                                AddCell(RowNo, 7, FORMAT(SalesLine1."Amount (LCY)", 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
+                                AddCell(RowNo, 2, FORMAT(ItemLineNo), FALSE, EB."Cell Type"::Text, true, 9);
+                                AddCell(RowNo, 4, SalesLine1."Unit of Measure", FALSE, EB."Cell Type"::Text, true, 9);
+                                AddCell(RowNo, 5, FORMAT(SalesLine1.Quantity, 0, 1), FALSE, EB."Cell Type"::Text, true, 9);
+                                AddCell(RowNo, 6, FORMAT(UnitPriceLCY, 0, 1), FALSE, EB."Cell Type"::Text, true, 9);
+                                AddCell(RowNo, 7, FORMAT(SalesLine1."Amount (LCY)", 0, 1), FALSE, EB."Cell Type"::Text, true, 9);
                             END;
                         END;
                         // SWC1070 DD 06.07.17 <<
@@ -140,13 +151,26 @@ report 92427 "Posted Act Performed Work"
 
                         // SWC1070 DD 06.07.17 >>
                         IF ExportExcel THEN BEGIN
-                            AddCell(RowNo + 1, 7, FORMAT(TotalAmount[1], 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            AddCell(RowNo + 2, 7, FORMAT(TotalAmount[2], 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            AddCell(RowNo + 3, 7, FORMAT(TotalAmount[3], 0, 1), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            AddCell(RowNo + 5, 2, 'Всего оказано услуг на сумму: ' + LocMgt.Amount2Text(CurrencyForAmountWritten, TotalAmount[3])
-                                        + ', в т.ч.: НДС - ' + LocMgt.Amount2Text(CurrencyForAmountWritten, TotalAmount[2]) + '.', FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            AddCell(RowNo + 7, 3, RepMgt2.GetDirectorName2(TRUE, 112, 0, Header."No.", Header."Posting Date"), FALSE, EB."Cell Type"::Text, FALSE, 9);
-                            AddCell(RowNo + 7, 6, Header."Act Signed by Position" + '/' + Header."Act Signed by Name", FALSE, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo + 1, 6, FORMAT('Итого:'), True, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo + 2, 6, FORMAT('Итого НДС:'), True, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo + 3, 6, FORMAT('Всего ( учетом НДС):'), True, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo + 1, 7, FORMAT(TotalAmount[1], 0, 1), True, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo + 2, 7, FORMAT(TotalAmount[2], 0, 1), True, EB."Cell Type"::Text, true, 9);
+                            AddCell(RowNo + 3, 7, FORMAT(TotalAmount[3], 0, 1), True, EB."Cell Type"::Text, true, 9);
+                            AddCellItalic(RowNo + 5, 2, 'Всего оказано услуг на сумму: ' + LocMgt.Amount2Text(CurrencyForAmountWritten, TotalAmount[3])
+                                        + ', в т.ч.: НДС - ', FALSE, EB."Cell Type"::Text, FALSE, 9);
+                            AddCellItalic(RowNo + 6, 2, LocMgt.Amount2Text(CurrencyForAmountWritten, TotalAmount[2]) + '.', FALSE, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo + 7, 2, 'Вышеперечисленные услуги выполнены полностью и в срок. Заказчик претензий по объему,', false, EB."Cell Type"::Text, false, 9);
+                            AddCell(RowNo + 8, 2, 'качеству и срокам оказания услуг не имеет.', false, EB."Cell Type"::Text, false, 9);
+
+                            AddCell(RowNo + 9, 2, 'Исполнитель', FALSE, EB."Cell Type"::Text, FALSE, 8);
+                            AddCell(RowNo + 9, 6, 'Заказчик', FALSE, EB."Cell Type"::Text, FALSE, 8);
+                            AddCell(RowNo + 10, 3, '       подпись', FALSE, EB."Cell Type"::Text, FALSE, 4);
+                            AddCell(RowNo + 10, 7, '       подпись', FALSE, EB."Cell Type"::Text, FALSE, 4);
+                            AddCell(RowNo + 11, 3, 'М.П.', FALSE, EB."Cell Type"::Text, FALSE, 8);
+                            AddCell(RowNo + 11, 7, 'М.П.', FALSE, EB."Cell Type"::Text, FALSE, 8);
+                            ////AddCell(RowNo + 12, 3, RepMgt2.GetDirectorName2(TRUE, 112, 0, Header."No.", Header."Posting Date"), FALSE, EB."Cell Type"::Text, FALSE, 9);
+                            AddCell(RowNo + 12, 7, Header."Act Signed by Position" + '/' + Header."Act Signed by Name", FALSE, EB."Cell Type"::Text, FALSE, 9);
                         END;
                         // SWC1070 DD 06.07.17 <<
                     end;
@@ -389,8 +413,13 @@ report 92427 "Posted Act Performed Work"
 
                 }
             }
-        }
 
+        }
+        trigger OnOpenPage()
+        begin
+            CopiesNumber := 1;
+            ExportExcel := true;
+        end;
 
     }
 
@@ -421,7 +450,7 @@ report 92427 "Posted Act Performed Work"
             //xl.SetActiveWriterSheet('Sheet1');
             //FontSize := 11;
             //RowNoBegin := 5;
-            RowNo := 5;
+            RowNo := 10;
         end;
     end;
 
@@ -495,6 +524,7 @@ report 92427 "Posted Act Performed Work"
         UnitPrice: Decimal;
         UnitPriceLCY: Decimal;
 
+
         HeaderTxt: array[2] of Text[40];
         BodyTxt: array[2] of Text[100];
         FooterTxt: array[2] of Text[40];
@@ -552,7 +582,24 @@ report 92427 "Posted Act Performed Work"
         EB."Cell Type" := CellType;
         eb."Font Size" := FontSize;
         if IsBorder then
-            EB.SetBorder(true, true, true, true, false, "Border Style"::Thick);
+            EB.SetBorder(true, true, true, true, false, "Border Style"::Thin);
+        if not EB.Modify() then
+            EB.Insert();
+    end;
+
+    local procedure AddCellItalic(RowNo: Integer; ColumnNo: Integer; CellValue: Text; Bold: Boolean; CellType: Integer; IsBorder: Boolean; FontSize: Integer)
+    begin
+        EB.Init();
+        EB.Validate("Row No.", RowNo);
+        EB.Validate("Column No.", ColumnNo);
+        EB."Cell Value as Text" := CellValue;
+        EB.Formula := '';
+        EB.Bold := Bold;
+        EB.Italic := true;
+        EB."Cell Type" := CellType;
+        eb."Font Size" := FontSize;
+        if IsBorder then
+            EB.SetBorder(true, true, true, true, false, "Border Style"::Thin);
         if not EB.Modify() then
             EB.Insert();
     end;
@@ -566,7 +613,7 @@ report 92427 "Posted Act Performed Work"
         EB.Formula := '';
         EB.Bold := Bold;
         EB."Cell Type" := CellType;
-        EB.SetBorder(border1, border2, border3, border4, false, "Border Style"::Medium);
+        EB.SetBorder(border1, border2, border3, border4, false, "Border Style"::Thin);
         EB.Insert();
     end;
 }
