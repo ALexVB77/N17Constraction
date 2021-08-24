@@ -1152,7 +1152,7 @@ codeunit 50010 "Payment Order Management"
                             CurrentMasterApprover := LineMasterApprover
                         else
                             if CurrentMasterApprover <> LineMasterApprover then
-                                exit(GetPurchActApproverFromDim(PurchHeader."Dimension Set ID"));
+                                exit(GetPurchActMasterApproverFromDim(PurchHeader."Dimension Set ID"));
                     end;
             until PurchLine.next = 0
         else
