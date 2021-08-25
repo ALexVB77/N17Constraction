@@ -90,6 +90,7 @@ report 50122 "Import General Journal Lines"
                 GenlJournalLine.Validate("Account Type", Enum::"Gen. Journal Account Type".FromInteger(GetAccTypeAtInteger(RowNo, 5)));
                 GenlJournalLine.Validate("Posting Group", GetValueAtCell(RowNo, 6));
                 GenlJournalLine.Validate("Account No.", GetValueAtCell(RowNo, 7));
+                GenlJournalLine.Validate("Bal. Account Type", Enum::"Gen. Journal Account Type".FromInteger(GetBalAccTypeAtInteger(RowNo, 18)));
                 GenlJournalLine.Validate("Bal. Account No.", GetValueAtCell(RowNo, 8));
                 GenlJournalLine.Validate("Source Type", Enum::"Gen. Journal Source Type".FromInteger(GetSrcTypeAtInteger(RowNo, 9)));
                 GenlJournalLine.Validate("Source No.", GetValueAtCell(RowNo, 10));
@@ -97,21 +98,20 @@ report 50122 "Import General Journal Lines"
                 GenlJournalLine.Validate("Agreement No.", GetValueAtCell(RowNo, 12));
                 GenlJournalLine.Validate("Amount (LCY)", GetValueAtDecimal(RowNo, 13));
                 GenlJournalLine.Validate(Description, GetValueAtCell(RowNo, 14));
-                if ((SalesSetup."Cost Place Dimension" <> '') and (GetValueAtCell(RowNo, 15) <> '')) then
-                    DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Cost Place Dimension",
-                                                          GetValueAtCell(RowNo, 15),
-                                                          GenlJournalLine."Dimension Set ID",
-                                                          GenlJournalLine."Shortcut Dimension 1 Code",
-                                                          GenlJournalLine."Shortcut Dimension 2 Code");
                 GenlJournalLine.Validate("Vendor VAT Invoice Date", GetValueAtDate(RowNo, 16));
                 GenlJournalLine.Validate(Amount, GetValueAtDecimal(RowNo, 17));
-                GenlJournalLine.Validate("Bal. Account Type", Enum::"Gen. Journal Account Type".FromInteger(GetBalAccTypeAtInteger(RowNo, 18)));
                 GenlJournalLine.Validate("Bal. Gen. Posting Type", Enum::"General Posting Type".FromInteger(GetBalGenPostingTypeAtInteger(RowNo, 19)));
                 GenlJournalLine.Validate("Bal. Gen. Bus. Posting Group", GetValueAtCell(RowNo, 20));
                 GenlJournalLine.Validate("Bal. Gen. Prod. Posting Group", GetValueAtCell(RowNo, 21));
                 GenlJournalLine.Validate("Vendor VAT Invoice No.", GetValueAtCell(RowNo, 22));
                 GenlJournalLine.Validate("Bal. VAT Bus. Posting Group", GetValueAtCell(RowNo, 23));
                 GenlJournalLine.Validate("Bal. VAT Prod. Posting Group", GetValueAtCell(RowNo, 24));
+                if ((SalesSetup."Cost Place Dimension" <> '') and (GetValueAtCell(RowNo, 15) <> '')) then
+                    DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Cost Place Dimension",
+                                                          GetValueAtCell(RowNo, 15),
+                                                          GenlJournalLine."Dimension Set ID",
+                                                          GenlJournalLine."Shortcut Dimension 1 Code",
+                                                          GenlJournalLine."Shortcut Dimension 2 Code");
                 if ((SalesSetup."Taxable Period Dimension" <> '') and (GetValueAtCell(RowNo, 25) <> '')) then
                     DimMgtExt.valDimValueWithUpdGlobalDim(SalesSetup."Taxable Period Dimension",
                                                           GetValueAtCell(RowNo, 25),
