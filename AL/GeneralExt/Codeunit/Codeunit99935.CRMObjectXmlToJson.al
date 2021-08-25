@@ -199,7 +199,7 @@ codeunit 99935 "CRM Object Xml to Json"
 
 
         FullFileName := Format(CreateGuid()) + '.txt';
-        TempBlob.CreateOutStream(OutStrm);
+        TempBlob.CreateOutStream(OutStrm, TextEncoding::UTF8);
         OutStrm.WriteText(TxtBuilder.ToText());
         exit(FileManagement.BLOBExport(TempBlob, FullFileName, false));
 
