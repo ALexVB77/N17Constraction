@@ -899,9 +899,8 @@ page 70260 "Purchase Order Act"
 
         AllApproverEditable := "Status App" = "Status App"::Checker;
 
-        GlobalEditable := true;
-
         /* NC AB: Не нужно
+        GlobalEditable := true;
         IF ("Status App Act" = "Status App Act"::Accountant) THEN
             GlobalEditable := FALSE
         ELSE
