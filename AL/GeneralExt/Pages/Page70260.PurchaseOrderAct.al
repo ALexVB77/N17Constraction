@@ -900,6 +900,8 @@ page 70260 "Purchase Order Act"
         AllApproverEditable := "Status App" = "Status App"::Checker;
 
         GlobalEditable := true;
+
+        /* NC AB: Не нужно
         IF ("Status App Act" = "Status App Act"::Accountant) THEN
             GlobalEditable := FALSE
         ELSE
@@ -917,7 +919,8 @@ page 70260 "Purchase Order Act"
             GlobalEditable := NOT ("Status App Act" IN ["Status App Act"::Approve, "Status App Act"::Signing, "Status App Act"::Accountant]);
 
         if GlobalEditable then
-            GlobalEditable := "Status App Act".AsInteger() < "Status App Act"::Approve.AsInteger();
+        */
+        GlobalEditable := "Status App Act".AsInteger() < "Status App Act"::Approve.AsInteger();
     end;
 
     trigger OnDeleteRecord(): Boolean
