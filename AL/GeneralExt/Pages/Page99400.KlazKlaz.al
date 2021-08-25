@@ -48,6 +48,19 @@ page 99400 "Klaz Klaz"
                     rep.SendMailDBG(ca, 99991);
                 end;
             }
+            action(ExportJsonScheme)
+            {
+                ApplicationArea = All;
+                Image = Export;
+                Caption = 'ExportJsonScheme', Locked = true;
+
+                trigger OnAction();
+                var
+                    cu: codeunit "CRM Object Xml to Json";
+                begin
+                    cu.ExportScheme();
+                end;
+            }
         }
     }
 }
