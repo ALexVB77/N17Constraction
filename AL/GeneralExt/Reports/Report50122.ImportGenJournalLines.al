@@ -92,7 +92,7 @@ report 50122 "Import General Journal Lines"
                 GenlJournalLine.Validate("Account No.", GetValueAtCell(RowNo, 7));
                 GenlJournalLine.Validate("Bal. Account No.", GetValueAtCell(RowNo, 8));
                 GenlJournalLine.Validate("Source Type", Enum::"Gen. Journal Source Type".FromInteger(GetSrcTypeAtInteger(RowNo, 9)));
-                GenlJournalLine.Validate("Source Code", GetValueAtCell(RowNo, 10));
+                GenlJournalLine.Validate("Source No.", GetValueAtCell(RowNo, 10));
                 GenlJournalLine.Validate("Depreciation Book Code", GetValueAtCell(RowNo, 11));
                 GenlJournalLine.Validate("Agreement No.", GetValueAtCell(RowNo, 12));
                 GenlJournalLine.Validate("Amount (LCY)", GetValueAtDecimal(RowNo, 13));
