@@ -10168,11 +10168,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control CFTotalUnpaid - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1383783815 - Control 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cost Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control Code - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1383783815 - Control 122295728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Original Budget</source>
           <note from="Developer" annotates="general" priority="2"></note>

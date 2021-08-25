@@ -14,7 +14,8 @@ page 50103 "Summary CF Control Matrix"
                 IndentationControls = Name;
                 field(Code; Rec.Code)
                 {
-                    Caption = 'Cost Code';
+                    //Caption = 'Cost Code';
+                    CaptionClass = CodeCapClass;
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
@@ -203,6 +204,7 @@ page 50103 "Summary CF Control Matrix"
         PrjBudEntries: Record "Projects Budget Entry";
         gLineType: Option CP,CC;
         PeriodType: Option Day,Week,Month,Quarter,Year,"Accounting Period",Year3;
+        CodeCapClass: Text;
 
 
     procedure Load(MatrixColumns1: array[32] of Text[1024]; var MatrixRecords1: array[32] of Record Date; CurrentNoOfMatrixColumns: Integer; CPFilter1: Code[250]; CCFilter1: Code[250]; PrjFilter1: Code[20]; StartingDate1: Date; NotShowBlank1: Boolean; LinesType: Option CP,CC; pPeriodType: Option Day,Week,Month,Quarter,Year,"Accounting Period",Year3)
@@ -230,6 +232,13 @@ page 50103 "Summary CF Control Matrix"
         NotShowBlankAmount := NotShowBlank1;
         // RoundingFactorFormatString := MatrixMgt.GetFormatString(RoundingFactor, false);
         gLineType := LinesType;
+        CodeCapClass := '3,';
+        case gLineType of
+            gLineType::CC:
+                CodeCapClass += 'Cost Code';
+            gLineType::CP:
+                CodeCapClass += 'Cost Place';
+        end;
         PeriodType := pPeriodType;
         InitTable();
         CurrPage.Update(false);
