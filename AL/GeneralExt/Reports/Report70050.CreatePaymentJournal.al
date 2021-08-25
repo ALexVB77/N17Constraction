@@ -251,8 +251,8 @@ report 50050 "Create Payment Journal"
         TEXT0001: Label 'Create a payment journal?';
         TEXT0002: Label 'Added %1 lines.';
     begin
-        IF NOT CONFIRM(TEXT0001) THEN
-            EXIT;
+        // IF NOT CONFIRM(TEXT0001) THEN
+        //     EXIT;
 
         lrPurchaseHeader.FilterGroup(2);
         SetPurchHeaderFilters(lrPurchaseHeader);

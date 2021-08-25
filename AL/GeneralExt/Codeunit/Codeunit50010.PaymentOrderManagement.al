@@ -1621,6 +1621,7 @@ codeunit 50010 "Payment Order Management"
         PurchSetup: Record "Purchases & Payables Setup";
         DimSetEntry: Record "Dimension Set Entry";
         PurchaseLine: Record "Purchase Line";
+        Currency: Record Currency;
         DimMgtExt: Codeunit "Dimension Management (Ext)";
         gcduERPC: Codeunit "ERPC Funtions";
         NoSeriesMgt: Codeunit NoSeriesManagement;
@@ -1645,7 +1646,7 @@ codeunit 50010 "Payment Order Management"
         PurchHeader.FindSet();
         REPEAT
             PurchHeader.CalcFields("Payments Amount", "Journal Payments Amount");
-            IF PurchHeader."Amount Including VAT" - PurchHeader."Payments Amount" - PurchHeader."Journal Payments Amount" > 0 THEN BEGIN
+            IF PurchHeader."Invoice Amount Incl. VAT" - PurchHeader."Payments Amount" - PurchHeader."Journal Payments Amount" > 0 THEN BEGIN
 
                 if PurchHeader.Status <> PurchHeader.Status::Released then
                     Codeunit.Run(Codeunit::"Release Purchase Document", PurchHeader);
@@ -1691,8 +1692,24 @@ codeunit 50010 "Payment Order Management"
                 END ELSE BEGIN
                     // GenJournalLine."Payment Invoice Type" := GenJournalLine."Payment Invoice Type"::"post-payment";
                 END;
-                GenJournalLine.VALIDATE(Amount, PurchHeader."Invoice Amount Incl. VAT");
-                GenJournalLine."VAT Amount" := PurchHeader."Invoice VAT Amount";
+
+                // NC AB >>
+                // GenJournalLine.VALIDATE(Amount, PurchHeader."Invoice Amount Incl. VAT");
+                // GenJournalLine."VAT Amount" := PurchHeader."Invoice VAT Amount";
+                if (PurchHeader."Payments Amount" = 0) and (PurchHeader."Journal Payments Amount" = 0) then begin
+                    GenJournalLine.VALIDATE(Amount, PurchHeader."Invoice Amount Incl. VAT");
+                    GenJournalLine."VAT Amount" := PurchHeader."Invoice VAT Amount";
+                end else begin
+                    if PurchHeader."Currency Code" = '' then
+                        Currency.InitRoundingPrecision()
+                    else
+                        Currency.Get(PurchHeader."Currency Code");
+                    GenJournalLine.VALIDATE(Amount, PurchHeader."Invoice Amount Incl. VAT" - PurchHeader."Payments Amount" - PurchHeader."Journal Payments Amount");
+                    GenJournalLine."VAT Amount" :=
+                        Round(PurchHeader."Invoice VAT Amount" / PurchHeader."Invoice Amount Incl. VAT" * GenJournalLine.Amount, Currency."Amount Rounding Precision");
+                end;
+                // NC AB <<
+
                 GenJournalLine."Payment Type" := '01';
                 GenJournalLine."Payment Subsequence" := '5';
                 GenJournalLine."Bank Payment Type" := GenJournalLine."Bank Payment Type"::"Computer Check";
