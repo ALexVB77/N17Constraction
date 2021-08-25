@@ -270,6 +270,7 @@ page 50103 "Summary CF Control Matrix"
                             PBE.SetRange(Close, false);
                     end;
                     PrjBudEntryPage.SetTableView(PBE);
+                    PrjBudEntryPage.Editable(false);
                     PrjBudEntryPage.RunModal();
                 end;
         end;
@@ -334,6 +335,7 @@ page 50103 "Summary CF Control Matrix"
                     Rec.Blocked := true;
                 Rec.Insert(false);
             until DimVal.Next() = 0;
+        Rec.FindFirst();
     end;
 
     local procedure CalcTotalSums()
