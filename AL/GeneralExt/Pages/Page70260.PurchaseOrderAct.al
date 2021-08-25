@@ -15,16 +15,16 @@ page 70260 "Purchase Order Act"
             group(General)
             {
                 Caption = 'General';
-                Editable = GlobalEditable;
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    Editable = GlobalEditable;
                     Importance = Standard;
                 }
                 field(VendorNo; "Buy-from Vendor No.")
                 {
                     ApplicationArea = Suite;
-                    Editable = not IsEmplPurchase;
+                    Editable = GlobalEditable;
                     Enabled = not IsEmplPurchase;
                     HideValue = IsEmplPurchase;
                     Importance = Promoted;
@@ -39,7 +39,7 @@ page 70260 "Purchase Order Act"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Employee No.';
-                    Editable = IsEmplPurchase;
+                    Editable = GlobalEditable;
                     Enabled = IsEmplPurchase;
                     HideValue = not IsEmplPurchase;
                     Importance = Promoted;
@@ -56,10 +56,12 @@ page 70260 "Purchase Order Act"
                 {
                     ApplicationArea = All;
                     Caption = 'Vendor/Employee Name';
+                    Editable = GlobalEditable;
                 }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Dimensions;
+                    Editable = GlobalEditable;
                     ShowMandatory = true;
 
                     trigger OnValidate()
@@ -70,6 +72,7 @@ page 70260 "Purchase Order Act"
                 field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Dimensions;
+                    Editable = GlobalEditable;
                     ShowMandatory = true;
 
                     trigger OnValidate()
@@ -85,6 +88,7 @@ page 70260 "Purchase Order Act"
                 field("Prices Including VAT"; "Prices Including VAT")
                 {
                     ApplicationArea = All;
+                    Editable = GlobalEditable;
 
                     trigger OnValidate()
                     begin
@@ -94,6 +98,7 @@ page 70260 "Purchase Order Act"
                 group(DocAmounts)
                 {
                     Caption = 'Amounts';
+                    Editable = GlobalEditable;
                     field("Invoice Amount Incl. VAT"; Rec."Invoice Amount Incl. VAT")
                     {
                         ApplicationArea = All;
@@ -139,7 +144,7 @@ page 70260 "Purchase Order Act"
                 field("Act Type"; Rec."Act Type")
                 {
                     ApplicationArea = All;
-                    Editable = ActTypeEditable;
+                    Editable = ActTypeEditable and GlobalEditable;
 
                     trigger OnValidate()
                     begin
@@ -155,7 +160,7 @@ page 70260 "Purchase Order Act"
                 {
                     ApplicationArea = All;
                     Caption = 'Problem Description';
-                    Editable = RejectButtonEnabled;
+                    Editable = GlobalEditable;
                     Enabled = RejectButtonEnabled;
 
                     trigger OnValidate()
@@ -190,15 +195,18 @@ page 70260 "Purchase Order Act"
                 field("Order Date"; Rec."Order Date")
                 {
                     ApplicationArea = All;
+                    Editable = GlobalEditable;
                 }
                 field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = All;
+                    Editable = GlobalEditable;
                     ShowMandatory = true;
                 }
                 field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = All;
+                    Editable = GlobalEditable;
                     Importance = Promoted;
                     ShowMandatory = true;
 
@@ -210,6 +218,7 @@ page 70260 "Purchase Order Act"
                 group("Warehouse Document")
                 {
                     Caption = 'Warehouse Document';
+                    Editable = GlobalEditable;
                     field("Location Code"; Rec."Location Code")
                     {
                         ApplicationArea = All;
@@ -239,12 +248,14 @@ page 70260 "Purchase Order Act"
                 {
                     ApplicationArea = All;
                     ShowMandatory = EstimatorMandatory;
+                    Editable = GlobalEditable;
                     Enabled = EstimatorEnable;
                 }
                 field("Purchaser Code"; Rec."Purchaser Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Checker';
+                    Editable = GlobalEditable;
                     ShowMandatory = true;
 
                     trigger OnValidate()
@@ -256,6 +267,7 @@ page 70260 "Purchase Order Act"
                 {
                     ApplicationArea = All;
                     Caption = 'Pre-Approver';
+                    Editable = GlobalEditable;
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
@@ -281,6 +293,7 @@ page 70260 "Purchase Order Act"
                 field("Agreement No."; Rec."Agreement No.")
                 {
                     ApplicationArea = All;
+                    Editable = GlobalEditable;
                     ShowMandatory = true;
 
                     trigger OnValidate()
@@ -295,11 +308,13 @@ page 70260 "Purchase Order Act"
                 field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
                     ApplicationArea = All;
+                    Editable = GlobalEditable;
                     ShowMandatory = true;
                 }
                 group("Payment Date")
                 {
                     Caption = 'Payment Date';
+                    Editable = GlobalEditable;
                     field("Paid Date Plan"; Rec."Due Date")
                     {
                         ApplicationArea = All;
@@ -315,6 +330,7 @@ page 70260 "Purchase Order Act"
                 field(Status; Status)
                 {
                     ApplicationArea = Suite;
+                    Editable = false;
                     Importance = Promoted;
                     StyleExpr = StatusStyleTxt;
                 }
