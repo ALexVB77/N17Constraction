@@ -14,6 +14,7 @@ page 50103 "Summary CF Control Matrix"
                 IndentationControls = Name;
                 field(Code; Rec.Code)
                 {
+                    Caption = 'Cost Code';
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
