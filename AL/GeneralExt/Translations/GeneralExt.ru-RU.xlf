@@ -2559,6 +2559,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Method ImportExcel - NamedType ImpErr</note>
         </trans-unit>
+        <trans-unit id="Table 2528781168 - Method 1147532894 - NamedType 2179470716" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Uploaded!</source>
+          <target>Загружено!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Method ImportExcel - NamedType lText001</note>
+        </trans-unit>
         <trans-unit id="Table 2528781168 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
           <target>Сумма</target>
@@ -12231,7 +12238,6 @@
           <source>Cost Code</source>
           <target>Cost Code</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1383783815 - Control 122295728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

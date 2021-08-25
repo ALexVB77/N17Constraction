@@ -39,6 +39,7 @@ table 50003 "Original Budget"
         DialogCaption: Label 'Select File';
         Excel2007FileType: Label 'Excel Files (*.xlsx;*.xls)|*.xlsx;*.xls', Comment = '{Split=r''\|''}{Locked=s''1''}';
         ImpErr: Label 'Nothing to import!';
+        lText001: Label 'Uploaded!';
     begin
         UploadResult := UploadIntoStream(DialogCaption, '', Excel2007FileType, Name, NVInStream);
         if UploadResult then begin
@@ -61,6 +62,7 @@ table 50003 "Original Budget"
                 if not OrBudget.Insert(false) then
                     OrBudget.Modify(false);
             end;
+            Message(lText001);
         end;
 
     end;
