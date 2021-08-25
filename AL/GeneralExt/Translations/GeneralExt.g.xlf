@@ -9223,6 +9223,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action Co&amp;mments - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3790301120 - Action 2173385693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action Dimensions - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3790301120 - Action 1062429549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attachments</source>
           <note from="Developer" annotates="general" priority="2"></note>

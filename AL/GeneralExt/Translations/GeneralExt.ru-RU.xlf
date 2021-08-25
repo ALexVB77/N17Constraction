@@ -9339,7 +9339,6 @@
           <source>Original Budget</source>
           <target>Original Budget</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Original Budget - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2640539078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -11099,6 +11098,13 @@
           <target>Ко&amp;мментарии</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action Co&amp;mments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3790301120 - Action 2173385693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimensions</source>
+          <target>Измерения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action Dimensions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3790301120 - Action 1062429549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attachments</source>
