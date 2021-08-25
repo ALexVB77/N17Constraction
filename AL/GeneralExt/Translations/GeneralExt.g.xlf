@@ -8073,6 +8073,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act - Action NewAct - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2825229705 - Action 2132680219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act + Location Doc.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act - Action NewActAndLocDoc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2825229705 - Action 3148315194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Advance</source>
           <note from="Developer" annotates="general" priority="2"></note>

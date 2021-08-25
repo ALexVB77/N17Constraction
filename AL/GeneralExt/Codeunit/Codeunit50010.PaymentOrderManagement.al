@@ -38,7 +38,7 @@ codeunit 50010 "Payment Order Management"
         end;
     end;
 
-    procedure FuncNewRec(ActTypeOption: enum "Purchase Act Type")
+    procedure FuncNewRec(ActTypeOption: enum "Purchase Act Type"; IsLocationDocument: Boolean)
     var
         grUS: record "User Setup";
         WhseEmployee: record "Warehouse Employee";
@@ -46,7 +46,6 @@ codeunit 50010 "Payment Order Management"
         PurchLine: Record "Purchase Line";
         Location: Record Location;
         Selected: Integer;
-        IsLocationDocument: Boolean;
         LocationCode: code[20];
         // Text50000: Label 'У вас нет прав на создание документа. Данные права имеет контролер.';
         Text50000: Label 'You do not have permission to create the document. The controller has these rights.';
@@ -73,6 +72,8 @@ codeunit 50010 "Payment Order Management"
         else
             PurchSetup.TestField("Base Resp. Employee No.");
 
+        // NC AB: вместо: 
+        /*
         if ActTypeOption <> ActTypeOption::Advance then begin
             WhseEmployee.SetRange("User ID", UserId);
             IF WhseEmployee.FindFirst() THEN BEGIN
@@ -91,6 +92,13 @@ codeunit 50010 "Payment Order Management"
                         ERROR(Text50005);
                 END;
             END;
+        end;
+        */
+        // использем:
+        if IsLocationDocument then begin
+            Location.GET(WhseEmployee.GetDefaultLocation('', TRUE));
+            Location.TESTFIELD("Bin Mandatory", FALSE);
+            LocationCode := Location.Code;
         end;
 
         GetInventorySetup();

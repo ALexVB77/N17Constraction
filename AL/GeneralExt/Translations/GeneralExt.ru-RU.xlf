@@ -9687,6 +9687,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act - Action NewAct - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2825229705 - Action 2132680219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Act + Location Doc.</source>
+          <target>Акт + Складской док.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Act - Action NewActAndLocDoc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2825229705 - Action 3148315194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Advance</source>
           <target>Авансовый отчет</target>
@@ -15345,7 +15352,6 @@
           <source>Share Participant Act</source>
           <target>Акт вып. фин. обяз. дольщиком</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Share Participant Act 2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1503765490 - NamedType 3417035070" size-unit="char" translate="yes" xml:space="preserve">
