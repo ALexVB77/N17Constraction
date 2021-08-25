@@ -290,13 +290,13 @@ page 50103 "Summary CF Control Matrix"
         case gLineType of
             gLineType::CP:
                 begin
-                    PrjBudEntries.SetFilter("Shortcut Dimension 1 Code", Rec.Code);
+                    PrjBudEntries.SetRange("Shortcut Dimension 1 Code", Rec.Code);
                     PrjBudEntries.SetFilter("Shortcut Dimension 2 Code", CCFilter);
                 end;
             gLineType::CC:
                 begin
                     PrjBudEntries.SetFilter("Shortcut Dimension 1 Code", CPFilter);
-                    PrjBudEntries.SetFilter("Shortcut Dimension 2 Code", Rec.Code);
+                    PrjBudEntries.Setrange("Shortcut Dimension 2 Code", Rec.Code);
                 end;
         end;
         PrjBudEntries.SetRange(Reversed, false);
