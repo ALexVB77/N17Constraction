@@ -1648,8 +1648,9 @@ codeunit 50010 "Payment Order Management"
             PurchHeader.CalcFields("Payments Amount", "Journal Payments Amount");
             IF PurchHeader."Invoice Amount Incl. VAT" - PurchHeader."Payments Amount" - PurchHeader."Journal Payments Amount" > 0 THEN BEGIN
 
-                if PurchHeader.Status <> PurchHeader.Status::Released then
-                    Codeunit.Run(Codeunit::"Release Purchase Document", PurchHeader);
+                // NC AB: зачем выпускать?     
+                // if PurchHeader.Status <> PurchHeader.Status::Released then
+                //    Codeunit.Run(Codeunit::"Release Purchase Document", PurchHeader); 
 
                 GenJournalLine.INIT;
                 GenJournalLine."Journal Template Name" := JnlTempName;
