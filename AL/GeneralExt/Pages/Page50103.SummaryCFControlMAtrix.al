@@ -49,6 +49,7 @@ page 50103 "Summary CF Control Matrix"
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(0, 1);
@@ -60,6 +61,7 @@ page 50103 "Summary CF Control Matrix"
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(0, 2);
@@ -74,6 +76,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
+                    Editable = false;
 
                     trigger OnDrillDown()
                     begin
@@ -89,7 +92,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(2, 2);
@@ -104,7 +107,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(3, 2);
@@ -119,7 +122,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(4, 2);
@@ -134,7 +137,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(5, 2);
@@ -149,7 +152,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(6, 2);
