@@ -64,8 +64,7 @@ page 70256 "Summary Cash Flow Control"
                         DimVal.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
                         DimVal.SetRange(Blocked, false);
                         if Page.RunModal(Page::"Dimension Values", DimVal) = Action::LookupOK then begin
-                            ProjectCode := DimVal.Code;
-                            ValidatePrjCode();
+                            CPflt := DimVal.Code;
                             UpdateMatrixSubpage();
                         end;
 
@@ -89,8 +88,7 @@ page 70256 "Summary Cash Flow Control"
                         DimVal.SetRange("Dimension Code", GLSetup."Global Dimension 2 Code");
                         DimVal.SetRange(Blocked, false);
                         if Page.RunModal(Page::"Dimension Values", DimVal) = Action::LookupOK then begin
-                            ProjectCode := DimVal.Code;
-                            ValidatePrjCode();
+                            CCflt := DimVal.Code;
                             UpdateMatrixSubpage();
                         end;
 

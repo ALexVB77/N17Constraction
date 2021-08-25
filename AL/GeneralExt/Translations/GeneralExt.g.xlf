@@ -2133,6 +2133,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Method ImportExcel - NamedType ImpErr</note>
         </trans-unit>
+        <trans-unit id="Table 2528781168 - Method 1147532894 - NamedType 2179470716" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Uploaded!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Method ImportExcel - NamedType lText001</note>
+        </trans-unit>
         <trans-unit id="Table 2528781168 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7747,6 +7752,11 @@
           <source>Import Location Mapping</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Location Mapping - Action ImportLocationMapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2528781168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Original Budget</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Original Budget - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2640539078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Invoices for Act Archive</source>
