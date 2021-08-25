@@ -1,6 +1,7 @@
 table 50003 "Original Budget"
 {
-
+    LookupPageId = "Original Budget";
+    DrillDownPageId = "Original Budget";
     fields
     {
         field(1; "Cost Place"; Code[20])

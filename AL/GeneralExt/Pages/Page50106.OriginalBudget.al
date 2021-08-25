@@ -11,16 +11,16 @@ page 50106 "Original Budget"
         {
             repeater(rep1)
             {
-                field("Cost Code"; "Cost Code")
+                field("Cost Code"; Rec."Cost Code")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Cost Place"; "Cost Place")
+                field("Cost Place"; Rec."Cost Place")
                 {
                     ApplicationArea = All;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
                 }

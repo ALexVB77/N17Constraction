@@ -32,6 +32,26 @@ page 50103 "Summary CF Control Matrix"
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
+                    Editable = false;
+                    trigger OnDrillDown()
+                    var
+                        lOrigBud: Record "Original Budget";
+                    begin
+                        lOrigBud.Reset();
+                        case gLineType of
+                            gLineType::CC:
+                                begin
+                                    lOrigBud.SetRange("Cost Code", Rec.Code);
+                                    lOrigBud.SetFilter("Cost Place", CPFilter);
+                                end;
+                            gLineType::CP:
+                                begin
+                                    lOrigBud.SetRange("Cost Place", Rec.Code);
+                                    lOrigBud.SetFilter("Cost Code", CCFilter);
+                                end;
+                        end;
+                        Page.RunModal(0, lOrigBud);
+                    end;
                 }
                 field(CFTotal; CFTotal)
                 {
