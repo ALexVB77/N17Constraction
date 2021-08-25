@@ -307,13 +307,15 @@ page 70130 "Purchase List Controller"
         SetRecFilters;
     end;
 
-    trigger OnAfterGetCurrRecord()
+    trigger OnAfterGetRecord()
     begin
         LinkedGenJnlLine.Reset;
         LinkedGenJnlLine.SetCurrentKey("IW Document No.");
         LinkedGenJnlLine.SetRange("IW Document No.", "No.");
         if not LinkedGenJnlLine.FindFirst() then begin
             LinkedGenJnlLine.Init();
+            LinkedGenJnlLine."Journal Template Name" := '';
+            LinkedGenJnlLine."Journal Batch Name" := '';
             LinkedGenJnlLine."Line No." := 0;
         end;
 
