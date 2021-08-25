@@ -775,7 +775,7 @@ page 70143 "Forecast List Analisys"
     begin
         LineStyletxt := '';
         if (pPrBudEnt."Parent Entry" = 0) or (pPrBudEnt."Entry No." = pPrBudEnt."Parent Entry") then
-            LineStyletxt := 'StandardAccent';
+            LineStyletxt := 'StrongAccent';
     end;
 
     local procedure GetLineEditable(pPBE: Record "Projects Budget Entry")
