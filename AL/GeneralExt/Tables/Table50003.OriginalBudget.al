@@ -52,12 +52,12 @@ table 50003 "Original Budget"
                 Error(ImpErr);
             for Rno := 2 to MaxRow do begin
                 OrBudget.Init;
-                if ExcelBuf.get(Rno, 1) then
-                    OrBudget."Cost Place" := ExcelBuf."Cell Value as Text";
                 if ExcelBuf.get(Rno, 2) then
+                    OrBudget."Cost Place" := ExcelBuf."Cell Value as Text";
+                if ExcelBuf.get(Rno, 1) then
                     OrBudget."Cost Code" := ExcelBuf."Cell Value as Text";
                 if ExcelBuf.get(Rno, 3) then
-                    if Evaluate(OrBudget."Cost Place", ExcelBuf."Cell Value as Text") then;
+                    if Evaluate(OrBudget.Amount, ExcelBuf."Cell Value as Text") then;
                 if not OrBudget.Insert(false) then
                     OrBudget.Modify(false);
             end;
