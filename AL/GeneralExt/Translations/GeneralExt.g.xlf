@@ -7753,6 +7753,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Location Mapping - Action ImportLocationMapping - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2528781168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Original Budget</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Original Budget - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2640539078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Invoices for Act Archive</source>
           <note from="Developer" annotates="general" priority="2"></note>
