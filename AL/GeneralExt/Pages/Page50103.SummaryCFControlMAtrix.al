@@ -284,6 +284,7 @@ page 50103 "Summary CF Control Matrix"
                     PBE.SetRange("Project Code", PrjFilter);
                     PBE.SetRange("Shortcut Dimension 1 Code", Rec.Code);
                     PBE.SetFilter("Shortcut Dimension 2 Code", CCFilter);
+                    PBE.SetFilter("Without VAT (LCY)", '<>%1', 0);
                     if ColumnID <> 0 then
                         PBE.SetRange(Date, MatrixRecords[ColumnID]."Period Start", MatrixRecords[ColumnID]."Period End")
                     else
