@@ -34,6 +34,7 @@ page 70256 "Summary Cash Flow Control"
                         if Page.RunModal(Page::"Dimension Values", DimVal) = Action::LookupOK then begin
                             ProjectCode := DimVal.Code;
                             ValidatePrjCode();
+                            UpdateMatrixSubpage();
                         end;
 
                     end;
@@ -53,6 +54,22 @@ page 70256 "Summary Cash Flow Control"
                     begin
                         UpdateMatrixSubpage();
                     end;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        DimVal: Record "Dimension Value";
+                    begin
+                        GLSetup.Get;
+                        DimVal.Reset();
+                        DimVal.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
+                        DimVal.SetRange(Blocked, false);
+                        if Page.RunModal(Page::"Dimension Values", DimVal) = Action::LookupOK then begin
+                            ProjectCode := DimVal.Code;
+                            ValidatePrjCode();
+                            UpdateMatrixSubpage();
+                        end;
+
+                    end;
                 }
                 field(CCflt; CCflt)
                 {
@@ -61,6 +78,22 @@ page 70256 "Summary Cash Flow Control"
                     trigger OnValidate()
                     begin
                         UpdateMatrixSubpage();
+                    end;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        DimVal: Record "Dimension Value";
+                    begin
+                        GLSetup.Get;
+                        DimVal.Reset();
+                        DimVal.SetRange("Dimension Code", GLSetup."Global Dimension 2 Code");
+                        DimVal.SetRange(Blocked, false);
+                        if Page.RunModal(Page::"Dimension Values", DimVal) = Action::LookupOK then begin
+                            ProjectCode := DimVal.Code;
+                            ValidatePrjCode();
+                            UpdateMatrixSubpage();
+                        end;
+
                     end;
                 }
                 field(PeriodType; PeriodType)
