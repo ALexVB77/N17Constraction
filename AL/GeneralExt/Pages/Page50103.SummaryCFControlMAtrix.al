@@ -37,6 +37,7 @@ page 50103 "Summary CF Control Matrix"
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(0, 0);
