@@ -164,6 +164,7 @@ page 70143 "Forecast List Analisys"
                             Rec.SetRange(Parentbool, true)
                         else
                             Rec.SetRange(Parentbool);
+                        CurrPage.Update(false);
                     end;
                 }
             }
