@@ -2,7 +2,7 @@ report 80322 "Aged Accounts Payable Ext"
 {
     DefaultLayout = RDLC;
     //RDLCLayout = './AgedAccountsPayable.rdlc';
-    //RDLCLayout = './Reports/AgedAccountsPayable.rdlc';
+    RDLCLayout = './Reports/Layouts/AgedAccountsPayable.rdl';
     ApplicationArea = Basic, Suite;
     Caption = 'Aged Accounts Payable Ext';
     UsageCategory = ReportsAndAnalysis;
