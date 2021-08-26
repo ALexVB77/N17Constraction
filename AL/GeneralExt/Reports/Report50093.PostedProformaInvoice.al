@@ -146,6 +146,7 @@ report 50093 "Posted Proforma Invoice"
                                 // SWC1070 DD 06.07.17 >>
                                 IF ExportExcel THEN BEGIN
                                     RowNo += 1;
+                                    EB.NewRow();
                                     //IF RowNo <> ExcelTemplates."Top Margin" THEN!!!!!!!!!!!
                                     //EB.CopyRow(ExcelTemplates."Top Margin");!!!!!!!!!!
 
@@ -415,6 +416,7 @@ report 50093 "Posted Proforma Invoice"
                     {
                         ApplicationArea = All;
                         Caption = 'Export Excel';
+                        Visible = false;
                     }
                 }
             }
