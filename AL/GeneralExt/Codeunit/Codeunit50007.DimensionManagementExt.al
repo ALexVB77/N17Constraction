@@ -56,7 +56,7 @@ codeunit 50007 "Dimension Management (Ext)"
                 if (GLSetup."Global Dimension 1 Code" <> '') and (GLSetup."Global Dimension 1 Code" = DimCode) then
                     GlobalDim1Code := '';
                 if (GLSetup."Global Dimension 2 Code" <> '') and (GLSetup."Global Dimension 2 Code" = DimCode) then
-                    GlobalDim1Code := '';
+                    GlobalDim2Code := '';
             END;
         IF DimValCode <> '' THEN BEGIN
             TempDimSetEntry."Dimension Code" := DimCode;
@@ -65,7 +65,7 @@ codeunit 50007 "Dimension Management (Ext)"
             if (GLSetup."Global Dimension 1 Code" <> '') and (GLSetup."Global Dimension 1 Code" = DimCode) then
                 GlobalDim1Code := DimValCode;
             if (GLSetup."Global Dimension 2 Code" <> '') and (GLSetup."Global Dimension 2 Code" = DimCode) then
-                GlobalDim1Code := DimValCode;
+                GlobalDim2Code := DimValCode;
         END;
         DimSetID := DimensionManagement.GetDimensionSetID(TempDimSetEntry);
 

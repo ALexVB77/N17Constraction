@@ -409,6 +409,7 @@ report 92427 "Posted Act Performed Work"
                     {
                         ApplicationArea = All;
                         Caption = 'Export Excel';
+                        Visible = false;
                     }
 
                 }

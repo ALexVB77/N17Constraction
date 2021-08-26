@@ -51,6 +51,7 @@ page 70130 "Purchase List Controller"
                 {
                     ApplicationArea = All;
                     Editable = false;
+                    Caption = 'Paid';
                 }
                 field("Payment Type"; "Payment Type")
                 {
@@ -80,12 +81,21 @@ page 70130 "Purchase List Controller"
                 field("Problem Document"; Rec."Problem Document")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Problem Type"; "Problem Type")
                 {
                     ApplicationArea = All;
                     Editable = false;
+                    Visible = false;
                 }
+                field(ProblemDescription; ProblemDescription)
+                {
+                    Caption = 'Problem Description';
+                    Editable = false;
+                    ApplicationArea = All;
+                }
+
                 field("Invoice Amount Incl. VAT (LCY)"; Rec.GetInvoiceAmountsLCY(AmountType::"Include VAT"))
                 {
                     ApplicationArea = All;
@@ -308,6 +318,8 @@ page 70130 "Purchase List Controller"
     end;
 
     trigger OnAfterGetRecord()
+    var
+        AddCommentType: enum "Purchase Comment Add. Type";
     begin
         LinkedGenJnlLine.Reset;
         LinkedGenJnlLine.SetCurrentKey("IW Document No.");
@@ -321,6 +333,14 @@ page 70130 "Purchase List Controller"
 
         CommentAddInfo := Rec.GetAddTypeCommentText(CommentAddType::"Additional Info");
         CommentAddReason := Rec.GetAddTypeCommentText(CommentAddType::Reason);
+
+        ProblemDescription := '';
+        if "Problem Document" then begin
+            if "Status App" = "Status App"::Payment then
+                ProblemDescription := Rec.GetAddTypeCommentText(AddCommentType::Problem)
+            else
+                ProblemDescription := Rec.GetApprovalCommentText();
+        end;
     end;
 
     var
@@ -332,6 +352,7 @@ page 70130 "Purchase List Controller"
         AmountType: Enum "Amount Type";
         CommentAddType: Enum "Purchase Comment Add. Type";
         CommentAddInfo, CommentAddReason : Text;
+        ProblemDescription: Text[80];
 
     local procedure SetRecFilters()
     var

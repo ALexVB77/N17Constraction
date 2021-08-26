@@ -1780,6 +1780,8 @@ codeunit 50010 "Payment Order Management"
 
                 PurchHeader.MODIFY;
                 LinesCount += 1;
+
+                Commit;
             END;
         UNTIL PurchHeader.NEXT = 0;
     end;
