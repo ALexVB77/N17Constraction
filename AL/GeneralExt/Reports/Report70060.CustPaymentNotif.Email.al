@@ -106,9 +106,9 @@ report 70060 "Cust. Payment Notif. Email"
             Log.Init();
             Log."Agreement No." := CustAgr."No.";
             Log."Customer No." := CustAgr."Customer No.";
-            Log.Body.CreateOutStream(OutS);
+            Log.Body.CreateOutStream(OutS, TextEncoding::UTF8);
+            OutS.WriteText(MailBody);
             Log."E-Mail" := Cust."E-Mail";
-            CopyStream(OutS, InS);
             Log.Insert(true);
         end;
     end;
