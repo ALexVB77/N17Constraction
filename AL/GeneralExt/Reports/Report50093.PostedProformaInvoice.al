@@ -361,18 +361,18 @@ report 50093 "Posted Proforma Invoice"
                     AddCell(1, 2, CompanyInfo.Name, TRUE, EB."Cell Type"::Text, FALSE, 10);
                     AddCell(3, 2, 'Адрес: ' + CompanyInfo."Post Code" + ', ' + CompanyInfo.City + ', ' + CompanyInfo.Address + ', тел.:' + CompanyInfo."Phone No.",
                               TRUE, EB."Cell Type"::Text, FALSE, 10);
-                    AddCell(6, 2, 'ИНН ' + CompanyInfo."VAT Registration No.", FALSE, EB."Cell Type"::Text, FALSE, 10);
-                    AddCell(6, 4, 'КПП ' + CompanyInfo."KPP Code", FALSE, EB."Cell Type"::Text, FALSE, 10);
-                    AddCell(8, 2, CompanyInfo.Name + CompanyInfo."Name 2", FALSE, EB."Cell Type"::Text, FALSE, 10);
-                    AddCell(10, 2, CompanyInfo."Bank Name" + ' ' + CompanyInfo."Bank City", FALSE, EB."Cell Type"::Text, FALSE, 10);
+                    AddCellWithBorder(6, 2, 'ИНН ' + CompanyInfo."VAT Registration No.", FALSE, EB."Cell Type"::Text, true, false, true, true, 10);
+                    AddCellWithBorder(6, 4, 'КПП ' + CompanyInfo."KPP Code", FALSE, EB."Cell Type"::Text, true, false, true, true, 10);
+                    AddCellWithBorder(8, 2, CompanyInfo.Name + CompanyInfo."Name 2", FALSE, EB."Cell Type"::Text, true, false, false, true, 10);
+                    AddCellWithBorder(10, 2, CompanyInfo."Bank Name" + ' ' + CompanyInfo."Bank City", FALSE, EB."Cell Type"::Text, true, false, true, true, 10);
                     AddCell(12, 2, STRSUBSTNO(Text019, TitleDoc, LocMgt.Date2Text(DateNameInvoice)), TRUE, EB."Cell Type"::Text, FALSE, 14);
                     AddCell(13, 2, 'Основание: ' + CustAgr."External Agreement No.", FALSE, EB."Cell Type"::Text, FALSE, 10);
                     AddCell(15, 2, 'Плательщик:        ' + Header."Bill-to Name", FALSE, EB."Cell Type"::Text, FALSE, 10);
-                    AddCell(16, 2, STRSUBSTNO('ИНН %1, КПП %2, %3, %4, %5', Cust."VAT Registration No.", Cust."KPP Code",
-                              CustomerAddr[4], CustomerAddr[3], CustomerAddr[2]), FALSE, EB."Cell Type"::Text, FALSE, 10);
-                    AddCell(8, 7, CompanyInfo."Bank Corresp. Account No.", FALSE, EB."Cell Type"::Text, FALSE, 10);
-                    AddCell(9, 7, CompanyInfo."Bank BIC", FALSE, EB."Cell Type"::Text, FALSE, 10);
-                    AddCell(10, 7, CompanyInfo."Bank Account No.", FALSE, EB."Cell Type"::Text, FALSE, 10);
+                    AddCellWithBorder(16, 2, STRSUBSTNO('ИНН %1, КПП %2, %3, %4, %5', Cust."VAT Registration No.", Cust."KPP Code",
+                              CustomerAddr[4], CustomerAddr[3], CustomerAddr[2]), FALSE, EB."Cell Type"::Text, false, false, true, true, 10);
+                    AddCellWithBorder(8, 7, CompanyInfo."Bank Corresp. Account No.", FALSE, EB."Cell Type"::Text, true, false, true, true, 10);
+                    AddCellWithBorder(9, 7, CompanyInfo."Bank BIC", FALSE, EB."Cell Type"::Text, true, false, true, true, 10);
+                    AddCellWithBorder(10, 7, CompanyInfo."Bank Account No.", FALSE, EB."Cell Type"::Text, true, false, true, true, 10);
 
                 END;
             end;
@@ -576,16 +576,17 @@ report 50093 "Posted Proforma Invoice"
             EB.Insert();
     end;
 
-    local procedure AddCellWithBorder(RowNo: Integer; ColumnNo: Integer; CellValue: Text; Bold: Boolean; CellType: Integer; border1: Boolean; border2: Boolean; border3: Boolean; border4: Boolean)
+    local procedure AddCellWithBorder(RowNo: Integer; ColumnNo: Integer; CellValue: Text; Bold: Boolean; CellType: Integer; border1: Boolean; border2: Boolean; border3: Boolean; border4: Boolean; FontSize: Integer)
     begin
         EB.Init();
         EB.Validate("Row No.", RowNo);
         EB.Validate("Column No.", ColumnNo);
         EB."Cell Value as Text" := CellValue;
         EB.Formula := '';
+        eb."Font Size" := FontSize;
         EB.Bold := Bold;
         EB."Cell Type" := CellType;
-        EB.SetBorder(border1, border2, border3, border4, false, "Border Style"::Medium);
+        EB.SetBorder(border1, border2, border3, border4, false, "Border Style"::Thin);
         EB.Insert();
     end;
 
