@@ -153,8 +153,18 @@ page 70143 "Forecast List Analisys"
                     begin
                         BuildView();
                     end;
-
-
+                }
+                field(OnlyParent; OnlyParent)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Show only parent entries.';
+                    trigger OnValidate()
+                    begin
+                        if OnlyParent then
+                            Rec.SetRange(Parentbool, true)
+                        else
+                            Rec.SetRange(Parentbool);
+                    end;
                 }
             }
             repeater(Repeater12370003)
@@ -720,7 +730,8 @@ page 70143 "Forecast List Analisys"
         [InDataSet]
         CreateUIDEditable: Boolean;
         OpenFltsApplied: Boolean;
-
+        [InDataSet]
+        OnlyParent: Boolean;
 
     local procedure CheckAllowChanges()
     begin

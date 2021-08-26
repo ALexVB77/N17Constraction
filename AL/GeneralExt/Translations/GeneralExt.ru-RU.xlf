@@ -3446,7 +3446,6 @@
           <source>Parent</source>
           <target>Родительская</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Projects Budget Entry - Field Parentbool - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2332267737 - Field 2843497360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -7338,7 +7337,6 @@
           <source>Select Long-term entry to create lines.</source>
           <target>Выберите операцию долгосрочного планирования для создания новых строк.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0993</note>
         </trans-unit>
         <trans-unit id="Page 2269272589 - Control 1820841161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -7376,6 +7374,13 @@
           <target>Не показывать нулевые строки</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - Control HideZeroAmountLine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - Control 2658522388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show only parent entries.</source>
+          <target>Показать только строки долгосрочного планирования</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - Control OnlyParent - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2269272589 - Control 4263389294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Overdue</source>

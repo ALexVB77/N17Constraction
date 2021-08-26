@@ -495,8 +495,10 @@ table 70076 "Projects Budget Entry"
         "Create User" := UserId;
         if "Entry No." = 0 then
             "Entry No." := GetNextEntryNo();
-        if "Parent Entry" = 0 then
+        if "Parent Entry" = 0 then begin
             "Parent Entry" := "Entry No.";
+            Parentbool := true;
+        end;
     end;
 
     var

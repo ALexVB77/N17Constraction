@@ -6118,6 +6118,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - Control HideZeroAmountLine - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2269272589 - Control 2658522388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show only parent entries.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - Control OnlyParent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2269272589 - Control 4263389294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Overdue</source>
           <note from="Developer" annotates="general" priority="2"></note>
