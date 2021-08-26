@@ -14,6 +14,8 @@ page 50103 "Summary CF Control Matrix"
                 IndentationControls = Name;
                 field(Code; Rec.Code)
                 {
+                    //Caption = 'Cost Code';
+                    CaptionClass = CodeCapClass;
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
@@ -30,6 +32,26 @@ page 50103 "Summary CF Control Matrix"
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
+                    Editable = false;
+                    trigger OnDrillDown()
+                    var
+                        lOrigBud: Record "Original Budget";
+                    begin
+                        lOrigBud.Reset();
+                        case gLineType of
+                            gLineType::CC:
+                                begin
+                                    lOrigBud.SetRange("Cost Code", Rec.Code);
+                                    lOrigBud.SetFilter("Cost Place", CPFilter);
+                                end;
+                            gLineType::CP:
+                                begin
+                                    lOrigBud.SetRange("Cost Place", Rec.Code);
+                                    lOrigBud.SetFilter("Cost Code", CCFilter);
+                                end;
+                        end;
+                        Page.RunModal(0, lOrigBud);
+                    end;
                 }
                 field(CFTotal; CFTotal)
                 {
@@ -37,6 +59,7 @@ page 50103 "Summary CF Control Matrix"
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(0, 0);
@@ -48,6 +71,7 @@ page 50103 "Summary CF Control Matrix"
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(0, 1);
@@ -59,6 +83,7 @@ page 50103 "Summary CF Control Matrix"
                     ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = Emphasize;
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(0, 2);
@@ -73,6 +98,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
+                    Editable = false;
 
                     trigger OnDrillDown()
                     begin
@@ -88,7 +114,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(2, 2);
@@ -103,7 +129,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(3, 2);
@@ -118,7 +144,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(4, 2);
@@ -133,7 +159,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(5, 2);
@@ -148,7 +174,7 @@ page 50103 "Summary CF Control Matrix"
                     Style = Strong;
                     StyleExpr = Emphasize;
                     // Visible = Field1Visible;
-
+                    Editable = false;
                     trigger OnDrillDown()
                     begin
                         MATRIX_OnDrillDown(6, 2);
@@ -198,6 +224,7 @@ page 50103 "Summary CF Control Matrix"
         PrjBudEntries: Record "Projects Budget Entry";
         gLineType: Option CP,CC;
         PeriodType: Option Day,Week,Month,Quarter,Year,"Accounting Period",Year3;
+        CodeCapClass: Text;
 
 
     procedure Load(MatrixColumns1: array[32] of Text[1024]; var MatrixRecords1: array[32] of Record Date; CurrentNoOfMatrixColumns: Integer; CPFilter1: Code[250]; CCFilter1: Code[250]; PrjFilter1: Code[20]; StartingDate1: Date; NotShowBlank1: Boolean; LinesType: Option CP,CC; pPeriodType: Option Day,Week,Month,Quarter,Year,"Accounting Period",Year3)
@@ -225,6 +252,13 @@ page 50103 "Summary CF Control Matrix"
         NotShowBlankAmount := NotShowBlank1;
         // RoundingFactorFormatString := MatrixMgt.GetFormatString(RoundingFactor, false);
         gLineType := LinesType;
+        CodeCapClass := '3,';
+        case gLineType of
+            gLineType::CC:
+                CodeCapClass += 'Cost Code';
+            gLineType::CP:
+                CodeCapClass += 'Cost Place';
+        end;
         PeriodType := pPeriodType;
         InitTable();
         CurrPage.Update(false);
@@ -250,6 +284,7 @@ page 50103 "Summary CF Control Matrix"
                     PBE.SetRange("Project Code", PrjFilter);
                     PBE.SetRange("Shortcut Dimension 1 Code", Rec.Code);
                     PBE.SetFilter("Shortcut Dimension 2 Code", CCFilter);
+                    PBE.SetFilter("Without VAT (LCY)", '<>%1', 0);
                     if ColumnID <> 0 then
                         PBE.SetRange(Date, MatrixRecords[ColumnID]."Period Start", MatrixRecords[ColumnID]."Period End")
                     else
@@ -266,6 +301,7 @@ page 50103 "Summary CF Control Matrix"
                             PBE.SetRange(Close, false);
                     end;
                     PrjBudEntryPage.SetTableView(PBE);
+                    PrjBudEntryPage.Editable(false);
                     PrjBudEntryPage.RunModal();
                 end;
         end;
@@ -286,13 +322,13 @@ page 50103 "Summary CF Control Matrix"
         case gLineType of
             gLineType::CP:
                 begin
-                    PrjBudEntries.SetFilter("Shortcut Dimension 1 Code", Rec.Code);
+                    PrjBudEntries.SetRange("Shortcut Dimension 1 Code", Rec.Code);
                     PrjBudEntries.SetFilter("Shortcut Dimension 2 Code", CCFilter);
                 end;
             gLineType::CC:
                 begin
                     PrjBudEntries.SetFilter("Shortcut Dimension 1 Code", CPFilter);
-                    PrjBudEntries.SetFilter("Shortcut Dimension 2 Code", Rec.Code);
+                    PrjBudEntries.Setrange("Shortcut Dimension 2 Code", Rec.Code);
                 end;
         end;
         PrjBudEntries.SetRange(Reversed, false);
@@ -330,6 +366,7 @@ page 50103 "Summary CF Control Matrix"
                     Rec.Blocked := true;
                 Rec.Insert(false);
             until DimVal.Next() = 0;
+        Rec.FindFirst();
     end;
 
     local procedure CalcTotalSums()

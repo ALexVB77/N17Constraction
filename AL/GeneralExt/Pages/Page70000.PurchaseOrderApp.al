@@ -438,6 +438,24 @@ page 70000 "Purchase Order App"
                         PurchCalcDiscByType.ResetRecalculateInvoiceDisc(Rec);
                     end;
                 }
+                action(Dimensions)
+                {
+                    AccessByPermission = TableData Dimension = R;
+                    ApplicationArea = Dimensions;
+                    Caption = 'Dimensions';
+                    Enabled = "No." <> '';
+                    Image = Dimensions;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    ShortCutKey = 'Alt+D';
+
+                    trigger OnAction()
+                    begin
+                        ShowDocDim;
+                        CurrPage.SaveRecord;
+                    end;
+                }
                 action("Co&mments")
                 {
                     ApplicationArea = Comments;

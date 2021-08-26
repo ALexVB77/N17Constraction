@@ -549,6 +549,7 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         PurchCommentLine.SetRange("Add. Line Type", AddType);
         if PurchCommentLine.FindLast() then
             exit(PurchCommentLine.Comment + PurchCommentLine."Comment 2");
+        exit('');
     end;
 
     procedure SetAddTypeCommentText(AddType: enum "Purchase Comment Add. Type"; NewComment: text)
