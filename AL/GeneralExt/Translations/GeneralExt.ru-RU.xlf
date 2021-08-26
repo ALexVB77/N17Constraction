@@ -6891,7 +6891,7 @@
         </trans-unit>
         <trans-unit id="Page 3377841323 - Action 2410195287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export Mail Body</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Показать тело письма</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Action ExportMailBody - Property Caption</note>
@@ -10326,14 +10326,12 @@
           <source>Paid</source>
           <target>Оплачено</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Control Paid - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1370391159 - Control 866214207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem Description</source>
           <target>Описание проблемы</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Control ProblemDescription - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1370391159 - Control 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
