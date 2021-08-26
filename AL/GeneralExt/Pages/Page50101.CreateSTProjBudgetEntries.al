@@ -54,8 +54,10 @@ page 50101 "Create ST Proj Budget Entries"
         Rec."Project Code" := gProjBudEntry."Project Code";
         Rec."Shortcut Dimension 1 Code" := gProjBudEntry."Shortcut Dimension 1 Code";
         Rec."Parent Entry" := gProjBudEntry."Entry No.";
-        if gProjBudEntry."Shortcut Dimension 2 Code" <> '' then
-            rec."Shortcut Dimension 2 Code" := gProjBudEntry."Shortcut Dimension 2 Code";
+        if gProjBudEntry."Shortcut Dimension 2 Code" <> '' then begin
+            Rec."Shortcut Dimension 2 Code" := gProjBudEntry."Shortcut Dimension 2 Code";
+            Rec.Description := gProjBudEntry.Description;
+        end;
         if gProjBudEntry."Contragent No." <> '' then begin
             Rec."Contragent Type" := gProjBudEntry."Contragent Type";
             Rec."Contragent No." := gProjBudEntry."Contragent No.";
