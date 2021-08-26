@@ -387,7 +387,7 @@ page 70143 "Forecast List Analisys"
                                     // END;
                                     //NC 28666 HR end
 
-                                    IF Rec."Without VAT" = 0 THEN BEGIN
+                                    IF Rec."Without VAT (LCY)" = 0 THEN BEGIN
                                         MESSAGE(TEXT0006);
                                         EXIT;
                                     END;
