@@ -571,10 +571,10 @@ table 70076 "Projects Budget Entry"
         BldProj: Record "Building Project";
     begin
         Result := false;
-        if "Project Code" <> '' then begin
-            BldProj.GET("Project Code");
-            Result := BldProj."Development/Production" = BldProj."Development/Production"::Production;
-        end;
+        // if "Project Code" <> '' then begin
+        //     BldProj.GET("Project Code");
+        //     Result := BldProj."Development/Production" = BldProj."Development/Production"::Production;
+        // end;
     end;
 
     procedure SetCreateRepeat(lvCreateRepeat: Boolean)
