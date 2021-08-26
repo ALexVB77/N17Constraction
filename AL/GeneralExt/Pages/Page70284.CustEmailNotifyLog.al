@@ -59,8 +59,30 @@ page 70284 "Cust. E-Mail Notify Log"
 
                 }
 
+
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+
+            action(ExportMailBody)
+            {
+                ApplicationArea = All;
+                Image = Export;
+                Caption = 'Export Mail Body';
+
+                trigger OnAction();
+                begin
+                    Rec.ExportMailBody();
+                end;
+            }
+        }
+    }
+
+
 
 }

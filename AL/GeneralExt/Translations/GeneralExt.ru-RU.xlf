@@ -1665,6 +1665,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Log - Field WRQ Source Company Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3603484542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Object Message</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Object Message - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3279116693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Prefetched Object</source>
           <target>Необработанные CRM объекты</target>
@@ -6845,6 +6852,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Log - Action DownloadObjectXml - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 474836678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>importObject</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Object Message API - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3572564204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Prefetched Objects</source>
           <target>Необработанные CRM объекты</target>
@@ -6874,6 +6888,13 @@
           <target>Журнал учета отправки сообщений</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3377841323 - Action 2410195287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Mail Body</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Action ExportMailBody - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861211528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Development Settings</source>
@@ -11103,7 +11124,6 @@
           <source>Dimensions</source>
           <target>Измерения</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase Order App - Action Dimensions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3790301120 - Action 1062429549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

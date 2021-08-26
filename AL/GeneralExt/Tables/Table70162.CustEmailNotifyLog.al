@@ -1,7 +1,7 @@
 table 70162 "Cust. E-Mail Notify Log"
 {
     Caption = 'Cust. E-Mail Notify Log';
-    //LookupPageID = "Cust. E-Mail Notify Log";
+    LookupPageID = "Cust. E-Mail Notify Log";
 
 
     fields
@@ -69,6 +69,24 @@ table 70162 "Cust. E-Mail Notify Log"
     trigger OnInsert()
     begin
         "Date Time" := CurrentDateTime();
+    end;
+
+    procedure ExportMailBody(): Text
+    var
+        TempBlob: Codeunit "Temp Blob";
+        FileManagement: Codeunit "File Management";
+        OutStrm: OutStream;
+        InStrm: InStream;
+        FullFileName: Text;
+        FilenameGuid: Guid;
+    begin
+        Rec.CalcFields(Body);
+        Rec.Body.CreateInStream(InStrm);
+        FullFileName := Format(CreateGuid()) + '.html';
+        TempBlob.CreateOutStream(OutStrm, TextEncoding::UTF8);
+        CopyStream(OutStrm, InStrm);
+        exit(FileManagement.BLOBExport(TempBlob, FullFileName, false));
+
     end;
 
 }

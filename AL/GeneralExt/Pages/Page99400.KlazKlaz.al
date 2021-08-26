@@ -32,22 +32,7 @@ page 99400 "Klaz Klaz"
     {
         area(Processing)
         {
-            action(TestTryFunc)
-            {
-                ApplicationArea = All;
-                Caption = 'TestTryFunc', Locked = true;
 
-                trigger OnAction();
-                var
-                    cc: codeunit "Rocket Science";
-                    rep: Report "Cust. Payment Notif. Email";
-                    ca: Record "Customer Agreement";
-                begin
-                    ca.SetRange("Agreement Type", ca."Agreement Type"::"Investment Agreement");
-                    ca.FindFirst();
-                    rep.SendMailDBG(ca, 99991);
-                end;
-            }
             action(ExportJsonScheme)
             {
                 ApplicationArea = All;

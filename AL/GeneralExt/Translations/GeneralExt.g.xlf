@@ -5713,6 +5713,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3377841323 - Action 2410195287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Mail Body</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Action ExportMailBody - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3861211528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Development Settings</source>
           <note from="Developer" annotates="general" priority="2"></note>
