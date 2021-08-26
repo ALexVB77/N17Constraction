@@ -8568,6 +8568,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Control Journal Line No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1370391159 - Control 789473408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Paid</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Control Paid - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1370391159 - Control 866214207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Problem Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Purchase List Controller - Control ProblemDescription - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1370391159 - Control 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reason</source>
           <note from="Developer" annotates="general" priority="2"></note>
