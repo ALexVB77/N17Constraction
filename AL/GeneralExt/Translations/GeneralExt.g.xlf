@@ -2868,6 +2868,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Projects Budget Entry - Field Parent Entry - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2332267737 - Field 621088158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Projects Budget Entry - Field Parentbool - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2332267737 - Field 2843497360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6077,6 +6082,11 @@
           <source>Cost Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0992</note>
+        </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 1933003298" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Long-term entry to create lines.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0993</note>
         </trans-unit>
         <trans-unit id="Page 2269272589 - Control 1820841161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filters</source>

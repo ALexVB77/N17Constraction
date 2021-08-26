@@ -459,6 +459,10 @@ table 70076 "Projects Budget Entry"
         {
             Caption = 'Payment Description';
         }
+        field(51020; Parentbool; Boolean)
+        {
+            Caption = 'Parent';
+        }
     }
 
     keys

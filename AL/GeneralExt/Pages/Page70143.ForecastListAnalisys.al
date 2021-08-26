@@ -217,6 +217,19 @@ page 70143 "Forecast List Analisys"
                     Caption = 'Project Code';
                     StyleExpr = LineStyletxt;
                     ShowMandatory = true;
+                    trigger OnLookup(var Text: text): boolean
+                    var
+                        lDimVal: Record "Dimension Value";
+                    begin
+                        GLSetup.Get();
+                        GLSetup.TestField("Project Dimension Code");
+                        lDimVal.Reset();
+                        lDimVal.SetRange("Dimension Code", GLSetup."Project Dimension Code");
+                        if Page.RunModal(PAGE::"Dimension Values", lDimVal) = Action::LookupOK then begin
+                            Rec."Project Code" := lDimVal.Code;
+                        end;
+                    end;
+
 
                 }
                 // field("Cost Code"; Rec."Cost Code")
@@ -346,10 +359,10 @@ page 70143 "Forecast List Analisys"
                             IF grVendorAgreement.GET(Rec."Contragent No.", Rec."Agreement No.") THEN;
                             IF PAGE.RUNMODAL(PAGE::"Vendor Agreements", grVendorAgreement) = ACTION::LookupOK THEN BEGIN
                                 IF grVendorAgreement."No." <> '' THEN BEGIN
-                                    IF Rec."Building Turn" = '' THEN BEGIN
-                                        MESSAGE(TEXT0004);
-                                        EXIT;
-                                    END;
+                                    // IF Rec."Building Turn" = '' THEN BEGIN
+                                    //     MESSAGE(TEXT0004);
+                                    //     EXIT;
+                                    // END;
 
                                     //NC 28666 HR beg
                                     //IF "Cost Code"  = '' THEN
@@ -357,10 +370,10 @@ page 70143 "Forecast List Analisys"
                                     //  MESSAGE(TEXT0005);
                                     //  EXIT;
                                     //END;
-                                    IF (NOT IsProductionProject) AND (Rec."Cost Code" = '') THEN BEGIN
-                                        MESSAGE(TEXT0005);
-                                        EXIT;
-                                    END;
+                                    // IF (NOT IsProductionProject) AND (Rec."Cost Code" = '') THEN BEGIN
+                                    //     MESSAGE(TEXT0005);
+                                    //     EXIT;
+                                    // END;
                                     //NC 28666 HR end
 
                                     IF Rec."Without VAT" = 0 THEN BEGIN
@@ -492,6 +505,8 @@ page 70143 "Forecast List Analisys"
                     US.Get(UserId);
                     if not (US."CF Allow Short Entries Edit") then
                         Error(TEXT0015);
+                    if (Rec."Entry No." <> Rec."Parent Entry") and (Rec."Parent Entry" <> 0) then
+                        Error(TEXT0993);
                     Clear(CreateSTPrBEntPage);
                     CreateSTPrBEntPage.SetProjBudEntry(Rec);
                     if CreateSTPrBEntPage.RunModal() = action::LookupOK then;
@@ -693,6 +708,7 @@ page 70143 "Forecast List Analisys"
         TEXT0990: Label 'Select distinct %1 Filter to create new line!';
         TEXT0991: Label 'Cost Place';
         TEXT0992: Label 'Cost Code';
+        TEXT0993: Label 'Select Long-term entry to create lines.';
         HideZeroAmountLine: boolean;
         PrjBudMgt: Codeunit "Project Budget Management";
         [InDataSet]

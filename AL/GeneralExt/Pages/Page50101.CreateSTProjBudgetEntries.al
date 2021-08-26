@@ -37,6 +37,10 @@ page 50101 "Create ST Proj Budget Entries"
                 {
                     ApplicationArea = All;
                 }
+                field(Date; Rec.Date)
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }
