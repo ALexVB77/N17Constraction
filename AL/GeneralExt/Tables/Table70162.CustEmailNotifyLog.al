@@ -79,8 +79,11 @@ table 70162 "Cust. E-Mail Notify Log"
         InStrm: InStream;
         FullFileName: Text;
         FilenameGuid: Guid;
+        NoMailBodyErr: Label 'No mail body';
     begin
         Rec.CalcFields(Body);
+        if not Rec.Body.HasValue() then
+            Error(NoMailBodyErr);
         Rec.Body.CreateInStream(InStrm);
         FullFileName := Format(CreateGuid()) + '.html';
         TempBlob.CreateOutStream(OutStrm, TextEncoding::UTF8);

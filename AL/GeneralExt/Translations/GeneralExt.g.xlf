@@ -1453,6 +1453,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3377841323 - Method 2410195287 - NamedType 238844359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No mail body</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Method ExportMailBody - NamedType NoMailBodyErr</note>
+        </trans-unit>
         <trans-unit id="Table 3377841323 - Field 4256180955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Agreement No.</source>
           <note from="Developer" annotates="general" priority="2"></note>

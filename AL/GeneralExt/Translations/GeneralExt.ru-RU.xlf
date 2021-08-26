@@ -1744,6 +1744,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3377841323 - Method 2410195287 - NamedType 238844359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No mail body</source>
+          <target>Вложение отсутсвует.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cust. E-Mail Notify Log - Method ExportMailBody - NamedType NoMailBodyErr</note>
+        </trans-unit>
         <trans-unit id="Table 3377841323 - Field 4256180955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Agreement No.</source>
           <target>Договор Но.</target>
@@ -6893,7 +6900,6 @@
           <source>Export Mail Body</source>
           <target>Показать тело письма</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cust. E-Mail Notify Log - Action ExportMailBody - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861211528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
