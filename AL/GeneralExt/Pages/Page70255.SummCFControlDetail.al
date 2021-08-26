@@ -8,7 +8,7 @@ page 70255 "Summ. Cash Flow Control Detail"
     InsertAllowed = false;
     LinksAllowed = false;
     PageType = ListPlus;
-    SaveValues = true;
+    // SaveValues = true;
     SourceTable = "Dimension Value";
     SourceTableView = where("Global Dimension No." = const(1));
 

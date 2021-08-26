@@ -355,6 +355,12 @@ page 50103 "Summary CF Control Matrix"
         DimVal.Reset();
         DimVal.SetRange(Blocked, false);
         DimVal.SetRange("Global Dimension No.", gLineType + 1);
+        case gLineType of
+            gLineType::CC:
+                DimVal.SetFilter(Code, CCFilter);
+            gLineType::CP:
+                DimVal.SetFilter(Code, CPFilter);
+        end;
         if DimVal.FindSet() then
             repeat
                 Rec.Init();
