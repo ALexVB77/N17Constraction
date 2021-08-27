@@ -12,7 +12,7 @@ page 99933 "Crm Object Message API"
     InsertAllowed = true;
     DeleteAllowed = false;
     ModifyAllowed = false;
-    ODataKeyFields = SystemId;
+    ODataKeyFields = Id;
 
     layout
     {
@@ -20,7 +20,7 @@ page 99933 "Crm Object Message API"
         {
             repeater(GroupName)
             {
-                field(id; SystemId)
+                field(id; Id)
                 {
                     ApplicationArea = All;
 
@@ -40,4 +40,9 @@ page 99933 "Crm Object Message API"
             }
         }
     }
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        Rec.Insert(True);
+    end;
 }

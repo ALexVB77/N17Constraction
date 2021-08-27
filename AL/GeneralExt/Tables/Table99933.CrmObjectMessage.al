@@ -10,6 +10,11 @@ table 99933 "Crm Object Message"
 
         }
 
+        field(2; Id; Guid)
+        {
+            Caption = 'Id', Locked = true;
+        }
+
         field(10; Name; Text[250])
         {
             Caption = 'Name', Locked = true;
@@ -54,8 +59,12 @@ table 99933 "Crm Object Message"
 
     trigger OnInsert()
     begin
-        if IsNullGuid(MessageId) then
-            MessageId := CreateGuid();
+
+        Id := CreateGuid();
+
+        MessageId := Id;
+
+        SystemId := MessageId;
         "Receive Datetime" := CurrentDateTime();
     end;
 
