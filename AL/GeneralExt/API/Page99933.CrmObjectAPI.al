@@ -9,6 +9,9 @@ page 99933 "Crm Object Message API"
     EntitySetName = 'crmObjects';
     SourceTable = "Crm Object Message";
     DelayedInsert = true;
+    InsertAllowed = true;
+    DeleteAllowed = false;
+    ModifyAllowed = false;
     ODataKeyFields = Id;
 
     layout
