@@ -8896,7 +8896,7 @@
         </trans-unit>
         <trans-unit id="Page 3861133141 - Control 2700662257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Remaining Amount (LCY)</source>
-          <target>Остуток (руб)</target>
+          <target>Остаток (руб)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Remaining Amount (LCY) - Property Caption</note>
         </trans-unit>
