@@ -5,7 +5,7 @@ page 99933 "Crm Object Message API"
     APIPublisher = 'bonava';
     APIGroup = 'crmIntegration';
     APIVersion = 'v0.1';
-    EntityName = 'importObject';
+    EntityName = 'crmObject';
     EntitySetName = 'crmObjects';
     SourceTable = "Crm Object Message";
     DelayedInsert = true;
