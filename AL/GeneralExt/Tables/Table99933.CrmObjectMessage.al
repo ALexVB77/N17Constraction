@@ -10,13 +10,6 @@ table 99933 "Crm Object Message"
 
         }
 
-        field(2; Id; Guid)
-        {
-            Caption = 'OData Key Field ', Locked = true;
-
-        }
-
-
         field(10; Name; Text[250])
         {
             Caption = 'Name', Locked = true;
@@ -59,13 +52,10 @@ table 99933 "Crm Object Message"
         }
     }
 
-    var
-        myInt: Integer;
-
     trigger OnInsert()
     begin
-        Id := CreateGuid();
-        MessageId := Id;
+        if IsNullGuid(MessageId) then
+            MessageId := CreateGuid();
         "Receive Datetime" := CurrentDateTime();
     end;
 

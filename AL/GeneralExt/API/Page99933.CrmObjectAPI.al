@@ -1,10 +1,10 @@
 page 99933 "Crm Object Message API"
 {
     PageType = API;
-    Caption = 'importObject';
+    Caption = 'importObject', Locked = true;
     APIPublisher = 'bonava';
-    APIGroup = 'crmIntegration';
-    APIVersion = 'v0.1';
+    APIGroup = 'crm';
+    APIVersion = 'beta';
     EntityName = 'crmObject';
     EntitySetName = 'crmObjects';
     SourceTable = "Crm Object Message";
@@ -12,7 +12,7 @@ page 99933 "Crm Object Message API"
     InsertAllowed = true;
     DeleteAllowed = false;
     ModifyAllowed = false;
-    ODataKeyFields = Id;
+    ODataKeyFields = SystemId;
 
     layout
     {
@@ -20,7 +20,7 @@ page 99933 "Crm Object Message API"
         {
             repeater(GroupName)
             {
-                field(id; Rec.Id)
+                field(id; SystemId)
                 {
                     ApplicationArea = All;
 

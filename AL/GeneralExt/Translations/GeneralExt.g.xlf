@@ -5693,11 +5693,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Log - Action DownloadObjectXml - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 474836678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>importObject</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Object Message API - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3572564204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Prefetched Objects</source>
           <note from="Developer" annotates="general" priority="2"></note>
