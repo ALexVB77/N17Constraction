@@ -159,7 +159,7 @@ report 82475 "Purchase Receipt M-4 Ext"
         PurchLineWithLCYAmt: Record "Purchase Line" temporary;
         StdRepMgt: Codeunit "Local Report Management";
         DocSignMgt: Codeunit "Doc. Signature Management";
-        InventoryReportsHelper: Codeunit "Purchase Receipt M-4 Helper";
+        InventoryReportsHelper: Codeunit "Purchase Receipt M4 Hlpr (Ext)";
         AccNo: Code[20];
         TotalAmount: Decimal;
         TotalAmountInclVAT: Decimal;
@@ -244,7 +244,7 @@ report 82475 "Purchase Receipt M-4 Ext"
     [Scope('OnPrem')]
     procedure FillBody()
     var
-        PageHeaderArr: array[10] of Text;
+        PageHeaderArr: array[11] of Text;
     begin
         with "Purchase Line" do begin
             PageHeaderArr[1] := Description + "Description 2";
@@ -257,6 +257,7 @@ report 82475 "Purchase Receipt M-4 Ext"
             PageHeaderArr[8] := FormatAmount(Amount);
             PageHeaderArr[9] := LineVATText[2];
             PageHeaderArr[10] := FormatAmount("Amount Including VAT");
+            PageHeaderArr[11] := Format("Shortcut Dimension 2 Code");
         end;
 
         InventoryReportsHelper.FillM4Body(PageHeaderArr);
