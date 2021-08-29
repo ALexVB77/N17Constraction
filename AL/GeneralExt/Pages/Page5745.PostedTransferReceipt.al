@@ -27,5 +27,22 @@ pageextension 85745 "Posted Transfer Receipt (Ext)" extends "Posted Transfer Rec
             }
         }
         // NC 51411 < EP
+        modify("Direct Transfer")
+        {
+            Importance = Additional;
+        }
+        addafter("Posting Date")
+        {
+            field("Agreement No."; Rec."Agreement No.")
+            {
+                ApplicationArea = All;
+                Importance = Additional;
+            }
+            field("Vendor No."; Rec."Vendor No.")
+            {
+                ApplicationArea = All;
+                Importance = Additional;
+            }
+        }
     }
 }
