@@ -50,14 +50,14 @@ report 82475 "Purchase Receipt M-4 Ext"
                     if Type <> Type::" " then
                         TotalQtyToReceive := TotalQtyToReceive + "Qty. to Receive";
 
-                    FillBody;
+                    //FillBody; //NC 51373 PA
                 end;
 
                 trigger OnPostDataItem()
                 begin
                     FormatTotalAmounts;
 
-                    FillReportFooter;
+                    //FillReportFooter; //NC 51373 PA
                 end;
 
                 trigger OnPreDataItem()
@@ -111,7 +111,7 @@ report 82475 "Purchase Receipt M-4 Ext"
 
                 CalcAmounts("Purchase Header");
 
-                FillReportTitle;
+                //FillReportTitle; //NC 51373 PA
             end;
         }
     }
