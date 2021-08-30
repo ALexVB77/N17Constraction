@@ -6864,13 +6864,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Log - Action DownloadObjectXml - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 474836678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>importObject</source>
-          <target>[NAB: NOT TRANSLATED]</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Object Message API - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3572564204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Prefetched Objects</source>
           <target>Необработанные CRM объекты</target>
@@ -7379,7 +7372,6 @@
           <source>Show only parent entries.</source>
           <target>Показать только строки долгосрочного планирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - Control OnlyParent - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2269272589 - Control 4263389294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -15915,6 +15907,13 @@
           <target>Копировать строки из архива журналов</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 250922747 - Control 2993483370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Credit-Memo Reason</source>
+          <target>Причина Кредит-Ноты</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Ledger Entries (Ext) - Control Credit-Memo Reason - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 250922747 - Control 1231965224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>DenDoc Dim Value</source>

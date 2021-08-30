@@ -20,6 +20,7 @@ pageextension 80020 "General Ledger Entries (Ext)" extends "General Ledger Entri
             field("Credit-Memo Reason"; GetCrMemoReason())
             {
                 ApplicationArea = Basic, Suite;
+                Caption = 'Credit-Memo Reason';
             }
             field("Cust. Ext. Agr. No."; "Cust. Ext. Agr. No.")
             {
