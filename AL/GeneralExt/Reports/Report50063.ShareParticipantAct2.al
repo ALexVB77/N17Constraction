@@ -293,7 +293,7 @@ report 50063 "Share Participant Act 2"
                 Buff."FA Posting Date" := CustLedgEntry."Posting Date";
                 Buff."Insurance No." := CustLedgEntry."Document No.";
                 Buff.Amount := -CustLedgEntry."Amount (LCY)";
-                Buff.Insert();
+                if Buff.Insert() then;
                 TotalPaymentAmount += Buff.Amount;
             until CustLedgEntry.Next() = 0;
 
