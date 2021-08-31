@@ -5316,14 +5316,14 @@
         </trans-unit>
         <trans-unit id="Codeunit 1470080277 - NamedType 4197778782" size-unit="char" translate="yes" xml:space="preserve">
           <source>All is up to date</source>
-          <target>[NAB: SUGGESTION]Действий не требуется. Данные уже находятся в актуальном состоянии.</target>
+          <target>Действий не требуется. Данные уже находятся в актуальном состоянии.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Object Xml to Json - NamedType AllUpToDateMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 1470080277 - NamedType 2221351987" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bad soap envelope format</source>
-          <target>[NAB: SUGGESTION]Неверный формат SOAP пакета</target>
+          <target>Неверный формат SOAP пакета</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Object Xml to Json - NamedType BadSoapEnvFormatErr</note>
@@ -15912,7 +15912,6 @@
           <source>Credit-Memo Reason</source>
           <target>Причина Кредит-Ноты</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Ledger Entries (Ext) - Control Credit-Memo Reason - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 250922747 - Control 1231965224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
@@ -15957,6 +15956,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension MyDim Value Comb Ext - Control ColFilter - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1118084349 - Method 1591721637 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1118084349">
+          <source>No payment journal lines were created from document %1.</source>
+          <target>Из документа %1 не создано ни одной строки журнала платежей.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Method OpenPaymentRequestCard - NamedType LocText001</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1118084349 - Action 3597331879 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
           <source>CustFunctionSep</source>
           <target>CustFunctionSep</target>
@@ -15968,6 +15974,13 @@
           <target>Получить строки из реестра платежей</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Action GetLinesFromPayReg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118084349 - Action 1343343608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Request (Journal)</source>
+          <target>Заявка (журнал)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Action ViewRequest - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3985706558 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1734268181">
           <source>Print</source>

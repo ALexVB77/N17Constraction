@@ -13268,6 +13268,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension MyDim Value Comb Ext - Control ColFilter - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1118084349 - Method 1591721637 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1118084349">
+          <source>No payment journal lines were created from document %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Method OpenPaymentRequestCard - NamedType LocText001</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1118084349 - Action 3597331879 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
           <source>CustFunctionSep</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13277,6 +13282,11 @@
           <source>Get lines from Payments Reg.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Action GetLinesFromPayReg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118084349 - Action 1343343608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Request (Journal)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Action ViewRequest - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3985706558 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1734268181">
           <source>Print</source>
