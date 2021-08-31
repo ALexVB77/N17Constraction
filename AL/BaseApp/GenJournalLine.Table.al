@@ -5923,7 +5923,7 @@
             if BankAcc."Account Type" = BankAcc."Account Type"::"Bank Account" then
                 if ("Account Type" = "Account Type"::Vendor) and ("Account No." <> '') then
                     if VendBankAcc.Get("Account No.", "Beneficiary Bank Code") then begin
-                        FieldValue := VendBankAcc."Def. Payment Purpose";
+                        //FieldValue := VendBankAcc."Def. Payment Purpose";
                         if VendBankAcc."Bank Branch No." <> '' then begin
                             BankBranchNo := VendBankAcc."Bank Branch No.";
                             PersonalAccountNo := VendBankAcc."Personal Account No.";
