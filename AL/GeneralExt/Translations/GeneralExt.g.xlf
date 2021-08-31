@@ -11438,6 +11438,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Data Migration From Excel - Method OnPreReport - NamedType Text0019</note>
         </trans-unit>
+        <trans-unit id="Report 4294960608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Excel Account Invoices</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Excel Account Invoices - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3333280010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export Subform</source>
           <note from="Developer" annotates="general" priority="2"></note>

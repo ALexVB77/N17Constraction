@@ -13758,6 +13758,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Data Migration From Excel - Method OnPreReport - NamedType Text0019</note>
         </trans-unit>
+        <trans-unit id="Report 4294960608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Excel Account Invoices</source>
+          <target>Отчет для Налоговой</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Excel Account Invoices - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3333280010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export Subform</source>
           <target>Выгрузка в Excel</target>
@@ -15958,7 +15965,6 @@
           <source>No requests were found</source>
           <target>Заявка на оплату не найдена</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%1" was found in target 1 times, but was not found in source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Method OpenPaymentRequestCard - NamedType LocText001</note>
         </trans-unit>
         <trans-unit id="PageExtension 1118084349 - Action 3597331879 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
