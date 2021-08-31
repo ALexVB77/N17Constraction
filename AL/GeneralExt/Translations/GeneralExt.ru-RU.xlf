@@ -5318,14 +5318,12 @@
           <source>All is up to date</source>
           <target>Действий не требуется. Данные уже находятся в актуальном состоянии.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Object Xml to Json - NamedType AllUpToDateMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 1470080277 - NamedType 2221351987" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bad soap envelope format</source>
           <target>Неверный формат SOAP пакета</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Object Xml to Json - NamedType BadSoapEnvFormatErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 1470080277 - NamedType 1397584261" size-unit="char" translate="yes" xml:space="preserve">
@@ -15957,10 +15955,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension MyDim Value Comb Ext - Control ColFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1118084349 - Method 1591721637 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1118084349">
-          <source>No payment journal lines were created from document %1.</source>
-          <target>Из документа %1 не создано ни одной строки журнала платежей.</target>
+          <source>No requests were found</source>
+          <target>Заявка на оплату не найдена</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%1" was found in target 1 times, but was not found in source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Method OpenPaymentRequestCard - NamedType LocText001</note>
         </trans-unit>
         <trans-unit id="PageExtension 1118084349 - Action 3597331879 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
@@ -15979,7 +15977,6 @@
           <source>Request (Journal)</source>
           <target>Заявка (журнал)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Action ViewRequest - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3985706558 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1734268181">

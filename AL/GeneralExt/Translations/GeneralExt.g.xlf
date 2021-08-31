@@ -13269,7 +13269,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension MyDim Value Comb Ext - Control ColFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1118084349 - Method 1591721637 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1118084349">
-          <source>No payment journal lines were created from document %1.</source>
+          <source>No requests were found</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Method OpenPaymentRequestCard - NamedType LocText001</note>
         </trans-unit>
