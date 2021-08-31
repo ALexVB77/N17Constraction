@@ -53,14 +53,19 @@ pageextension 80256 "Payment Journal (Ext)" extends "Payment Journal"
         PaymentRequestCard: Page "Payment Request Card";
         PaymentJournal: page "Payment Journal";
         MultiLine: Boolean;
+        PH: Record "Purchase Header";
         LocText001: Label 'No payment journal lines were created from document %1.';
     begin
-        GenJnlLine.Reset();
-        GenJnlLine.SetRange("Journal Template Name", Rec."Journal Template Name");
-        GenJnlLine.SetRange("Journal Batch Name", Rec."Journal Batch Name");
-        GenJnlLine.SetRange("Line No.", Rec."Line No.");
-        PaymentRequestCard.SetTableView(GenJnlLine);
-        PaymentRequestCard.SetRecord(GenJnlLine);
-        PaymentRequestCard.Run();
+        //GenJnlLine.Reset();
+        //GenJnlLine.SetRange("Journal Template Name", Rec."Journal Template Name");
+        //GenJnlLine.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+        //GenJnlLine.SetRange("Line No.", Rec."Line No.");
+        if PH.get(ph."Document Type"::Order, Rec."Document No.") then begin
+            PaymentRequestCard.SetTableView(PH);
+            PaymentRequestCard.SetRecord(PH);
+            PaymentRequestCard.Run();
+        end;
+        //
+        //else Message();
     end;
 }
