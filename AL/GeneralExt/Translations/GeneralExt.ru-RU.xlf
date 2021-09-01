@@ -14424,6 +14424,48 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FA Write-off Act FA-4b - Control Depreciation Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3548959355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fin Operation Import</source>
+          <target>Импорт Фин. Операций из Excel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - NamedType 2027480941" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please select a file to download!</source>
+          <target>Укажите файл для загрузки!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - NamedType Err_fname</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - NamedType 1427759826" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The Excel sheet must be specified!</source>
+          <target>Страница Excel должна быть указана!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - NamedType Err_sname</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - NamedType 510963145" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import from File</source>
+          <target>Импорт из файла</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - NamedType Text031</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target>Общее</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - Control 989751795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File Name</source>
+          <target>Имя файла</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - Control FileName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1306421762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Find Error 70095</source>
           <target>Найти ошибку 70095</target>
@@ -15947,6 +15989,13 @@
           <target>Копировать строки из архива журналов</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 512924377 - Action 3575932681 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Import lines from Excel file</source>
+          <target>Загрузить строки из файла Excel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Import Lines from Excel File - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 250922747 - Control 2993483370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Credit-Memo Reason</source>
