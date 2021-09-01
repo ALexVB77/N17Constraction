@@ -20,7 +20,6 @@ table 70173 "Privete Dimension Value"
         field(4; "Privete Value Name"; Text[30])
         {
             Caption = 'Privete Value Name';
-            TableRelation = "Dimension Value".Code where("Dimension Code" = field(Code));
         }
     }
 
