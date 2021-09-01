@@ -32,7 +32,8 @@ INSERT INTO [Bonava-Test].[dbo].[Bonava$Vendor Bank Account$437dbf0e-84ff-417a-9
 	[Personal Account No_],
 	[Def_ Payment Purpose],
 	[Bank Corresp_ Account No_],
-	[Bank Card No_]
+	[Bank Card No_],
+	[Bank Account No_]
 )
 SELECT
 	[Vendor No_],
@@ -64,5 +65,6 @@ SELECT
 	[Personal Account No_],
 	[Def_ Payment Purpose],
 	[Bank Corresp_ Account No_],
-	[Bank Card No_]
+	[Bank Card No_],
+	[Bank Account No_]
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Vendor Bank Account];
