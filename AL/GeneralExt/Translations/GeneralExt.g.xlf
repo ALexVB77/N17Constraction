@@ -2163,6 +2163,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Field Cost Place - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3435553198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Privete Dimension Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435553198 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435553198 - Field 450215166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Privete Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Field Privete Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435553198 - Field 723147087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Privete Value Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Field Privete Value Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435553198 - Field 1502290950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Public Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Field Public Value - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3568259090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proj. Cost Control Entry Buf.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8032,6 +8057,11 @@
           <source>Current Journal Template Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlTemplateName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4088986427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Privete Dimension Values</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Privete Dimension Values - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 756426410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem Document Set</source>
