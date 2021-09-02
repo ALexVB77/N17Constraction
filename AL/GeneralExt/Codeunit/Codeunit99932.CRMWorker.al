@@ -122,6 +122,24 @@ codeunit 99932 "CRM Worker"
         ParsedObjectsG: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
         CrmInteractCompanyListG: List of [Text];
 
+
+    procedure GetApartmentType(UnitXml: Text) Response: Text
+    var
+        RootXmlElement: XmlElement;
+        XmlValues: array[3] of Text;
+        TempDT: DateTime;
+        OK: Boolean;
+        ExpectedRegPeriod: Integer;
+    begin
+        GetRootXmlElement(UnitXml, RootXmlElement);
+        GetValue(RootXmlElement, UnitIdX, XmlValues[1]);
+        OK := GetValue(RootXmlElement, JoinX(UnitBaseDataX, ApartmentNumberX), XmlValues[2]);
+        OK := GetValue(RootXmlElement, JoinX(UnitX, ApartmentOriginTypeX), XmlValues[3]);
+        if (XmlValues[2] <> '') or (XmlValues[3] <> '') then begin
+            Response := StrSubstNo('%1;%2;%3', XmlValues[1], XmlValues[2], XmlValues[3]);
+        end;
+    end;
+
     procedure ImportObjects(var FetchedObject: Record "CRM Prefetched Object")
     var
         TargetCompany: Text[60];
