@@ -612,14 +612,17 @@ page 70143 "Forecast List Analisys"
 
     trigger OnModifyRecord(): Boolean
     begin
-        CheckAllowChanges();
+        if not (PrjBudMgt.IsMasterCF() and (Rec."Create User" <> xRec."Create User")) then
+            CheckAllowChanges();
     end;
 
     trigger OnDeleteRecord(): Boolean
     begin
-        if UserId <> Rec."Create User" then
-            Error('');
-        CheckAllowChanges();
+        if not (PrjBudMgt.IsMasterCF() and (Rec."Entry No." = Rec."Parent Entry") and not PrjBudMgt.HaveSTEntries(Rec)) then begin
+            if UserId <> Rec."Create User" then
+                Error('');
+            CheckAllowChanges();
+        end;
     end;
 
     trigger OnClosePage()
