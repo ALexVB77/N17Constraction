@@ -72,7 +72,7 @@ codeunit 14938 "Purchase Receipt M-4 Helper"
     end;
 
     [Scope('OnPrem')]
-    procedure FillM4Body(PageHeaderArr: array[10] of Text)
+    procedure FillM4Body(PageHeaderArr: array[11] of Text)
     begin
         if not ExcelReportBuilderMgr.TryAddSectionWithPlaceForFooter('BODY', 'REPORTFOOTER') then begin
             ExcelReportBuilderMgr.AddPagebreak;
@@ -91,6 +91,7 @@ codeunit 14938 "Purchase Receipt M-4 Helper"
         ExcelReportBuilderMgr.AddDataToSection('VATAmount', PageHeaderArr[9]);
         ExcelReportBuilderMgr.AddDataToSection('LineAmountWithTax', PageHeaderArr[10]);
         ExcelReportBuilderMgr.AddDataToSection('ItemNo', PageHeaderArr[2]);
+        ExcelReportBuilderMgr.AddDataToSection('CostCode', PageHeaderArr[11]);
     end;
 
     [Scope('OnPrem')]

@@ -12,7 +12,7 @@ pageextension 80256 "Payment Journal (Ext)" extends "Payment Journal"
     }
     actions
     {
-        addlast("F&unctions")
+        addlast("F&unctions")///
         {
             separator(CustFunctionSep)
             {
@@ -32,8 +32,36 @@ pageextension 80256 "Payment Journal (Ext)" extends "Payment Journal"
                     CurrPage.UPDATE(FALSE);
                 end;
             }
+            action(ViewRequest)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Request (Journal)';
+                Image = View;
+
+                trigger OnAction()
+                begin
+                    OpenPaymentRequestCard();
+                end;
+            }
 
 
         }
     }
+    local procedure OpenPaymentRequestCard()
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        PaymentRequestCard: Page "Payment Request Card";
+        PaymentJournal: page "Payment Journal";
+        MultiLine: Boolean;
+        PH: Record "Purchase Header";
+        LocText001: Label 'No requests were found';
+    begin
+
+        if PH.get(ph."Document Type"::Order, Rec."IW Document No.") then begin
+            PaymentRequestCard.SetTableView(PH);
+            PaymentRequestCard.SetRecord(PH);
+            PaymentRequestCard.Run();
+        end else
+            Message(LocText001);
+    end;
 }

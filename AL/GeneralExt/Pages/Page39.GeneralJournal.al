@@ -43,6 +43,22 @@ pageextension 80039 "General Journal (Ext)" extends "General Journal"
                 end;
 
             }
+            action("Import Lines from Excel File")
+            {
+                Caption = 'Import lines from Excel file';
+                ApplicationArea = All;
+                trigger OnAction()
+                var
+                    FinOperationImport: Report "Fin Operation Import";
+                begin
+
+                    CLEAR(FinOperationImport);
+                    FinOperationImport.GetParameter(Rec);
+
+                    FinOperationImport.Run();
+                    CurrPage.UPDATE(FALSE);
+                end;
+            }
         }
     }
 

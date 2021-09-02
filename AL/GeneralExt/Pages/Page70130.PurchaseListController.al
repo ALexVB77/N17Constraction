@@ -447,6 +447,7 @@ page 70130 "Purchase List Controller"
         PaymentJournal: page "Payment Journal";
         MultiLine: Boolean;
         LocText001: Label 'No payment journal lines were created from document %1.';
+        PH: Record "Purchase Header";
     begin
         if LinkedGenJnlLine."Line No." = 0 then begin
             Message(LocText001, "No.");
@@ -463,8 +464,12 @@ page 70130 "Purchase List Controller"
         GenJnlLine.SetRange("Line No.", LinkedGenJnlLine."Line No.");
 
         if not MultiLine then begin
-            PaymentRequestCard.SetTableView(GenJnlLine);
-            PaymentRequestCard.SetRecord(GenJnlLine);
+            // PaymentRequestCard.SetTableView(GenJnlLine);
+            // PaymentRequestCard.SetRecord(GenJnlLine);
+            // PaymentRequestCard.Run();
+            PH.get(PH."Document Type"::Order, Rec."No.");
+            PaymentRequestCard.SetTableView(PH);
+            PaymentRequestCard.SetRecord(PH);
             PaymentRequestCard.Run();
         end else begin
             PaymentJournal.SetTableView(GenJnlLine);

@@ -21,6 +21,10 @@ page 34 "Vendor Lookup"
                 {
                     ApplicationArea = All;
                 }
+                field("VAT Registration No."; Rec."VAT Registration No.")
+                {
+                    ApplicationArea = All;
+                }
                 field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Advanced;

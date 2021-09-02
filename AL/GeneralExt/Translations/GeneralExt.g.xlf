@@ -2163,6 +2163,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Field Cost Place - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3435553198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Privete Dimension Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435553198 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435553198 - Field 450215166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Privete Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Field Privete Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435553198 - Field 723147087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Privete Value Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Field Privete Value Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3435553198 - Field 1502290950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Public Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Privete Dimension Value - Field Public Value - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3568259090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Proj. Cost Control Entry Buf.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8033,6 +8058,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted Gen. Journals_ - Control CurrentJnlTemplateName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4088986427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Privete Dimension Values</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Privete Dimension Values - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 756426410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Problem Document Set</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11438,6 +11468,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Data Migration From Excel - Method OnPreReport - NamedType Text0019</note>
         </trans-unit>
+        <trans-unit id="Report 4294960608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Excel Account Invoices</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Excel Account Invoices - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3333280010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export Subform</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11957,6 +11992,36 @@
           <source>Depreciation Group Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report FA Write-off Act FA-4b - Control Depreciation Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fin Operation Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - NamedType 2027480941" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please select a file to download!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - NamedType Err_fname</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - NamedType 1427759826" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The Excel sheet must be specified!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - NamedType Err_sname</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - NamedType 510963145" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import from File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - NamedType Text031</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3548959355 - Control 989751795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - Control FileName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1306421762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Find Error 70095</source>
@@ -13228,6 +13293,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Copy lines from journal archive - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 512924377 - Action 3575932681 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Import lines from Excel file</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Import Lines from Excel File - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 250922747 - Control 2993483370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Credit-Memo Reason</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Ledger Entries (Ext) - Control Credit-Memo Reason - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 250922747 - Control 1231965224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>DenDoc Dim Value</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13263,6 +13338,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension MyDim Value Comb Ext - Control ColFilter - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1118084349 - Method 1591721637 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1118084349">
+          <source>No requests were found</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Method OpenPaymentRequestCard - NamedType LocText001</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1118084349 - Action 3597331879 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
           <source>CustFunctionSep</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13272,6 +13352,11 @@
           <source>Get lines from Payments Reg.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Action GetLinesFromPayReg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118084349 - Action 1343343608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Request (Journal)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Payment Journal (Ext) - Action ViewRequest - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3985706558 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1734268181">
           <source>Print</source>
