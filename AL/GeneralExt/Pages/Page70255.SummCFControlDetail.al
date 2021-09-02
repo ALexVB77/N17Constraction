@@ -156,7 +156,9 @@ page 70255 "Summ. Cash Flow Control Detail"
                 var
                     lOrBud: Record "Original Budget";
                 begin
-                    lOrBud.ImportExcel();
+                    if ProjectCode = '' then
+                        Error(Text001);
+                    lOrBud.ImportExcel(ProjectCode);
                 end;
             }
         }
@@ -195,6 +197,7 @@ page 70255 "Summ. Cash Flow Control Detail"
         PKFirstRecInCurrSet: Text[80];
         CurrSetLength: Integer;
         DateFilter: Text[1024];
+        Text001: Label 'Select Project code before import!';
 
     procedure SetColumns(SetWanted: Option First,Previous,Same,Next,PreviousColumn,NextColumn)
     var
