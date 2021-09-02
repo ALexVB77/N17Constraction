@@ -22,6 +22,13 @@ codeunit 99930 "CRM Integration API"
         exit('OK');
     end;
 
+    procedure GetApartmentType(cmrObjectXml: Text) response: Text
+    var
+        CrmWorker: Codeunit "CRM Worker";
+    begin
+        response := CrmWorker.GetApartmentType(cmrObjectXml);
+    end;
+
     local procedure CreateQueueTask(var NewWrq: record "Web Request Queue"; WorkerCode: Code[20]; RequestBodyText: Text)
     var
         OutStream: OutStream;
