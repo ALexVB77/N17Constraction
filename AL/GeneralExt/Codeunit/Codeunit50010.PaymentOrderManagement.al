@@ -1665,6 +1665,8 @@ codeunit 50010 "Payment Order Management"
                 GenJournalLine.VALIDATE("Currency Code", PurchHeader."Currency Code");
                 GenJournalLine."IW Document No." := PurchHeader."No.";
 
+                GenJournalLine.Validate("Beneficiary Bank Code", PurchHeader."Vendor Bank Account No.");
+
                 // NC AB: пока не понял для чего это поле в операции поставщика 
                 // GenJournalLine."IW Planned Repayment Date" := PurchHeader."IW Planned Repayment Date";
 
