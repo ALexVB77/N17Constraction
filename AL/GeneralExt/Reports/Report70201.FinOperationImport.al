@@ -65,7 +65,14 @@ report 70201 "Fin Operation Import"
         GLAccount: Record "G/L Account";
         BankAccount: Record "Bank Account";
         FixedAsset: Record "Fixed Asset";
+        dimMgtext: Codeunit "Dimension Management (Ext)";
+        dimMgt: Codeunit DimensionManagement;
+        salesSetup: record "Sales & Receivables Setup";
+        GLSetup: Record "General Ledger Setup";
+
     begin
+        salesSetup.get;
+        GLSetup.get;
         IF FileName = '' THEN
             ERROR(Err_fname);
         if SheetName = '' then
@@ -147,6 +154,27 @@ report 70201 "Fin Operation Import"
                 genJnl.Validate(Correction);
             evaluate(genJnl."External Document No.", getvalue(i, 8));
             genJnl.Validate("External Document No.");
+            evaluate(txt, getvalue(i, 9));
+            if txt <> '' then
+                dimMgtext.valDimValueWithUpdGlobalDim(GLSetup."Shortcut Dimension 1 Code", txt, genJnl."Dimension Set ID", genJnl."Shortcut Dimension 1 Code", genJnl."Shortcut Dimension 2 Code");
+
+            evaluate(txt, getvalue(i, 10));
+            if txt <> '' then
+                dimMgtext.valDimValueWithUpdGlobalDim(GLSetup."Shortcut Dimension 2 Code", txt, genJnl."Dimension Set ID", genJnl."Shortcut Dimension 1 Code", genJnl."Shortcut Dimension 2 Code");
+
+            evaluate(txt, getvalue(i, 11));
+            if txt <> '' then
+                dimMgtext.valDimValueWithUpdGlobalDim(GLSetup."Shortcut Dimension 3 Code", txt, genJnl."Dimension Set ID", genJnl."Shortcut Dimension 1 Code", genJnl."Shortcut Dimension 2 Code");
+
+            evaluate(txt, getvalue(i, 12));
+            if txt <> '' then
+                dimMgtext.valDimValueWithUpdGlobalDim(GLSetup."Shortcut Dimension 5 Code", txt, genJnl."Dimension Set ID", genJnl."Shortcut Dimension 1 Code", genJnl."Shortcut Dimension 2 Code");
+            evaluate(txt, getvalue(i, 13));
+            if txt <> '' then
+                dimMgtext.valDimValueWithUpdGlobalDim(GLSetup."Shortcut Dimension 7 Code", txt, genJnl."Dimension Set ID", genJnl."Shortcut Dimension 1 Code", genJnl."Shortcut Dimension 2 Code");
+
+
+
             //-------------
             GenJournalLine.Reset();
             GenJournalLine.SETRANGE("Journal Template Name", GenJournalLine_."Journal Template Name");
