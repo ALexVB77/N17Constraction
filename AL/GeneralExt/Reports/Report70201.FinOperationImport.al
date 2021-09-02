@@ -90,28 +90,33 @@ report 70201 "Fin Operation Import"
         //DimCode[8]:=getvalue()
         for i := 2 to LastRow do begin
             evaluate(txt, getvalue(i, 1));
-
-            IF Customer.GET(txt) THEN BEGIN
-                GenJnl."Account Type" := GenJnl."Account Type"::Customer;
-                GenJnl.VALIDATE("Account No.", Txt);
-            END ELSE
-                IF Vendor.GET(Txt) THEN BEGIN
-                    GenJnl."Account Type" := GenJnl."Account Type"::Vendor;
+            if txt <> '' then begin
+                IF Customer.GET(txt) THEN BEGIN
+                    GenJnl."Account Type" := GenJnl."Account Type"::Customer;
                     GenJnl.VALIDATE("Account No.", Txt);
                 END ELSE
-                    IF GLAccount.GET(Txt) THEN BEGIN
-                        GenJnl."Account Type" := GenJnl."Account Type"::"G/L Account";
+                    IF Vendor.GET(Txt) THEN BEGIN
+                        GenJnl."Account Type" := GenJnl."Account Type"::Vendor;
                         GenJnl.VALIDATE("Account No.", Txt);
                     END ELSE
-                        // MC IK 20121005 >>
-                        IF BankAccount.GET(Txt) THEN BEGIN
-                            GenJnl."Account Type" := GenJnl."Account Type"::"Bank Account";
+                        IF GLAccount.GET(Txt) THEN BEGIN
+                            GenJnl."Account Type" := GenJnl."Account Type"::"G/L Account";
                             GenJnl.VALIDATE("Account No.", Txt);
                         END ELSE
-                            IF FixedAsset.GET(Txt) THEN BEGIN
-                                GenJnl."Account Type" := GenJnl."Account Type"::"Fixed Asset";
+                            // MC IK 20121005 >>
+                            IF BankAccount.GET(Txt) THEN BEGIN
+                                GenJnl."Account Type" := GenJnl."Account Type"::"Bank Account";
                                 GenJnl.VALIDATE("Account No.", Txt);
-                            END;
+                            END ELSE
+                                IF FixedAsset.GET(Txt) THEN BEGIN
+                                    GenJnl."Account Type" := GenJnl."Account Type"::"Fixed Asset";
+                                    GenJnl.VALIDATE("Account No.", Txt);
+                                END
+                                else begin
+                                    genJnl."Account No." := '';
+                                    Error('Счет %1 не найден', txt);
+                                end;
+            end;
             /////////////////////////
             if not evaluate(genJnl."Posting Date", getvalue(i, 2))
             then begin
@@ -125,29 +130,35 @@ report 70201 "Fin Operation Import"
             genJnl.Validate("Document No.");
             evaluate(genJnl.Description, getvalue(i, 4));
             genJnl.Validate(Description);
-            evaluate(txt, getvalue(i, 5));
 
-            IF Customer.GET(Txt) THEN BEGIN
-                genJnl."Bal. Account Type" := genJnl."Account Type"::Customer;
-                genJnl.VALIDATE("Bal. Account No.", Txt);
-            END ELSE
-                IF Vendor.GET(Txt) THEN BEGIN
-                    genJnl."Bal. Account Type" := genJnl."Account Type"::Vendor;
+            evaluate(txt, getvalue(i, 5));
+            if txt <> '' then begin
+                IF Customer.GET(Txt) THEN BEGIN
+                    genJnl."Bal. Account Type" := genJnl."Account Type"::Customer;
                     genJnl.VALIDATE("Bal. Account No.", Txt);
                 END ELSE
-                    IF GLAccount.GET(Txt) THEN BEGIN
-                        genJnl."Bal. Account Type" := genJnl."Account Type"::"G/L Account";
+                    IF Vendor.GET(Txt) THEN BEGIN
+                        genJnl."Bal. Account Type" := genJnl."Account Type"::Vendor;
                         genJnl.VALIDATE("Bal. Account No.", Txt);
                     END ELSE
-                        // MC IK 20121005 >>
-                        IF BankAccount.GET(Txt) THEN BEGIN
-                            genJnl."Account Type" := genJnl."Account Type"::"Bank Account";
-                            genJnl.VALIDATE("Account No.", Txt);
+                        IF GLAccount.GET(Txt) THEN BEGIN
+                            genJnl."Bal. Account Type" := genJnl."Account Type"::"G/L Account";
+                            genJnl.VALIDATE("Bal. Account No.", Txt);
                         END ELSE
-                            IF FixedAsset.GET(Txt) THEN BEGIN
-                                genJnl."Account Type" := genJnl."Account Type"::"Fixed Asset";
-                                genJnl.VALIDATE("Account No.", Txt);
-                            END;
+                            // MC IK 20121005 >>
+                            IF BankAccount.GET(Txt) THEN BEGIN
+                                genJnl."Bal. Account Type" := genJnl."Account Type"::"Bank Account";
+                                genJnl.VALIDATE("Bal. Account No.", Txt);
+                            END ELSE
+                                IF FixedAsset.GET(Txt) THEN BEGIN
+                                    genJnl."Bal. Account Type" := genJnl."Account Type"::"Fixed Asset";
+                                    genJnl.VALIDATE("Bal. Account No.");
+                                END
+                                else begin
+                                    genJnl."Account No." := '';
+                                    Error('Балансовый счет %1 не найден', txt);
+                                end;
+            end;
             evaluate(genJnl.Amount, getvalue(i, 6));
             genJnl.Validate(Amount);
             if evaluate(genJnl.Correction, getvalue(i, 7)) then
