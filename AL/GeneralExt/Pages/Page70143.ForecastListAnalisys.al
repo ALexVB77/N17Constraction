@@ -160,11 +160,7 @@ page 70143 "Forecast List Analisys"
                     Caption = 'Show only parent entries.';
                     trigger OnValidate()
                     begin
-                        if OnlyParent then
-                            Rec.SetRange(Parentbool, true)
-                        else
-                            Rec.SetRange(Parentbool);
-                        CurrPage.Update(false);
+                        BuildOnlyParent();
                     end;
                 }
             }
@@ -481,6 +477,7 @@ page 70143 "Forecast List Analisys"
                     ApplicationArea = All;
                     StyleExpr = LineStyletxt;
                     Editable = CreateUIDEditable;
+                    TableRelation = User;
 
                 }
                 field("Parent Entry"; Rec."Parent Entry")
@@ -597,6 +594,7 @@ page 70143 "Forecast List Analisys"
         if not OpenFltsApplied then begin
             HideZeroAmountLine := true;
             BuildView();
+            BuildOnlyParent();
             ValidateProject();
             OpenFltsApplied := true;
         end;
@@ -762,6 +760,15 @@ page 70143 "Forecast List Analisys"
         else
             Rec.SetRange("Without VAT (LCY)");
         CurrPage.UPDATE(FALSE);
+    end;
+
+    local procedure BuildOnlyParent();
+    begin
+        if OnlyParent then
+            Rec.SetRange(Parentbool, true)
+        else
+            Rec.SetRange(Parentbool);
+        CurrPage.Update(false);
     end;
 
     local procedure TemplateCodeOnAfterValidate()
