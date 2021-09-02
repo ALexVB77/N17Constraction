@@ -8,6 +8,10 @@ pageextension 80256 "Payment Journal (Ext)" extends "Payment Journal"
             {
                 ApplicationArea = All;
             }
+            field("IW Document No."; "IW Document No.")
+            {
+                ApplicationArea = All;
+            }
         }
     }
     actions
