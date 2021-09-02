@@ -123,15 +123,20 @@ codeunit 99932 "CRM Worker"
         CrmInteractCompanyListG: List of [Text];
 
 
-    procedure GetApartmentType(UnitXml: Text) Response: Text
+    procedure GetApartmentType(SoapEnvBody: Text) Response: Text
     var
+        Base64Convert: Codeunit "Base64 Convert";
         RootXmlElement: XmlElement;
         XmlValues: array[3] of Text;
+        ObjectXmlText: Text;
         TempDT: DateTime;
         OK: Boolean;
         ExpectedRegPeriod: Integer;
     begin
-        GetRootXmlElement(UnitXml, RootXmlElement);
+        if not GetRootXmlElement(SoapEnvBody, RootXmlElement) then
+            Error('No soapp envelope body!');
+        ObjectXmlText := Base64Convert.FromBase64(SoapEnvBody);
+        GetRootXmlElement(ObjectXmlText, RootXmlElement);
         GetValue(RootXmlElement, UnitIdX, XmlValues[1]);
         OK := GetValue(RootXmlElement, JoinX(UnitBaseDataX, ApartmentNumberX), XmlValues[2]);
         OK := GetValue(RootXmlElement, JoinX(UnitX, ApartmentOriginTypeX), XmlValues[3]);
