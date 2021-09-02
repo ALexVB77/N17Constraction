@@ -106,7 +106,13 @@ report 70201 "Fin Operation Import"
                                 GenJnl.VALIDATE("Account No.", Txt);
                             END;
             /////////////////////////
-            evaluate(genJnl."Posting Date", getvalue(i, 2));
+            if not evaluate(genJnl."Posting Date", getvalue(i, 2))
+            then begin
+                txt := getvalue(i, 2);
+                txt := StrSubstNo('%1-%2-%3', CopyStr(txt, 7, 4), CopyStr(txt, 4, 2), CopyStr(txt, 1, 2));
+                evaluate(genJnl."Posting Date", txt);
+            end;
+
             genJnl.Validate("Posting Date");
             evaluate(genJnl."Document No.", getvalue(i, 3));
             genJnl.Validate("Document No.");
