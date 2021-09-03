@@ -114,7 +114,7 @@ codeunit 50006 "Base App. Subscribers Mgt."
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterValidateEvent', 'Agreement No.', false, false)]
-    local procedure onAfterValidateAgreementNo(Rec: Record "Gen. Journal Line"; xRec: Record "Gen. Journal Line"; CurrFieldNo: Integer)
+    local procedure onAfterValidateAgreementNo(var Rec: Record "Gen. Journal Line"; xRec: Record "Gen. Journal Line"; CurrFieldNo: Integer)
     var
         CustAgrmt: Record "Customer Agreement";
         VendAgrmt: Record "Vendor Agreement";
@@ -127,13 +127,15 @@ codeunit 50006 "Base App. Subscribers Mgt."
                         CustAgrmt.TestField(Active, true);
                         if CustAgrmt."Payment Method Code" <> '' then
                             Rec.Validate("Payment Method Code", CustAgrmt."Payment Method Code");
+
                     end;
                 Rec."Account Type"::Vendor:
                     begin
                         VendAgrmt.Get(Rec."Account No.", Rec."Agreement No.");
                         VendAgrmt.TestField(Active, true);
                         if VendAgrmt."Payment Method Code" <> '' then
-                            Rec.Validate("Payment Method Code", VendAgrmt."Payment Method Code")
+                            Rec.Validate("Payment Method Code", VendAgrmt."Payment Method Code");
+
                     end;
             end;
 
