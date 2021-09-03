@@ -2600,7 +2600,6 @@
           <source>Project Code</source>
           <target>Код проекта</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Field Project Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3435553198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -12377,7 +12376,6 @@
           <source>Select Project code before import!</source>
           <target>Выберите Код проекта перед импортом!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summ. Cash Flow Control Detail - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Page 2119146127 - Control 3611811290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -12468,7 +12466,6 @@
           <source>Select Project code before import!</source>
           <target>Выберите Код проекта перед импортом!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary Cash Flow Control - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Page 510141852 - Control 3611811290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

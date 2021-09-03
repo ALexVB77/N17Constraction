@@ -8,7 +8,7 @@ $WS.Timeout = [System.Int32]::MaxValue
 
 $XmlObjectsFolder = 'C:\Temp\CRM1'
 
-$SoapEnvelope = @"
+$SoapEnvelopeTemplate = @"
 <?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <soap:Body>
@@ -47,8 +47,7 @@ Write-Host $ResponseText
 
 
 #batch
-$Base64XmlContentPrev = ""
-$ResponseTextAll = ""
+$ResponseTextAll = "UnitId;No;Type`r`n"
 $Files = Get-ChildItem -Path "$XmlObjectsFolder\*" -Include "*.xml"
 if (!$Files){
    Write-Host "There are no xml files!"
@@ -60,13 +59,12 @@ if (!$Files){
       $XmlContent = Get-Content -Path $Filename -Encoding utf8
       $Base64XmlContent = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($XmlContent))
       $EncodedXml =  $XmlObject.Replace("_1_", $Base64XmlContent)
-      $SoapEnv = $SoapEnvelope.Replace("_1_", $EncodedXml)
+      $SoapEnv = $SoapEnvelopeTemplate.Replace("_1_", $EncodedXml)
       $ResponseText = $WS.GetApartmentType($SoapEnv)
+      Write-Host $ResponseText
       if ($ResponseText -ne "-") {
          $ResponseTextAll = $ResponseTextAll + "$ResponseText`r`n"
       }
-      $Base64XmlContentPrev = $Base64XmlContent
-
    }
 }
 
