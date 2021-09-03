@@ -17,17 +17,21 @@ table 50003 "Original Budget"
         {
             Caption = 'Amount';
         }
+        field(4; "Project Code"; Code[20])
+        {
+            Caption = 'Project Code';
+        }
     }
 
     keys
     {
-        key(Key1; "Cost Place", "Cost Code")
+        key(Key1; "Project Code", "Cost Place", "Cost Code")
         {
             Clustered = true;
         }
     }
 
-    procedure ImportExcel()
+    procedure ImportExcel(pPrCode: Code[20])
     var
         OrBudget: Record "Original Budget";
         ExcelBuf: Record "Excel Buffer" temporary;
@@ -60,6 +64,7 @@ table 50003 "Original Budget"
                     OrBudget."Cost Code" := ExcelBuf."Cell Value as Text";
                 if ExcelBuf.get(Rno, 3) then
                     if Evaluate(OrBudget.Amount, ExcelBuf."Cell Value as Text") then;
+                OrBudget."Project Code" := pPrCode;
                 if not OrBudget.Insert(false) then
                     OrBudget.Modify(false);
             end;

@@ -23,11 +23,18 @@ page 70076 Apartments
                     ApplicationArea = All;
 
                 }
-                field(Type; Rec.Type)
+                field("Type"; Rec.Type)
                 {
                     ApplicationArea = All;
 
                 }
+
+                field("Origin Type"; Rec."Origin Type")
+                {
+                    ApplicationArea = All;
+
+                }
+
                 field("Total Area (Project)"; Rec."Total Area (Project)")
                 {
                     ApplicationArea = All;

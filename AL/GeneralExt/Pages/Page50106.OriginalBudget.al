@@ -1,8 +1,8 @@
 page 50106 "Original Budget"
 {
     PageType = List;
-    // ApplicationArea = All;
-    // UsageCategory = Administration;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Original Budget";
 
     layout
@@ -11,6 +11,10 @@ page 50106 "Original Budget"
         {
             repeater(rep1)
             {
+                field("Project Code"; Rec."Project Code")
+                {
+                    ApplicationArea = All;
+                }
                 field("Cost Code"; Rec."Cost Code")
                 {
                     ApplicationArea = All;

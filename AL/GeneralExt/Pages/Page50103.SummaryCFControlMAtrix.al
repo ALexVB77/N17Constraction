@@ -386,9 +386,11 @@ page 50103 "Summary CF Control Matrix"
         PrjBudEntries.Reset;
         SetFilters(1, 1);
         PrjBudEntries.CalcSums("Without VAT (LCY)");
+        PrjBudEntries.SetRange(Date);
         CFActuals := PrjBudEntries."Without VAT (LCY)";
         PrjBudEntries.Reset;
         SetFilters(1, 2);
+        PrjBudEntries.SetRange(Date);
         PrjBudEntries.CalcSums("Without VAT (LCY)");
         CFTotalUnpaid := PrjBudEntries."Without VAT (LCY)";
         OrigBudRec.Reset();

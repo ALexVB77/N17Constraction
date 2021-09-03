@@ -2163,6 +2163,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Field Cost Place - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2528781168 - Field 2965272548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Project Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Field Project Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3435553198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Privete Dimension Value</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10253,6 +10258,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summ. Cash Flow Control Detail - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2119146127 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Project code before import!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Summ. Cash Flow Control Detail - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Page 2119146127 - Control 3611811290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10322,6 +10332,11 @@
           <source>Summary Cash Flow Control</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary Cash Flow Control - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 510141852 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Project code before import!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Summary Cash Flow Control - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Page 510141852 - Control 3611811290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Code</source>

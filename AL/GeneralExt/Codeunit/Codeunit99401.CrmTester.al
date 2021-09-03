@@ -137,13 +137,12 @@ codeunit 99401 "CRM Tester"
         if not GetRootXmlElement(SoapEnvBody, RootXmlElement) then
             Error('No soap envelope body!');
         GetValue(RootXmlElement, '//object', EncodedObjectXml);
-        exit(GenerateHash(EncodedObjectXml));
+        //exit(GenerateHash(EncodedObjectXml));
         //exit(SoapEnvBody);
         ObjectXmlText := Base64Convert.FromBase64(EncodedObjectXml);
-
         GetRootXmlElement(ObjectXmlText, RootXmlElement);
         GetValue(RootXmlElement, UnitIdX, XmlValues[1]);
-        OK := GetValue(RootXmlElement, JoinX(UnitBaseDataX, ApartmentNumberX), XmlValues[2]);
+        GetValue(RootXmlElement, JoinX(UnitBaseDataX, InvestmentObjectX), XmlValues[2]);
         OK := GetValue(RootXmlElement, JoinX(UnitX, ApartmentOriginTypeX), XmlValues[3]);
         if (XmlValues[2] <> '') or (XmlValues[3] <> '') then begin
             Response := StrSubstNo('%1;%2;%3', XmlValues[1], XmlValues[2], XmlValues[3]);

@@ -31,6 +31,11 @@ page 70077 "Apartment Card"
                     ApplicationArea = All;
 
                 }
+                field("Origin Type"; Rec."Origin Type")
+                {
+                    ApplicationArea = All;
+
+                }
 
                 field("Total Area (Project)"; Rec."Total Area (Project)")
                 {

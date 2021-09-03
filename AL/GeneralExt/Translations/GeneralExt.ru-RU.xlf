@@ -2596,6 +2596,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Field Cost Place - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2528781168 - Field 2965272548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Project Code</source>
+          <target>Код проекта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Original Budget - Field Project Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3435553198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Privete Dimension Value</source>
           <target>Приватное значение измерений</target>
@@ -5565,6 +5571,230 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Object Xml to Json - NamedType UnknownObjectTypeErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 4197778782" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All is up to date</source>
+          <target>[NAB: SUGGESTION]Действий не требуется. Данные уже находятся в актуальном состоянии.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType AllUpToDateMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 2221351987" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bad soap envelope format</source>
+          <target>[NAB: SUGGESTION]Неверный формат SOAP пакета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType BadSoapEnvFormatErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1397584261" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No. %1</source>
+          <target>[NAB: SUGGESTION]Клиент Но. %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContactProcessedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 3797882964" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Contact or Reserving Contact is not found</source>
+          <target>[NAB: SUGGESTION]Не найден Unit</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContactUnitNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1878002620" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Another Customer already has the same Agreement Crm Guid, Old Customer No.=%1, New Customer No.=%2</source>
+          <target>[NAB: SUGGESTION]Договор с данным Id уже имеется у другого клиента %1, новый клиент %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractAlreadyLinkedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1118960650" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buyers are not found</source>
+          <target>[NAB: SUGGESTION]Покупатели не найдены</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractBuyersNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 976920571" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3</source>
+          <target>[NAB: SUGGESTION]Контакт %1 не найден, идентификатор родительского объекта (блок) %2, покупатель %3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractContactNotFound</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 347140877" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Agreement %1 has been created, %2 = %3, %4 = %5</source>
+          <target>[NAB: SUGGESTION]Создан договор клиента %1, %2 = %3, %4 = %5</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 2571148164" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement could not be created. Some of contacts are not created</source>
+          <target>[NAB: SUGGESTION]Договор клиента не может быть создан. Один или несколько контактов не были созданы.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractNotCreated2Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 312159366" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement could not be created. Some of contacts are not found</source>
+          <target>[NAB: SUGGESTION]Договор клиента не может быть создан. Один или несколько контактов не найдены</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractNotCreatedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not registered, Type %1, Status %2</source>
+          <target>[NAB: SUGGESTION]Договр не зарегистрирован, Тип %1, Статус %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractNotRegisteredErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 4269605980" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not signed, Type %1, Status %2</source>
+          <target>[NAB: SUGGESTION]Договор не подписан, Тип %1, Статус %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractNotSignedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 3024906446" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit %1 of Contract is not found</source>
+          <target>[NAB: SUGGESTION]Не найден Unit %1 (ParentObnjectID)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractUnitNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 2603215002" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Agreement %1 has been updated, %2 = %3, %4 = %5</source>
+          <target>[NAB: SUGGESTION]Обновлен договор клиента %1, %2 = %3, %4 = %5 </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1295264560" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Http request body is empty</source>
+          <target>[NAB: SUGGESTION]Веб-запрос не содержит тела</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType EmptyHttpRequestBody</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 536274629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Object field name %1 does not exist</source>
+          <target>[NAB: SUGGESTION]Атрибут %1 не существует</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType FieldNameDoesNotExistErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 401186837" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import action %1 is not allowed</source>
+          <target>[NAB: SUGGESTION]Недопустимый режим импорта данных %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ImportActionNotAllowedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 3007870474" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The email address "%1" is not valid.</source>
+          <target>[NAB: SUGGESTION]Недопустимый адрес электронной почты "%1".</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType InvalidEmailAddressErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1309546067" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The phone no. "%1" is not valid.</source>
+          <target>[NAB: SUGGESTION]Недопустимы формат номера телефона "%1"</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType InvalidPhoneNoErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 2041483183" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object %1 was created</source>
+          <target>[NAB: SUGGESTION]Объект инвестирования %1 создан</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType InvestmentObjectCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 305442788" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object %1 was updated</source>
+          <target>[NAB: SUGGESTION]Объект инвестирования %1 обновлен</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType InvestmentObjectUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 3720241846" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No field key is specified!</source>
+          <target>[NAB: SUGGESTION]Не указано поле данных Crm объекта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType KeyErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 3972260258" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object is not specified</source>
+          <target>[NAB: SUGGESTION]Объект инвестирования отсутствует</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType NoInvestObjectMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1236386240" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No ObjectID in XML Document</source>
+          <target>[NAB: SUGGESTION]Не найден ObjectID в Xml объекта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType NoObjectIdErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1115934796" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No ParentObjectID in XML Document</source>
+          <target>[NAB: SUGGESTION]Не найден ParenObjectID в Xml объекта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType NoParentObjectIdErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1648349699" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import of object %1 interrupted. No parsed data</source>
+          <target>[NAB: SUGGESTION]Ошибка парсинга XML объекта %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType NoParsedDataOnImportErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1376688189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ProjectId %1 is not found in %2</source>
+          <target>[NAB: SUGGESTION]Код проекта %1 не существует в %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ProjectNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1863682477" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 record must be temporary</source>
+          <target>[NAB: SUGGESTION]%1 должна быть временной</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType RecordMustBeTemporaryErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 4161158581" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The session was not started successfully</source>
+          <target>[NAB: SUGGESTION]Ошибка в создании новой сессии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType StartSessionErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 2907044041" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit and Buyer %1 are created</source>
+          <target>[NAB: SUGGESTION]Создана запись в Crm Buyers, Buyer = %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType UnitCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 3511750238" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit and Buyer %1 was updated</source>
+          <target>[NAB: SUGGESTION]Запись Crm Buyers (Buyer = %1) обновлена </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType UnitUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2606391999 - NamedType 1870025204" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown type of Object %1</source>
+          <target>[NAB: SUGGESTION]Неизвестный тип объекта CRM %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType UnknownObjectTypeErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 4197778782" size-unit="char" translate="yes" xml:space="preserve">
           <source>All is up to date</source>
@@ -12142,6 +12372,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summ. Cash Flow Control Detail - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2119146127 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Project code before import!</source>
+          <target>Выберите Код проекта перед импортом!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Summ. Cash Flow Control Detail - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Page 2119146127 - Control 3611811290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Code</source>
           <target>Cost Code</target>
@@ -12225,6 +12461,12 @@
           <target>Summary Cash Flow Control</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary Cash Flow Control - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 510141852 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Project code before import!</source>
+          <target>Выберите Код проекта перед импортом!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Summary Cash Flow Control - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Page 510141852 - Control 3611811290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Code</source>
@@ -14428,42 +14670,36 @@
           <source>Fin Operation Import</source>
           <target>Импорт Фин. Операций из Excel</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3548959355 - NamedType 2027480941" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please select a file to download!</source>
           <target>Укажите файл для загрузки!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - NamedType Err_fname</note>
         </trans-unit>
         <trans-unit id="Report 3548959355 - NamedType 1427759826" size-unit="char" translate="yes" xml:space="preserve">
           <source>The Excel sheet must be specified!</source>
           <target>Страница Excel должна быть указана!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - NamedType Err_sname</note>
         </trans-unit>
         <trans-unit id="Report 3548959355 - NamedType 510963145" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import from File</source>
           <target>Импорт из файла</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - NamedType Text031</note>
         </trans-unit>
         <trans-unit id="Report 3548959355 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General</source>
           <target>Общее</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3548959355 - Control 989751795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>File Name</source>
           <target>Имя файла</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fin Operation Import - Control FileName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1306421762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -15994,7 +16230,6 @@
           <source>Import lines from Excel file</source>
           <target>Загрузить строки из файла Excel</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Journal (Ext) - Action Import Lines from Excel File - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 250922747 - Control 2993483370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
