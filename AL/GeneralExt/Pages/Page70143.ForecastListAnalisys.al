@@ -409,32 +409,32 @@ page 70143 "Forecast List Analisys"
                                         ////NC 28666 HR beg
                                         //IF NOT (IsProductionProject AND ("Cost Code" = '')) THEN BEGIN
                                         ////NC 28666 HR end
-                                        IF NOT IsProductionProject THEN BEGIN
-                                            //NC 29435 HR end
+                                        // IF NOT IsProductionProject THEN BEGIN
+                                        //     //NC 29435 HR end
 
-                                            MESSAGE(TEXT0008);
-                                            CLEAR(lfCFCorrection);
-                                            lfCFCorrection.LOOKUPMODE := TRUE;
-                                            lrProjectsBudgetEntry.SETCURRENTKEY(Date);
-                                            lrProjectsBudgetEntry.SETRANGE("Project Code", Rec."Project Code");
-                                            lrProjectsBudgetEntry.SETRANGE("Project Turn Code", Rec."Project Turn Code");
-                                            lrProjectsBudgetEntry.SETRANGE("Cost Code", Rec."Cost Code");
-                                            lrProjectsBudgetEntry.SETFILTER("Contragent No.", '%1|%2', '', Rec."Contragent No.");
-                                            lrProjectsBudgetEntry.SETRANGE("Agreement No.", '');
-                                            lrProjectsBudgetEntry.SETFILTER("Entry No.", '<>%1', Rec."Entry No.");
-                                            lrProjectsBudgetEntry.SETRANGE(NotVisible, FALSE);
-                                            IF lrProjectsBudgetEntry.FINDFIRST THEN;
-                                            lfCFCorrection.SETTABLEVIEW(lrProjectsBudgetEntry);
-                                            lfCFCorrection.SetData(Rec);
-                                            IF lfCFCorrection.RUNMODAL = ACTION::LookupOK THEN BEGIN
-                                                // SetSum;
-                                            END
-                                            ELSE BEGIN
-                                                // ClearSum;
-                                                Rec.VALIDATE("Agreement No.", OldAgreement);
-                                                MESSAGE(TEXT0009);
-                                            END;
-                                        END; //NC 28666 HR <>
+                                        //     MESSAGE(TEXT0008);
+                                        //     CLEAR(lfCFCorrection);
+                                        //     lfCFCorrection.LOOKUPMODE := TRUE;
+                                        //     lrProjectsBudgetEntry.SETCURRENTKEY(Date);
+                                        //     lrProjectsBudgetEntry.SETRANGE("Project Code", Rec."Project Code");
+                                        //     lrProjectsBudgetEntry.SETRANGE("Project Turn Code", Rec."Project Turn Code");
+                                        //     lrProjectsBudgetEntry.SETRANGE("Cost Code", Rec."Cost Code");
+                                        //     lrProjectsBudgetEntry.SETFILTER("Contragent No.", '%1|%2', '', Rec."Contragent No.");
+                                        //     lrProjectsBudgetEntry.SETRANGE("Agreement No.", '');
+                                        //     lrProjectsBudgetEntry.SETFILTER("Entry No.", '<>%1', Rec."Entry No.");
+                                        //     lrProjectsBudgetEntry.SETRANGE(NotVisible, FALSE);
+                                        //     IF lrProjectsBudgetEntry.FINDFIRST THEN;
+                                        //     lfCFCorrection.SETTABLEVIEW(lrProjectsBudgetEntry);
+                                        //     lfCFCorrection.SetData(Rec);
+                                        //     IF lfCFCorrection.RUNMODAL = ACTION::LookupOK THEN BEGIN
+                                        //         // SetSum;
+                                        //     END
+                                        //     ELSE BEGIN
+                                        //         // ClearSum;
+                                        //         Rec.VALIDATE("Agreement No.", OldAgreement);
+                                        //         MESSAGE(TEXT0009);
+                                        //     END;
+                                        // END; //NC 28666 HR <>
                                     END;
                                 END
                                 ELSE
