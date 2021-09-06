@@ -476,6 +476,33 @@ codeunit 50006 "Base App. Subscribers Mgt."
         DtldVendLedgEntry."IW Document No." := VendLedgEntry."IW Document No.";
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnAfterGLFinishPosting', '', false, false)]
+    local procedure OnAfterGLFinishPostingGenJnlPostLine(GLEntry: Record "G/L Entry"; var GenJnlLine: Record "Gen. Journal Line"; IsTransactionConsistent: Boolean; FirstTransactionNo: Integer; var GLRegister: Record "G/L Register"; var TempGLEntryBuf: Record "G/L Entry" temporary; var NextEntryNo: Integer; var NextTransactionNo: Integer)
+    var
+        lPurchHead: Record "Purchase Header";
+        lPurchLine: Record "Purchase Line";
+        lPBE: Record "Projects Budget Entry";
+    begin
+        if GenJnlLine."IW Document No." <> '' then begin
+            if lPurchHead.Get(lPurchHead."Document Type"::Order, GenJnlLine."IW Document No.") then begin
+                if lPurchHead.GetPaymentInvPaidStatus() then begin
+                    lPurchHead.CalcFields("Paid Date Fact");
+                    lPurchLine.reset;
+                    lPurchLine.SetRange("Document Type", lPurchHead."Document Type");
+                    lPurchLine.SetRange("Document No.", lPurchHead."No.");
+                    lPurchLine.SetFilter("Forecast Entry", '<>%1', 0);
+                    if lPurchLine.FindSet() then
+                        repeat
+                            if lPBE.Get(lPurchLine."Forecast Entry") then begin
+                                lPBE.Close := true;
+                                lPBE."Close Date" := lPurchHead."Paid Date Fact";
+                                lPBE.Modify(false);
+                            end;
+                        until lPurchLine.Next() = 0;
+                end;
+            end;
+        end;
+    end;
     // cu 12 <<
 
     // cu 241 >>
