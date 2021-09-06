@@ -96,6 +96,8 @@ table 70076 "Projects Budget Entry"
         field(20; "Create User"; code[65])
         {
             Caption = 'Create User';
+            TableRelation = User."User Name";
+            ValidateTableRelation = false;
         }
         field(21; "Create Date"; Date)
         {

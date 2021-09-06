@@ -477,7 +477,6 @@ page 70143 "Forecast List Analisys"
                     ApplicationArea = All;
                     StyleExpr = LineStyletxt;
                     Editable = CreateUIDEditable;
-                    TableRelation = User;
 
                 }
                 field("Parent Entry"; Rec."Parent Entry")
