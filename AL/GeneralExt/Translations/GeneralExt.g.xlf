@@ -6273,6 +6273,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0993</note>
         </trans-unit>
+        <trans-unit id="Page 2269272589 - NamedType 2570699915" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry is linked to payment document. Action prohibited!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0994</note>
+        </trans-unit>
         <trans-unit id="Page 2269272589 - Control 1820841161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filters</source>
           <note from="Developer" annotates="general" priority="2"></note>
