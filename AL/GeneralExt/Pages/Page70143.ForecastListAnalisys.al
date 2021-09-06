@@ -610,8 +610,9 @@ page 70143 "Forecast List Analisys"
 
     trigger OnModifyRecord(): Boolean
     begin
-        if not (PrjBudMgt.IsMasterCF() and (Rec."Create User" <> xRec."Create User")) then
+        if not (PrjBudMgt.IsMasterCF() and (Rec."Create User" <> xRec."Create User")) then begin
             CheckAllowChanges();
+        end;
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -721,6 +722,7 @@ page 70143 "Forecast List Analisys"
         TEXT0991: Label 'Cost Place';
         TEXT0992: Label 'Cost Code';
         TEXT0993: Label 'Select Long-term entry to create lines.';
+        TEXT0994: Label 'Entry is linked to payment document. Action prohibited!';
         HideZeroAmountLine: boolean;
         PrjBudMgt: Codeunit "Project Budget Management";
         [InDataSet]
@@ -737,6 +739,9 @@ page 70143 "Forecast List Analisys"
 
     local procedure CheckAllowChanges()
     begin
+        Rec.CalcFields("Payment Doc. No.");
+        if Rec."Payment Doc. No." <> '' then
+            Error(TEXT0994);
         if not PrjBudMgt.AllowLTEntryChange() then
             Error(TEXT0015);
     end;
