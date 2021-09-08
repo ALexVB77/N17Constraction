@@ -6,5 +6,4 @@ Enum 99934 "Investment Object Type"
     value(2; ParkingSpace) { Caption = 'ParkingSpace'; }
     value(3; Storage) { Caption = 'Storage'; }
     value(4; Office) { Caption = 'Office'; }
-
 }

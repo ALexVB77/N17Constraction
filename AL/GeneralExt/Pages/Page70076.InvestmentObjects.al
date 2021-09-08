@@ -1,11 +1,11 @@
-page 70076 Apartments
+page 70076 "Investment Objects"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = Apartments;
+    SourceTable = "Investment Object";
     Caption = 'Investment objects';
-    CardPageId = "Apartment Card";
+    CardPageId = "Investment Object Card";
 
     layout
     {

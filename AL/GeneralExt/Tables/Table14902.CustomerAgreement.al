@@ -89,11 +89,11 @@ tableextension 94902 "Customer Agreement (Ext)" extends "Customer Agreement"
 
         field(70003; "Object of Investing"; Code[20])
         {
-            TableRelation = Apartments."Object No.";
+            TableRelation = "Investment Object"."Object No.";
             Caption = 'Object of Investing';
             trigger OnValidate()
             var
-                lrObjects: record Apartments;
+                lrObjects: Record "Investment Object";
             begin
                 /*
                 BC Temp

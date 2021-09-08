@@ -1,9 +1,9 @@
-page 70077 "Apartment Card"
+page 70077 "Investment Object Card"
 {
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = Apartments;
+    SourceTable = "Investment Object";
     Caption = 'Investment object card';
 
     layout

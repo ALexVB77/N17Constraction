@@ -29,7 +29,7 @@ table 70065 "Objects Act"
         field(4; "Object No."; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = Apartments;
+            TableRelation = "Investment Object";
             Caption = 'Object No.';
 
         }

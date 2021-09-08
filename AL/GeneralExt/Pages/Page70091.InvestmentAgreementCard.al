@@ -257,7 +257,7 @@ page 70091 "Investment Agreement Card"
                 field("Investing Object"; Rec."Object of Investing")
                 {
                     ApplicationArea = All;
-                    TableRelation = Apartments;
+                    TableRelation = "Investment Object";
                     Editable = StatusEditableMod;
                     trigger OnValidate()
                     begin
@@ -721,7 +721,7 @@ page 70091 "Investment Agreement Card"
 
 
     var
-        Apartments: Record Apartments;
+        Apartments: Record "Investment Object";
         gcduERPC: Codeunit "ERPC Funtions";
         ShareHolder2InfoVisible: Boolean;
         ShareHolder3InfoVisible: Boolean;

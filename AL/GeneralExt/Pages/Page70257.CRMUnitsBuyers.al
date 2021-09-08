@@ -55,7 +55,7 @@ page 70257 "CRM Units and Buyers"
 
                 }
 
-                field("Object of Investing"; Rec."Object of Investing")
+                field("Object of Investing"; Rec."Investment Object")
                 {
                     ApplicationArea = All;
 

@@ -921,7 +921,7 @@ codeunit 99932 "CRM Worker"
     local procedure ImportUnit(var FetchedObject: Record "CRM Prefetched Object"; ImportActionEnum: Enum "CRM Import Action") Result: Boolean
     var
         CrmBTemp: Record "CRM Buyers" temporary;
-        ApartmentTemp: Record Apartments temporary;
+        ApartmentTemp: Record "Investment Object" temporary;
         LogStatusEnum: Enum "CRM Log Status";
     begin
         Result := true;
@@ -1638,7 +1638,7 @@ codeunit 99932 "CRM Worker"
         if (C = 0) or (AgrTemp."Agreement Type" = AgrTemp."Agreement Type"::"Reserving Agreement") then begin
             CrmB.SetRange("Unit Guid", UnitId);
             CrmB.FindFirst();
-            AgrTemp."Object of Investing" := CrmB."Object of Investing";
+            AgrTemp."Object of Investing" := CrmB."Investment Object";
             if CrmB."Agreement Start" <> 0D then begin
                 AgrTemp."Agreement Date" := CrmB."Agreement Start";
                 AgrTemp."Starting Date" := CrmB."Agreement Start";
@@ -1675,7 +1675,7 @@ codeunit 99932 "CRM Worker"
                 CrmB.Get(UnitId, BuyerId);
                 if CrmB."Buyer Is Active" then begin
                     ShareHolderNo += 1;
-                    AgrTemp."Object of Investing" := CrmB."Object of Investing";
+                    AgrTemp."Object of Investing" := CrmB."Investment Object";
                     if CrmB."Agreement Start" <> 0D then begin
                         AgrTemp."Agreement Date" := CrmB."Agreement Start";
                         AgrTemp."Starting Date" := CrmB."Agreement Start";
@@ -1729,7 +1729,7 @@ codeunit 99932 "CRM Worker"
     end;
 
     [TryFunction]
-    local procedure ValidateUnitData(var FetchedObject: Record "CRM Prefetched Object"; var CrmBTemp: Record "CRM Buyers"; var ApartmentTemp: Record Apartments)
+    local procedure ValidateUnitData(var FetchedObject: Record "CRM Prefetched Object"; var CrmBTemp: Record "CRM Buyers"; var ApartmentTemp: Record "Investment Object")
     var
         TempValue: Text;
         TempDT: DateTime;
@@ -1759,9 +1759,9 @@ codeunit 99932 "CRM Worker"
         if DGet(ReservingContactX, TempValue) then
             Evaluate(CrmBTemp."Reserving Contact Guid", TempValue);
         if DGet(InvestmentObjectX, TempValue) then begin
-            CrmBTemp."Object of Investing" := TempValue;
+            CrmBTemp."Investment Object" := TempValue;
             ApartmentTemp.Init();
-            ApartmentTemp."Object No." := CrmBTemp."Object of Investing";
+            ApartmentTemp."Object No." := CrmBTemp."Investment Object";
             if DGet(BlockNumberX, TempValue) then
                 ApartmentTemp.Description := TempValue.Trim();
             if DGet(ApartmentNumberX, TempValue) then begin
@@ -1770,6 +1770,7 @@ codeunit 99932 "CRM Worker"
                 ApartmentTemp.Description += TempValue.Trim();
             end;
             if DGet(ApartmentOriginTypeX, TempValue) then
+                //$$
                 ApartmentTemp."Origin Type" := CopyStr(Format(TempValue), 1, MaxStrLen(ApartmentTemp."Origin Type"));
             if DGet(ApartmentUnitAreaM2X, TempValue) then
                 OK := Evaluate(ApartmentTemp."Total Area (Project)", TempValue, 9);
@@ -2009,10 +2010,10 @@ codeunit 99932 "CRM Worker"
     end;
 
 
-    local procedure WriteUnitToDB(var FetchedObject: Record "CRM Prefetched Object"; var CrmBTemp: Record "CRM Buyers"; var ApartmentTemp: Record Apartments; ImportActionEnum: Enum "CRM Import Action")
+    local procedure WriteUnitToDB(var FetchedObject: Record "CRM Prefetched Object"; var CrmBTemp: Record "CRM Buyers"; var ApartmentTemp: Record "Investment Object"; ImportActionEnum: Enum "CRM Import Action")
     var
         CrmB: Record "CRM Buyers";
-        Apartment: Record Apartments;
+        Apartment: Record "Investment Object";
         LogStatusEnum: Enum "CRM Log Status";
         ImportAction: Enum "CRM Import Action";
 
@@ -2059,6 +2060,15 @@ codeunit 99932 "CRM Worker"
         TempXmlNode: XmlNode;
     begin
         XmlElem.SelectSingleNode(XPath, TempXmlNode);
+    end;
+
+    [TryFunction]
+    local procedure EvaluateInvestmentObjectType(var FieldValue: Enum "Investment Object Type"; NewTextValue: Text)
+    var
+        idx, ord : Integer;
+    begin
+        FieldValue := FieldValue::" ";
+        Evaluate(FieldValue, NewTextValue);
     end;
 
 }

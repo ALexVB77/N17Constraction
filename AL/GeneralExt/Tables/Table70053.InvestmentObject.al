@@ -1,8 +1,8 @@
-table 70053 "Apartments"
+table 70053 "Investment Object"
 {
     Caption = 'Investment object';
-    LookupPageID = Apartments;
-    DrillDownPageID = Apartments;
+    LookupPageID = "Investment Agreements";
+    DrillDownPageID = "Investment Agreements";
     fields
     {
         field(1; "Object No."; Code[20])
@@ -19,11 +19,9 @@ table 70053 "Apartments"
             Caption = 'Total Area (Projected)';
         }
 
-        field(26; Type; Option)
+        field(26; Type; Enum "Investment Object Type")
         {
             Caption = 'Type';
-            OptionCaption = 'VPP,MOP,Flat,Garage,Parking,Storage';
-            OptionMembers = ВПП,МОП,apartment,garage,parking,pantry;
         }
 
         field(27; "Origin Type"; Text[60])
