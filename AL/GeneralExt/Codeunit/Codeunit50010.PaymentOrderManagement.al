@@ -623,7 +623,7 @@ codeunit 50010 "Payment Order Management"
         END;
     end;
 
-    local procedure CheckDimExists(DimensionSetID: Integer; DimType: option "CostDim","AddrDim"," ","DimCombOnly"): Boolean
+    local procedure CheckDimExists(DimensionSetID: Integer; DimType: option "CostDim","AddrDim"," ","DimCombOnly"; DimCombErrText: text): Boolean
     var
         DimSetEntry: Record "Dimension Set Entry";
         TempDimSetEntry: Record "Dimension Set Entry" temporary;
@@ -667,7 +667,7 @@ codeunit 50010 "Payment Order Management"
                 TempDimSetEntry.Insert;
             until DimSetEntry.Next() = 0;
             if not DimMgt.CheckDimIDComb(DimMgt.GetDimensionSetID(TempDimSetEntry)) then
-                Error(DimMgt.GetDimCombErr());
+                Error(StrSubstNo('%1 %2', DimMgt.GetDimCombErr(), DimCombErrText));
         end;
 
         exit(true);
@@ -677,30 +677,32 @@ codeunit 50010 "Payment Order Management"
     var
         LocText001: Label 'You must specify %1 and %2 for %3 line %4.';
         LocText002: label 'You must specify %1 for %2 line %3.';
+        LocText003: Label 'for %2 line %3.';
     begin
         if DimType in [DimType::CostDim, DimType::All] then
-            if not CheckDimExists(PurchLine."Dimension Set ID", DimType::CostDim) then
+            if not CheckDimExists(PurchLine."Dimension Set ID", DimType::CostDim, LocText003) then
                 Error(LocText001, PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension", PurchLine."Document No.", PurchLine."Line No.");
         if DimType in [DimType::AddrDim, DimType::All] then
-            if not CheckDimExists(PurchLine."Dimension Set ID", DimType::AddrDim) then
+            if not CheckDimExists(PurchLine."Dimension Set ID", DimType::AddrDim, LocText003) then
                 Error(LocText002, PurchSetup."Address Dimension", PurchLine."Document No.", PurchLine."Line No.");
         if DimType = DimType::DimCombOnly then
-            CheckDimExists(PurchLine."Dimension Set ID", DimType::DimCombOnly);
+            CheckDimExists(PurchLine."Dimension Set ID", DimType::DimCombOnly, LocText003);
     end;
 
     local procedure CheckDimExistsInHeader(var PurchHeader: Record "Purchase Header"; DimType: option "CostDim","AddrDim","All","DimCombOnly")
     var
         LocText001: Label 'You must specify %1 and %2 for %3.';
         LocText002: Label 'You must specify %1 for %2.';
+        LocText003: Label 'for %2.';
     begin
         if DimType in [DimType::CostDim, DimType::All] then
-            if not CheckDimExists(PurchHeader."Dimension Set ID", DimType::CostDim) then
+            if not CheckDimExists(PurchHeader."Dimension Set ID", DimType::CostDim, LocText003) then
                 Error(LocText001, PurchSetup."Cost Place Dimension", PurchSetup."Cost Code Dimension", PurchHeader."No.");
         if DimType in [DimType::AddrDim, DimType::All] then
-            if not CheckDimExists(PurchHeader."Dimension Set ID", DimType::AddrDim) then
+            if not CheckDimExists(PurchHeader."Dimension Set ID", DimType::AddrDim, LocText003) then
                 Error(LocText002, PurchSetup."Address Dimension", PurchHeader."No.");
         if DimType = DimType::DimCombOnly then
-            CheckDimExists(PurchHeader."Dimension Set ID", DimType::DimCombOnly);
+            CheckDimExists(PurchHeader."Dimension Set ID", DimType::DimCombOnly, LocText003);
     end;
 
     procedure ChangePurchaseOrderActStatus(var PurchHeader: Record "Purchase Header"; Reject: Boolean; RejectEntryNo: Integer)
