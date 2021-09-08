@@ -4,7 +4,7 @@ page 70077 "Investment Object Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Investment Object";
-    Caption = 'Investment object card';
+    Caption = 'Investment Object Card';
 
     layout
     {

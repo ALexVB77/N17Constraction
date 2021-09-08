@@ -7794,7 +7794,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreements - Action Orders - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3877556748 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment object card</source>
+          <source>Investment Object Card</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Object Card - Property Caption</note>
         </trans-unit>
@@ -7804,7 +7804,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Object Card - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4219916409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment objects</source>
+          <source>Investment Objects</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Objects - Property Caption</note>
         </trans-unit>
@@ -7972,6 +7972,11 @@
           <source>Previous Period</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item G/L Turnover GE - Action Previous Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1725951601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>License Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page License Information - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1935803971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Mapping</source>

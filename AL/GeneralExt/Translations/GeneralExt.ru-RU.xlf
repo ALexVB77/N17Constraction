@@ -1435,7 +1435,6 @@
           <source>Investment Object</source>
           <target>Объект инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Buyers - Field Investment Object - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2155285002 - Field 275983325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -2337,42 +2336,36 @@
           <source>Investment object</source>
           <target>Объект инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 468777240 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <target>Описание</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 468777240 - Field 1618224966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Object Code</source>
           <target>Объект Но.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Object No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 468777240 - Field 2778745256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Origin Type</source>
           <target>Исходный Тип</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Origin Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 468777240 - Field 2565249915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total Area (Projected)</source>
           <target>Общая Площадь (Проект.)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Total Area (Project) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 468777240 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
           <target>Тип</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2149100676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9422,24 +9415,24 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreements - Action Orders - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3877556748 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment object card</source>
-          <target>[NAB: SUGGESTION]Карточка объекта инвестирования</target>
+          <source>Investment Object Card</source>
+          <target>Карточка объекта инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Object Card - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3877556748 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General</source>
-          <target>[NAB: SUGGESTION]Общее</target>
+          <target>Общее</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Object Card - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4219916409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment objects</source>
-          <target>[NAB: SUGGESTION]Объекты инвестирования</target>
+          <source>Investment Objects</source>
+          <target>Объекты инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Objects - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2149100676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9639,6 +9632,13 @@
           <target>Предыдущий период</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item G/L Turnover GE - Action Previous Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1725951601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>License Information</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page License Information - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1935803971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Mapping</source>

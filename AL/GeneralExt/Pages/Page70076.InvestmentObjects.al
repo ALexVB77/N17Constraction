@@ -4,7 +4,7 @@ page 70076 "Investment Objects"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Investment Object";
-    Caption = 'Investment objects';
+    Caption = 'Investment Objects';
     CardPageId = "Investment Object Card";
 
     layout
