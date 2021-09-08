@@ -623,16 +623,19 @@ codeunit 50010 "Payment Order Management"
         END;
     end;
 
-    local procedure CheckDimExists(DimensionSetID: Integer; DimType: option "CostDim","AddrDim"): Boolean
+    local procedure CheckDimExists(DimensionSetID: Integer; DimType: option "CostDim","AddrDim"," ","DimCombOnly"): Boolean
     var
         DimSetEntry: Record "Dimension Set Entry";
         TempDimSetEntry: Record "Dimension Set Entry" temporary;
         DimValue: Record "Dimension Value";
         DimMgt: Codeunit DimensionManagement;
     begin
-        if DimensionSetID = 0 then
-            exit(false);
-        GetPurchSetupWithTestDim();
+
+        if DimType <> DimType::DimCombOnly then begin
+            if DimensionSetID = 0 then
+                exit(false);
+            GetPurchSetupWithTestDim();
+        end;
 
         DimSetEntry.SetRange("Dimension Set ID", DimensionSetID);
         case DimType of
@@ -655,18 +658,21 @@ codeunit 50010 "Payment Order Management"
                 end;
         end;
 
-        DimSetEntry.FindSet();
-        repeat
-            TempDimSetEntry := DimSetEntry;
-            TempDimSetEntry."Dimension Set ID" := 0;
-            TempDimSetEntry.Insert;
-        until DimSetEntry.Next() = 0;
-        DimMgt.CheckDimIDComb(DimMgt.GetDimensionSetID(TempDimSetEntry));
+        DimSetEntry.Reset;
+        DimSetEntry.SetRange("Dimension Set ID", DimensionSetID);
+        if DimSetEntry.FindSet() then begin
+            repeat
+                TempDimSetEntry := DimSetEntry;
+                TempDimSetEntry."Dimension Set ID" := 0;
+                TempDimSetEntry.Insert;
+            until DimSetEntry.Next() = 0;
+            DimMgt.CheckDimIDComb(DimMgt.GetDimensionSetID(TempDimSetEntry));
+        end;
 
         exit(true);
     end;
 
-    local procedure CheckDimExistsInLine(var PurchLine: Record "Purchase Line"; DimType: option "CostDim","AddrDim","All")
+    local procedure CheckDimExistsInLine(var PurchLine: Record "Purchase Line"; DimType: option "CostDim","AddrDim","All","DimCombOnly")
     var
         LocText001: Label 'You must specify %1 and %2 for %3 line %4.';
         LocText002: label 'You must specify %1 for %2 line %3.';
@@ -677,9 +683,11 @@ codeunit 50010 "Payment Order Management"
         if DimType in [DimType::AddrDim, DimType::All] then
             if not CheckDimExists(PurchLine."Dimension Set ID", DimType::AddrDim) then
                 Error(LocText002, PurchSetup."Address Dimension", PurchLine."Document No.", PurchLine."Line No.");
+        if DimType = DimType::DimCombOnly then
+            CheckDimExists(PurchLine."Dimension Set ID", DimType::DimCombOnly);
     end;
 
-    local procedure CheckDimExistsInHeader(var PurchHeader: Record "Purchase Header"; DimType: option "CostDim","AddrDim","All")
+    local procedure CheckDimExistsInHeader(var PurchHeader: Record "Purchase Header"; DimType: option "CostDim","AddrDim","All","DimCombOnly")
     var
         LocText001: Label 'You must specify %1 and %2 for %3.';
         LocText002: Label 'You must specify %1 for %2.';
@@ -690,6 +698,8 @@ codeunit 50010 "Payment Order Management"
         if DimType in [DimType::AddrDim, DimType::All] then
             if not CheckDimExists(PurchHeader."Dimension Set ID", DimType::AddrDim) then
                 Error(LocText002, PurchSetup."Address Dimension", PurchHeader."No.");
+        if DimType = DimType::DimCombOnly then
+            CheckDimExists(PurchHeader."Dimension Set ID", DimType::DimCombOnly);
     end;
 
     procedure ChangePurchaseOrderActStatus(var PurchHeader: Record "Purchase Header"; Reject: Boolean; RejectEntryNo: Integer)
@@ -762,7 +772,7 @@ codeunit 50010 "Payment Order Management"
 
         if (PurchHeader."Status App Act".AsInteger() >= PurchHeader."Status App Act"::Checker.AsInteger()) and (not Reject) then begin
             GetInventorySetup;
-            // CheckDimExistsInHeader(PurchHeader, 1);
+            CheckDimExistsInHeader(PurchHeader, 3);
             PurchLine.SETRANGE("Document Type", PurchHeader."Document Type");
             PurchLine.SETRANGE("Document No.", PurchHeader."No.");
             PurchLine.SETRANGE(Type, PurchLine.Type::Item);
