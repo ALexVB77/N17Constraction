@@ -5138,6 +5138,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInHeader - NamedType LocText002</note>
         </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 43181058 - NamedType 3744062858" size-unit="char" translate="yes" xml:space="preserve">
+          <source>(Document %1)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInHeader - NamedType LocText003</note>
+        </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 2943676681 - NamedType 2468669624" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must specify %1 and %2 for %3 line %4.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5147,6 +5152,11 @@
           <source>You must specify %1 for %2 line %3.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInLine - NamedType LocText002</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 47354825 - Method 2943676681 - NamedType 3744062858" size-unit="char" translate="yes" xml:space="preserve">
+          <source>(Document %1 line %2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Payment Order Management - Method CheckDimExistsInLine - NamedType LocText003</note>
         </trans-unit>
         <trans-unit id="Codeunit 47354825 - Method 1997063884 - NamedType 3754779571" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unused document type.</source>
