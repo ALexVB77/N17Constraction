@@ -7594,7 +7594,6 @@
           <source>Entry is linked to payment document. Action prohibited!</source>
           <target>Операция привязана к заявке на оплату. дЕйствие запрещено!</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Forecast List Analisys - NamedType TEXT0994</note>
         </trans-unit>
         <trans-unit id="Page 2269272589 - Control 1820841161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -19448,6 +19447,39 @@
           <target>Reception</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Gen. Journal Approval Status - EnumValue Reception - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <target>Тип объекта инвестирования</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue   - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 1972861272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BlockOfFlats</source>
+          <target>Квартира</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue BlockOfFlats - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 870312932 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Office</source>
+          <target>Коммерческое помещение</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue Office - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 802632688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ParkingSpace</source>
+          <target>Паркинг</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue ParkingSpace - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 3726454387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Storage</source>
+          <target>Кладовая</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue Storage - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 580315166 - EnumValue 428023395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Array</source>

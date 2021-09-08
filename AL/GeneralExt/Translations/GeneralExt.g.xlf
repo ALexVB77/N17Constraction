@@ -16153,6 +16153,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Gen. Journal Approval Status - EnumValue Reception - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue   - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 1972861272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BlockOfFlats</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue BlockOfFlats - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 870312932 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Office</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue Office - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 802632688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ParkingSpace</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue ParkingSpace - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3960357944 - EnumValue 3726454387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Storage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue Storage - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 580315166 - EnumValue 428023395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Array</source>
           <note from="Developer" annotates="general" priority="2"></note>
