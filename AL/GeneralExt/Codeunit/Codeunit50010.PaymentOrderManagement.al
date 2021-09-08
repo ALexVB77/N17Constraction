@@ -666,7 +666,8 @@ codeunit 50010 "Payment Order Management"
                 TempDimSetEntry."Dimension Set ID" := 0;
                 TempDimSetEntry.Insert;
             until DimSetEntry.Next() = 0;
-            DimMgt.CheckDimIDComb(DimMgt.GetDimensionSetID(TempDimSetEntry));
+            if not DimMgt.CheckDimIDComb(DimMgt.GetDimensionSetID(TempDimSetEntry)) then
+                Error(DimMgt.GetDimCombErr());
         end;
 
         exit(true);
