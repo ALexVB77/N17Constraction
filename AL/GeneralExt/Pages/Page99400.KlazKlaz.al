@@ -43,9 +43,30 @@ page 99400 "Klaz Klaz"
                 var
                     cu: codeunit "CRM Object Xml to Json";
                 begin
+
                     cu.ExportScheme();
                 end;
             }
+
+            action(EnumEval)
+            {
+                ApplicationArea = All;
+                Image = Export;
+                Caption = 'EnumEval', Locked = true;
+
+                trigger OnAction();
+                var
+                    FieldValue: Enum "Investment Object Type";
+                    NewTextValue: Text;
+                begin
+                    FieldValue := FieldValue::" ";
+                    NewTextValue := 'Office';
+                    Evaluate(FieldValue, NewTextValue);
+                    Message('Value is <%1>', FieldValue);
+                end;
+            }
+
+
         }
     }
 }

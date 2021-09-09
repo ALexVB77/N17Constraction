@@ -34,9 +34,9 @@ table 70120 "CRM Buyers"
             Caption = 'Ownership Percentage';
         }
 
-        field(110; "Object of Investing"; Code[20])
+        field(110; "Investment Object"; Code[20])
         {
-            TableRelation = Apartments;
+            TableRelation = "Investment Object";
             Caption = 'Investment Object';
 
         }

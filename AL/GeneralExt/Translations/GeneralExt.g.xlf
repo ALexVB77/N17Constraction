@@ -98,41 +98,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Act Stage - Field Stage Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 938572801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment object</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 938572801 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 938572801 - Field 1618224966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Object Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Field Object No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 938572801 - Field 2778745256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Origin Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Field Origin Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 938572801 - Field 2565249915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Total Area (Projected)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Field Total Area (Project) - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 938572801 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Field Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 938572801 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VPP,MOP,Flat,Garage,Parking,Storage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apartments - Field Type - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 3587166653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Budget Correction</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1228,10 +1193,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Buyers - Field Expected Registration Period - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2155285002 - Field 2824587825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 2155285002 - Field 468777240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Object</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Buyers - Field Object of Investing - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CRM Buyers - Field Investment Object - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2155285002 - Field 275983325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ownership Percentage</source>
@@ -1977,6 +1942,36 @@
           <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Giv. Prod. Order Shipment - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 468777240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment Object</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 468777240 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 468777240 - Field 1618224966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Object Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Object No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 468777240 - Field 2778745256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Origin Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Origin Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 468777240 - Field 2565249915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Area (Projected)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Total Area (Project) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 468777240 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Field Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2149100676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Detail</source>
@@ -4933,6 +4928,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnitUpdatedMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 991440484" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown Investment Object Type %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnknownInvestObjectTypeValueErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1870025204" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown type of Object %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5377,21 +5377,6 @@
           <source>Act Stage</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 265825876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment object card</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Apartment Card - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 265825876 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>General</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Apartment Card - Control General - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 938572801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment objects</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Apartments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2191153028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archiving Document</source>
@@ -7623,10 +7608,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Object Total Area - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3861133141 - Control 3893737929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3861133141 - Control 3960357944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Object type</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Origin Type - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investment Object Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Control 1450094168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoicing</source>
@@ -7812,6 +7797,21 @@
           <source>Orders</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreements - Action Orders - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3877556748 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment Object Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Object Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3877556748 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Object Card - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4219916409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment Objects</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Objects - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2149100676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Detail</source>
@@ -16169,7 +16169,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Enum Gen. Journal Approval Status - EnumValue Reception - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3960357944 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source> </source>
+          <source></source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue   - Property Caption</note>
         </trans-unit>
@@ -16192,36 +16192,6 @@
           <source>Storage</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue Storage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 580315166 - EnumValue 428023395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Array</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Json Field Type - EnumValue Array - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 580315166 - EnumValue 617522584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Boolean</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Json Field Type - EnumValue Boolean - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 580315166 - EnumValue 2147930859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Null/empty</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Json Field Type - EnumValue Null/empty - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 580315166 - EnumValue 2272340397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Number</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Json Field Type - EnumValue Number - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 580315166 - EnumValue 2123958759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Object</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Json Field Type - EnumValue Object - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 580315166 - EnumValue 1736694239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>String</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Json Field Type - EnumValue String - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2122150050 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
