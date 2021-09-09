@@ -26,12 +26,18 @@ TRUNCATE TABLE #PivotDimDoc
 
 INSERT #DocList ([DocNo])
 	SELECT PH.[No_]
-	FROM [NAV_Test].dbo.[NCC Construction$Purchase Header] PH  
-	INNER JOIN [NAV_Test].dbo.[NCC Construction$Purchase Header Additional] PHA
+	FROM [VM-PRO-SQL007\NAV].[NAV_Dev].dbo.[NCC Construction$Purchase Header] PH  
+	INNER JOIN [VM-PRO-SQL007\NAV].[NAV_Dev].dbo.[NCC Construction$Purchase Header Additional] PHA
 		ON PHA.[Document Type] = PH.[Document Type] and PHA.[No_] = PH.[No_]
 	WHERE PH.[Document Type] = 1 and PH.[Act Type] <> 0 --and PH.[Problem Document] = 0 and PHA.[Status App Act] between 2 and 5 and PH.Archival = 0
 
-
+/*
+DELETE FROM [MSK10NAV65].[SimpleERP].dbo.[' + @Company + '$ImportDimPivot] WHERE TableID = 25 
+INSERT [MSK10NAV65].[SimpleERP].dbo.[' + @Company + '$ImportDimPivot]
+	(TableID,Dim1Code,Dim2Code,Dim3Code,Dim4Code,Dim5Code,Dim6Code,Dim7Code,Dim8Code,Dim9Code,Dim10Code)
+VALUES
+	(25,''¬»ƒ€ –¿—’ŒƒŒ¬'','' Œƒ œŒ≈«ƒ »'',''Ã≈Õ≈ƒ∆≈–€'',''œ–Œ≈ “'',''—“¿“‹ﬂ «¿“–¿“'',''÷‘Œ'',''÷‘”'',''ﬁ–À»÷¿'','''','''')  
+*/
 
 
 DROP TABLE #PivotDimDoc
