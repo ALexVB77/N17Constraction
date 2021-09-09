@@ -7608,10 +7608,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Object Total Area - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3861133141 - Control 3893737929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3861133141 - Control 3960357944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Object type</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investing Origin Type - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investment Object Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Control 1450094168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoicing</source>

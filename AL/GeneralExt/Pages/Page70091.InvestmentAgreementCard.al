@@ -275,7 +275,7 @@ page 70091 "Investment Agreement Card"
                     Editable = false;
                 }
 
-                field("Investing Origin Type"; Apartments."Origin Type")
+                field("Investment Object Type"; Apartments."Type")
                 {
                     ApplicationArea = All;
                     Caption = 'Object type';
