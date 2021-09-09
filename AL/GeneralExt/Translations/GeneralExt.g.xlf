@@ -1943,6 +1943,146 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Giv. Prod. Order Shipment - Field Posting Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3805617183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ImportDimEntryPivot</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 4141984761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim10ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim10ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 74446569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim1ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim1ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 595961608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim2ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim2ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 3861920999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim3ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim3ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 1914587406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim4ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim4ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 401744877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim5ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim5ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 1912224140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim6ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim6ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 3085511403 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim7ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim7ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 1351127282 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim8ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim8ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 273086065 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim9ValueCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field Dim9ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 2738103555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DocNo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field DocNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 3819526884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DocType</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field DocType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 2429469642 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NAVDimSetID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field NAVDimSetID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 1738184195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SQLDimSetID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field SQLDimSetID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3805617183 - Field 291409893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TableID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimEntryPivot - Field TableID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ImportDimPivot</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 326273256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim10Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim10Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 2510090008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim1Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim1Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 826228209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim2Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim2Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 2642255242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim3Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim3Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 3724369955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim4Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim4Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 2767411004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim5Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim5Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 1195192213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim6Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim6Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 2899576238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim7Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim7Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 1677048407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim8Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim8Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 3445519792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim9Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim9Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 291409893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TableID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field TableID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 468777240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Object</source>
           <note from="Developer" annotates="general" priority="2"></note>
