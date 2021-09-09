@@ -1625,7 +1625,7 @@
         </trans-unit>
         <trans-unit id="Table 3603484542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crm Object Message</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Crm Object Message</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Crm Object Message - Property Caption</note>
@@ -2333,9 +2333,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Giv. Prod. Order Shipment - Field Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 468777240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment object</source>
+          <source>Investment Object</source>
           <target>Объект инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Investment Object - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 468777240 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -5976,6 +5977,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnitUpdatedMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2463777246 - NamedType 991440484" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown Investment Object Type %1</source>
+          <target>Неизвестный Тип Объекта Инвестирования %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnknownInvestObjectTypeValueErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 1870025204" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unknown type of Object %1</source>
           <target>Неизвестный тип объекта CRM %1</target>
@@ -9418,21 +9426,18 @@
           <source>Investment Object Card</source>
           <target>Карточка объекта инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Object Card - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3877556748 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General</source>
           <target>Общее</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Object Card - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4219916409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Objects</source>
           <target>Объекты инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Objects - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2149100676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -19465,7 +19470,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Enum Gen. Journal Approval Status - EnumValue Reception - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3960357944 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source> </source>
+          <source></source>
           <target>Тип объекта инвестирования</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Investment Object Type - EnumValue   - Property Caption</note>

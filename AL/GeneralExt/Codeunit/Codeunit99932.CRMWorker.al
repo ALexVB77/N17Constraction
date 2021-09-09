@@ -102,6 +102,7 @@ codeunit 99932 "CRM Worker"
         RecordMustBeTemporaryErr: Label '%1 record must be temporary';
 
         StartSessionErr: Label 'The session was not started successfully';
+        UnknownInvestObjectTypeValueErr: Label 'Unknown Investment Object Type %1';
 
 
         //Messages
@@ -1737,6 +1738,7 @@ codeunit 99932 "CRM Worker"
         OK: Boolean;
         ExpectedRegPeriod: Integer;
         AgrStartDate, AgrEndDate : Date;
+        LogStatusEnum: Enum "CRM Log Status";
 
     begin
         if not CrmBTemp.IsTemporary then
@@ -1769,9 +1771,11 @@ codeunit 99932 "CRM Worker"
                     ApartmentTemp.Description += ' ';
                 ApartmentTemp.Description += TempValue.Trim();
             end;
-            if DGet(ApartmentOriginTypeX, TempValue) then
-                //$$
-                ApartmentTemp."Origin Type" := CopyStr(Format(TempValue), 1, MaxStrLen(ApartmentTemp."Origin Type"));
+            if DGet(ApartmentOriginTypeX, TempValue) then begin
+                if not Evaluate(ApartmentTemp.Type, TempValue) then
+                    LogEvent(FetchedObject, LogStatusEnum::Warning, StrSubstNo(UnknownInvestObjectTypeValueErr, TempValue));
+            end;
+
             if DGet(ApartmentUnitAreaM2X, TempValue) then
                 OK := Evaluate(ApartmentTemp."Total Area (Project)", TempValue, 9);
             ApartmentTemp.Insert();
@@ -2060,15 +2064,6 @@ codeunit 99932 "CRM Worker"
         TempXmlNode: XmlNode;
     begin
         XmlElem.SelectSingleNode(XPath, TempXmlNode);
-    end;
-
-    [TryFunction]
-    local procedure EvaluateInvestmentObjectType(var FieldValue: Enum "Investment Object Type"; NewTextValue: Text)
-    var
-        idx, ord : Integer;
-    begin
-        FieldValue := FieldValue::" ";
-        Evaluate(FieldValue, NewTextValue);
     end;
 
 }

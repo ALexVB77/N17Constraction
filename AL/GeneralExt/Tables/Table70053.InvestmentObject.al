@@ -1,6 +1,6 @@
 table 70053 "Investment Object"
 {
-    Caption = 'Investment object';
+    Caption = 'Investment Object';
     LookupPageID = "Investment Agreements";
     DrillDownPageID = "Investment Agreements";
     fields
