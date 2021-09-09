@@ -1998,6 +1998,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim9ValueCode - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 1770926729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DocLineNo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field DocLineNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2279018787 - Field 2738103555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DocNo</source>
           <note from="Developer" annotates="general" priority="2"></note>
