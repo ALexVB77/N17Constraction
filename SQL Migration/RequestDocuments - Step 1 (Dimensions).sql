@@ -1,11 +1,14 @@
 SET NOCOUNT ON;
 
 CREATE TABLE #DocList (
+	[DocType] INT NOT NULL,  
 	[DocNo] NVARCHAR(20) NOT NULL, 
-	PRIMARY KEY CLUSTERED ([DocNo] ASC) WITH (IGNORE_DUP_KEY = OFF))
+	PRIMARY KEY CLUSTERED ([DocType] ASC, [DocNo] ASC) WITH (IGNORE_DUP_KEY = OFF))
 
 CREATE TABLE #PivotDimDoc (
-    [DocNo] NVARCHAR(20) NOT NULL,
+    [DocType] INT NOT NULL, 
+	[DocNo] NVARCHAR(20) NOT NULL,
+	[DocLineNo] INT NOT NULL, 
 	[D1VC] VARCHAR(20) COLLATE Cyrillic_General_100_CI_AS NOT NULL, 	
 	[D2VC] VARCHAR(20) COLLATE Cyrillic_General_100_CI_AS NOT NULL, 	
 	[D3VC] VARCHAR(20) COLLATE Cyrillic_General_100_CI_AS NOT NULL, 	
@@ -17,7 +20,7 @@ CREATE TABLE #PivotDimDoc (
 	[D9VC] VARCHAR(20) COLLATE Cyrillic_General_100_CI_AS NOT NULL, 	
 	[D10VC] VARCHAR(20) COLLATE Cyrillic_General_100_CI_AS NOT NULL, 
 	[SQLDimSetID] INT NOT NULL,
-	PRIMARY KEY CLUSTERED ([DocNo] ASC) WITH (IGNORE_DUP_KEY = OFF))
+	PRIMARY KEY CLUSTERED ([DocType] ASC, [DocNo] ASC, [DocLineNo] ASC) WITH (IGNORE_DUP_KEY = OFF))
 
 --
 
@@ -39,18 +42,21 @@ INSERT [VM-TST-SQL013].[Bonava-Test].dbo.[Bonava$ImportDimPivot$2944687f-9cf8-41
 	(TableID,Dim1Code,Dim2Code,Dim3Code,Dim4Code,Dim5Code,Dim6Code,Dim7Code,Dim8Code,Dim9Code,Dim10Code)
 	VALUES(39, 'ADDRESS','CC','CP','CT','демднй','хмфяерэ','мо','мс-бхд','мс-назейр','рпд')
 
-;WITH PivotDimEntry AS (
-	SELECT [Entry No_],[бхдш пюяунднб],[йнд онегдйх],[лемедфепш],[опнейр],[ярюрэъ гюрпюр],[жтн],[жтс],[чпкхжю] FROM (
-		SELECT LED.[Dimension Value Code], LED.[Dimension Code], LED.[Entry No_] FROM [MSK10NAV65].[SimpleERPNAV2009].dbo.[' + @Company + '$Ledger Entry Dimension] LED	
-		INNER JOIN #EntryListVend EL ON LED.[Table ID] = 25 AND LED.[Entry No_] = EL.EntryNo) SRC
+;WITH PivotDimDoc AS (
+	SELECT [Document Type],[Document No_],[Line No_],[CC],[CP],[CT],[мо],[мс-бхд],[мс-назейр],[рпд] FROM (
+		SELECT DD.[Dimension Value Code], DD.[Dimension Code], DD.[Document Type], DD.[Document No_], DD.[Line No_]
+		FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].dbo.[NCC Construction$Document Dimension] DD
+		INNER JOIN #DocList DL ON DD.[Table ID] = 38 AND DD.[Document Type] = DL.DocType AND DD.[Document No_] = DL.DocNo AND DD.[Line No_] = 0) SRC
 	PIVOT (
-		MIN([Dimension Value Code]) FOR [Dimension Code] IN ([бхдш пюяунднб],[йнд онегдйх],[лемедфепш],[опнейр],[ярюрэъ гюрпюр],[жтн],[жтс],[чпкхжю])) AS PVT)
-INSERT #PivotDimEntryVend
-	(EntryNo,SQLDimSetID,D1VC,D2VC,D3VC,D4VC,D5VC,D6VC,D7VC,D8VC,D9VC,D10VC)
-SELECT [Entry No_],0,
-	ISNULL([бхдш пюяунднб],''''),ISNULL([йнд онегдйх],''''),ISNULL([лемедфепш],''''),ISNULL([опнейр],''''),
-	ISNULL([ярюрэъ гюрпюр],''''),ISNULL([жтн],''''),ISNULL([жтс],''''),ISNULL([чпкхжю],''''),'''',''''
-FROM PivotDimEntry
+		MIN([Dimension Value Code]) FOR [Dimension Code] IN ([Document No_],[CC],[CP],[CT],[мо],[мс-бхд],[мс-назейр],[рпд])) AS PVT)
+INSERT #PivotDimDoc
+	(DocType,DocNo,DocLineNo,SQLDimSetID,D1VC,D2VC,D3VC,D4VC,D5VC,D6VC,D7VC,D8VC,D9VC,D10VC)
+	SELECT [Document Type],[Document No_],[Line No_],0,
+		ISNULL([CC],''),ISNULL([CP],''),ISNULL([CT],''),ISNULL([мо],''),ISNULL([мс-бхд],''),ISNULL([мс-назейр],''),ISNULL([рпд],''),'','',''
+	FROM PivotDimDoc
+
+
+select * from #PivotDimDoc
 
 
 DROP TABLE #PivotDimDoc
