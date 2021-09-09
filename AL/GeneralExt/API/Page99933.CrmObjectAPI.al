@@ -36,10 +36,17 @@ page 99933 "Crm Object Message API"
                     ApplicationArea = All;
                 }
 
+                field(objectId; SomeGuid)
+                {
+                    ApplicationArea = All;
+                }
 
             }
         }
     }
+
+    var
+        SomeGuid: Guid;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
