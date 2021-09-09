@@ -1,5 +1,5 @@
 // Миграция данных
-table 50091 "ImportDimEntryPivot"
+table 50091 "ImportDimDocPivot"
 {
     fields
     {
