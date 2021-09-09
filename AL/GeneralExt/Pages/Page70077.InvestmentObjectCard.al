@@ -31,12 +31,6 @@ page 70077 "Investment Object Card"
                     ApplicationArea = All;
 
                 }
-                field("Origin Type"; Rec."Origin Type")
-                {
-                    ApplicationArea = All;
-
-                }
-
                 field("Total Area (Project)"; Rec."Total Area (Project)")
                 {
                     ApplicationArea = All;

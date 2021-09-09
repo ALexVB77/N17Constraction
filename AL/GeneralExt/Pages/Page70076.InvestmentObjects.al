@@ -29,12 +29,6 @@ page 70076 "Investment Objects"
 
                 }
 
-                field("Origin Type"; Rec."Origin Type")
-                {
-                    ApplicationArea = All;
-
-                }
-
                 field("Total Area (Project)"; Rec."Total Area (Project)")
                 {
                     ApplicationArea = All;
