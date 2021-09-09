@@ -9193,7 +9193,7 @@
         </trans-unit>
         <trans-unit id="Page 3861133141 - Control 3960357944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Object type</source>
-          <target>[NAB: SUGGESTION]Тип объекта</target>
+          <target>Тип объекта</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investment Object Type - Property Caption</note>
