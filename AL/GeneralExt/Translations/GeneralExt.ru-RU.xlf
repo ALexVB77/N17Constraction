@@ -9638,11 +9638,7 @@
         </trans-unit>
         <trans-unit id="Page 1725951601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>License Information</source>
-<<<<<<< HEAD
           <target>License Information</target>
-=======
-          <target>[NAB: NOT TRANSLATED]</target>
->>>>>>> cfc8447adc9be116112dab0e0639c4730c53fda2
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page License Information - Property Caption</note>
