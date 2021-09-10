@@ -3,6 +3,7 @@ $Url = "http://nav-bonava.ncdev.ru:17058/BonavaDev/api/bonava/crm/beta/companies
 $Body = @{
     name = "Contact 2"
     isActive = $true
+    jsonArray = "val1", "val2"
 } | ConvertTo-Json
 
 $ContentType = "application/json"

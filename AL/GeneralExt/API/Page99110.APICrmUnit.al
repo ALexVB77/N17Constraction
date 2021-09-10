@@ -5,8 +5,8 @@ page 99110 "Unit API"
     APIPublisher = 'bonava';
     APIGroup = 'crm';
     APIVersion = 'beta';
-    EntityCaption = 'Unit';
-    EntitySetCaption = 'Units';
+    EntityCaption = 'Unit', Locked = true;
+    EntitySetCaption = 'Units', Locked = true;
     EntityName = 'unit';
     EntitySetName = 'units';
 
@@ -27,83 +27,84 @@ page 99110 "Unit API"
             {
                 field(id; Rec.SystemId)
                 {
-                    Caption = 'id';
+                    Caption = 'Id', Locked = true;
                     Editable = false;
 
                 }
 
                 field("objectType"; Rec.Text1)
                 {
-                    Caption = 'Object Type';
+                    Caption = 'Object Type', Locked = true;
 
                 }
 
                 field(objectId; Rec.Guid1)
                 {
-                    Caption = 'Object Id';
+                    Caption = 'Object Id', Locked = true;
 
                 }
 
                 field(projectId; Rec.Guid2)
                 {
-                    Caption = 'Project Id';
+                    Caption = 'Project Id', Locked = true;
 
                 }
 
                 field(reservingContactId; Rec.Guid3)
                 {
-                    Caption = 'Reserving Contact Id';
+                    Caption = 'Reserving Contact Id', Locked = true;
 
                 }
 
                 field(investmentObjectCode; Rec.Text2)
                 {
-                    Caption = 'Investment Object Code';
+                    Caption = 'Investment Object Code', Locked = true;
 
                 }
 
                 field(investmentObjectDescription; Rec.Text5)
                 {
-                    Caption = 'Investment Object Description';
+                    Caption = 'Investment Object Description', Locked = true;
 
                 }
 
                 field(investmentObjectType; Rec.Text3)
                 {
-                    Caption = 'Investment Object Type';
+                    Caption = 'Investment Object Type', Locked = true;
 
                 }
 
                 field(investmentObjectArea; Rec.Decimal1)
                 {
-                    Caption = 'Investment Object Area';
+                    Caption = 'Investment Object Area', Locked = true;
 
                 }
 
                 field(expectedRegDate; Rec.Date1)
                 {
-                    Caption = 'Expected Registration Date';
+                    Caption = 'Expected Registration Date', Locked = true;
 
                 }
 
                 field(actualDate; Rec.Date2)
                 {
-                    Caption = 'Actual Date';
+                    Caption = 'Actual Date', Locked = true;
 
                 }
 
                 field(expectedDate; Rec.Date3)
                 {
-                    Caption = 'Expected Date';
+                    Caption = 'Expected Date', Locked = true;
 
                 }
 
-                field(buyers; BuyersJSON)
+                part(buyers; "Unit Buyer")
                 {
-                    Caption = 'Expected Date';
-
+                    Caption = 'Unit Buyer', Locked = true;
+                    EntityName = 'unitBuyer';
+                    EntitySetName = 'unitBuyers';
+                    SubPageLink = "MessageId" = Field(SystemId);
                 }
-
 
             }
         }
