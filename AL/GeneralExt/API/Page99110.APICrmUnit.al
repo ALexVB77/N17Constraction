@@ -101,8 +101,8 @@ page 99110 "Unit API"
                 part(buyers; "Unit Buyer")
                 {
                     Caption = 'Unit Buyer', Locked = true;
-                    EntityName = 'unitBuyer';
-                    EntitySetName = 'unitBuyers';
+                    EntityName = 'buyer';
+                    EntitySetName = 'buyers';
                     SubPageLink = "MessageId" = Field(SystemId);
                 }
 
@@ -111,4 +111,22 @@ page 99110 "Unit API"
     }
     var
         BuyersJSON: Text;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    var
+        SubMsgTemp: Record "Crm Sub Message Buffer" temporary;
+        SubMsg: Record "Crm Sub Message Buffer" temporary;
+        Msg: Record "Crm Message Buffer";
+    begin
+        CurrPage.buyers.Page.GetBuffer(SubMsgTemp);
+        if SubMsgTemp.FindSet() then begin
+            repeat
+                SubMsg := SubMsgTemp;
+                SubMsg.Insert();
+            until SubMsgTemp.Next() = 0;
+        end;
+
+        Msg := Rec;
+        Msg.Insert();
+    end;
 }

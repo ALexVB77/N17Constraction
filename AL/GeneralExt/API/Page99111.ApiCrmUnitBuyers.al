@@ -5,10 +5,10 @@ page 99111 "Unit Buyer"
     APIPublisher = 'bonava';
     APIGroup = 'crm';
     APIVersion = 'beta';
-    EntityCaption = 'UnitBuyer', Locked = true;
-    EntitySetCaption = 'UnitBuyers', Locked = true;
-    EntityName = 'unitBuyer';
-    EntitySetName = 'unitBuyers';
+    EntityCaption = 'Buyer', Locked = true;
+    EntitySetCaption = 'Buyers', Locked = true;
+    EntityName = 'buyer';
+    EntitySetName = 'buyers';
 
     ODataKeyFields = SystemId;
     SourceTable = "Crm Sub Message Buffer";
