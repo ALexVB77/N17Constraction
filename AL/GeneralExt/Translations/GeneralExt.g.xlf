@@ -1403,6 +1403,116 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Log - Field WRQ Source Company Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 817569729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Message Buffer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3473146343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Boolean1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Boolean1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 1091268898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Boolean2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Boolean2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 2688099599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Date1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 306222154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Date2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3963492833 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Date3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 2120429518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Decimal1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Decimal1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 999901114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Guid1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3381778559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Guid2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 4019475176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Guid3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 276525482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>MessageId</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field MessageId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3721534664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 1290701856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text10</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 653005239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text11</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text11 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 64263985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 701960602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 1339657219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 1977353836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 2615050453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text6</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3252747070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text7</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3890443687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text8</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 233173008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text9</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text9 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3603484542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crm Object Message</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1462,6 +1572,116 @@
           <source>Xml</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Prefetched Object - Field Xml - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3473146343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Boolean1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Boolean1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 1091268898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Boolean2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Boolean2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 2688099599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Date1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 306222154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Date2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3963492833 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Date3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 2120429518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Decimal1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Decimal1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 999901114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Guid1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3381778559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Guid2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 4019475176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Guid3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 276525482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>MessageId</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field MessageId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3295046334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SubMessageId</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field SubMessageId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3721534664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 1290701856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text10</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 653005239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text11</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text11 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 64263985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 701960602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 1339657219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 1977353836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 2615050453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text6</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3252747070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text7</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3890443687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text8</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 233173008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text9</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text9 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3377841323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cust. E-Mail Notify Log</source>
@@ -10727,6 +10947,21 @@
           <source>Original Budget</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control OriginalBudget - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3041831322 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit API</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Unit API - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2952115665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Buyer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Unit Buyer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2952115665 - Control 888333449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buyer is Active</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Unit Buyer - Control buyerIsActive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2884131641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast List</source>
