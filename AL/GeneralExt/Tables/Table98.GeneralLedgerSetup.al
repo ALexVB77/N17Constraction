@@ -2,6 +2,18 @@ tableextension 80098 "General Ledger Setup (Ext)" extends "General Ledger Setup"
 {
     fields
     {
+        field(50005; "IFRS Stat. Acc. Map. Code"; Code[20])
+        {
+            Caption = 'IFRS Stat. Acc. Map. Code';
+            Description = 'NC 51554 AB';
+            TableRelation = "IFRS Statutory Account Mapping";
+        }
+        field(50006; "IFRS Stat. Acc. Map. Vers.Code"; Code[20])
+        {
+            Caption = 'IFRS Stat. Acc. Map. Vers.Code';
+            Description = 'NC 51554 AB';
+            TableRelation = "IFRS Stat. Acc. Map. Vers."."Code" WHERE("IFRS Stat. Acc. Mapping Code" = FIELD("IFRS Stat. Acc. Map. Code"));
+        }
         field(50030; "Allow Diff in Check"; Decimal)
         {
             Caption = 'Allow Diff in Check';
