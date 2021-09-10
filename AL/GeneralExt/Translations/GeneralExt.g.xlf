@@ -1018,56 +1018,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Calculation Month - Field Year - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3699353877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Car Brand</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Brand - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3699353877 - Field 1856816140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Country</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Brand - Field Country - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3699353877 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Brand - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3699353877 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Brand - Field Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3405046417 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Car Model</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Model - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3405046417 - Field 1112215218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brand Id</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Model - Field Brand Id - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3405046417 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Model - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3405046417 - Field 143010134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fuel Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Model - Field Fuel Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3405046417 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Model - Field Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3405046417 - Field 4182033785 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Power (cc)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Car Model - Field Power - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1320817489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cash Flow Transaction Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5968,91 +5918,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1109454541 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>API Car Brand</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Brand - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1109454541 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CarBrand</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Brand - Property EntityCaption</note>
-        </trans-unit>
-        <trans-unit id="Page 1109454541 - Property 631549417" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CarBrands</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Brand - Property EntitySetCaption</note>
-        </trans-unit>
-        <trans-unit id="Page 1109454541 - Control 4124820944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Car Models</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Brand - Control carModels - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1109454541 - Control 2807065388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Country</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Brand - Control country - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1109454541 - Control 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Brand - Control description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1109454541 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Id</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Brand - Control id - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1109454541 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Brand - Control name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3942876553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>API Car Model</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Model - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3942876553 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CarModel</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Model - Property EntityCaption</note>
-        </trans-unit>
-        <trans-unit id="Page 3942876553 - Property 631549417" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CarModels</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Model - Property EntitySetCaption</note>
-        </trans-unit>
-        <trans-unit id="Page 3942876553 - Control 2401376898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brand Id</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Model - Control brandId - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3942876553 - Control 4232699882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Model - Control description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3942876553 - Control 1264958734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fuel Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Model - Control fuelType - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3942876553 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Id</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Model - Control id - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3942876553 - Control 3558812865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Model - Control name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3942876553 - Control 980892057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Power</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page API Car Model - Control power - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2191153028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archiving Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6538,6 +6403,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Company - Action Test2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 883834640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3358575194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Contract - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 312790511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Integration Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6567,6 +6442,21 @@
           <source>Run Import</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Prefetched Objects - Action RunImport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2481621566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Unit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1184286813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Unit Buyer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Unit Buyer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1184286813 - Control 888333449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buyer is Active</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Unit Buyer - Control buyerIsActive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 954180772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Units and Buyers</source>
@@ -11122,21 +11012,6 @@
           <source>Original Budget</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control OriginalBudget - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3041831322 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit API</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Unit API - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2952115665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit Buyer</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Unit Buyer - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2952115665 - Control 888333449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Buyer is Active</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Unit Buyer - Control buyerIsActive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2884131641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast List</source>
@@ -16832,21 +16707,6 @@
           <source>Unit</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum CRM Object Type - EnumValue Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 143010134 - EnumValue 1820646502 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Diesel</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Fuel Type - EnumValue Diesel - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 143010134 - EnumValue 2999244085 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Electric</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Fuel Type - EnumValue Electric - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 143010134 - EnumValue 1787637036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Petrol</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Fuel Type - EnumValue Petrol - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3632148852 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>

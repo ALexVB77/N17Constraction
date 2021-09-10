@@ -1,4 +1,4 @@
-page 99111 "Unit Buyer"
+page 99111 "Crm Unit Buyer"
 {
     PageType = API;
 
@@ -12,7 +12,7 @@ page 99111 "Unit Buyer"
 
     ODataKeyFields = SystemId;
     SourceTable = "Crm Sub Message Buffer";
-    SourceTableTemporary = true;
+    //SourceTableTemporary = true;
     InsertAllowed = true;
     DelayedInsert = true;
     DeleteAllowed = false;
@@ -65,6 +65,26 @@ page 99111 "Unit Buyer"
             }
         }
     }
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    var
+        SubMsgTemp: Record "Crm Sub Message Buffer" temporary;
+        SubMsg: Record "Crm Sub Message Buffer" temporary;
+        Msg: Record "Crm Message Buffer";
+        Klaz: Record "Test rec";
+        EntryNo: Integer;
+    begin
+        /*
+        if not Klaz.FindLast() then
+            EntryNo := 1
+        else
+            EntryNo := Klaz."Entry No." + 1;
+
+        Klaz."Entry No." := EntryNo;
+        Klaz.Name := Format(Rec.Guid1);
+        Klaz.Insert(true);
+        */
+    end;
+
     var
         BuyersJSON: Text;
 
@@ -73,9 +93,9 @@ page 99111 "Unit Buyer"
         if not SubMessageBuff.IsTemporary then
             Error('SubMessage must be temporary');
         SubMessageBuff.Reset();
-        ;
         SubMessageBuff.DeleteAll();
         Rec.Reset();
+        Rec.FindSet();
         repeat
             SubMessageBuff := Rec;
             SubMessageBuff.Insert();

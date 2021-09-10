@@ -9,6 +9,7 @@ table 99110 "Crm Message Buffer"
             DataClassification = ToBeClassified;
 
         }
+
         field(10; Text1; Text[50])
         {
             DataClassification = ToBeClassified;
@@ -146,8 +147,6 @@ table 99110 "Crm Message Buffer"
 
     trigger OnInsert()
     begin
-        if IsNullGuid(MessageId) then
-            MessageId := CreateGuid();
     end;
 
     trigger OnModify()

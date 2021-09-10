@@ -1,4 +1,4 @@
-page 99110 "Unit API"
+page 99110 "Crm Unit"
 {
     PageType = API;
 
@@ -96,9 +96,10 @@ page 99110 "Unit API"
                 {
                     Caption = 'Expected Date', Locked = true;
 
+
                 }
 
-                part(buyers; "Unit Buyer")
+                part(buyers; "Crm Unit Buyer")
                 {
                     Caption = 'Unit Buyer', Locked = true;
                     EntityName = 'buyer';
@@ -115,18 +116,30 @@ page 99110 "Unit API"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     var
         SubMsgTemp: Record "Crm Sub Message Buffer" temporary;
-        SubMsg: Record "Crm Sub Message Buffer" temporary;
         Msg: Record "Crm Message Buffer";
+        Klaz: Record "Test rec";
+        EntryNo: Integer;
     begin
+        if not Klaz.FindLast() then
+            EntryNo := 1
+        else
+            EntryNo := Klaz."Entry No." + 1;
+
+        Error('%1', Rec.Date2);
+        Klaz."Entry No." := EntryNo;
+        Klaz.Name := Format(Rec.Guid1);
+        Klaz.Insert(true);
+
         CurrPage.buyers.Page.GetBuffer(SubMsgTemp);
+        //Error('cu: %1', SubMsgTemp.Count);
         if SubMsgTemp.FindSet() then begin
             repeat
-                SubMsg := SubMsgTemp;
-                SubMsg.Insert();
+                EntryNo += 1;
+                Klaz."Entry No." := EntryNo;
+                Klaz.Name := Format(SubMsgTemp.Guid3);
+                Klaz.Insert(true);
             until SubMsgTemp.Next() = 0;
         end;
 
-        Msg := Rec;
-        Msg.Insert();
     end;
 }

@@ -7,7 +7,10 @@
     "investmentObjectDescription": "Invest.Object.Description",
     "investmentObjectType": "Invest.Object.Type",
     "investmentObjectArea": 123.8,
-    "unitBuyers": [
+    "expectedRegDate": "2021-04-23",
+    "actualDate": "2021-04-24",
+    "expectedDate": "2021-04-25",	
+    "buyers": [
 		{
 			"buyerId": "f8d69bb4-1933-4ce5-8769-37f5311379fa",
 			"contactId": "d7e3c245-68a6-43b5-8429-067f9e323589",
