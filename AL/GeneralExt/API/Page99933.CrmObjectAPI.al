@@ -41,12 +41,26 @@ page 99933 "Crm Object Message API"
                     ApplicationArea = All;
                 }
 
+                field(dateField; DateField)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(jsonArray; JsonArr)
+                {
+                    ApplicationArea = All;
+                }
+
+
             }
         }
     }
 
     var
         SomeGuid: Guid;
+        DateField: Date;
+        JsonArr: Text;
+
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
