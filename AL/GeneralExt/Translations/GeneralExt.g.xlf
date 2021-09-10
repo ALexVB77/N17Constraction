@@ -2213,6 +2213,181 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Giv. Prod. Order Shipment - Field Posting Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1232930121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - NamedType 3293486334" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot delete %1 because this IFRS account is used in %2 %3 version %4.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - NamedType AccountUseError</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 3699788827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Account Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 3699788827 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting,Heading,Total,Begin-Total,End-Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Account Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 2927450519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Cost Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Default Cost Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 2818323605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Cost Plase</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Default Cost Place - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 2200046723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indentation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Indentation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 749447638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Last Modified Date Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 478049462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Totaling</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Totaling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Vers.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot delete %1 because it is used in %1 %2.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - Field 2790486453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field Comment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - Field 540447688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Mapping Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field IFRS Stat. Acc. Mapping Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Vers.Line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot change %1 because it is used in %1 %2.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 1912510093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Code Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Cost Code Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 2629454935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Cost Place Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 1120881852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Account Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Account Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 1430228196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 540447688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Mapping Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Stat. Acc. Mapping Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 1571709351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Stat. Acc. Account Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Stat. Acc. Account Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 358459767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Stat. Acc. Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Stat. Acc. Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 3414580985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Version Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Statutory Account Mapping</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot delete %1 because it is used in %1 %2.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - Field 1407200743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creation Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Field Creation Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Field Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2279018787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ImportDimDocPivot</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14882,6 +15057,16 @@
           <source>Cost Type Dimension Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field Cost Type Dimension Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 476953720 - Field 1805710566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>IFRS Stat. Acc. Map. Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field IFRS Stat. Acc. Map. Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 476953720 - Field 2899596362 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>IFRS Stat. Acc. Map. Vers.Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field IFRS Stat. Acc. Map. Vers.Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 476953720 - Field 329847988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Project Dim. Code</source>
