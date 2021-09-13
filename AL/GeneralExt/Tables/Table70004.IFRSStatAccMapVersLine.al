@@ -181,5 +181,10 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         if DimValue.FindFirst() then
             exit(DimValue.Name);
     end;
+
+    procedure CopyFromMappingVersion()
+    begin
+
+    end;
 }
 
