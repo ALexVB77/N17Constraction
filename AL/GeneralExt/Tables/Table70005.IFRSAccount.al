@@ -3,7 +3,7 @@ table 70005 "IFRS Account"
     Caption = 'IFRS Account';
     DataCaptionFields = "No.", Name;
     // DrillDownPageID = "Chart of Accounts";
-    // LookupPageID = "G/L Account List";
+    LookupPageID = "Chart of IFRS Accounts";
 
     fields
     {

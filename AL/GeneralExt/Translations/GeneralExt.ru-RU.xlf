@@ -7887,6 +7887,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Change Entry - Action Apply - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2301757787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chart of IFRS Accounts</source>
+          <target>МСФО План счетов</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Chart of IFRS Accounts - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2081427051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Control Construction</source>
           <target>Бюджеты проектов (Constraction)</target>
@@ -10110,63 +10117,54 @@
           <source>IFRS Stat. Acc. Map. Vers. Lines</source>
           <target>МСФО РСБУ Мэппинг Строки Версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1694297047 - Control 4080046828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mapping Code</source>
           <target>Код мэппинга</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Control CurrentMappingCode - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1694297047 - Control 3065399178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Version Code</source>
           <target>Код версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Control CurrentVersionCode - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4015036578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Stat. Acc. Map. Versions</source>
           <target>МСФО РСБУ Мэппинг Версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4015036578 - Action 3448006554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mapping Version</source>
           <target>Версия мэппинга</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Action Mapping Version - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4015036578 - Action 4123456321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Version Lines</source>
           <target>Строки версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Action VersionLines - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1040575104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Statutory Account Mappings</source>
           <target>МСФО РСБУ Мэппинг</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1040575104 - Action 1887025626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Accounts Mapping</source>
           <target>Мэппинг счетов</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Accounts Mapping - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1040575104 - Action 3196162251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Versions</source>
           <target>Версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Versions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
