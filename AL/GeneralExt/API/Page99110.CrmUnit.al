@@ -2,9 +2,9 @@ page 99110 "Crm Unit"
 {
     PageType = API;
 
-    APIPublisher = 'bonava';
+    APIPublisher = 'bc';
     APIGroup = 'crm';
-    APIVersion = 'beta';
+    //APIVersion = 'beta';
     EntityCaption = 'Unit', Locked = true;
     EntitySetCaption = 'Units', Locked = true;
     EntityName = 'unit';
