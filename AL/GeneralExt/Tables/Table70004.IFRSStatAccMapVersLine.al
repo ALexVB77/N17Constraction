@@ -20,7 +20,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         {
             Caption = 'Stat. Acc. Account No.';
             NotBlank = true;
-            TableRelation = "G/L Account"."No." Where("Account Type" = Const(Posting));
+            TableRelation = "G/L Account"."No." Where("Account Type" = Const(Posting), Blocked = const(false));
         }
         field(4; "Cost Place Code"; Code[20])
         {
@@ -163,4 +163,23 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         then
             Error(Text002, TableCaption, GLSetup.TableCaption, GLSetup.FieldCaption("IFRS Stat. Acc. Map. Vers.Code"));
     end;
+
+    procedure GetDimensionName(DimType: option CostPlace,CostCode; DimValueCode: code[20]): text
+    var
+        DimValue: Record "Dimension Value";
+    begin
+        GetPurchSetupWithTestDim();
+        if DimValueCode = '' then
+            exit('');
+        case DimType of
+            DimType::CostPlace:
+                DimValue.SetRange("Dimension Code", PurchSetup."Cost Place Dimension");
+            DimType::CostCode:
+                DimValue.SetRange("Dimension Code", PurchSetup."Cost Code Dimension");
+        end;
+        DimValue.SetRange(Code, DimValueCode);
+        if DimValue.FindFirst() then
+            exit(DimValue.Name);
+    end;
 }
+

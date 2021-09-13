@@ -2,6 +2,7 @@ table 70002 "IFRS Statutory Account Mapping"
 {
     Caption = 'IFRS Statutory Account Mapping';
     DataCaptionFields = "Code", Description;
+    LookupPageId = "IFRS Statutory Account Mapping";
 
     fields
     {
