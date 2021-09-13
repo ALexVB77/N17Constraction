@@ -104,6 +104,8 @@ codeunit 99100 "Crm Worker Rest"
         StartSessionErr: Label 'The session was not started successfully';
         UnknownInvestObjectTypeValueErr: Label 'Unknown Investment Object Type %1';
 
+        FieldTypeMismatchErr: Label 'Field type mismatch. %1 must be %2';
+
 
         //Messages
         AllUpToDateMsg: Label 'All is up to date';
@@ -122,6 +124,11 @@ codeunit 99100 "Crm Worker Rest"
         ObjectDataElementListG: List of [Dictionary of [Text, Text]];
         ParsedObjectsG: Dictionary of [Guid, List of [Dictionary of [Text, Text]]];
         CrmInteractCompanyListG: List of [Text];
+
+        MsgBuffG: Record "Crm Message Buffer";
+        SubMsgBuffG: Record "Crm Sub Message Buffer";
+        MsgBuffRecRefG: RecordRef;
+        SubMsgBuffRecRefG: RecordRef;
 
 
     procedure GetApartmentType(SoapEnvBody: Text) Response: Text
@@ -2064,6 +2071,59 @@ codeunit 99100 "Crm Worker Rest"
         TempXmlNode: XmlNode;
     begin
         XmlElem.SelectSingleNode(XPath, TempXmlNode);
+    end;
+
+
+    local procedure GetMsgBuffFieldRef(JsonField: Enum "Crm Json Field"; var NewFieldRef: FieldRef)
+    var
+        OrdinalValue, MsgBuffFieldNo : Integer;
+    begin
+        OrdinalValue := JsonField.AsInteger();
+        MsgBuffFieldNo := OrdinalValue mod 1000;
+        if OrdinalValue in [4000 .. 4999] then
+            NewFieldRef := SubMsgBuffRecRefG.Field(MsgBuffFieldNo)
+        else
+            NewFieldRef := MsgBuffRecRefG.Field(MsgBuffFieldNo)
+    end;
+
+    local procedure GetValue(JsonField: Enum "Crm Json Field"; var NewValue: Text)
+    var
+        FldRef: FieldRef;
+    begin
+        GetMsgBuffFieldRef(JsonField, FldRef);
+        if FldRef.Type <> FldRef.Type::Text then
+            Error(FieldTypeMismatchErr, JsonField, FldRef.Type::Text);
+        NewValue := FldRef.Value();
+    end;
+
+    local procedure GetValue(JsonField: Enum "Crm Json Field"; var NewValue: Guid)
+    var
+        FldRef: FieldRef;
+    begin
+        GetMsgBuffFieldRef(JsonField, FldRef);
+        if FldRef.Type <> FldRef.Type::Guid then
+            Error(FieldTypeMismatchErr, JsonField, FldRef.Type::Guid);
+        NewValue := FldRef.Value();
+    end;
+
+    local procedure GetValue(JsonField: Enum "Crm Json Field"; var NewValue: Decimal)
+    var
+        FldRef: FieldRef;
+    begin
+        GetMsgBuffFieldRef(JsonField, FldRef);
+        if FldRef.Type <> FldRef.Type::Decimal then
+            Error(FieldTypeMismatchErr, JsonField, FldRef.Type::Decimal);
+        NewValue := FldRef.Value();
+    end;
+
+    local procedure GetValue(JsonField: Enum "Crm Json Field"; var NewValue: Boolean)
+    var
+        FldRef: FieldRef;
+    begin
+        GetMsgBuffFieldRef(JsonField, FldRef);
+        if FldRef.Type <> FldRef.Type::Boolean then
+            Error(FieldTypeMismatchErr, JsonField, FldRef.Type::Boolean);
+        NewValue := FldRef.Value();
     end;
 
 }

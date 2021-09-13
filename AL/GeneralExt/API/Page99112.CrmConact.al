@@ -62,19 +62,19 @@ page 99112 "Crm Contact"
 
                 }
 
-                field(postalCity; Rec.Text1)
+                field(postalCity; Rec.Text2)
                 {
                     Caption = 'Postal City', Locked = true;
 
                 }
 
-                field(countryCode; Rec.Text2)
+                field(countryCode; Rec.Text3)
                 {
                     Caption = 'Country Code', Locked = true;
 
                 }
 
-                field(postalCode; Rec.Text3)
+                field(postalCode; Rec.Text4)
                 {
                     Caption = 'Post Code;', Locked = true;
 

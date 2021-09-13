@@ -1,6 +1,7 @@
 table 99110 "Crm Message Buffer"
 {
-    Caption = 'Crm Message Buffer';
+    Caption = 'Crm Message Buffer', Locked = true;
+    DataPerCompany = false;
 
     fields
     {

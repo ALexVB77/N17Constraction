@@ -50,25 +50,25 @@ page 99113 "Crm Contract"
 
                 }
 
-                field(number; Rec.Text1)
+                field(number; Rec.Text2)
                 {
                     Caption = 'Number', Locked = true;
 
                 }
 
-                field("type"; Rec.Text2)
+                field("type"; Rec.Text3)
                 {
                     Caption = 'Type', Locked = true;
 
                 }
 
-                field(status; Rec.Text3)
+                field(status; Rec.Text4)
                 {
                     Caption = 'Status', Locked = true;
 
                 }
 
-                field(cancelStatus; Rec.Text4)
+                field(cancelStatus; Rec.Text5)
                 {
                     Caption = 'Cancel Status', Locked = true;
 
@@ -81,7 +81,7 @@ page 99113 "Crm Contract"
                 }
 
 
-                field(externalNo; Rec.Text5)
+                field(externalNo; Rec.Text6)
                 {
                     Caption = 'External No.', Locked = true;
 
