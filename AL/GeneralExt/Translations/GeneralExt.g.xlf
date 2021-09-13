@@ -6443,6 +6443,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Change Entry - Action Apply - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2301757787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chart of IFRS Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Chart of IFRS Accounts - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2081427051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Control Construction</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8287,6 +8292,51 @@
           <source>Inventory - Inbound Transfer</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action Inventory - Inbound Transfer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Vers. Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1694297047 - Control 4080046828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mapping Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Control CurrentMappingCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1694297047 - Control 3065399178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Control CurrentVersionCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4015036578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Versions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4015036578 - Action 3448006554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mapping Version</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Action Mapping Version - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4015036578 - Action 4123456321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Action VersionLines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1040575104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Statutory Account Mappings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1040575104 - Action 1887025626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Accounts Mapping</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Accounts Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1040575104 - Action 3196162251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Versions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Versions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Agreement Card</source>

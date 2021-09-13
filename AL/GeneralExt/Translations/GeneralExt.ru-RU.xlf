@@ -2641,256 +2641,212 @@
         </trans-unit>
         <trans-unit id="Table 1232930121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Account</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Счет МСФО</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - NamedType 3293486334" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot delete %1 because this IFRS account is used in %2 %3 version %4.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Невозможно удалить %1 так как Счет МСФО используется в %2 %3 версии %4. </target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - NamedType AccountUseError</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot rename %1.</source>
-          <target>[NAB: SUGGESTION]Невозможно переименовать %1.</target>
+          <target>Невозможно переименовать %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 3699788827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account Type</source>
-          <target>[NAB: SUGGESTION]Тип счета</target>
+          <target>Тип счета</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Account Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 3699788827 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting,Heading,Total,Begin-Total,End-Total</source>
-          <target>[NAB: SUGGESTION]Учетный,Заголовок,Сумма,От-сумма,До-сумма</target>
+          <target>Учетный,Заголовок,Сумма,От-сумма,До-сумма</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Account Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Blocked</source>
-          <target>[NAB: SUGGESTION]Заблокирован</target>
-          <target>[NAB: SUGGESTION]Блокировка</target>
+          <target>Заблокирован</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Blocked - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 2927450519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Default Cost Code</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Cost Code по умолчанию</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Default Cost Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 2818323605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Default Cost Plase</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Cost Plase по умолчанию</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Default Cost Place - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 2200046723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indentation</source>
-          <target>[NAB: SUGGESTION]Отступ</target>
+          <target>Отступ</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Indentation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 749447638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Modified Date Time</source>
-          <target>[NAB: SUGGESTION]Дата и время последнего изменения</target>
-          <target>[NAB: SUGGESTION]Дата и время посл. изменения</target>
+          <target>Дата и время последнего изменения</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Last Modified Date Time - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
-          <target>[NAB: SUGGESTION]Название</target>
-          <target>[NAB: SUGGESTION]Наименование</target>
-          <target>[NAB: SUGGESTION]ФИО</target>
+          <target>Название</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
-          <target>[NAB: SUGGESTION]BW счет номер</target>
-          <target>[NAB: SUGGESTION]Но.</target>
-          <target>[NAB: SUGGESTION]Номер</target>
+          <target>Номер</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1232930121 - Field 478049462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Totaling</source>
-          <target>[NAB: SUGGESTION]Группировка</target>
+          <target>Группировка</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Totaling - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4274946101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Stat. Acc. Map. Vers.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>МСФО РСБУ Мэппинг Версия</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4274946101 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot rename %1.</source>
-          <target>[NAB: SUGGESTION]Невозможно переименовать %1.</target>
+          <target>Невозможно переименовать %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Table 4274946101 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot delete %1 because it is used in %1 %2.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Невозможно удалить %1 так как он используется в %1 %2.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Table 4274946101 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-          <target>[NAB: SUGGESTION]Код</target>
+          <target>Код</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4274946101 - Field 2790486453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Comment</source>
-          <target>[NAB: SUGGESTION]Комментарий</target>
+          <target>Комментарий</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field Comment - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4274946101 - Field 540447688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Stat. Acc. Mapping Code</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>МСФО РСБУ Мэппинг Код</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field IFRS Stat. Acc. Mapping Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Stat. Acc. Map. Vers.Line</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>МСФО РСБУ Мэппинг Версия Строка</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot change %1 because it is used in %1 %2.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Невозможно удалить %1 так как он используется в %1 %2.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 1912510093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Code Code</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Код Code Code</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Cost Code Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 2629454935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Place Code</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Код Cost Place</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Cost Place Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 1120881852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Account Name</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Название МСФО счета</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Account Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 1430228196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Account No.</source>
-          <target>[NAB: SUGGESTION]Счет IFRS</target>
+          <target>Номер МСФО счета</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Account No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 540447688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Stat. Acc. Mapping Code</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>МСФО РСБУ Мэппинг Код</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Stat. Acc. Mapping Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 1571709351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Stat. Acc. Account Name</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Название РСБУ счета</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Stat. Acc. Account Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 358459767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Stat. Acc. Account No.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Номер РСБУ счета</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Stat. Acc. Account No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 3414580985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Version Code</source>
-          <target>[NAB: SUGGESTION]Код версии</target>
-          <target>[NAB: SUGGESTION]Код Версии</target>
+          <target>Код версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Version Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1040575104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Statutory Account Mapping</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>МСФО РСБУ Мэппинг</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1040575104 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot rename %1.</source>
-          <target>[NAB: SUGGESTION]Невозможно переименовать %1.</target>
+          <target>Невозможно переименовать %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Table 1040575104 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot delete %1 because it is used in %1 %2.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Невозможно удалить %1 так как он используется в %1 %2.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - NamedType Text002</note>
         </trans-unit>
         <trans-unit id="Table 1040575104 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
-          <target>[NAB: SUGGESTION]Код</target>
+          <target>Код</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Field Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1040575104 - Field 1407200743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Creation Date</source>
-          <target>[NAB: SUGGESTION]Дата создания</target>
+          <target>Дата создания</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Field Creation Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1040575104 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <target>[NAB: SUGGESTION]Описание</target>
-          <target>[NAB: SUGGESTION]Описание операции</target>
-          <target>[NAB: SUGGESTION]Описание СС</target>
+          <target>Описание</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2279018787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -7945,6 +7901,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Change Entry - Action Apply - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2301757787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chart of IFRS Accounts</source>
+          <target>МСФО План счетов</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Chart of IFRS Accounts - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2081427051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Control Construction</source>
           <target>Бюджеты проектов (Constraction)</target>
@@ -10163,6 +10126,60 @@
           <target>Запасы - входящее перемещение</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action Inventory - Inbound Transfer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Vers. Lines</source>
+          <target>МСФО РСБУ Мэппинг Строки Версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1694297047 - Control 4080046828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mapping Code</source>
+          <target>Код мэппинга</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Control CurrentMappingCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1694297047 - Control 3065399178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Code</source>
+          <target>Код версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Control CurrentVersionCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4015036578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Versions</source>
+          <target>МСФО РСБУ Мэппинг Версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4015036578 - Action 3448006554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mapping Version</source>
+          <target>Версия мэппинга</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Action Mapping Version - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4015036578 - Action 4123456321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Lines</source>
+          <target>Строки версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Action VersionLines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1040575104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Statutory Account Mappings</source>
+          <target>МСФО РСБУ Мэппинг</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1040575104 - Action 1887025626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Accounts Mapping</source>
+          <target>Мэппинг счетов</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Accounts Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1040575104 - Action 3196162251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Versions</source>
+          <target>Версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Versions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Agreement Card</source>

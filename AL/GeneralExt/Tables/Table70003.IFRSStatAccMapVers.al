@@ -2,6 +2,7 @@ table 70003 "IFRS Stat. Acc. Map. Vers."
 {
     Caption = 'IFRS Stat. Acc. Map. Vers.';
     DataCaptionFields = "Code", Comment;
+    LookupPageId = "IFRS Stat. Acc. Map. Versions";
 
     fields
     {
