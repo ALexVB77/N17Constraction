@@ -13,5 +13,21 @@ pageextension 80118 "General Ledger Setup (Ext)" extends "General Ledger Setup"
                 ApplicationArea = All;
             }
         }
+        addafter(Templates)
+        {
+            group("IFRS Translation")
+            {
+                Caption = 'IFRS Translation';
+
+                field("IFRS Stat. Acc. Map. Code"; "IFRS Stat. Acc. Map. Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("IFRS Stat. Acc. Map. Vers.Code"; "IFRS Stat. Acc. Map. Vers.Code")
+                {
+                    ApplicationArea = All;
+                }
+            }
+        }
     }
 }

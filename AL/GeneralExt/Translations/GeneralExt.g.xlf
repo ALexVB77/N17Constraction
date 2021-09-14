@@ -14348,6 +14348,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Ledger Entries (Ext) - Control Utilities Dim. Value Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 476953720 - Control 2969501735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>IFRS Translation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Ledger Setup (Ext) - Control IFRS Translation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3887120495 - Control 3573897381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
           <source>Another</source>
           <note from="Developer" annotates="general" priority="2"></note>

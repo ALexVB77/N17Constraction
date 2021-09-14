@@ -1,11 +1,11 @@
 page 50001 "IFRS Stat. Acc. Map. Versions"
 {
-    ApplicationArea = Basic, Suite;
+    //ApplicationArea = Basic, Suite;
     Caption = 'IFRS Stat. Acc. Map. Versions';
     PageType = List;
     PopulateAllFields = true;
     SourceTable = "IFRS Stat. Acc. Map. Vers.";
-    UsageCategory = Lists;
+    //UsageCategory = Lists;
 
     layout
     {

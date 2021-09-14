@@ -2721,42 +2721,36 @@
           <source>IFRS Accounting Period</source>
           <target>Учетный период МСФО</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3867511806 - Field 749447638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Modified Date Time</source>
           <target>Дата и время последнего изменения</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Last Modified Date Time - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3867511806 - Field 1458520441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Modified User ID</source>
           <target>Код пользователя последнего изменения</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Last Modified User ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3867511806 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
           <target>Название</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3867511806 - Field 2332754761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Period Closed</source>
           <target>Период закрыт</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Period Closed - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3867511806 - Field 460889064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Starting Date</source>
           <target>Дата начала</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Starting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4274946101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10178,21 +10172,18 @@
           <source>IFRS Accounting Periods</source>
           <target>Учетные периоды МСФО</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 274658411 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">
           <source>ifrs fiscal year,ifrs fiscal period</source>
           <target>мсфо финансовый год,мсфо финансовый период</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Property AdditionalSearchTerms</note>
         </trans-unit>
         <trans-unit id="Page 274658411 - Action 3961913871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>&amp;Create Year</source>
           <target>&amp;Создать год</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Action &amp;Create Year - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -17402,6 +17393,13 @@
           <target>ИНЖ. СЕТЬ</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Ledger Entries (Ext) - Control Utilities Dim. Value Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 476953720 - Control 2969501735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>IFRS Translation</source>
+          <target>МСФО Трансляция</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Ledger Setup (Ext) - Control IFRS Translation - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3887120495 - Control 3573897381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
           <source>Another</source>
