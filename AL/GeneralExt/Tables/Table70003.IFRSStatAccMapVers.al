@@ -21,6 +21,11 @@ table 70003 "IFRS Stat. Acc. Map. Vers."
         {
             Caption = 'Comment';
         }
+        field(4; "Version ID"; Guid)
+        {
+            Caption = 'Version ID';
+            Editable = false;
+        }
     }
 
     keys
@@ -29,7 +34,15 @@ table 70003 "IFRS Stat. Acc. Map. Vers."
         {
             Clustered = true;
         }
+        key(Key2; "Version ID")
+        {
+        }
     }
+
+    trigger OnInsert()
+    begin
+        "Version ID" := CreateGuid();
+    end;
 
     trigger OnDelete()
     var
@@ -42,8 +55,7 @@ table 70003 "IFRS Stat. Acc. Map. Vers."
         then
             Error(Text002, TableCaption, GLSetup.TableCaption, GLSetup.FieldCaption("IFRS Stat. Acc. Map. Vers.Code"));
 
-        IFRSStatAccMapVersLine.SetRange("IFRS Stat. Acc. Mapping Code", "IFRS Stat. Acc. Mapping Code");
-        IFRSStatAccMapVersLine.SetRange("Version Code", Code);
+        IFRSStatAccMapVersLine.SetRange("Version ID", "Version ID");
         if not IFRSStatAccMapVersLine.IsEmpty then
             IFRSStatAccMapVersLine.DeleteAll(true);
     end;

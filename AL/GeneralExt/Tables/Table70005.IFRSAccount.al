@@ -148,12 +148,16 @@ table 70005 "IFRS Account"
 
     trigger OnDelete()
     var
-        IFRSStatAccMapVersLine: Record "IFRS Stat. Acc. Map. Vers.Line";
-        IFRSStatAccMap: Record "IFRS Statutory Account Mapping";
+        MapVersLine: Record "IFRS Stat. Acc. Map. Vers.Line";
+        Mapping: Record "IFRS Statutory Account Mapping";
+        MapVersion: Record "IFRS Stat. Acc. Map. Vers.";
     begin
-        IFRSStatAccMapVersLine.SetRange("IFRS Account No.", "No.");
-        if not IFRSStatAccMapVersLine.IsEmpty then
-            Error(AccountUseError, "No.", IFRSStatAccMap.TableCaption, IFRSStatAccMapVersLine."IFRS Stat. Acc. Mapping Code", IFRSStatAccMapVersLine."Version Code");
+        MapVersLine.SetRange("IFRS Account No.", "No.");
+        if not MapVersLine.IsEmpty then begin
+            MapVersion.SetRange("Version ID", MapVersLine."Version ID");
+            MapVersion.FindFirst();
+            Error(AccountUseError, "No.", Mapping.TableCaption, MapVersion."IFRS Stat. Acc. Mapping Code", MapVersion."Code");
+        end;
     end;
 
     trigger OnRename()

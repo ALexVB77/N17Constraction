@@ -1,7 +1,6 @@
 page 50002 "IFRS Stat. Acc. Map. Vers.Line"
 {
     Caption = 'IFRS Stat. Acc. Map. Vers. Lines';
-    DataCaptionExpression = DataCaption;
     DelayedInsert = true;
     PageType = Worksheet;
     PopulateAllFields = true;
@@ -132,23 +131,15 @@ page 50002 "IFRS Stat. Acc. Map. Vers.Line"
         CurrentMappingCode, CurrentVersionCode : code[20];
         ListEditable: Boolean;
 
-    local procedure DataCaption(): Text;
-    var
-        AccMapping: Record "IFRS Statutory Account Mapping";
-        AccMapVers: Record "IFRS Stat. Acc. Map. Vers.";
-    begin
-        if not AccMapping.Get("IFRS Stat. Acc. Mapping Code") then
-            AccMapping.Init();
-        if not AccMapVers.Get("IFRS Stat. Acc. Mapping Code", "Version Code") then
-            AccMapVers.Init;
-        exit(StrSubstNo('%1 %2', AccMapping.Description, AccMapVers.Comment));
-    end;
-
     local procedure SetPageFilters()
+    var
+        IFRSMapVersion: Record "IFRS Stat. Acc. Map. Vers.";
     begin
         FilterGroup(2);
-        SetRange("IFRS Stat. Acc. Mapping Code", CurrentMappingCode);
-        SetRange("Version Code", CurrentVersionCode);
+        if IFRSMapVersion.Get(CurrentMappingCode, CurrentVersionCode) then
+            SetRange("Version ID", IFRSMapVersion."Version ID")
+        else
+            SetRange("Version ID", '');
         FilterGroup(0);
         if FindFirst() then;
 

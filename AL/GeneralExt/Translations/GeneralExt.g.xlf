@@ -2258,6 +2258,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field IFRS Stat. Acc. Mapping Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4274946101 - Field 3735923737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field Version ID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Stat. Acc. Map. Vers.Line</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2288,10 +2293,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Account No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1694297047 - Field 540447688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>IFRS Stat. Acc. Mapping Code</source>
+        <trans-unit id="Table 1694297047 - Field 3022847853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rule ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Stat. Acc. Mapping Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Rule ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 1571709351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Stat. Acc. Account Name</source>
@@ -2303,10 +2308,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Stat. Acc. Account No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1694297047 - Field 3414580985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Version Code</source>
+        <trans-unit id="Table 1694297047 - Field 3735923737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Version Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Version ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1040575104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Statutory Account Mapping</source>
@@ -15123,6 +15128,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Fixed Asset (Ext) - Field RAS Posting Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1253801463 - Field 3173400708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4274826855">
+          <source>Non-transmit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Account (Ext) - Field Non-transmit - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1850561956 - Field 3945067551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>Cust. Ext. Agr. No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15132,6 +15142,41 @@
           <source>ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 1430228196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 3353793873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Mapping Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Mapping Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 2034275432 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Perid - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 886431651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Transfer Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Transfer Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 1030995259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Transfer Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Transfer Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 2004580803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Version Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Version Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 71000681 - Field 3173400708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3690479385">
+          <source>Non-transmit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen. Journal Batch (Ext) - Field Non-transmit - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2325658151 - Field 3976972112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Gift</source>
@@ -16967,6 +17012,26 @@
           <source>Reception</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Gen. Journal Approval Status - EnumValue Reception - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1030995259 - EnumValue 4137051400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue New - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1030995259 - EnumValue 3345436129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Rule</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue No Rule - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1030995259 - EnumValue 2381795172 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Non-Transmit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue Non-Transmit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1030995259 - EnumValue 2521603205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ready</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue Ready - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3960357944 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>

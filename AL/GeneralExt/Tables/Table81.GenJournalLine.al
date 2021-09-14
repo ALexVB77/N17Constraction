@@ -16,4 +16,26 @@ tableextension 80081 "Gen. Journal Line (Ext)" extends "Gen. Journal Line"
             Caption = 'IW Document No.';
         }
     }
+
+    var
+        MappingVersionID: Guid;
+        MapDim1, MapDim2 : code[20];
+
+    procedure SetIFRSMappingValues()
+    var
+        GLSetup: Record "General Ledger Setup";
+        MappingVer: Record "IFRS Stat. Acc. Map. Vers.";
+    begin
+        GLSetup.Get();
+        if '' in [GLSetup."IFRS Stat. Acc. Map. Code", GLSetup."IFRS Stat. Acc. Map. Vers.Code"] then
+            exit;
+        MappingVersionID := MappingVer."Version ID";
+    end;
+
+    procedure GetIFRSMappingValues(var MappingVerID: Guid; var Dim1: code[20]; var Dim2: code[20])
+    begin
+        MappingVerID := MappingVersionID;
+        Dim1 := MapDim1;
+        Dim2 := MapDim2;
+    end;
 }
