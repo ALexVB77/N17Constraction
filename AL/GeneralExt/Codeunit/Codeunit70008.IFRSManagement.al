@@ -6,7 +6,7 @@ codeunit 70008 "IFRS Management"
     begin
     end;
 
-    procedure ProcessGLEntry(var GLEntry: Record "G/L Entry"; GenJournalLine: Record "Gen. Journal Line")
+    procedure ProcessGLEntry(var GLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line")
     var
         GLAccount: Record "G/L Account";
         JnlBatchName: Record "Gen. Journal Batch";
@@ -68,7 +68,7 @@ codeunit 70008 "IFRS Management"
 
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeInsertGlobalGLEntry', '', false, false)]
-    local procedure OnBeforeInsertGlobalGLEntry(var GlobalGLEntry: Record "G/L Entry"; GenJournalLine: Record "Gen. Journal Line"; GLRegister: Record "G/L Register")
+    local procedure OnBeforeInsertGlobalGLEntry(var GlobalGLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line"; GLRegister: Record "G/L Register")
     begin
         ProcessGLEntry(GlobalGLEntry, GenJournalLine);
     end;
