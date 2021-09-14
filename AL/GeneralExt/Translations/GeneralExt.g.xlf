@@ -15203,6 +15203,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Period - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 2649353807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Trans. Inconsistent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Trans. Inconsistent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1850561956 - Field 886431651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>IFRS Transfer Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15243,6 +15248,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field Allow Diff in Check - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 476953720 - Field 3724315272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Check IFRS Trans. Consistent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field Check IFRS Trans. Consistent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 476953720 - Field 1386837218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Cost Type Dimension Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15257,6 +15267,11 @@
           <source>IFRS Stat. Acc. Map. Vers.Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field IFRS Stat. Acc. Map. Vers.Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 476953720 - Field 3211700068 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>IFRS Transfer Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field IFRS Transfer Period - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 476953720 - Field 329847988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Project Dim. Code</source>

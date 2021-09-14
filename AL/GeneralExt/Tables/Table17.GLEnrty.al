@@ -40,16 +40,20 @@ tableextension 80017 "G/L Entry (Ext)" extends "G/L Entry"
             Editable = false;
             Description = 'NC 51559 AB';
         }
+        field(70005; "IFRS Trans. Inconsistent"; Boolean)
+        {
+            Editable = false;
+            Description = 'NC 51559 AB';
+        }
     }
 
     keys
     {
         key(Key50000; ID)
         {
-
+        }
+        key(Key50001; "IFRS Transfer Status", "IFRS Transfer Date")
+        {
         }
     }
-
-
-
 }

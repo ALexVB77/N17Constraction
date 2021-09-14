@@ -44,4 +44,6 @@ tableextension 80081 "Gen. Journal Line (Ext)" extends "Gen. Journal Line"
         Dim1 := MapDim1;
         Dim2 := MapDim2;
     end;
+
+    //procedure 
 }

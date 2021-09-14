@@ -41,6 +41,11 @@ pageextension 80020 "General Ledger Entries (Ext)" extends "General Ledger Entri
                 ApplicationArea = Basic, Suite;
                 Visible = false;
             }
+            field("IFRS Trans. Inconsistent"; "IFRS Trans. Inconsistent")
+            {
+                ApplicationArea = Basic, Suite;
+                Visible = false;
+            }
         }
     }
 
