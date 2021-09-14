@@ -25,7 +25,7 @@ tableextension 80017 "G/L Entry (Ext)" extends "G/L Entry"
             TableRelation = "IFRS Account";
             Description = 'NC 51559 AB';
         }
-        field(70002; "IFRS Perid"; Date)
+        field(70002; "IFRS Period"; Date)
         {
             Caption = 'IFRS Period';
             Description = 'NC 51559 AB';
@@ -35,12 +35,7 @@ tableextension 80017 "G/L Entry (Ext)" extends "G/L Entry"
             Caption = 'IFRS Transfer Date';
             Description = 'NC 51559 AB';
         }
-        field(70030; "IFRS Mapping Code"; Code[20])
-        {
-            Editable = false;
-            Description = 'NC 51559 AB';
-        }
-        field(70031; "IFRS Version Code"; Code[20])
+        field(70004; "IFRS Version ID"; Guid)
         {
             Editable = false;
             Description = 'NC 51559 AB';

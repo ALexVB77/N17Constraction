@@ -2717,6 +2717,48 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Totaling - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3867511806 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Accounting Period</source>
+          <target>Учетный период МСФО</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 749447638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date Time</source>
+          <target>Дата и время последнего изменения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Last Modified Date Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 1458520441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified User ID</source>
+          <target>Код пользователя последнего изменения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Last Modified User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <target>Название</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 2332754761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period Closed</source>
+          <target>Период закрыт</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Period Closed - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 460889064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <target>Дата начала</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Starting Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4274946101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Stat. Acc. Map. Vers.</source>
           <target>МСФО РСБУ Мэппинг Версия</target>
@@ -2757,7 +2799,6 @@
           <source>Version ID</source>
           <target>ID версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field Version ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -2800,7 +2841,6 @@
           <source>Rule ID</source>
           <target>ID правила</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Rule ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 1571709351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -2819,7 +2859,6 @@
           <source>Version ID</source>
           <target>ID версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Version ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1040575104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10134,6 +10173,27 @@
           <target>Запасы - входящее перемещение</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action Inventory - Inbound Transfer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 274658411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Accounting Periods</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 274658411 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ifrs fiscal year,ifrs fiscal period</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Property AdditionalSearchTerms</note>
+        </trans-unit>
+        <trans-unit id="Page 274658411 - Action 3961913871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Create Year</source>
+          <target>[NAB: SUGGESTION]&amp;Создать год</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Action &amp;Create Year - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Stat. Acc. Map. Vers. Lines</source>
@@ -18360,19 +18420,12 @@
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Account No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1850561956 - Field 3353793873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
-          <source>IFRS Mapping Code</source>
-          <target>[NAB: NOT TRANSLATED]</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Mapping Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1850561956 - Field 2034275432 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+        <trans-unit id="TableExtension 1850561956 - Field 3952013741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>IFRS Period</source>
           <target>[NAB: NOT TRANSLATED]</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Perid - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Period - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1850561956 - Field 886431651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>IFRS Transfer Date</source>
@@ -18388,12 +18441,12 @@
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Transfer Status - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1850561956 - Field 2004580803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
-          <source>IFRS Version Code</source>
+        <trans-unit id="TableExtension 1850561956 - Field 993577315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Version ID</source>
           <target>[NAB: NOT TRANSLATED]</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Version Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Version ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 71000681 - Field 3173400708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3690479385">
           <source>Non-transmit</source>
