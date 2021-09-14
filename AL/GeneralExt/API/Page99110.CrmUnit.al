@@ -2,7 +2,7 @@ page 99110 "Crm Unit"
 {
     PageType = API;
 
-    APIPublisher = 'bonava';
+    APIPublisher = 'bc';
     APIGroup = 'crm';
     APIVersion = 'beta';
     EntityCaption = 'Unit', Locked = true;
@@ -125,7 +125,7 @@ page 99110 "Crm Unit"
         else
             EntryNo := Klaz."Entry No." + 1;
 
-        Error('%1', Rec.Date2);
+        //Error('%1', Rec.Date2);
         Klaz."Entry No." := EntryNo;
         Klaz.Name := Format(Rec.Guid1);
         Klaz.Insert(true);

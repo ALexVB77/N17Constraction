@@ -117,6 +117,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Act Stage - Field Stage Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1148345802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anaplan Entity</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Anaplan Entity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3587166653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Budget Correction</source>
           <target>Бюджет корректировки</target>
@@ -7467,6 +7474,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2826027150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anaplan Bound Balance Entity</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Anaplan Bound Balance Entity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2191153028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archiving Document</source>
           <target>Архивация документа</target>
@@ -7891,7 +7905,6 @@
           <source>Chart of IFRS Accounts</source>
           <target>МСФО План счетов</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Chart of IFRS Accounts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2081427051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

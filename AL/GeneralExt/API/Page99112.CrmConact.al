@@ -2,7 +2,7 @@ page 99112 "Crm Contact"
 {
     PageType = API;
 
-    APIPublisher = 'bonava';
+    APIPublisher = 'bc';
     APIGroup = 'crm';
     APIVersion = 'beta';
     EntityCaption = 'Contact', Locked = true;

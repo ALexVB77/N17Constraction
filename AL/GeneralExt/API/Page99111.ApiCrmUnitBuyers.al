@@ -2,7 +2,7 @@ page 99111 "Crm Unit Buyer"
 {
     PageType = API;
 
-    APIPublisher = 'bonava';
+    APIPublisher = 'bc';
     APIGroup = 'crm';
     APIVersion = 'beta';
     EntityCaption = 'Buyer', Locked = true;
