@@ -30,6 +30,7 @@ tableextension 80081 "Gen. Journal Line (Ext)" extends "Gen. Journal Line"
         GLSetup.Get();
         if '' in [GLSetup."IFRS Stat. Acc. Map. Code", GLSetup."IFRS Stat. Acc. Map. Vers.Code"] then
             exit;
+        MappingVer.Get(GLSetup."IFRS Stat. Acc. Map. Code", GLSetup."IFRS Stat. Acc. Map. Vers.Code");
         MappingVersionID := MappingVer."Version ID";
 
         PurchSetup.Get();
