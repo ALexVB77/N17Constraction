@@ -7,8 +7,8 @@ page 99114 "Anaplan Bound Balance Entity"
     APIVersion = 'beta';
     EntityCaption = 'Bound Balance RU', Locked = true;
     EntitySetCaption = 'Bound Balance RU', Locked = true;
-    EntityName = 'boundBalanceRU';
-    EntitySetName = 'boundBalanceRU';
+    EntityName = 'boundBalanceRu';
+    EntitySetName = 'boundBalanceRu';
 
     ODataKeyFields = SystemId;
     SourceTable = "Anaplan Entity";
