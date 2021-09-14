@@ -45,14 +45,14 @@ table 70002 "IFRS Statutory Account Mapping"
     trigger OnDelete()
     var
         GLSetup: Record "General Ledger Setup";
-        IFRSStatAccMapVers: Record "IFRS Stat. Acc. Map. Vers.";
+        MapVersion: Record "IFRS Stat. Acc. Map. Vers.";
     begin
         GLSetup.Get();
         if GLSetup."IFRS Stat. Acc. Map. Code" = Rec."Code" then
             Error(Text002, TableCaption, GLSetup.TableCaption, GLSetup.FieldCaption("IFRS Stat. Acc. Map. Code"));
-        IFRSStatAccMapVers.SetRange("IFRS Stat. Acc. Mapping Code", Code);
-        if not IFRSStatAccMapVers.IsEmpty then
-            IFRSStatAccMapVers.DeleteAll(true);
+        MapVersion.SetRange("IFRS Stat. Acc. Mapping Code", Code);
+        if not MapVersion.IsEmpty then
+            MapVersion.DeleteAll(true);
     end;
 
     trigger OnRename()

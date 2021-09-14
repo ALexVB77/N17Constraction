@@ -8380,7 +8380,7 @@
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeInsertGlobalGLEntry(var GlobalGLEntry: Record "G/L Entry"; GenJournalLine: Record "Gen. Journal Line"; GLRegister: Record "G/L Register")
+    local procedure OnBeforeInsertGlobalGLEntry(var GlobalGLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line"; GLRegister: Record "G/L Register")
     begin
     end;
 

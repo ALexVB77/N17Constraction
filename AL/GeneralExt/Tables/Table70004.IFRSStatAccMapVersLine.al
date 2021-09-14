@@ -4,25 +4,19 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
 
     fields
     {
-        field(1; "IFRS Stat. Acc. Mapping Code"; code[20])
+        field(1; "Version ID"; Guid)
         {
-            Caption = 'IFRS Stat. Acc. Mapping Code';
+            Caption = 'Version ID';
+            Editable = false;
             NotBlank = true;
-            TableRelation = "IFRS Statutory Account Mapping";
         }
-        field(2; "Version Code"; Code[20])
-        {
-            Caption = 'Version Code';
-            NotBlank = true;
-            TableRelation = "IFRS Stat. Acc. Map. Vers."."Code" WHERE("IFRS Stat. Acc. Mapping Code" = FIELD("IFRS Stat. Acc. Mapping Code"));
-        }
-        field(3; "Stat. Acc. Account No."; Code[20])
+        field(2; "Stat. Acc. Account No."; Code[20])
         {
             Caption = 'Stat. Acc. Account No.';
             NotBlank = true;
             TableRelation = "G/L Account"."No." Where("Account Type" = Const(Posting), Blocked = const(false));
         }
-        field(4; "Cost Place Code"; Code[20])
+        field(3; "Cost Place Code"; Code[20])
         {
             Caption = 'Cost Place Code';
 
@@ -51,7 +45,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 end;
             end;
         }
-        field(5; "Cost Code Code"; Code[20])
+        field(4; "Cost Code Code"; Code[20])
         {
             Caption = 'Cost Code Code';
 
@@ -80,7 +74,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 end;
             end;
         }
-        field(6; "IFRS Account No."; Code[50])
+        field(5; "IFRS Account No."; Code[50])
         {
             Caption = 'IFRS Account No.';
             NotBlank = true;
@@ -98,6 +92,11 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                         "Cost Code Code" := IFRSAcc."Default Cost Code";
                 end;
             end;
+        }
+        field(6; "Rule ID"; Guid)
+        {
+            Caption = 'Rule ID';
+            Editable = false;
         }
         field(10; "Stat. Acc. Account Name"; Text[100])
         {
@@ -117,11 +116,20 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
 
     keys
     {
-        key(Key1; "IFRS Stat. Acc. Mapping Code", "Version Code", "Stat. Acc. Account No.", "Cost Place Code", "Cost Code Code")
+        key(Key1; "Version ID", "Stat. Acc. Account No.", "Cost Place Code", "Cost Code Code")
         {
             Clustered = true;
         }
+        key(Key2; "Rule ID")
+        {
+        }
     }
+
+    trigger OnInsert()
+    begin
+        CheckUsed();
+        "Rule ID" := CreateGuid();
+    end;
 
     trigger OnModify()
     begin
@@ -156,10 +164,15 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
     local procedure CheckUsed()
     var
         GLSetup: Record "General Ledger Setup";
+        MappingVersion: Record "IFRS Stat. Acc. Map. Vers.";
     begin
         GLSetup.Get();
-        if (GLSetup."IFRS Stat. Acc. Map. Code" = Rec."IFRS Stat. Acc. Mapping Code") and
-            (GLSetup."IFRS Stat. Acc. Map. Vers.Code" = Rec."Version Code")
+        if '' in [GLSetup."IFRS Stat. Acc. Map. Code", GLSetup."IFRS Stat. Acc. Map. Vers.Code"] then
+            exit;
+        MappingVersion.SetRange("Version ID", "Version ID");
+        MappingVersion.FindFirst();
+        if (GLSetup."IFRS Stat. Acc. Map. Code" = MappingVersion."IFRS Stat. Acc. Mapping Code") and
+            (GLSetup."IFRS Stat. Acc. Map. Vers.Code" = MappingVersion."Code")
         then
             Error(Text002, TableCaption, GLSetup.TableCaption, GLSetup.FieldCaption("IFRS Stat. Acc. Map. Vers.Code"));
     end;
