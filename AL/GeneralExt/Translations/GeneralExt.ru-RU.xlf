@@ -20658,29 +20658,28 @@
         </trans-unit>
         <trans-unit id="Enum 1030995259 - EnumValue 4137051400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New</source>
-          <target>[NAB: SUGGESTION]Новая</target>
-          <target>[NAB: SUGGESTION]Новый</target>
+          <target>Новый</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue New - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1030995259 - EnumValue 3345436129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No Rule</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Отсутствует правило</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue No Rule - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1030995259 - EnumValue 2381795172 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Non-Transmit</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Нетранслируемый</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue Non-Transmit - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1030995259 - EnumValue 2521603205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ready</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Готово</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue Ready - Property Caption</note>
