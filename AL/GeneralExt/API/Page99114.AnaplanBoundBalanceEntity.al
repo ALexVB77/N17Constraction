@@ -2,7 +2,7 @@ page 99114 "Anaplan Bound Balance Entity"
 {
     PageType = API;
 
-    APIPublisher = 'bonava';
+    APIPublisher = 'bc';
     APIGroup = 'anaplan';
     APIVersion = 'beta';
     EntityCaption = 'Bound Balance RU', Locked = true;

@@ -4,7 +4,7 @@ page 99111 "Crm Unit Buyer"
 
     APIPublisher = 'bc';
     APIGroup = 'crm';
-    //APIVersion = 'beta';
+    APIVersion = 'beta';
     EntityCaption = 'Buyer', Locked = true;
     EntitySetCaption = 'Buyers', Locked = true;
     EntityName = 'buyer';

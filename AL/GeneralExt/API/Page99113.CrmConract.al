@@ -2,7 +2,7 @@ page 99113 "Crm Contract"
 {
     PageType = API;
 
-    APIPublisher = 'bonava';
+    APIPublisher = 'bc';
     APIGroup = 'crm';
     APIVersion = 'beta';
     EntityCaption = 'Contract', Locked = true;

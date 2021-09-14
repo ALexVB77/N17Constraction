@@ -4,7 +4,7 @@ page 99110 "Crm Unit"
 
     APIPublisher = 'bc';
     APIGroup = 'crm';
-    //APIVersion = 'beta';
+    APIVersion = 'beta';
     EntityCaption = 'Unit', Locked = true;
     EntitySetCaption = 'Units', Locked = true;
     EntityName = 'unit';
