@@ -10176,21 +10176,21 @@
         </trans-unit>
         <trans-unit id="Page 274658411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IFRS Accounting Periods</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Учетные периоды МСФО</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 274658411 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">
           <source>ifrs fiscal year,ifrs fiscal period</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>мсфо финансовый год,мсфо финансовый период</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Property AdditionalSearchTerms</note>
         </trans-unit>
         <trans-unit id="Page 274658411 - Action 3961913871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>&amp;Create Year</source>
-          <target>[NAB: SUGGESTION]&amp;Создать год</target>
+          <target>&amp;Создать год</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Action &amp;Create Year - Property Caption</note>
