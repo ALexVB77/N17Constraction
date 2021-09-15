@@ -146,7 +146,7 @@ codeunit 70008 "IFRS Management"
     local procedure OnBeforeUpdateGLReg(IsTransactionConsistent: Boolean; var IsGLRegInserted: Boolean; var GLReg: Record "G/L Register"; var IsHandled: Boolean; var GenJnlLine: Record "Gen. Journal Line"; GlobalGLEntry: Record "G/L Entry")
     begin
         if IsTransactionConsistent then
-            CheckIFRSTransactionConsistent(GLReg, GenJnlLine, GlobalGLEntry);
+            GenJnlLine.CheckIFRSTransactionConsistent(GLReg, GenJnlLine, GlobalGLEntry);
     end;
 
 }
