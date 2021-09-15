@@ -92,6 +92,7 @@ page 50002 "IFRS Stat. Acc. Map. Vers.Line"
                 field("Cost Place Code"; "Cost Place Code")
                 {
                     ApplicationArea = All;
+                    CaptionClass = GetDimCaptionClass(0);
                 }
                 field(CostPlaceName; GetDimensionName(0, "Cost Place Code"))
                 {
@@ -100,6 +101,7 @@ page 50002 "IFRS Stat. Acc. Map. Vers.Line"
                 field("Cost Code Code"; "Cost Code Code")
                 {
                     ApplicationArea = All;
+                    CaptionClass = GetDimCaptionClass(1);
                 }
                 field(CostCodeName; GetDimensionName(1, "Cost Code Code"))
                 {

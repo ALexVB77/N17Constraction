@@ -29,7 +29,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 DimValue: Record "Dimension Value";
                 DimMgt: Codeunit DimensionManagement;
             begin
-                GetPurchSetupWithTestDim();
+                GetPurchSetupWithTestDim(1);
                 DimValue.SetRange("Dimension Code", PurchSetup."Cost Place Dimension");
                 if Page.RunModal(0, DimValue) = Action::LookupOK then begin
                     if not DimMgt.CheckDimValue(DimValue."Dimension Code", DimValue.Code) then
@@ -43,7 +43,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 DimMgt: Codeunit DimensionManagement;
             begin
                 if "Cost Place Code" <> '' then begin
-                    GetPurchSetupWithTestDim();
+                    GetPurchSetupWithTestDim(1);
                     if not DimMgt.CheckDimValue(PurchSetup."Cost Place Dimension", "Cost Place Code") then
                         Error(DimMgt.GetDimErr);
                 end;
@@ -58,7 +58,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 DimValue: Record "Dimension Value";
                 DimMgt: Codeunit DimensionManagement;
             begin
-                GetPurchSetupWithTestDim();
+                GetPurchSetupWithTestDim(2);
                 DimValue.SetRange("Dimension Code", PurchSetup."Cost Code Dimension");
                 if Page.RunModal(0, DimValue) = Action::LookupOK then begin
                     if not DimMgt.CheckDimValue(DimValue."Dimension Code", DimValue.Code) then
@@ -72,7 +72,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 DimMgt: Codeunit DimensionManagement;
             begin
                 if "Cost Code Code" <> '' then begin
-                    GetPurchSetupWithTestDim();
+                    GetPurchSetupWithTestDim(2);
                     if not DimMgt.CheckDimValue(PurchSetup."Cost Code Dimension", "Cost Code Code") then
                         Error(DimMgt.GetDimErr);
                 end;
@@ -162,13 +162,17 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         Text002: Label 'You cannot change %1 because it is used in %1 %2.';
         DubErrorText: Label 'This setting already exists in this version.';
 
-    local procedure GetPurchSetupWithTestDim()
+    local procedure GetPurchSetupWithTestDim(TestDimType: option "",CostPlace,CostCode)
     begin
         if not PurchSetupFound then begin
             PurchSetupFound := true;
             PurchSetup.Get();
-            PurchSetup.TestField("Cost Place Dimension");
-            PurchSetup.TestField("Cost Code Dimension");
+            case TestDimType of
+                TestDimType::CostPlace:
+                    PurchSetup.TestField("Cost Place Dimension");
+                TestDimType::CostCode:
+                    PurchSetup.TestField("Cost Code Dimension");
+            end;
         end;
     end;
 
@@ -201,19 +205,40 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
             Error(DubErrorText);
     end;
 
+    procedure GetDimCaptionClass(DimType: option CostPlace,CostCode): Text
+    begin
+        GetPurchSetupWithTestDim(0);
+        case DimType of
+            DimType::CostPlace:
+                if PurchSetup."Cost Place Dimension" = '' then
+                    exit(FieldCaption("Cost Place Code"))
+                else
+                    exit('1,5,' + PurchSetup."Cost Place Dimension");
+            DimType::CostCode:
+                if PurchSetup."Cost Code Dimension" = '' then
+                    exit(FieldCaption("Cost Code Code"))
+                else
+                    exit('1,5,' + PurchSetup."Cost Place Dimension");
+        end;
+    end;
+
     procedure GetDimensionName(DimType: option CostPlace,CostCode; DimValueCode: code[20]): text
     var
         DimValue: Record "Dimension Value";
+        DimCode: code[20];
     begin
-        GetPurchSetupWithTestDim();
+        GetPurchSetupWithTestDim(0);
         if DimValueCode = '' then
             exit('');
         case DimType of
             DimType::CostPlace:
-                DimValue.SetRange("Dimension Code", PurchSetup."Cost Place Dimension");
+                DimCode := PurchSetup."Cost Place Dimension";
             DimType::CostCode:
-                DimValue.SetRange("Dimension Code", PurchSetup."Cost Code Dimension");
+                DimCode := PurchSetup."Cost Code Dimension";
         end;
+        if DimCode = '' then
+            exit;
+        DimValue.SetRange("Dimension Code", DimCode);
         DimValue.SetRange(Code, DimValueCode);
         if DimValue.FindFirst() then
             exit(DimValue.Name);

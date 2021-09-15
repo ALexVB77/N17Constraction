@@ -115,12 +115,8 @@ codeunit 70008 "IFRS Management"
     end;
 
     procedure CheckIFRSTransactionConsistent(var GLReg: Record "G/L Register"; var GenJnlLine: Record "Gen. Journal Line"; GlobalGLEntry: Record "G/L Entry")
-    var
-        CheckTransConsist: Boolean;
-        VersionID: Guid;
-        CostPlaceDim, CostCodeDim : code[20];
     begin
-        if not CheckTransConsist then
+        if not CheckTransactionConsist then
             exit;
 
         CheckConsistBuffer.Reset();
