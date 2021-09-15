@@ -1,7 +1,7 @@
 report 50038 "Excel Account Invoices"
 {
-    UsageCategory = Tasks;
-    ApplicationArea = All;
+    // UsageCategory = Tasks;
+    // ApplicationArea = All;
     ProcessingOnly = true;
 
     dataset

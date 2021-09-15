@@ -66,7 +66,32 @@ page 99400 "Klaz Klaz"
                 end;
             }
 
+            action(TestVariant)
+            {
+                ApplicationArea = All;
+                Image = Export;
+                Caption = 'EnumEval', Locked = true;
+
+                trigger OnAction();
+                var
+                    IntVal: Integer;
+                begin
+                    IntVal := 0;
+                    GetValue(IntVal);
+                    Message('Value is <%1>', IntVal);
+                end;
+            }
 
         }
     }
+
+    local procedure GetValue(OutVlaue: Variant)
+    var
+        Val: Integer;
+    begin
+        Val := 99812;
+        OutVlaue := Val;
+
+    end;
+
 }

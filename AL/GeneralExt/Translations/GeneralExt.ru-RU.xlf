@@ -117,6 +117,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Act Stage - Field Stage Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1148345802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anaplan Entity</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Anaplan Entity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3587166653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Budget Correction</source>
           <target>Бюджет корректировки</target>
@@ -1623,6 +1630,153 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Log - Field WRQ Source Company Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3473146343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Boolean1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Boolean1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 1091268898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Boolean2</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Boolean2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 2688099599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Date1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 306222154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date2</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Date2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3963492833 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date3</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Date3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 2120429518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Decimal1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Decimal1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 999901114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Guid1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3381778559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid2</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Guid2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 4019475176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid3</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Guid3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 276525482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>MessageId</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field MessageId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3721534664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 1290701856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text10</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 653005239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text11</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text11 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 64263985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text2</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 701960602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text3</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 1339657219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text4</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 1977353836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text5</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 2615050453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text6</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3252747070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text7</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 3890443687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text8</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 817569729 - Field 233173008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text9</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Text9 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3603484542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Crm Object Message</source>
           <target>Crm Object Message</target>
@@ -1694,6 +1848,160 @@
           <target>Xml</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CRM Prefetched Object - Field Xml - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3473146343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Boolean1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Boolean1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 1091268898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Boolean2</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Boolean2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 2688099599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Date1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 306222154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date2</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Date2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3963492833 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date3</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Date3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 2120429518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Decimal1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Decimal1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 999901114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Guid1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3381778559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid2</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Guid2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 4019475176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Guid3</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Guid3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 276525482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>MessageId</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field MessageId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3295046334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SubMessageId</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field SubMessageId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3721534664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text1</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 1290701856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text10</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 653005239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text11</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text11 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 64263985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text2</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 701960602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text3</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 1339657219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text4</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 1977353836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text5</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 2615050453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text6</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3252747070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text7</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 3890443687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text8</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 830682669 - Field 233173008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Text9</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Sub Message Buffer - Field Text9 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3377841323 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cust. E-Mail Notify Log</source>
@@ -2330,6 +2638,479 @@
           <target>Дата Учета</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Giv. Prod. Order Shipment - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Account</source>
+          <target>Счет МСФО</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - NamedType 3293486334" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot delete %1 because this IFRS account is used in %2 %3 version %4.</source>
+          <target>Невозможно удалить %1 так как Счет МСФО используется в %2 %3 версии %4. </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - NamedType AccountUseError</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename %1.</source>
+          <target>Невозможно переименовать %1.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 3699788827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Type</source>
+          <target>Тип счета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Account Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 3699788827 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting,Heading,Total,Begin-Total,End-Total</source>
+          <target>Учетный,Заголовок,Сумма,От-сумма,До-сумма</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Account Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source>
+          <target>Заблокирован</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 2927450519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Cost Code</source>
+          <target>Cost Code по умолчанию</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Default Cost Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 2818323605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Cost Plase</source>
+          <target>Cost Plase по умолчанию</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Default Cost Place - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 2200046723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indentation</source>
+          <target>Отступ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Indentation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 749447638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date Time</source>
+          <target>Дата и время последнего изменения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Last Modified Date Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <target>Название</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>Номер</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1232930121 - Field 478049462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Totaling</source>
+          <target>Группировка</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Account - Field Totaling - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Accounting Period</source>
+          <target>Учетный период МСФО</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 749447638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date Time</source>
+          <target>Дата и время последнего изменения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Last Modified Date Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 1458520441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified User ID</source>
+          <target>Код пользователя последнего изменения</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Last Modified User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <target>Название</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 2332754761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period Closed</source>
+          <target>Период закрыт</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Period Closed - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3867511806 - Field 460889064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <target>Дата начала</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Accounting Period - Field Starting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Vers.</source>
+          <target>МСФО РСБУ Мэппинг Версия</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename %1.</source>
+          <target>Невозможно переименовать %1.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot delete %1 because it is used in %1 %2.</source>
+          <target>Невозможно удалить %1 так как он используется в %1 %2.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <target>Код</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - Field 2790486453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comment</source>
+          <target>Комментарий</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field Comment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - Field 540447688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Mapping Code</source>
+          <target>МСФО РСБУ Мэппинг Код</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field IFRS Stat. Acc. Mapping Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4274946101 - Field 3735923737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version ID</source>
+          <target>ID версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers. - Field Version ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Vers.Line</source>
+          <target>МСФО РСБУ Мэппинг Версия Строка</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 821614138" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This setting already exists in this version.</source>
+          <target>Такая настройка уже существует в этой версии.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DubErrorText</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename %1.</source>
+          <target>Невозможно переименовать %1.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot change %1 because it is used in %1 %2.</source>
+          <target>Невозможно удалить %1 так как он используется в %1 %2.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 1912510093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Code Code</source>
+          <target>Код Code Code</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Cost Code Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 2629454935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Place Code</source>
+          <target>Код Cost Place</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Cost Place Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 1120881852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Account Name</source>
+          <target>Название МСФО счета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Account Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 1430228196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Account No.</source>
+          <target>Номер МСФО счета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <target>Номер строки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 3022847853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rule ID</source>
+          <target>ID правила</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Rule ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 1571709351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Stat. Acc. Account Name</source>
+          <target>Название РСБУ счета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Stat. Acc. Account Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 358459767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Stat. Acc. Account No.</source>
+          <target>Номер РСБУ счета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Stat. Acc. Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 3735923737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version ID</source>
+          <target>ID версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Version ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Statutory Account Mapping</source>
+          <target>МСФО РСБУ Мэппинг</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename %1.</source>
+          <target>Невозможно переименовать %1.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot delete %1 because it is used in %1 %2.</source>
+          <target>Невозможно удалить %1 так как он используется в %1 %2.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <target>Код</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - Field 1407200743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creation Date</source>
+          <target>Дата создания</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Field Creation Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1040575104 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target>Описание</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Statutory Account Mapping - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ImportDimDocPivot</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 4141984761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim10ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim10ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 74446569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim1ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim1ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 595961608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim2ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim2ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 3861920999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim3ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim3ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 1914587406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim4ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim4ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 401744877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim5ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim5ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 1912224140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim6ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim6ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 3085511403 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim7ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim7ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 1351127282 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim8ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim8ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 273086065 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim9ValueCode</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field Dim9ValueCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 1770926729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DocLineNo</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field DocLineNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 2738103555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DocNo</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field DocNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 3819526884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DocType</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field DocType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 2429469642 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NAVDimSetID</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field NAVDimSetID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 1738184195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SQLDimSetID</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field SQLDimSetID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2279018787 - Field 291409893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TableID</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimDocPivot - Field TableID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ImportDimPivot</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 326273256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim10Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim10Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 2510090008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim1Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim1Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 826228209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim2Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim2Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 2642255242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim3Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim3Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 3724369955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim4Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim4Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 2767411004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim5Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim5Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 1195192213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim6Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim6Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 2899576238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim7Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim7Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 1677048407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim8Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim8Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 3445519792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dim9Code</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field Dim9Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 550524995 - Field 291409893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TableID</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ImportDimPivot - Field TableID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 468777240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Object</source>
@@ -5987,6 +6768,244 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Worker - NamedType UnknownObjectTypeErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 4197778782" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All is up to date</source>
+          <target>[NAB: SUGGESTION]Действий не требуется. Данные уже находятся в актуальном состоянии.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType AllUpToDateMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 2221351987" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bad soap envelope format</source>
+          <target>[NAB: SUGGESTION]Неверный формат SOAP пакета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType BadSoapEnvFormatErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1397584261" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No. %1</source>
+          <target>[NAB: SUGGESTION]Клиент Но. %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContactProcessedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 3797882964" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Contact or Reserving Contact is not found</source>
+          <target>[NAB: SUGGESTION]Не найден Unit</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContactUnitNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1878002620" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Another Customer already has the same Agreement Crm Guid, Old Customer No.=%1, New Customer No.=%2</source>
+          <target>[NAB: SUGGESTION]Договор с данным Id уже имеется у другого клиента %1, новый клиент %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractAlreadyLinkedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1118960650" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buyers are not found</source>
+          <target>[NAB: SUGGESTION]Покупатели не найдены</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractBuyersNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 976920571" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3</source>
+          <target>[NAB: SUGGESTION]Контакт %1 не найден, идентификатор родительского объекта (блок) %2, покупатель %3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractContactNotFound</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 347140877" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Agreement %1 has been created, %2 = %3, %4 = %5</source>
+          <target>[NAB: SUGGESTION]Создан договор клиента %1, %2 = %3, %4 = %5</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 2571148164" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement could not be created. Some of contacts are not created</source>
+          <target>[NAB: SUGGESTION]Договор клиента не может быть создан. Один или несколько контактов не были созданы.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractNotCreated2Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 312159366" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement could not be created. Some of contacts are not found</source>
+          <target>[NAB: SUGGESTION]Договор клиента не может быть создан. Один или несколько контактов не найдены</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractNotCreatedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not registered, Type %1, Status %2</source>
+          <target>[NAB: SUGGESTION]Договр не зарегистрирован, Тип %1, Статус %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractNotRegisteredErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 4269605980" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not signed, Type %1, Status %2</source>
+          <target>[NAB: SUGGESTION]Договор не подписан, Тип %1, Статус %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractNotSignedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 3024906446" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit %1 of Contract is not found</source>
+          <target>[NAB: SUGGESTION]Не найден Unit %1 (ParentObnjectID)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractUnitNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 2603215002" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Agreement %1 has been updated, %2 = %3, %4 = %5</source>
+          <target>[NAB: SUGGESTION]Обновлен договор клиента %1, %2 = %3, %4 = %5 </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ContractUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1295264560" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Http request body is empty</source>
+          <target>[NAB: SUGGESTION]Веб-запрос не содержит тела</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType EmptyHttpRequestBody</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 536274629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Object field name %1 does not exist</source>
+          <target>[NAB: SUGGESTION]Атрибут %1 не существует</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType FieldNameDoesNotExistErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 3005860349" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field type mismatch. %1 must be %2</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType FieldTypeMismatchErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 401186837" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import action %1 is not allowed</source>
+          <target>[NAB: SUGGESTION]Недопустимый режим импорта данных %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ImportActionNotAllowedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 3007870474" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The email address "%1" is not valid.</source>
+          <target>[NAB: SUGGESTION]Недопустимый адрес электронной почты "%1".</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType InvalidEmailAddressErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1309546067" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The phone no. "%1" is not valid.</source>
+          <target>[NAB: SUGGESTION]Недопустимы формат номера телефона "%1"</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType InvalidPhoneNoErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 2041483183" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object %1 was created</source>
+          <target>[NAB: SUGGESTION]Объект инвестирования %1 создан</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType InvestmentObjectCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 305442788" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object %1 was updated</source>
+          <target>[NAB: SUGGESTION]Объект инвестирования %1 обновлен</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType InvestmentObjectUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 3720241846" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No field key is specified!</source>
+          <target>[NAB: SUGGESTION]Не указано поле данных Crm объекта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType KeyErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 3972260258" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object is not specified</source>
+          <target>[NAB: SUGGESTION]Объект инвестирования отсутствует</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType NoInvestObjectMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1236386240" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No ObjectID in XML Document</source>
+          <target>[NAB: SUGGESTION]Не найден ObjectID в Xml объекта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType NoObjectIdErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1115934796" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No ParentObjectID in XML Document</source>
+          <target>[NAB: SUGGESTION]Не найден ParenObjectID в Xml объекта</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType NoParentObjectIdErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1648349699" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import of object %1 interrupted. No parsed data</source>
+          <target>[NAB: SUGGESTION]Ошибка парсинга XML объекта %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType NoParsedDataOnImportErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1376688189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ProjectId %1 is not found in %2</source>
+          <target>[NAB: SUGGESTION]Код проекта %1 не существует в %2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType ProjectNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1863682477" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 record must be temporary</source>
+          <target>[NAB: SUGGESTION]%1 должна быть временной</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType RecordMustBeTemporaryErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 4161158581" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The session was not started successfully</source>
+          <target>[NAB: SUGGESTION]Ошибка в создании новой сессии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType StartSessionErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 2907044041" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit and Buyer %1 are created</source>
+          <target>[NAB: SUGGESTION]Создана запись в Crm Buyers, Buyer = %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType UnitCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 3511750238" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit and Buyer %1 was updated</source>
+          <target>[NAB: SUGGESTION]Запись Crm Buyers (Buyer = %1) обновлена </target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType UnitUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 991440484" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown Investment Object Type %1</source>
+          <target>[NAB: SUGGESTION]Неизвестный Тип Объекта Инвестирования %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType UnknownInvestObjectTypeValueErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2171517438 - NamedType 1870025204" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown type of Object %1</source>
+          <target>[NAB: SUGGESTION]Неизвестный тип объекта CRM %1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Crm Worker Rest - NamedType UnknownObjectTypeErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1524225914 - Method 1375976439 - NamedType 3842566867" size-unit="char" translate="yes" xml:space="preserve">
           <source>The invoice Amount including VAT in the header does not match the amount including VAT by lines!</source>
           <target>Сумма счета с НДС в шапке не совпадает с Суммой включая НДС по строкам!</target>
@@ -6515,6 +7534,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2826027150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anaplan Bound Balance Entity</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Anaplan Bound Balance Entity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2191153028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archiving Document</source>
           <target>Архивация документа</target>
@@ -6935,6 +7961,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Change Entry - Action Apply - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2301757787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chart of IFRS Accounts</source>
+          <target>МСФО План счетов</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Chart of IFRS Accounts - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2081427051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Control Construction</source>
           <target>Бюджеты проектов (Constraction)</target>
@@ -7097,6 +8129,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Company - Action Test2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 883834640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Contact</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3358575194 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Contract</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Contract - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 312790511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Integration Setup</source>
           <target>Настройка интерграции с CRM</target>
@@ -7132,6 +8178,27 @@
           <target>Импортировать объекты</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CRM Prefetched Objects - Action RunImport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2481621566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Unit</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Unit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1184286813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crm Unit Buyer</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Unit Buyer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1184286813 - Control 888333449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buyer is Active</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Crm Unit Buyer - Control buyerIsActive - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 954180772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CRM Units and Buyers</source>
@@ -9119,6 +10186,84 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Giv. Transfer Orders - Action Inventory - Inbound Transfer - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 274658411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Accounting Periods</source>
+          <target>Учетные периоды МСФО</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 274658411 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ifrs fiscal year,ifrs fiscal period</source>
+          <target>мсфо финансовый год,мсфо финансовый период</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Property AdditionalSearchTerms</note>
+        </trans-unit>
+        <trans-unit id="Page 274658411 - Action 3961913871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Create Year</source>
+          <target>&amp;Создать год</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Accounting Periods - Action &amp;Create Year - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1694297047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Vers. Lines</source>
+          <target>МСФО РСБУ Мэппинг Строки Версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1694297047 - Control 4080046828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mapping Code</source>
+          <target>Код мэппинга</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Control CurrentMappingCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1694297047 - Control 3065399178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Code</source>
+          <target>Код версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Vers.Line - Control CurrentVersionCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4015036578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Stat. Acc. Map. Versions</source>
+          <target>МСФО РСБУ Мэппинг Версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4015036578 - Action 3448006554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mapping Version</source>
+          <target>Версия мэппинга</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Action Mapping Version - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4015036578 - Action 4123456321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Version Lines</source>
+          <target>Строки версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Stat. Acc. Map. Versions - Action VersionLines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1040575104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRS Statutory Account Mappings</source>
+          <target>МСФО РСБУ Мэппинг</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1040575104 - Action 1887025626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Accounts Mapping</source>
+          <target>Мэппинг счетов</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Accounts Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1040575104 - Action 3196162251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Versions</source>
+          <target>Версии</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Versions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2154659928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRSEntriesForTransfer</source>
+          <target>IFRSEntriesForTransfer</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRSEntriesForTransfer - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3861133141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Agreement Card</source>
           <target>Инвестиционный договор</target>
@@ -9195,7 +10340,6 @@
           <source>Object type</source>
           <target>Тип объекта</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Investment Agreement Card - Control Investment Object Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Control 1450094168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9640,7 +10784,6 @@
           <source>License Information</source>
           <target>License Information</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page License Information - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1935803971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -16275,6 +17418,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Ledger Entries (Ext) - Control Utilities Dim. Value Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 476953720 - Control 2969501735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>IFRS Translation</source>
+          <target>МСФО Трансляция</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension General Ledger Setup (Ext) - Control IFRS Translation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3887120495 - Control 3573897381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
           <source>Another</source>
           <target>Другое</target>
@@ -17265,6 +18414,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Fixed Asset (Ext) - Field RAS Posting Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1253801463 - Field 3173400708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4274826855">
+          <source>Non-transmit</source>
+          <target>Нетранслируемый</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Account (Ext) - Field Non-transmit - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1850561956 - Field 3945067551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>Cust. Ext. Agr. No.</source>
           <target>Клиент Внешний Договор Но.</target>
@@ -17276,6 +18431,48 @@
           <target>ID</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 1430228196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Account No.</source>
+          <target>Номер МСФО счета</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 3952013741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Period</source>
+          <target>МСФО период</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 2649353807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Trans. Inconsistent</source>
+          <target>МСФО транзакция несогласована</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Trans. Inconsistent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 886431651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Transfer Date</source>
+          <target>Дата передачи в МСФО</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Transfer Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 1030995259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Transfer Status</source>
+          <target>Статус передачи в МСФО</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Transfer Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1850561956 - Field 993577315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>IFRS Version ID</source>
+          <target>ID версии МСФО меппинга</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Version ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 71000681 - Field 3173400708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3690479385">
+          <source>Non-transmit</source>
+          <target>Нетранслируемый</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen. Journal Batch (Ext) - Field Non-transmit - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2325658151 - Field 3976972112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Gift</source>
@@ -17301,11 +18498,35 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field Allow Diff in Check - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 476953720 - Field 3724315272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Check IFRS Trans. Consistent</source>
+          <target>Контроль согласов. МСФО транзакции</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field Check IFRS Trans. Consistent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 476953720 - Field 1386837218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Cost Type Dimension Code</source>
           <target>Тип затрат</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field Cost Type Dimension Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 476953720 - Field 1805710566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>IFRS Stat. Acc. Map. Code</source>
+          <target>Код Мэппинга МСФО РСБУ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field IFRS Stat. Acc. Map. Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 476953720 - Field 2899596362 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>IFRS Stat. Acc. Map. Vers.Code</source>
+          <target>Версия Мэппинга МСФО РСБУ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field IFRS Stat. Acc. Map. Vers.Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 476953720 - Field 3211700068 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>IFRS Transfer Period</source>
+          <target>МСФО период отправки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field IFRS Transfer Period - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 476953720 - Field 329847988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Project Dim. Code</source>
@@ -19466,6 +20687,30 @@
           <target>Reception</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Gen. Journal Approval Status - EnumValue Reception - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1030995259 - EnumValue 4137051400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New</source>
+          <target>Новый</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue New - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1030995259 - EnumValue 3345436129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Rule</source>
+          <target>Отсутствует правило</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue No Rule - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1030995259 - EnumValue 2381795172 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Non-Transmit</source>
+          <target>Нетранслируемый</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue Non-Transmit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1030995259 - EnumValue 2521603205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ready</source>
+          <target>Готово</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum IFRS Transfer Status - EnumValue Ready - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3960357944 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>

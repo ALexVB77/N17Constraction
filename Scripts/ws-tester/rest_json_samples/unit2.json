@@ -1,0 +1,29 @@
+{
+    "objectType": "unit",
+    "objectId": "bef8b1b2-d573-425b-9225-29c23f8f965b",
+    "projectId": "de32224a-12e3-4539-8aad-de7712ee5fe7",
+    "reservingContactId": "c8ca56a9-c1ed-4062-975c-be5d8c042320",
+    "investmentObjectCode": "Invest.Object.Code" ,
+    "investmentObjectDescription": "Invest.Object.Description",
+    "investmentObjectType": "Invest.Object.Type",
+    "investmentObjectArea": 123.8,
+    "expectedRegDate": "2021-04-23T18:25:43.511Z",
+    "actualDate": "2021-04-24T18:25:43.511Z",
+    "expectedDate": "2021-04-23T18:25:43.511Z",
+    "unitBuyers": [
+		{
+			"buyerId": "f8d69bb4-1933-4ce5-8769-37f5311379fa",
+			"contactId": "d7e3c245-68a6-43b5-8429-067f9e323589",
+			"contractId": "5261c725-7bd9-4bc7-9c3e-2f80aaafbe33",
+			"ownershipPrc": 50,
+			"buyerIsActive": true
+		},
+		{
+			"buyerId": "4ae768d1-04b4-4219-99bc-a948561751dd",
+			"contactId": "209a24cd-5c0f-4f94-9580-b252a68390b9",
+			"contractId": "ed6f05b7-b2e3-44cb-96d0-d8570f8e396b",
+			"ownershipPrc": 100,
+			"buyerIsActive": false
+		}
+	]    
+}

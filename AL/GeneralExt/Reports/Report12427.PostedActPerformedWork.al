@@ -339,10 +339,10 @@ report 92427 "Posted Act Performed Work"
                     ExcelReportBuilderMgr.AddDataToSection('CompAddress', 'Адрес: ' + CompanyInfo."Post Code" + ', ' + CompanyInfo.City + ', ' + CompanyInfo.Address + ', тел.:' + CompanyInfo."Phone No.");
                     ExcelReportBuilderMgr.AddDataToSection('DocHeader', STRSUBSTNO(BodyTxt[1], Header."No.", LocMgt.Date2Text(Header."Document Date")));
                     if Cust."Full Name" <> '' then
-                        ExcelReportBuilderMgr.AddDataToSection('CustName', Cust."Full Name")
+                        ExcelReportBuilderMgr.AddDataToSection('CustName', Cust."Full Name" + ', ' + CustomerAddr[2] + ', ' + CustomerAddr[3])
                     else
-                        ExcelReportBuilderMgr.AddDataToSection('CustName', CustomerAddr[1]);
-                    ExcelReportBuilderMgr.AddDataToSection('CustAddress', CustomerAddr[2] + ', ' + CustomerAddr[3]);
+                        ExcelReportBuilderMgr.AddDataToSection('CustName', CustomerAddr[1] + ', ' + CustomerAddr[2] + ', ' + CustomerAddr[3]);
+                    //ExcelReportBuilderMgr.AddDataToSection('CustAddress', CustomerAddr[2] + ', ' + CustomerAddr[3]);
                     ExcelReportBuilderMgr.AddDataToSection('CustVAT', Cust."VAT Registration No.");
                     ExcelReportBuilderMgr.AddDataToSection('CustKPP', Cust."VAT Registration No.");
                     ExcelReportBuilderMgr.AddDataToSection('DocReason', STRSUBSTNO('Договор %1 от %2', CustAgrmt."External Agreement No.",

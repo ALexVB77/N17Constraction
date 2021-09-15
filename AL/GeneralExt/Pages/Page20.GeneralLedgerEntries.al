@@ -16,7 +16,6 @@ pageextension 80020 "General Ledger Entries (Ext)" extends "General Ledger Entri
                 Caption = 'Utilities Dim. Value';
 
             }
-
             field("Credit-Memo Reason"; GetCrMemoReason())
             {
                 ApplicationArea = Basic, Suite;
@@ -26,8 +25,38 @@ pageextension 80020 "General Ledger Entries (Ext)" extends "General Ledger Entri
             {
                 ApplicationArea = Basic, Suite;
             }
+            field("IFRS Transfer Status"; "IFRS Transfer Status")
+            {
+                ApplicationArea = Basic, Suite;
+                StyleExpr = TransferStatusStyle;
+                Visible = false;
+            }
+            field("IFRS Account No."; "IFRS Account No.")
+            {
+                ApplicationArea = Basic, Suite;
+                Visible = false;
+            }
+            field("IFRS Period"; "IFRS Period")
+            {
+                ApplicationArea = Basic, Suite;
+                Visible = false;
+            }
+            field("IFRS Trans. Inconsistent"; "IFRS Trans. Inconsistent")
+            {
+                ApplicationArea = Basic, Suite;
+                Visible = false;
+            }
         }
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        TransferStatusStyle := GetTransferStatusStyle();
+    end;
+
+    var
+        [InDataSet]
+        TransferStatusStyle: text;
 
     local procedure GetDenDocDim(): Code[20]
     var
@@ -66,6 +95,20 @@ pageextension 80020 "General Ledger Entries (Ext)" extends "General Ledger Entri
                 EXIT(SCMH."Credit-Memo Reason");
         // SWC1100 DD 28.09.17 <<
 
+    end;
+
+    local procedure GetTransferStatusStyle(): text;
+    begin
+        case "IFRS Transfer Status" of
+            "IFRS Transfer Status"::New:
+                exit('Standard');
+            "IFRS Transfer Status"::"Non-Transmit":
+                exit('Subordinate');
+            "IFRS Transfer Status"::Ready:
+                exit('StandardAccent');
+            "IFRS Transfer Status"::"No Rule":
+                exit('Attention');
+        end;
     end;
 
 }
