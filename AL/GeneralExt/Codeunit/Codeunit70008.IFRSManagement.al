@@ -21,6 +21,7 @@ codeunit 70008 "IFRS Management"
         if MappingParamsFound then
             exit;
 
+        GLSetup.Get();
         if '' in [GLSetup."IFRS Stat. Acc. Map. Code", GLSetup."IFRS Stat. Acc. Map. Vers.Code"] then
             exit;
 
