@@ -2805,14 +2805,12 @@
           <source>This setting already exists in this version.</source>
           <target>Такая настройка уже существует в этой версии.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DubErrorText</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot rename %1.</source>
           <target>Невозможно переименовать %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
@@ -2849,7 +2847,6 @@
           <source>Line No.</source>
           <target>Номер строки</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 3022847853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10260,6 +10257,13 @@
           <target>Версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Versions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2154659928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRSEntriesForTransfer</source>
+          <target>IFRSEntriesForTransfer</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRSEntriesForTransfer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Agreement Card</source>

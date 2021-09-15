@@ -8403,6 +8403,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Versions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2154659928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRSEntriesForTransfer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRSEntriesForTransfer - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3861133141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Agreement Card</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -12,6 +12,10 @@ page 50005 "IFRSEntriesForTransfer"
         {
             repeater(Control1)
             {
+                field("Entry No."; "Entry No.")
+                {
+                    ApplicationArea = All;
+                }
                 field(Description; Description)
                 {
                     ApplicationArea = All;
