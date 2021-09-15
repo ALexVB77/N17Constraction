@@ -12,7 +12,7 @@ page 50005 "IFRSEntriesForTransfer"
         {
             repeater(Control1)
             {
-                field("Entry No."; "Entry No.")
+                field(EntryNo; "Entry No.")
                 {
                     ApplicationArea = All;
                 }
@@ -48,7 +48,14 @@ page 50005 "IFRSEntriesForTransfer"
                 {
                     ApplicationArea = All;
                 }
-
+                field(CostPlace; CostPlace)
+                {
+                    ApplicationArea = All;
+                }
+                field(Currency; 'RUR')
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }
