@@ -27,6 +27,14 @@ pageextension 80118 "General Ledger Setup (Ext)" extends "General Ledger Setup"
                 {
                     ApplicationArea = All;
                 }
+                field("IFRS Transfer Period"; "IFRS Transfer Period")
+                {
+                    ApplicationArea = All;
+                }
+                field("Check IFRS Trans. Consistent"; "Check IFRS Trans. Consistent")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }
