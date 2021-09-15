@@ -6,7 +6,38 @@ codeunit 70008 "IFRS Management"
     begin
     end;
 
-    procedure ProcessGLEntry(var GLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line")
+    var
+        GLSetup: Record "General Ledger Setup";
+        MappingParamsFound, CheckTransactionConsist : Boolean;
+        MappingVersionID: Guid;
+        CostPlaceDim, CostCodeDim : code[20];
+        CheckConsistBuffer: Record "Entry No. Amount Buffer";
+
+    local procedure GetIFRSMappingParams()
+    var
+        MappingVer: Record "IFRS Stat. Acc. Map. Vers.";
+        PurchSetup: Record "Purchases & Payables Setup";
+    begin
+        if MappingParamsFound then
+            exit;
+
+        if '' in [GLSetup."IFRS Stat. Acc. Map. Code", GLSetup."IFRS Stat. Acc. Map. Vers.Code"] then
+            exit;
+
+        MappingVer.Get(GLSetup."IFRS Stat. Acc. Map. Code", GLSetup."IFRS Stat. Acc. Map. Vers.Code");
+        MappingVersionID := MappingVer."Version ID";
+
+        CheckTransactionConsist := GLSetup."Check IFRS Trans. Consistent";
+
+        PurchSetup.Get();
+        CostPlaceDim := PurchSetup."Cost Place Dimension";
+        CostCodeDim := PurchSetup."Cost Code Dimension";
+
+        MappingParamsFound := true;
+    end;
+
+
+    procedure FillIFRSData(var GLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line")
     var
         GLAccount: Record "G/L Account";
         JnlBatchName: Record "Gen. Journal Batch";
@@ -14,14 +45,14 @@ codeunit 70008 "IFRS Management"
         DimSetEntry: Record "Dimension Set Entry";
         IFRSPeriod: Record "IFRS Accounting Period";
         SkipEntry: Boolean;
-        VersionID: Guid;
-        CostPlaceDim, CostCodeDim, CostPlaceValue, CostCodeValue : code[20];
+        CostPlaceValue, CostCodeValue : code[20];
     begin
         if GLEntry."G/L Account No." = '' then
             exit;
 
-        GenJournalLine.GetIFRSMappingValues(VersionID, CostPlaceDim, CostCodeDim);
-        if IsNullGuid(VersionID) then
+        GetIFRSMappingParams();
+
+        if IsNullGuid(MappingVersionID) then
             exit;
 
         GLAccount.Get(GLEntry."G/L Account No.");
@@ -40,12 +71,17 @@ codeunit 70008 "IFRS Management"
         if (CostCodeDim <> '') and (GLEntry."Dimension Set ID" <> 0) then
             if DimSetEntry.Get(GLEntry."Dimension Set ID", CostCodeDim) then
                 CostCodeValue := DimSetEntry."Dimension Value Code";
-        if MappingVerLine.Get(VersionID, GLEntry."G/L Account No.", CostPlaceValue, CostCodeValue) then
+
+        MappingVerLine.SetRange("Version ID", MappingVersionID);
+        MappingVerLine.SetRange("Stat. Acc. Account No.", GLEntry."G/L Account No.");
+        MappingVerLine.SetFilter("Cost Place Code", '%1|%2', CostPlaceValue, '');
+        MappingVerLine.SetFilter("Cost Code Code", '%1|%2', CostCodeValue, '');
+        if MappingVerLine.FindFirst() then
             GLEntry."IFRS Account No." := MappingVerLine."IFRS Account No.";
 
         if GLEntry."IFRS Account No." <> '' then begin
             GLEntry."IFRS Transfer Status" := GLEntry."IFRS Transfer Status"::Ready;
-            GLEntry."IFRS Version ID" := VersionID;
+            GLEntry."IFRS Version ID" := MappingVersionID;
             GLEntry."IFRS Transfer Date" := Today;
 
             GLEntry."IFRS Period" := GLEntry."Posting Date";
@@ -56,21 +92,60 @@ codeunit 70008 "IFRS Management"
                     if IFRSPeriod.FindFirst() then
                         GLEntry."IFRS Period" := IFRSPeriod."Starting Date";
                 end;
+
+            if CheckTransactionConsist then begin
+                if not CheckConsistBuffer.Get('', GLEntry."Transaction No.") then begin
+                    CheckConsistBuffer.Init();
+                    CheckConsistBuffer."Business Unit Code" := '';
+                    CheckConsistBuffer."Entry No." := GLEntry."Transaction No.";
+                    CheckConsistBuffer.Amount := GLEntry.Amount;
+                    if CheckConsistBuffer.Amount <> 0 then
+                        CheckConsistBuffer.Insert();
+                end else begin
+                    CheckConsistBuffer.Amount += GLEntry.Amount;
+                    if CheckConsistBuffer.Amount <> 0 then
+                        CheckConsistBuffer.Modify()
+                    else
+                        CheckConsistBuffer.Delete();
+                end;
+            end;
         end else
             GLEntry."IFRS Transfer Status" := GLEntry."IFRS Transfer Status"::"No Rule";
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeFinishPosting', '', false, false)]
-    local procedure OnBeforeFinishPosting(var GenJournalLine: Record "Gen. Journal Line"; var TempGLEntryBuf: Record "G/L Entry" temporary)
+    procedure CheckIFRSTransactionConsistent(var GLReg: Record "G/L Register"; var GenJnlLine: Record "Gen. Journal Line"; GlobalGLEntry: Record "G/L Entry")
+    var
+        CheckTransConsist: Boolean;
+        VersionID: Guid;
+        CostPlaceDim, CostCodeDim : code[20];
     begin
-        GenJournalLine.SetIFRSMappingValues();
-    end;
+        if not CheckTransConsist then
+            exit;
 
+        CheckConsistBuffer.Reset();
+        if CheckConsistBuffer.IsEmpty then
+            exit;
+
+        GlobalGLEntry.SetCurrentKey("Transaction No.");
+        CheckConsistBuffer.FindSet();
+        repeat
+            GlobalGLEntry.SetRange("Transaction No.", CheckConsistBuffer."Entry No.");
+            GlobalGLEntry.ModifyAll("IFRS Trans. Inconsistent", true);
+        until CheckConsistBuffer.Next() = 0;
+        GlobalGLEntry.SetRange("Transaction No.");
+    end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeInsertGlobalGLEntry', '', false, false)]
     local procedure OnBeforeInsertGlobalGLEntry(var GlobalGLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line"; GLRegister: Record "G/L Register")
     begin
-        ProcessGLEntry(GlobalGLEntry, GenJournalLine);
+        GenJournalLine.FillIFRSData(GlobalGLEntry, GenJournalLine);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeUpdateGLReg', '', false, false)]
+    local procedure OnBeforeUpdateGLReg(IsTransactionConsistent: Boolean; var IsGLRegInserted: Boolean; var GLReg: Record "G/L Register"; var IsHandled: Boolean; var GenJnlLine: Record "Gen. Journal Line"; GlobalGLEntry: Record "G/L Entry")
+    begin
+        if IsTransactionConsistent then
+            CheckIFRSTransactionConsistent(GLReg, GenJnlLine, GlobalGLEntry);
     end;
 
 }

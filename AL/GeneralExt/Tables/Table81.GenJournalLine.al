@@ -18,32 +18,15 @@ tableextension 80081 "Gen. Journal Line (Ext)" extends "Gen. Journal Line"
     }
 
     var
-        MappingVersionID: Guid;
-        MapDim1, MapDim2 : code[20];
+        IFRSMgt: Codeunit "IFRS Management";
 
-    procedure SetIFRSMappingValues()
-    var
-        GLSetup: Record "General Ledger Setup";
-        MappingVer: Record "IFRS Stat. Acc. Map. Vers.";
-        PurchSetup: Record "Purchases & Payables Setup";
+    procedure FillIFRSData(var GlobalGLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line")
     begin
-        GLSetup.Get();
-        if '' in [GLSetup."IFRS Stat. Acc. Map. Code", GLSetup."IFRS Stat. Acc. Map. Vers.Code"] then
-            exit;
-        MappingVer.Get(GLSetup."IFRS Stat. Acc. Map. Code", GLSetup."IFRS Stat. Acc. Map. Vers.Code");
-        MappingVersionID := MappingVer."Version ID";
-
-        PurchSetup.Get();
-        MapDim1 := PurchSetup."Cost Place Dimension";
-        MapDim2 := PurchSetup."Cost Code Dimension";
+        IFRSMgt.FillIFRSData(GlobalGLEntry, GenJournalLine);
     end;
 
-    procedure GetIFRSMappingValues(var MappingVerID: Guid; var Dim1: code[20]; var Dim2: code[20])
+    procedure CheckIFRSTransactionConsistent(var GLReg: Record "G/L Register"; var GenJnlLine: Record "Gen. Journal Line"; GlobalGLEntry: Record "G/L Entry")
     begin
-        MappingVerID := MappingVersionID;
-        Dim1 := MapDim1;
-        Dim2 := MapDim2;
+        IFRSMgt.CheckIFRSTransactionConsistent(GLReg, GenJnlLine, GlobalGLEntry);
     end;
-
-    //procedure 
 }
