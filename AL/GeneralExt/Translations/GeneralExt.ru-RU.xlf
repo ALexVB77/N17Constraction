@@ -2801,6 +2801,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 821614138" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This setting already exists in this version.</source>
+          <target>Такая настройка уже существует в этой версии.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DubErrorText</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename %1.</source>
+          <target>Невозможно переименовать %1.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot change %1 because it is used in %1 %2.</source>
           <target>Невозможно удалить %1 так как он используется в %1 %2.</target>
@@ -2830,6 +2844,13 @@
           <target>Номер МСФО счета</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <target>Номер строки</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 3022847853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Rule ID</source>
@@ -18424,7 +18445,6 @@
           <source>IFRS Trans. Inconsistent</source>
           <target>МСФО транзакция несогласована</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension G/L Entry (Ext) - Field IFRS Trans. Inconsistent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1850561956 - Field 886431651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
@@ -18479,7 +18499,6 @@
           <source>Check IFRS Trans. Consistent</source>
           <target>Контроль согласов. МСФО транзакции</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field Check IFRS Trans. Consistent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 476953720 - Field 1386837218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
@@ -18504,7 +18523,6 @@
           <source>IFRS Transfer Period</source>
           <target>МСФО период отправки</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field IFRS Transfer Period - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 476953720 - Field 329847988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">

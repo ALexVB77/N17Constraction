@@ -10,13 +10,17 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
             Editable = false;
             NotBlank = true;
         }
-        field(2; "Stat. Acc. Account No."; Code[20])
+        field(2; "Line No."; Integer)
+        {
+            Caption = 'Line No.';
+        }
+        field(3; "Stat. Acc. Account No."; Code[20])
         {
             Caption = 'Stat. Acc. Account No.';
             NotBlank = true;
             TableRelation = "G/L Account"."No." Where("Account Type" = Const(Posting), Blocked = const(false));
         }
-        field(3; "Cost Place Code"; Code[20])
+        field(4; "Cost Place Code"; Code[20])
         {
             Caption = 'Cost Place Code';
 
@@ -45,7 +49,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 end;
             end;
         }
-        field(4; "Cost Code Code"; Code[20])
+        field(5; "Cost Code Code"; Code[20])
         {
             Caption = 'Cost Code Code';
 
@@ -74,7 +78,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 end;
             end;
         }
-        field(5; "IFRS Account No."; Code[50])
+        field(6; "IFRS Account No."; Code[50])
         {
             Caption = 'IFRS Account No.';
             NotBlank = true;
@@ -93,7 +97,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 end;
             end;
         }
-        field(6; "Rule ID"; Guid)
+        field(7; "Rule ID"; Guid)
         {
             Caption = 'Rule ID';
             Editable = false;
@@ -116,23 +120,28 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
 
     keys
     {
-        key(Key1; "Version ID", "Stat. Acc. Account No.", "Cost Place Code", "Cost Code Code")
+        key(Key1; "Version ID", "Line No.")
         {
             Clustered = true;
         }
-        key(Key2; "Rule ID")
+        key(Key2; "Stat. Acc. Account No.", "Cost Place Code", "Cost Code Code")
+        {
+        }
+        key(Key3; "Rule ID")
         {
         }
     }
 
     trigger OnInsert()
     begin
+        CheckDuplicate();
         CheckUsed();
         "Rule ID" := CreateGuid();
     end;
 
     trigger OnModify()
     begin
+        CheckDuplicate();
         CheckUsed();
     end;
 
@@ -143,13 +152,15 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
 
     trigger OnRename()
     begin
-        CheckUsed();
+        Error(Text001, TableCaption);
     end;
 
     var
         PurchSetup: Record "Purchases & Payables Setup";
         PurchSetupFound: Boolean;
+        Text001: Label 'You cannot rename %1.';
         Text002: Label 'You cannot change %1 because it is used in %1 %2.';
+        DubErrorText: Label 'This setting already exists in this version.';
 
     local procedure GetPurchSetupWithTestDim()
     begin
@@ -175,6 +186,19 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
             (GLSetup."IFRS Stat. Acc. Map. Vers.Code" = MappingVersion."Code")
         then
             Error(Text002, TableCaption, GLSetup.TableCaption, GLSetup.FieldCaption("IFRS Stat. Acc. Map. Vers.Code"));
+    end;
+
+    local procedure CheckDuplicate()
+    var
+        MapVerLine: Record "IFRS Stat. Acc. Map. Vers.Line";
+    begin
+        MapVerLine.SetRange("Version ID", "Version ID");
+        MapVerLine.SetFilter("Line No.", '<>%1', "Line No.");
+        MapVerLine.SetRange("Stat. Acc. Account No.", "Stat. Acc. Account No.");
+        MapVerLine.SetRange("Cost Place Code", "Cost Code Code");
+        MapVerLine.SetRange("Cost Code Code", "Cost Code Code");
+        if not MapVerLine.IsEmpty then
+            Error(DubErrorText);
     end;
 
     procedure GetDimensionName(DimType: option CostPlace,CostCode; DimValueCode: code[20]): text

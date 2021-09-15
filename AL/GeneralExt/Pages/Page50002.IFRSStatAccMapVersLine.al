@@ -1,5 +1,6 @@
 page 50002 "IFRS Stat. Acc. Map. Vers.Line"
 {
+    AutoSplitKey = true;
     Caption = 'IFRS Stat. Acc. Map. Vers. Lines';
     DelayedInsert = true;
     PageType = Worksheet;

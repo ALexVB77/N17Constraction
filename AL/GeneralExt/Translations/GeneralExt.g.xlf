@@ -2298,6 +2298,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 821614138" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This setting already exists in this version.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DubErrorText</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot change %1 because it is used in %1 %2.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2322,6 +2332,11 @@
           <source>IFRS Account No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field IFRS Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 3022847853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Rule ID</source>
