@@ -190,23 +190,20 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         if (GLSetup."IFRS Stat. Acc. Map. Code" = MappingVersion."IFRS Stat. Acc. Mapping Code") and
             (GLSetup."IFRS Stat. Acc. Map. Vers.Code" = MappingVersion."Code")
         then
-            Error(Text002, TableCaption, GLSetup.TableCaption, GLSetup.FieldCaption("IFRS Stat. Acc. Map. Vers.Code"));
+            ShowErrorAsMessage(StrSubstNo(Text002, TableCaption, GLSetup.TableCaption, GLSetup.FieldCaption("IFRS Stat. Acc. Map. Vers.Code")));
     end;
 
     local procedure CheckDuplicate()
     var
         MapVerLine: Record "IFRS Stat. Acc. Map. Vers.Line";
     begin
-
-        fielderror("Line No.");
-
         MapVerLine.SetRange("Version ID", "Version ID");
         MapVerLine.SetFilter("Line No.", '<>%1', "Line No.");
         MapVerLine.SetRange("Stat. Acc. Account No.", "Stat. Acc. Account No.");
         MapVerLine.SetRange("Cost Place Code", "Cost Code Code");
         MapVerLine.SetRange("Cost Code Code", "Cost Code Code");
         if MapVerLine.FindFirst() then
-            Error(DubErrorText, MapVerLine."Line No.");
+            ShowErrorAsMessage(StrSubstNo(DubErrorText, MapVerLine."Line No.");
         MapVerLine.SetRange("Cost Place Code");
         MapVerLine.SetRange("Cost Code Code");
 
@@ -214,26 +211,31 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         if "Cost Place Code" <> '' then begin
             MapVerLine.SetRange("Cost Place Code", '');
             if MapVerLine.FindFirst() then
-                Error(DimError1Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", "Line No.");
+                ShowErrorAsMessage(StrSubstNo(DimError1Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", "Line No."));
         end else begin
             MapVerLine.SetFilter("Cost Place Code", '<>%1', '');
             if MapVerLine.FindFirst() then
-                Error(DimError2Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", "Line No.");
+                ShowErrorAsMessage(StrSubstNo(DimError2Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", "Line No."));
         end;
         MapVerLine.SetRange("Cost Place Code");
 
         if "Cost Code Code" <> '' then begin
             MapVerLine.SetRange("Cost Code Code", '');
             if MapVerLine.FindFirst() then
-                Error(DimError1Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", "Line No.");
+                ShowErrorAsMessage(StrSubstNo(DimError1Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", "Line No."));
         end else begin
             MapVerLine.SetFilter("Cost Code Code", '<>%1', '');
             if MapVerLine.FindFirst() then
-                Error(DimError2Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", "Line No.");
+                ShowErrorAsMessage(StrSubstNo(DimError2Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", "Line No."));
         end;
+    end;
 
-
-
+    // при вызове из триггеров OnInsert и OnModify - не выводится код ошибки в ленту сообщений.
+    // поэтому выводим через Message()  
+    local procedure ShowErrorAsMessage(ErrorText: text)
+    begin
+        Message(ErrorText);
+        Error('');
     end;
 
     procedure GetDimCaptionClass(DimType: option CostPlace,CostCode; IsName: Boolean): Text
