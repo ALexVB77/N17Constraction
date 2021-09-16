@@ -70,6 +70,7 @@ select
 from [VM-PRO-SQL007\NAV].[NAV_for_Developers].dbo.[Bonava (IFRS)$IFRS Stat_ Acc_ Map_ Vers_]
 
 delete from [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$IFRS Stat_ Acc_ Map_ Vers_Line$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
+/*
 INSERT [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$IFRS Stat_ Acc_ Map_ Vers_Line$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
 	([Version ID]
 	,[Line No_]
@@ -104,3 +105,4 @@ LEFT JOIN [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f
 LEFT JOIN [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] Dim3Map
 	ON Dim3Map.[Dimension Code] = TSetup.[Translation Mapping Dim_ 3] collate Cyrillic_General_100_CI_AS
 		and Dim3Map.[Old Dimension Value Code] = OLD_VER_LINE.[Mapping Dimension Value 3] collate Cyrillic_General_100_CI_AS
+*/
