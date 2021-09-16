@@ -69,8 +69,8 @@ select
 	,NEWID()
 from [VM-PRO-SQL007\NAV].[NAV_for_Developers].dbo.[Bonava (IFRS)$IFRS Stat_ Acc_ Map_ Vers_]
 
-delete from [dbo].[Bonava$IFRS Stat_ Acc_ Map_ Vers_Line$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
-INSERT [dbo].[Bonava$IFRS Stat_ Acc_ Map_ Vers_Line$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
+delete from [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$IFRS Stat_ Acc_ Map_ Vers_Line$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
+INSERT [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$IFRS Stat_ Acc_ Map_ Vers_Line$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
 	([Version ID]
 	,[Line No_]
 	,[Stat_ Acc_ Account No_]
@@ -80,14 +80,27 @@ INSERT [dbo].[Bonava$IFRS Stat_ Acc_ Map_ Vers_Line$2944687f-9cf8-4134-a24c-e21f
 	,[Rule ID])
 select 
 	NEW_VER.[Version ID]
-	,0
-	,''
-	,''
-	,''
-	,''
+	,(ROW_NUMBER() OVER 
+		(ORDER BY OLD_VER_LINE.[IFRS Stat_ Acc_ Mapping Code] asc, OLD_VER_LINE.[Version Code] asc, OLD_VER_LINE.[Stat_ Acc_ Account No_] asc, 
+		 OLD_VER_LINE.[Mapping Dimension Value] asc, OLD_VER_LINE.[Mapping Dimension Value 2] asc, OLD_VER_LINE.[Mapping Dimension Value 3] asc)) * 10000 
+	,GLAccMapping.[New No_]
+	,isnull(Dim3Map.[New Dimension Value Code], OLD_VER_LINE.[Mapping Dimension Value 3])
+	,isnull(Dim2Map.[New Dimension Value Code], OLD_VER_LINE.[Mapping Dimension Value 2]) 
+	,OLD_VER_LINE.[IFRS Account No_]
 	,NEWID()
 from [VM-PRO-SQL007\NAV].[NAV_for_Developers].dbo.[Bonava (IFRS)$IFRS Stat_ Acc_ Map_ Vers_Line] OLD_VER_LINE
 inner join [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$IFRS Stat_ Acc_ Map_ Vers_$2944687f-9cf8-4134-a24c-e21fb70a8b1a] NEW_VER
 	ON NEW_VER.[IFRS Stat_ Acc_ Mapping Code] = OLD_VER_LINE.[IFRS Stat_ Acc_ Mapping Code] collate Cyrillic_General_100_CI_AS
 		and  NEW_VER.[Code] = OLD_VER_LINE.[Version Code] collate Cyrillic_General_100_CI_AS
-	
+inner join [VM-PRO-SQL007\NAV].[NAV_for_Developers].dbo.[Bonava (IFRS)$Translation Setup] TSetup
+	on 1 = 1
+
+inner join [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping
+	ON GLAccMapping.[Old No_] = OLD_VER_LINE.[Stat_ Acc_ Account No_] collate Cyrillic_General_100_CI_AS
+
+LEFT JOIN [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] Dim2Map
+	ON Dim2Map.[Dimension Code] = TSetup.[Translation Mapping Dim_ 2] collate Cyrillic_General_100_CI_AS
+		and Dim2Map.[Old Dimension Value Code] = OLD_VER_LINE.[Mapping Dimension Value 2] collate Cyrillic_General_100_CI_AS
+LEFT JOIN [VM-TST-SQL013].[Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] Dim3Map
+	ON Dim3Map.[Dimension Code] = TSetup.[Translation Mapping Dim_ 3] collate Cyrillic_General_100_CI_AS
+		and Dim3Map.[Old Dimension Value Code] = OLD_VER_LINE.[Mapping Dimension Value 3] collate Cyrillic_General_100_CI_AS
