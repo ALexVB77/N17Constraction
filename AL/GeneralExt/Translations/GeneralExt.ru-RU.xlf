@@ -2801,18 +2801,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1694297047 - NamedType 821614138" size-unit="char" translate="yes" xml:space="preserve">
-          <source>This setting already exists in this version.</source>
-          <target>Такая настройка уже существует в этой версии.</target>
+        <trans-unit id="Table 1694297047 - NamedType 2056196056" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A rule has already been defined with an empty value of dimension %1 for G/L Account %2 (line %3).</source>
+          <target>Уже определено правило с пустым значением измерения %1 для Счета ГК %2 (строка %3).</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DimError1Text</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 3878923825" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A rule has already been defined with a specific value of dimension %1 for G/L Account %2 (line %3).</source>
+          <target>Уже определено правило с конкретным значением измерения %1 для Счета ГК %2 (строка %3).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DimError2Text</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 821614138" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This setting already exists in this version (line %1).</source>
+          <target>Такая настройка уже существует в этой версии (строка %1).</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%1" was found in source, but not in target.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DubErrorText</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot rename %1.</source>
           <target>Невозможно переименовать %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text001</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
@@ -2820,6 +2833,12 @@
           <target>Невозможно удалить %1 так как он используется в %1 %2.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Method 1231922058 - NamedType 2383662054" size-unit="char" translate="yes" xml:space="preserve">
+          <source> - Name</source>
+          <target> - Название</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Method GetDimCaptionClass - NamedType NameText</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 1912510093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Code Code</source>
@@ -2849,7 +2868,6 @@
           <source>Line No.</source>
           <target>Номер строки</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Field Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 3022847853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -10260,6 +10278,12 @@
           <target>Версии</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Versions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2154659928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRSEntriesForTransfer</source>
+          <target>IFRSEntriesForTransfer</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRSEntriesForTransfer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Agreement Card</source>

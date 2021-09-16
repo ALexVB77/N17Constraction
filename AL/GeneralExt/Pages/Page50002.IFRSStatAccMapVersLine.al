@@ -47,7 +47,6 @@ page 50002 "IFRS Stat. Acc. Map. Vers.Line"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Version Code';
-                    Editable = false;
                     Lookup = true;
 
                     trigger OnLookup(var Text: Text): Boolean
@@ -81,6 +80,12 @@ page 50002 "IFRS Stat. Acc. Map. Vers.Line"
             {
                 Editable = ListEditable;
                 ShowCaption = false;
+                field("Line No."; "Line No.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    Visible = false;
+                }
                 field("Stat. Acc. Account No."; "Stat. Acc. Account No.")
                 {
                     ApplicationArea = All;
@@ -92,18 +97,22 @@ page 50002 "IFRS Stat. Acc. Map. Vers.Line"
                 field("Cost Place Code"; "Cost Place Code")
                 {
                     ApplicationArea = All;
+                    CaptionClass = GetDimCaptionClass(0, false);
                 }
                 field(CostPlaceName; GetDimensionName(0, "Cost Place Code"))
                 {
                     ApplicationArea = All;
+                    CaptionClass = GetDimCaptionClass(0, true);
                 }
                 field("Cost Code Code"; "Cost Code Code")
                 {
                     ApplicationArea = All;
+                    CaptionClass = GetDimCaptionClass(1, false);
                 }
                 field(CostCodeName; GetDimensionName(1, "Cost Code Code"))
                 {
                     ApplicationArea = All;
+                    CaptionClass = GetDimCaptionClass(1, true);
                 }
                 field("IFRS Account No."; "IFRS Account No.")
                 {

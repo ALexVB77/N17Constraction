@@ -8,7 +8,6 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         {
             Caption = 'Version ID';
             Editable = false;
-            NotBlank = true;
         }
         field(2; "Line No."; Integer)
         {
@@ -29,7 +28,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 DimValue: Record "Dimension Value";
                 DimMgt: Codeunit DimensionManagement;
             begin
-                GetPurchSetupWithTestDim();
+                GetPurchSetupWithTestDim(1);
                 DimValue.SetRange("Dimension Code", PurchSetup."Cost Place Dimension");
                 if Page.RunModal(0, DimValue) = Action::LookupOK then begin
                     if not DimMgt.CheckDimValue(DimValue."Dimension Code", DimValue.Code) then
@@ -43,7 +42,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 DimMgt: Codeunit DimensionManagement;
             begin
                 if "Cost Place Code" <> '' then begin
-                    GetPurchSetupWithTestDim();
+                    GetPurchSetupWithTestDim(1);
                     if not DimMgt.CheckDimValue(PurchSetup."Cost Place Dimension", "Cost Place Code") then
                         Error(DimMgt.GetDimErr);
                 end;
@@ -58,7 +57,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 DimValue: Record "Dimension Value";
                 DimMgt: Codeunit DimensionManagement;
             begin
-                GetPurchSetupWithTestDim();
+                GetPurchSetupWithTestDim(2);
                 DimValue.SetRange("Dimension Code", PurchSetup."Cost Code Dimension");
                 if Page.RunModal(0, DimValue) = Action::LookupOK then begin
                     if not DimMgt.CheckDimValue(DimValue."Dimension Code", DimValue.Code) then
@@ -72,7 +71,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
                 DimMgt: Codeunit DimensionManagement;
             begin
                 if "Cost Code Code" <> '' then begin
-                    GetPurchSetupWithTestDim();
+                    GetPurchSetupWithTestDim(2);
                     if not DimMgt.CheckDimValue(PurchSetup."Cost Code Dimension", "Cost Code Code") then
                         Error(DimMgt.GetDimErr);
                 end;
@@ -160,15 +159,21 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         PurchSetupFound: Boolean;
         Text001: Label 'You cannot rename %1.';
         Text002: Label 'You cannot change %1 because it is used in %1 %2.';
-        DubErrorText: Label 'This setting already exists in this version.';
+        DubErrorText: Label 'This setting already exists in this version (line %1).';
+        DimError1Text: Label 'A rule has already been defined with an empty value of dimension %1 for G/L Account %2 (line %3).';
+        DimError2Text: Label 'A rule has already been defined with a specific value of dimension %1 for G/L Account %2 (line %3).';
 
-    local procedure GetPurchSetupWithTestDim()
+    local procedure GetPurchSetupWithTestDim(TestDimType: option "",CostPlace,CostCode)
     begin
         if not PurchSetupFound then begin
             PurchSetupFound := true;
             PurchSetup.Get();
-            PurchSetup.TestField("Cost Place Dimension");
-            PurchSetup.TestField("Cost Code Dimension");
+            case TestDimType of
+                TestDimType::CostPlace:
+                    PurchSetup.TestField("Cost Place Dimension");
+                TestDimType::CostCode:
+                    PurchSetup.TestField("Cost Code Dimension");
+            end;
         end;
     end;
 
@@ -185,7 +190,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         if (GLSetup."IFRS Stat. Acc. Map. Code" = MappingVersion."IFRS Stat. Acc. Mapping Code") and
             (GLSetup."IFRS Stat. Acc. Map. Vers.Code" = MappingVersion."Code")
         then
-            Error(Text002, TableCaption, GLSetup.TableCaption, GLSetup.FieldCaption("IFRS Stat. Acc. Map. Vers.Code"));
+            ShowErrorAsMessage(StrSubstNo(Text002, TableCaption, GLSetup.TableCaption, GLSetup.FieldCaption("IFRS Stat. Acc. Map. Vers.Code")));
     end;
 
     local procedure CheckDuplicate()
@@ -195,25 +200,83 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         MapVerLine.SetRange("Version ID", "Version ID");
         MapVerLine.SetFilter("Line No.", '<>%1', "Line No.");
         MapVerLine.SetRange("Stat. Acc. Account No.", "Stat. Acc. Account No.");
-        MapVerLine.SetRange("Cost Place Code", "Cost Code Code");
+        MapVerLine.SetRange("Cost Place Code", "Cost Place Code");
         MapVerLine.SetRange("Cost Code Code", "Cost Code Code");
-        if not MapVerLine.IsEmpty then
-            Error(DubErrorText);
+        if MapVerLine.FindFirst() then
+            ShowErrorAsMessage(StrSubstNo(DubErrorText, MapVerLine."Line No."));
+        MapVerLine.SetRange("Cost Place Code");
+        MapVerLine.SetRange("Cost Code Code");
+
+        GetPurchSetupWithTestDim(0);
+        if "Cost Place Code" <> '' then begin
+            MapVerLine.SetRange("Cost Place Code", '');
+            if MapVerLine.FindFirst() then
+                ShowErrorAsMessage(StrSubstNo(DimError1Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", MapVerLine."Line No."));
+        end else begin
+            MapVerLine.SetFilter("Cost Place Code", '<>%1', '');
+            if MapVerLine.FindFirst() then
+                ShowErrorAsMessage(StrSubstNo(DimError2Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", MapVerLine."Line No."));
+        end;
+        MapVerLine.SetRange("Cost Place Code");
+
+        if "Cost Code Code" <> '' then begin
+            MapVerLine.SetRange("Cost Code Code", '');
+            if MapVerLine.FindFirst() then
+                ShowErrorAsMessage(StrSubstNo(DimError1Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", MapVerLine."Line No."));
+        end else begin
+            MapVerLine.SetFilter("Cost Code Code", '<>%1', '');
+            if MapVerLine.FindFirst() then
+                ShowErrorAsMessage(StrSubstNo(DimError2Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", MapVerLine."Line No."));
+        end;
+    end;
+
+    // при вызове из триггеров OnInsert и OnModify - не выводится код ошибки в ленту сообщений.
+    // поэтому выводим через Message()  
+    local procedure ShowErrorAsMessage(ErrorText: text)
+    begin
+        Message(ErrorText);
+        Error(ErrorText);
+    end;
+
+    procedure GetDimCaptionClass(DimType: option CostPlace,CostCode; IsName: Boolean): Text
+    var
+        DimParam2: text;
+        NameText: Label ' - Name';
+    begin
+        GetPurchSetupWithTestDim(0);
+        if IsName then
+            DimParam2 := NameText;
+        case DimType of
+            DimType::CostPlace:
+                if PurchSetup."Cost Place Dimension" = '' then
+                    exit(FieldCaption("Cost Place Code"))
+                else
+                    exit('1,5,' + PurchSetup."Cost Place Dimension" + ',,' + DimParam2);
+            DimType::CostCode:
+                if PurchSetup."Cost Code Dimension" = '' then
+                    exit(FieldCaption("Cost Code Code"))
+                else
+                    exit('1,5,' + PurchSetup."Cost Code Dimension" + ',,' + DimParam2);
+        end;
     end;
 
     procedure GetDimensionName(DimType: option CostPlace,CostCode; DimValueCode: code[20]): text
     var
         DimValue: Record "Dimension Value";
+        DimCode: code[20];
     begin
-        GetPurchSetupWithTestDim();
+        GetPurchSetupWithTestDim(0);
         if DimValueCode = '' then
             exit('');
         case DimType of
             DimType::CostPlace:
-                DimValue.SetRange("Dimension Code", PurchSetup."Cost Place Dimension");
+                DimCode := PurchSetup."Cost Place Dimension";
             DimType::CostCode:
-                DimValue.SetRange("Dimension Code", PurchSetup."Cost Code Dimension");
+                DimCode := PurchSetup."Cost Code Dimension";
         end;
+        if DimCode = '' then
+            exit;
+        DimValue.SetRange("Dimension Code", DimCode);
         DimValue.SetRange(Code, DimValueCode);
         if DimValue.FindFirst() then
             exit(DimValue.Name);

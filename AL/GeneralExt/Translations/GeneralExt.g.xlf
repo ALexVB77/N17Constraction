@@ -2298,8 +2298,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 2056196056" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A rule has already been defined with an empty value of dimension %1 for G/L Account %2 (line %3).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DimError1Text</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - NamedType 3878923825" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A rule has already been defined with a specific value of dimension %1 for G/L Account %2 (line %3).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DimError2Text</note>
+        </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 821614138" size-unit="char" translate="yes" xml:space="preserve">
-          <source>This setting already exists in this version.</source>
+          <source>This setting already exists in this version (line %1).</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DubErrorText</note>
         </trans-unit>
@@ -2312,6 +2322,11 @@
           <source>You cannot change %1 because it is used in %1 %2.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 1694297047 - Method 1231922058 - NamedType 2383662054" size-unit="char" translate="yes" xml:space="preserve">
+          <source> - Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Method GetDimCaptionClass - NamedType NameText</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - Field 1912510093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Code Code</source>
@@ -8402,6 +8417,11 @@
           <source>Versions</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page IFRS Statutory Account Mapping - Action Versions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2154659928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IFRSEntriesForTransfer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page IFRSEntriesForTransfer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3861133141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Investment Agreement Card</source>
