@@ -2313,6 +2313,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType Text002</note>
         </trans-unit>
+        <trans-unit id="Table 1694297047 - Method 1231922058 - NamedType 2383662054" size-unit="char" translate="yes" xml:space="preserve">
+          <source> - Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - Method GetDimCaptionClass - NamedType NameText</note>
+        </trans-unit>
         <trans-unit id="Table 1694297047 - Field 1912510093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cost Code Code</source>
           <note from="Developer" annotates="general" priority="2"></note>

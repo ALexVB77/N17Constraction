@@ -208,7 +208,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
     procedure GetDimCaptionClass(DimType: option CostPlace,CostCode; IsName: Boolean): Text
     var
         DimParam2: text;
-        NameText: Label ' - Название';
+        NameText: Label ' - Name';
     begin
         GetPurchSetupWithTestDim(0);
         if IsName then
