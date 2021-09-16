@@ -197,6 +197,9 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
     var
         MapVerLine: Record "IFRS Stat. Acc. Map. Vers.Line";
     begin
+
+        fielderror("Line No.");
+
         MapVerLine.SetRange("Version ID", "Version ID");
         MapVerLine.SetFilter("Line No.", '<>%1', "Line No.");
         MapVerLine.SetRange("Stat. Acc. Account No.", "Stat. Acc. Account No.");
@@ -228,6 +231,9 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
             if MapVerLine.FindFirst() then
                 Error(DimError2Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", "Line No.");
         end;
+
+
+
     end;
 
     procedure GetDimCaptionClass(DimType: option CostPlace,CostCode; IsName: Boolean): Text
