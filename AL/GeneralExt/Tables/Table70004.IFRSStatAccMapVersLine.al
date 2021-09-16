@@ -160,7 +160,9 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         PurchSetupFound: Boolean;
         Text001: Label 'You cannot rename %1.';
         Text002: Label 'You cannot change %1 because it is used in %1 %2.';
-        DubErrorText: Label 'This setting already exists in this version.';
+        DubErrorText: Label 'This setting already exists in this version (line %1).';
+        DimError1Text: Label 'A rule has already been defined with an empty value of dimension %1 for G/L Account %2 (line %3).';
+        DimError2Text: Label 'A rule has already been defined with a specific value of dimension %1 for G/L Account %2 (line %3).';
 
     local procedure GetPurchSetupWithTestDim(TestDimType: option "",CostPlace,CostCode)
     begin
@@ -201,8 +203,32 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         MapVerLine.SetRange("Stat. Acc. Account No.", "Stat. Acc. Account No.");
         MapVerLine.SetRange("Cost Place Code", "Cost Code Code");
         MapVerLine.SetRange("Cost Code Code", "Cost Code Code");
-        if not MapVerLine.IsEmpty then
-            Error(DubErrorText);
+        if MapVerLine.FindFirst() then
+            Error(DubErrorText, MapVerLine."Line No.");
+        MapVerLine.SetRange("Cost Place Code");
+        MapVerLine.SetRange("Cost Code Code");
+
+        GetPurchSetupWithTestDim(0);
+        if "Cost Place Code" <> '' then begin
+            MapVerLine.SetRange("Cost Place Code", '');
+            if MapVerLine.FindFirst() then
+                Error(DimError1Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", "Line No.");
+        end else begin
+            MapVerLine.SetFilter("Cost Place Code", '<>%1', '');
+            if MapVerLine.FindFirst() then
+                Error(DimError2Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", "Line No.");
+        end;
+        MapVerLine.SetRange("Cost Place Code");
+
+        if "Cost Code Code" <> '' then begin
+            MapVerLine.SetRange("Cost Code Code", '');
+            if MapVerLine.FindFirst() then
+                Error(DimError1Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", "Line No.");
+        end else begin
+            MapVerLine.SetFilter("Cost Code Code", '<>%1', '');
+            if MapVerLine.FindFirst() then
+                Error(DimError2Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", "Line No.");
+        end;
     end;
 
     procedure GetDimCaptionClass(DimType: option CostPlace,CostCode; IsName: Boolean): Text

@@ -47,7 +47,6 @@ page 50002 "IFRS Stat. Acc. Map. Vers.Line"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Version Code';
-                    Editable = false;
                     Lookup = true;
 
                     trigger OnLookup(var Text: Text): Boolean
@@ -81,6 +80,12 @@ page 50002 "IFRS Stat. Acc. Map. Vers.Line"
             {
                 Editable = ListEditable;
                 ShowCaption = false;
+                field("Line No."; "Line No.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    Visible = false;
+                }
                 field("Stat. Acc. Account No."; "Stat. Acc. Account No.")
                 {
                     ApplicationArea = All;
