@@ -23,7 +23,7 @@ Invoke-RestMethod -Method 'Post' -Uri $url -Headers $headers -Body $Body
 $Url = "http://nav-bonava.ncdev.ru:17058/BonavaDev/api/beta/companies"
 $headers = @{
     'contentType' = 'application/json'
-    'authorization' = "NTLM cmtoYXJpdG9ub3ZAbmF2aWNvbnMucnU6ZDQyYkthSHk="
+    'authorization' = "Basic cmtoYXJpdG9ub3Y6M3crMjByOGZ4Z292Ull4aEtpdWVLMWh0SEx4U1VvaVVUTnZWbTZycHRMST0="
 }
 
 
