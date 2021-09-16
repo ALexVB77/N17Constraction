@@ -235,7 +235,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
     local procedure ShowErrorAsMessage(ErrorText: text)
     begin
         Message(ErrorText);
-        Error('');
+        Error(ErrorText);
     end;
 
     procedure GetDimCaptionClass(DimType: option CostPlace,CostCode; IsName: Boolean): Text
