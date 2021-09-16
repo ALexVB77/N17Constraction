@@ -1,11 +1,11 @@
-page 90002 "Object List"
+page 90002 "AllObjWithCaption"
 {
     ApplicationArea = All;
-    UsageCategory = Lists;
-    Caption = 'Object List';
+    UsageCategory = Administration;
+    Caption = 'AllObjWithCaption';
     Editable = false;
     PageType = List;
-    SourceTable = Object;
+    SourceTable = AllObjWithCaption;
 
     layout
     {
@@ -13,19 +13,31 @@ page 90002 "Object List"
         {
             repeater(Group)
             {
-                field(Type; Type)
+                field("Object Type"; "Object Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Company Name"; "Company Name")
+                field("Object ID"; "Object ID")
                 {
                     ApplicationArea = All;
                 }
-                field(ID; ID)
+                field("Object Name"; "Object Name")
                 {
                     ApplicationArea = All;
                 }
-                field(Name; Name)
+                field("Object Caption"; "Object Caption")
+                {
+                    ApplicationArea = All;
+                }
+                field("Object Subtype"; "Object Subtype")
+                {
+                    ApplicationArea = All;
+                }
+                field("App Package ID"; "App Package ID")
+                {
+                    ApplicationArea = All;
+                }
+                field("App Runtime Package ID"; "App Runtime Package ID")
                 {
                     ApplicationArea = All;
                 }

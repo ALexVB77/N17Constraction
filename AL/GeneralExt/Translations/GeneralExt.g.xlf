@@ -6153,6 +6153,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4156211059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anaplan Bound Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Anaplan Bound Balance - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2826027150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Anaplan Bound Balance Entity</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8867,6 +8872,11 @@
           <source>Import Location Mapping</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Location Mapping - Action ImportLocationMapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4023940401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Object List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Object List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2528781168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Original Budget</source>
