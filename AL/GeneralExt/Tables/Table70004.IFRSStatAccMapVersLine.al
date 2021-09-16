@@ -8,7 +8,6 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         {
             Caption = 'Version ID';
             Editable = false;
-            NotBlank = true;
         }
         field(2; "Line No."; Integer)
         {
