@@ -133,9 +133,6 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
 
     trigger OnInsert()
     begin
-
-        error('Test Error!');
-
         CheckDuplicate();
         CheckUsed();
         "Rule ID" := CreateGuid();
