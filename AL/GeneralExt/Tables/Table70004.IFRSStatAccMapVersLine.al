@@ -205,20 +205,25 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
             Error(DubErrorText);
     end;
 
-    procedure GetDimCaptionClass(DimType: option CostPlace,CostCode): Text
+    procedure GetDimCaptionClass(DimType: option CostPlace,CostCode; IsName: Boolean): Text
+    var
+        DimParam2: text;
+        NameText: Label ' - Название';
     begin
         GetPurchSetupWithTestDim(0);
+        if IsName then
+            DimParam2 := NameText;
         case DimType of
             DimType::CostPlace:
                 if PurchSetup."Cost Place Dimension" = '' then
                     exit(FieldCaption("Cost Place Code"))
                 else
-                    exit('1,5,' + PurchSetup."Cost Place Dimension");
+                    exit('1,5,' + PurchSetup."Cost Place Dimension" + ',,' + DimParam2);
             DimType::CostCode:
                 if PurchSetup."Cost Code Dimension" = '' then
                     exit(FieldCaption("Cost Code Code"))
                 else
-                    exit('1,5,' + PurchSetup."Cost Place Dimension");
+                    exit('1,5,' + PurchSetup."Cost Code Dimension" + ',,' + DimParam2);
         end;
     end;
 
