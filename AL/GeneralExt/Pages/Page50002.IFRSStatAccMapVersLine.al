@@ -92,20 +92,22 @@ page 50002 "IFRS Stat. Acc. Map. Vers.Line"
                 field("Cost Place Code"; "Cost Place Code")
                 {
                     ApplicationArea = All;
-                    CaptionClass = GetDimCaptionClass(0);
+                    CaptionClass = GetDimCaptionClass(0, false);
                 }
                 field(CostPlaceName; GetDimensionName(0, "Cost Place Code"))
                 {
                     ApplicationArea = All;
+                    CaptionClass = GetDimCaptionClass(0, true);
                 }
                 field("Cost Code Code"; "Cost Code Code")
                 {
                     ApplicationArea = All;
-                    CaptionClass = GetDimCaptionClass(1);
+                    CaptionClass = GetDimCaptionClass(1, false);
                 }
                 field(CostCodeName; GetDimensionName(1, "Cost Code Code"))
                 {
                     ApplicationArea = All;
+                    CaptionClass = GetDimCaptionClass(1, true);
                 }
                 field("IFRS Account No."; "IFRS Account No.")
                 {
