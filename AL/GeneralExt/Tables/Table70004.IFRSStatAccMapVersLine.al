@@ -200,7 +200,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         MapVerLine.SetRange("Version ID", "Version ID");
         MapVerLine.SetFilter("Line No.", '<>%1', "Line No.");
         MapVerLine.SetRange("Stat. Acc. Account No.", "Stat. Acc. Account No.");
-        MapVerLine.SetRange("Cost Place Code", "Cost Code Code");
+        MapVerLine.SetRange("Cost Place Code", "Cost Place Code");
         MapVerLine.SetRange("Cost Code Code", "Cost Code Code");
         if MapVerLine.FindFirst() then
             ShowErrorAsMessage(StrSubstNo(DubErrorText, MapVerLine."Line No."));
