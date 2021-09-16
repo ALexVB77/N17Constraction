@@ -211,22 +211,22 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         if "Cost Place Code" <> '' then begin
             MapVerLine.SetRange("Cost Place Code", '');
             if MapVerLine.FindFirst() then
-                ShowErrorAsMessage(StrSubstNo(DimError1Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", "Line No."));
+                ShowErrorAsMessage(StrSubstNo(DimError1Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", MapVerLine."Line No."));
         end else begin
             MapVerLine.SetFilter("Cost Place Code", '<>%1', '');
             if MapVerLine.FindFirst() then
-                ShowErrorAsMessage(StrSubstNo(DimError2Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", "Line No."));
+                ShowErrorAsMessage(StrSubstNo(DimError2Text, PurchSetup."Cost Place Dimension", "Stat. Acc. Account No.", MapVerLine."Line No."));
         end;
         MapVerLine.SetRange("Cost Place Code");
 
         if "Cost Code Code" <> '' then begin
             MapVerLine.SetRange("Cost Code Code", '');
             if MapVerLine.FindFirst() then
-                ShowErrorAsMessage(StrSubstNo(DimError1Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", "Line No."));
+                ShowErrorAsMessage(StrSubstNo(DimError1Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", MapVerLine."Line No."));
         end else begin
             MapVerLine.SetFilter("Cost Code Code", '<>%1', '');
             if MapVerLine.FindFirst() then
-                ShowErrorAsMessage(StrSubstNo(DimError2Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", "Line No."));
+                ShowErrorAsMessage(StrSubstNo(DimError2Text, PurchSetup."Cost Code Dimension", "Stat. Acc. Account No.", MapVerLine."Line No."));
         end;
     end;
 
