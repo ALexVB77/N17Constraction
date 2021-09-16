@@ -203,7 +203,7 @@ table 70004 "IFRS Stat. Acc. Map. Vers.Line"
         MapVerLine.SetRange("Cost Place Code", "Cost Code Code");
         MapVerLine.SetRange("Cost Code Code", "Cost Code Code");
         if MapVerLine.FindFirst() then
-            ShowErrorAsMessage(StrSubstNo(DubErrorText, MapVerLine."Line No.");
+            ShowErrorAsMessage(StrSubstNo(DubErrorText, MapVerLine."Line No."));
         MapVerLine.SetRange("Cost Place Code");
         MapVerLine.SetRange("Cost Code Code");
 
