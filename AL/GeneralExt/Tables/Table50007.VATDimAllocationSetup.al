@@ -1,6 +1,8 @@
 table 50007 "VAT Dim. Allocation Setup"
 {
     Caption = 'VAT Dimension Allocation Setup';
+    DrillDownPageId = "VAT Dim. Allocation Setup";
+    LookupPageId = "VAT Dim. Allocation Setup";
     fields
     {
         field(1; "Global Dimension 1 Code"; Code[20])

@@ -11368,6 +11368,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control OriginalBudget - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1150275486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Dim. Allocation Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page VAT Dim. Allocation Setup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2884131641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast List</source>
           <note from="Developer" annotates="general" priority="2"></note>

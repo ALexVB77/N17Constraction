@@ -13817,6 +13817,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control OriginalBudget - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1150275486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Dim. Allocation Setup</source>
+          <target>Настройка НДС распределения по измерениям</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page VAT Dim. Allocation Setup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2884131641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast List</source>
           <target>Список прогнозов</target>
