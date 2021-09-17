@@ -2805,21 +2805,18 @@
           <source>A rule has already been defined with an empty value of dimension %1 for G/L Account %2 (line %3).</source>
           <target>Уже определено правило с пустым значением измерения %1 для Счета ГК %2 (строка %3).</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DimError1Text</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 3878923825" size-unit="char" translate="yes" xml:space="preserve">
           <source>A rule has already been defined with a specific value of dimension %1 for G/L Account %2 (line %3).</source>
           <target>Уже определено правило с конкретным значением измерения %1 для Счета ГК %2 (строка %3).</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DimError2Text</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 821614138" size-unit="char" translate="yes" xml:space="preserve">
           <source>This setting already exists in this version (line %1).</source>
           <target>Такая настройка уже существует в этой версии (строка %1).</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">The placeholder "%1" was found in source, but not in target.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table IFRS Stat. Acc. Map. Vers.Line - NamedType DubErrorText</note>
         </trans-unit>
         <trans-unit id="Table 1694297047 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
@@ -5485,6 +5482,48 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Request Approval Entry Archive - Field Version No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1150275486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Dimension Allocation Setup</source>
+          <target>Настройка НДС распределения по измерениям</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1622979514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account No.</source>
+          <target>Счет ГК</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 2777694911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Allocation %</source>
+          <target>Распределение (%)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Allocation % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 1 Code</source>
+          <target>Код глобального измерения 1</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Global Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1337243520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 2 Code</source>
+          <target>Код глобального измерения 2</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Global Dimension 2 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <target>Тип</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT,Write-Off,Charge</source>
+          <target>НДС,Списание,Расходы</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 1535144756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Agreement Details</source>
           <target>Детали соглашения с поставщиком</target>
@@ -7554,6 +7593,19 @@
           <target>Стадии акта</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1898152326 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AllObjWithCaption</source>
+          <target>AllObjWithCaption</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AllObjWithCaption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4156211059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anaplan Bound Balance</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Anaplan Bound Balance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2826027150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Anaplan Bound Balance Entity</source>
@@ -13764,6 +13816,13 @@
           <target>Original Budget</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control OriginalBudget - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1150275486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Dim. Allocation Setup</source>
+          <target>Настройка НДС распределения по измерениям</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page VAT Dim. Allocation Setup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2884131641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast List</source>

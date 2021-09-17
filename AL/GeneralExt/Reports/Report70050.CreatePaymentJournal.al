@@ -1,4 +1,4 @@
-report 50050 "Create Payment Journal"
+report 70050 "Create Payment Journal"
 {
     ApplicationArea = All;
     Caption = 'Create Payment Journal';

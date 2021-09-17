@@ -4508,6 +4508,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Request Approval Entry Archive - Field Version No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1150275486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Dimension Allocation Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1622979514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 2777694911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Allocation %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Allocation % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Global Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1337243520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Global Dimension 2 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT,Write-Off,Charge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 1535144756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Agreement Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6152,6 +6187,16 @@
           <source>Act Stage</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1898152326 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AllObjWithCaption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AllObjWithCaption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4156211059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anaplan Bound Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Anaplan Bound Balance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2826027150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Anaplan Bound Balance Entity</source>
@@ -11322,6 +11367,11 @@
           <source>Original Budget</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control OriginalBudget - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1150275486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Dim. Allocation Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page VAT Dim. Allocation Setup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2884131641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast List</source>
