@@ -47,27 +47,24 @@ table 50007 "VAT Dim. Allocation Setup"
         }
     }
 
-    var
-        myInt: Integer;
+    // trigger OnInsert()
+    // begin
 
-    trigger OnInsert()
-    begin
+    // end;
 
-    end;
+    // trigger OnModify()
+    // begin
 
-    trigger OnModify()
-    begin
+    // end;
 
-    end;
+    // trigger OnDelete()
+    // begin
 
-    trigger OnDelete()
-    begin
+    // end;
 
-    end;
+    // trigger OnRename()
+    // begin
 
-    trigger OnRename()
-    begin
-
-    end;
+    // end;
 
 }
