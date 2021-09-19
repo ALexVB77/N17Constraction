@@ -97,6 +97,13 @@ class Renumerator:
                 #if object_curr_id == 99100:
                 #    object_curr_id = 99100
                 object_new_id = int(words[3])
+                if words[4].lower() == 'true':
+                    has_new_id = True
+                elif words[4].lower() == 'false':
+                    has_new_id = False
+                if (has_new_id and (object_curr_id == object_new_id)) or (not has_new_id and (object_curr_id != object_new_id)):
+                    err = f'Wrong has new id value {object_new_id} and {object_curr_id}'
+                    raise ValueError(err)
                 if object_curr_id == object_new_id: continue
                 temp_map[self.__get_uid(object_type, object_curr_id)] = \
                     MapEntry(type = object_type, name = '', \
@@ -106,11 +113,11 @@ class Renumerator:
 
     def create_mapping_from_file(self, map_file_name: str) -> None:
         me: MapEntry
+        self.renum_map = {}
         temp_map = self.__read_mapping_file(map_file_name)
         if not temp_map: return
         for folder in self.ext_folders:
             al_files = self.__get_list_of_files(folder)
-            self.renum_map = {}
             for al_file in al_files:
                 obj_info = self.__get_object_info(al_file)
                 if not obj_info: continue
@@ -126,7 +133,7 @@ class Renumerator:
 
     def __deep_renum(self, map_entry: MapEntry) -> None:
         def get_new_filename(map_entry: MapEntry) -> str:
-            sfn = f'{map_entry.type}{map_entry.new_id}.{"".join([s for s in map_entry.name if s.isalpha() or s.isdigit()])}.al'
+            sfn = f'{map_entry.type[0].upper()}{map_entry.type[1:]}{map_entry.new_id}.{"".join([s for s in map_entry.name if s.isalpha() or s.isdigit()])}.al'
             dirname = os.path.dirname(map_entry.al_file)
             return os.path.join(dirname, sfn)
         if map_entry.old_id == map_entry.new_id:
