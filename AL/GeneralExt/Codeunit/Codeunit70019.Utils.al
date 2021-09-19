@@ -118,6 +118,9 @@ codeunit 70019 "Utils"
 
         //==
         JObj: JsonObject;
+        JObjLine: JsonObject;
+        JArr: JsonArray;
+        JArrLines: JsonArray;
 
 
 
@@ -195,10 +198,84 @@ codeunit 70019 "Utils"
         end;
     end;
 
-    local procedure UnitXmlToJson(ObjectXml: Text) Resutl: Text
+    local procedure UnitXmlToJson(ObjectXml: Text) Result: Text
     var
-        JsonObj: JsonObject;
+        XmlElem: XmlElement;
+        XmlBuyer: XmlNode;
+        XmlBuyerList: XmlNodeList;
+        ElemText, ElemText2, TempValue : Text;
+        BuyerNo: Integer;
+        ExpectedRegDate, ActualDate, ExpectedDate : Text;
+        OK: Boolean;
+        TempDec: Decimal;
+        TempBool: Boolean;
+        TempDate: Date;
+        TempDT: DateTime;
+        TempInt: Integer;
     begin
+        Clear(JObj);
+        Clear(JObjLine);
+        Clear(JArr);
+        Clear(JArrLines);
+        GetRootXmlElement(ObjectXml, XmlElem);
+
+        JObj.Add('objectType', 'unit');
+        GetValue(XmlElem, JoinX(UnitBaseDataX, ObjectParentIdX), TempValue);
+        if TempValue = '' then
+            Error('Project Id is not specified');
+        JObj.Add('projectId', TempValue);
+        GetValue(XmlElem, UnitIdX, TempValue);
+        JObj.Add('objectId', TempValue);
+        GetValue(XmlElem, JoinX(UnitBaseDataX, ReservingContactX), TempValue);
+        JObj.Add('reservingContactId', TempValue);
+        GetValue(XmlElem, JoinX(UnitBaseDataX, InvestmentObjectX), TempValue);
+        JObj.Add('investmentObjectCode', TempValue);
+        OK := GetValue(XmlElem, JoinX(UnitBaseDataX, BlockNumberX), ElemText);
+        OK := GetValue(XmlElem, JoinX(UnitBaseDataX, ApartmentNumberX), ElemText2);
+        TempValue := ElemText + ' ' + ElemText2;
+        TempValue := TempValue.Trim();
+        AddJsonField('investmentObjectDescription', TempValue);
+        if GetValue(XmlElem, JoinX(UnitX, ApartmentOriginTypeX), TempValue) then
+            AddJsonField('investmentObjectType', TempValue);
+        if GetValue(XmlElem, JoinX(UnitX, ApartmentUnitAreaM2X), TempValue) then begin
+            if Evaluate(TempDec, TempValue) then
+                JObj.Add('investmentObjectArea', TempDec);
+        end;
+        if GetValue(XmlElem, JoinX(UnitX, ExpectedRegDateX), TempValue) then begin
+            if Evaluate(TempInt, TempValue, 9) then
+                JObj.Add('expectedRegDate', TempInt);
+        end;
+        if GetValue(XmlElem, JoinX(UnitX, ActualDateX), TempValue) then begin
+            if Evaluate(TempDT, TempValue, 9) then
+                JObj.Add('actualDate', DT2Date(TempDT));
+        end;
+        if GetValue(XmlElem, JoinX(UnitX, ExpectedDateX), TempValue) then begin
+            if Evaluate(TempDT, TempValue, 9) then
+                JObj.Add('expectedDate', DT2Date(TempDT));
+        end;
+        if XmlElem.SelectNodes(JoinX(UnitX, UnitBuyerNodesX), XmlBuyerList) then begin
+            foreach XmlBuyer in XmlBuyerList do begin
+                XmlElem := XmlBuyer.AsXmlElement();
+                Clear(JObjLine);
+                GetValue(XmlElem, UnitBuyerX, TempValue);
+                JObjLine.Add('buyerId', TempValue);
+                GetValue(XmlElem, UnitBuyerContactX, TempValue);
+                JObjLine.Add('contactId', TempValue);
+                GetValue(XmlElem, UnitBuyerContractX, TempValue);
+                JObjLine.Add('contractId', TempValue);
+                if GetValue(XmlElem, UnitBuyerOwnershipPrcX, TempValue) then begin
+                    if Evaluate(TempDec, TempValue) then
+                        JObjLine.Add('ownershipPrc', TempDec);
+                end;
+                if GetValue(XmlElem, UnitBuyerIsActiveX, TempValue) then begin
+                    if Evaluate(TempBool, TempValue) then
+                        JObjLine.Add('buyerIsActive', TempBool);
+                end;
+                JArrLines.Add(JObjLine);
+            end;
+            JObj.Add('buyers', JArrLines);
+        end;
+        JObj.WriteTo(Result)
     end;
 
     local procedure ContactXmlToJson(ObjectXml: Text) Result: Text
@@ -297,6 +374,8 @@ codeunit 70019 "Utils"
         XmlElem: XmlElement;
         XmlBuyer: XmlNode;
         XmlBuyerList: XmlNodeList;
+        TempBool: Boolean;
+        TempDec: Decimal;
     begin
         Clear(JObj);
         GetRootXmlElement(ObjectXml, XmlElem);
@@ -314,13 +393,17 @@ codeunit 70019 "Utils"
         GetValue(XmlElem, JoinX(ContractBaseDataX, ContractCancelStatusX), TempValue);
         AddJsonField('cancelStatus', TempValue);
         GetValue(XmlElem, JoinX(ContractBaseDataX, ContractIsActiveX), TempValue);
-        AddJsonField('isActive', TempValue);
+        if Evaluate(TempBool, TempValue) then
+            Jobj.Add('isActive', TempBool);
         GetValue(XmlElem, JoinX(ContractBaseDataX, ExtAgreementNoX), TempValue);
         AddJsonField('externalNo', TempValue);
         GetValue(XmlElem, JoinX(ContractX, AgreementAmountX), TempValue);
-        AddJsonField('amount', TempValue);
-        if GetValue(XmlElem, JoinX(ContractX, FinishingInclX), TempValue) then
-            AddJsonField('finishingIncl', TempValue);
+        if Evaluate(TempDec, TempValue) then
+            JObj.Add('amount', TempDec);
+        if GetValue(XmlElem, JoinX(ContractX, FinishingInclX), TempValue) then begin
+            if Evaluate(TempBool, TempValue) then
+                JObj.Add('finishingIncl', TempBool);
+        end;
         if XmlElem.SelectNodes(JoinX(ContractX, ContractBuyerNodesX), XmlBuyerList) then begin
             foreach XmlBuyer in XmlBuyerList do begin
                 XmlElem := XmlBuyer.AsXmlElement();
