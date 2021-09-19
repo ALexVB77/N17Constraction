@@ -133,6 +133,12 @@ table 70042 "Crm Message Buffer"
 
         }
 
+        field(70; Int1; Integer)
+        {
+            DataClassification = ToBeClassified;
+
+        }
+
     }
 
     keys

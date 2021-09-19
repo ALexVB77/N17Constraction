@@ -122,6 +122,8 @@ codeunit 70019 "Utils"
         JArr: JsonArray;
         JArrLines: JsonArray;
 
+        XmlElem: XmlElement;
+
 
 
     procedure GetApartmentType(SoapEnvBody: Text) Response: Text
@@ -161,6 +163,38 @@ codeunit 70019 "Utils"
         exit(tb.ToText());
     end;
 
+
+    //===
+    procedure GetExpectedRegistrationPeriodREST(encodedObjectXml: text) Result: Text
+    var
+        Base64Convert: Codeunit "Base64 Convert";
+        RootXmlElement: XmlElement;
+        ObjectXmlText, ObjectTypeText : Text;
+        TempDT: DateTime;
+        OK: Boolean;
+        ExpectedRegPeriod: Integer;
+        TempBlob: Codeunit "Temp Blob";
+        OutStr: OutStream;
+        InStr: InStream;
+        TempValue: text;
+    begin
+        ObjectXmlText := Base64Convert.FromBase64(EncodedObjectXml);
+        TempBlob.CreateOutStream(OutStr, TextEncoding::UTF8);
+        OutStr.WriteText(ObjectXmlText);
+        TempBlob.CreateInStream(InStr, TextEncoding::UTF8);
+        GetRootXmlElement(InStr, XmlElem);
+        if GetValue(XmlElem, JoinX(UnitX, ExpectedRegDateX), TempValue) then begin
+            if TempValue <> '' then
+                Result := TempValue
+            else
+                Result := 'Empty';
+        end else
+            Result := 'None';
+        GetValue(XmlElem, UnitIdX, TempValue);
+        Result := StrSubstNo('%1;%2', TempValue, Result)
+    end;
+
+    //=== XML to Json converter ===//
     procedure ConvertObjectXmlToJson(encodedObjectXml: text) Result: Text
     var
         Base64Convert: Codeunit "Base64 Convert";

@@ -80,9 +80,9 @@ page 70061 "Crm Unit"
 
                 }
 
-                field(expectedRegDate; Rec.Date1)
+                field(expectedRegistrationPeriod; Rec.Int1)
                 {
-                    Caption = 'Expected Registration Date', Locked = true;
+                    Caption = 'Expected Registration Period', Locked = true;
 
                 }
 

@@ -1403,6 +1403,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Guid3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 817569729 - Field 2485772286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Int1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Int1 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 817569729 - Field 276525482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>MessageId</source>
           <note from="Developer" annotates="general" priority="2"></note>
