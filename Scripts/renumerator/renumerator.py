@@ -2,12 +2,14 @@
 import os 
 import collections
 from posixpath import splitext
+from typing import Dict
 
 
 ObjectInfo = collections.namedtuple('ObjectInfo', 'type id name')
 MapEntry = collections.namedtuple('MapEntry', 'type name old_id new_id al_file has_new_id')
 
 mapping_filename = './mapping.csv'
+mapping_ed_filename = './Mapping-edited.csv'
 
 extension_folder = ['../../AL/GeneralExt/', '../../AL/BankStatement/', '../../AL/ExcelBufferModExt/', '../../AL/WhseMgtExt/']
 #extension_folder = ['../../AL/GeneralExt/']
@@ -44,7 +46,7 @@ class Renumerator:
 
     def renumerate(self, mapping_filename: str = None) -> None:
         if mapping_filename: 
-            pass
+            self.create_mapping_from_file(mapping_filename)
         else:
             self.create_mapping_file()
         assert self.renum_map
@@ -84,9 +86,54 @@ class Renumerator:
             is_general_ext_folder = False
         self.__export_map(mapping_filename)
 
+    def __read_mapping_file(self, map_file_name: str) -> Dict:
+        temp_map = {}
+        with open(map_file_name, 'r', encoding='utf8') as fi:
+            for k, ln in enumerate(fi):
+                if k == 0: continue
+                words = ln.split(';')
+                object_type = words[0].lower()
+                object_curr_id = int(words[1])
+                #if object_curr_id == 99100:
+                #    object_curr_id = 99100
+                object_new_id = int(words[3])
+                if words[4].lower() == 'true':
+                    has_new_id = True
+                elif words[4].lower() == 'false':
+                    has_new_id = False
+                if (has_new_id and (object_curr_id == object_new_id)) or (not has_new_id and (object_curr_id != object_new_id)):
+                    err = f'Wrong has new id value {object_new_id} and {object_curr_id}'
+                    raise ValueError(err)
+                if object_curr_id == object_new_id: continue
+                temp_map[self.__get_uid(object_type, object_curr_id)] = \
+                    MapEntry(type = object_type, name = '', \
+                        old_id = object_curr_id, new_id = object_new_id, \
+                        al_file = '', has_new_id = True)
+        return temp_map
+
+    def create_mapping_from_file(self, map_file_name: str) -> None:
+        me: MapEntry
+        self.renum_map = {}
+        temp_map = self.__read_mapping_file(map_file_name)
+        if not temp_map: return
+        for folder in self.ext_folders:
+            al_files = self.__get_list_of_files(folder)
+            for al_file in al_files:
+                obj_info = self.__get_object_info(al_file)
+                if not obj_info: continue
+                uid = self.__get_uid(obj_info.type, obj_info.id)
+                me = temp_map.get(uid)
+                if not me: continue
+                self.__add_to_map(me.type, \
+                    me.old_id, \
+                    obj_info.name, \
+                    me.new_id, \
+                    al_file, \
+                    True )
+
     def __deep_renum(self, map_entry: MapEntry) -> None:
         def get_new_filename(map_entry: MapEntry) -> str:
-            sfn = f'{map_entry.type}{map_entry.new_id}.{"".join([s for s in map_entry.name if s.isalpha() or s.isdigit()])}.al'
+            sfn = f'{map_entry.type[0].upper()}{map_entry.type[1:]}{map_entry.new_id}.{"".join([s for s in map_entry.name if s.isalpha() or s.isdigit()])}.al'
             dirname = os.path.dirname(map_entry.al_file)
             return os.path.join(dirname, sfn)
         if map_entry.old_id == map_entry.new_id:
@@ -169,7 +216,7 @@ class Renumerator:
             object_id -= 1
         return object_id
 
-    def __add_to_map(self, object_type: str, object_old_id: int, object_name: str, object_new_id, al_filename: str, has_new_id: bool) -> None:
+    def __add_to_map(self, object_type: str, object_old_id: int, object_name: str, object_new_id: int, al_filename: str, has_new_id: bool) -> None:
         self.renum_map[self.__get_uid(object_type, object_old_id)] = \
             MapEntry(type = object_type, name = object_name, old_id=object_old_id, new_id=object_new_id, al_file = al_filename, has_new_id=has_new_id)
 
@@ -225,8 +272,8 @@ class Renumerator:
 
 def main():
     rn = Renumerator(extension_folder, ranges)
-    rn.create_mapping_file()
-    #rn.renumerate()
+    #rn.create_mapping_file()
+    rn.renumerate(mapping_ed_filename)
 
 
 if __name__ == '__main__':

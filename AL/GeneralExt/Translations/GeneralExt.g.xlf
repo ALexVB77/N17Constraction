@@ -1403,6 +1403,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Guid3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 817569729 - Field 2485772286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Int1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Crm Message Buffer - Field Int1 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 817569729 - Field 276525482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>MessageId</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4508,6 +4513,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Request Approval Entry Archive - Field Version No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1150275486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Dimension Allocation Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1622979514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 2777694911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Allocation %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Allocation % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1303377601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Global Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1337243520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Global Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Global Dimension 2 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1150275486 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT,Write-Off,Charge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table VAT Dim. Allocation Setup - Field Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 1535144756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Agreement Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5217,166 +5257,6 @@
           <source>Unknown type of Object %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Object Xml to Json - NamedType UnknownObjectTypeErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 4197778782" size-unit="char" translate="yes" xml:space="preserve">
-          <source>All is up to date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType AllUpToDateMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 2221351987" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bad soap envelope format</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType BadSoapEnvFormatErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1397584261" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer No. %1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContactProcessedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 3797882964" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit of Contact or Reserving Contact is not found</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContactUnitNotFoundErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1878002620" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Another Customer already has the same Agreement Crm Guid, Old Customer No.=%1, New Customer No.=%2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractAlreadyLinkedErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1118960650" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Buyers are not found</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractBuyersNotFoundErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 976920571" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractContactNotFound</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 347140877" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer Agreement %1 has been created, %2 = %3, %4 = %5</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractCreatedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 2571148164" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Agreement could not be created. Some of contacts are not created</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractNotCreated2Err</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 312159366" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Agreement could not be created. Some of contacts are not found</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractNotCreatedErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contract is not registered, Type %1, Status %2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractNotRegisteredErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 4269605980" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contract is not signed, Type %1, Status %2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractNotSignedErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 3024906446" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit %1 of Contract is not found</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractUnitNotFoundErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 2603215002" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer Agreement %1 has been updated, %2 = %3, %4 = %5</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ContractUpdatedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1295264560" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Http request body is empty</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType EmptyHttpRequestBody</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 536274629" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Object field name %1 does not exist</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType FieldNameDoesNotExistErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 401186837" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import action %1 is not allowed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ImportActionNotAllowedErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 3007870474" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The email address "%1" is not valid.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType InvalidEmailAddressErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1309546067" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The phone no. "%1" is not valid.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType InvalidPhoneNoErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 2041483183" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment object %1 was created</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType InvestmentObjectCreatedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 305442788" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment object %1 was updated</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType InvestmentObjectUpdatedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 3720241846" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No field key is specified!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType KeyErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 3972260258" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Investment object is not specified</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType NoInvestObjectMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1236386240" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No ObjectID in XML Document</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType NoObjectIdErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1115934796" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No ParentObjectID in XML Document</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType NoParentObjectIdErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1648349699" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import of object %1 interrupted. No parsed data</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType NoParsedDataOnImportErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1376688189" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ProjectId %1 is not found in %2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType ProjectNotFoundErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1863682477" size-unit="char" translate="yes" xml:space="preserve">
-          <source>%1 record must be temporary</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType RecordMustBeTemporaryErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 4161158581" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The session was not started successfully</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType StartSessionErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 2907044041" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit and Buyer %1 are created</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType UnitCreatedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 3511750238" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unit and Buyer %1 was updated</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType UnitUpdatedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2606391999 - NamedType 1870025204" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unknown type of Object %1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit CRM Tester - NamedType UnknownObjectTypeErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 2463777246 - NamedType 4197778782" size-unit="char" translate="yes" xml:space="preserve">
           <source>All is up to date</source>
@@ -6148,10 +6028,180 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Project Budget Management - Method DeleteSTLine - NamedType lTextErr003</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 4197778782" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All is up to date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType AllUpToDateMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 2221351987" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bad soap envelope format</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType BadSoapEnvFormatErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1397584261" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No. %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContactProcessedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 3797882964" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Contact or Reserving Contact is not found</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContactUnitNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1878002620" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Another Customer already has the same Agreement Crm Guid, Old Customer No.=%1, New Customer No.=%2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractAlreadyLinkedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1118960650" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buyers are not found</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractBuyersNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 976920571" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact %1 is not found, Parent Object Id (Unit) %2, Buyer %3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractContactNotFound</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 347140877" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Agreement %1 has been created, %2 = %3, %4 = %5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 2571148164" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement could not be created. Some of contacts are not created</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractNotCreated2Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 312159366" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreement could not be created. Some of contacts are not found</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractNotCreatedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 3428045438" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not registered, Type %1, Status %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractNotRegisteredErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 4269605980" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract is not signed, Type %1, Status %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractNotSignedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 3024906446" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit %1 of Contract is not found</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractUnitNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 2603215002" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Agreement %1 has been updated, %2 = %3, %4 = %5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ContractUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1295264560" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Http request body is empty</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType EmptyHttpRequestBody</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 536274629" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Object field name %1 does not exist</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType FieldNameDoesNotExistErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 401186837" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import action %1 is not allowed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ImportActionNotAllowedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 3007870474" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The email address "%1" is not valid.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType InvalidEmailAddressErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1309546067" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The phone no. "%1" is not valid.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType InvalidPhoneNoErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 2041483183" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object %1 was created</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType InvestmentObjectCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 305442788" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object %1 was updated</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType InvestmentObjectUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 3720241846" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No field key is specified!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType KeyErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 3972260258" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Investment object is not specified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType NoInvestObjectMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1236386240" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No ObjectID in XML Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType NoObjectIdErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1115934796" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No ParentObjectID in XML Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType NoParentObjectIdErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1648349699" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import of object %1 interrupted. No parsed data</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType NoParsedDataOnImportErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1376688189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ProjectId %1 is not found in %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType ProjectNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1863682477" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 record must be temporary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType RecordMustBeTemporaryErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 4161158581" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The session was not started successfully</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType StartSessionErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 2907044041" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit and Buyer %1 are created</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType UnitCreatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 3511750238" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit and Buyer %1 was updated</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType UnitUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2629305537 - NamedType 1870025204" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unknown type of Object %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Utils - NamedType UnknownObjectTypeErr</note>
+        </trans-unit>
         <trans-unit id="Page 3751671310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Act Stage</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Act Stage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1898152326 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AllObjWithCaption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AllObjWithCaption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4156211059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anaplan Bound Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Anaplan Bound Balance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2826027150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Anaplan Bound Balance Entity</source>
@@ -11322,6 +11372,11 @@
           <source>Original Budget</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Summary CF Control Matrix - Control OriginalBudget - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1150275486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Dim. Allocation Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page VAT Dim. Allocation Setup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2884131641 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast List</source>
