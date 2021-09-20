@@ -390,7 +390,7 @@ page 70023 "Posted Gen. Journals_"
                 GenJnlLine."Dimension Set ID" := DimMgt.GetDimensionSetID(DimSet);
                 GenJnlLine.insert;
             until SelectedLine.next = 0;
-        Message('3');
+
     end;
 
 
