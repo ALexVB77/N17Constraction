@@ -1,4 +1,4 @@
-page 70086 "Purchase Order Act"
+page 70200 "Purchase Order Act"
 {
     Caption = 'Purchase Order Act';
     PageType = Document;

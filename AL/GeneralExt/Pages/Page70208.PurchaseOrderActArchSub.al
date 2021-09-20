@@ -1,4 +1,4 @@
-page 70094 "Purchase Order Act Arch. Sub."
+page 70208 "Purchase Order Act Arch. Sub."
 {
     Caption = 'Lines';
     Editable = false;

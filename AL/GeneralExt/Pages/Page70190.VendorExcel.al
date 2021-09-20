@@ -1,4 +1,4 @@
-page 70076 "Vendor Excel"
+page 70190 "Vendor Excel"
 {
     Caption = 'Vendor Excel';
     PageType = Document;

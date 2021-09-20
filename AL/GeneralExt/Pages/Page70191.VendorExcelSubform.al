@@ -1,4 +1,4 @@
-page 70077 "Vendor Excel Subform"
+page 70191 "Vendor Excel Subform"
 {
     AutoSplitKey = true;
     Caption = 'Lines';

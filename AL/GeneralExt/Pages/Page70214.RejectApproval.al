@@ -1,4 +1,4 @@
-page 70100 "Reject Approval"
+page 70214 "Reject Approval"
 {
     Caption = 'Reject Approval';
     PageType = NavigatePage;

@@ -1,4 +1,4 @@
-page 70097 "Document Attach. Details Arch."
+page 70211 "Document Attach. Details Arch."
 {
     Caption = 'Attached Documents Archive';
     Editable = false;

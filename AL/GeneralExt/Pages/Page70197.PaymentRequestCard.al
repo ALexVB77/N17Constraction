@@ -1,4 +1,4 @@
-page 70083 "Payment Request Card"
+page 70197 "Payment Request Card"
 {
     Caption = 'Payment Request Card';
     DeleteAllowed = false;

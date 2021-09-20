@@ -1,4 +1,4 @@
-page 70091 "Purchase Order App Arch. Sub."
+page 70205 "Purchase Order App Arch. Sub."
 {
     AutoSplitKey = true;
     Caption = 'Lines';

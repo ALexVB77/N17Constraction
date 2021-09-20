@@ -1,4 +1,4 @@
-page 70079 "Purchase Order App"
+page 70193 "Purchase Order App"
 {
     Caption = 'Purchase Order App';
     PageType = Document;

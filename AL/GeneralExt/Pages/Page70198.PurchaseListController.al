@@ -1,4 +1,4 @@
-page 70084 "Purchase List Controller"
+page 70198 "Purchase List Controller"
 {
     ApplicationArea = Basic, Suite;
     Caption = 'Payment Register';

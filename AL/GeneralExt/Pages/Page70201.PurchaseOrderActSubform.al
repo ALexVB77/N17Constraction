@@ -1,4 +1,4 @@
-page 70080 "Purchase Order App Subform"
+page 70201 "Purchase Order Act Subform"
 {
     AutoSplitKey = true;
     Caption = 'Lines';
@@ -60,7 +60,17 @@ page 70080 "Purchase Order App Subform"
                         DeltaUpdateTotals();
                     end;
                 }
-                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
+                field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
+                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
@@ -71,6 +81,16 @@ page 70080 "Purchase Order App Subform"
                     end;
                 }
                 field("VAT Bus. Posting Group"; "VAT Bus. Posting Group")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+                }
+                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
@@ -98,6 +118,26 @@ page 70080 "Purchase Order App Subform"
 
                         UpdateTypeText();
                         DeltaUpdateTotals();
+                    end;
+                }
+                field("Location Code"; "Location Code")
+                {
+                    ApplicationArea = All;
+                    Editable = NOT IsBlankNumber;
+                    Enabled = NOT IsBlankNumber;
+                    ShowMandatory = LocationCodeMandatory;
+
+                    trigger OnValidate()
+                    begin
+                        DeltaUpdateTotals();
+                    end;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        IF gcERPC.LookUpLocationCode("Location Code") THEN BEGIN
+                            VALIDATE("Location Code");
+                            DeltaUpdateTotals();
+                        END;
                     end;
                 }
                 field(Quantity; Quantity)
@@ -169,35 +209,17 @@ page 70080 "Purchase Order App Subform"
                     Editable = false;
                     Enabled = NOT IsBlankNumber;
                 }
-                field(Approver; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
-                {
-                    ApplicationArea = All;
-                    Caption = 'Approver';
-                }
+
                 field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = All;
                     ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
+
                 }
                 field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = All;
                     ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
-                }
-                field("Forecast Entry"; Rec."Forecast Entry")
-                {
-                    ApplicationArea = All;
-                    ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
-                    Editable = false;
-                    ToolTip = 'Use action "Link to Cash Flow Entry"';
-                    trigger OnAssistEdit()
-                    var
-                        PrjBudMgt: Codeunit "Project Budget Management";
-                    begin
-                        Clear(PrjBudMgt);
-                        PrjBudMgt.ApplyPrjBudEntrytoPurchLine(Rec);
-                        CurrPage.Update(false);
-                    end;
                 }
                 field("Utilities Dim. Value Code"; UtilitiesDimValueCode)
                 {
@@ -254,6 +276,11 @@ page 70080 "Purchase Order App Subform"
                             end;
                         end;
                     end;
+                }
+                field(Approver; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
+                {
+                    ApplicationArea = All;
+                    Caption = 'Approver';
                 }
             }
 
@@ -320,6 +347,7 @@ page 70080 "Purchase Order App Subform"
             }
 
 
+
         }
     }
 
@@ -360,43 +388,6 @@ page 70080 "Purchase Order App Subform"
                 }
                 //}
             }
-            action(LinkCFEntry)
-            {
-                ApplicationArea = All;
-                Caption = 'Link Cash Flow Entry';
-                Image = Link;
-                trigger OnAction()
-                var
-                    PrjBudMgt: Codeunit "Project Budget Management";
-                begin
-                    Clear(PrjBudMgt);
-                    PrjBudMgt.ApplyPrjBudEntrytoPurchLine(Rec);
-                    CurrPage.Update(false);
-                end;
-            }
-            action(unLinkCFEntry)
-            {
-                ApplicationArea = All;
-                Caption = 'Unlink Cash Flow Entry';
-                Image = UnLinkAccount;
-                trigger OnAction()
-                var
-                    PrjBudMgt: Codeunit "Project Budget Management";
-                    lPBE: Record "Projects Budget Entry";
-                    lText001: Label 'Delete linked CF Entry?';
-                    lText002: Label 'CF Link deleted';
-                begin
-                    if not Confirm(lText001) then
-                        exit;
-                    lPBE.Reset();
-                    lPBE.SetRange("Entry No.", Rec."Forecast Entry");
-                    Rec."Forecast Entry" := 0;
-                    Rec.Modify(false);
-                    PrjBudMgt.DeleteSTLine(lPBE);
-                    Message(lText002);
-                    CurrPage.Update(false);
-                end;
-            }
         }
     }
 
@@ -425,6 +416,9 @@ page 70080 "Purchase Order App Subform"
         IF (PurchasesSetup."Address Dimension" <> '') and (Rec."Dimension Set ID" <> 0) then
             IF DimSetEntry.GET(Rec."Dimension Set ID", PurchasesSetup."Address Dimension") then
                 AddressDimValueCode := DimSetEntry."Dimension Value Code";
+        if (PurchaseHeader."Document Type" <> "Document Type") or (PurchaseHeader."No." <> "Document No.") then
+            PurchaseHeader.Get("Document Type", "Document No.");
+        LocationCodeMandatory := (PurchaseHeader."Act Type" <> PurchaseHeader."Act Type"::Advance) and (not IsCommentLine) AND ("No." <> '');
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -486,32 +480,28 @@ page 70080 "Purchase Order App Subform"
     end;
 
     var
+
         GLSetup: Record "General Ledger Setup";
-        PurchasesSetup: Record "Purchases & Payables Setup";
         Currency: Record Currency;
+        PurchasesSetup: Record "Purchases & Payables Setup";
+        TotalPurchaseHeader: Record "Purchase Header";
+        PurchaseHeader: Record "Purchase Header";
         grInventorySetup: Record "Inventory Setup";
         TempOptionLookupBuffer: Record "Option Lookup Buffer" temporary;
         TotalPurchaseLine: Record "Purchase Line";
-        TotalPurchaseHeader: Record "Purchase Header";
-        PurchaseHeader: Record "Purchase Header";
         TransferExtendedText: Codeunit "Transfer Extended Text";
         DocumentTotals: Codeunit "Document Totals";
-        PaymentOrderMgt: Codeunit "Payment Order Management";
+        gcERPC: Codeunit "ERPC Funtions";
         ApplicationAreaMgmtFacade: Codeunit "Application Area Mgmt. Facade";
-
+        PaymentOrderMgt: Codeunit "Payment Order Management";
+        IsCommentLine, IsBlankNumber : Boolean;
+        UnitofMeasureCodeIsChangeable, CurrPageIsEditable, IsSaaSExcelAddinEnabled, UtilitiesEnabled, AddressEnabled : Boolean;
         TypeAsText: Text[30];
-        CurrPageIsEditable: Boolean;
-        IsCommentLine: Boolean;
-        IsBlankNumber: Boolean;
-        UnitofMeasureCodeIsChangeable: Boolean;
-        ShortcutDimCode: array[8] of Code[20];
         SuppressTotals: Boolean;
-        VATAmount: Decimal;
-        InvoiceDiscountAmount: Decimal;
-        InvoiceDiscountPct: Decimal;
+        ShortcutDimCode: array[8] of Code[20];
         UtilitiesDimValueCode, AddressDimValueCode : code[20];
-        UtilitiesEnabled, AddressEnabled : Boolean;
-        IsSaaSExcelAddinEnabled: Boolean;
+        VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct : Decimal;
+        LocationCodeMandatory: Boolean;
 
     procedure UpdateForm(SetSaveRecord: Boolean)
     begin
@@ -612,5 +602,4 @@ page 70080 "Purchase Order App Subform"
             if xRec."Document No." = '' then
                 Type := Type::Item;
     end;
-
 }

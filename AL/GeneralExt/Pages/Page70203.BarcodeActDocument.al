@@ -1,4 +1,4 @@
-page 70089 "Barcode Act Document"
+page 70203 "Barcode Act Document"
 {
     ApplicationArea = Basic, Suite;
     Caption = 'Barcode Act Document';

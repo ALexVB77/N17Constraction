@@ -1,4 +1,4 @@
-page 70096 "Archiving Document"
+page 70210 "Archiving Document"
 {
     Caption = 'Archiving Document';
     PageType = NavigatePage;

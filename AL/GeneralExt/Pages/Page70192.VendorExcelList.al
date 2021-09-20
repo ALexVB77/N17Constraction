@@ -1,4 +1,4 @@
-page 70078 "Vendor Excel List"
+page 70192 "Vendor Excel List"
 {
     ApplicationArea = Basic, Suite;
     Caption = 'Vendor Excel List';

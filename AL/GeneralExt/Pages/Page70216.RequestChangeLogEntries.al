@@ -1,4 +1,4 @@
-page 70102 "Request Change Log Entries"
+page 70216 "Request Change Log Entries"
 {
     Caption = 'Request Change Log Entries';
     Editable = false;

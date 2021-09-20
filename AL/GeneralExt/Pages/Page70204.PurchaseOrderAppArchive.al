@@ -1,10 +1,10 @@
-page 70093 "Purchase Order Act Archive"
+page 70204 "Purchase Order App Archive"
 {
-    Caption = 'Purchase Order Act';
+    Caption = 'Purchase Order App Archive';
     DeleteAllowed = false;
     Editable = false;
     PageType = Document;
-    PromotedActionCategories = 'New,Process,Report,Act,Function,Request Approval,Approve,Release,Navigate,Print';
+    PromotedActionCategories = 'New,Process,Report,Order,Function,Print,Request Approval,Approve,Release,Navigate';
     SourceTable = "Purchase Header Archive";
     SourceTableView = WHERE("Document Type" = FILTER(Order));
 
@@ -18,28 +18,16 @@ page 70093 "Purchase Order Act Archive"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    Importance = Standard;
                 }
-                field(VendorNo; "Buy-from Vendor No.")
+                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
-                    ApplicationArea = Suite;
-                    Enabled = not IsEmplPurchase;
-                    HideValue = IsEmplPurchase;
+                    ApplicationArea = All;
                     Importance = Promoted;
                 }
-                field(EmployeeNo; "Buy-from Vendor No.")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Employee No.';
-                    Enabled = IsEmplPurchase;
-                    HideValue = not IsEmplPurchase;
-                    Importance = Promoted;
-                    LookupPageID = "Responsible Employees";
-                }
-
                 field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = All;
-                    Caption = 'Vendor/Employee Name';
                 }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
@@ -74,20 +62,14 @@ page 70093 "Purchase Order Act Archive"
                     {
                         Caption = 'Invoice Amount';
                         ApplicationArea = All;
-                        BlankZero = true;
                     }
                     field("Remaining Amount"; Rec."Invoice Amount Incl. VAT" - Rec."Payments Amount")
                     {
                         Caption = 'Remaining Amount';
                         ApplicationArea = All;
-                        BlankZero = true;
                     }
                 }
                 field("Problem Document"; Rec."Problem Document")
-                {
-                    ApplicationArea = All;
-                }
-                field("Act Type"; Rec."Act Type")
                 {
                     ApplicationArea = All;
                 }
@@ -100,7 +82,15 @@ page 70093 "Purchase Order Act Archive"
                     ApplicationArea = All;
                     Caption = 'Problem Description';
                 }
-                field("Act Invoice No."; Rec."Act Invoice No.")
+                field("Payment to Person"; Rec."Payment to Person")
+                {
+                    ApplicationArea = All;
+                }
+                field("Payment Assignment"; Rec."Payment Assignment")
+                {
+                    ApplicationArea = All;
+                }
+                field("Payment Type"; Rec."Payment Type")
                 {
                     ApplicationArea = All;
                 }
@@ -117,24 +107,11 @@ page 70093 "Purchase Order Act Archive"
                     ApplicationArea = All;
                     Importance = Promoted;
                 }
-                group("Warehouse Document")
+                field("IW Planned Repayment Date"; Rec."IW Planned Repayment Date")
                 {
-                    Caption = 'Warehouse Document';
-                    field("Location Code"; Rec."Location Code")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field(Storekeeper; Rec.Storekeeper)
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("Location Document"; Rec."Location Document")
-                    {
-                        ApplicationArea = All;
-                    }
+                    ApplicationArea = All;
                 }
-
-                field("Estimator"; Rec."Estimator")
+                field("Controller"; Rec.Controller)
                 {
                     ApplicationArea = All;
                 }
@@ -143,7 +120,7 @@ page 70093 "Purchase Order Act Archive"
                     ApplicationArea = All;
                     Caption = 'Checker';
                 }
-                field("Pre-Approver"; PreApproverNo)
+                field("Pre-Approver"; PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID"))
                 {
                     ApplicationArea = All;
                     Caption = 'Pre-Approver';
@@ -175,13 +152,15 @@ page 70093 "Purchase Order Act Archive"
                         Caption = 'Fact';
                     }
                 }
-                field(Status; Status)
-                {
-                    ApplicationArea = Suite;
-                }
-                field("Status App Act"; Rec."Status App Act")
+                field("Currency Code"; "Currency Code")
                 {
                     ApplicationArea = All;
+                }
+                field("Status App"; Rec."Status App")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Approval Status';
+                    OptionCaption = ' ,Reception,Сontroller,Checker,Approve,Payment';
                 }
                 field("Date Status App"; Rec."Date Status App")
                 {
@@ -191,39 +170,31 @@ page 70093 "Purchase Order Act Archive"
                 {
                     ApplicationArea = All;
                 }
-                field("Receive Account"; Rec."Receive Account")
-                {
-                    ApplicationArea = All;
-                }
             }
-            part(PurchaseOrderActLines; "Purchase Order Act Arch. Sub.")
+
+            part(PurchaseOrderAppLines; "Purchase Order App Arch. Sub.")
             {
                 ApplicationArea = All;
                 SubPageLink = "Document No." = FIELD("No."), "Doc. No. Occurrence" = FIELD("Doc. No. Occurrence"), "Version No." = FIELD("Version No.");
             }
+
             group("Payment Request")
             {
                 Caption = 'Payment Request';
-                field("Vendor Bank Account"; Rec."Vendor Bank Account")
+                field("Vendor Bank Account No."; rec."Vendor Bank Account No.")
                 {
                     ApplicationArea = All;
-
-                    trigger OnAssistEdit()
-                    var
-                        VendorBankAccount: Record "Vendor Bank Account";
-                    begin
-                        VendorBankAccount.SETRANGE("Vendor No.", Rec."Pay-to Vendor No.");
-                        Page.RUNMODAL(0, VendorBankAccount);
-                    end;
                 }
                 field("Vendor Bank Account Name"; GetVendorBankAccountName)
                 {
                     ApplicationArea = All;
                     Caption = 'Vendor Bank Account Name';
                 }
-                field("Vendor Bank Account No."; rec."Vendor Bank Account No.")
+                field("Vendor Bank Account"; Rec."Vendor Bank Account")
                 {
                     ApplicationArea = All;
+                    Caption = 'Vendor Bank BIC';
+                    Lookup = false;
                 }
                 field("Payment Details"; rec."Payment Details")
                 {
@@ -273,36 +244,10 @@ page 70093 "Purchase Order Act Archive"
     {
         area(navigation)
         {
-            group(OrderAct)
+            group(Order)
             {
-                Caption = 'O&rder Act';
+                Caption = 'O&rder';
                 Image = "Order";
-                action(ViewAttachDoc)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Documents View';
-                    Enabled = ShowDocEnabled;
-                    Image = Export;
-                    Promoted = true;
-                    PromotedCategory = Category4;
-                    PromotedIsBig = true;
-
-                    trigger OnAction()
-                    var
-                        DocumentAttachment: Record "Document Attachment Archive";
-                        RecRef: RecordRef;
-                    begin
-                        CalcFields("Exists Attachment");
-                        TestField("Exists Attachment");
-                        DocumentAttachment.SetRange("Table ID", DATABASE::"Purchase Header Archive");
-                        DocumentAttachment.SetRange("Document Type", Rec."Document Type");
-                        DocumentAttachment.SetRange("No.", Rec."No.");
-                        DocumentAttachment.SetRange("Doc. No. Occurrence", "Doc. No. Occurrence");
-                        DocumentAttachment.SetRange("Version No.", "Version No.");
-                        DocumentAttachment.FindFirst();
-                        DocumentAttachment.Export(true);
-                    end;
-                }
                 // NC AB: look later
                 /*
                 action(Statistics)
@@ -324,24 +269,6 @@ page 70093 "Purchase Order Act Archive"
                     end;
                 }
                 */
-                action(Dimensions)
-                {
-                    AccessByPermission = TableData Dimension = R;
-                    ApplicationArea = Dimensions;
-                    Caption = 'Dimensions';
-                    Enabled = "No." <> '';
-                    Image = Dimensions;
-                    Promoted = true;
-                    PromotedCategory = Category4;
-                    PromotedIsBig = true;
-                    ShortCutKey = 'Alt+D';
-
-                    trigger OnAction()
-                    begin
-                        ShowDimensions();
-                        CurrPage.SaveRecord;
-                    end;
-                }
                 action("Co&mments")
                 {
                     ApplicationArea = Comments;
@@ -401,7 +328,7 @@ page 70093 "Purchase Order Act Archive"
                     Caption = 'Approval Comments';
                     Image = ViewComments;
                     Promoted = true;
-                    PromotedCategory = Category7;
+                    PromotedCategory = Category8;
 
                     trigger OnAction()
                     var
@@ -417,80 +344,26 @@ page 70093 "Purchase Order Act Archive"
                     end;
                 }
             }
-            // NC AB: look later
-            /*
-            group(Documents)
-            {
-                Caption = 'Documents';
-                Image = Documents;
-                action(PaymentInvoices)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Payment Invoices';
-                    Image = Payment;
-                    Promoted = true;
-                    PromotedCategory = Category9;
-                    RunObject = Page "Purch. Order Act PayReq. List";
-                    RunPageLink = "Document Type" = CONST(Order),
-                                  "IW Documents" = CONST(true),
-                                  "Linked Purchase Order Act No." = field("No.");
-                }
-            }
-            */
         }
         area(processing)
         {
             group(Print)
             {
                 Caption = 'Print';
-                Image = Print;
                 action("&Print")
                 {
-                    ApplicationArea = Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = '&Print';
                     Ellipsis = true;
-                    Enabled = GenPrintEnabled;
+                    Enabled = false;
                     Image = Print;
                     Promoted = true;
-                    PromotedCategory = Category10;
-                    // NC AB: see later
-                    Visible = false;
+                    PromotedCategory = Category6;
+                    PromotedIsBig = true;
 
                     trigger OnAction()
-                    var
-                        PurchaseHeaderArch: Record "Purchase Header Archive";
-                        ReportSelUsage: enum "Report Selection Usage";
                     begin
-                        PurchaseHeaderArch := Rec;
-                        CurrPage.SetSelectionFilter(PurchaseHeaderArch);
-                        //PurchaseHeaderArch.PrintRecordsExt(true, ReportSelUsage::PurchOrderAct);
-                    end;
-                }
-
-                action("Cover Sheet")
-                {
-                    ApplicationArea = Suite;
-                    Caption = 'Cover Sheet';
-                    Image = PrintCover;
-                    Promoted = true;
-                    PromotedCategory = Category10;
-                    // NC AB: see later
-                    Visible = false;
-
-                    trigger OnAction()
-                    var
-                        PurchaseHeaderArch: Record "Purchase Header Archive";
-                        CoverSheet: report "Cover Sheet";
-                        Text50005: Label 'The cover sheet can only be printed from the Signing status.';
-                    begin
-                        if "Status App Act".AsInteger() < "Status App Act"::Signing.AsInteger() then begin
-                            Message(Text50005);
-                            exit;
-                        end;
-                        PurchaseHeaderArch := Rec;
-                        CurrPage.SetSelectionFilter(PurchaseHeaderArch);
-                        CoverSheet.SetTableView(PurchaseHeaderArch);
-                        CoverSheet.Run();
+                        Message('Нажата кнопка Печать');
                     end;
                 }
             }
@@ -507,40 +380,27 @@ page 70093 "Purchase Order Act Archive"
     end;
 
     trigger OnAfterGetCurrRecord()
-    var
-        AddCommentType: enum "Purchase Comment Add. Type";
     begin
-
         CalcFields("Payments Amount");
-
-        IsEmplPurchase := "Empl. Purchase";
-
-        if "Act Type" = "Act Type"::Advance then
-            PreApproverNo := Rec."Pre-Approver"
-        else
-            PreApproverNo := PaymentOrderMgt.GetPurchActPreApproverFromDim("Dimension Set ID");
-
         ProblemDescription := Rec.GetAddTypeCommentArchText(AddCommentType::Archive);
-
-        CalcFields("Exists Attachment");
-        ShowDocEnabled := "Exists Attachment";
+        UserSetup.GET(USERID);
     end;
 
     var
+        UserSetup: Record "User Setup";
         UserMgt: Codeunit "User Setup Management";
         PaymentOrderMgt: Codeunit "Payment Order Management";
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
-        ShowDocEnabled, GenPrintEnabled : Boolean;
-        PreApproverNo: Code[50];
-        IsEmplPurchase: Boolean;
-        ProblemDescription: text;
+        ApprovalsMgmtExt: Codeunit "Approvals Mgmt. (Ext)";
+        ProblemDescription: text[80];
+        AddCommentType: enum "Purchase Comment Add. Type";
 
     local procedure GetVendorBankAccountName(): text
     var
         VendorBankAccount: Record "Vendor Bank Account";
     begin
         if Rec."Vendor Bank Account No." <> '' then
-            if VendorBankAccount.get("Vendor Bank Account No.") then
+            if VendorBankAccount.get("Pay-to Vendor No.", "Vendor Bank Account No.") then
                 exit(VendorBankAccount.Name + VendorBankAccount."Name 2");
     end;
 }

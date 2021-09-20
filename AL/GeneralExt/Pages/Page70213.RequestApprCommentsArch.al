@@ -1,4 +1,4 @@
-page 70099 "Request Appr. Comments Arch."
+page 70213 "Request Appr. Comments Arch."
 {
     Caption = 'Request Approval Comments Archive';
     DataCaptionFields = "Record ID to Approve";

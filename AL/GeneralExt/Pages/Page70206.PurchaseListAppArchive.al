@@ -1,14 +1,13 @@
-page 70095 "Purchase List Act Archive"
+page 70206 "Purchase List App Archive"
 {
     ApplicationArea = Basic, Suite;
-    Caption = 'Payment Orders List Archive';
-    InsertAllowed = false;
-    DeleteAllowed = false;
+    Caption = 'Payment Invoices (Archive)';
     DataCaptionFields = "Document Type";
+    DeleteAllowed = false;
+    InsertAllowed = false;
     PageType = Worksheet;
     RefreshOnActivate = true;
     SourceTable = "Purchase Header Archive";
-    SourceTableView = SORTING("Document Type", "No.") WHERE("Act Type" = FILTER(<> ' '));
     UsageCategory = Lists;
     layout
     {
@@ -17,11 +16,26 @@ page 70095 "Purchase List Act Archive"
             group(Filters)
             {
                 ShowCaption = false;
+                field(cFilter1; Filter1)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Scope';
+                    Enabled = Filter1Enabled;
+                    OptionCaption = 'My documents,All documents,My Approved';
+
+                    trigger OnValidate()
+                    begin
+                        SetRecFilters;
+                        CurrPage.UPDATE(FALSE);
+                    end;
+                }
                 field(Selection; Filter2)
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Selection';
+                    Enabled = false;
                     OptionCaption = 'All documents,Documents in processing,Ready-to-pay documents,Paid documents';
+
                     trigger OnValidate()
                     begin
                         SetRecFilters;
@@ -39,39 +53,16 @@ page 70095 "Purchase List Act Archive"
                         CurrPage.UPDATE(FALSE);
                     end;
                 }
-                field(cFilter1; Filter1)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Scope';
-                    Enabled = Filter1Enabled;
-                    OptionCaption = 'My documents,All documents,My Approved';
-                    trigger OnValidate()
-                    begin
-                        SetRecFilters;
-                        CurrPage.UPDATE(FALSE);
-                    end;
-                }
-                field(FilterActType; FilterActType)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Document Type';
-                    OptionCaption = 'All,Act,KC-2,Advance';
-                    trigger OnValidate()
-                    begin
-                        SetRecFilters;
-                        CurrPage.UPDATE(FALSE);
-                    end;
-                }
             }
 
-            repeater(Repeater1237120003)
+            repeater(Repeater12370003)
             {
                 Editable = false;
                 field("Problem Document"; Rec."Problem Document")
                 {
                     ApplicationArea = All;
                 }
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
 
@@ -82,108 +73,73 @@ page 70095 "Purchase List Act Archive"
                         PurchHeaderArch.SetRange("No.", Rec."No.");
                         PurchHeaderArch.SetRange("Version No.", Rec."Version No.");
                         PurchHeaderArch.SetRange("Doc. No. Occurrence", Rec."Doc. No. Occurrence");
-                        page.Run(Page::"Purchase Order Act Archive", Rec);
+                        page.Run(Page::"Purchase Order App Archive", Rec);
                         CurrPage.Update(false);
                     end;
                 }
-                field("Act Type"; "Act Type")
+                field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Approver"; PaymentOrderMgt.GetPurchActApproverFromDim("Dimension Set ID"))
-                {
-                    ApplicationArea = All;
-                    Caption = 'Approver';
-                    Editable = false;
-                }
-                field("Act Invoice No."; "Act Invoice No.")
-                {
-                    ApplicationArea = All;
-                    trigger OnDrillDown()
-                    var
-                        PurchaseHeader: record "Purchase Header";
-                        PurchInvHeader: record "Purch. Inv. Header";
-                    begin
-                        if "Act Invoice No." = '' then
-                            exit;
-                        if not "Act Invoice Posted" then begin
-                            PurchaseHeader.Get("Document Type"::Invoice, "Act Invoice No.");
-                            PurchaseHeader.SetRange("Document Type", "Document Type"::Invoice);
-                            PurchaseHeader.SetRange("No.", "Act Invoice No.");
-                            Page.Run(Page::"Purchase Invoice", PurchaseHeader);
-                        end else begin
-                            PurchInvHeader.Get("Act Invoice No.");
-                            PurchInvHeader.SetRange("No.", "Act Invoice No.");
-                            Page.Run(Page::"Posted Purchase Invoice", PurchInvHeader);
-                        end;
-                    end;
-                }
-                field("Buy-from Vendor No."; "Buy-from Vendor No.")
+                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Invoice No."; "Vendor Invoice No.")
+                field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Vendor Name"; "Buy-from Vendor Name")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Document Date"; "Document Date")
+                field("Order Date"; Rec."Order Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Order Date"; "Order Date")
+                field("Paid Date Fact"; Rec."Paid Date Fact")
                 {
                     ApplicationArea = All;
                 }
-                field("Paid Date Fact"; "Paid Date Fact")
+                field("Due Date"; Rec."Due Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Invoice Amount Incl. VAT"; "Invoice Amount Incl. VAT")
+                field("Invoice Amount Incl. VAT"; Rec."Invoice Amount Incl. VAT")
                 {
                     ApplicationArea = All;
                 }
-                field("Статус утверждения"; "Status App Act")
+                field("Status App"; Rec."Status App")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Approval Status';
+                    OptionCaption = ' ,Reception,Сontroller,Checker,Approve,Payment';
+                }
+                field("Date Status App"; Rec."Date Status App")
                 {
                     ApplicationArea = All;
                 }
-                field("Date Status App"; "Date Status App")
+                field("Process User"; Rec."Process User")
                 {
                     ApplicationArea = All;
                 }
-                field("Process User"; "Process User")
+                field("Agreement No."; Rec."Agreement No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Agreement No."; "Agreement No.")
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
+                field("Exists Comment"; Rec."Comment")
                 {
                     ApplicationArea = All;
                 }
-                field("Exists Comment"; Comment)
-                {
-                    Caption = 'Exists Comment';
-                    ApplicationArea = All;
-                }
-                field("Exists Attachment"; "Exists Attachment")
-                {
-                    ApplicationArea = All;
-                }
-                field("Receive Account"; "Receive Account")
-                {
-                    ApplicationArea = All;
-                }
-                field("Location Document"; "Location Document")
+                field("Exists Attachment"; Rec."Exists Attachment")
                 {
                     ApplicationArea = All;
                 }
@@ -199,9 +155,9 @@ page 70095 "Purchase List Act Archive"
             {
                 ApplicationArea = All;
                 Caption = 'Edit';
-                Image = Edit;
                 Enabled = EditEnabled;
-                RunObject = Page "Purchase Order Act Archive";
+                Image = Edit;
+                RunObject = Page "Purchase Order App Archive";
                 RunPageLink = "No." = field("No."), "Version No." = field("Version No."), "Doc. No. Occurrence" = field("Doc. No. Occurrence");
             }
         }
@@ -218,6 +174,7 @@ page 70095 "Purchase List Act Archive"
                             "Document Line No." = CONST(0),
                             "Doc. No. Occurrence" = FIELD("Doc. No. Occurrence"),
                             "Version No." = FIELD("Version No.");
+                ;
             }
             action(DocAttach)
             {
@@ -235,43 +192,28 @@ page 70095 "Purchase List Act Archive"
                     DocumentAttachmentDetails.RunModal;
                 end;
             }
-            action(PaymentInvoices)
-            {
-                ApplicationArea = All;
-                Caption = 'Payment Invoices';
-                Image = Payment;
-                RunObject = Page "Purch. Order Act PayReq. List";
-                RunPageLink = "Document Type" = CONST(Order),
-                                "IW Documents" = CONST(true),
-                                "Linked Purchase Order Act No." = field("No.");
-            }
-            action(PaymentInvoicesArch)
-            {
-                ApplicationArea = All;
-                Caption = 'Payment Invoices Archive';
-                Image = Payment;
-                RunObject = Page "P. Order Act PayReqListArch";
-                RunPageLink = "Document Type" = CONST(Order),
-                                "IW Documents" = CONST(true),
-                                "Linked Purchase Order Act No." = field("No.");
-            }
         }
     }
 
     trigger OnOpenPage()
     begin
-        UserSetup.GET(USERID);
+        grUserSetup.GET(USERID);
 
-        IF UserSetup."Show All Acts KC-2" AND (Filter1 = Filter1::mydoc) THEN
+        IF grUserSetup."Show All Pay Inv" AND (Filter1 = Filter1::mydoc) THEN
             Filter1 := Filter1::all;
+
+        FILTERGROUP(2);
+        SETRANGE("IW Documents", TRUE);
+        SETFILTER("Act Type", '%1', "Act Type"::" ");
+        FILTERGROUP(0);
 
         SetSortType;
         SetRecFilters;
 
         Filter1Enabled := true;
-        IF UserSetup."Status App Act" = UserSetup."Status App Act"::Checker THEN
+        IF grUserSetup."Status App" = grUserSetup."Status App"::Checker THEN
             Filter1Enabled := FALSE;
-        IF UserSetup."Administrator IW" THEN
+        IF grUserSetup."Administrator IW" THEN
             Filter1Enabled := TRUE;
     end;
 
@@ -281,33 +223,12 @@ page 70095 "Purchase List Act Archive"
     end;
 
     var
-        UserSetup: record "User Setup";
-        PaymentOrderMgt: Codeunit "Payment Order Management";
+        grUserSetup: Record "User Setup";
         Filter1: option mydoc,all,approved;
         Filter1Enabled: Boolean;
         Filter2: option all,inproc,ready,pay;
         SortType: option docno,postdate,vendor,statusapp,userproc;
-        FilterActType: option all,act,"kc-2",advance;
-        NewActEnabled: Boolean;
-        NewKC2Enabled: Boolean;
-        NewAdvanceEnabled: Boolean;
         EditEnabled: Boolean;
-
-    local procedure SetSortType()
-    begin
-        CASE SortType OF
-            SortType::DocNo:
-                SETCURRENTKEY("Document Type", "No.");
-            SortType::PostDate:
-                SETCURRENTKEY("Posting Date");
-            SortType::Vendor:
-                SETCURRENTKEY("Buy-from Vendor Name");
-            SortType::StatusApp:
-                SETCURRENTKEY("Status App");
-            SortType::UserProc:
-                SETCURRENTKEY("Process User");
-        END;
-    end;
 
     local procedure SetRecFilters()
     var
@@ -323,6 +244,11 @@ page 70095 "Purchase List Act Archive"
         // SETRANGE(Paid);
         MarkedOnly(false);
         ClearMarks();
+
+        SetRange("My Approved");
+        SetRange("Approver ID Filter");
+
+        SETFILTER("Status App", '<>%1&<>%2', "Status App"::Payment, "Status App"::Request);
 
         CASE Filter2 OF
             Filter2::InProc:
@@ -364,25 +290,26 @@ page 70095 "Purchase List Act Archive"
                 END;
         END;
 
-        CASE FilterActType OF
-            FilterActType::Act:
-                SETRANGE("Act Type", "Act Type"::Act);
-            FilterActType::"KC-2":
-                SETRANGE("Act Type", "Act Type"::"KC-2");
-            FilterActType::All:
-                SETFILTER("Act Type", '%1|%2|%3', "Act Type"::Act, "Act Type"::"KC-2", "Act Type"::Advance);
-            FilterActType::Advance:
-                SETRANGE("Act Type", "Act Type"::Advance);
-        END;
-
         FILTERGROUP(0);
-
-        NewActEnabled := FilterActType in [FilterActType::All, FilterActType::act];
-        NewKC2Enabled := FilterActType in [FilterActType::All, FilterActType::"kc-2"];
-        NewAdvanceEnabled := FilterActType in [FilterActType::All, FilterActType::advance];
 
         Rec := SaveRec;
         if find('=<>') then;
+    end;
+
+    procedure SetSortType()
+    begin
+        CASE SortType OF
+            SortType::DocNo:
+                SETCURRENTKEY("Document Type", "No.");
+            SortType::PostDate:
+                SETCURRENTKEY("Posting Date");
+            SortType::Vendor:
+                SETCURRENTKEY("Buy-from Vendor Name");
+            SortType::StatusApp:
+                SETCURRENTKEY("Status App");
+            SortType::UserProc:
+                SETCURRENTKEY("Process User");
+        END;
     end;
 
 }
