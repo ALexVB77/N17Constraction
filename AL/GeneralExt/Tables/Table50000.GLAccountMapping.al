@@ -16,7 +16,7 @@ table 50000 "G/L Account Mapping"
 
     keys
     {
-        key(Key1; "New No.")
+        key(Key1; "Old No.")
         {
             Clustered = true;
         }

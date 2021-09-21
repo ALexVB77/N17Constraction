@@ -20,13 +20,15 @@ codeunit 70000 "G/L Account Mapping Migration"
         ExcelBuffer.OpenBook(ServerFileName, SheetName);
         ExcelBuffer.ReadSheet();
 
-        for RowNo := 3 to GetLastRow do
-            if not GLAccountMapping.Get(GetValueAtCall(RowNo, 1)) then begin
-                GLAccountMapping.Init();
-                GLAccountMapping."New No." := GetValueAtCall(RowNo, 1);
-                GLAccountMapping."Old No." := GetValueAtCall(RowNo, 2);
-                GLAccountMapping.Insert(true);
-            end;
+        GLAccountMapping.FindSet();
+        GLAccountMapping.DeleteAll();
+
+        for RowNo := 3 to GetLastRow do begin
+            GLAccountMapping.Init();
+            GLAccountMapping."New No." := GetValueAtCall(RowNo, 1);
+            GLAccountMapping."Old No." := GetValueAtCall(RowNo, 2);
+            GLAccountMapping.Insert(true);
+        end;
     end;
 
     var

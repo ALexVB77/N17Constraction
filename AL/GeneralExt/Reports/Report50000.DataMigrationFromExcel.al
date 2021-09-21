@@ -34,7 +34,6 @@ report 50000 "Data Migration From Excel"
         Text0007: Label 'VAT Product Posting Group';
         Text0008: Label 'VAT Business Posting Group';
         Text0009: Label 'General Posting Setup';
-        Text0010: Label 'Dimension Mapping';
         Text0011: Label 'CC';
         Text0012: Label 'CP';
         Text0013: Label 'НП';
@@ -191,50 +190,44 @@ report 50000 "Data Migration From Excel"
                             GeneralPostingSetup.Insert(true);
                         end;
                 end;
-            Text0010:
-                begin
-                    for RowNo := 3 to GetLastRow do
-                        if not DimensionMapping.Get(Text0011, GetValueAtCell(RowNo, 2), GetValueAtCell(RowNo, 1)) then begin
-                            DimensionMapping.Init();
-                            DimensionMapping."Dimension Code" := Text0011;
-                            DimensionMapping."Old Dimension Value Code" := GetValueAtCell(RowNo, 1);
-                            DimensionMapping."New Dimension Value Code" := GetValueAtCell(RowNo, 2);
-                            DimensionMapping.Insert(true);
-                        end;
-                end;
             Text0011:
                 begin
-                    for RowNo := 3 to GetLastRow do
-                        if not DimensionMapping.Get(Text0011, GetValueAtCell(RowNo, 2), GetValueAtCell(RowNo, 1)) then begin
-                            DimensionMapping.Init();
-                            DimensionMapping."Dimension Code" := Text0011;
-                            DimensionMapping."Old Dimension Value Code" := GetValueAtCell(RowNo, 1);
-                            DimensionMapping."New Dimension Value Code" := GetValueAtCell(RowNo, 2);
-                            DimensionMapping.Description := GetValueAtCell(RowNo, 3);
-                            DimensionMapping.Insert(true);
-                        end;
+                    DimensionMapping.SetFilter("Dimension Code", Text0011);
+                    DimensionMapping.FindSet();
+                    DimensionMapping.DeleteAll();
+                    for RowNo := 3 to GetLastRow do begin
+                        DimensionMapping.Init();
+                        DimensionMapping."Dimension Code" := Text0011;
+                        DimensionMapping."Old Dimension Value Code" := GetValueAtCell(RowNo, 1);
+                        DimensionMapping."New Dimension Value Code" := GetValueAtCell(RowNo, 2);
+                        DimensionMapping.Description := GetValueAtCell(RowNo, 3);
+                        DimensionMapping.Insert(true);
+                    end;
                 end;
             Text0012:
                 begin
-                    for RowNo := 3 to GetLastRow do
-                        if not DimensionMapping.Get(Text0012, GetValueAtCell(RowNo, 2), GetValueAtCell(RowNo, 1)) then begin
-                            DimensionMapping.Init();
-                            DimensionMapping."Dimension Code" := Text0012;
-                            DimensionMapping."Old Dimension Value Code" := GetValueAtCell(RowNo, 1);
-                            DimensionMapping."New Dimension Value Code" := GetValueAtCell(RowNo, 2);
-                            DimensionMapping.Description := GetValueAtCell(RowNo, 3);
-                            DimensionMapping.Insert(true);
-                        end;
+                    DimensionMapping.SetFilter("Dimension Code", Text0012);
+                    DimensionMapping.FindSet();
+                    DimensionMapping.DeleteAll();
+                    for RowNo := 3 to GetLastRow do begin
+                        DimensionMapping.Init();
+                        DimensionMapping."Dimension Code" := Text0012;
+                        DimensionMapping."Old Dimension Value Code" := GetValueAtCell(RowNo, 1);
+                        DimensionMapping."New Dimension Value Code" := GetValueAtCell(RowNo, 2);
+                        DimensionMapping.Description := GetValueAtCell(RowNo, 3);
+                        DimensionMapping.Insert(true);
+                    end;
                 end;
             Text0018:
                 begin
-                    for RowNo := 3 to GetLastRow do
-                        if not LocationMapping.Get(GetValueAtCell(RowNo, 3)) then begin
-                            LocationMapping.Init();
-                            LocationMapping."New Location Code" := GetValueAtCell(RowNo, 3);
-                            LocationMapping."Old Location Code" := GetValueAtCell(RowNo, 1);
-                            LocationMapping.Insert(true);
-                        end;
+                    LocationMapping.FindSet();
+                    LocationMapping.DeleteAll();
+                    for RowNo := 3 to GetLastRow do begin
+                        LocationMapping.Init();
+                        LocationMapping."New Location Code" := GetValueAtCell(RowNo, 3);
+                        LocationMapping."Old Location Code" := GetValueAtCell(RowNo, 1);
+                        LocationMapping.Insert(true);
+                    end;
                 end;
             Text0019:
                 begin

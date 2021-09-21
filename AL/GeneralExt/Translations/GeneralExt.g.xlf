@@ -5718,6 +5718,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit G/L Account Mapping Migration - Method OnRun - NamedType ExcelExt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1525651034 - NamedType 2724499124" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;Table ID: #1##########   SQL Dim Set ID: #2##########\&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ImportManagement - NamedType ProgressText</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2172969975 - Method 2028298679 - NamedType 509021276" size-unit="char" translate="yes" xml:space="preserve">
           <source>Error caught in isolated storage: %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12543,11 +12548,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Data Migration From Excel - Method OnPreReport - NamedType Text0009</note>
         </trans-unit>
-        <trans-unit id="Report 1104067303 - Method 1544076788 - NamedType 914830240" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Dimension Mapping</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Data Migration From Excel - Method OnPreReport - NamedType Text0010</note>
-        </trans-unit>
         <trans-unit id="Report 1104067303 - Method 1544076788 - NamedType 277133623" size-unit="char" translate="yes" xml:space="preserve">
           <source>CC</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13222,6 +13222,16 @@
           <source>Start Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Get Lines for Budget Constr - Control StartDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 967922604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import - RunAll</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import - RunAll - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 967922604 - Control 2923706719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Document Dimension (Step 2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Import - RunAll - Control ImportDocDim - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 61001228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import Budget CC</source>
@@ -14283,6 +14293,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TempStarter - Control Run Notification Entry Dispatcher - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Query 2267084294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ImportDocumentDimension</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Query ImportDocumentDimension - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1659759250 - Control 490139807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 156420897">
           <source>Agreements</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15207,6 +15222,11 @@
           <source>Project Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Dimension Value (Ext) - Field Project Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1546208205 - Field 1206990650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1468132285">
+          <source>Unmapped</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Dimension Value (Ext) - Field Unmapped - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1352121579 - Field 633819257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 868174555">
           <source>Gen. Bus. Posting Group</source>

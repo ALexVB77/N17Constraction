@@ -16,7 +16,7 @@ table 50002 "Location Mapping"
 
     keys
     {
-        key(Key1; "New Location Code")
+        key(Key1; "Old Location Code")
         {
             Clustered = true;
         }
