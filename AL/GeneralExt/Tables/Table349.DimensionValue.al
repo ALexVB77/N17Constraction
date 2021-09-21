@@ -78,6 +78,11 @@ tableextension 80349 "Dimension Value (Ext)" extends "Dimension Value"
         {
             Description = 'NC 51373 AB';
         }
+        field(99000; Unmapped; Boolean)
+        {
+            Description = 'NC AB';
+            Editable = false;
+        }
     }
     var
         PurchSetup: Record "Purchases & Payables Setup";
