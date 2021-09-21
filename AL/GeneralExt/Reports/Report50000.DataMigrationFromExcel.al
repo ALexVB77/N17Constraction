@@ -193,8 +193,8 @@ report 50000 "Data Migration From Excel"
             Text0011:
                 begin
                     DimensionMapping.SetFilter("Dimension Code", Text0011);
-                    DimensionMapping.FindSet();
-                    DimensionMapping.DeleteAll();
+                    if DimensionMapping.FindSet() then
+                        DimensionMapping.DeleteAll();
                     for RowNo := 3 to GetLastRow do begin
                         DimensionMapping.Init();
                         DimensionMapping."Dimension Code" := Text0011;
@@ -207,8 +207,8 @@ report 50000 "Data Migration From Excel"
             Text0012:
                 begin
                     DimensionMapping.SetFilter("Dimension Code", Text0012);
-                    DimensionMapping.FindSet();
-                    DimensionMapping.DeleteAll();
+                    if DimensionMapping.FindSet() then
+                        DimensionMapping.DeleteAll();
                     for RowNo := 3 to GetLastRow do begin
                         DimensionMapping.Init();
                         DimensionMapping."Dimension Code" := Text0012;
@@ -220,8 +220,8 @@ report 50000 "Data Migration From Excel"
                 end;
             Text0018:
                 begin
-                    LocationMapping.FindSet();
-                    LocationMapping.DeleteAll();
+                    if LocationMapping.FindSet() then
+                        LocationMapping.DeleteAll();
                     for RowNo := 3 to GetLastRow do begin
                         LocationMapping.Init();
                         LocationMapping."New Location Code" := GetValueAtCell(RowNo, 3);

@@ -20,8 +20,8 @@ codeunit 70000 "G/L Account Mapping Migration"
         ExcelBuffer.OpenBook(ServerFileName, SheetName);
         ExcelBuffer.ReadSheet();
 
-        GLAccountMapping.FindSet();
-        GLAccountMapping.DeleteAll();
+        if GLAccountMapping.FindSet() then
+            GLAccountMapping.DeleteAll();
 
         for RowNo := 3 to GetLastRow do begin
             GLAccountMapping.Init();
