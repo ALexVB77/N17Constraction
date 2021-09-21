@@ -1,6 +1,6 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Contact Business Relation$437dbf0e-84ff-417a-965d-ed2bb9650972];
-
 --Contact Business Relation
+
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Contact Business Relation$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Contact Business Relation$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[Contact No_],

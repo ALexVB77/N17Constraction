@@ -1,6 +1,6 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Inventory Posting Setup$437dbf0e-84ff-417a-965d-ed2bb9650972];
-
 --Inventory Posting Setup
+
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Inventory Posting Setup$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Inventory Posting Setup$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[Location Code],

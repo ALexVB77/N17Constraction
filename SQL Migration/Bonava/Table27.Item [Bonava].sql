@@ -1,13 +1,7 @@
-/*
-,getdate() --[Last DateTime Modified]
-,convert(date,getdate())--[Last Date Modified]
-,convert(time,getdate())--[Last Time Modified]
-'1753-01-01 0:00:00.000'-- [Next Counting End Date]
-,newid()--[Id]
-,'00000000-0000-0000-0000-000000000000'--[Unit of Measure Id]
-*/
-delete from [dbo].[Bonava$Item$437dbf0e-84ff-417a-965d-ed2bb9650972]
+-- Item
 
+-- Base Table
+delete from [dbo].[Bonava$Item$437dbf0e-84ff-417a-965d-ed2bb9650972];
 insert into [dbo].[Bonava$Item$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
       [No_]
@@ -290,17 +284,15 @@ select
       ,[Order Tracking Policy]
       ,[Critical]
       ,[Common Item No_]
-
-
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Item]
 LEFT JOIN [Bonava-Test].[dbo].[Bonava$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping
-ON GLAccMapping.[Old No_] = [Inventory Posting Group] collate Cyrillic_General_100_CI_AS
+ON GLAccMapping.[Old No_] = [Inventory Posting Group] collate Cyrillic_General_100_CI_AS;
 
-delete from [dbo].[Bonava$Item$c526b3e9-b8ca-4683-81ba-fcd5f6b1472a]
-
+-- Table Extension
+delete from [dbo].[Bonava$Item$c526b3e9-b8ca-4683-81ba-fcd5f6b1472a];
 insert into [dbo].[Bonava$Item$c526b3e9-b8ca-4683-81ba-fcd5f6b1472a]
 (
       [No_],[Has Sales Forecast]
 )
 select [No_],0
- FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Item]
+FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Item];

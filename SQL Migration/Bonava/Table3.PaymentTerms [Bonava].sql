@@ -1,6 +1,6 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Payment Terms$437dbf0e-84ff-417a-965d-ed2bb9650972];
+-- Payment Terms
 
---Payment Terms
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Payment Terms$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Payment Terms$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[Code],

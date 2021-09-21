@@ -1,6 +1,6 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Item Charge$437dbf0e-84ff-417a-965d-ed2bb9650972];
-
 --Item Charge
+
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Item Charge$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Item Charge$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[No_],

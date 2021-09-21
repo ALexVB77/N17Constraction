@@ -1,6 +1,7 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$G_L Account$437dbf0e-84ff-417a-965d-ed2bb9650972];
-
 -- G\L Account
+
+-- Base Table
+DELETE FROM [Bonava-Test].[dbo].[Bonava$G_L Account$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$G_L Account$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[No_],
@@ -45,8 +46,12 @@ SELECT
 	GLAccount.[Name],
 	GLAccount.[Search Name],
 	GLAccount.[Account Type],
-	ISNULL(DimensionMapping.[New Dimension Value Code], '') AS [Global Dimension 1 Code],
-	ISNULL(DimensionValue.[Code], '') AS [Global Dimension 2 Code],
+	ISNULL(
+		(SELECT TOP 1 [Dimension Value Code] FROM [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972] DD
+		 WHERE [Table ID] = 15 AND DD.[No_] = GLAccMapping.[New No_] AND [Dimension Code] = 'CP'), ''),
+	ISNULL(
+		(SELECT TOP 1 [Dimension Value Code] FROM [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972] DD
+		 WHERE [Table ID] = 15 AND DD.[No_] = GLAccMapping.[New No_] AND [Dimension Code] = 'CC'), ''),
 	GLAccount.[Income_Balance],
 	GLAccount.[Debit_Credit],
 	GLAccount.[No_ 2],
@@ -79,65 +84,16 @@ SELECT
 	GLAccount.[Adjust Credit Acc_]
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$G_L Account] AS GLAccount
 INNER JOIN [Bonava-Test].[dbo].[Bonava$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping
-ON GLAccMapping.[Old No_] = GLAccount.[No_] collate Cyrillic_General_100_CI_AS
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] DimensionMapping
-ON DimensionMapping.[Old Dimension Value Code] = GLAccount.[Global Dimension 1 Code] collate Cyrillic_General_100_CI_AS
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Value$437dbf0e-84ff-417a-965d-ed2bb9650972] DimensionValue
-ON DimensionValue.[Code] = GLAccount.[Global Dimension 2 Code] collate Cyrillic_General_100_CI_AS;
+ON GLAccMapping.[Old No_] = GLAccount.[No_] collate Cyrillic_General_100_CI_AS;
 
-
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972] AS DefaultDimension
-WHERE DefaultDimension.[Table ID] = '15';
-
---Default Dimension
-INSERT INTO [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972]
-(
-	[Table ID],
-	[No_],
-	[Dimension Code],
-	[Dimension Value Code],
-	[Value Posting],
-	[Multi Selection Action]
-)
+-- Table Extension
+DELETE FROM [VM-TST-SQL013].[Bonava-Test].[dbo].[TEST$G_L Account$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
+INSERT INTO [VM-TST-SQL013].[Bonava-Test].[dbo].[TEST$G_L Account$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
+           ([No_]
+           ,[Non-transmit])
 SELECT
-	DefaultDimension.[Table ID],
 	GLAccMapping.[New No_] AS [No_],
-	DefaultDimension.[Dimension Code],
-	DefaultDimension.[Dimension Value Code],
-	DefaultDimension.[Value Posting],
-	DefaultDimension.[Multi Selection Action]
-FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Default Dimension] AS DefaultDimension
+	GLAccount.[Non-transmit]
+FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$G_L Account] AS GLAccount
 INNER JOIN [Bonava-Test].[dbo].[Bonava$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping
-ON GLAccMapping.[Old No_] = DefaultDimension.[No_] collate Cyrillic_General_100_CI_AS
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Value$437dbf0e-84ff-417a-965d-ed2bb9650972] DimensionValue
-ON DimensionValue.[Code] = DefaultDimension.[Dimension Value Code] collate Cyrillic_General_100_CI_AS
-WHERE (DefaultDimension.[Dimension Code] = 'CC' OR 
-	   DefaultDimension.[Dimension Code] = 'НП' OR
-	   DefaultDimension.[Dimension Code] = 'НУ-ВИД' OR
-	   DefaultDimension.[Dimension Code] = 'НУ-ОБЪЕКТ' OR
-	   DefaultDimension.[Dimension Code] = 'НУ-РАЗНИЦА' OR
-	   DefaultDimension.[Dimension Code] = 'ПРИБ_УБ_ПРОШ_ЛЕТ')
-AND DefaultDimension.[Table ID] = '15';
-
-INSERT INTO [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972]
-(
-	[Table ID],
-	[No_],
-	[Dimension Code],
-	[Dimension Value Code],
-	[Value Posting],
-	[Multi Selection Action]
-)
-SELECT
-	DefaultDimension.[Table ID],
-	GLAccMapping.[New No_] AS [No_],
-	DefaultDimension.[Dimension Code],
-	ISNULL(DimensionMapping.[New Dimension Value Code], '') AS [Dimension Value Code],
-	DefaultDimension.[Value Posting],
-	DefaultDimension.[Multi Selection Action]
-FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Default Dimension] AS DefaultDimension
-INNER JOIN [Bonava-Test].[dbo].[Bonava$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping
-ON GLAccMapping.[Old No_] = DefaultDimension.[No_] collate Cyrillic_General_100_CI_AS
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] DimensionMapping
-ON DimensionMapping.[Old Dimension Value Code] = DefaultDimension.[Dimension Value Code] collate Cyrillic_General_100_CI_AS
-WHERE DefaultDimension.[Dimension Code] = 'CP' AND DefaultDimension.[Table ID] = '15';
+ON GLAccMapping.[Old No_] = GLAccount.[No_] collate Cyrillic_General_100_CI_AS;

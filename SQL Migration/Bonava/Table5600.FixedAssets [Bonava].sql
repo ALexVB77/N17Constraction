@@ -1,5 +1,6 @@
-delete from [dbo].[Bonava$Fixed Asset$437dbf0e-84ff-417a-965d-ed2bb9650972]
+-- Fixed Asset
 
+delete from [dbo].[Bonava$Fixed Asset$437dbf0e-84ff-417a-965d-ed2bb9650972]
 insert into [dbo].[Bonava$Fixed Asset$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
       [No_]
@@ -141,7 +142,4 @@ select
       ,[Tax Difference Code]
       ,[Created by FA No_]
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Fixed Asset]
-WHERE [Blocked]=0
-
-
---select * from [dbo].[Bonava$Fixed Asset$437dbf0e-84ff-417a-965d-ed2bb9650972]
+WHERE [Blocked] = 0;

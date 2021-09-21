@@ -1,6 +1,6 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Customer Bank Account$437dbf0e-84ff-417a-965d-ed2bb9650972];
-
 --Customer Bank Account
+
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Customer Bank Account$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Customer Bank Account$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[Customer No_],

@@ -1,7 +1,7 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Employee$437dbf0e-84ff-417a-965d-ed2bb9650972];
-
 -- Employee
+
 -- Base Table 
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Employee$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Employee$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[No_],
@@ -82,9 +82,8 @@ SELECT
 	[Short Name]
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Employee];
 
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Employee$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
-
 -- Table Extension
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Employee$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Employee$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
 (
 	[No_],

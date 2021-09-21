@@ -1,6 +1,6 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$CRM Integration Setup$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
-
 --CRM Integration Setup
+
+DELETE FROM [Bonava-Test].[dbo].[Bonava$CRM Integration Setup$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$CRM Integration Setup$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
 (
 	[Primary Key],

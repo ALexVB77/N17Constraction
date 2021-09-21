@@ -1,6 +1,6 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Projects Budget Entry$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
-
 --Projects Budget Entry
+
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Projects Budget Entry$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Projects Budget Entry$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
 (
 	[Project Code],
@@ -84,8 +84,8 @@ SELECT
 	ProjectsBudgetEntry.[External Agreement No_],
 	ProjectsBudgetEntry.[Contragent Type],
 	ProjectsBudgetEntry.[Close],
-	ISNULL(DimensionMapping.[New Dimension Value Code], '') AS [Shortcut Dimension 1 Code],
-    ISNULL(DimensionValue.[Code], '') AS [Shortcut Dimension 2 Code],
+	'' AS [Shortcut Dimension 1 Code],
+    '' AS [Shortcut Dimension 2 Code],
 	ProjectsBudgetEntry.[Building Turn],
 	ProjectsBudgetEntry.[Cost Code],
 	ProjectsBudgetEntry.[New Lines],
@@ -106,8 +106,4 @@ SELECT
 	'17530101' AS [Close Date],
 	'' AS [Payment Description]
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Projects Budget Entry] AS ProjectsBudgetEntry
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] DimensionMapping
-ON DimensionMapping.[Old Dimension Value Code] = ProjectsBudgetEntry.[Shortcut Dimension 1 Code] collate Cyrillic_General_100_CI_AS
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Value$437dbf0e-84ff-417a-965d-ed2bb9650972] DimensionValue
-ON DimensionValue.[Code] = ProjectsBudgetEntry.[Shortcut Dimension 2 Code] collate Cyrillic_General_100_CI_AS
 WHERE ProjectsBudgetEntry.[Close] = '0' AND ProjectsBudgetEntry.[Problem Pmt_ Document] = '0';

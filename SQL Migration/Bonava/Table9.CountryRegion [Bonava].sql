@@ -1,6 +1,6 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Country_Region$437dbf0e-84ff-417a-965d-ed2bb9650972];
-
 --Country\Region
+
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Country_Region$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Country_Region$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[Code],

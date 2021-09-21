@@ -1,7 +1,7 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Company Information$437dbf0e-84ff-417a-965d-ed2bb9650972];
-
 -- Company Information
+
 -- Base Table
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Company Information$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Company Information$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[Primary Key],
@@ -228,10 +228,8 @@ SELECT
 	[Import Conflict Resolution]
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Company Information];
 
-
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Company Information$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
-
 -- Table Extension
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Company Information$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Company Information$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
 (
 	[Primary Key],

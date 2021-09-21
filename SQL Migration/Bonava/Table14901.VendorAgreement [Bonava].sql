@@ -1,7 +1,7 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Vendor Agreement$437dbf0e-84ff-417a-965d-ed2bb9650972];
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Vendor Agreement$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
-
 -- Vendor Agreement Table
+
+-- Base Table
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Vendor Agreement$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Vendor Agreement$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[Vendor No_],
@@ -40,8 +40,12 @@ SELECT
 	VendorAgreement.[Starting Date],
 	VendorAgreement.[Expire Date],
 	VendorAgreement.[Phone No_],
-	ISNULL(DimensionMapping.[New Dimension Value Code], '') AS [Global Dimension 1 Code],
-	ISNULL(DimensionValue.[Code], '') AS [Global Dimension 2 Code],
+	ISNULL(
+		(SELECT TOP 1 [Dimension Value Code] FROM [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972] DD
+		 WHERE [Table ID] = 14901 AND DD.[No_] = VendorAgreement.[No_] collate Cyrillic_General_100_CI_AS AND [Dimension Code] = 'CP'), ''),
+	ISNULL(
+		(SELECT TOP 1 [Dimension Value Code] FROM [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972] DD
+		 WHERE [Table ID] = 14901 AND DD.[No_] = VendorAgreement.[No_] collate Cyrillic_General_100_CI_AS AND [Dimension Code] = 'CC'), ''),
 	ISNULL(GLAccMapping.[New No_], '') AS [Vendor Posting Group],
 	VendorAgreement.[Currency Code],
 	VendorAgreement.[Purchaser Code],
@@ -56,16 +60,15 @@ SELECT
 	VendorAgreement.[Tax Authority No_]
 FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Vendor Agreement] VendorAgreement
 LEFT JOIN [Bonava-Test].[dbo].[Bonava$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping
-ON GLAccMapping.[Old No_] = [Vendor Posting Group] collate Cyrillic_General_100_CI_AS
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] DimensionMapping
-ON DimensionMapping.[Old Dimension Value Code] = VendorAgreement.[Global Dimension 1 Code] collate Cyrillic_General_100_CI_AS
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Value$437dbf0e-84ff-417a-965d-ed2bb9650972] DimensionValue
-ON DimensionValue.[Code] = VendorAgreement.[Global Dimension 2 Code] collate Cyrillic_General_100_CI_AS
+ON GLAccMapping.[Old No_] = VendorAgreement.[Vendor Posting Group] collate Cyrillic_General_100_CI_AS
 LEFT JOIN [Bonava-Test].[dbo].[Bonava$Location Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] LocationMapping
 ON LocationMapping.[Old Location Code] = VendorAgreement.[Location Code] collate Cyrillic_General_100_CI_AS
-WHERE VendorAgreement.[Blocked] <> '2';
+INNER JOIN [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Vendor] Vendor
+ON Vendor.[No_] = VendorAgreement.[Vendor No_] AND Vendor.[Blocked] <> 2 
+WHERE VendorAgreement.[Blocked] <> 2;
 
--- Vendor Agreement Table Extension
+-- Table Extension
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Vendor Agreement$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Vendor Agreement$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
 (
 	[Vendor No_],
@@ -82,88 +85,21 @@ INSERT INTO [Bonava-Test].[dbo].[Bonava$Vendor Agreement$2944687f-9cf8-4134-a24c
 	[Don_t Check CashFlow]
 )
 SELECT DISTINCT
-	[Vendor No_],
-	[No_],
+	VendorAgreement.[Vendor No_],
+	VendorAgreement.[No_],
 	ISNULL(GLAccMapping.[New No_], '') AS [Vat Agent Posting Group],
-	[Agreement Amount],
-	[VAT Amount],
-	[Amount Without VAT],
-	[WithOut],
-	[Unbound Cost],
-	[Check Limit Starting Date],
-	[Check Limit Ending Date],
-	[Check Limit Amount (LCY)],
-	[Don_t Check CashFlow]
-FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Vendor Agreement]
+	VendorAgreement.[Agreement Amount],
+	VendorAgreement.[VAT Amount],
+	VendorAgreement.[Amount Without VAT],
+	VendorAgreement.[WithOut],
+	VendorAgreement.[Unbound Cost],
+	VendorAgreement.[Check Limit Starting Date],
+	VendorAgreement.[Check Limit Ending Date],
+	VendorAgreement.[Check Limit Amount (LCY)],
+	VendorAgreement.[Don_t Check CashFlow]
+FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Vendor Agreement] VendorAgreement
 LEFT JOIN [Bonava-Test].[dbo].[Bonava$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping
 ON GLAccMapping.[Old No_] = [Vendor Posting Group] collate Cyrillic_General_100_CI_AS
-WHERE [Blocked] <> '2';
-
-
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972] AS DefaultDimension
-WHERE DefaultDimension.[Table ID] = '14901';
---Default Dimension
-INSERT INTO [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972]
-(
-	[Table ID],
-	[No_],
-	[Dimension Code],
-	[Dimension Value Code],
-	[Value Posting],
-	[Multi Selection Action]
-)
-SELECT
-	DefaultDimension.[Table ID],
-	DefaultDimension.[No_],
-	DefaultDimension.[Dimension Code],
-	DefaultDimension.[Dimension Value Code],
-	DefaultDimension.[Value Posting],
-	DefaultDimension.[Multi Selection Action]
-FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Default Dimension] AS DefaultDimension
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Value$437dbf0e-84ff-417a-965d-ed2bb9650972] DimensionValue
-ON DimensionValue.[Code] = DefaultDimension.[Dimension Value Code] collate Cyrillic_General_100_CI_AS
-WHERE (DefaultDimension.[Dimension Code] = 'CC' OR 
-	   DefaultDimension.[Dimension Code] = 'НП' OR
-	   DefaultDimension.[Dimension Code] = 'НУ-ВИД' OR
-	   DefaultDimension.[Dimension Code] = 'НУ-ОБЪЕКТ' OR
-	   DefaultDimension.[Dimension Code] = 'НУ-РАЗНИЦА' OR
-	   DefaultDimension.[Dimension Code] = 'ПРИБ_УБ_ПРОШ_ЛЕТ')
-AND DefaultDimension.[Table ID] = '14901';
-
-INSERT INTO [Bonava-Test].[dbo].[Bonava$Default Dimension$437dbf0e-84ff-417a-965d-ed2bb9650972]
-(
-	[Table ID],
-	[No_],
-	[Dimension Code],
-	[Dimension Value Code],
-	[Value Posting],
-	[Multi Selection Action]
-)
-SELECT
-	DefaultDimension.[Table ID],
-	DefaultDimension.[No_],
-	DefaultDimension.[Dimension Code],
-	ISNULL(DimensionMapping.[New Dimension Value Code], '') AS [Dimension Value Code],
-	DefaultDimension.[Value Posting],
-	DefaultDimension.[Multi Selection Action]
-FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Default Dimension] AS DefaultDimension
-LEFT JOIN [Bonava-Test].[dbo].[Bonava$Dimension Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] DimensionMapping
-ON DimensionMapping.[Old Dimension Value Code] = DefaultDimension.[Dimension Value Code] collate Cyrillic_General_100_CI_AS
-WHERE DefaultDimension.[Dimension Code] = 'CP' AND DefaultDimension.[Table ID] = '14901';
-
--- Comment Line
-INSERT INTO [Bonava-Test].[dbo].[Bonava$Comment Line$437dbf0e-84ff-417a-965d-ed2bb9650972]
-(
-	[Table Name],
-	[No_],
-	[Line No_],
-	[Date],
-	[Comment]
-)
-SELECT
-	[Table Name],
-	[No_],
-	[Line No_],
-	[Date],
-	[Comment]
-FROM [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Comment Line];
+INNER JOIN [VM-PRO-SQL007\NAV].[NAV_for_Developers].[dbo].[Bonava$Vendor] Vendor
+ON Vendor.[No_] = VendorAgreement.[Vendor No_] AND Vendor.[Blocked] <> 2
+WHERE VendorAgreement.[Blocked] <> 2;

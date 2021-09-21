@@ -1,6 +1,6 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Gen_ Journal Template$437dbf0e-84ff-417a-965d-ed2bb9650972];
+-- Gen. Journal Template
 
---Gen_ Journal Template
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Gen_ Journal Template$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Gen_ Journal Template$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[Name],

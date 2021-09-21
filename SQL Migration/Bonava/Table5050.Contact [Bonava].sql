@@ -1,8 +1,7 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Contact$437dbf0e-84ff-417a-965d-ed2bb9650972];
-DELETE FROM [Bonava-Test].[dbo].[Bonava$Contact$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
-
 --Contact
+
 -- Base Table
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Contact$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Contact$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[No_],
@@ -100,6 +99,7 @@ INNER JOIN [Bonava-Test].[dbo].[Bonava$Contact Business Relation$437dbf0e-84ff-4
 ON CBR.[Contact No_] = Contact.[No_] collate Cyrillic_General_100_CI_AS;
 
 -- Table Extension
+DELETE FROM [Bonava-Test].[dbo].[Bonava$Contact$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$Contact$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
 (
 	[No_],

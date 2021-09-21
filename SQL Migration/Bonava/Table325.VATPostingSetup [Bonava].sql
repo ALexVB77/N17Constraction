@@ -1,7 +1,7 @@
-DELETE FROM [Bonava-Test].[dbo].[Bonava$VAT Posting Setup$437dbf0e-84ff-417a-965d-ed2bb9650972];
-
 --VAT Posting Setup
+
 --Base Table
+DELETE FROM [Bonava-Test].[dbo].[Bonava$VAT Posting Setup$437dbf0e-84ff-417a-965d-ed2bb9650972];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$VAT Posting Setup$437dbf0e-84ff-417a-965d-ed2bb9650972]
 (
 	[VAT Bus_ Posting Group],
@@ -68,9 +68,8 @@ ON GLAccMapping6.[Old No_] = [Write-Off VAT Account] collate Cyrillic_General_10
 LEFT JOIN [Bonava-Test].[dbo].[Bonava$G_L Account Mapping$2944687f-9cf8-4134-a24c-e21fb70a8b1a] GLAccMapping7
 ON GLAccMapping7.[Old No_] = [VAT Charge No_] collate Cyrillic_General_100_CI_AS;
 
-DELETE FROM [Bonava-Test].[dbo].[Bonava$VAT Posting Setup$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
-
 --Table Extension
+DELETE FROM [Bonava-Test].[dbo].[Bonava$VAT Posting Setup$2944687f-9cf8-4134-a24c-e21fb70a8b1a];
 INSERT INTO [Bonava-Test].[dbo].[Bonava$VAT Posting Setup$2944687f-9cf8-4134-a24c-e21fb70a8b1a]
 (
 	[VAT Bus_ Posting Group],
