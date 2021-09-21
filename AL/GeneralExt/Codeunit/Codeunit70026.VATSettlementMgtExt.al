@@ -1,4 +1,4 @@
-codeunit 50016 "VAT Settlement Mgt (Ext)"
+codeunit 70026 "VAT Settlement Mgt (Ext)"
 {
     Permissions = TableData "VAT Entry" = imd;
 
