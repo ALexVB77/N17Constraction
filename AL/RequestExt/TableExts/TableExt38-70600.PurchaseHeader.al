@@ -229,7 +229,7 @@ tableextension 70600 "Purchase Header (Req)" extends "Purchase Header"
                     TESTFIELD("Due Date");
                     VALIDATE("Due Date", CALCDATE(PurchSetup."Payment Delay Period", "Due Date"));
                 END;
-                // UpdateCF;  !!!!!!!!!!!
+                // UpdateCF;  // NC AB: переехало в событие OnAfterValidateEvent, подписчик в  расширении GeneralExt в CU 70027 "RequestExt Subscribers Mgt."
                 //NC 27251 HR end
             end;
         }

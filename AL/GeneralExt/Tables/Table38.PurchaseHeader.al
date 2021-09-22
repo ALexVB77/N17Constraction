@@ -19,7 +19,7 @@ tableextension 80038 "Purchase Header (Ext)" extends "Purchase Header"
         }
     }
 
-    local procedure UpdateCF()
+    procedure UpdateCF()
     var
         PL: record "Purchase Line";
         PBE: record "Projects Budget Entry";

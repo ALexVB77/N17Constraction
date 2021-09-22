@@ -15308,11 +15308,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field Project Dimension Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 476953720 - Field 2267463381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
-          <source>UTILITIES Dim. Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension General Ledger Setup (Ext) - Field Utilities Dimension Code - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 3887120495 - Field 2477103885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>Default Location Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15798,105 +15793,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Header Archive (Ext) - Field Vendor Bank Account No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Method 2882825971 - NamedType 3373620497" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
-          <source>Utilities Dim. Value Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method GetAddDimCaption - NamedType UtilitCaption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Method 2882825971 - NamedType 508519572" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
-          <source>Address Dim. Value Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method GetAddDimCaption - NamedType AddressCaption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Method 3300363475 - NamedType 3744062858" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 363487199">
-          <source>%1 is not an available %2 for that dimension.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Method ValidateAddDimValueCode - NamedType LocText003</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 3230600482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Buy-from Vendor Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Buy-from Vendor Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Document Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Document Date - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 4085727052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Due Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Due Date - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 4044404704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>External Agreement No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field External Agreement No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 363487199 - Field 2296741137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Forecast Entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Forecast Entry - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 3439236327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Full Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 2873261106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>IW</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field IW - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 2952511931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Linked Dimension Filter</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Linked Dimension Filter - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 3546390417 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Linked Dimension Value Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Linked Dimension Value Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 3747039418 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Without VAT</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Not VAT - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 3164040704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Old VAT Prod. Posting Group</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Old VAT Prod. Posting Group - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 4139459292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Paid Date (Fact)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Paid Date Fact - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 3569568710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Process User</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Process User - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 801304080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Purchaser Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Purchaser Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 2681784031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Approval Status</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Status App - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 2681784031 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source> ,Reception,Сontroller,Checker,Approve,Payment,Request</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Status App - Property OptionCaption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 363487199 - Field 3961227134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
-          <source>Vendor Invoice No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line (Ext) - Field Vendor Invoice No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4258310961 - Field 1895217469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2809873457">
           <source>Cost Type</source>

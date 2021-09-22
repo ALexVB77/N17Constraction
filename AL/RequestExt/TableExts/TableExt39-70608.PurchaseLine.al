@@ -36,8 +36,9 @@ tableextension 70608 "Purchase Line (Req)" extends "Purchase Line"
 
             trigger OnValidate()
             begin
+                // // AB: переехало в событие OnBeforeValidateEvent, подписчик в  расширении GeneralExt в CU 70027 "RequestExt Subscribers Mgt."
                 // IF xRec."Not VAT" <> "Not VAT" THEN
-                //     CheckProductionPrjDataModify(xRec."Dimension Set ID");  !!!!
+                //     CheckProductionPrjDataModify(xRec."Dimension Set ID"); 
                 IF "Not VAT" THEN BEGIN
                     PurchSetup.Get();
                     PurchSetup.TestField("Zero VAT Prod. Posting Group");
