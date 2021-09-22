@@ -1,4 +1,4 @@
-tableextension 80383 "Dtld. CV Ledg. Entry Buf. Ext" extends "Detailed CV Ledg. Entry Buffer"
+tableextension 70613 "Dtld. CV Ledg. Entry Buf. Ext" extends "Detailed CV Ledg. Entry Buffer"
 {
     fields
     {

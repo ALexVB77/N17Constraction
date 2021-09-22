@@ -1,4 +1,4 @@
-tableextension 80382 "CV Ledger Entry Buffer Ext" extends "CV Ledger Entry Buffer"
+tableextension 70612 "CV Ledger Entry Buffer Req" extends "CV Ledger Entry Buffer"
 {
     fields
     {
