@@ -18,5 +18,4 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
             TableRelation = "Excel Template";
         }
     }
-
 }
