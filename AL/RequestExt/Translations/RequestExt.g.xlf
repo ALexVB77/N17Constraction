@@ -428,11 +428,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Req) - Field Prices Incl. VAT in Req. Doc. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2827139253 - Field 1601877650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
-          <source>Skip Check Cash Flow in Doc. Lines</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchases &amp; Payab. Setup (Req) - Field Skip Check CF in Doc. Lines - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2827139253 - Field 3943955395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Zero VAT Prod. Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
