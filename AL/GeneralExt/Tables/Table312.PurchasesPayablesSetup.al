@@ -2,6 +2,11 @@ tableextension 80312 "Purchases & Payab. Setup (Ext)" extends "Purchases & Payab
 {
     fields
     {
+        field(50013; "Skip Check CF in Doc. Lines"; Boolean)
+        {
+            Description = 'NC 51380 AB';
+            Caption = 'Skip Check Cash Flow in Doc. Lines';
+        }
         field(50030; "Vendor Agreement Template Code"; Code[250])
         {
             Caption = 'Vendor Agreement Template Code';
