@@ -1,4 +1,4 @@
-tableextension 80043 "Purch. Comment Line (Ext)" extends "Purch. Comment Line"
+tableextension 70604 "Purch. Comment Line (Req)" extends "Purch. Comment Line"
 {
     fields
     {

@@ -1,4 +1,4 @@
-tableextension 80454 "Approval Entry (Ext)" extends "Approval Entry"
+tableextension 70606 "Approval Entry (Req)" extends "Approval Entry"
 {
     fields
     {

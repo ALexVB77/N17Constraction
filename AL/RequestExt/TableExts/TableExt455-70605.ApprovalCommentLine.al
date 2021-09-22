@@ -1,4 +1,4 @@
-tableextension 80455 "Approval Comment Line (Ext)" extends "Approval Comment Line"
+tableextension 70605 "Approval Comment Line (Req)" extends "Approval Comment Line"
 {
     fields
     {

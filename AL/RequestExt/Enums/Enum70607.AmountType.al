@@ -1,4 +1,4 @@
-enum 70008 "Amount Type"
+enum 70607 "Amount Type"
 {
     Extensible = true;
     AssignmentCompatibility = true;

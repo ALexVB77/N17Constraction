@@ -10,11 +10,6 @@ tableextension 80081 "Gen. Journal Line (Ext)" extends "Gen. Journal Line"
         {
             Caption = 'Gift';
         }
-        field(70020; "IW Document No."; Code[20])
-        {
-            Description = 'NC 50112 AB';
-            Caption = 'IW Document No.';
-        }
     }
 
     var

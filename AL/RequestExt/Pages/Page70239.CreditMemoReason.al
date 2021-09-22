@@ -1,4 +1,4 @@
-page 70054 "Credit-Memo Reason"
+page 70239 "Credit-Memo Reason"
 {
     PageType = List;
     ApplicationArea = All;
@@ -16,11 +16,8 @@ page 70054 "Credit-Memo Reason"
                 field(Name; Rec.Reason)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
     }
-
-
 }

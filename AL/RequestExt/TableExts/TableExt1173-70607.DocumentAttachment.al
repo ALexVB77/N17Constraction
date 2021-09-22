@@ -1,4 +1,4 @@
-tableextension 81173 "Document Attachment (Ext)" extends "Document Attachment"
+tableextension 70607 "Document Attachment (Req)" extends "Document Attachment"
 {
     fields
     {
@@ -10,6 +10,5 @@ tableextension 81173 "Document Attachment (Ext)" extends "Document Attachment"
         {
             Caption = 'Primary Key 2';
         }
-
     }
 }
